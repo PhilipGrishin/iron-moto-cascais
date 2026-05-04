@@ -293,6 +293,34 @@ section{padding:var(--gap) 0;position:relative}
 .project:hover .meta-go{background:var(--accent);border-color:var(--accent)}
 
 /* Process */
+/* COMMUNITY / LOUNGE */
+.community{background:linear-gradient(180deg,#0a0a0a 0%,#0e0e12 60%,#0a0a0a 100%);position:relative;padding-top:var(--gap)}
+.community-hero{position:relative;border-radius:var(--radius-lg);overflow:hidden;margin-bottom:60px;aspect-ratio:16/9;background:#0a0a0a}
+.community-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.95) contrast(1.05)}
+.community-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.15) 0%,rgba(10,10,10,.5) 60%,rgba(10,10,10,.95) 100%)}
+.community-hero .ch-content{position:absolute;left:0;right:0;bottom:0;padding:clamp(28px,4vw,56px);z-index:2;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end}
+.community-hero h2{color:#fff;margin-bottom:14px;font-size:clamp(34px,5.4vw,76px);max-width:18ch}
+.community-hero h2 em{color:var(--accent);font-style:italic}
+.community-hero p{color:rgba(255,255,255,.85);max-width:42ch;font-size:clamp(15px,1.2vw,18px)}
+.community-hero .ch-meta{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.community-hero .ch-cta{display:flex;gap:10px;flex-wrap:wrap}
+.community-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:start;margin-bottom:80px}
+.community-grid h3{color:#fff;margin-bottom:18px;font-size:clamp(22px,2.4vw,32px)}
+.community-grid p{font-size:16px;line-height:1.65;margin-bottom:14px}
+.community-aside{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:34px 30px;display:flex;flex-direction:column;gap:18px}
+.community-aside .pills{display:flex;flex-direction:column;gap:0}
+.community-aside .pills .item{display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border)}
+.community-aside .pills .item:last-child{border-bottom:0}
+.community-aside .pills .item .ic{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;color:var(--accent);background:rgba(255,87,34,.06);flex-shrink:0}
+.community-aside .pills .item .ic svg{width:16px;height:16px}
+.community-aside .pills .item .t{font-family:'Saira',sans-serif;font-weight:600;text-transform:uppercase;font-size:13px;letter-spacing:.06em;color:var(--text);line-height:1.25}
+.community-aside .pills .item .d{font-size:13px;color:var(--text-dim);margin-top:3px}
+.community-promise{margin-top:60px;padding:36px clamp(28px,4vw,56px);background:linear-gradient(135deg,rgba(255,87,34,.10),transparent 60%);border:1px solid var(--border);border-radius:var(--radius-lg);position:relative;overflow:hidden}
+.community-promise .qmark{position:absolute;right:30px;top:10px;font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:clamp(120px,14vw,200px);color:rgba(255,87,34,.08);line-height:1;pointer-events:none}
+.community-promise .text{position:relative;z-index:1;font-family:'Saira Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(22px,2.6vw,38px);line-height:1.1;color:#fff;max-width:32ch;letter-spacing:-.005em}
+.community-promise .text .em{color:var(--accent)}
+.community-promise .sub{position:relative;z-index:1;color:var(--text-dim);font-size:15px;margin-top:14px;max-width:60ch}
+
 .process{background:#0a0a0a;position:relative}
 .process-track{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
 .process-track .line{position:absolute;left:5%;right:5%;top:36px;height:1px;background:linear-gradient(90deg,transparent,var(--border-strong) 10%,var(--border-strong) 90%,transparent);z-index:0;pointer-events:none}
@@ -412,6 +440,9 @@ section{padding:var(--gap) 0;position:relative}
   .reviews-row{grid-template-columns:1fr 1fr}
   .process-track{grid-template-columns:repeat(5,1fr);gap:14px}
   .process .line{display:none}
+  .community-hero{aspect-ratio:5/4}
+  .community-hero .ch-content{grid-template-columns:1fr;gap:24px}
+  .community-grid{grid-template-columns:1fr;gap:30px}
 }
 @media (max-width:760px){
   .services-grid{grid-template-columns:1fr;gap:14px}
@@ -429,6 +460,10 @@ section{padding:var(--gap) 0;position:relative}
   .hero-tags{gap:14px;margin-top:32px}
   .fab-wa{width:56px;height:56px;right:16px;bottom:16px}
   .modal{padding:30px 22px}
+  .community-hero{aspect-ratio:4/5}
+  .community-aside{padding:26px 22px}
+  .community-promise{padding:28px 24px}
+  .community-promise .qmark{font-size:80px;right:14px;top:0}
 }
 
 /* Reduce motion */
@@ -484,6 +519,7 @@ section{padding:var(--gap) 0;position:relative}
     <a href="#services" data-i18n="nav.services">Services</a>
     <a href="#projects" data-i18n="nav.projects">Projects</a>
     <a href="#story" data-i18n="nav.about">About</a>
+    <a href="#community" data-i18n="nav.community">Community</a>
     <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
     <a href="#faq" data-i18n="nav.faq">FAQ</a>
     <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -512,6 +548,7 @@ section{padding:var(--gap) 0;position:relative}
     <a href="#services" data-i18n="nav.services">Services</a>
     <a href="#projects" data-i18n="nav.projects">Projects</a>
     <a href="#story" data-i18n="nav.about">About</a>
+    <a href="#community" data-i18n="nav.community">Community</a>
     <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
     <a href="#faq" data-i18n="nav.faq">FAQ</a>
     <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -657,6 +694,59 @@ section{padding:var(--gap) 0;position:relative}
         <div class="stat"><div class="num" data-counter="100" data-suffix="+">0</div><div class="label" data-i18n="story.stat3l">Projects delivered</div><div class="sub" data-i18n="story.stat3s">Service · custom · engineering</div></div>
         <div class="stat"><div class="num" data-counter="20" data-suffix="+">0</div><div class="label" data-i18n="story.stat4l">Brands serviced</div><div class="sub" data-i18n="story.stat4s">From BMW to one-off builds</div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY / LOUNGE -->
+<section class="community" id="community">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="h-eyebrow" data-i18n="community.eyebrow">Lounge &amp; Community</span>
+      <h2 data-i18n="community.title">More than a service.<br/>A place for riders, stories<br/>and motorcycle culture.</h2>
+      <p class="lead" data-i18n="community.sub">The Iron Custom Motors lounge is where the brand lives offline — championship bikes, trophies, conversations and coffee. Come by even if your bike is fine.</p>
+    </div>
+
+    <div class="community-hero reveal">
+      <img src="./photos/lounge-1600.jpg" srcset="./photos/lounge-800.jpg 800w, ./photos/lounge-1600.jpg 1600w, ./photos/lounge.jpg 2400w" sizes="(max-width:1100px) 100vw, 1320px" alt="Iron Custom Motors lounge — Inspirium Bonneville bike, racing leathers, trophies and motorcycle culture" loading="lazy" />
+      <div class="ch-content">
+        <div>
+          <h2 data-i18n="community.heroTitle">A lounge built around <em>real</em> stories.</h2>
+          <p data-i18n="community.heroSub">Inspirium Bonneville salt-flat bike, championship trophies, riding gear and racing memorabilia. This is where the workshop becomes a brand.</p>
+        </div>
+        <div class="ch-meta">
+          <span class="h-eyebrow" data-i18n="community.heroBadge">Cascais · Open Tue–Sat</span>
+          <div class="ch-cta">
+            <a href="#contact" class="btn btn-primary"><span data-i18n="community.ctaVisit">Plan your visit</span><svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="https://wa.me/351917961230?text=Hi%20Iron%20Custom%20Motors%2C%20I%27d%20like%20to%20stop%20by%20the%20lounge%20—%20what%27s%20the%20best%20time%3F" class="btn btn-ghost" target="_blank" rel="noopener"><span data-i18n="cta.whatsapp">WhatsApp us</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="community-grid reveal">
+      <div>
+        <h3 data-i18n="community.introTitle">Beyond the workshop.</h3>
+        <p data-i18n="community.introP1">The lounge is part of what makes Iron Custom Motors feel like Iron Custom Motors. Wood-panelled walls, championship-winning machines on the floor, race-worn leathers on the wall, trophies from Bonneville, helmets, books, magazines, riding masks.</p>
+        <p data-i18n="community.introP2">It&rsquo;s a place to wait while your bike is being serviced — but more importantly, it&rsquo;s a place to drop in even when you don&rsquo;t need anything fixed. Have a coffee. Look at the Inspirium up close. Talk to people who actually rode it.</p>
+        <p data-i18n="community.introP3">No pretension, no membership, no dress code. If you ride or you love motorcycles — you&rsquo;re welcome.</p>
+      </div>
+      <aside class="community-aside">
+        <h4 data-i18n="community.findTitle">What you'll find here</h4>
+        <div class="pills">
+          <div class="item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></span><div><span class="t" data-i18n="community.f1.t">Championship machines</span><span class="d" data-i18n="community.f1.d">Inspirium Bonneville record bike on display, plus other custom builds.</span></div></div>
+          <div class="item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2h8v2c0 4-3 7-4 7s-4-3-4-7V2zM5 22h14M9 22v-7M15 22v-7"/></svg></span><div><span class="t" data-i18n="community.f2.t">Trophies &amp; race artifacts</span><span class="d" data-i18n="community.f2.d">AMD World Championship, Bonneville Speed Week, BMW Motorrad — the actual hardware.</span></div></div>
+          <div class="item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h12v6a4 4 0 01-4 4H7a4 4 0 01-4-4V8zM15 10h3a2 2 0 010 4h-3"/></svg></span><div><span class="t" data-i18n="community.f3.t">Coffee &amp; conversation</span><span class="d" data-i18n="community.f3.d">Drop in, sit down, talk bikes. Tuesday to Saturday during workshop hours.</span></div></div>
+          <div class="item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h12a4 4 0 014 4v12H8a4 4 0 01-4-4V4zM8 8h8M8 12h8M8 16h5"/></svg></span><div><span class="t" data-i18n="community.f4.t">Books, magazines, gear</span><span class="d" data-i18n="community.f4.d">Riding leathers, helmets, masks, books and curated motorcycle memorabilia.</span></div></div>
+          <div class="item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></span><div><span class="t" data-i18n="community.f5.t">A place to be a rider</span><span class="d" data-i18n="community.f5.d">Group rides, project presentations, themed evenings, rider meetups — building the local scene.</span></div></div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="community-promise reveal">
+      <span class="qmark">&ldquo;</span>
+      <div class="text" data-i18n="community.promiseTitle">You're always welcome to drop by, have a coffee, talk motorcycles and spend time with <span class="em">people who get it.</span></div>
+      <p class="sub" data-i18n="community.promiseSub">Even without an appointment, even without a service request — the door is open. That's how we want this place to feel.</p>
     </div>
   </div>
 </section>
@@ -910,7 +1000,7 @@ section{padding:var(--gap) 0;position:relative}
 /* ---------- Translations ---------- */
 const I18N = {
   en: {
-    "nav.services":"Services","nav.projects":"Projects","nav.about":"About","nav.reviews":"Reviews","nav.faq":"FAQ","nav.contact":"Contact",
+    "nav.services":"Services","nav.projects":"Projects","nav.about":"About","nav.community":"Community","nav.reviews":"Reviews","nav.faq":"FAQ","nav.contact":"Contact",
     "cta.bookHeader":"Book service","cta.bookService":"Book service","cta.whatsapp":"WhatsApp us","cta.requestForm":"Send request",
     "hero.pill1":"Cascais · Greater Lisbon","hero.pill2":"Since 2010","hero.pill3":"EN · RU · UK · PT",
     "hero.title1":"Premium","hero.title2":"motorcycle","hero.title3":"service","hero.title4":"in Cascais",
@@ -936,6 +1026,11 @@ const I18N = {
     "story.p3":"In 2025 we brought the workshop to Cascais, Greater Lisbon. Same team, same engineering culture, now within reach of every rider on the Portuguese coast.",
     "story.quote":"“The same hands that built world-champion motorcycles now keep yours running every weekend.”",
     "story.stat1l":"Founded","story.stat1s":"15 years of continuous craft","story.stat2l":"World championships","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Projects delivered","story.stat3s":"Service · custom · engineering","story.stat4l":"Brands serviced","story.stat4s":"From BMW to one-off builds",
+    "community.eyebrow":"Lounge & Community","community.title":"More than a service.<br/>A place for riders, stories<br/>and motorcycle culture.","community.sub":"The Iron Custom Motors lounge is where the brand lives offline — championship bikes, trophies, conversations and coffee. Come by even if your bike is fine.",
+    "community.heroTitle":"A lounge built around <em>real</em> stories.","community.heroSub":"Inspirium Bonneville salt-flat bike, championship trophies, riding gear and racing memorabilia. This is where the workshop becomes a brand.","community.heroBadge":"Cascais · Open Tue–Sat","community.ctaVisit":"Plan your visit",
+    "community.introTitle":"Beyond the workshop.","community.introP1":"The lounge is part of what makes Iron Custom Motors feel like Iron Custom Motors. Wood-panelled walls, championship-winning machines on the floor, race-worn leathers on the wall, trophies from Bonneville, helmets, books, magazines, riding masks.","community.introP2":"It's a place to wait while your bike is being serviced — but more importantly, it's a place to drop in even when you don't need anything fixed. Have a coffee. Look at the Inspirium up close. Talk to people who actually rode it.","community.introP3":"No pretension, no membership, no dress code. If you ride or you love motorcycles — you're welcome.",
+    "community.findTitle":"What you'll find here","community.f1.t":"Championship machines","community.f1.d":"Inspirium Bonneville record bike on display, plus other custom builds.","community.f2.t":"Trophies & race artifacts","community.f2.d":"AMD World Championship, Bonneville Speed Week, BMW Motorrad — the actual hardware.","community.f3.t":"Coffee & conversation","community.f3.d":"Drop in, sit down, talk bikes. Tuesday to Saturday during workshop hours.","community.f4.t":"Books, magazines, gear","community.f4.d":"Riding leathers, helmets, masks, books and curated motorcycle memorabilia.","community.f5.t":"A place to be a rider","community.f5.d":"Group rides, project presentations, themed evenings, rider meetups — building the local scene.",
+    "community.promiseTitle":"You're always welcome to drop by, have a coffee, talk motorcycles and spend time with <span class=\"em\">people who get it.</span>","community.promiseSub":"Even without an appointment, even without a service request — the door is open. That's how we want this place to feel.",
     "projects.eyebrow":"Selected projects","projects.title":"A few of the bikes<br/>we're proud of","projects.sub":"Award-winning builds that put us on the international map. The same engineering goes into every service we do.",
     "projects.p1.label":"AMD World Champion 2016","projects.p1.desc":"Café racer that won the AMD World Championship.",
     "projects.p2.label":"Bonneville record 2017","projects.p2.desc":"Speed record holder, class 350APS-VG.",
@@ -969,7 +1064,7 @@ const I18N = {
     "form.message":"Tell us about the job","form.note":"By sending you agree to be contacted about this request. No spam, ever.","form.submit":"Send request","form.successT":"Request received","form.successP":"We'll reply via WhatsApp or email within business hours. Talk soon."
   },
   ru: {
-    "nav.services":"Услуги","nav.projects":"Проекты","nav.about":"О нас","nav.reviews":"Отзывы","nav.faq":"FAQ","nav.contact":"Контакты",
+    "nav.services":"Услуги","nav.projects":"Проекты","nav.about":"О нас","nav.community":"Сообщество","nav.reviews":"Отзывы","nav.faq":"FAQ","nav.contact":"Контакты",
     "cta.bookHeader":"Записаться","cta.bookService":"Записаться на сервис","cta.whatsapp":"Написать в WhatsApp","cta.requestForm":"Отправить заявку",
     "hero.pill1":"Кашкайш · Лиссабон","hero.pill2":"С 2010 года","hero.pill3":"EN · RU · UK · PT",
     "hero.title1":"Премиальный","hero.title2":"мотосервис","hero.title3":"в Кашкайше","hero.title4":"",
@@ -995,6 +1090,11 @@ const I18N = {
     "story.p3":"В 2025 мы привезли мастерскую в Кашкайш, Большой Лиссабон. Та же команда, та же инженерная культура — теперь в шаговой доступности для каждого райдера на побережье Португалии.",
     "story.quote":"«Те же руки, что строили чемпионов мира, теперь поддерживают ваш мотоцикл в форме каждые выходные.»",
     "story.stat1l":"Основание","story.stat1s":"15 лет непрерывной работы","story.stat2l":"Чемпионств мира","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Реализованных проектов","story.stat3s":"Сервис · кастом · инжиниринг","story.stat4l":"Брендов в работе","story.stat4s":"От BMW до индивидуальных сборок",
+    "community.eyebrow":"Lounge и Сообщество","community.title":"Больше, чем сервис.<br/>Место для райдеров, историй<br/>и мотокультуры.","community.sub":"Lounge-зона Iron Custom Motors — это бренд офлайн: чемпионские мотоциклы, трофеи, разговоры и кофе. Заезжайте, даже если с мотоциклом всё в порядке.",
+    "community.heroTitle":"Lounge на <em>настоящих</em> историях.","community.heroSub":"Inspirium с солончака Bonneville, чемпионские трофеи, гоночная экипировка и raceing-атрибутика. Здесь мастерская превращается в бренд.","community.heroBadge":"Кашкайш · Вт–Сб","community.ctaVisit":"Спланировать визит",
+    "community.introTitle":"Не только мастерская.","community.introP1":"Lounge — часть того, что делает Iron Custom Motors собой. Деревянные стены, чемпионские мотоциклы на полу, гоночные костюмы на стенах, трофеи Bonneville, шлемы, книги, журналы, гоночные маски.","community.introP2":"Это место, где можно подождать, пока обслуживают ваш мотоцикл — но главное, сюда можно заехать просто так. Выпить кофе. Посмотреть на Inspirium вблизи. Поговорить с людьми, которые на нём ехали.","community.introP3":"Без пафоса, без членства, без дресс-кода. Если вы ездите или любите мотоциклы — вам сюда.",
+    "community.findTitle":"Что вы здесь найдёте","community.f1.t":"Чемпионские машины","community.f1.d":"Рекордсмен Bonneville Inspirium на постаменте, а также другие кастом-сборки.","community.f2.t":"Трофеи и гоночные артефакты","community.f2.d":"AMD World Championship, Bonneville Speed Week, BMW Motorrad — оригинальная атрибутика.","community.f3.t":"Кофе и общение","community.f3.d":"Заезжайте, садитесь, говорим о мотоциклах. Вторник–суббота в рабочие часы.","community.f4.t":"Книги, журналы, экипировка","community.f4.d":"Гоночные костюмы, шлемы, маски, книги и тщательно подобранная мотоатрибутика.","community.f5.t":"Место быть райдером","community.f5.d":"Совместные выезды, презентации проектов, тематические вечера, встречи райдеров — строим локальную сцену.",
+    "community.promiseTitle":"Всегда можно заехать, выпить кофе, поговорить о мотоциклах и провести время с <span class=\"em\">правильными людьми.</span>","community.promiseSub":"Даже без записи, даже без сервисной задачи — дверь открыта. Именно такой атмосферы мы и добиваемся.",
     "projects.eyebrow":"Избранные проекты","projects.title":"Несколько мотоциклов,<br/>которыми мы гордимся","projects.sub":"Победные сборки, выведшие нас на международную карту. Тот же инжиниринг идёт в каждый сервис.",
     "projects.p1.label":"Чемпион мира AMD 2016","projects.p1.desc":"Café racer, выигравший чемпионат мира AMD.",
     "projects.p2.label":"Рекорд Bonneville 2017","projects.p2.desc":"Рекордсмен скорости, класс 350APS-VG.",
@@ -1028,7 +1128,7 @@ const I18N = {
     "form.message":"Расскажите о работе","form.note":"Отправляя, вы соглашаетесь, что мы свяжемся с вами по данному запросу. Без спама.","form.submit":"Отправить заявку","form.successT":"Заявка получена","form.successP":"Ответим в WhatsApp или на email в рабочее время. До связи."
   },
   uk: {
-    "nav.services":"Послуги","nav.projects":"Проекти","nav.about":"Про нас","nav.reviews":"Відгуки","nav.faq":"FAQ","nav.contact":"Контакти",
+    "nav.services":"Послуги","nav.projects":"Проекти","nav.about":"Про нас","nav.community":"Спільнота","nav.reviews":"Відгуки","nav.faq":"FAQ","nav.contact":"Контакти",
     "cta.bookHeader":"Записатися","cta.bookService":"Записатися на сервіс","cta.whatsapp":"Написати в WhatsApp","cta.requestForm":"Надіслати заявку",
     "hero.pill1":"Кашкайш · Лісабон","hero.pill2":"З 2010 року","hero.pill3":"EN · RU · UK · PT",
     "hero.title1":"Преміальний","hero.title2":"мотосервіс","hero.title3":"у Кашкайші","hero.title4":"",
@@ -1054,6 +1154,11 @@ const I18N = {
     "story.p3":"У 2025 ми привезли майстерню до Кашкайша, Великий Лісабон. Та сама команда, та сама інженерна культура — тепер у пішій доступності для кожного райдера на узбережжі Португалії.",
     "story.quote":"«Ті самі руки, що будували чемпіонів світу, тепер тримають у формі ваш мотоцикл щовихідних.»",
     "story.stat1l":"Заснування","story.stat1s":"15 років безперервної роботи","story.stat2l":"Чемпіонств світу","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Реалізованих проектів","story.stat3s":"Сервіс · кастом · інжиніринг","story.stat4l":"Брендів у роботі","story.stat4s":"Від BMW до індивідуальних збірок",
+    "community.eyebrow":"Lounge і Спільнота","community.title":"Більше, ніж сервіс.<br/>Місце для райдерів, історій<br/>і мотокультури.","community.sub":"Lounge-зона Iron Custom Motors — це бренд офлайн: чемпіонські мотоцикли, трофеї, розмови і кава. Заїжджайте, навіть якщо з мотоциклом усе гаразд.",
+    "community.heroTitle":"Lounge на <em>справжніх</em> історіях.","community.heroSub":"Inspirium з солончаку Bonneville, чемпіонські трофеї, гоночна екіпіровка і racing-атрибутика. Тут майстерня стає брендом.","community.heroBadge":"Кашкайш · Вт–Сб","community.ctaVisit":"Спланувати візит",
+    "community.introTitle":"Не лише майстерня.","community.introP1":"Lounge — частина того, що робить Iron Custom Motors собою. Дерев'яні стіни, чемпіонські мотоцикли на підлозі, гоночні костюми на стінах, трофеї Bonneville, шоломи, книги, журнали, гоночні маски.","community.introP2":"Це місце, де можна почекати, поки обслуговують ваш мотоцикл — але головне, сюди можна заїхати просто так. Випити кави. Подивитися на Inspirium зблизька. Поговорити з людьми, які на ньому їхали.","community.introP3":"Без пафосу, без членства, без дрес-коду. Якщо ви їздите або любите мотоцикли — вам сюди.",
+    "community.findTitle":"Що ви тут знайдете","community.f1.t":"Чемпіонські машини","community.f1.d":"Рекордсмен Bonneville Inspirium на постаменті, а також інші кастом-збірки.","community.f2.t":"Трофеї і гоночні артефакти","community.f2.d":"AMD World Championship, Bonneville Speed Week, BMW Motorrad — оригінальна атрибутика.","community.f3.t":"Кава і спілкування","community.f3.d":"Заїжджайте, сідайте, говоримо про мотоцикли. Вівторок–субота в робочі години.","community.f4.t":"Книги, журнали, екіпіровка","community.f4.d":"Гоночні костюми, шоломи, маски, книги і ретельно дібрана мотоатрибутика.","community.f5.t":"Місце бути райдером","community.f5.d":"Спільні виїзди, презентації проектів, тематичні вечори, зустрічі райдерів — будуємо локальну сцену.",
+    "community.promiseTitle":"Завжди можна заїхати, випити кави, поговорити про мотоцикли і провести час з <span class=\"em\">правильними людьми.</span>","community.promiseSub":"Навіть без запису, навіть без сервісної задачі — двері відчинені. Саме такої атмосфери ми й прагнемо.",
     "projects.eyebrow":"Обрані проекти","projects.title":"Кілька мотоциклів,<br/>якими ми пишаємось","projects.sub":"Переможні збірки, що вивели нас на міжнародну мапу. Той самий інжиніринг іде в кожен сервіс.",
     "projects.p1.label":"Чемпіон світу AMD 2016","projects.p1.desc":"Café racer, що виграв чемпіонат світу AMD.",
     "projects.p2.label":"Рекорд Bonneville 2017","projects.p2.desc":"Рекордсмен швидкості, клас 350APS-VG.",
@@ -1087,7 +1192,7 @@ const I18N = {
     "form.message":"Розкажіть про роботу","form.note":"Надсилаючи, ви погоджуєтесь, що ми зв'яжемося з вами щодо цього запиту. Жодного спаму.","form.submit":"Надіслати заявку","form.successT":"Заявку отримано","form.successP":"Відповімо у WhatsApp або на email у робочий час. До зв'язку."
   },
   pt: {
-    "nav.services":"Serviços","nav.projects":"Projetos","nav.about":"Sobre","nav.reviews":"Avaliações","nav.faq":"FAQ","nav.contact":"Contacto",
+    "nav.services":"Serviços","nav.projects":"Projetos","nav.about":"Sobre","nav.community":"Comunidade","nav.reviews":"Avaliações","nav.faq":"FAQ","nav.contact":"Contacto",
     "cta.bookHeader":"Marcar serviço","cta.bookService":"Marcar serviço","cta.whatsapp":"WhatsApp","cta.requestForm":"Enviar pedido",
     "hero.pill1":"Cascais · Grande Lisboa","hero.pill2":"Desde 2010","hero.pill3":"EN · RU · UK · PT",
     "hero.title1":"Serviço","hero.title2":"premium de moto","hero.title3":"em Cascais","hero.title4":"",
@@ -1113,7 +1218,12 @@ const I18N = {
     "story.p3":"Em 2025 trouxemos o workshop para Cascais, Grande Lisboa. A mesma equipa, a mesma cultura de engenharia, agora ao alcance de qualquer rider na costa portuguesa.",
     "story.quote":"«As mesmas mãos que construíram motos campeãs do mundo agora mantêm a sua a rolar todos os fins de semana.»",
     "story.stat1l":"Fundada","story.stat1s":"15 anos de craft contínuo","story.stat2l":"Campeonatos do mundo","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Projetos entregues","story.stat3s":"Serviço · custom · engenharia","story.stat4l":"Marcas servidas","story.stat4s":"De BMW a builds únicos",
-    "projects.eyebrow":"Projetos selecionados","projects.title":"Algumas das motos<br/>de que nos orgulhamos","projects.sub":"Builds premiadas que nos colocaram no mapa internacional. A mesma engenharia entra em cada serviço.",
+    "community.eyebrow":"Lounge e Comunidade","community.title":"Mais do que um serviço.<br/>Um lugar para riders, histórias<br/>e cultura motociclista.","community.sub":"O lounge da Iron Custom Motors é onde a marca vive offline — motas campeãs, troféus, conversas e café. Apareça mesmo que a sua moto esteja em ordem.",
+    "community.heroTitle":"Um lounge construído sobre histórias <em>reais</em>.","community.heroSub":"A Inspirium de Bonneville, troféus de campeonato, fato de corrida e memorabilia. Aqui a oficina torna-se uma marca.","community.heroBadge":"Cascais · Aberto Ter–Sáb","community.ctaVisit":"Planear a visita",
+    "community.introTitle":"Para além da oficina.","community.introP1":"O lounge é parte do que faz a Iron Custom Motors ser ela mesma. Paredes em madeira, motos campeãs no chão, fatos de corrida nas paredes, troféus de Bonneville, capacetes, livros, revistas, máscaras de pilotagem.","community.introP2":"É um sítio para esperar enquanto a sua moto é servida — mas, mais importante, é um sítio para passar mesmo sem precisar de nada. Tomar um café. Ver a Inspirium de perto. Falar com as pessoas que a guiaram.","community.introP3":"Sem pretensão, sem inscrição, sem dress code. Se anda de moto ou ama motas — é bem-vindo.",
+    "community.findTitle":"O que vai encontrar aqui","community.f1.t":"Máquinas campeãs","community.f1.d":"Inspirium recordista de Bonneville em exposição, mais outros builds custom.","community.f2.t":"Troféus e artefactos de corrida","community.f2.d":"AMD World Championship, Bonneville Speed Week, BMW Motorrad — o hardware real.","community.f3.t":"Café e conversa","community.f3.d":"Apareça, sente-se, falemos de motas. De terça a sábado durante o horário da oficina.","community.f4.t":"Livros, revistas, equipamento","community.f4.d":"Fatos de corrida, capacetes, máscaras, livros e memorabilia de motociclismo.","community.f5.t":"Um sítio para ser rider","community.f5.d":"Saídas em grupo, apresentações de projetos, noites temáticas, encontros — a construir a cena local.",
+    "community.promiseTitle":"É sempre bem-vindo a aparecer, tomar um café, falar de motas e passar tempo com <span class=\"em\">pessoas que percebem.</span>","community.promiseSub":"Sem marcação, sem pedido de serviço — a porta está aberta. É assim que queremos que este sítio se sinta.",
+    "projects.eyebrow":"Projetos selecionados","projects.title":"Algumas das motas<br/>de que nos orgulhamos","projects.sub":"Builds premiadas que nos colocaram no mapa internacional. A mesma engenharia entra em cada serviço.",
     "projects.p1.label":"Campeão Mundial AMD 2016","projects.p1.desc":"Café racer que venceu o AMD World Championship.",
     "projects.p2.label":"Recorde Bonneville 2017","projects.p2.desc":"Detentor do recorde de velocidade, classe 350APS-VG.",
     "projects.p3.label":"Parceria BMW Motorrad","projects.p3.desc":"O build que iniciou a nossa parceria com a BMW Motorrad.",
