@@ -1024,9 +1024,8 @@ function applyLang(lang){
 
 document.addEventListener('DOMContentLoaded', ()=>{
   const stored = (()=>{ try{return localStorage.getItem('icm-lang-v3');}catch(e){return null;}})();
-  const initial = stored || (navigator.language||'en').slice(0,2).toLowerCase();
   const supported = ['en','ru','uk','pt'];
-  applyLang(supported.includes(initial)?initial:'en');
+  applyLang((stored && supported.includes(stored)) ? stored : 'en');
 
   setTimeout(()=>document.getElementById('loader').classList.add('hidden'), 2100);
 
