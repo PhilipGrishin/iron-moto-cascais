@@ -1,0 +1,33 @@
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Editors
+.vscode/
+.idea/
+*.sublime-*
+
+# Node (in case of future build tooling)
+node_modules/
+dist/
+.cache/
+*.log
+
+# Env
+.env
+.env.local
+
+# macOS metadata
+__MACOSX/
+._*
+
+# Working sources (not for production deploy)
+LOGO.zip
+ICM_Homepage_Wireframe_ru.docx
+ICM_Sitemap_Prototype_ru.docx
+ICM_TZ_website_development_ru.docx
+ICM_Website_Full_EN_Content_Brief.docx
+ICM_Website_Services_MVP_Technical_Brief_EN.docx
+ICM_contacts_page.pdf

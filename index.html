@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0a0a" />
+<title>Iron Custom Motors | Premium Motorcycle Service in Cascais</title>
+<meta name="description" content="Premium motorcycle service in Cascais. Diagnostics, maintenance, repair, spare parts, consumables, upgrades, tuning, and custom motorcycle projects. Service in English, Russian, Ukrainian, Portuguese." />
+<meta name="keywords" content="motorcycle service Cascais, motorcycle workshop Lisbon, motorcycle parts Portugal, motorcycle tuning Cascais, BMW service Lisbon, custom motorcycle Portugal, Iron Custom Motors" />
+<meta property="og:title" content="Iron Custom Motors | Premium Motorcycle Service in Cascais" />
+<meta property="og:description" content="Premium motorcycle service, parts, upgrades, and custom expertise in Cascais. World-champion engineering culture." />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="ru_RU" />
+<meta property="og:locale:alternate" content="uk_UA" />
+<meta property="og:locale:alternate" content="pt_PT" />
+<link rel="alternate" hreflang="en" href="./index.html#en" />
+<link rel="alternate" hreflang="ru" href="./index.html#ru" />
+<link rel="alternate" hreflang="uk" href="./index.html#uk" />
+<link rel="alternate" hreflang="pt" href="./index.html#pt" />
+<link rel="alternate" hreflang="x-default" href="./index.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://images.unsplash.com" />
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&family=Saira+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* ======================================================================
+   IRON CUSTOM MOTORS — Single-page site
+   Design system: deep charcoal + iron-orange accent, premium industrial.
+   ====================================================================== */
+
+:root{
+  --bg:#0a0a0a;
+  --bg-2:#101014;
+  --surface:#15151b;
+  --surface-2:#1c1c24;
+  --card:#1f1f28;
+  --border:#2a2a35;
+  --border-strong:#3a3a48;
+  --text:#f5f5f5;
+  --text-dim:#b8b8c4;
+  --text-mute:#7a7a86;
+  --accent:#ff5722;
+  --accent-2:#ff7a45;
+  --accent-dim:#cc3d11;
+  --shadow:0 30px 60px -20px rgba(0,0,0,.7);
+  --shadow-glow:0 10px 40px -10px rgba(255,87,34,.4);
+  --radius:14px;
+  --radius-lg:22px;
+  --max:1320px;
+  --pad-x:clamp(20px,4vw,60px);
+  --gap:clamp(60px,10vw,140px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --t-fast:.25s;
+  --t-mid:.5s;
+  --t-slow:.9s;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:var(--bg)}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  font-size:16px;line-height:1.6;
+  color:var(--text);background:var(--bg);
+  overflow-x:hidden;min-height:100vh;
+  font-feature-settings:"ss01","cv11";
+}
+
+/* Reset */
+img,svg,video{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none;transition:color var(--t-fast) var(--ease)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul{list-style:none}
+input,textarea,select{font:inherit;color:inherit}
+
+/* Selection */
+::selection{background:var(--accent);color:#fff}
+::-moz-selection{background:var(--accent);color:#fff}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+/* Typography */
+.h-display{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.95;letter-spacing:-.01em;text-transform:uppercase}
+.h-section{font-family:'Saira',sans-serif;font-weight:700;line-height:1;letter-spacing:-.005em;text-transform:uppercase}
+.h-eyebrow{font-family:'Saira',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:var(--accent)}
+.muted{color:var(--text-dim)}
+
+h1,.h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.92;letter-spacing:-.01em;text-transform:uppercase;font-size:clamp(48px,8.4vw,140px)}
+h2,.h2{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.95;letter-spacing:-.005em;text-transform:uppercase;font-size:clamp(34px,5.4vw,84px)}
+h3,.h3{font-family:'Saira',sans-serif;font-weight:700;line-height:1.05;letter-spacing:-.005em;text-transform:uppercase;font-size:clamp(22px,2.4vw,32px)}
+h4,.h4{font-family:'Saira',sans-serif;font-weight:600;line-height:1.15;text-transform:uppercase;font-size:clamp(16px,1.5vw,20px);letter-spacing:.02em}
+p{font-size:clamp(15px,1.05vw,17px);color:var(--text-dim);max-width:65ch}
+.lead{font-size:clamp(17px,1.4vw,21px);line-height:1.55;color:var(--text-dim);max-width:62ch}
+
+/* Layout helpers */
+.container{max-width:var(--max);margin:0 auto;padding:0 var(--pad-x);position:relative}
+section{padding:var(--gap) 0;position:relative}
+.section-head{margin-bottom:clamp(40px,6vw,80px)}
+.section-head .h-eyebrow{margin-bottom:18px;display:inline-block}
+.section-head h2{margin-bottom:18px}
+.divider-line{height:1px;background:linear-gradient(90deg,transparent,var(--border-strong) 25%,var(--border-strong) 75%,transparent)}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:'Saira',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:14px;
+  padding:18px 30px;border-radius:999px;
+  transition:all var(--t-fast) var(--ease);
+  position:relative;overflow:hidden;cursor:pointer;will-change:transform;
+  white-space:nowrap;
+}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:var(--shadow-glow)}
+.btn-primary:hover{background:var(--accent-2);transform:translateY(-2px);box-shadow:0 14px 50px -10px rgba(255,87,34,.6)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border-strong)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-light{background:#fff;color:#0a0a0a}
+.btn-light:hover{background:var(--accent);color:#fff}
+.btn .icon{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center}
+.btn .arrow{transition:transform var(--t-fast) var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+
+/* Cursor halo (desktop) */
+.cursor-halo{position:fixed;top:0;left:0;width:36px;height:36px;border-radius:50%;border:1px solid var(--accent);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .25s var(--ease),width .25s var(--ease),height .25s var(--ease),background .25s var(--ease);mix-blend-mode:screen;display:none}
+.cursor-halo.is-link{width:60px;height:60px;background:rgba(255,87,34,.12)}
+@media(hover:hover) and (pointer:fine){.cursor-halo{display:block}}
+
+/* Loader */
+#loader{position:fixed;inset:0;background:#0a0a0a;z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;transition:opacity .6s var(--ease),visibility .6s var(--ease)}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+#loader .logo-wrap{width:min(70vw,440px);opacity:0;transform:translateY(8px);animation:loader-in 1.2s var(--ease) forwards}
+#loader .progress{height:2px;width:min(60vw,280px);background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+#loader .progress::after{content:"";display:block;height:100%;width:0;background:var(--accent);animation:loader-bar 1.6s var(--ease) forwards}
+#loader .label{font-family:'Saira',sans-serif;text-transform:uppercase;letter-spacing:.4em;font-size:11px;color:var(--text-mute)}
+@keyframes loader-in{to{opacity:1;transform:translateY(0)}}
+@keyframes loader-bar{0%{width:0}60%{width:90%}100%{width:100%}}
+
+/* Header */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:90;
+  padding:18px var(--pad-x);
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  transition:background .35s var(--ease),padding .35s var(--ease),border-color .35s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.site-header.is-scrolled{background:rgba(10,10,10,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:12px var(--pad-x);border-bottom-color:var(--border)}
+.site-header .brand{display:flex;align-items:center;gap:10px;width:170px;color:#fff}
+.site-header .brand svg{width:100%;height:auto}
+.nav{display:flex;align-items:center;gap:30px}
+.nav a{font-family:'Saira',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:13px;color:var(--text-dim);position:relative;padding:6px 0}
+.nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--accent);transition:width var(--t-fast) var(--ease)}
+.nav a:hover{color:var(--text)}
+.nav a:hover::after{width:100%}
+.header-actions{display:flex;align-items:center;gap:12px}
+.lang-switcher{position:relative}
+.lang-current{display:inline-flex;align-items:center;gap:6px;font-family:'Saira',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:12px;padding:8px 14px;border:1px solid var(--border);border-radius:999px;color:var(--text)}
+.lang-current:hover{border-color:var(--accent);color:var(--accent)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:6px;display:none;min-width:120px;box-shadow:var(--shadow);z-index:5}
+.lang-menu.open{display:block;animation:fadeUp .22s var(--ease)}
+.lang-menu button{display:flex;align-items:center;gap:8px;width:100%;padding:9px 12px;border-radius:9px;font-family:'Saira',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:var(--text-dim);text-align:left}
+.lang-menu button:hover,.lang-menu button[aria-current="true"]{background:var(--card);color:var(--accent)}
+.btn-sm{padding:11px 18px;font-size:12px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Mobile menu */
+.menu-toggle{display:none;width:40px;height:40px;border:1px solid var(--border);border-radius:50%;align-items:center;justify-content:center;color:var(--text)}
+.menu-toggle span{display:block;width:18px;height:1.5px;background:currentColor;position:relative;transition:transform .3s var(--ease)}
+.menu-toggle span::before,.menu-toggle span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:currentColor;transition:transform .3s var(--ease),top .3s var(--ease)}
+.menu-toggle span::before{top:-6px}
+.menu-toggle span::after{top:6px}
+.menu-toggle.open span{background:transparent}
+.menu-toggle.open span::before{top:0;transform:rotate(45deg)}
+.menu-toggle.open span::after{top:0;transform:rotate(-45deg)}
+
+/* Floating WhatsApp */
+.fab-wa{position:fixed;right:22px;bottom:22px;width:62px;height:62px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;z-index:50;box-shadow:0 14px 40px -10px rgba(37,211,102,.6);transition:transform var(--t-fast) var(--ease)}
+.fab-wa:hover{transform:scale(1.08)}
+.fab-wa::before{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(37,211,102,.5);animation:pulseRing 2.4s ease-out infinite}
+.fab-wa svg{width:28px;height:28px}
+@keyframes pulseRing{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;padding:140px 0 80px;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%,rgba(255,87,34,.18),transparent 55%),linear-gradient(180deg,rgba(10,10,10,.4) 0%,rgba(10,10,10,.2) 30%,rgba(10,10,10,.85) 75%,#0a0a0a 100%);z-index:1}
+.hero-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;background-image:url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=2400&q=80');will-change:transform;filter:saturate(.85) contrast(1.05)}
+.hero-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%)}
+.hero-inner{position:relative;z-index:2;width:100%}
+.hero-meta{display:flex;align-items:center;gap:14px;margin-bottom:30px;flex-wrap:wrap}
+.hero-meta .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--border-strong);border-radius:999px;font-family:'Saira',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:11px;background:rgba(20,20,26,.5);backdrop-filter:blur(8px)}
+.hero-meta .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.hero h1{margin-bottom:24px;color:#fff}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .inner{display:inline-block;transform:translateY(110%);will-change:transform}
+.hero h1 .accent{color:var(--accent)}
+.hero-sub{max-width:640px;margin-bottom:38px;font-size:clamp(16px,1.3vw,19px);color:var(--text-dim)}
+.hero-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hero-tags{margin-top:50px;display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.hero-tag{display:flex;align-items:center;gap:10px;color:var(--text-dim);font-family:'Saira',sans-serif;font-weight:500;text-transform:uppercase;font-size:12px;letter-spacing:.16em}
+.hero-tag svg{width:18px;height:18px;color:var(--accent);flex-shrink:0}
+.hero-scroll{position:absolute;bottom:28px;right:var(--pad-x);z-index:3;display:flex;align-items:center;gap:10px;color:var(--text-mute);font-family:'Saira',sans-serif;text-transform:uppercase;letter-spacing:.3em;font-size:10px;writing-mode:vertical-rl;transform:rotate(180deg)}
+.hero-scroll::before{content:"";display:block;width:1px;height:60px;background:linear-gradient(to top,var(--accent),transparent);animation:scrollLine 2s ease-in-out infinite}
+@keyframes scrollLine{0%,100%{opacity:.4;height:50px}50%{opacity:1;height:80px}}
+
+/* Marquee trust bar */
+.trust-marquee{padding:30px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:linear-gradient(180deg,#0a0a0a,#0e0e12);overflow:hidden}
+.marquee-track{display:flex;align-items:center;gap:60px;animation:marquee 38s linear infinite;width:max-content}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{display:flex;align-items:center;gap:14px;font-family:'Saira Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(20px,2vw,28px);color:var(--text);white-space:nowrap}
+.marquee-item .star{color:var(--accent)}
+.marquee-item .sep{display:inline-block;width:10px;height:10px;border:1px solid var(--accent);transform:rotate(45deg)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Sections — common reveal */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-stagger > *{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal-stagger.in > *{opacity:1;transform:translateY(0)}
+.reveal-stagger.in > *:nth-child(2){transition-delay:.08s}
+.reveal-stagger.in > *:nth-child(3){transition-delay:.16s}
+.reveal-stagger.in > *:nth-child(4){transition-delay:.24s}
+.reveal-stagger.in > *:nth-child(5){transition-delay:.32s}
+.reveal-stagger.in > *:nth-child(6){transition-delay:.4s}
+
+/* Services */
+.services-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.service{
+  position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:34px 30px 30px;overflow:hidden;
+  transition:transform var(--t-fast) var(--ease),border-color var(--t-fast) var(--ease),background var(--t-fast) var(--ease);
+  min-height:340px;display:flex;flex-direction:column;justify-content:space-between;
+}
+.service:hover{transform:translateY(-6px);border-color:var(--accent);background:var(--surface-2)}
+.service::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,87,34,.18),transparent 50%);opacity:0;transition:opacity var(--t-fast) var(--ease);pointer-events:none}
+.service:hover::after{opacity:1}
+.service .num{position:absolute;top:24px;right:28px;font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:60px;line-height:1;color:transparent;-webkit-text-stroke:1px var(--border-strong);transition:color .3s var(--ease),-webkit-text-stroke .3s var(--ease)}
+.service:hover .num{color:rgba(255,87,34,.15);-webkit-text-stroke-color:var(--accent)}
+.service .icon-box{width:54px;height:54px;border-radius:14px;border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;color:var(--accent);background:rgba(255,87,34,.06);margin-bottom:24px}
+.service h3{margin-bottom:12px;font-size:22px}
+.service p{margin-bottom:24px;font-size:15px}
+.service .arrow-link{display:inline-flex;align-items:center;gap:8px;font-family:'Saira',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--accent)}
+.service .arrow-link svg{transition:transform var(--t-fast) var(--ease)}
+.service:hover .arrow-link svg{transform:translateX(4px)}
+/* Layout sizes */
+.service.s-lg{grid-column:span 6}
+.service.s-md{grid-column:span 4}
+.service.s-sm{grid-column:span 4}
+.service.s-half{grid-column:span 6}
+
+/* Why */
+.why-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start}
+.why-list{display:grid;gap:0;border-top:1px solid var(--border)}
+.why-list .row{display:grid;grid-template-columns:60px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid var(--border);align-items:start;transition:padding-left var(--t-fast) var(--ease)}
+.why-list .row:hover{padding-left:14px}
+.why-list .row .num{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:32px;color:var(--accent)}
+.why-list .row h4{margin-bottom:8px}
+.why-list .row p{font-size:15px}
+.why-visual{position:relative;aspect-ratio:4/5;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border)}
+.why-visual img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.why-visual:hover img{transform:scale(1.06)}
+.why-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(10,10,10,.7) 100%)}
+.why-visual .badge{position:absolute;left:24px;bottom:24px;z-index:2;display:flex;align-items:center;gap:14px}
+.why-visual .badge .b-num{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:74px;line-height:.85;color:#fff}
+.why-visual .badge .b-text{font-family:'Saira',sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:var(--text-dim);max-width:140px}
+
+/* Stats / Story */
+.story{background:linear-gradient(180deg,#0a0a0a,#0e0e12)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-text h2{margin-bottom:24px}
+.story-text p{margin-bottom:18px}
+.story-text .quote{margin-top:30px;padding:24px 28px;border-left:2px solid var(--accent);font-family:'Saira Condensed',sans-serif;text-transform:uppercase;font-size:clamp(20px,1.8vw,26px);color:var(--text);line-height:1.2;letter-spacing:.01em;background:rgba(255,87,34,.04)}
+.story-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.stat{background:var(--surface);padding:42px 32px;display:flex;flex-direction:column;gap:14px}
+.stat .num{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:clamp(48px,5vw,76px);line-height:.9;color:var(--accent);letter-spacing:-.02em}
+.stat .label{font-family:'Saira',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.18em;color:var(--text-dim)}
+.stat .sub{font-size:14px;color:var(--text-mute)}
+
+/* Projects */
+.projects{position:relative}
+.projects-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.project{position:relative;border-radius:var(--radius-lg);overflow:hidden;background:var(--surface);border:1px solid var(--border);aspect-ratio:4/5}
+.project.wide{grid-column:span 8;aspect-ratio:16/10}
+.project.tall{grid-column:span 4}
+.project.med{grid-column:span 6;aspect-ratio:5/4}
+.project img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease),filter .6s var(--ease);filter:saturate(.85) contrast(1.05)}
+.project:hover img{transform:scale(1.08);filter:saturate(1.05) contrast(1.1)}
+.project::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(10,10,10,.85) 100%);transition:opacity var(--t-fast) var(--ease)}
+.project .meta{position:absolute;left:26px;bottom:24px;right:26px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.project .meta-text .label{display:inline-block;font-family:'Saira',sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:10px;color:var(--accent);margin-bottom:8px;padding:4px 10px;background:rgba(255,87,34,.12);border:1px solid rgba(255,87,34,.3);border-radius:999px}
+.project .meta-text h3{font-size:clamp(20px,1.8vw,28px);color:#fff}
+.project .meta-text .desc{font-size:13px;color:var(--text-dim);margin-top:6px;max-width:280px}
+.project .meta-go{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:#fff;backdrop-filter:blur(10px);transition:background var(--t-fast) var(--ease)}
+.project:hover .meta-go{background:var(--accent);border-color:var(--accent)}
+
+/* Process */
+.process{background:#0a0a0a;position:relative}
+.process .line{position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent,var(--border-strong) 10%,var(--border-strong) 90%,transparent);transform:translateY(-50%);z-index:0}
+.process-track{position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+.step{text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px}
+.step .dot{width:74px;height:74px;border-radius:50%;background:var(--bg);border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;font-family:'Saira Condensed',sans-serif;font-size:30px;font-weight:800;color:var(--accent);position:relative;transition:all var(--t-fast) var(--ease)}
+.step:hover .dot{background:var(--accent);color:#fff;border-color:var(--accent);transform:scale(1.06);box-shadow:0 0 0 10px rgba(255,87,34,.1)}
+.step h4{font-size:14px;letter-spacing:.06em}
+.step p{font-size:13px;max-width:200px;color:var(--text-dim)}
+
+/* Reviews */
+.reviews-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.review{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px 28px;display:flex;flex-direction:column;gap:20px;transition:transform var(--t-fast) var(--ease),border-color var(--t-fast) var(--ease)}
+.review:hover{transform:translateY(-4px);border-color:var(--accent)}
+.review .stars{display:flex;gap:3px;color:var(--accent)}
+.review .stars svg{width:18px;height:18px;fill:currentColor}
+.review p{font-size:15px;color:var(--text);font-style:italic;line-height:1.55;flex:1}
+.review .author{display:flex;align-items:center;gap:12px}
+.review .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-dim));display:flex;align-items:center;justify-content:center;font-family:'Saira',sans-serif;font-weight:700;color:#fff;font-size:14px}
+.review .author-info{display:flex;flex-direction:column;gap:2px}
+.review .author-info .name{font-weight:600;font-size:14px;color:var(--text)}
+.review .author-info .role{font-size:12px;color:var(--text-mute)}
+
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:1.2fr 2fr;gap:60px;align-items:start}
+.faq-list{display:flex;flex-direction:column}
+.faq-item{border-bottom:1px solid var(--border);transition:padding var(--t-fast) var(--ease)}
+.faq-item.open{padding-bottom:0}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:24px 0;cursor:pointer;gap:20px;width:100%;text-align:left}
+.faq-q span{font-family:'Saira',sans-serif;font-weight:600;font-size:clamp(16px,1.4vw,19px);text-transform:uppercase;letter-spacing:.02em;color:var(--text)}
+.faq-q .chevron{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;color:var(--accent);transition:transform var(--t-fast) var(--ease),border-color var(--t-fast) var(--ease),background var(--t-fast) var(--ease);flex-shrink:0}
+.faq-item.open .faq-q .chevron{transform:rotate(45deg);background:var(--accent);color:#fff;border-color:var(--accent)}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease)}
+.faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-a > div{overflow:hidden}
+.faq-a p{padding:0 0 24px;font-size:15px;color:var(--text-dim);max-width:64ch}
+
+/* Final CTA */
+.final-cta{background:linear-gradient(135deg,#15151b 0%,#0a0a0a 50%,#1a0d08 100%);border:1px solid var(--border);border-radius:var(--radius-lg);padding:clamp(40px,6vw,80px);position:relative;overflow:hidden}
+.final-cta::before{content:"";position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,87,34,.15),transparent 60%);pointer-events:none}
+.final-cta-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.final-cta h2{margin-bottom:18px;color:#fff}
+.final-cta .lead{margin-bottom:30px}
+.cta-channels{display:flex;flex-direction:column;gap:14px}
+.channel{display:flex;align-items:center;gap:18px;padding:20px 24px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--radius);transition:all var(--t-fast) var(--ease)}
+.channel:hover{border-color:var(--accent);background:rgba(255,87,34,.06);transform:translateX(6px)}
+.channel .icon{width:46px;height:46px;border-radius:12px;background:rgba(255,87,34,.1);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.channel.wa .icon{background:rgba(37,211,102,.1);color:#25D366}
+.channel .text{display:flex;flex-direction:column;gap:2px;flex:1}
+.channel .text .label{font-family:'Saira',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--text-mute)}
+.channel .text .val{font-weight:600;font-size:16px;color:var(--text)}
+.channel .arrow{color:var(--text-mute);transition:transform var(--t-fast) var(--ease),color var(--t-fast) var(--ease)}
+.channel:hover .arrow{transform:translateX(4px);color:var(--accent)}
+
+/* Form modal */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px;animation:fadeIn .3s var(--ease)}
+.modal-backdrop.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);max-width:580px;width:100%;max-height:90vh;overflow-y:auto;position:relative;padding:40px clamp(24px,4vw,40px);animation:popIn .35s var(--ease)}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes popIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-dim);transition:all var(--t-fast) var(--ease)}
+.modal-close:hover{color:var(--accent);border-color:var(--accent);transform:rotate(90deg)}
+.modal h3{margin-bottom:8px;font-size:24px}
+.modal .modal-sub{color:var(--text-dim);font-size:14px;margin-bottom:24px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field.full{grid-column:1/-1}
+.field label{font-family:'Saira',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--text-mute)}
+.field input,.field select,.field textarea{padding:14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;transition:border-color var(--t-fast) var(--ease),background var(--t-fast) var(--ease)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);background:#0e0e14}
+.field textarea{min-height:90px;resize:vertical;font-family:'Inter',sans-serif}
+.form-actions{margin-top:18px;display:flex;align-items:center;gap:14px;justify-content:space-between;flex-wrap:wrap}
+.form-actions .note{font-size:12px;color:var(--text-mute);max-width:250px}
+.form-success{padding:30px 0;text-align:center;display:none;flex-direction:column;align-items:center;gap:14px}
+.form-success.show{display:flex}
+.form-success .check{width:64px;height:64px;border-radius:50%;background:rgba(37,211,102,.1);color:#25D366;display:flex;align-items:center;justify-content:center}
+.form-success h4{font-size:20px;color:var(--text)}
+.form-success p{font-size:14px}
+
+/* Footer */
+.site-footer{background:#070708;border-top:1px solid var(--border);padding:80px 0 40px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:50px;margin-bottom:60px}
+.footer-brand{display:flex;flex-direction:column;gap:18px}
+.footer-brand .logo{width:200px;color:#fff}
+.footer-brand p{font-size:14px;max-width:300px}
+.footer-col h5{font-family:'Saira',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--text-mute);margin-bottom:18px}
+.footer-col ul{display:flex;flex-direction:column;gap:11px}
+.footer-col a{color:var(--text-dim);font-size:14px}
+.footer-col a:hover{color:var(--accent)}
+.footer-contacts li{display:flex;align-items:flex-start;gap:10px;color:var(--text-dim);font-size:14px}
+.footer-contacts li svg{color:var(--accent);width:16px;height:16px;flex-shrink:0;margin-top:3px}
+.footer-bottom{padding-top:30px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--text-mute);font-family:'Saira',sans-serif;text-transform:uppercase;letter-spacing:.14em}
+.footer-bottom .socials{display:flex;gap:10px}
+.footer-bottom .socials a{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-dim);transition:all var(--t-fast) var(--ease)}
+.footer-bottom .socials a:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+
+/* Mobile menu drawer */
+.mobile-drawer{position:fixed;inset:0;background:#0a0a0a;z-index:80;padding:90px var(--pad-x) 30px;display:flex;flex-direction:column;gap:24px;transform:translateX(100%);transition:transform .4s var(--ease);overflow-y:auto}
+.mobile-drawer.open{transform:translateX(0)}
+.mobile-drawer .nav-mobile{display:flex;flex-direction:column;gap:6px}
+.mobile-drawer .nav-mobile a{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:34px;text-transform:uppercase;line-height:1.05;color:var(--text);padding:10px 0;border-bottom:1px solid var(--border)}
+.mobile-drawer .nav-mobile a:hover{color:var(--accent)}
+.mobile-actions{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+.mobile-langs{display:flex;gap:10px;justify-content:center;padding-top:16px;border-top:1px solid var(--border)}
+.mobile-langs button{padding:8px 16px;border:1px solid var(--border);border-radius:999px;font-family:'Saira',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--text-dim)}
+.mobile-langs button[aria-current="true"]{color:var(--accent);border-color:var(--accent)}
+
+/* Responsive */
+@media (max-width:1100px){
+  .nav{display:none}
+  .menu-toggle{display:flex}
+  .why-wrap{grid-template-columns:1fr;gap:50px}
+  .story-grid{grid-template-columns:1fr;gap:40px}
+  .final-cta-grid{grid-template-columns:1fr;gap:40px}
+  .faq-grid{grid-template-columns:1fr;gap:30px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
+  .reviews-row{grid-template-columns:1fr 1fr}
+  .process-track{grid-template-columns:repeat(5,1fr);gap:14px}
+  .process .line{display:none}
+}
+@media (max-width:760px){
+  .services-grid{grid-template-columns:1fr;gap:14px}
+  .service.s-lg,.service.s-md,.service.s-sm,.service.s-half{grid-column:span 1}
+  .service{min-height:auto;padding:28px 24px}
+  .projects-grid{grid-template-columns:1fr;gap:14px}
+  .project.wide,.project.tall,.project.med{grid-column:span 1;aspect-ratio:4/5}
+  .reviews-row{grid-template-columns:1fr}
+  .process-track{grid-template-columns:1fr 1fr;gap:30px}
+  .footer-grid{grid-template-columns:1fr;gap:30px}
+  .form-grid{grid-template-columns:1fr}
+  .hero-scroll{display:none}
+  .story-stats{grid-template-columns:1fr}
+  .hero{padding-top:120px}
+  .hero-tags{gap:14px;margin-top:32px}
+  .fab-wa{width:56px;height:56px;right:16px;bottom:16px}
+  .modal{padding:30px 22px}
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .marquee-track{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor-halo" aria-hidden="true"></div>
+
+<!-- Loader -->
+<div id="loader" aria-hidden="true">
+  <div class="logo-wrap">
+    <svg viewBox="0 0 270.91 46.88" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#fff">
+        <path d="M18.01,28.94v-10.44h2.16v10.44h-2.16Z"/>
+        <path d="M32.75,28.94v-3.3c0-.47-.37-.83-.83-.83h-8.16v4.13h-2.16v-10.44h10.31c1.13,0,2.05.6,2.59,1.49.27.47.41,1.07.41,1.67,0,.85-.26,1.53-.69,2.05.44.53.69,1.17.69,1.91v3.31h-2.15ZM32.5,22.41c.17-.17.25-.46.25-.75s-.09-.58-.25-.75c-.17-.16-.36-.24-.59-.24h-8.14v1.97h8.14c.23,0,.42-.08.59-.24Z"/>
+        <path d="M39.32,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM48.41,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"/>
+        <path d="M63.45,28.94v-7.45c0-.45-.36-.83-.83-.83h-8.46v8.27h-2.16v-10.44h10.62c1.69,0,2.98,1.36,2.98,2.97v7.46h-2.15Z"/>
+        <path d="M74.32,28.94c-1.69,0-2.99-1.37-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h7.64c1.69,0,2.99,1.36,2.99,2.99v.19h-2.17v-.19c0-.47-.36-.82-.82-.82h-7.64c-.46,0-.83.35-.83.82v4.45c0,.47.36.83.83.83h7.64c.47,0,.82-.36.82-.83v-.19h2.17c0,.68-.06,1.13-.4,1.7-.52.87-1.44,1.49-2.59,1.49h-7.64Z"/>
+        <path d="M89.17,28.94c-1.69,0-2.98-1.36-2.98-2.98v-7.46h2.16v7.44c0,.46.35.83.83.83h7.64c.47,0,.83-.37.83-.83v-7.44h2.16v7.44c0,1.69-1.36,3-2.99,3h-7.64Z"/>
+        <path d="M104,28.94c-1.52,0-2.79-1.21-2.79-2.74v-.45h2.16v.45c0,.34.27.57.62.57h7.4c.35,0,.62-.24.62-.57v-.83c0-.34-.27-.57-.62-.57h-7.4c-1.55,0-2.79-1.24-2.79-2.74v-.83c0-1.54,1.28-2.74,2.79-2.74h7.4c1.59,0,2.79,1.26,2.79,2.74v.45h-2.16v-.45c0-.34-.27-.57-.62-.57h-7.4c-.35,0-.62.23-.62.57v.83c0,.34.27.57.62.57h7.4c1.59,0,2.79,1.26,2.79,2.73v.83c0,1.52-1.24,2.74-2.79,2.74h-7.4Z"/>
+        <path d="M120.64,28.94v-8.27h-2.78c-.18,0-.32.05-.44.16-.12.11-.18.25-.18.42v.45h-2.16v-.45c0-.51.13-.97.38-1.38.25-.41.59-.73,1.01-.98s.88-.37,1.39-.37h7.72c.51,0,.97.12,1.39.37s.76.57,1.01.98c.25.41.38.87.38,1.38v.45h-2.16v-.45c0-.17-.06-.31-.18-.42-.12-.11-.26-.16-.44-.16h-2.78v8.27h-2.16Z"/>
+        <path d="M132.25,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM141.34,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"/>
+        <path d="M157.18,28.94v-7.45c0-.45-.36-.83-.83-.83h-3.16c.08.27.12.54.12.83v7.45h-2.16v-7.45c0-.46-.36-.83-.83-.83h-2.41c-.47,0-.83.37-.83.83v7.45h-2.15v-7.46c0-1.7,1.37-2.97,2.98-2.97h8.44c1.69,0,2.98,1.36,2.98,2.97v7.46h-2.15Z"/>
+        <path d="M177.32,28.94v-7.45c0-.45-.36-.83-.83-.83h-3.16c.08.27.12.54.12.83v7.45h-2.16v-7.45c0-.46-.36-.83-.83-.83h-2.41c-.47,0-.83.37-.83.83v7.45h-2.16v-7.46c0-1.7,1.37-2.97,2.98-2.97h8.44c1.69,0,2.98,1.36,2.98,2.97v7.46h-2.15Z"/>
+        <path d="M183.87,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM192.96,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"/>
+        <path d="M201.58,28.94v-8.27h-2.78c-.18,0-.32.05-.44.16-.12.11-.18.25-.18.42v.45h-2.16v-.45c0-.51.13-.97.38-1.38.25-.41.59-.73,1.01-.98s.88-.37,1.39-.37h7.72c.51,0,.97.12,1.39.37s.76.57,1.01.98c.25.41.38.87.38,1.38v.45h-2.16v-.45c0-.17-.06-.31-.18-.42-.12-.11-.26-.16-.44-.16h-2.78v8.27h-2.16Z"/>
+        <path d="M213.18,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM222.27,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"/>
+        <path d="M237.01,28.94v-3.3c0-.47-.37-.83-.83-.83h-8.16v4.13h-2.16v-10.44h10.31c1.13,0,2.05.6,2.59,1.49.27.47.41,1.07.41,1.67,0,.85-.26,1.53-.69,2.05.44.53.69,1.17.69,1.91v3.31h-2.15ZM236.76,22.41c.17-.17.25-.46.25-.75s-.09-.58-.25-.75c-.17-.16-.36-.24-.59-.24h-8.14v1.97h8.14c.23,0,.42-.08.59-.24Z"/>
+        <path d="M243.37,28.94c-1.52,0-2.79-1.21-2.79-2.74v-.45h2.16v.45c0,.34.27.57.62.57h7.4c.35,0,.62-.24.62-.57v-.83c0-.34-.27-.57-.62-.57h-7.4c-1.55,0-2.79-1.24-2.79-2.74v-.83c0-1.54,1.28-2.74,2.79-2.74h7.4c1.59,0,2.79,1.26,2.79,2.74v.45h-2.16v-.45c0-.34-.27-.57-.62-.57h-7.4c-.35,0-.62.23-.62.57v.83c0,.34.27.57.62.57h7.4c1.59,0,2.79,1.26,2.79,2.73v.83c0,1.52-1.24,2.74-2.79,2.74h-7.4Z"/>
+      </g>
+      <path fill="#fff" d="M259.71,39.68h-2.47v-2.14h2.47c1.39,0,2.52-1.38,2.52-3.08V12.97c0-1.7-1.13-3.08-2.52-3.08H11.86c-1.39,0-2.52,1.38-2.52,3.08v21.5c0,1.7,1.13,3.08,2.52,3.08h200.03v2.14H11.86c-2.57,0-4.66-2.34-4.66-5.21V12.97c0-2.87,2.09-5.21,4.66-5.21h247.86c2.57,0,4.66,2.34,4.66,5.21v21.5c0,2.87-2.09,5.21-4.66,5.21Z"/>
+    </svg>
+  </div>
+  <div class="progress"></div>
+  <div class="label">Fix your ride · Fuel your soul</div>
+</div>
+
+<!-- Header -->
+<header class="site-header" id="header">
+  <a href="#top" class="brand" aria-label="Iron Custom Motors — home">
+    <svg viewBox="0 0 270.91 46.88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="#fff">
+        <path d="M18.01,28.94v-10.44h2.16v10.44h-2.16Z"/><path d="M32.75,28.94v-3.3c0-.47-.37-.83-.83-.83h-8.16v4.13h-2.16v-10.44h10.31c1.13,0,2.05.6,2.59,1.49.27.47.41,1.07.41,1.67,0,.85-.26,1.53-.69,2.05.44.53.69,1.17.69,1.91v3.31h-2.15ZM32.5,22.41c.17-.17.25-.46.25-.75s-.09-.58-.25-.75c-.17-.16-.36-.24-.59-.24h-8.14v1.97h8.14c.23,0,.42-.08.59-.24Z"/><path d="M39.32,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM48.41,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"/><path d="M63.45,28.94v-7.45c0-.45-.36-.83-.83-.83h-8.46v8.27h-2.16v-10.44h10.62c1.69,0,2.98,1.36,2.98,2.97v7.46h-2.15Z"/><path d="M74.32,28.94c-1.69,0-2.99-1.37-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h7.64c1.69,0,2.99,1.36,2.99,2.99v.19h-2.17v-.19c0-.47-.36-.82-.82-.82h-7.64c-.46,0-.83.35-.83.82v4.45c0,.47.36.83.83.83h7.64c.47,0,.82-.36.82-.83v-.19h2.17c0,.68-.06,1.13-.4,1.7-.52.87-1.44,1.49-2.59,1.49h-7.64Z"/><path d="M89.17,28.94c-1.69,0-2.98-1.36-2.98-2.98v-7.46h2.16v7.44c0,.46.35.83.83.83h7.64c.47,0,.83-.37.83-.83v-7.44h2.16v7.44c0,1.69-1.36,3-2.99,3h-7.64Z"/><path d="M104,28.94c-1.52,0-2.79-1.21-2.79-2.74v-.45h2.16v.45c0,.34.27.57.62.57h7.4c.35,0,.62-.24.62-.57v-.83c0-.34-.27-.57-.62-.57h-7.4c-1.55,0-2.79-1.24-2.79-2.74v-.83c0-1.54,1.28-2.74,2.79-2.74h7.4c1.59,0,2.79,1.26,2.79,2.74v.45h-2.16v-.45c0-.34-.27-.57-.62-.57h-7.4c-.35,0-.62.23-.62.57v.83c0,.34.27.57.62.57h7.4c1.59,0,2.79,1.26,2.79,2.73v.83c0,1.52-1.24,2.74-2.79,2.74h-7.4Z"/><path d="M120.64,28.94v-8.27h-2.78c-.18,0-.32.05-.44.16-.12.11-.18.25-.18.42v.45h-2.16v-.45c0-.51.13-.97.38-1.38.25-.41.59-.73,1.01-.98s.88-.37,1.39-.37h7.72c.51,0,.97.12,1.39.37s.76.57,1.01.98c.25.41.38.87.38,1.38v.45h-2.16v-.45c0-.17-.06-.31-.18-.42-.12-.11-.26-.16-.44-.16h-2.78v8.27h-2.16Z"/><path d="M132.25,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM141.34,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"/><path d="M157.18,28.94v-7.45c0-.45-.36-.83-.83-.83h-3.16c.08.27.12.54.12.83v7.45h-2.16v-7.45c0-.46-.36-.83-.83-.83h-2.41c-.47,0-.83.37-.83.83v7.45h-2.15v-7.46c0-1.7,1.37-2.97,2.98-2.97h8.44c1.69,0,2.98,1.36,2.98,2.97v7.46h-2.15Z"/><path d="M177.32,28.94v-7.45c0-.45-.36-.83-.83-.83h-3.16c.08.27.12.54.12.83v7.45h-2.16v-7.45c0-.46-.36-.83-.83-.83h-2.41c-.47,0-.83.37-.83.83v7.45h-2.16v-7.46c0-1.7,1.37-2.97,2.98-2.97h8.44c1.69,0,2.98,1.36,2.98,2.97v7.46h-2.15Z"/><path d="M183.87,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM192.96,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"/><path d="M201.58,28.94v-8.27h-2.78c-.18,0-.32.05-.44.16-.12.11-.18.25-.18.42v.45h-2.16v-.45c0-.51.13-.97.38-1.38.25-.41.59-.73,1.01-.98s.88-.37,1.39-.37h7.72c.51,0,.97.12,1.39.37s.76.57,1.01.98c.25.41.38.87.38,1.38v.45h-2.16v-.45c0-.17-.06-.31-.18-.42-.12-.11-.26-.16-.44-.16h-2.78v8.27h-2.16Z"/><path d="M213.18,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM222.27,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"/><path d="M237.01,28.94v-3.3c0-.47-.37-.83-.83-.83h-8.16v4.13h-2.16v-10.44h10.31c1.13,0,2.05.6,2.59,1.49.27.47.41,1.07.41,1.67,0,.85-.26,1.53-.69,2.05.44.53.69,1.17.69,1.91v3.31h-2.15ZM236.76,22.41c.17-.17.25-.46.25-.75s-.09-.58-.25-.75c-.17-.16-.36-.24-.59-.24h-8.14v1.97h8.14c.23,0,.42-.08.59-.24Z"/><path d="M243.37,28.94c-1.52,0-2.79-1.21-2.79-2.74v-.45h2.16v.45c0,.34.27.57.62.57h7.4c.35,0,.62-.24.62-.57v-.83c0-.34-.27-.57-.62-.57h-7.4c-1.55,0-2.79-1.24-2.79-2.74v-.83c0-1.54,1.28-2.74,2.79-2.74h7.4c1.59,0,2.79,1.26,2.79,2.74v.45h-2.16v-.45c0-.34-.27-.57-.62-.57h-7.4c-.35,0-.62.23-.62.57v.83c0,.34.27.57.62.57h7.4c1.59,0,2.79,1.26,2.79,2.73v.83c0,1.52-1.24,2.74-2.79,2.74h-7.4Z"/>
+      </g>
+      <path fill="#fff" d="M259.71,39.68h-2.47v-2.14h2.47c1.39,0,2.52-1.38,2.52-3.08V12.97c0-1.7-1.13-3.08-2.52-3.08H11.86c-1.39,0-2.52,1.38-2.52,3.08v21.5c0,1.7,1.13,3.08,2.52,3.08h200.03v2.14H11.86c-2.57,0-4.66-2.34-4.66-5.21V12.97c0-2.87,2.09-5.21,4.66-5.21h247.86c2.57,0,4.66,2.34,4.66,5.21v21.5c0,2.87-2.09,5.21-4.66,5.21Z"/>
+    </svg>
+  </a>
+  <nav class="nav" aria-label="Primary">
+    <a href="#services" data-i18n="nav.services">Services</a>
+    <a href="#projects" data-i18n="nav.projects">Projects</a>
+    <a href="#story" data-i18n="nav.about">About</a>
+    <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <div class="lang-switcher">
+      <button class="lang-current" id="langBtn" aria-haspopup="true" aria-expanded="false">
+        <span id="langCurrent">EN</span>
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5l3 3 3-3"/></svg>
+      </button>
+      <div class="lang-menu" id="langMenu" role="menu">
+        <button data-lang="en" aria-current="true">EN · English</button>
+        <button data-lang="ru">RU · Русский</button>
+        <button data-lang="uk">UK · Українська</button>
+        <button data-lang="pt">PT · Português</button>
+      </div>
+    </div>
+    <a href="#contact" class="btn btn-primary btn-sm" data-i18n="cta.bookHeader">Book service</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span></button>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <nav class="nav-mobile">
+    <a href="#services" data-i18n="nav.services">Services</a>
+    <a href="#projects" data-i18n="nav.projects">Projects</a>
+    <a href="#story" data-i18n="nav.about">About</a>
+    <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="mobile-actions">
+    <a href="#contact" class="btn btn-primary" data-i18n="cta.bookHeader">Book service</a>
+    <a href="https://wa.me/351917961230" class="btn btn-ghost" target="_blank" rel="noopener" data-i18n="cta.whatsapp">WhatsApp us</a>
+    <div class="mobile-langs">
+      <button data-lang="en" aria-current="true">EN</button>
+      <button data-lang="ru">RU</button>
+      <button data-lang="uk">UK</button>
+      <button data-lang="pt">PT</button>
+    </div>
+  </div>
+</div>
+
+<a href="https://wa.me/351917961230" class="fab-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-1.9-.9-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.6.1-1-.5-2.2-1.1-3.1-2.5-.7-1.2-.4-1.1.4-1.7.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 2 .6 3.8 1.6 5.4L2 22l4.7-1.6c1.5.9 3.4 1.6 5.3 1.6 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.4c-1.7 0-3.4-.5-4.7-1.4l-.3-.2-3 1 1-2.9-.2-.4c-1-1.4-1.5-3.1-1.5-4.8 0-4.6 3.7-8.4 8.4-8.4s8.4 3.7 8.4 8.4-3.8 8.7-8.1 8.7z"/></svg>
+</a>
+
+<!-- HERO -->
+<main id="top">
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <div class="hero-meta">
+      <span class="pill"><span class="dot"></span><span data-i18n="hero.pill1">Cascais · Greater Lisbon</span></span>
+      <span class="pill"><span data-i18n="hero.pill2">Since 2010</span></span>
+      <span class="pill"><span data-i18n="hero.pill3">EN · RU · UK · PT</span></span>
+    </div>
+    <h1 class="h-display" id="heroTitle">
+      <span class="word"><span class="inner" data-i18n="hero.title1">Premium</span></span>
+      <span class="word"><span class="inner" data-i18n="hero.title2">motorcycle</span></span><br/>
+      <span class="word"><span class="inner accent" data-i18n="hero.title3">service</span></span>
+      <span class="word"><span class="inner" data-i18n="hero.title4">in Cascais</span></span>
+    </h1>
+    <p class="hero-sub" data-i18n="hero.sub">Diagnostics, maintenance, repair, spare parts and consumables, tuning solutions and custom project expertise — by the team behind world-champion builds and a Bonneville record.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary" data-cta="book"><span data-i18n="cta.bookService">Book service</span><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="https://wa.me/351917961230" class="btn btn-ghost" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-1.9-.9-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.6.1-1-.5-2.2-1.1-3.1-2.5-.7-1.2-.4-1.1.4-1.7.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4z"/></svg><span data-i18n="cta.whatsapp">WhatsApp us</span></a>
+    </div>
+    <div class="hero-tags">
+      <div class="hero-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M9 14l-2 7 5-3 5 3-2-7"/></svg><span data-i18n="hero.tag1">AMD World Champions</span></div>
+      <div class="hero-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 3l-2 9h6l-8 9 2-9H5l8-9z"/></svg><span data-i18n="hero.tag2">Bonneville record holders</span></div>
+      <div class="hero-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l3-9 3 9M3 12h6M3 12l-1 8M9 12v8M15 3v18M21 8v13M21 8l-3-3"/></svg><span data-i18n="hero.tag3">BMW Motorrad Champ. 2023</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll" data-i18n="hero.scroll">Scroll · Iron Custom Motors</div>
+</section>
+
+<!-- Trust marquee -->
+<div class="trust-marquee" aria-label="Awards and recognitions">
+  <div class="marquee-track" id="marquee">
+    <span class="marquee-item">FIX YOUR RIDE <span class="star">·</span> FUEL YOUR SOUL</span>
+    <span class="marquee-item"><span class="sep"></span> AMD WORLD CHAMPIONSHIP 2016</span>
+    <span class="marquee-item"><span class="sep"></span> BONNEVILLE SPEED RECORD 2017</span>
+    <span class="marquee-item"><span class="sep"></span> BMW MOTORRAD CHAMP. 2023</span>
+    <span class="marquee-item"><span class="sep"></span> 15 YEARS OF CRAFT</span>
+    <span class="marquee-item"><span class="sep"></span> CASCAIS · LISBOA · PORTUGAL</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="h-eyebrow" data-i18n="services.eyebrow">What we do</span>
+      <h2 data-i18n="services.title">Service. Parts.<br/>Upgrades. Custom.</h2>
+      <p class="lead" data-i18n="services.sub">Iron Custom Motors services motorcycles, supplies spare parts and consumables, and offers tuning and upgrade solutions from major global catalogs and brands.</p>
+    </div>
+    <div class="services-grid reveal-stagger">
+      <article class="service s-half" data-cta="book">
+        <div class="num">01</div>
+        <div class="icon-box"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 17l4-4 3 3 7-7"/><path d="M14 9h6v6"/><circle cx="6" cy="18" r="2"/></svg></div>
+        <div>
+          <h3 data-i18n="services.s1.title">Motorcycle service &amp; repair</h3>
+          <p data-i18n="services.s1.desc">Diagnostics, scheduled maintenance, oil &amp; filter, brake and suspension service, chain &amp; sprockets, tires, electrical diagnostics and general repair.</p>
+        </div>
+        <a href="#contact" class="arrow-link"><span data-i18n="services.cta">Book service</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="service s-half" data-cta="book">
+        <div class="num">02</div>
+        <div class="icon-box"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18M8 6V3M16 6V3"/></svg></div>
+        <div>
+          <h3 data-i18n="services.s2.title">Parts &amp; consumables</h3>
+          <p data-i18n="services.s2.desc">OEM, aftermarket and tuning parts. Service consumables and accessories. Sourced through major international catalogs — request even if you don&rsquo;t need our workshop.</p>
+        </div>
+        <a href="#contact" class="arrow-link"><span data-i18n="services.cta2">Request parts</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="service s-half" data-cta="book">
+        <div class="num">03</div>
+        <div class="icon-box"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6M12 16v6M2 12h6M16 12h6M5 5l4 4M15 15l4 4M5 19l4-4M15 9l4-4"/></svg></div>
+        <div>
+          <h3 data-i18n="services.s3.title">Upgrades &amp; tuning</h3>
+          <p data-i18n="services.s3.desc">Performance, suspension, brakes, exhaust, lighting, protection, touring and luggage. Functional upgrades selected for how you actually ride.</p>
+        </div>
+        <a href="#contact" class="arrow-link"><span data-i18n="services.cta3">Ask about upgrades</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="service s-half" data-cta="book">
+        <div class="num">04</div>
+        <div class="icon-box"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
+        <div>
+          <h3 data-i18n="services.s4.title">Custom &amp; special projects</h3>
+          <p data-i18n="services.s4.desc">Custom consultations, bespoke builds, individual engineering solutions and project planning. The team that delivered world-champion motorcycles is the team that builds yours.</p>
+        </div>
+        <a href="#contact" class="arrow-link"><span data-i18n="services.cta4">Discuss a project</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="container">
+    <div class="why-wrap">
+      <div class="reveal">
+        <div class="section-head" style="margin-bottom:30px">
+          <span class="h-eyebrow" data-i18n="why.eyebrow">Why Iron Custom Motors</span>
+          <h2 data-i18n="why.title">Championship-grade<br/>workshop, daily-rider service</h2>
+          <p class="lead" data-i18n="why.sub">A world-class custom team that actually picks up the phone when your bike won&rsquo;t start. That&rsquo;s the gap we close.</p>
+        </div>
+        <div class="why-list">
+          <div class="row"><div class="num">01</div><div><h4 data-i18n="why.r1.t">World-level engineering</h4><p data-i18n="why.r1.d">AMD World Champions. Bonneville record holders. BMW Motorrad Customizing Champions 2023. The expertise behind your routine service.</p></div></div>
+          <div class="row"><div class="num">02</div><div><h4 data-i18n="why.r2.t">Multi-brand by design</h4><p data-i18n="why.r2.d">BMW, Harley-Davidson, Ducati, Triumph, KTM, Honda, Yamaha and beyond. Premium cars and 4x4s — same standard.</p></div></div>
+          <div class="row"><div class="num">03</div><div><h4 data-i18n="why.r3.t">Service in your language</h4><p data-i18n="why.r3.d">English, Russian, Ukrainian and Portuguese. No language tax — clear communication, written estimates, honest timelines.</p></div></div>
+          <div class="row"><div class="num">04</div><div><h4 data-i18n="why.r4.t">Transparent process</h4><p data-i18n="why.r4.d">Diagnose first, then quote. Photos and video updates during the work. No surprise invoices.</p></div></div>
+          <div class="row"><div class="num">05</div><div><h4 data-i18n="why.r5.t">Complex jobs welcome</h4><p data-i18n="why.r5.d">Wiring nightmares, custom parts fabrication, fitment problems, lost specs — the work other shops decline.</p></div></div>
+          <div class="row"><div class="num">06</div><div><h4 data-i18n="why.r6.t">Treat the machine right</h4><p data-i18n="why.r6.d">Clean workspace. Torque specs. Original or premium parts. The way we&rsquo;d service our own bikes — because we do.</p></div></div>
+        </div>
+      </div>
+      <div class="why-visual reveal">
+        <img src="https://images.unsplash.com/photo-1591769225440-811ad7d6eab3?auto=format&fit=crop&w=1200&q=80" alt="Iron Custom Motors workshop detail" loading="lazy" />
+        <div class="badge"><span class="b-num" data-counter="15" data-suffix="+">0</span><span class="b-text" data-i18n="why.badge">years building, racing, fixing</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-text reveal">
+        <span class="h-eyebrow" data-i18n="story.eyebrow">Our story</span>
+        <h2 data-i18n="story.title">From a Kharkiv<br/>workshop to world<br/>championship podiums</h2>
+        <p data-i18n="story.p1">Iron Custom Motors was founded in 2010 with one goal — to build motorcycles that could stand on the world stage. Six years later we did exactly that: AMD World Champions, café racer class, with the project Beckman.</p>
+        <p data-i18n="story.p2">In 2017 the team set a world speed record at Bonneville Salt Flats with the Inspirium 350APS-VG. In 2023 — BMW Motorrad Customizing Champions. Projects shown at the world&rsquo;s top motorcycle events.</p>
+        <p data-i18n="story.p3">In 2025 we brought the workshop to Cascais, Greater Lisbon. Same team, same engineering culture, now within reach of every rider on the Portuguese coast.</p>
+        <div class="quote" data-i18n="story.quote">&ldquo;The same hands that built world-champion motorcycles now keep yours running every weekend.&rdquo;</div>
+      </div>
+      <div class="story-stats reveal">
+        <div class="stat"><div class="num" data-counter="2010">0</div><div class="label" data-i18n="story.stat1l">Founded</div><div class="sub" data-i18n="story.stat1s">15 years of continuous craft</div></div>
+        <div class="stat"><div class="num" data-counter="3" data-suffix="×">0</div><div class="label" data-i18n="story.stat2l">World championships</div><div class="sub" data-i18n="story.stat2s">AMD · BMW Motorrad · Bonneville</div></div>
+        <div class="stat"><div class="num" data-counter="100" data-suffix="+">0</div><div class="label" data-i18n="story.stat3l">Projects delivered</div><div class="sub" data-i18n="story.stat3s">Service · custom · engineering</div></div>
+        <div class="stat"><div class="num" data-counter="20" data-suffix="+">0</div><div class="label" data-i18n="story.stat4l">Brands serviced</div><div class="sub" data-i18n="story.stat4s">From BMW to one-off builds</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="h-eyebrow" data-i18n="projects.eyebrow">Selected projects</span>
+      <h2 data-i18n="projects.title">A few of the bikes<br/>we&rsquo;re proud of</h2>
+      <p class="lead" data-i18n="projects.sub">Award-winning builds that put us on the international map. Click any one — the same engineering goes into every service we do.</p>
+    </div>
+    <div class="projects-grid reveal-stagger">
+      <article class="project wide">
+        <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=2000&q=80" alt="Beckman cafe racer" loading="lazy" />
+        <div class="meta"><div class="meta-text"><span class="label" data-i18n="projects.p1.label">AMD World Champion 2016</span><h3>Beckman</h3><div class="desc" data-i18n="projects.p1.desc">Café racer that won the AMD World Championship.</div></div><div class="meta-go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      </article>
+      <article class="project tall">
+        <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1200&q=80" alt="Inspirium Bonneville" loading="lazy" />
+        <div class="meta"><div class="meta-text"><span class="label" data-i18n="projects.p2.label">Bonneville record 2017</span><h3>Inspirium</h3><div class="desc" data-i18n="projects.p2.desc">Speed record holder, class 350APS-VG.</div></div><div class="meta-go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      </article>
+      <article class="project med">
+        <img src="https://images.unsplash.com/photo-1558981852-426c6c22a060?auto=format&fit=crop&w=1600&q=80" alt="Unbreakable BMW" loading="lazy" />
+        <div class="meta"><div class="meta-text"><span class="label" data-i18n="projects.p3.label">BMW Motorrad partnership</span><h3>Unbreakable</h3><div class="desc" data-i18n="projects.p3.desc">The build that started our partnership with BMW Motorrad.</div></div><div class="meta-go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      </article>
+      <article class="project med">
+        <img src="https://images.unsplash.com/photo-1547549082-6bc09f2049ae?auto=format&fit=crop&w=1600&q=80" alt="Burly custom build" loading="lazy" />
+        <div class="meta"><div class="meta-text"><span class="label" data-i18n="projects.p4.label">Custom build</span><h3>Burly</h3><div class="desc" data-i18n="projects.p4.desc">Heavy-duty cruiser, fully fabricated frame.</div></div><div class="meta-go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center;max-width:760px;margin-left:auto;margin-right:auto">
+      <span class="h-eyebrow" data-i18n="process.eyebrow">How it works</span>
+      <h2 data-i18n="process.title">From request to ride —<br/>five steps, no surprises</h2>
+    </div>
+    <div class="line" aria-hidden="true"></div>
+    <div class="process-track reveal-stagger">
+      <div class="step"><div class="dot">01</div><h4 data-i18n="process.s1t">Request</h4><p data-i18n="process.s1d">Send a message via WhatsApp, form or call. Tell us what you ride and what&rsquo;s wrong.</p></div>
+      <div class="step"><div class="dot">02</div><h4 data-i18n="process.s2t">Diagnostics</h4><p data-i18n="process.s2d">We inspect, run diagnostics and identify the real cause — not just the symptom.</p></div>
+      <div class="step"><div class="dot">03</div><h4 data-i18n="process.s3t">Estimate</h4><p data-i18n="process.s3d">Written estimate, parts list, timeline. You approve before we lift a wrench.</p></div>
+      <div class="step"><div class="dot">04</div><h4 data-i18n="process.s4t">Work</h4><p data-i18n="process.s4d">Service or build, with photo updates. Torque specs, clean install, no shortcuts.</p></div>
+      <div class="step"><div class="dot">05</div><h4 data-i18n="process.s5t">Ride away</h4><p data-i18n="process.s5d">Test, hand-over, follow-up. We&rsquo;re here for the next service too.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="h-eyebrow" data-i18n="reviews.eyebrow">What riders say</span>
+      <h2 data-i18n="reviews.title">Trusted by riders<br/>and builders worldwide</h2>
+    </div>
+    <div class="reviews-row reveal-stagger">
+      <article class="review">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
+        <p data-i18n="reviews.r1.text">&ldquo;Brought my BMW R nineT for a stubborn electrical issue three other shops couldn&rsquo;t solve. Iron Custom diagnosed it in under an hour and explained it in plain English. Honest pricing, world-class work.&rdquo;</p>
+        <div class="author"><div class="avatar">JM</div><div class="author-info"><span class="name">James M.</span><span class="role" data-i18n="reviews.r1.role">BMW R nineT · UK expat in Cascais</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
+        <p data-i18n="reviews.r2.text">&ldquo;Pre-purchase inspection saved me €4,200. The bike looked perfect — they found a hidden frame issue. Sent me a detailed report with photos the same day. This is how it should work.&rdquo;</p>
+        <div class="author"><div class="avatar">AK</div><div class="author-info"><span class="name">Anna K.</span><span class="role" data-i18n="reviews.r2.role">Ducati Monster buyer · Lisbon</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
+        <p data-i18n="reviews.r3.text">&ldquo;Finally a workshop in Portugal that treats a Harley like a Harley. Custom exhaust, suspension setup and a tuning session — bike feels brand new. They speak Russian, which made everything easier.&rdquo;</p>
+        <div class="author"><div class="avatar">DV</div><div class="author-info"><span class="name">Dmitri V.</span><span class="role" data-i18n="reviews.r3.role">Harley-Davidson FXDR · Estoril</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="reveal">
+        <span class="h-eyebrow" data-i18n="faq.eyebrow">Frequently asked</span>
+        <h2 data-i18n="faq.title">Answers before<br/>you ask</h2>
+        <p class="lead" style="margin-top:18px" data-i18n="faq.sub">Don&rsquo;t see your question? WhatsApp us — we usually reply within an hour during business days.</p>
+        <a href="https://wa.me/351917961230" class="btn btn-ghost" target="_blank" rel="noopener" style="margin-top:24px"><span data-i18n="faq.cta">Ask on WhatsApp</span></a>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item"><button class="faq-q"><span data-i18n="faq.q1">What kind of motorcycles do you work with?</span><span class="chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p data-i18n="faq.a1">We work with motorcycles across different segments and service requests — routine maintenance, repairs, upgrades, parts supply and selected custom work. Send your model, year and request via WhatsApp and we&rsquo;ll confirm.</p></div></div></div>
+        <div class="faq-item"><button class="faq-q"><span data-i18n="faq.q2">Can I contact you only for parts?</span><span class="chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p data-i18n="faq.a2">Yes. We supply spare parts, service consumables, accessories and tuning solutions sourced from major international catalogs and brands — even if you don&rsquo;t need our workshop.</p></div></div></div>
+        <div class="faq-item"><button class="faq-q"><span data-i18n="faq.q3">Do you only do custom motorcycles?</span><span class="chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p data-i18n="faq.a3">No. Custom expertise is part of our background, but the workshop is built around real motorcycle service, repair, parts supply, upgrades and selected projects.</p></div></div></div>
+        <div class="faq-item"><button class="faq-q"><span data-i18n="faq.q4">How should I contact you?</span><span class="chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p data-i18n="faq.a4">The fastest option is WhatsApp at +351 917 961 230. Send your motorcycle model, year and request, and we&rsquo;ll respond with the next step.</p></div></div></div>
+        <div class="faq-item"><button class="faq-q"><span data-i18n="faq.q5">Can you help with upgrades and tuning parts?</span><span class="chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p data-i18n="faq.a5">Yes. We supply and install upgrades, accessories and tuning parts sourced from major global catalogs and brands. We approach upgrades as functional, rider-specific improvements based on real use.</p></div></div></div>
+        <div class="faq-item"><button class="faq-q"><span data-i18n="faq.q6">Do I need an appointment?</span><span class="chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p data-i18n="faq.a6">For service work — yes, it lets us prepare parts and a workspace. For quick advice or parts requests, just message us. WhatsApp is the fastest channel.</p></div></div></div>
+        <div class="faq-item"><button class="faq-q"><span data-i18n="faq.q7">Where exactly is the workshop?</span><span class="chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p data-i18n="faq.a7">R. António José da Silva 100 B, 2785-253 São Domingos de Rana, Cascais, Lisbon, Portugal. Open Tuesday to Saturday, 10:00–17:00.</p></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA / CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="final-cta reveal">
+      <div class="final-cta-grid">
+        <div>
+          <span class="h-eyebrow" data-i18n="contact.eyebrow">Get in touch</span>
+          <h2 data-i18n="contact.title">Tell us about<br/>your machine</h2>
+          <p class="lead" data-i18n="contact.sub">Service, diagnostics, custom — we&rsquo;ll point you to the right next step. Reply during business hours, usually within an hour.</p>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:8px">
+            <button class="btn btn-primary" id="openForm"><span data-i18n="cta.requestForm">Send request</span><svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <div class="cta-channels">
+          <a href="https://wa.me/351917961230" class="channel wa" target="_blank" rel="noopener">
+            <span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-1.9-.9-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.6.1-1-.5-2.2-1.1-3.1-2.5-.7-1.2-.4-1.1.4-1.7.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4z"/></svg></span>
+            <span class="text"><span class="label">WhatsApp</span><span class="val">+351 917 961 230</span></span>
+            <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="tel:+351917961230" class="channel">
+            <span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-3 2c1 2 3 4 5 5l2-3 5 2v4c0 1-1 2-2 2-9 0-15-6-15-15 0-1 1-2 2-2z"/></svg></span>
+            <span class="text"><span class="label" data-i18n="contact.phone">Phone</span><span class="val">+351 917 961 230</span></span>
+            <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="mailto:Ironcustom.office@gmail.com" class="channel">
+            <span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <span class="text"><span class="label">Email</span><span class="val">Ironcustom.office@gmail.com</span></span>
+            <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <div class="channel" style="cursor:default">
+            <span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-7 8-13a8 8 0 10-16 0c0 6 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg></span>
+            <span class="text"><span class="label" data-i18n="contact.address">Workshop</span><span class="val">R. António José da Silva 100 B, São Domingos de Rana</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo" aria-label="Iron Custom Motors">
+          <svg viewBox="0 0 270.91 46.88" xmlns="http://www.w3.org/2000/svg"><g fill="#fff"><path d="M18.01,28.94v-10.44h2.16v10.44h-2.16Z"/><path d="M32.75,28.94v-3.3c0-.47-.37-.83-.83-.83h-8.16v4.13h-2.16v-10.44h10.31c1.13,0,2.05.6,2.59,1.49.27.47.41,1.07.41,1.67,0,.85-.26,1.53-.69,2.05.44.53.69,1.17.69,1.91v3.31h-2.15ZM32.5,22.41c.17-.17.25-.46.25-.75s-.09-.58-.25-.75c-.17-.16-.36-.24-.59-.24h-8.14v1.97h8.14c.23,0,.42-.08.59-.24Z"/><path d="M39.32,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM48.41,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"/><path d="M63.45,28.94v-7.45c0-.45-.36-.83-.83-.83h-8.46v8.27h-2.16v-10.44h10.62c1.69,0,2.98,1.36,2.98,2.97v7.46h-2.15Z"/><path d="M74.32,28.94c-1.69,0-2.99-1.37-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h7.64c1.69,0,2.99,1.36,2.99,2.99v.19h-2.17v-.19c0-.47-.36-.82-.82-.82h-7.64c-.46,0-.83.35-.83.82v4.45c0,.47.36.83.83.83h7.64c.47,0,.82-.36.82-.83v-.19h2.17c0,.68-.06,1.13-.4,1.7-.52.87-1.44,1.49-2.59,1.49h-7.64Z"/><path d="M89.17,28.94c-1.69,0-2.98-1.36-2.98-2.98v-7.46h2.16v7.44c0,.46.35.83.83.83h7.64c.47,0,.83-.37.83-.83v-7.44h2.16v7.44c0,1.69-1.36,3-2.99,3h-7.64Z"/><path d="M104,28.94c-1.52,0-2.79-1.21-2.79-2.74v-.45h2.16v.45c0,.34.27.57.62.57h7.4c.35,0,.62-.24.62-.57v-.83c0-.34-.27-.57-.62-.57h-7.4c-1.55,0-2.79-1.24-2.79-2.74v-.83c0-1.54,1.28-2.74,2.79-2.74h7.4c1.59,0,2.79,1.26,2.79,2.74v.45h-2.16v-.45c0-.34-.27-.57-.62-.57h-7.4c-.35,0-.62.23-.62.57v.83c0,.34.27.57.62.57h7.4c1.59,0,2.79,1.26,2.79,2.73v.83c0,1.52-1.24,2.74-2.79,2.74h-7.4Z"/><path d="M120.64,28.94v-8.27h-2.78c-.18,0-.32.05-.44.16-.12.11-.18.25-.18.42v.45h-2.16v-.45c0-.51.13-.97.38-1.38.25-.41.59-.73,1.01-.98s.88-.37,1.39-.37h7.72c.51,0,.97.12,1.39.37s.76.57,1.01.98c.25.41.38.87.38,1.38v.45h-2.16v-.45c0-.17-.06-.31-.18-.42-.12-.11-.26-.16-.44-.16h-2.78v8.27h-2.16Z"/><path d="M132.25,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM141.34,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"/><path d="M157.18,28.94v-7.45c0-.45-.36-.83-.83-.83h-3.16c.08.27.12.54.12.83v7.45h-2.16v-7.45c0-.46-.36-.83-.83-.83h-2.41c-.47,0-.83.37-.83.83v7.45h-2.15v-7.46c0-1.7,1.37-2.97,2.98-2.97h8.44c1.69,0,2.98,1.36,2.98,2.97v7.46h-2.15Z"/><path d="M177.32,28.94v-7.45c0-.45-.36-.83-.83-.83h-3.16c.08.27.12.54.12.83v7.45h-2.16v-7.45c0-.46-.36-.83-.83-.83h-2.41c-.47,0-.83.37-.83.83v7.45h-2.16v-7.46c0-1.7,1.37-2.97,2.98-2.97h8.44c1.69,0,2.98,1.36,2.98,2.97v7.46h-2.15Z"/><path d="M183.87,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM192.96,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"/><path d="M201.58,28.94v-8.27h-2.78c-.18,0-.32.05-.44.16-.12.11-.18.25-.18.42v.45h-2.16v-.45c0-.51.13-.97.38-1.38.25-.41.59-.73,1.01-.98s.88-.37,1.39-.37h7.72c.51,0,.97.12,1.39.37s.76.57,1.01.98c.25.41.38.87.38,1.38v.45h-2.16v-.45c0-.17-.06-.31-.18-.42-.12-.11-.26-.16-.44-.16h-2.78v8.27h-2.16Z"/><path d="M213.18,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM222.27,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"/><path d="M237.01,28.94v-3.3c0-.47-.37-.83-.83-.83h-8.16v4.13h-2.16v-10.44h10.31c1.13,0,2.05.6,2.59,1.49.27.47.41,1.07.41,1.67,0,.85-.26,1.53-.69,2.05.44.53.69,1.17.69,1.91v3.31h-2.15ZM236.76,22.41c.17-.17.25-.46.25-.75s-.09-.58-.25-.75c-.17-.16-.36-.24-.59-.24h-8.14v1.97h8.14c.23,0,.42-.08.59-.24Z"/><path d="M243.37,28.94c-1.52,0-2.79-1.21-2.79-2.74v-.45h2.16v.45c0,.34.27.57.62.57h7.4c.35,0,.62-.24.62-.57v-.83c0-.34-.27-.57-.62-.57h-7.4c-1.55,0-2.79-1.24-2.79-2.74v-.83c0-1.54,1.28-2.74,2.79-2.74h7.4c1.59,0,2.79,1.26,2.79,2.74v.45h-2.16v-.45c0-.34-.27-.57-.62-.57h-7.4c-.35,0-.62.23-.62.57v.83c0,.34.27.57.62.57h7.4c1.59,0,2.79,1.26,2.79,2.73v.83c0,1.52-1.24,2.74-2.79,2.74h-7.4Z"/></g><path fill="#fff" d="M259.71,39.68h-2.47v-2.14h2.47c1.39,0,2.52-1.38,2.52-3.08V12.97c0-1.7-1.13-3.08-2.52-3.08H11.86c-1.39,0-2.52,1.38-2.52,3.08v21.5c0,1.7,1.13,3.08,2.52,3.08h200.03v2.14H11.86c-2.57,0-4.66-2.34-4.66-5.21V12.97c0-2.87,2.09-5.21,4.66-5.21h247.86c2.57,0,4.66,2.34,4.66,5.21v21.5c0,2.87-2.09,5.21-4.66,5.21Z"/></svg>
+        </a>
+        <p data-i18n="footer.tagline">Premium auto &amp; moto service in Cascais. Engineering culture from world-champion projects, applied to every job.</p>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer.col1">Services</h5>
+        <ul>
+          <li><a href="#services" data-i18n="services.s1.title">Motorcycle service &amp; repair</a></li>
+          <li><a href="#services" data-i18n="services.s2.title">Parts &amp; consumables</a></li>
+          <li><a href="#services" data-i18n="services.s3.title">Upgrades &amp; tuning</a></li>
+          <li><a href="#services" data-i18n="services.s4.title">Custom &amp; special projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer.col2">Company</h5>
+        <ul>
+          <li><a href="#story" data-i18n="nav.about">About</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#reviews" data-i18n="nav.reviews">Reviews</a></li>
+          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer.col3">Workshop</h5>
+        <ul class="footer-contacts">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-7 8-13a8 8 0 10-16 0c0 6 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg><span>R. António José da Silva 100 B, São Domingos de Rana<br/>Cascais, Portugal</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-3 2c1 2 3 4 5 5l2-3 5 2v4c0 1-1 2-2 2-9 0-15-6-15-15 0-1 1-2 2-2z"/></svg><span>+351 917 961 230</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>Ironcustom.office@gmail.com</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg><span data-i18n="footer.hours">Tue–Sat · 10:00–17:00<br/>Closed Sun &amp; Mon</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="yr">2026</span> Iron Custom Motors · <span data-i18n="footer.rights">All rights reserved</span></span>
+      <div class="socials">
+        <a href="https://www.instagram.com/ironcustommotors/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="https://www.facebook.com/IronCustomMotors/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V5h-3c-2 0-4 2-4 4v2H7v4h3v8h4v-8h3l1-4h-4V9z"/></svg></a>
+        <a href="https://www.youtube.com/c/IronmotoUacom" target="_blank" rel="noopener" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16 4.7 12 4.7 12 4.7s-4 0-7 .3c-.4 0-1.3.1-2.1.9C2.2 6.5 2 8 2 8s-.2 1.7-.2 3.5v1.7c0 1.7.2 3.5.2 3.5s.2 1.5.8 2.1c.8.8 1.9.8 2.4.9 1.7.2 7 .3 7 .3s4 0 7-.3c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.7.2-3.5v-1.7C22.2 9.7 22 8 22 8zM10 15V9l5 3-5 3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- FORM MODAL -->
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <button class="modal-close" id="closeModal" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6l-12 12"/></svg>
+    </button>
+    <h3 id="modalTitle" data-i18n="form.title">Send a service request</h3>
+    <p class="modal-sub" data-i18n="form.sub">We&rsquo;ll come back to you with the next step within business hours.</p>
+    <form class="form" id="leadForm">
+      <div class="form-grid">
+        <div class="field">
+          <label data-i18n="form.name">Your name</label>
+          <input type="text" name="name" required />
+        </div>
+        <div class="field">
+          <label data-i18n="form.phone">Phone / WhatsApp</label>
+          <input type="tel" name="phone" required placeholder="+351 ..." />
+        </div>
+        <div class="field full">
+          <label data-i18n="form.email">Email (optional)</label>
+          <input type="email" name="email" />
+        </div>
+        <div class="field">
+          <label data-i18n="form.vehicle">Vehicle (brand · model · year)</label>
+          <input type="text" name="vehicle" placeholder="e.g. BMW R nineT 2020" />
+        </div>
+        <div class="field">
+          <label data-i18n="form.service">Request type</label>
+          <select name="service">
+            <option data-i18n="form.opt1">Motorcycle service &amp; repair</option>
+            <option data-i18n="form.opt2">Parts &amp; consumables</option>
+            <option data-i18n="form.opt3">Upgrades &amp; tuning</option>
+            <option data-i18n="form.opt4">Custom &amp; special project</option>
+            <option data-i18n="form.opt5">Other / not sure</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label data-i18n="form.message">Tell us about the job</label>
+          <textarea name="message" placeholder="Symptoms, history, anything that helps us prepare." ></textarea>
+        </div>
+      </div>
+      <div class="form-actions">
+        <p class="note" data-i18n="form.note">By sending you agree to be contacted about this request. No spam, ever.</p>
+        <button type="submit" class="btn btn-primary"><span data-i18n="form.submit">Send request</span><svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </form>
+    <div class="form-success" id="formSuccess">
+      <div class="check"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 7"/></svg></div>
+      <h4 data-i18n="form.successT">Request received</h4>
+      <p data-i18n="form.successP">We&rsquo;ll reply via WhatsApp or email within business hours. Talk soon.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ======================================================================
+   IRON CUSTOM MOTORS — Interactivity & i18n
+   ====================================================================== */
+
+/* ---------- Translations ---------- */
+const I18N = {
+  en: {
+    "nav.services":"Services","nav.projects":"Projects","nav.about":"About","nav.reviews":"Reviews","nav.faq":"FAQ","nav.contact":"Contact",
+    "cta.bookHeader":"Book service","cta.bookService":"Book service","cta.whatsapp":"WhatsApp us","cta.requestForm":"Send request",
+    "hero.pill1":"Cascais · Greater Lisbon","hero.pill2":"Since 2010","hero.pill3":"EN · RU · UK · PT",
+    "hero.title1":"Premium","hero.title2":"motorcycle","hero.title3":"service","hero.title4":"in Cascais",
+    "hero.sub":"Diagnostics, maintenance, repair, spare parts and consumables, tuning solutions and custom project expertise — by the team behind world-champion builds and a Bonneville record.",
+    "hero.tag1":"AMD World Champions","hero.tag2":"Bonneville record holders","hero.tag3":"BMW Motorrad Champ. 2023",
+    "hero.scroll":"Scroll · Iron Custom Motors",
+    "services.eyebrow":"What we do","services.title":"Service. Parts.<br/>Upgrades. Custom.","services.sub":"Iron Custom Motors services motorcycles, supplies spare parts and consumables, and offers tuning and upgrade solutions from major global catalogs and brands.",
+    "services.s1.title":"Motorcycle service & repair","services.s1.desc":"Diagnostics, scheduled maintenance, oil & filter, brake and suspension service, chain & sprockets, tires, electrical diagnostics and general repair.","services.cta":"Book service",
+    "services.s2.title":"Parts & consumables","services.s2.desc":"OEM, aftermarket and tuning parts. Service consumables and accessories. Sourced through major international catalogs — request even if you don't need our workshop.","services.cta2":"Request parts",
+    "services.s3.title":"Upgrades & tuning","services.s3.desc":"Performance, suspension, brakes, exhaust, lighting, protection, touring and luggage. Functional upgrades selected for how you actually ride.","services.cta3":"Ask about upgrades",
+    "services.s4.title":"Custom & special projects","services.s4.desc":"Custom consultations, bespoke builds, individual engineering solutions and project planning. The team that delivered world-champion motorcycles is the team that builds yours.","services.cta4":"Discuss a project",
+    "why.eyebrow":"Why Iron Custom Motors","why.title":"Championship-grade<br/>workshop, daily-rider service","why.sub":"A world-class custom team that actually picks up the phone when your bike won't start. That's the gap we close.",
+    "why.r1.t":"World-level engineering","why.r1.d":"AMD World Champions. Bonneville record holders. BMW Motorrad Customizing Champions 2023. The expertise behind your routine service.",
+    "why.r2.t":"Parts sourcing in-house","why.r2.d":"OEM, aftermarket, tuning components and consumables from major international catalogs — one point of contact for service and parts.",
+    "why.r3.t":"Service in your language","why.r3.d":"English, Russian, Ukrainian and Portuguese. No language tax — clear communication, written estimates, honest timelines.",
+    "why.r4.t":"Transparent process","why.r4.d":"Diagnose first, then quote. Photos and updates during the work. No surprise invoices.",
+    "why.r5.t":"Complex jobs welcome","why.r5.d":"Wiring nightmares, custom parts fabrication, fitment problems, lost specs — the work other shops decline.",
+    "why.r6.t":"Treat the machine right","why.r6.d":"Clean workspace. Torque specs. Original or premium parts. The way we'd service our own bikes — because we do.",
+    "why.badge":"years building, racing, fixing",
+    "story.eyebrow":"Our story","story.title":"From a Kharkiv<br/>workshop to world<br/>championship podiums",
+    "story.p1":"Iron Custom Motors was founded in 2010 with one goal — to build motorcycles that could stand on the world stage. Six years later we did exactly that: AMD World Champions, café racer class, with the project Beckman.",
+    "story.p2":"In 2017 the team set a world speed record at Bonneville Salt Flats with the Inspirium 350APS-VG. In 2023 — BMW Motorrad Customizing Champions. Projects shown at the world's top motorcycle events.",
+    "story.p3":"In 2025 we brought the workshop to Cascais, Greater Lisbon. Same team, same engineering culture, now within reach of every rider on the Portuguese coast.",
+    "story.quote":"“The same hands that built world-champion motorcycles now keep yours running every weekend.”",
+    "story.stat1l":"Founded","story.stat1s":"15 years of continuous craft","story.stat2l":"World championships","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Projects delivered","story.stat3s":"Service · custom · engineering","story.stat4l":"Brands serviced","story.stat4s":"From BMW to one-off builds",
+    "projects.eyebrow":"Selected projects","projects.title":"A few of the bikes<br/>we're proud of","projects.sub":"Award-winning builds that put us on the international map. The same engineering goes into every service we do.",
+    "projects.p1.label":"AMD World Champion 2016","projects.p1.desc":"Café racer that won the AMD World Championship.",
+    "projects.p2.label":"Bonneville record 2017","projects.p2.desc":"Speed record holder, class 350APS-VG.",
+    "projects.p3.label":"BMW Motorrad partnership","projects.p3.desc":"The build that started our partnership with BMW Motorrad.",
+    "projects.p4.label":"Custom build","projects.p4.desc":"Heavy-duty cruiser, fully fabricated frame.",
+    "process.eyebrow":"How it works","process.title":"From request to ride —<br/>five steps, no surprises",
+    "process.s1t":"Request","process.s1d":"Send a message via WhatsApp, form or call. Tell us what you ride and what's wrong.",
+    "process.s2t":"Diagnostics","process.s2d":"We inspect, run diagnostics and identify the real cause — not just the symptom.",
+    "process.s3t":"Estimate","process.s3d":"Written estimate, parts list, timeline. You approve before we lift a wrench.",
+    "process.s4t":"Work","process.s4d":"Service or build, with photo updates. Torque specs, clean install, no shortcuts.",
+    "process.s5t":"Ride away","process.s5d":"Test, hand-over, follow-up. We're here for the next service too.",
+    "reviews.eyebrow":"What riders say","reviews.title":"Trusted by riders<br/>and builders worldwide",
+    "reviews.r1.text":"“Brought my BMW R nineT for a stubborn electrical issue three other shops couldn't solve. Iron Custom diagnosed it in under an hour and explained it in plain English. Honest pricing, world-class work.”","reviews.r1.role":"BMW R nineT · UK expat in Cascais",
+    "reviews.r2.text":"“Pre-purchase inspection saved me €4,200. The bike looked perfect — they found a hidden frame issue. Sent me a detailed report with photos the same day. This is how it should work.”","reviews.r2.role":"Ducati Monster buyer · Lisbon",
+    "reviews.r3.text":"“Finally a workshop in Portugal that treats a Harley like a Harley. Custom exhaust, suspension setup and a tuning session — bike feels brand new. They speak Russian, which made everything easier.”","reviews.r3.role":"Harley-Davidson FXDR · Estoril",
+    "faq.eyebrow":"Frequently asked","faq.title":"Answers before<br/>you ask","faq.sub":"Don't see your question? WhatsApp us — we usually reply within an hour during business days.","faq.cta":"Ask on WhatsApp",
+    "faq.q1":"What kind of motorcycles do you work with?","faq.a1":"We work with motorcycles across different segments and service requests — routine maintenance, repairs, upgrades, parts supply and selected custom work. Send your model, year and request via WhatsApp and we'll confirm.",
+    "faq.q2":"Can I contact you only for parts?","faq.a2":"Yes. We supply spare parts, service consumables, accessories and tuning solutions sourced from major international catalogs and brands — even if you don't need our workshop.",
+    "faq.q3":"Do you only do custom motorcycles?","faq.a3":"No. Custom expertise is part of our background, but the workshop is built around real motorcycle service, repair, parts supply, upgrades and selected projects.",
+    "faq.q4":"How should I contact you?","faq.a4":"The fastest option is WhatsApp at +351 917 961 230. Send your motorcycle model, year and request, and we'll respond with the next step.",
+    "faq.q5":"Can you help with upgrades and tuning parts?","faq.a5":"Yes. We supply and install upgrades, accessories and tuning parts sourced from major global catalogs and brands. We approach upgrades as functional, rider-specific improvements based on real use.",
+    "faq.q6":"Do I need an appointment?","faq.a6":"For service work — yes, it lets us prepare parts and a workspace. For quick advice or parts requests, just message us. WhatsApp is the fastest channel.",
+    "faq.q7":"Where exactly is the workshop?","faq.a7":"R. António José da Silva 100 B, 2785-253 São Domingos de Rana, Cascais, Lisbon, Portugal. Open Tuesday to Saturday, 10:00–17:00.",
+    "contact.eyebrow":"Get in touch","contact.title":"Tell us about<br/>your machine","contact.sub":"Service, parts, upgrades or custom — we'll point you to the right next step. Reply during business hours, usually within an hour.","contact.phone":"Phone","contact.address":"Workshop",
+    "footer.tagline":"Premium motorcycle service, parts, upgrades and custom expertise in Cascais. Engineering culture from world-champion projects, applied to every job.",
+    "footer.col1":"Services","footer.col2":"Company","footer.col3":"Workshop",
+    "footer.hours":"Tue–Sat · 10:00–17:00<br/>Closed Sun &amp; Mon","footer.rights":"All rights reserved",
+    "form.title":"Send a request","form.sub":"Service, parts, upgrades or custom — tell us what you need. We'll come back to you within business hours.",
+    "form.name":"Your name","form.phone":"Phone / WhatsApp","form.email":"Email (optional)","form.vehicle":"Motorcycle (brand · model · year)","form.service":"Request type",
+    "form.opt1":"Motorcycle service & repair","form.opt2":"Parts & consumables","form.opt3":"Upgrades & tuning","form.opt4":"Custom & special project","form.opt5":"Other / not sure",
+    "form.message":"Tell us about the job","form.note":"By sending you agree to be contacted about this request. No spam, ever.","form.submit":"Send request","form.successT":"Request received","form.successP":"We'll reply via WhatsApp or email within business hours. Talk soon."
+  },
+  ru: {
+    "nav.services":"Услуги","nav.projects":"Проекты","nav.about":"О нас","nav.reviews":"Отзывы","nav.faq":"FAQ","nav.contact":"Контакты",
+    "cta.bookHeader":"Записаться","cta.bookService":"Записаться на сервис","cta.whatsapp":"Написать в WhatsApp","cta.requestForm":"Отправить заявку",
+    "hero.pill1":"Кашкайш · Лиссабон","hero.pill2":"С 2010 года","hero.pill3":"EN · RU · UK · PT",
+    "hero.title1":"Премиальный","hero.title2":"мотосервис","hero.title3":"в Кашкайше","hero.title4":"",
+    "hero.sub":"Диагностика, обслуживание, ремонт, оригинальные и тюнинг-запчасти, расходники, апгрейды и кастом-проекты — от команды чемпионов мира и рекордсменов Bonneville.",
+    "hero.tag1":"Чемпионы мира AMD","hero.tag2":"Рекорд Bonneville","hero.tag3":"Чемпионы BMW Motorrad 2023",
+    "hero.scroll":"Прокрути · Iron Custom Motors",
+    "services.eyebrow":"Что мы делаем","services.title":"Сервис. Запчасти.<br/>Апгрейды. Кастом.","services.sub":"Iron Custom Motors обслуживает мотоциклы, поставляет оригинальные и тюнинг-запчасти, расходники и аксессуары из ведущих международных каталогов и брендов.",
+    "services.s1.title":"Сервис и ремонт","services.s1.desc":"Диагностика, плановое ТО, замена масла и фильтров, тормоза, подвеска, цепь и звёзды, шиномонтаж, электрика и общий ремонт.","services.cta":"Записаться",
+    "services.s2.title":"Запчасти и расходники","services.s2.desc":"OEM, неоригинальные и тюнинг-запчасти. Расходники и аксессуары из ведущих международных каталогов — даже если вам не нужен наш сервис, можем заказать.","services.cta2":"Запросить запчасти",
+    "services.s3.title":"Апгрейды и тюнинг","services.s3.desc":"Производительность, подвеска, тормоза, выхлоп, свет, защита, тур-обвес и кофры. Функциональные апгрейды под ваш стиль езды.","services.cta3":"Узнать про апгрейды",
+    "services.s4.title":"Кастом и спец-проекты","services.s4.desc":"Кастом-консультации, индивидуальные сборки, инженерные решения и планирование проекта. Та же команда, что строила чемпионов мира — для вашего мотоцикла.","services.cta4":"Обсудить проект",
+    "why.eyebrow":"Почему Iron Custom Motors","why.title":"Чемпионская мастерская,<br/>сервис каждый день","why.sub":"Команда мирового уровня, которая действительно отвечает на звонок, когда мотоцикл не заводится. Этот разрыв мы и закрываем.",
+    "why.r1.t":"Инжиниринг мирового уровня","why.r1.d":"Чемпионы мира AMD. Рекордсмены Bonneville. Чемпионы BMW Motorrad 2023. Эта экспертиза стоит за каждым рутинным сервисом.",
+    "why.r2.t":"Запчасти под одной крышей","why.r2.d":"OEM, неоригинал, тюнинг и расходники из ведущих международных каталогов — один контакт для сервиса и запчастей.",
+    "why.r3.t":"Сервис на вашем языке","why.r3.d":"Английский, русский, украинский, португальский. Чёткая коммуникация, письменные сметы, честные сроки.",
+    "why.r4.t":"Прозрачный процесс","why.r4.d":"Сначала диагностика, потом смета. Фото и обновления по ходу работ. Никаких сюрпризов в счёте.",
+    "why.r5.t":"Беремся за сложное","why.r5.d":"Запутанная электрика, изготовление кастом-деталей, проблемы фитмента, утерянные спецификации — то, от чего отказываются другие.",
+    "why.r6.t":"Уважение к технике","why.r6.d":"Чистая мастерская. Моменты затяжки. Оригинальные или премиум-запчасти. Так, как обслуживали бы свой мотоцикл — потому что мы это и делаем.",
+    "why.badge":"лет строим, гоняем, чиним",
+    "story.eyebrow":"Наша история","story.title":"От мастерской в Харькове<br/>до подиумов мировых<br/>чемпионатов",
+    "story.p1":"Iron Custom Motors основан в 2010 году с одной целью — строить мотоциклы, которые смогут выйти на мировую сцену. Через шесть лет мы это сделали: чемпионы мира AMD в классе café racer с проектом Beckman.",
+    "story.p2":"В 2017 команда установила мировой рекорд скорости на солончаке Bonneville на Inspirium 350APS-VG. В 2023 — чемпионы BMW Motorrad Customizing. Проекты на ведущих мотовыставках мира.",
+    "story.p3":"В 2025 мы привезли мастерскую в Кашкайш, Большой Лиссабон. Та же команда, та же инженерная культура — теперь в шаговой доступности для каждого райдера на побережье Португалии.",
+    "story.quote":"«Те же руки, что строили чемпионов мира, теперь поддерживают ваш мотоцикл в форме каждые выходные.»",
+    "story.stat1l":"Основание","story.stat1s":"15 лет непрерывной работы","story.stat2l":"Чемпионств мира","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Реализованных проектов","story.stat3s":"Сервис · кастом · инжиниринг","story.stat4l":"Брендов в работе","story.stat4s":"От BMW до индивидуальных сборок",
+    "projects.eyebrow":"Избранные проекты","projects.title":"Несколько мотоциклов,<br/>которыми мы гордимся","projects.sub":"Победные сборки, выведшие нас на международную карту. Тот же инжиниринг идёт в каждый сервис.",
+    "projects.p1.label":"Чемпион мира AMD 2016","projects.p1.desc":"Café racer, выигравший чемпионат мира AMD.",
+    "projects.p2.label":"Рекорд Bonneville 2017","projects.p2.desc":"Рекордсмен скорости, класс 350APS-VG.",
+    "projects.p3.label":"Партнёрство с BMW Motorrad","projects.p3.desc":"Сборка, с которой началось партнёрство с BMW Motorrad.",
+    "projects.p4.label":"Кастом-сборка","projects.p4.desc":"Тяжёлый круизер, полностью изготовленная рама.",
+    "process.eyebrow":"Как мы работаем","process.title":"От заявки до выезда —<br/>пять шагов, без сюрпризов",
+    "process.s1t":"Заявка","process.s1d":"WhatsApp, форма или звонок. Расскажите, что у вас за мотоцикл и что не так.",
+    "process.s2t":"Диагностика","process.s2d":"Осматриваем, проводим диагностику и ищем причину — не симптом.",
+    "process.s3t":"Смета","process.s3d":"Письменная смета, список запчастей, сроки. Согласовываем до начала работ.",
+    "process.s4t":"Работа","process.s4d":"Сервис или сборка, с фото-апдейтами. Моменты затяжки, чистая установка, без срезаний углов.",
+    "process.s5t":"Выдача","process.s5d":"Тест, передача, follow-up. Мы рядом и для следующего сервиса.",
+    "reviews.eyebrow":"Что говорят райдеры","reviews.title":"Доверяют райдеры и<br/>билдеры по всему миру",
+    "reviews.r1.text":"«Привёз свой BMW R nineT с упрямой электрикой, которую три других сервиса не смогли решить. Iron Custom разобрался меньше чем за час и объяснил всё простым языком. Честные цены, мировой уровень.»","reviews.r1.role":"BMW R nineT · экспат из UK в Кашкайше",
+    "reviews.r2.text":"«Предпокупочная инспекция спасла мне 4 200 €. Мотоцикл выглядел идеально, но ребята нашли скрытую проблему с рамой. Прислали детальный отчёт с фото в тот же день. Вот как должно работать.»","reviews.r2.role":"Покупатель Ducati Monster · Лиссабон",
+    "reviews.r3.text":"«Наконец сервис в Португалии, который относится к Harley как к Harley. Кастомный выхлоп, настройка подвески и тюнинг — мотоцикл как новый. Говорят по-русски, всё намного проще.»","reviews.r3.role":"Harley-Davidson FXDR · Эшторил",
+    "faq.eyebrow":"Частые вопросы","faq.title":"Ответы до того,<br/>как вы спросите","faq.sub":"Нет вашего вопроса? Напишите в WhatsApp — обычно отвечаем в течение часа в рабочее время.","faq.cta":"Спросить в WhatsApp",
+    "faq.q1":"С какими мотоциклами вы работаете?","faq.a1":"Работаем с мотоциклами разных сегментов и под разные задачи — плановое ТО, ремонт, апгрейды, поставка запчастей и кастом-проекты. Пришлите модель, год и запрос в WhatsApp — подтвердим.",
+    "faq.q2":"Можно обратиться только за запчастями?","faq.a2":"Да. Мы поставляем оригинальные и неоригинальные запчасти, расходники, аксессуары и тюнинг-компоненты из ведущих международных каталогов — даже если сервис не нужен.",
+    "faq.q3":"Вы делаете только кастом?","faq.a3":"Нет. Кастом-экспертиза — наш бэкграунд, но мастерская построена вокруг реального сервиса, ремонта, поставки запчастей, апгрейдов и отдельных проектов.",
+    "faq.q4":"Как с вами связаться?","faq.a4":"Быстрее всего в WhatsApp на +351 917 961 230. Пришлите модель, год и описание запроса — ответим со следующим шагом.",
+    "faq.q5":"Поможете с апгрейдами и тюнинг-запчастями?","faq.a5":"Да. Поставляем и устанавливаем апгрейды, аксессуары и тюнинг-запчасти из ведущих мировых каталогов. Подходим к апгрейдам как к функциональным улучшениям под конкретного райдера.",
+    "faq.q6":"Нужна ли запись?","faq.a6":"На сервисные работы — да, чтобы подготовить запчасти и пост. Для быстрой консультации или запроса запчастей — просто напишите. WhatsApp — самый быстрый канал.",
+    "faq.q7":"Где находится мастерская?","faq.a7":"R. António José da Silva 100 B, 2785-253 São Domingos de Rana, Cascais, Lisbon, Portugal. Вторник–суббота, 10:00–17:00.",
+    "contact.eyebrow":"Свяжитесь с нами","contact.title":"Расскажите о<br/>вашем мотоцикле","contact.sub":"Сервис, запчасти, апгрейды или кастом — подскажем правильный следующий шаг. Отвечаем в рабочее время, обычно в течение часа.","contact.phone":"Телефон","contact.address":"Мастерская",
+    "footer.tagline":"Премиальный мотосервис, запчасти, апгрейды и кастом-экспертиза в Кашкайше. Инженерная культура из чемпионских проектов — в каждой работе.",
+    "footer.col1":"Услуги","footer.col2":"Компания","footer.col3":"Мастерская",
+    "footer.hours":"Вт–Сб · 10:00–17:00<br/>Вс и Пн — выходные","footer.rights":"Все права защищены",
+    "form.title":"Отправить заявку","form.sub":"Сервис, запчасти, апгрейды или кастом — расскажите, что нужно. Ответим в рабочее время.",
+    "form.name":"Ваше имя","form.phone":"Телефон / WhatsApp","form.email":"Email (необязательно)","form.vehicle":"Мотоцикл (бренд · модель · год)","form.service":"Тип запроса",
+    "form.opt1":"Сервис и ремонт","form.opt2":"Запчасти и расходники","form.opt3":"Апгрейды и тюнинг","form.opt4":"Кастом и спец-проект","form.opt5":"Другое / не уверен",
+    "form.message":"Расскажите о работе","form.note":"Отправляя, вы соглашаетесь, что мы свяжемся с вами по данному запросу. Без спама.","form.submit":"Отправить заявку","form.successT":"Заявка получена","form.successP":"Ответим в WhatsApp или на email в рабочее время. До связи."
+  },
+  uk: {
+    "nav.services":"Послуги","nav.projects":"Проекти","nav.about":"Про нас","nav.reviews":"Відгуки","nav.faq":"FAQ","nav.contact":"Контакти",
+    "cta.bookHeader":"Записатися","cta.bookService":"Записатися на сервіс","cta.whatsapp":"Написати в WhatsApp","cta.requestForm":"Надіслати заявку",
+    "hero.pill1":"Кашкайш · Лісабон","hero.pill2":"З 2010 року","hero.pill3":"EN · RU · UK · PT",
+    "hero.title1":"Преміальний","hero.title2":"мотосервіс","hero.title3":"у Кашкайші","hero.title4":"",
+    "hero.sub":"Діагностика, обслуговування, ремонт, оригінальні та тюнінг-запчастини, витратні матеріали, апгрейди й кастом-проекти — від команди чемпіонів світу і рекордсменів Bonneville.",
+    "hero.tag1":"Чемпіони світу AMD","hero.tag2":"Рекорд Bonneville","hero.tag3":"Чемпіони BMW Motorrad 2023",
+    "hero.scroll":"Прогорни · Iron Custom Motors",
+    "services.eyebrow":"Що ми робимо","services.title":"Сервіс. Запчастини.<br/>Апгрейди. Кастом.","services.sub":"Iron Custom Motors обслуговує мотоцикли, постачає оригінальні і тюнінг-запчастини, витратні матеріали та аксесуари з провідних міжнародних каталогів і брендів.",
+    "services.s1.title":"Сервіс і ремонт","services.s1.desc":"Діагностика, планове ТО, заміна оливи та фільтрів, гальма, підвіска, ланцюг і зірки, шиномонтаж, електрика і загальний ремонт.","services.cta":"Записатися",
+    "services.s2.title":"Запчастини та витратники","services.s2.desc":"OEM, неоригінальні і тюнінг-запчастини. Витратні матеріали та аксесуари з провідних міжнародних каталогів — навіть якщо вам не потрібен наш сервіс.","services.cta2":"Замовити запчастини",
+    "services.s3.title":"Апгрейди та тюнінг","services.s3.desc":"Продуктивність, підвіска, гальма, вихлоп, світло, захист, тур-обвіс і кофри. Функціональні апгрейди під ваш стиль їзди.","services.cta3":"Дізнатися про апгрейди",
+    "services.s4.title":"Кастом і спецпроекти","services.s4.desc":"Кастом-консультації, індивідуальні збірки, інженерні рішення та планування проекту. Та сама команда, що будувала чемпіонів світу — для вашого мотоцикла.","services.cta4":"Обговорити проект",
+    "why.eyebrow":"Чому Iron Custom Motors","why.title":"Чемпіонська майстерня,<br/>сервіс щодня","why.sub":"Команда світового рівня, яка справді бере слухавку, коли мотоцикл не заводиться. Цей розрив ми й закриваємо.",
+    "why.r1.t":"Інжиніринг світового рівня","why.r1.d":"Чемпіони світу AMD. Рекордсмени Bonneville. Чемпіони BMW Motorrad 2023. Ця експертиза стоїть за кожним рутинним сервісом.",
+    "why.r2.t":"Запчастини під одним дахом","why.r2.d":"OEM, неоригінал, тюнінг і витратники з провідних міжнародних каталогів — один контакт для сервісу і запчастин.",
+    "why.r3.t":"Сервіс вашою мовою","why.r3.d":"Англійська, російська, українська, португальська. Чітка комунікація, письмові кошториси, чесні строки.",
+    "why.r4.t":"Прозорий процес","why.r4.d":"Спочатку діагностика, потім кошторис. Фото і апдейти під час робіт. Жодних сюрпризів у рахунку.",
+    "why.r5.t":"Беремося за складне","why.r5.d":"Заплутана електрика, виготовлення кастом-деталей, проблеми фітменту, втрачені специфікації — те, від чого відмовляються інші.",
+    "why.r6.t":"Повага до техніки","why.r6.d":"Чиста майстерня. Моменти затяжки. Оригінальні або преміум-запчастини. Так, як обслуговували б свій мотоцикл — бо ми це й робимо.",
+    "why.badge":"років будуємо, гонимо, лагодимо",
+    "story.eyebrow":"Наша історія","story.title":"Від майстерні в Харкові<br/>до подіумів світових<br/>чемпіонатів",
+    "story.p1":"Iron Custom Motors засновано у 2010 році з однією метою — будувати мотоцикли, які зможуть вийти на світову сцену. Через шість років ми це зробили: чемпіони світу AMD у класі café racer з проектом Beckman.",
+    "story.p2":"У 2017 команда встановила світовий рекорд швидкості на солончаку Bonneville на Inspirium 350APS-VG. У 2023 — чемпіони BMW Motorrad Customizing. Проекти на провідних мотовиставках світу.",
+    "story.p3":"У 2025 ми привезли майстерню до Кашкайша, Великий Лісабон. Та сама команда, та сама інженерна культура — тепер у пішій доступності для кожного райдера на узбережжі Португалії.",
+    "story.quote":"«Ті самі руки, що будували чемпіонів світу, тепер тримають у формі ваш мотоцикл щовихідних.»",
+    "story.stat1l":"Заснування","story.stat1s":"15 років безперервної роботи","story.stat2l":"Чемпіонств світу","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Реалізованих проектів","story.stat3s":"Сервіс · кастом · інжиніринг","story.stat4l":"Брендів у роботі","story.stat4s":"Від BMW до індивідуальних збірок",
+    "projects.eyebrow":"Обрані проекти","projects.title":"Кілька мотоциклів,<br/>якими ми пишаємось","projects.sub":"Переможні збірки, що вивели нас на міжнародну мапу. Той самий інжиніринг іде в кожен сервіс.",
+    "projects.p1.label":"Чемпіон світу AMD 2016","projects.p1.desc":"Café racer, що виграв чемпіонат світу AMD.",
+    "projects.p2.label":"Рекорд Bonneville 2017","projects.p2.desc":"Рекордсмен швидкості, клас 350APS-VG.",
+    "projects.p3.label":"Партнерство з BMW Motorrad","projects.p3.desc":"Збірка, з якої почалося партнерство з BMW Motorrad.",
+    "projects.p4.label":"Кастом-збірка","projects.p4.desc":"Важкий круїзер, повністю виготовлена рама.",
+    "process.eyebrow":"Як ми працюємо","process.title":"Від заявки до виїзду —<br/>п'ять кроків, без сюрпризів",
+    "process.s1t":"Заявка","process.s1d":"WhatsApp, форма або дзвінок. Розкажіть, що у вас за мотоцикл і що не так.",
+    "process.s2t":"Діагностика","process.s2d":"Оглядаємо, проводимо діагностику й шукаємо причину — не симптом.",
+    "process.s3t":"Кошторис","process.s3d":"Письмовий кошторис, перелік запчастин, строки. Узгоджуємо до початку робіт.",
+    "process.s4t":"Робота","process.s4d":"Сервіс або збірка, з фото-апдейтами. Моменти затяжки, чисте встановлення, без зрізань кутів.",
+    "process.s5t":"Видача","process.s5d":"Тест, передача, follow-up. Ми поруч і для наступного сервісу.",
+    "reviews.eyebrow":"Що кажуть райдери","reviews.title":"Довіряють райдери та<br/>білдери по всьому світу",
+    "reviews.r1.text":"«Привіз свій BMW R nineT з упертою електрикою, яку три інші сервіси не змогли вирішити. Iron Custom розібрався менш ніж за годину і пояснив усе простою мовою. Чесні ціни, світовий рівень.»","reviews.r1.role":"BMW R nineT · експат з UK у Кашкайші",
+    "reviews.r2.text":"«Передкупівельна інспекція врятувала мені 4 200 €. Мотоцикл виглядав ідеально, але хлопці знайшли приховану проблему з рамою. Надіслали детальний звіт із фото того ж дня. Ось як має працювати.»","reviews.r2.role":"Покупець Ducati Monster · Лісабон",
+    "reviews.r3.text":"«Нарешті сервіс у Португалії, який ставиться до Harley як до Harley. Кастомний вихлоп, налаштування підвіски і тюнінг — мотоцикл як новий. Говорять російською, все простіше.»","reviews.r3.role":"Harley-Davidson FXDR · Ешторил",
+    "faq.eyebrow":"Часті питання","faq.title":"Відповіді до того,<br/>як ви запитаєте","faq.sub":"Немає вашого питання? Напишіть у WhatsApp — зазвичай відповідаємо протягом години в робочий час.","faq.cta":"Запитати в WhatsApp",
+    "faq.q1":"З якими мотоциклами ви працюєте?","faq.a1":"Працюємо з мотоциклами різних сегментів і під різні задачі — планове ТО, ремонт, апгрейди, постачання запчастин і кастом-проекти. Надішліть модель, рік і запит у WhatsApp — підтвердимо.",
+    "faq.q2":"Чи можна звернутися лише за запчастинами?","faq.a2":"Так. Постачаємо оригінальні та неоригінальні запчастини, витратні матеріали, аксесуари і тюнінг-компоненти з провідних міжнародних каталогів — навіть якщо сервіс не потрібен.",
+    "faq.q3":"Ви робите тільки кастом?","faq.a3":"Ні. Кастом-експертиза — наш бекграунд, але майстерня побудована навколо реального сервісу, ремонту, постачання запчастин, апгрейдів і окремих проектів.",
+    "faq.q4":"Як з вами зв'язатися?","faq.a4":"Найшвидше в WhatsApp на +351 917 961 230. Надішліть модель, рік і опис запиту — відповімо з наступним кроком.",
+    "faq.q5":"Допоможете з апгрейдами і тюнінг-запчастинами?","faq.a5":"Так. Постачаємо і встановлюємо апгрейди, аксесуари та тюнінг-запчастини з провідних світових каталогів. Підходимо до апгрейдів як до функціональних покращень під конкретного райдера.",
+    "faq.q6":"Чи потрібен запис?","faq.a6":"На сервісні роботи — так, щоб підготувати запчастини і пост. Для швидкої консультації або запиту запчастин — просто напишіть. WhatsApp — найшвидший канал.",
+    "faq.q7":"Де знаходиться майстерня?","faq.a7":"R. António José da Silva 100 B, 2785-253 São Domingos de Rana, Cascais, Lisbon, Portugal. Вівторок–субота, 10:00–17:00.",
+    "contact.eyebrow":"Зв'яжіться з нами","contact.title":"Розкажіть про<br/>ваш мотоцикл","contact.sub":"Сервіс, запчастини, апгрейди або кастом — підкажемо правильний наступний крок. Відповідаємо в робочий час, зазвичай протягом години.","contact.phone":"Телефон","contact.address":"Майстерня",
+    "footer.tagline":"Преміальний мотосервіс, запчастини, апгрейди й кастом-експертиза у Кашкайші. Інженерна культура з чемпіонських проектів — у кожній роботі.",
+    "footer.col1":"Послуги","footer.col2":"Компанія","footer.col3":"Майстерня",
+    "footer.hours":"Вт–Сб · 10:00–17:00<br/>Нд та Пн — вихідні","footer.rights":"Усі права захищені",
+    "form.title":"Надіслати заявку","form.sub":"Сервіс, запчастини, апгрейди або кастом — розкажіть, що потрібно. Відповімо в робочий час.",
+    "form.name":"Ваше ім'я","form.phone":"Телефон / WhatsApp","form.email":"Email (необов'язково)","form.vehicle":"Мотоцикл (бренд · модель · рік)","form.service":"Тип запиту",
+    "form.opt1":"Сервіс і ремонт","form.opt2":"Запчастини та витратники","form.opt3":"Апгрейди і тюнінг","form.opt4":"Кастом і спецпроект","form.opt5":"Інше / не впевнений",
+    "form.message":"Розкажіть про роботу","form.note":"Надсилаючи, ви погоджуєтесь, що ми зв'яжемося з вами щодо цього запиту. Жодного спаму.","form.submit":"Надіслати заявку","form.successT":"Заявку отримано","form.successP":"Відповімо у WhatsApp або на email у робочий час. До зв'язку."
+  },
+  pt: {
+    "nav.services":"Serviços","nav.projects":"Projetos","nav.about":"Sobre","nav.reviews":"Avaliações","nav.faq":"FAQ","nav.contact":"Contacto",
+    "cta.bookHeader":"Marcar serviço","cta.bookService":"Marcar serviço","cta.whatsapp":"WhatsApp","cta.requestForm":"Enviar pedido",
+    "hero.pill1":"Cascais · Grande Lisboa","hero.pill2":"Desde 2010","hero.pill3":"EN · RU · UK · PT",
+    "hero.title1":"Serviço","hero.title2":"premium de moto","hero.title3":"em Cascais","hero.title4":"",
+    "hero.sub":"Diagnóstico, manutenção, reparação, peças e consumíveis, soluções de tuning e projetos custom — pela equipa por trás de construções campeãs do mundo e de um recorde em Bonneville.",
+    "hero.tag1":"Campeões do mundo AMD","hero.tag2":"Recorde Bonneville","hero.tag3":"BMW Motorrad Champ. 2023",
+    "hero.scroll":"Scroll · Iron Custom Motors",
+    "services.eyebrow":"O que fazemos","services.title":"Serviço. Peças.<br/>Upgrades. Custom.","services.sub":"Iron Custom Motors faz serviço a motos, fornece peças e consumíveis, e oferece soluções de tuning e upgrade dos principais catálogos e marcas internacionais.",
+    "services.s1.title":"Serviço e reparação","services.s1.desc":"Diagnóstico, manutenção programada, óleo e filtros, travões, suspensão, corrente e cremalheira, pneus, eletricidade e reparação geral.","services.cta":"Marcar serviço",
+    "services.s2.title":"Peças e consumíveis","services.s2.desc":"Peças OEM, aftermarket e tuning. Consumíveis e acessórios obtidos através dos principais catálogos internacionais — mesmo sem precisar do nosso workshop.","services.cta2":"Pedir peças",
+    "services.s3.title":"Upgrades e tuning","services.s3.desc":"Performance, suspensão, travões, escape, iluminação, proteção, touring e bagagem. Upgrades funcionais escolhidos para o seu estilo de condução.","services.cta3":"Sobre upgrades",
+    "services.s4.title":"Custom e projetos especiais","services.s4.desc":"Consultoria custom, builds bespoke, soluções de engenharia e planeamento de projetos. A equipa que entregou motos campeãs do mundo é a que constrói a sua.","services.cta4":"Discutir projeto",
+    "why.eyebrow":"Porquê Iron Custom Motors","why.title":"Workshop de nível campeonato,<br/>serviço de todos os dias","why.sub":"Uma equipa custom de classe mundial que atende o telefone quando a sua moto não pega. É essa lacuna que fechamos.",
+    "why.r1.t":"Engenharia de classe mundial","why.r1.d":"Campeões do Mundo AMD. Detentores de recorde em Bonneville. Campeões BMW Motorrad Customizing 2023. A expertise por trás do seu serviço de rotina.",
+    "why.r2.t":"Peças sourcing in-house","why.r2.d":"OEM, aftermarket, tuning e consumíveis dos principais catálogos internacionais — um único ponto de contacto para serviço e peças.",
+    "why.r3.t":"Serviço na sua língua","why.r3.d":"Inglês, russo, ucraniano e português. Comunicação clara, orçamentos por escrito, prazos honestos.",
+    "why.r4.t":"Processo transparente","why.r4.d":"Diagnóstico primeiro, depois orçamento. Fotos e atualizações durante o trabalho. Sem surpresas na fatura.",
+    "why.r5.t":"Trabalhos complexos bem-vindos","why.r5.d":"Pesadelos elétricos, fabricação de peças custom, problemas de fitment, especificações perdidas — o trabalho que outros recusam.",
+    "why.r6.t":"Tratar a máquina bem","why.r6.d":"Espaço limpo. Binários certos. Peças originais ou premium. Como faríamos à nossa própria moto — porque o fazemos.",
+    "why.badge":"anos a construir, correr, reparar",
+    "story.eyebrow":"A nossa história","story.title":"De um workshop em Kharkiv<br/>aos pódios dos campeonatos<br/>mundiais",
+    "story.p1":"Iron Custom Motors foi fundada em 2010 com um único objetivo — construir motos capazes de competir no palco mundial. Seis anos depois conseguimos: campeões do mundo AMD, classe café racer, com o projeto Beckman.",
+    "story.p2":"Em 2017 a equipa estabeleceu um recorde mundial de velocidade nas Bonneville Salt Flats com a Inspirium 350APS-VG. Em 2023 — campeões BMW Motorrad Customizing. Projetos apresentados nos maiores eventos do mundo.",
+    "story.p3":"Em 2025 trouxemos o workshop para Cascais, Grande Lisboa. A mesma equipa, a mesma cultura de engenharia, agora ao alcance de qualquer rider na costa portuguesa.",
+    "story.quote":"«As mesmas mãos que construíram motos campeãs do mundo agora mantêm a sua a rolar todos os fins de semana.»",
+    "story.stat1l":"Fundada","story.stat1s":"15 anos de craft contínuo","story.stat2l":"Campeonatos do mundo","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Projetos entregues","story.stat3s":"Serviço · custom · engenharia","story.stat4l":"Marcas servidas","story.stat4s":"De BMW a builds únicos",
+    "projects.eyebrow":"Projetos selecionados","projects.title":"Algumas das motos<br/>de que nos orgulhamos","projects.sub":"Builds premiadas que nos colocaram no mapa internacional. A mesma engenharia entra em cada serviço.",
+    "projects.p1.label":"Campeão Mundial AMD 2016","projects.p1.desc":"Café racer que venceu o AMD World Championship.",
+    "projects.p2.label":"Recorde Bonneville 2017","projects.p2.desc":"Detentor do recorde de velocidade, classe 350APS-VG.",
+    "projects.p3.label":"Parceria BMW Motorrad","projects.p3.desc":"O build que iniciou a nossa parceria com a BMW Motorrad.",
+    "projects.p4.label":"Build custom","projects.p4.desc":"Cruiser pesado, chassi totalmente fabricado.",
+    "process.eyebrow":"Como funciona","process.title":"Do pedido à estrada —<br/>cinco passos, sem surpresas",
+    "process.s1t":"Pedido","process.s1d":"WhatsApp, formulário ou chamada. Diga-nos o que conduz e o que se passa.",
+    "process.s2t":"Diagnóstico","process.s2d":"Inspecionamos, fazemos diagnóstico e identificamos a causa real — não apenas o sintoma.",
+    "process.s3t":"Orçamento","process.s3d":"Orçamento por escrito, lista de peças, prazos. Aprova antes de levantarmos uma chave.",
+    "process.s4t":"Trabalho","process.s4d":"Serviço ou build, com atualizações em foto. Binários certos, instalação limpa, sem atalhos.",
+    "process.s5t":"Volta à estrada","process.s5d":"Teste, entrega, follow-up. Estamos cá para o próximo serviço também.",
+    "reviews.eyebrow":"O que dizem os riders","reviews.title":"Confiança de riders<br/>e builders no mundo todo",
+    "reviews.r1.text":"«Levei a minha BMW R nineT com um problema elétrico que três outros workshops não conseguiram resolver. Iron Custom diagnosticou em menos de uma hora e explicou em português claro. Preço honesto, qualidade mundial.»","reviews.r1.role":"BMW R nineT · expat UK em Cascais",
+    "reviews.r2.text":"«A inspeção pré-compra poupou-me 4 200 €. A moto parecia perfeita — encontraram um problema oculto no chassi. Enviaram relatório detalhado com fotos no mesmo dia. É assim que deve ser.»","reviews.r2.role":"Comprador Ducati Monster · Lisboa",
+    "reviews.r3.text":"«Finalmente um workshop em Portugal que trata uma Harley como uma Harley. Escape custom, suspensão e sessão de tuning — moto como nova. Falam russo, o que tornou tudo mais fácil.»","reviews.r3.role":"Harley-Davidson FXDR · Estoril",
+    "faq.eyebrow":"Perguntas frequentes","faq.title":"Respostas antes<br/>de perguntar","faq.sub":"Não vê a sua pergunta? Mande-nos WhatsApp — costumamos responder em uma hora durante o horário de trabalho.","faq.cta":"Perguntar no WhatsApp",
+    "faq.q1":"Que tipo de motos trabalham?","faq.a1":"Trabalhamos com motos em diferentes segmentos e pedidos — manutenção de rotina, reparações, upgrades, fornecimento de peças e custom selecionado. Envie modelo, ano e pedido via WhatsApp e confirmamos.",
+    "faq.q2":"Posso contactar só para peças?","faq.a2":"Sim. Fornecemos peças, consumíveis, acessórios e soluções de tuning através dos principais catálogos internacionais — mesmo sem precisar do nosso workshop.",
+    "faq.q3":"Só fazem custom?","faq.a3":"Não. A expertise custom faz parte do nosso background, mas o workshop está construído em torno de serviço real, reparação, fornecimento de peças, upgrades e projetos selecionados.",
+    "faq.q4":"Como vos contacto?","faq.a4":"Mais rápido por WhatsApp em +351 917 961 230. Envie modelo, ano e pedido — respondemos com o próximo passo.",
+    "faq.q5":"Ajudam com upgrades e peças de tuning?","faq.a5":"Sim. Fornecemos e instalamos upgrades, acessórios e peças de tuning dos principais catálogos. Tratamos upgrades como melhorias funcionais específicas do rider.",
+    "faq.q6":"Preciso de marcação?","faq.a6":"Para serviço — sim, permite preparar peças e o posto. Para conselho rápido ou pedidos de peças — basta enviar mensagem. WhatsApp é o canal mais rápido.",
+    "faq.q7":"Onde fica o workshop?","faq.a7":"R. António José da Silva 100 B, 2785-253 São Domingos de Rana, Cascais, Lisboa, Portugal. Aberto terça a sábado, 10:00–17:00.",
+    "contact.eyebrow":"Em contacto","contact.title":"Conte-nos sobre<br/>a sua máquina","contact.sub":"Serviço, peças, upgrades ou custom — indicamos o próximo passo certo. Respondemos em horário de trabalho, normalmente em uma hora.","contact.phone":"Telefone","contact.address":"Workshop",
+    "footer.tagline":"Serviço premium de moto, peças, upgrades e expertise custom em Cascais. Cultura de engenharia de projetos campeões do mundo, aplicada a cada trabalho.",
+    "footer.col1":"Serviços","footer.col2":"Empresa","footer.col3":"Workshop",
+    "footer.hours":"Ter–Sáb · 10:00–17:00<br/>Encerrado dom &amp; seg","footer.rights":"Todos os direitos reservados",
+    "form.title":"Enviar pedido","form.sub":"Serviço, peças, upgrades ou custom — diga-nos o que precisa. Voltamos em horário de trabalho.",
+    "form.name":"O seu nome","form.phone":"Telefone / WhatsApp","form.email":"Email (opcional)","form.vehicle":"Moto (marca · modelo · ano)","form.service":"Tipo de pedido",
+    "form.opt1":"Serviço e reparação","form.opt2":"Peças e consumíveis","form.opt3":"Upgrades e tuning","form.opt4":"Custom e projeto especial","form.opt5":"Outro / não tenho a certeza",
+    "form.message":"Conte-nos sobre o trabalho","form.note":"Ao enviar concorda em ser contactado sobre este pedido. Sem spam.","form.submit":"Enviar pedido","form.successT":"Pedido recebido","form.successP":"Respondemos via WhatsApp ou email em horário de trabalho. Até já."
+  }
+};
+
+/* ---------- Language switching ---------- */
+function applyLang(lang){
+  const dict = I18N[lang]||I18N.en;
+  document.documentElement.lang = lang === 'uk' ? 'uk' : lang;
+  document.documentElement.dataset.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k] !== undefined){ el.innerHTML = dict[k]; }
+  });
+  document.getElementById('langCurrent').textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-menu button, .mobile-langs button').forEach(b=>{
+    b.setAttribute('aria-current', b.dataset.lang===lang ? 'true':'false');
+  });
+  try{ localStorage.setItem('icm-lang', lang);}catch(e){}
+}
+
+/* ---------- DOM ready ---------- */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const stored = (()=>{ try{return localStorage.getItem('icm-lang');}catch(e){return null;}})();
+  const initial = stored || (navigator.language||'en').slice(0,2).toLowerCase();
+  const supported = ['en','ru','uk','pt'];
+  applyLang(supported.includes(initial)?initial:'en');
+
+  /* Loader */
+  setTimeout(()=>document.getElementById('loader').classList.add('hidden'), 1700);
+
+  /* Year */
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* Header scroll state */
+  const header = document.getElementById('header');
+  const onScroll=()=>{ header.classList.toggle('is-scrolled', window.scrollY>40); };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* Hero parallax */
+  const heroBg = document.getElementById('heroBg');
+  const heroTitle = document.getElementById('heroTitle');
+  if(heroBg){
+    let ticking=false;
+    window.addEventListener('scroll', ()=>{
+      if(ticking) return;
+      requestAnimationFrame(()=>{
+        const y = Math.min(window.scrollY*0.35, 200);
+        heroBg.style.transform = `translate3d(0, ${y}px, 0) scale(1.05)`;
+        if(heroTitle) heroTitle.style.transform = `translate3d(0, ${window.scrollY*0.12}px, 0)`;
+        ticking=false;
+      });
+      ticking=true;
+    }, {passive:true});
+  }
+
+  /* Hero title reveal */
+  setTimeout(()=>{
+    document.querySelectorAll('#heroTitle .inner').forEach((el,i)=>{
+      el.style.transition = `transform .9s cubic-bezier(.2,.7,.2,1) ${i*0.08}s`;
+      el.style.transform = 'translateY(0)';
+    });
+  }, 1900);
+
+  /* Lang menu */
+  const langBtn = document.getElementById('langBtn');
+  const langMenu = document.getElementById('langMenu');
+  langBtn.addEventListener('click', e=>{ e.stopPropagation(); langMenu.classList.toggle('open'); langBtn.setAttribute('aria-expanded', langMenu.classList.contains('open')); });
+  document.addEventListener('click', ()=>{ langMenu.classList.remove('open'); langBtn.setAttribute('aria-expanded','false'); });
+  langMenu.addEventListener('click', e=>{
+    const b = e.target.closest('button[data-lang]');
+    if(!b) return;
+    applyLang(b.dataset.lang);
+    langMenu.classList.remove('open');
+  });
+  document.querySelectorAll('.mobile-langs button').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      applyLang(b.dataset.lang);
+      document.getElementById('mobileDrawer').classList.remove('open');
+      document.getElementById('menuToggle').classList.remove('open');
+    });
+  });
+
+  /* Mobile menu */
+  const mt = document.getElementById('menuToggle');
+  const drawer = document.getElementById('mobileDrawer');
+  mt.addEventListener('click', ()=>{
+    mt.classList.toggle('open');
+    drawer.classList.toggle('open');
+    document.body.style.overflow = drawer.classList.contains('open')?'hidden':'';
+  });
+  drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
+    drawer.classList.remove('open');
+    mt.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+
+  /* Reveal observer */
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  }, {threshold:.12, rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el=>io.observe(el));
+
+  /* Counters */
+  const cIo = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.counter,10);
+      const suffix = el.dataset.suffix||'';
+      const dur = 1600;
+      const start = performance.now();
+      const from = 0;
+      const tick = (now)=>{
+        const t = Math.min((now-start)/dur, 1);
+        const eased = 1-Math.pow(1-t,3);
+        const v = Math.round(from + (target-from)*eased);
+        el.textContent = v + suffix;
+        if(t<1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      cIo.unobserve(el);
+    });
+  }, {threshold:.4});
+  document.querySelectorAll('[data-counter]').forEach(el=>cIo.observe(el));
+
+  /* Marquee duplicate for seamless */
+  const m = document.getElementById('marquee');
+  if(m){ m.innerHTML += m.innerHTML; }
+
+  /* Service hover spotlight */
+  document.querySelectorAll('.service').forEach(s=>{
+    s.addEventListener('mousemove', e=>{
+      const r = s.getBoundingClientRect();
+      s.style.setProperty('--mx', ((e.clientX-r.left)/r.width*100)+'%');
+      s.style.setProperty('--my', ((e.clientY-r.top)/r.height*100)+'%');
+    });
+  });
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-item .faq-q').forEach(q=>{
+    q.addEventListener('click', ()=>{
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  /* Modal */
+  const modal = document.getElementById('modal');
+  const openModal = ()=>{ modal.classList.add('open'); document.body.style.overflow='hidden'; };
+  const closeModal = ()=>{ modal.classList.remove('open'); document.body.style.overflow=''; document.getElementById('formSuccess').classList.remove('show'); document.getElementById('leadForm').style.display=''; };
+  document.getElementById('openForm').addEventListener('click', openModal);
+  document.querySelectorAll('[data-cta="book"]').forEach(b=>{
+    b.addEventListener('click', e=>{
+      if(b.tagName==='A' && b.getAttribute('href') !== '#contact') return;
+      // for service cards opening modal
+    });
+  });
+  document.getElementById('closeModal').addEventListener('click', closeModal);
+  modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+
+  /* Form submit (demo) */
+  document.getElementById('leadForm').addEventListener('submit', e=>{
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const lines = [];
+    fd.forEach((v,k)=>lines.push(`${k}: ${v}`));
+    const msg = encodeURIComponent('Iron Custom Motors — new request:\n\n'+lines.join('\n'));
+    // Open WhatsApp with prefilled message
+    window.open(`https://wa.me/351917961230?text=${msg}`, '_blank');
+    e.target.style.display='none';
+    document.getElementById('formSuccess').classList.add('show');
+  });
+
+  /* Custom cursor */
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    const halo = document.querySelector('.cursor-halo');
+    let tx=0,ty=0,cx=0,cy=0;
+    document.addEventListener('mousemove', e=>{ tx=e.clientX; ty=e.clientY; });
+    const tick=()=>{ cx+=(tx-cx)*0.18; cy+=(ty-cy)*0.18; halo.style.transform=`translate(${cx}px, ${cy}px) translate(-50%,-50%)`; requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+    document.querySelectorAll('a, button, .service, .project, .channel').forEach(el=>{
+      el.addEventListener('mouseenter', ()=>halo.classList.add('is-link'));
+      el.addEventListener('mouseleave', ()=>halo.classList.remove('is-link'));
+    });
+  }
+
+  /* Smooth-scroll fallback for #anchors with header offset */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const href = a.getAttribute('href');
+      if(href === '#' || href.length<2) return;
+      const target = document.querySelector(href);
+      if(!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({top, behavior:'smooth'});
+    });
+  });
+});
+</script>
+
+</body>
+</html>
