@@ -3,14 +3,16 @@
 Premium motorcycle service, parts, upgrades and custom expertise in Cascais.
 Single-page marketing website. EN / RU / UK / PT.
 
-## Two concepts in one repo
+## Three concepts in one repo
 
-- `index.html` — **V1: Premium Industrial.** Dark charcoal + iron-orange accent, condensed display (Saira), magazine grid.
-- `v2/index.html` — **V2: Editorial Racing.** Light bone background + racing crimson, serif display (Fraunces), magazine "Issue 001" framing, 3D tilt projects, custom-text cursor, accordion why-list.
+- `index.html` — **V1: Premium Industrial.** Dark charcoal + iron-orange, condensed display (Saira), magazine grid.
+- `v2/index.html` — **V2: Editorial Racing.** Light bone + racing crimson, serif display (Fraunces), magazine "Issue 001" framing, 3D tilt, custom-text cursor.
+- `v3/index.html` — **V3: Cyberpunk Neon.** Deep navy-black + magenta `#ff2dd9` + cyan `#00eaff`, Bruno Ace + Space Grotesk + JetBrains Mono, glitch loader, scanlines, animated mesh gradient, dual-direction marquee, glassmorphism bento, terminal-style "why-us", number-scramble counters, magnetic cursor.
 
 When deployed via GitHub Pages they live side by side:
 - `<user>.github.io/iron-moto-cascais/` — V1
 - `<user>.github.io/iron-moto-cascais/v2/` — V2
+- `<user>.github.io/iron-moto-cascais/v3/` — V3
 
 ## Stack
 
