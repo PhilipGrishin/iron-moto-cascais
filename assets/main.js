@@ -281,6 +281,10 @@ function applyLang(lang){
     const k = el.getAttribute('data-i18n');
     if(dict[k] !== undefined){ el.innerHTML = dict[k]; }
   });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-html');
+    if(dict[k] !== undefined){ el.innerHTML = dict[k]; }
+  });
   const cur = document.getElementById('langCurrent');
   if(cur) cur.textContent = lang.toUpperCase();
   document.querySelectorAll('.lang-menu button, .mobile-langs button').forEach(b=>{
