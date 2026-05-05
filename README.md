@@ -47,7 +47,7 @@ Default is English.
 - Phone / WhatsApp: +351 917 961 230
 - Email: Ironcustom.office@gmail.com
 - Address: R. António José da Silva 100 B, 2785-253 São Domingos de Rana, Cascais
-- Hours: Tue–Sat · 10:00–17:00 · Closed Sun & Mon
+- Hours: Tue–Sat · 10:00–18:00 · Closed Sun & Mon
 - GA4: G-PJWZKP1CFW
 - Meta Pixel: 1708697916976439
 - Form backend: formsubmit.co/Ironcustom.office@gmail.com (needs first-time activation by clicking the verification email)
