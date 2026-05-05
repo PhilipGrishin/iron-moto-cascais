@@ -520,7 +520,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   /* === GOOGLE REVIEWS — fetch from Cloudflare Worker === */
   /* Set this to your deployed Worker URL. Falls back to static reviews if fetch fails. */
-  const REVIEWS_ENDPOINT = (window.ICM_REVIEWS_ENDPOINT) || 'https://icm-reviews.dreamcarua.workers.dev/';
+  const REVIEWS_ENDPOINT = (window.ICM_REVIEWS_ENDPOINT) || 'https://icm-reviews.vg-ab6.workers.dev/';
   const REVIEWS_LS_KEY = 'icm-reviews-cache-v1';
   const REVIEWS_LS_TTL = 12 * 60 * 60 * 1000; // 12h browser-side cache
 
