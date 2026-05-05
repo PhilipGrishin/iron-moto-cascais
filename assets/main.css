@@ -301,18 +301,23 @@ section{padding:var(--gap) 0;position:relative}
 .community-strip .cap .meta{font-family:'Saira',sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:rgba(255,255,255,.7)}
 @media (max-width:760px){.community-strip{aspect-ratio:4/5}.community-strip .cap{left:18px;right:18px;bottom:14px}}
 
-/* Exterior banner — full-bleed visit-us banner before footer */
-.exterior-banner{position:relative;background:#0a0a0a;border-top:1px solid var(--border);overflow:hidden}
-.exterior-banner .img{position:relative;height:clamp(380px,60vw,620px);overflow:hidden}
-.exterior-banner .img img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) contrast(1.05) brightness(.7)}
-.exterior-banner .img::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(10,10,10,.85) 0%,rgba(10,10,10,.45) 50%,rgba(10,10,10,.2) 100%)}
-.exterior-banner .cap{position:absolute;left:var(--pad-x);bottom:clamp(28px,5vw,60px);right:var(--pad-x);z-index:2;max-width:var(--max);margin:0 auto;width:100%;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:end}
-.exterior-banner .cap-text h3{color:#fff;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(30px,5vw,68px);line-height:.95;letter-spacing:-.005em;margin-bottom:14px;max-width:18ch}
-.exterior-banner .cap-text h3 .accent{color:var(--accent)}
-.exterior-banner .cap-text p{color:rgba(255,255,255,.85);max-width:42ch;font-size:clamp(15px,1.2vw,18px)}
-.exterior-banner .cap-actions{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
-.exterior-banner .addr{font-family:'JetBrains Mono','Saira',monospace;text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:rgba(255,255,255,.7);line-height:1.55;margin-bottom:14px}
-@media (max-width:760px){.exterior-banner .cap{grid-template-columns:1fr;gap:18px}}
+/* Exterior banner — contained 21:9 banner before footer, caption sits on the empty wall side */
+.exterior-banner{padding:var(--gap) 0 60px;background:#0a0a0a}
+.exterior-banner .frame{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);aspect-ratio:21/9;background:#0a0a0a}
+.exterior-banner .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1) contrast(1.05) brightness(.92)}
+.exterior-banner .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.05) 0%,rgba(10,10,10,.2) 38%,rgba(10,10,10,.78) 78%,rgba(10,10,10,.94) 100%)}
+.exterior-banner .cap{position:absolute;right:clamp(28px,4vw,56px);top:0;bottom:0;width:min(46%,460px);z-index:2;display:flex;flex-direction:column;justify-content:center;gap:16px;color:#fff}
+.exterior-banner .cap .h-eyebrow{margin-bottom:4px}
+.exterior-banner .cap h3{color:#fff;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.4vw,46px);line-height:.95;letter-spacing:-.005em;max-width:14ch}
+.exterior-banner .cap h3 .accent{color:var(--accent)}
+.exterior-banner .cap p{color:rgba(255,255,255,.82);font-size:clamp(13px,1vw,15px);line-height:1.55;max-width:40ch}
+.exterior-banner .addr{font-family:'JetBrains Mono','Saira',monospace;text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:rgba(255,255,255,.65);line-height:1.6;padding:10px 0;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
+.exterior-banner .cap .btn{align-self:flex-start;margin-top:6px}
+@media (max-width:900px){
+  .exterior-banner .frame{aspect-ratio:5/4}
+  .exterior-banner .frame::after{background:linear-gradient(180deg,rgba(10,10,10,.05) 0%,rgba(10,10,10,.4) 45%,rgba(10,10,10,.95) 78%,rgba(10,10,10,.98) 100%)}
+  .exterior-banner .cap{right:24px;left:24px;top:auto;bottom:24px;width:auto;justify-content:flex-end}
+}
 
 /* Team banner — full-bleed image with overlay caption */
 .team-banner{position:relative;background:#0a0a0a;padding:0;margin:0;overflow:hidden;border-bottom:1px solid var(--border)}
