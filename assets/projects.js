@@ -24,12 +24,20 @@
   /* === HERO PARALLAX BG === */
   function initHeroParallax(){
     if(reduced) return;
+    // Disable parallax on mobile — small viewport doesn't benefit from the effect
+    // and iOS Safari rubber-band bounce makes JS-driven transforms jump.
+    if(window.matchMedia('(max-width: 900px)').matches) return;
+    if(window.matchMedia('(pointer: coarse)').matches) return;
+
     const bg = document.querySelector('.subpage .bg');
     if(!bg) return;
+
     let ticking = false;
+    let lastY = -1;
     function update(){
-      const y = window.scrollY;
-      // gentle parallax — 0.4 of scroll, capped at 200px
+      const y = Math.max(0, window.scrollY); // clamp negatives (overscroll)
+      if(y === lastY){ ticking = false; return; }
+      lastY = y;
       const offset = Math.min(y * 0.4, 220);
       const scale = 1.05 + Math.min(y / 4000, 0.06);
       bg.style.transform = `translate3d(0, ${offset}px, 0) scale(${scale})`;
@@ -37,11 +45,14 @@
     }
     window.addEventListener('scroll', () => {
       if(!ticking){
-        requestAnimationFrame(update);
         ticking = true;
+        requestAnimationFrame(update);
       }
     }, { passive: true });
+    // Set initial transform synchronously so first scroll doesn't snap
     update();
+    // Re-sync after layout/load (fonts, images may shift scrollY)
+    window.addEventListener('load', () => { lastY = -1; update(); });
   }
 
   /* === HERO TEXT REVEAL === */
