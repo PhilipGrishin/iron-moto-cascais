@@ -35,3 +35,6 @@ ICM_Community_Page_Texts_RU.docx
 ICM_Website_Addition_Community_Lounge_RU.docx
 *.HEIC
 *.heic
+
+# Photo source originals (web-optimized versions live in /photos/)
+photos/source/
