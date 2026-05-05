@@ -78,7 +78,9 @@ export default {
       return jsonResp({ error: 'GOOGLE_API_KEY not configured' }, 500, origin);
     }
 
-    const apiUrl = `https://places.googleapis.com/v1/places/${PLACE_ID}?languageCode=en`;
+    // No languageCode → Google returns each review in the original language the author wrote it in.
+    // We surface r.originalText (real author text) instead of r.text (which would be a Google machine-translation).
+    const apiUrl = `https://places.googleapis.com/v1/places/${PLACE_ID}`;
     let apiResp;
     try {
       apiResp = await fetch(apiUrl, {
@@ -104,8 +106,9 @@ export default {
       avatar: r.authorAttribution?.photoUri || null,
       profileUrl: r.authorAttribution?.uri || null,
       rating: typeof r.rating === 'number' ? r.rating : 5,
-      text: r.text?.text || r.originalText?.text || '',
-      lang: r.text?.languageCode || r.originalText?.languageCode || null,
+      // Prefer originalText (real author wording) over text (which is Google's translation when languageCode is set).
+      text: r.originalText?.text || r.text?.text || '',
+      lang: r.originalText?.languageCode || r.text?.languageCode || null,
       when: r.relativePublishTimeDescription || '',
       publishedAt: r.publishTime || null,
       url: r.googleMapsUri || null
