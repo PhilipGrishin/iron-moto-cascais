@@ -643,6 +643,31 @@ document.addEventListener('DOMContentLoaded', ()=>{
     ro.observe(reviewsSection);
   }
 
+  /* Make whole .service card clickable (forwards to arrow-link). Preserves text selection. */
+  document.querySelectorAll('.service').forEach(card => {
+    const a = card.querySelector('a.arrow-link');
+    if(!a) return;
+    card.style.cursor = 'pointer';
+    let downX = 0, downY = 0;
+    card.addEventListener('mousedown', e => { downX = e.clientX; downY = e.clientY; });
+    card.addEventListener('click', e => {
+      // ignore drags/text selection
+      if(Math.abs(e.clientX - downX) > 4 || Math.abs(e.clientY - downY) > 4) return;
+      // ignore clicks on other links/buttons inside the card
+      if(e.target.closest('a, button')) return;
+      // ignore if user is selecting text
+      const sel = window.getSelection && window.getSelection().toString();
+      if(sel && sel.length) return;
+      a.click();
+    });
+    // Keyboard accessibility — make card focusable and Enter triggers
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'link');
+    card.addEventListener('keydown', e => {
+      if(e.key === 'Enter'){ e.preventDefault(); a.click(); }
+    });
+  });
+
   /* Smooth-scroll fallback for #anchors with header offset */
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click', e=>{
