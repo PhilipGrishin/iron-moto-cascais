@@ -116,11 +116,9 @@ section{padding:var(--gap) 0;position:relative}
   border-bottom:1px solid transparent;
 }
 .site-header.is-scrolled{background:rgba(10,10,10,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:12px var(--pad-x);border-bottom-color:var(--border)}
-.site-header .brand{display:flex;align-items:center;gap:14px;color:#fff}
-.site-header .brand .logo-svg{width:200px;height:auto;flex-shrink:0}
-.site-header .brand .est{font-family:'Saira',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.22em;font-size:10px;color:var(--text-dim);padding:5px 9px;border:1px solid var(--border);border-radius:999px;white-space:nowrap;line-height:1}
-.site-header.is-scrolled .brand .est{color:var(--text);border-color:var(--border-strong)}
-@media (max-width:760px){.site-header .brand .est{display:none}.site-header .brand .logo-svg{width:150px}}
+.site-header .brand{display:flex;align-items:center;color:#fff}
+.site-header .brand .logo-svg{width:240px;height:auto;flex-shrink:0;display:block}
+@media (max-width:760px){.site-header .brand .logo-svg{width:170px}}
 .nav{display:flex;align-items:center;gap:30px}
 .nav a{font-family:'Saira',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:13px;color:var(--text-dim);position:relative;padding:6px 0}
 .nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--accent);transition:width var(--t-fast) var(--ease)}
@@ -218,9 +216,8 @@ section{padding:var(--gap) 0;position:relative}
 .brands .row{display:grid;grid-template-columns:auto 1fr;gap:50px;align-items:center}
 .brands .label{font-family:'Saira',sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:11px;color:var(--text-mute);max-width:180px;line-height:1.4}
 .brands .list{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,4vw,56px);justify-content:flex-end}
-.brands .b{font-family:'Saira',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(15px,1.4vw,19px);color:var(--text-dim);transition:color var(--t-fast) var(--ease),opacity var(--t-fast) var(--ease);opacity:.65;white-space:nowrap}
+.brands .b{font-family:'Saira',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(15px,1.4vw,19px);color:var(--text-dim);transition:color var(--t-fast) var(--ease),opacity var(--t-fast) var(--ease);opacity:.7;white-space:nowrap}
 .brands .b:hover{color:var(--accent);opacity:1}
-.brands .b .acc{color:var(--accent);font-weight:800}
 @media (max-width:760px){
   .brands .row{grid-template-columns:1fr;gap:24px}
   .brands .list{justify-content:flex-start;gap:18px}
