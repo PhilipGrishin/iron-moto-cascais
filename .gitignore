@@ -38,3 +38,9 @@ ICM_Website_Addition_Community_Lounge_RU.docx
 
 # Photo source originals (web-optimized versions live in /photos/)
 photos/source/
+
+# Old website saved-page archives (used as input only — web-optimized versions live in /photos/projects/)
+projects/
+ICM_4_Pages_Website_Texts_RU.docx
+Архів*.zip
+Архив*.zip
