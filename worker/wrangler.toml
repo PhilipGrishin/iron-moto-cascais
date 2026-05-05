@@ -1,0 +1,12 @@
+name = "icm-reviews"
+main = "reviews.js"
+compatibility_date = "2025-01-01"
+
+# Optional: bind a custom route on your domain
+# Uncomment and set up after the worker is deployed.
+# [[routes]]
+# pattern = "ironcustommotors.com/api/reviews"
+# zone_name = "ironcustommotors.com"
+
+# No environment variables here — secrets set via:
+#   wrangler secret put GOOGLE_API_KEY

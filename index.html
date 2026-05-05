@@ -528,14 +528,27 @@
   </div>
 </section>
 
-<!-- REVIEWS -->
+<!-- REVIEWS — live from Google via Cloudflare Worker -->
 <section id="reviews">
   <div class="container">
     <div class="section-head reveal">
       <span class="h-eyebrow" data-i18n="reviews.eyebrow">What riders say</span>
       <h2 data-i18n="reviews.title">Trusted by riders<br/>and builders worldwide</h2>
     </div>
-    <div class="reviews-row reveal-stagger">
+
+    <div class="reviews-summary reveal" id="reviewsSummary" hidden>
+      <div class="rs-rating">
+        <span class="rs-num" id="rsRating">—</span>
+        <span class="rs-stars" id="rsStars" aria-hidden="true"></span>
+      </div>
+      <div class="rs-meta">
+        <span data-i18n="reviews.basedOn">Based on</span> <strong id="rsTotal">—</strong> <span data-i18n="reviews.gReviews">Google reviews</span>
+        <a class="rs-link" id="rsLink" href="https://www.google.com/maps/place/?q=place_id:ChIJ-5VQL2bPHg0R-Oj5dD0Ojhk" target="_blank" rel="noopener" data-i18n="reviews.viewAll">View all on Google →</a>
+      </div>
+    </div>
+
+    <div class="reviews-row reveal-stagger" id="reviewsRow">
+      <!-- Skeleton cards while loading; replaced by JS once API responds. Static fallback below. -->
       <article class="review">
         <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
         <p data-i18n="reviews.r1.text">&ldquo;Brought my BMW R nineT for a stubborn electrical issue three other shops couldn&rsquo;t solve. Iron Custom diagnosed it in under an hour and explained it in plain English. Honest pricing, world-class work.&rdquo;</p>
@@ -551,6 +564,10 @@
         <p data-i18n="reviews.r3.text">&ldquo;Finally a workshop in Portugal that treats a Harley like a Harley. Custom exhaust, suspension setup and a tuning session — bike feels brand new. They speak Russian, which made everything easier.&rdquo;</p>
         <div class="author"><div class="avatar">DV</div><div class="author-info"><span class="name">Dmitri V.</span><span class="role" data-i18n="reviews.r3.role">Harley-Davidson FXDR · Estoril</span></div></div>
       </article>
+    </div>
+
+    <div class="reviews-foot" id="reviewsFoot" hidden>
+      <a href="https://www.google.com/maps/place/?q=place_id:ChIJ-5VQL2bPHg0R-Oj5dD0Ojhk" target="_blank" rel="noopener" class="btn btn-ghost" id="reviewsCta" data-i18n="reviews.leaveReview">Leave a review on Google</a>
     </div>
   </div>
 </section>

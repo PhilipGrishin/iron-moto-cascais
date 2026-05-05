@@ -49,7 +49,7 @@ const I18N = {
     "process.s3t":"Estimate","process.s3d":"Written estimate, parts list, timeline. You approve before we lift a wrench.",
     "process.s4t":"Work","process.s4d":"Service or build, with photo updates. Torque specs, clean install, no shortcuts.",
     "process.s5t":"Ride away","process.s5d":"Test, hand-over, follow-up. We're here for the next service too.",
-    "reviews.eyebrow":"What riders say","reviews.title":"Trusted by riders<br/>and builders worldwide",
+    "reviews.basedOn":"Based on","reviews.gReviews":"Google reviews","reviews.viewAll":"View all on Google →","reviews.leaveReview":"Leave a review on Google","reviews.eyebrow":"What riders say","reviews.title":"Trusted by riders<br/>and builders worldwide",
     "reviews.r1.text":"“Brought my BMW R nineT for a stubborn electrical issue three other shops couldn't solve. Iron Custom diagnosed it in under an hour and explained it in plain English. Honest pricing, world-class work.”","reviews.r1.role":"BMW R nineT · UK expat in Cascais",
     "reviews.r2.text":"“Pre-purchase inspection saved me €4,200. The bike looked perfect — they found a hidden frame issue. Sent me a detailed report with photos the same day. This is how it should work.”","reviews.r2.role":"Ducati Monster buyer · Lisbon",
     "reviews.r3.text":"“Finally a workshop in Portugal that treats a Harley like a Harley. Custom exhaust, suspension setup and a tuning session — bike feels brand new. They speak Russian, which made everything easier.”","reviews.r3.role":"Harley-Davidson FXDR · Estoril",
@@ -115,7 +115,7 @@ const I18N = {
     "process.s3t":"Смета","process.s3d":"Письменная смета, список запчастей, сроки. Согласовываем до начала работ.",
     "process.s4t":"Работа","process.s4d":"Сервис или сборка, с фото-апдейтами. Моменты затяжки, чистая установка, без срезаний углов.",
     "process.s5t":"Выдача","process.s5d":"Тест, передача, follow-up. Мы рядом и для следующего сервиса.",
-    "reviews.eyebrow":"Что говорят райдеры","reviews.title":"Доверяют райдеры и<br/>билдеры по всему миру",
+    "reviews.basedOn":"На основе","reviews.gReviews":"отзывов в Google","reviews.viewAll":"Все отзывы в Google →","reviews.leaveReview":"Оставить отзыв в Google","reviews.eyebrow":"Что говорят райдеры","reviews.title":"Доверяют райдеры и<br/>билдеры по всему миру",
     "reviews.r1.text":"«Привёз свой BMW R nineT с упрямой электрикой, которую три других сервиса не смогли решить. Iron Custom разобрался меньше чем за час и объяснил всё простым языком. Честные цены, мировой уровень.»","reviews.r1.role":"BMW R nineT · экспат из UK в Кашкайше",
     "reviews.r2.text":"«Предпокупочная инспекция спасла мне 4 200 €. Мотоцикл выглядел идеально, но ребята нашли скрытую проблему с рамой. Прислали детальный отчёт с фото в тот же день. Вот как должно работать.»","reviews.r2.role":"Покупатель Ducati Monster · Лиссабон",
     "reviews.r3.text":"«Наконец сервис в Португалии, который относится к Harley как к Harley. Кастомный выхлоп, настройка подвески и тюнинг — мотоцикл как новый. Говорят по-русски, всё намного проще.»","reviews.r3.role":"Harley-Davidson FXDR · Эшторил",
@@ -181,7 +181,7 @@ const I18N = {
     "process.s3t":"Кошторис","process.s3d":"Письмовий кошторис, перелік запчастин, строки. Узгоджуємо до початку робіт.",
     "process.s4t":"Робота","process.s4d":"Сервіс або збірка, з фото-апдейтами. Моменти затяжки, чисте встановлення, без зрізань кутів.",
     "process.s5t":"Видача","process.s5d":"Тест, передача, follow-up. Ми поруч і для наступного сервісу.",
-    "reviews.eyebrow":"Що кажуть райдери","reviews.title":"Довіряють райдери та<br/>білдери по всьому світу",
+    "reviews.basedOn":"На основі","reviews.gReviews":"відгуків у Google","reviews.viewAll":"Усі відгуки в Google →","reviews.leaveReview":"Залишити відгук у Google","reviews.eyebrow":"Що кажуть райдери","reviews.title":"Довіряють райдери та<br/>білдери по всьому світу",
     "reviews.r1.text":"«Привіз свій BMW R nineT з упертою електрикою, яку три інші сервіси не змогли вирішити. Iron Custom розібрався менш ніж за годину і пояснив усе простою мовою. Чесні ціни, світовий рівень.»","reviews.r1.role":"BMW R nineT · експат з UK у Кашкайші",
     "reviews.r2.text":"«Передкупівельна інспекція врятувала мені 4 200 €. Мотоцикл виглядав ідеально, але хлопці знайшли приховану проблему з рамою. Надіслали детальний звіт із фото того ж дня. Ось як має працювати.»","reviews.r2.role":"Покупець Ducati Monster · Лісабон",
     "reviews.r3.text":"«Нарешті сервіс у Португалії, який ставиться до Harley як до Harley. Кастомний вихлоп, налаштування підвіски і тюнінг — мотоцикл як новий. Говорять російською, все простіше.»","reviews.r3.role":"Harley-Davidson FXDR · Ешторил",
@@ -247,7 +247,7 @@ const I18N = {
     "process.s3t":"Orçamento","process.s3d":"Orçamento por escrito, lista de peças, prazos. Aprova antes de levantarmos uma chave.",
     "process.s4t":"Trabalho","process.s4d":"Serviço ou build, com atualizações em foto. Binários certos, instalação limpa, sem atalhos.",
     "process.s5t":"Volta à estrada","process.s5d":"Teste, entrega, follow-up. Estamos cá para o próximo serviço também.",
-    "reviews.eyebrow":"O que dizem os riders","reviews.title":"Confiança de riders<br/>e builders no mundo todo",
+    "reviews.basedOn":"Com base em","reviews.gReviews":"avaliações Google","reviews.viewAll":"Ver todas no Google →","reviews.leaveReview":"Deixar avaliação no Google","reviews.eyebrow":"O que dizem os riders","reviews.title":"Confiança de riders<br/>e builders no mundo todo",
     "reviews.r1.text":"«Levei a minha BMW R nineT com um problema elétrico que três outros workshops não conseguiram resolver. Iron Custom diagnosticou em menos de uma hora e explicou em português claro. Preço honesto, qualidade mundial.»","reviews.r1.role":"BMW R nineT · expat UK em Cascais",
     "reviews.r2.text":"«A inspeção pré-compra poupou-me 4 200 €. A moto parecia perfeita — encontraram um problema oculto no chassi. Enviaram relatório detalhado com fotos no mesmo dia. É assim que deve ser.»","reviews.r2.role":"Comprador Ducati Monster · Lisboa",
     "reviews.r3.text":"«Finalmente um workshop em Portugal que trata uma Harley como uma Harley. Escape custom, suspensão e sessão de tuning — moto como nova. Falam russo, o que tornou tudo mais fácil.»","reviews.r3.role":"Harley-Davidson FXDR · Estoril",
@@ -517,6 +517,127 @@ document.addEventListener('DOMContentLoaded', ()=>{
     hideBanner();
     window.dataLayer = window.dataLayer || [];
   });
+
+  /* === GOOGLE REVIEWS — fetch from Cloudflare Worker === */
+  /* Set this to your deployed Worker URL. Falls back to static reviews if fetch fails. */
+  const REVIEWS_ENDPOINT = (window.ICM_REVIEWS_ENDPOINT) || 'https://icm-reviews.dreamcarua.workers.dev/';
+  const REVIEWS_LS_KEY = 'icm-reviews-cache-v1';
+  const REVIEWS_LS_TTL = 12 * 60 * 60 * 1000; // 12h browser-side cache
+
+  function getCachedReviews(){
+    try{
+      const raw = localStorage.getItem(REVIEWS_LS_KEY);
+      if(!raw) return null;
+      const obj = JSON.parse(raw);
+      if(Date.now() - obj._t > REVIEWS_LS_TTL) return null;
+      return obj.data;
+    }catch(e){ return null; }
+  }
+  function setCachedReviews(data){
+    try{ localStorage.setItem(REVIEWS_LS_KEY, JSON.stringify({_t: Date.now(), data})); }catch(e){}
+  }
+
+  function starsSvg(n, total){
+    let html = '';
+    for(let i=1; i<=total; i++){
+      html += `<svg viewBox="0 0 24 24" class="${i<=n?'':'dim'}"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>`;
+    }
+    return html;
+  }
+
+  function initials(name){
+    if(!name) return 'IC';
+    const parts = name.trim().split(/\s+/);
+    return ((parts[0]?.[0]||'') + (parts[1]?.[0]||'')).toUpperCase() || 'IC';
+  }
+
+  function escapeHtml(s){
+    return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function truncate(s, n){
+    s = String(s||'').trim();
+    if(s.length <= n) return s;
+    return s.slice(0, n).replace(/\s+\S*$/,'') + '…';
+  }
+
+  function renderReviews(data){
+    if(!data || !data.reviews || !data.reviews.length) return false;
+
+    // Summary block
+    const summary = document.getElementById('reviewsSummary');
+    if(summary && typeof data.rating === 'number'){
+      document.getElementById('rsRating').textContent = data.rating.toFixed(1);
+      document.getElementById('rsStars').innerHTML = starsSvg(Math.round(data.rating), 5);
+      document.getElementById('rsTotal').textContent = data.total || data.reviews.length;
+      summary.removeAttribute('hidden');
+    }
+
+    // Reviews row — render up to 3 best
+    const row = document.getElementById('reviewsRow');
+    if(row){
+      // Pick up to 3 reviews — prefer 5-star with longest text
+      const sorted = [...data.reviews].sort((a,b)=>{
+        const ra = (a.rating||0) - (b.rating||0);
+        if(ra !== 0) return -ra;
+        return (b.text?.length||0) - (a.text?.length||0);
+      });
+      const picks = sorted.slice(0, 3);
+      row.innerHTML = picks.map(r => `
+        <article class="review">
+          <div class="stars">${starsSvg(Math.round(r.rating||5), 5)}</div>
+          <p>&ldquo;${escapeHtml(truncate(r.text, 380))}&rdquo;</p>
+          <div class="author">
+            ${r.avatar ? `<img class="avatar" src="${escapeHtml(r.avatar)}" alt="${escapeHtml(r.author)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML='<div class=&quot;avatar&quot;>${initials(r.author)}</div>'" />` : `<div class="avatar">${initials(r.author)}</div>`}
+            <div class="author-info">
+              <span class="name">${escapeHtml(r.author)}</span>
+              <span class="role">${escapeHtml(r.when || 'Google review')}</span>
+            </div>
+          </div>
+        </article>
+      `).join('');
+      // Mark as already revealed since reveal observer already handled this row before
+      row.classList.add('in');
+    }
+
+    // Footer CTA
+    const foot = document.getElementById('reviewsFoot');
+    if(foot) foot.removeAttribute('hidden');
+
+    return true;
+  }
+
+  async function loadReviews(){
+    // Try local cache first — instant render
+    const cached = getCachedReviews();
+    if(cached){ renderReviews(cached); }
+
+    try{
+      const resp = await fetch(REVIEWS_ENDPOINT, { cache: 'no-store' });
+      if(!resp.ok) return;
+      const data = await resp.json();
+      if(data && data.reviews && data.reviews.length){
+        setCachedReviews(data);
+        renderReviews(data);
+      }
+    }catch(e){
+      // fail silently — keep static fallback / cached version
+    }
+  }
+  // Lazy-load: fetch only when user scrolls near reviews section
+  const reviewsSection = document.getElementById('reviews');
+  if(reviewsSection){
+    const ro = new IntersectionObserver((entries)=>{
+      for(const e of entries){
+        if(e.isIntersecting){
+          loadReviews();
+          ro.disconnect();
+          break;
+        }
+      }
+    }, {rootMargin: '300px 0px'});
+    ro.observe(reviewsSection);
+  }
 
   /* Smooth-scroll fallback for #anchors with header offset */
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
