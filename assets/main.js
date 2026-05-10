@@ -416,38 +416,44 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
   });
 
-  /* Modal */
+  /* Modal — only present on the homepage */
   const modal = document.getElementById('modal');
-  const openModal = ()=>{ modal.classList.add('open'); document.body.style.overflow='hidden'; };
-  const closeModal = ()=>{ modal.classList.remove('open'); document.body.style.overflow=''; document.getElementById('formSuccess').classList.remove('show'); document.getElementById('leadForm').style.display=''; };
-  document.getElementById('openForm').addEventListener('click', openModal);
-  document.querySelectorAll('[data-cta="book"]').forEach(b=>{
-    b.addEventListener('click', e=>{
-      if(b.tagName==='A' && b.getAttribute('href') !== '#contact') return;
-      // for service cards opening modal
+  if(modal){
+    const openModal = ()=>{ modal.classList.add('open'); document.body.style.overflow='hidden'; };
+    const closeModal = ()=>{
+      modal.classList.remove('open');
+      document.body.style.overflow='';
+      document.getElementById('formSuccess')?.classList.remove('show');
+      const lf = document.getElementById('leadForm'); if(lf) lf.style.display='';
+    };
+    document.getElementById('openForm')?.addEventListener('click', openModal);
+    document.querySelectorAll('[data-cta="book"]').forEach(b=>{
+      b.addEventListener('click', e=>{
+        if(b.tagName==='A' && b.getAttribute('href') !== '#contact') return;
+      });
     });
-  });
-  document.getElementById('closeModal').addEventListener('click', closeModal);
-  modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
-  document.addEventListener('keydown', e=>{ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+    document.getElementById('closeModal')?.addEventListener('click', closeModal);
+    modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+  }
 
-  /* Form: submit to FormSubmit (POST in background) AND open WhatsApp in parallel */
-  document.getElementById('leadForm').addEventListener('submit', e=>{
-    e.preventDefault();
-    const form = e.target;
-    const fd = new FormData(form);
-    const lines = [];
-    fd.forEach((v,k)=>{ if(!String(k).startsWith('_') && k!=='_honey' && v) lines.push(`${k}: ${v}`); });
-    const msg = encodeURIComponent('Iron Custom Motors — new request:\n\n'+lines.join('\n'));
-    // 1) Send to backend (no redirect) — note: first time formsubmit needs to be activated by clicking the verification email
-    fetch(form.action, { method:'POST', body: fd, mode: 'no-cors' }).catch(()=>{});
-    // 2) Open WhatsApp in parallel
-    window.open(`https://wa.me/351917961230?text=${msg}`, '_blank');
-    // Track event if analytics consented
-    if(window.dataLayer){ window.dataLayer.push({event:'form_submit', form:'lead', service: fd.get('service')||''}); }
-    form.style.display='none';
-    document.getElementById('formSuccess').classList.add('show');
-  });
+  /* Form — only on homepage */
+  const leadForm = document.getElementById('leadForm');
+  if(leadForm){
+    leadForm.addEventListener('submit', e=>{
+      e.preventDefault();
+      const form = e.target;
+      const fd = new FormData(form);
+      const lines = [];
+      fd.forEach((v,k)=>{ if(!String(k).startsWith('_') && k!=='_honey' && v) lines.push(`${k}: ${v}`); });
+      const msg = encodeURIComponent('Iron Custom Motors — new request:\n\n'+lines.join('\n'));
+      fetch(form.action, { method:'POST', body: fd, mode: 'no-cors' }).catch(()=>{});
+      window.open(`https://wa.me/351917961230?text=${msg}`, '_blank');
+      if(window.dataLayer){ window.dataLayer.push({event:'form_submit', form:'lead', service: fd.get('service')||''}); }
+      form.style.display='none';
+      document.getElementById('formSuccess')?.classList.add('show');
+    });
+  }
 
   /* Localized WhatsApp prefill — runs after each language change */
   function refreshWaLinks(){
@@ -463,16 +469,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
   applyLang = function(lang){ _origApplyLang(lang); refreshWaLinks(); };
   refreshWaLinks();
 
-  /* Sticky CTA bar — show after hero scroll */
+  /* Sticky CTA bar — show after hero scroll (homepage only) */
   const stickyCta = document.getElementById('stickyCta');
   const heroEl = document.getElementById('hero');
+  if(stickyCta && heroEl){
   const stickyIo = new IntersectionObserver(([e])=>{
     const past = !e.isIntersecting;
     stickyCta.classList.toggle('show', past);
     document.body.classList.toggle('has-sticky-cta', past);
   }, {threshold:0});
-  if(heroEl) stickyIo.observe(heroEl);
-  // Track WhatsApp clicks
+  stickyIo.observe(heroEl);
+  }
+  // Track WhatsApp clicks (all pages)
   document.querySelectorAll('a[data-wa]').forEach(a=>a.addEventListener('click', ()=>{
     if(window.dataLayer) window.dataLayer.push({event:'click_whatsapp'});
   }));
