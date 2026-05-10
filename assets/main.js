@@ -299,11 +299,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const supported = ['en','ru','uk','pt'];
   applyLang((stored && supported.includes(stored)) ? stored : 'en');
 
-  /* Loader */
-  setTimeout(()=>document.getElementById('loader').classList.add('hidden'), 1700);
+  /* Loader (homepage only) */
+  const loader = document.getElementById('loader');
+  if(loader) setTimeout(()=>loader.classList.add('hidden'), 1700);
 
-  /* Year */
-  document.getElementById('yr').textContent = new Date().getFullYear();
+  /* Year (footer — every page) */
+  const yrEl = document.getElementById('yr');
+  if(yrEl) yrEl.textContent = new Date().getFullYear();
 
   /* Header scroll state */
   const header = document.getElementById('header');
