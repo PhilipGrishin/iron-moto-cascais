@@ -2,6 +2,39 @@
    IRON CUSTOM MOTORS — Interactivity & i18n
    ====================================================================== */
 
+/* ---------- Analytics event tracking ----------
+   One unified channel — sends to GA4 (gtag), Meta Pixel (fbq), and the
+   dataLayer (for future GTM). All event names match the spec in the TZ:
+     form_submit, click_whatsapp, click_phone, click_email, click_map,
+     book_service, view_service_page, lead_success
+   Safe to call before consent: if GA/Pixel aren't loaded yet (user hasn't
+   accepted cookies), the call is a no-op for them but still pushes to
+   the dataLayer queue. This matches GDPR behavior — we don't ship the
+   event to Google until consent is given.
+   ----------------------------------------------------------------- */
+window.icmEventQueue = [];
+window.icmTrack = function(name, params){
+  params = params || {};
+  if(params.page_lang === undefined) params.page_lang = document.documentElement.lang || 'en';
+  if(params.page_path === undefined) params.page_path = location.pathname;
+  if(typeof window.gtag === 'function'){
+    window.gtag('event', name, params);
+  } else {
+    // No consent yet — queue for replay after loadAnalytics() runs
+    window.icmEventQueue.push({name: name, params: params});
+  }
+  if(typeof window.fbq === 'function') window.fbq('trackCustom', name, params);
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(Object.assign({event: name}, params));
+};
+window.icmFlushEventQueue = function(){
+  if(typeof window.gtag !== 'function') return;
+  while(window.icmEventQueue && window.icmEventQueue.length){
+    const ev = window.icmEventQueue.shift();
+    window.gtag('event', ev.name, ev.params);
+  }
+};
+
 /* ---------- Translations ---------- */
 const I18N = {
   en: {
@@ -484,9 +517,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
       const lines = [];
       fd.forEach((v,k)=>{ if(!String(k).startsWith('_') && k!=='_honey' && v) lines.push(`${k}: ${v}`); });
       const msg = encodeURIComponent('Iron Custom Motors — new request:\n\n'+lines.join('\n'));
-      fetch(form.action, { method:'POST', body: fd, mode: 'no-cors' }).catch(()=>{});
+      const service = fd.get('service') || '';
+      const vehicle = fd.get('vehicle') || '';
+      icmTrack('form_submit', {form: 'lead', service: service, vehicle: vehicle});
+      fetch(form.action, { method:'POST', body: fd, mode: 'no-cors' })
+        .then(()=> icmTrack('lead_success', {form: 'lead', service: service}))
+        .catch(()=>{ /* network failed — user still gets WhatsApp fallback */ });
       window.open(`https://wa.me/351917961230?text=${msg}`, '_blank');
-      if(window.dataLayer){ window.dataLayer.push({event:'form_submit', form:'lead', service: fd.get('service')||''}); }
+      icmTrack('click_whatsapp', {source: 'lead_form'});
       form.style.display='none';
       document.getElementById('formSuccess')?.classList.add('show');
     });
@@ -517,10 +555,73 @@ document.addEventListener('DOMContentLoaded', ()=>{
   }, {threshold:0});
   stickyIo.observe(heroEl);
   }
-  // Track WhatsApp clicks (all pages)
-  document.querySelectorAll('a[data-wa]').forEach(a=>a.addEventListener('click', ()=>{
-    if(window.dataLayer) window.dataLayer.push({event:'click_whatsapp'});
-  }));
+  /* ---------- Event tracking per TZ ---------- */
+
+  // WhatsApp clicks — any link that opens WhatsApp
+  document.querySelectorAll('a[data-wa], a[href*="wa.me/"], a[href*="api.whatsapp.com"]').forEach(a=>{
+    a.addEventListener('click', ()=> icmTrack('click_whatsapp', {
+      link_url: a.href, link_text: (a.textContent||'').trim().slice(0,80)
+    }));
+  });
+
+  // Phone clicks
+  document.querySelectorAll('a[href^="tel:"]').forEach(a=>{
+    a.addEventListener('click', ()=> icmTrack('click_phone', {link_url: a.href}));
+  });
+
+  // Email clicks
+  document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
+    a.addEventListener('click', ()=> icmTrack('click_email', {link_url: a.href}));
+  });
+
+  // Map clicks — Google Maps directions, place links, and the embedded map iframe area
+  document.querySelectorAll('a[href*="google.com/maps"], a[href*="maps.app.goo.gl"], a[href*="goo.gl/maps"]').forEach(a=>{
+    a.addEventListener('click', ()=> icmTrack('click_map', {
+      link_url: a.href,
+      destination: a.href.includes('directions') || a.href.includes('/dir/') ? 'directions' : 'place'
+    }));
+  });
+
+  // Book service CTAs — any element marked data-cta="book"
+  document.querySelectorAll('[data-cta="book"]').forEach(b=>{
+    b.addEventListener('click', ()=> icmTrack('book_service', {
+      cta_text: (b.textContent||'').trim().slice(0,80),
+      cta_location: b.closest('section')?.id || b.closest('header')?.id || 'unknown'
+    }));
+  });
+
+  // Auto-fire view_service_page on service / project pages
+  (function(){
+    const services = {
+      'motorcycle-service':'service','parts':'parts','upgrades-tuning':'upgrades',
+      'custom':'custom','pre-purchase-inspection':'inspection'
+    };
+    // Strip language prefix to detect page type uniformly
+    const path = location.pathname.replace(/^\/(ru|uk|pt)\//, '/');
+    for(const slug in services){
+      if(path === `/${slug}/` || path === `/${slug}/index.html`){
+        icmTrack('view_service_page', {service: services[slug], service_slug: slug});
+        return;
+      }
+    }
+    const projMatch = path.match(/^\/projects\/([a-z0-9-]+)\/?$/);
+    if(projMatch){
+      icmTrack('view_project_page', {project: projMatch[1]});
+    }
+  })();
+
+  // Language switch — track when user changes language
+  document.querySelectorAll('.lang-menu button[data-lang], .mobile-langs button[data-lang]').forEach(b=>{
+    b.addEventListener('click', ()=> icmTrack('lang_switch', {
+      to_lang: b.dataset.lang, from_lang: document.documentElement.lang || 'en'
+    }));
+  });
+
+  // Cookie banner choice — proxy for consent rate
+  document.getElementById('cookieAccept')?.addEventListener('click', ()=>
+    icmTrack('cookie_consent', {choice: 'accept'}));
+  document.getElementById('cookieReject')?.addEventListener('click', ()=>
+    icmTrack('cookie_consent', {choice: 'reject'}));
 
   /* Cookie consent — minimal self-hosted */
   const cookieBanner = document.getElementById('cookieBanner');
@@ -537,6 +638,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
       window.gtag = gtag;
       gtag('js', new Date());
       gtag('config', GA_ID, {anonymize_ip:true});
+      // Replay events that fired before consent was given
+      if(typeof window.icmFlushEventQueue === 'function') window.icmFlushEventQueue();
     } else {
       window.dataLayer = window.dataLayer || [];
     }
