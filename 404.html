@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0a0a" />
+<title>Page not found — 404 | Iron Custom Motors</title>
+<meta name="robots" content="noindex" />
+<meta name="description" content="The page you were looking for doesn't exist. Return to Iron Custom Motors — premium motorcycle service in Cascais." />
+<link rel="icon" href="/photos/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" href="/photos/favicon-32.png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/photos/apple-touch-icon.png" sizes="180x180" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;600;800&family=Saira+Condensed:wght@800;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:#0a0a0a;
+    color:#eaeaea;
+    font-family:'Saira',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    padding:32px;
+    background:
+      radial-gradient(circle at 80% 20%, rgba(255,87,34,.18), transparent 55%),
+      radial-gradient(circle at 20% 90%, rgba(255,87,34,.08), transparent 50%),
+      #0a0a0a;
+  }
+  .wrap{max-width:680px;text-align:center}
+  .code{
+    font-family:'Saira Condensed',sans-serif;
+    font-weight:900;
+    font-size:clamp(120px,22vw,260px);
+    line-height:.85;
+    letter-spacing:-.02em;
+    color:#fff;
+    margin-bottom:12px;
+  }
+  .code .accent{color:#ff5722}
+  h1{
+    font-family:'Saira Condensed',sans-serif;
+    font-weight:800;
+    text-transform:uppercase;
+    font-size:clamp(26px,4.5vw,44px);
+    line-height:1;
+    margin-bottom:18px;
+  }
+  p{
+    color:#9a9a9a;
+    font-size:clamp(15px,1.5vw,18px);
+    line-height:1.55;
+    margin-bottom:36px;
+    max-width:52ch;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .btns{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-bottom:48px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 24px;
+    border-radius:6px;
+    font-family:'Saira',sans-serif;
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    text-decoration:none;
+    transition:transform .18s ease, background .18s ease;
+  }
+  .btn-primary{background:#ff5722;color:#fff}
+  .btn-primary:hover{background:#ff6c3c;transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:#eaeaea;border:1px solid rgba(255,255,255,.18)}
+  .btn-ghost:hover{border-color:#ff5722;color:#ff5722}
+  .langs{
+    display:flex;
+    gap:0;
+    justify-content:center;
+    font-family:'Saira',sans-serif;
+    font-size:12px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:#6a6a6a;
+  }
+  .langs a{
+    color:#6a6a6a;
+    text-decoration:none;
+    padding:0 14px;
+    border-right:1px solid rgba(255,255,255,.1);
+    transition:color .18s ease;
+  }
+  .langs a:last-child{border-right:none}
+  .langs a:hover{color:#ff5722}
+  .label{
+    font-family:'Saira',sans-serif;
+    font-size:11px;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    color:#6a6a6a;
+    margin-bottom:24px;
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="label">Iron Custom Motors</div>
+  <div class="code">4<span class="accent">0</span>4</div>
+  <h1 id="title">Page not found</h1>
+  <p id="message">The page you were looking for doesn't exist or has been moved. Let's get you back to safe ground.</p>
+  <div class="btns">
+    <a href="/" class="btn btn-primary" id="btnHome">Back to homepage</a>
+    <a href="https://wa.me/351917961230" class="btn btn-ghost" target="_blank" rel="noopener" id="btnWa">WhatsApp us</a>
+  </div>
+  <nav class="langs" aria-label="Language">
+    <a href="/" data-lang="en">EN</a>
+    <a href="/ru/" data-lang="ru">RU</a>
+    <a href="/uk/" data-lang="uk">UK</a>
+    <a href="/pt/" data-lang="pt">PT</a>
+  </nav>
+</main>
+<script>
+(function(){
+  // Detect intended language from the URL the user actually tried to load
+  // (GitHub Pages serves /404.html for any non-existent path).
+  var path = location.pathname;
+  var m = path.match(/^\/(ru|uk|pt)(\/|$)/);
+  var lang = m ? m[1] : 'en';
+
+  var L = {
+    en: {title: 'Page not found', msg: "The page you were looking for doesn't exist or has been moved. Let's get you back to safe ground.", home: 'Back to homepage', wa: 'WhatsApp us'},
+    ru: {title: 'Страница не найдена', msg: 'Страница, которую вы искали, не существует или была перемещена. Давайте вернёмся на главную.', home: 'На главную', wa: 'Написать в WhatsApp'},
+    uk: {title: 'Сторінку не знайдено', msg: 'Сторінка, яку ви шукали, не існує або була переміщена. Повернімося на головну.', home: 'На головну', wa: 'Написати в WhatsApp'},
+    pt: {title: 'Página não encontrada', msg: 'A página que procurava não existe ou foi movida. Vamos levá-lo de volta ao caminho certo.', home: 'Voltar ao início', wa: 'WhatsApp'}
+  };
+  var t = L[lang] || L.en;
+  document.documentElement.lang = lang;
+  document.getElementById('title').textContent = t.title;
+  document.getElementById('message').textContent = t.msg;
+  document.getElementById('btnHome').textContent = t.home;
+  document.getElementById('btnWa').textContent = t.wa;
+  // Home button goes to localized home
+  document.getElementById('btnHome').href = lang === 'en' ? '/' : '/' + lang + '/';
+})();
+</script>
+</body>
+</html>

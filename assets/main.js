@@ -270,12 +270,50 @@ const I18N = {
   }
 };
 
-/* ---------- Language switching ---------- */
+/* ---------- Language switching ----------
+   Each language lives at its own URL:
+     /         /motorcycle-service/  /projects/inspirium/   (EN)
+     /ru/      /ru/motorcycle-service/  /ru/projects/inspirium/
+     /uk/      /uk/...
+     /pt/      /pt/...
+   Pages are pre-rendered server-side (static HTML in each language).
+   JS here just (a) updates UI to reflect current lang, (b) navigates URLs
+   when user picks a different language.
+   ----------------------------------------------------------------- */
+const SUPPORTED_LANGS = ['en','ru','uk','pt'];
+
+function detectLangFromUrl(){
+  const m = location.pathname.match(/^\/(ru|uk|pt)(\/|$)/);
+  return m ? m[1] : 'en';
+}
+
+function pathWithoutLang(){
+  // Returns path WITHOUT the leading language segment. Always starts with /.
+  const p = location.pathname;
+  const m = p.match(/^\/(ru|uk|pt)(\/.*)?$/);
+  return m ? (m[2] || '/') : p;
+}
+
+function urlForLang(lang){
+  const rest = pathWithoutLang();
+  if(lang === 'en') return rest + location.search + location.hash;
+  return '/' + lang + (rest === '/' ? '/' : rest) + location.search + location.hash;
+}
+
+function navigateLang(lang){
+  if(!SUPPORTED_LANGS.includes(lang)) return;
+  if(lang === detectLangFromUrl()) return; // already here
+  try{ localStorage.setItem('icm-lang', lang);}catch(e){}
+  location.href = urlForLang(lang);
+}
+
+// applyLang is kept for graceful re-rendering if the page somehow has the
+// wrong language content. On pre-rendered pages this is a no-op visually.
 function applyLang(lang){
   const baseDict = I18N[lang]||I18N.en;
   const pageExtra = (window.ICM_I18N_PAGE && (window.ICM_I18N_PAGE[lang]||window.ICM_I18N_PAGE.en)) || {};
   const dict = Object.assign({}, baseDict, pageExtra);
-  document.documentElement.lang = lang === 'uk' ? 'uk' : lang;
+  document.documentElement.lang = lang;
   document.documentElement.dataset.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const k = el.getAttribute('data-i18n');
@@ -290,14 +328,13 @@ function applyLang(lang){
   document.querySelectorAll('.lang-menu button, .mobile-langs button').forEach(b=>{
     b.setAttribute('aria-current', b.dataset.lang===lang ? 'true':'false');
   });
-  try{ localStorage.setItem('icm-lang', lang);}catch(e){}
 }
 
 /* ---------- DOM ready ---------- */
 document.addEventListener('DOMContentLoaded', ()=>{
-  const stored = (()=>{ try{return localStorage.getItem('icm-lang');}catch(e){return null;}})();
-  const supported = ['en','ru','uk','pt'];
-  applyLang((stored && supported.includes(stored)) ? stored : 'en');
+  /* Language comes from the URL — page is already pre-rendered in that language. */
+  const currentLang = detectLangFromUrl();
+  applyLang(currentLang);
 
   /* Loader (homepage only) */
   const loader = document.getElementById('loader');
@@ -345,14 +382,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
   langMenu.addEventListener('click', e=>{
     const b = e.target.closest('button[data-lang]');
     if(!b) return;
-    applyLang(b.dataset.lang);
+    navigateLang(b.dataset.lang);
     langMenu.classList.remove('open');
   });
   document.querySelectorAll('.mobile-langs button').forEach(b=>{
     b.addEventListener('click', ()=>{
-      applyLang(b.dataset.lang);
-      document.getElementById('mobileDrawer').classList.remove('open');
-      document.getElementById('menuToggle').classList.remove('open');
+      navigateLang(b.dataset.lang);
     });
   });
 

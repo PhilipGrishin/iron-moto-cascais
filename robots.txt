@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Block large binary backups if any survive
+Disallow: /*.zip$
+
 Sitemap: https://ironcustommotors.com/sitemap.xml
