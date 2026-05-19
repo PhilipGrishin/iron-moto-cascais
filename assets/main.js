@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const consent = (()=>{ try{return localStorage.getItem('icm-consent');}catch(e){return null;}})();
   function loadAnalytics(){
     /* === GA4 === */
-    const GA_ID = 'G-PJWZKP1CFW';
+    const GA_ID = 'G-D15BLYEKBN';
     if(GA_ID){
       const s = document.createElement('script');
       s.async = true; s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
