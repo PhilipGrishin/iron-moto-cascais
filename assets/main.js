@@ -38,7 +38,7 @@ window.icmFlushEventQueue = function(){
 /* ---------- Translations ---------- */
 const I18N = {
   en: {
-    "nav.services":"Services","nav.projects":"Projects","nav.about":"About","nav.community":"Community","nav.reviews":"Reviews","nav.faq":"FAQ","nav.contact":"Contact",
+    "nav.services":"Services","nav.projects":"Projects","nav.pricing":"Pricing","nav.about":"About","nav.community":"Community","nav.reviews":"Reviews","nav.faq":"FAQ","nav.contact":"Contact",
     "cta.bookHeader":"Book service","cta.bookService":"Book service","cta.whatsapp":"WhatsApp us","cta.requestForm":"Send request",
     "wa.prefill":"Hi Iron Custom Motors, I'd like to ask about service for my motorcycle. Please reply when you can.","contact.directions":"Get directions","brands.label":"Multi-brand workshop · OEM & aftermarket parts sourcing",
     "cookie.text":"We use cookies to measure traffic and improve the site. No third-party advertising.","cookie.accept":"Accept","cookie.reject":"Reject",
@@ -104,7 +104,7 @@ const I18N = {
     "form.message":"Tell us about the job","form.note":"By sending you agree to be contacted about this request. No spam, ever.","form.submit":"Send request","form.successT":"Request received","form.successP":"We'll reply via WhatsApp or email within business hours. Talk soon."
   },
   ru: {
-    "nav.services":"Услуги","nav.projects":"Проекты","nav.about":"О нас","nav.community":"Сообщество","nav.reviews":"Отзывы","nav.faq":"FAQ","nav.contact":"Контакты",
+    "nav.services":"Услуги","nav.projects":"Проекты","nav.pricing":"Цены","nav.about":"О нас","nav.community":"Сообщество","nav.reviews":"Отзывы","nav.faq":"FAQ","nav.contact":"Контакты",
     "cta.bookHeader":"Записаться","cta.bookService":"Записаться на сервис","cta.whatsapp":"Написать в WhatsApp","cta.requestForm":"Отправить заявку",
     "wa.prefill":"Здравствуйте, Iron Custom Motors! Хочу обсудить сервис для своего мотоцикла. Ответьте, когда сможете.","contact.directions":"Маршрут","brands.label":"Мульти-бренд сервис · поставка OEM и aftermarket запчастей",
     "cookie.text":"Мы используем cookies, чтобы понимать посещаемость и улучшать сайт. Без сторонней рекламы.","cookie.accept":"Принять","cookie.reject":"Отклонить",
@@ -170,7 +170,7 @@ const I18N = {
     "form.message":"Расскажите о работе","form.note":"Отправляя, вы соглашаетесь, что мы свяжемся с вами по данному запросу. Без спама.","form.submit":"Отправить заявку","form.successT":"Заявка получена","form.successP":"Ответим в WhatsApp или на email в рабочее время. До связи."
   },
   uk: {
-    "nav.services":"Послуги","nav.projects":"Проекти","nav.about":"Про нас","nav.community":"Спільнота","nav.reviews":"Відгуки","nav.faq":"FAQ","nav.contact":"Контакти",
+    "nav.services":"Послуги","nav.projects":"Проекти","nav.pricing":"Ціни","nav.about":"Про нас","nav.community":"Спільнота","nav.reviews":"Відгуки","nav.faq":"FAQ","nav.contact":"Контакти",
     "cta.bookHeader":"Записатися","cta.bookService":"Записатися на сервіс","cta.whatsapp":"Написати в WhatsApp","cta.requestForm":"Надіслати заявку",
     "wa.prefill":"Привіт, Iron Custom Motors! Хочу обговорити сервіс для свого мотоцикла. Дайте відповідь, коли зможете.","contact.directions":"Маршрут","brands.label":"Мульти-бренд сервіс · постачання OEM і aftermarket запчастин",
     "cookie.text":"Ми використовуємо cookies, щоб розуміти відвідуваність і покращувати сайт. Без сторонньої реклами.","cookie.accept":"Прийняти","cookie.reject":"Відхилити",
@@ -236,7 +236,7 @@ const I18N = {
     "form.message":"Розкажіть про роботу","form.note":"Надсилаючи, ви погоджуєтесь, що ми зв'яжемося з вами щодо цього запиту. Жодного спаму.","form.submit":"Надіслати заявку","form.successT":"Заявку отримано","form.successP":"Відповімо у WhatsApp або на email у робочий час. До зв'язку."
   },
   pt: {
-    "nav.services":"Serviços","nav.projects":"Projetos","nav.about":"Sobre","nav.community":"Comunidade","nav.reviews":"Avaliações","nav.faq":"FAQ","nav.contact":"Contacto",
+    "nav.services":"Serviços","nav.projects":"Projetos","nav.pricing":"Preços","nav.about":"Sobre","nav.community":"Comunidade","nav.reviews":"Avaliações","nav.faq":"FAQ","nav.contact":"Contacto",
     "cta.bookHeader":"Marcar serviço","cta.bookService":"Marcar serviço","cta.whatsapp":"WhatsApp","cta.requestForm":"Enviar pedido",
     "wa.prefill":"Olá Iron Custom Motors, gostaria de saber sobre o serviço para a minha moto. Respondam quando puderem.","contact.directions":"Como chegar","brands.label":"Oficina multi-marca · sourcing de peças OEM e aftermarket",
     "cookie.text":"Usamos cookies para medir tráfego e melhorar o site. Sem publicidade de terceiros.","cookie.accept":"Aceitar","cookie.reject":"Rejeitar",
