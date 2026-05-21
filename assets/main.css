@@ -345,6 +345,25 @@ section{padding:var(--gap) 0;position:relative}
 .community-aside .pills .item:last-child{border-bottom:0}
 .community-aside .pills .item .ic{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;color:var(--accent);background:rgba(255,87,34,.06);flex-shrink:0}
 .community-aside .pills .item .ic svg{width:16px;height:16px}
+/* ===== Pricing teaser on home ===== */
+.pricing-teaser{padding:var(--gap) 0;background:#0a0a0a;border-top:1px solid var(--border);position:relative;overflow:hidden}
+.pricing-teaser::before{content:"";position:absolute;top:-15%;right:-10%;width:520px;height:520px;background:radial-gradient(circle,rgba(255,87,34,.10),transparent 60%);pointer-events:none;z-index:0}
+.pricing-teaser .container{position:relative;z-index:1}
+.price-highlights{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+@media (max-width:1100px){.price-highlights{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.price-highlights{grid-template-columns:1fr}}
+.ph-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 22px;display:flex;flex-direction:column;gap:10px;position:relative;transition:border-color .25s var(--ease),transform .25s var(--ease)}
+.ph-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.ph-num{font-family:'Saira',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.ph-card h3{margin:0;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:18px;line-height:1.1;color:#fff;letter-spacing:-.005em;min-height:2.2em;display:flex;align-items:flex-end}
+.ph-card p{margin:0;font-family:'Saira',sans-serif;font-size:13px;line-height:1.5;color:var(--text-dim);flex:1}
+.ph-price{margin-top:8px;padding-top:14px;border-top:1px solid var(--border);font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:22px;color:var(--accent);line-height:1;letter-spacing:-.005em;display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.ph-price .from{font-family:'Saira',sans-serif;font-weight:500;font-size:11px;letter-spacing:.08em;color:var(--text-mute);text-transform:uppercase}
+.ph-price .cur{font-family:'Saira',sans-serif;font-weight:500;font-size:11px;letter-spacing:.08em;color:var(--text-mute);text-transform:uppercase}
+.pricing-cta-row{margin-top:40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-top:30px;border-top:1px solid var(--border)}
+.pricing-cta-row .tax-note{margin:0;font-family:'Saira',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
+@media (max-width:600px){.pricing-cta-row{flex-direction:column;align-items:flex-start}}
+
 .community-aside .pills .item .t{display:block;font-family:'Saira',sans-serif;font-weight:600;text-transform:uppercase;font-size:13px;letter-spacing:.06em;color:var(--text);line-height:1.25}
 .community-aside .pills .item .d{display:block;font-size:13px;color:var(--text-dim);margin-top:4px;line-height:1.5}
 .community-promise{margin-top:60px;padding:36px clamp(28px,4vw,56px);background:linear-gradient(135deg,rgba(255,87,34,.10),transparent 60%);border:1px solid var(--border);border-radius:var(--radius-lg);position:relative;overflow:hidden}
