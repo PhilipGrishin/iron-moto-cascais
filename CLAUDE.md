@@ -1,7 +1,8 @@
 # Iron Custom Motors — Project Context (for Claude / Cowork)
 
 > Read this first before making any decisions on the site. Distilled from the
-> official TZ (ICM_TZ_website_development_ru.docx).
+> official TZ (ICM_TZ_website_development_ru.docx) and updated 2026-05 after
+> the migration from single-page landing to multi-page lead-gen site.
 
 ## What this project is
 
@@ -15,6 +16,31 @@ international custom-motorcycle pedigree:
 
 The brand existed long before Portugal — its credibility transfers to the
 local service business.
+
+## Concept (updated 2026-05)
+
+**This is no longer a one-page landing.** It started as a long-scroll landing
+with anchored sections; in May 2026 we restructured it into a proper
+multi-page site so each commercial query has its own deep landing page that
+Google and AI engines (ChatGPT, Perplexity, Google AI Overviews, Gemini) can
+cite directly.
+
+**The goal of the site is to be the answer when riders search or ask AI.**
+Two distinct traffic sources, equal weight:
+
+1. **Classic Google / Bing search** — for queries like "motorcycle service
+   cascais", "pre purchase inspection portugal", "BMW service Lisbon".
+   Strategy: one focused landing page per commercial query, with rich
+   Schema.org markup, internal linking, and content depth.
+2. **AI engine citation** — when someone asks "best motorcycle shop in
+   Cascais" or "where can I get a BMW serviced near Lisbon", we want the
+   answer to include Iron Custom Motors. Strategy: complete LocalBusiness +
+   MotorcycleRepair + Service + FAQPage + BreadcrumbList JSON-LD on every
+   page, in 4 languages, with consistent NAP (name/address/phone).
+
+Conversion still happens through the same channels: WhatsApp (primary),
+phone, contact form (FormSubmit). The site's job is to get them to those
+channels with high intent.
 
 ## Non-negotiable principles
 
@@ -70,7 +96,7 @@ Push these in order on home + ads:
   `/uk/`, `/pt/`. JS picks correct lang from URL and navigates between them
   on lang switcher click. Translations dict for runtime lives in
   `assets/main.js` (`I18N` object) — keep in sync if you change copy.
-- 16 page paths × 4 languages = 64 main URLs (in `sitemap.xml`).
+- 22 page paths × 4 languages = **88 main URLs** in `sitemap.xml`.
 - Project pages have an inline `window.ICM_I18N_PAGE` with project-specific
   copy in 4 langs.
 - Form: posts to `https://formsubmit.co/Ironcustom.office@gmail.com` and
@@ -97,16 +123,53 @@ Push these in order on home + ads:
 ✓ Branded 404 with language auto-detection.
 ✓ Cache-bust query `?v=YYYYMMDDx` on CSS/JS — bump when you change `assets/`.
 
-## Known gaps vs TZ (what's still missing)
+## Site structure (as of 2026-05)
 
-- ❌ **Blog / Insights section** — TZ section 14 requires it for SEO and
-  trust. Currently no `/blog/`. Big SEO opportunity — long-tail queries
-  ("what to check before buying a used motorcycle in Portugal", "BMW service
-  Cascais", "season prep") are easy ranking targets.
+22 URLs per language. Each is a real page with its own H1, meta, JSON-LD,
+content depth — not an anchor on the home page.
+
+**Hubs / landing pages (5 new in May 2026):**
+- `/services/` — services hub (CollectionPage schema, links to all 5 service pages)
+- `/projects/` — gallery hub (CollectionPage + ItemList, links to 10 project pages)
+- `/about/` — brand story (AboutPage schema)
+- `/contact/` — full contacts page (ContactPage schema, embed map, form trigger)
+- `/faq/` — full FAQ (FAQPage schema — moved off home)
+
+**Service landing pages (5):**
+- `/motorcycle-service/` — primary service entry (Service schema)
+- `/parts/` — parts & consumables
+- `/upgrades-tuning/` — performance/touring upgrades
+- `/custom/` — bespoke builds
+- `/pre-purchase-inspection/` — strongest commercial-intent landing for expats
+
+**Other:**
+- `/` — overview / home (still has all sections, but main nav goes to deep pages)
+- `/pricing/` — full price list with PDF downloads per language
+- `/projects/<slug>/` — 10 individual custom build case studies
+
+## Navigation philosophy (after May 2026 refactor)
+
+- **Main nav (header + footer) uses real URLs only.** No `#anchors` for
+  Services / Projects / About / FAQ / Contact / Pricing.
+- The only anchors remaining are functional: `#contact` opens the form
+  modal (JS-bound via `data-cta="book"`), `/#reviews` jumps to the dynamic
+  Google Reviews widget on home (it's JS-rendered, no SEO value as standalone
+  page).
+- Pricing teaser on home page deep-links to `/pricing/`.
+- All sub-pages have absolute-path nav so they work identically in
+  `/ru/`, `/uk/`, `/pt/` subtrees.
+
+## Known gaps (what's still missing, in priority order)
+
+- ❌ **Blog / Insights section** — biggest remaining SEO opportunity.
+  Long-tail queries like "what to check before buying a used motorcycle in
+  Portugal", "BMW R nineT first service Lisbon", "winter prep Cascais" are
+  easy ranking targets and feed AI engines. Suggested structure:
+  `/blog/<slug>/` with `Article` schema, hub at `/blog/`.
 - ❌ **Diagnostics** as a separate landing page (TZ flags it P1; currently
   folded into motorcycle-service).
 - ❌ **Legal pages**: Privacy Policy, Cookie Policy, Terms — required for
-  GDPR compliance. Footer references them but pages don't exist.
+  GDPR compliance. Footer no longer references them (cleaned up May 2026).
 - ❌ **Advanced lead form**: TZ asks for brand, model, year, urgency,
   preferred date, photo upload. Current form is the short version only.
 - ❌ **Anti-spam** (reCAPTCHA v3 / honeypot / rate-limit). Form is exposed.
@@ -153,10 +216,26 @@ Push these in order on home + ads:
 
 ## Useful commands / scripts (in outputs/build)
 
+- `build_new_pages.py` — generates the 5 hub pages from `new_pages_data.py`.
+- `nav_patch.py` — rewrites primary nav + footer columns on all EN pages.
 - `build_i18n.py` — regenerates `/ru/`, `/uk/`, `/pt/` pages from EN sources.
 - `localize_internal_links.py` — rewrites internal links to localized URLs.
 - `add_image_dims.py` — adds `width`/`height` to all `<img>` from real image files.
 - `build_sitemap.py` — regenerates `sitemap.xml` for all 4 langs.
+- `build_pricing.py` — generates `/pricing/` from `pricing_data.py` (own per-lang pipeline).
+
+Typical sequence after content/translation changes:
+```
+node extract_i18n.js              # main.js → i18n.json
+python3 build_new_pages.py        # 5 hubs
+python3 nav_patch.py              # consistent nav
+python3 build_i18n.py             # RU/UK/PT
+python3 build_pricing.py          # pricing 4 langs
+python3 localize_internal_links.py
+python3 add_image_dims.py
+python3 build_sitemap.py
+# bump CACHE_BUST in HTML  (single search/replace across *.html)
+```
 
 ## Contact / business facts
 

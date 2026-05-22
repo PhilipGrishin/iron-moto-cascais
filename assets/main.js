@@ -503,7 +503,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
     document.getElementById('openForm')?.addEventListener('click', openModal);
     document.querySelectorAll('[data-cta="book"]').forEach(b=>{
       b.addEventListener('click', e=>{
-        if(b.tagName==='A' && b.getAttribute('href') !== '#contact') return;
+        // If it's an anchor pointing somewhere other than #contact, let normal navigation happen
+        if(b.tagName === 'A'){
+          const href = b.getAttribute('href') || '';
+          if(href !== '#contact' && href !== '#') return;
+          e.preventDefault();
+        }
+        openModal();
       });
     });
     document.getElementById('closeModal')?.addEventListener('click', closeModal);
