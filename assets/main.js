@@ -795,49 +795,61 @@ document.addEventListener('DOMContentLoaded', ()=>{
     ro.observe(reviewsSection);
   }
 
-  /* Make whole .service card clickable on desktop AND mobile.
-     Uses pointer events (works for mouse + touch + stylus). Preserves text selection
-     and never fires during scroll. */
-  document.querySelectorAll('.service').forEach(card => {
-    const a = card.querySelector('a.arrow-link');
-    if(!a) return;
-    card.style.cursor = 'pointer';
-    // CSS hint to mobile browsers — improves tap responsiveness
-    card.style.webkitTapHighlightColor = 'transparent';
+  /* Make whole-card clickable on desktop AND mobile for cards that contain
+     a single primary CTA link. Uses pointer events. Preserves text selection
+     and never fires during scroll.
+       .service     — home page service tiles (link selector: a.arrow-link)
+       .svc-card    — /services/ hub cards         (link selector: a.cta)
+       .ctc-card    — /contact/ channel cards      (link selector: a.cta)
+  */
+  const CARD_PATTERNS = [
+    { sel: '.service',  link: 'a.arrow-link' },
+    { sel: '.svc-card', link: 'a.cta' },
+    { sel: '.ctc-card', link: 'a.cta' },
+  ];
+  CARD_PATTERNS.forEach(({ sel, link }) => {
+    document.querySelectorAll(sel).forEach(card => {
+      const a = card.querySelector(link);
+      if(!a) return;
+      card.style.cursor = 'pointer';
+      card.style.webkitTapHighlightColor = 'transparent';
 
-    let downX = 0, downY = 0, downT = 0, moved = false;
+      let downX = 0, downY = 0, downT = 0, moved = false;
 
-    card.addEventListener('pointerdown', e => {
-      downX = e.clientX;
-      downY = e.clientY;
-      downT = Date.now();
-      moved = false;
-    }, { passive: true });
+      card.addEventListener('pointerdown', e => {
+        downX = e.clientX;
+        downY = e.clientY;
+        downT = Date.now();
+        moved = false;
+      }, { passive: true });
 
-    card.addEventListener('pointermove', e => {
-      if(Math.abs(e.clientX - downX) > 8 || Math.abs(e.clientY - downY) > 8){
-        moved = true; // user is scrolling/dragging
-      }
-    }, { passive: true });
+      card.addEventListener('pointermove', e => {
+        if(Math.abs(e.clientX - downX) > 8 || Math.abs(e.clientY - downY) > 8){
+          moved = true;
+        }
+      }, { passive: true });
 
-    card.addEventListener('click', e => {
-      // ignore drags / scrolls (movement during press)
-      if(moved) return;
-      // ignore long-presses (user might be selecting text)
-      if(Date.now() - downT > 500) return;
-      // ignore clicks landing on other interactive elements inside the card
-      if(e.target.closest('a, button')) return;
-      // ignore if user has an active selection
-      const sel = window.getSelection && window.getSelection().toString();
-      if(sel && sel.length) return;
-      a.click();
-    });
+      card.addEventListener('click', e => {
+        if(moved) return;
+        if(Date.now() - downT > 500) return;
+        if(e.target.closest('a, button')) return;
+        const seln = window.getSelection && window.getSelection().toString();
+        if(seln && seln.length) return;
+        // Honor cmd/ctrl-click → open in new tab
+        if(e.metaKey || e.ctrlKey){
+          window.open(a.href, '_blank', 'noopener');
+        } else if(a.target === '_blank'){
+          window.open(a.href, '_blank', 'noopener');
+        } else {
+          a.click();
+        }
+      });
 
-    // Keyboard accessibility — make card focusable and Enter triggers
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('role', 'link');
-    card.addEventListener('keydown', e => {
-      if(e.key === 'Enter'){ e.preventDefault(); a.click(); }
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'link');
+      card.addEventListener('keydown', e => {
+        if(e.key === 'Enter'){ e.preventDefault(); a.click(); }
+      });
     });
   });
 
