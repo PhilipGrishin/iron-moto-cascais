@@ -600,13 +600,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }));
   });
 
-  // Auto-fire view_service_page on service / project pages
+  // Auto-fire view_service_page / view_hub_page / view_project_page
   (function(){
     const services = {
       'motorcycle-service':'service','parts':'parts','upgrades-tuning':'upgrades',
       'custom':'custom','pre-purchase-inspection':'inspection'
     };
-    // Strip language prefix to detect page type uniformly
+    const hubs = {
+      'services':'services_hub', 'projects':'projects_hub',
+      'about':'about', 'contact':'contact', 'faq':'faq', 'pricing':'pricing'
+    };
     const path = location.pathname.replace(/^\/(ru|uk|pt)\//, '/');
     for(const slug in services){
       if(path === `/${slug}/` || path === `/${slug}/index.html`){
@@ -614,10 +617,73 @@ document.addEventListener('DOMContentLoaded', ()=>{
         return;
       }
     }
+    for(const slug in hubs){
+      if(path === `/${slug}/` || path === `/${slug}/index.html`){
+        icmTrack('view_hub_page', {hub: hubs[slug], page_slug: slug});
+        return;
+      }
+    }
     const projMatch = path.match(/^\/projects\/([a-z0-9-]+)\/?$/);
     if(projMatch){
       icmTrack('view_project_page', {project: projMatch[1]});
     }
+  })();
+
+  // PDF downloads (pricing PDFs etc.)
+  document.querySelectorAll('a[href$=".pdf"], a[href*="/pricing/files/"]').forEach(a=>{
+    a.addEventListener('click', ()=> icmTrack('download_pdf', {
+      file: a.href.split('/').pop(),
+      label: (a.textContent||'').trim().slice(0,80)
+    }));
+  });
+
+  // Outbound social
+  document.querySelectorAll('a[href*="instagram.com"], a[href*="facebook.com"], a[href*="youtube.com"]').forEach(a=>{
+    a.addEventListener('click', ()=> {
+      const net = a.href.includes('instagram') ? 'instagram'
+        : a.href.includes('facebook') ? 'facebook'
+        : a.href.includes('youtube') ? 'youtube' : 'other';
+      icmTrack('outbound_social', {network: net, link_url: a.href});
+    });
+  });
+
+  // Modal open/close — proxies for form intent vs. submit
+  const _modalEl = document.getElementById('modal');
+  if(_modalEl){
+    const mo = new MutationObserver(()=>{
+      if(_modalEl.classList.contains('open')){
+        icmTrack('modal_open', {form: 'lead'});
+      }
+    });
+    mo.observe(_modalEl, {attributes:true, attributeFilter:['class']});
+    document.getElementById('closeModal')?.addEventListener('click', ()=> icmTrack('modal_close', {reason:'user_close'}));
+  }
+
+  // Brand click (header / footer logo)
+  document.querySelectorAll('a.brand, footer a.logo').forEach(a=>{
+    a.addEventListener('click', ()=> icmTrack('click_logo', {location: a.closest('header')?'header':'footer'}));
+  });
+
+  // Scroll depth (25/50/75/100) — fired once per threshold per page
+  (function(){
+    const marks = [25,50,75,100], fired = new Set();
+    function onScroll(){
+      const h = document.documentElement;
+      const scrolled = (window.scrollY + window.innerHeight) / h.scrollHeight * 100;
+      marks.forEach(m => {
+        if(scrolled >= m && !fired.has(m)){
+          fired.add(m);
+          icmTrack('scroll_depth', {percent: m});
+        }
+      });
+    }
+    let ticking = false;
+    window.addEventListener('scroll', ()=>{
+      if(!ticking){
+        requestAnimationFrame(()=>{ onScroll(); ticking=false; });
+        ticking = true;
+      }
+    }, {passive:true});
   })();
 
   // Language switch — track when user changes language

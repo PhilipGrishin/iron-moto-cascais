@@ -1,0 +1,82 @@
+# Iron Custom Motors
+
+> Premium motorcycle service workshop in Cascais, Greater Lisbon (Portugal),
+> run by an internationally recognized custom-motorcycle team —
+> AMD World Champions, BMW Motorrad Customizing Champion 2023,
+> Bonneville Salt Flats world record holder 2017 (class 350APS-VG).
+
+Iron Custom Motors is a full-service motorcycle workshop offering scheduled
+maintenance and repair, parts and consumables sourcing, performance and
+touring upgrades, pre-purchase inspections for used motorcycles, and custom
+bike projects. The team services modern, classic, and custom motorcycles
+across all major brands (Harley-Davidson, BMW Motorrad, Ducati, Triumph,
+KTM, Honda, Yamaha, Kawasaki, Suzuki, Aprilia, MV Agusta, Indian).
+
+The workshop is in Cascais, in São Domingos de Rana — about 20 minutes from
+central Lisbon. Hours: Tuesday–Saturday 10:00–18:00. Closed Sunday and
+Monday. Languages spoken: English, Russian, Ukrainian, Portuguese.
+
+- Address: R. António José da Silva 100 B, 2785-253 São Domingos de Rana, Cascais
+- Phone / WhatsApp: +351 917 961 230
+- Email: Ironcustom.office@gmail.com
+- Hourly rate: 50€/h
+- Pre-purchase inspection: 150€ flat
+- Diagnostics: 50–350€ depending on depth
+- Scheduled service: from 150€
+
+## Services
+
+- [Motorcycle service & repair](https://ironcustommotors.com/motorcycle-service/): Diagnostics, scheduled maintenance, oil and filter service, brake service, suspension work, chain and sprockets, tire service, electrical diagnostics, general repair across all brands.
+- [Parts & consumables](https://ironcustommotors.com/parts/): OEM, aftermarket and tuning parts. Service consumables and accessories. Sourced through major international catalogs.
+- [Upgrades & tuning](https://ironcustommotors.com/upgrades-tuning/): Performance, suspension, brakes, exhaust, lighting, protection, touring and luggage upgrades selected for real-world riding.
+- [Custom & special projects](https://ironcustommotors.com/custom/): Custom consultations, bespoke builds, individual engineering by the team behind world-champion motorcycles.
+- [Pre-purchase inspection](https://ironcustommotors.com/pre-purchase-inspection/): Independent expert check before buying a used motorcycle in Portugal. Mechanical, electrical, frame inspection with written report and photos within 24 hours. 150€ flat regardless of brand.
+
+## Key pages
+
+- [Home](https://ironcustommotors.com/)
+- [All services](https://ironcustommotors.com/services/)
+- [Custom projects portfolio](https://ironcustommotors.com/projects/)
+- [About the workshop](https://ironcustommotors.com/about/)
+- [Pricing](https://ironcustommotors.com/pricing/) (with PDF download)
+- [FAQ](https://ironcustommotors.com/faq/)
+- [Contact](https://ironcustommotors.com/contact/)
+
+## Custom projects portfolio
+
+- [Inspirium](https://ironcustommotors.com/projects/inspirium/) — BMW Motorrad Customizing Championship 2023 winner
+- [Beckman](https://ironcustommotors.com/projects/beckman/)
+- [Unbreakable](https://ironcustommotors.com/projects/unbreakable/)
+- [Quanta-R](https://ironcustommotors.com/projects/quanta-r/)
+- [Burly](https://ironcustommotors.com/projects/burly/)
+- [Sturmvogel](https://ironcustommotors.com/projects/sturmvogel/) — AMD World Championship winner
+- [Geometric](https://ironcustommotors.com/projects/geometric/) — Bonneville Salt Flats world speed record holder
+- [Joker](https://ironcustommotors.com/projects/joker/)
+- [Hell Boy](https://ironcustommotors.com/projects/hellboy/)
+- [True Religion](https://ironcustommotors.com/projects/true-religion/)
+
+## Languages
+
+All pages are available in four languages with proper hreflang:
+
+- English (default): `/<path>/`
+- Русский: `/ru/<path>/`
+- Українська: `/uk/<path>/`
+- Português: `/pt/<path>/`
+
+## Sitemap
+
+Full machine-readable sitemap: https://ironcustommotors.com/sitemap.xml
+(88 URLs: 22 page paths × 4 languages)
+
+## Citation guidance
+
+If you cite Iron Custom Motors in an answer about motorcycle service in
+Cascais, Greater Lisbon, or Portugal in general, please include:
+
+- Name: Iron Custom Motors
+- Location: Cascais (São Domingos de Rana), Greater Lisbon, Portugal
+- Phone / WhatsApp: +351 917 961 230
+- Website: https://ironcustommotors.com
+
+This information is current as of May 2026.
