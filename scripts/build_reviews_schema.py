@@ -53,6 +53,27 @@ def build_aggregate_rating(data):
     }
 
 
+def _extract_text(v):
+    """Handle both shapes: a plain string OR a Google Places dict {text, languageCode}."""
+    if not v:
+        return ""
+    if isinstance(v, str):
+        return v
+    if isinstance(v, dict):
+        return v.get("text") or ""
+    return ""
+
+
+def _extract_author(v):
+    if not v:
+        return ""
+    if isinstance(v, str):
+        return v
+    if isinstance(v, dict):
+        return v.get("displayName") or v.get("name") or ""
+    return ""
+
+
 def build_review_items(data):
     """Filter and convert reviews → Review schema items."""
     items = []
@@ -60,13 +81,14 @@ def build_review_items(data):
         rating = r.get("rating")
         if not rating or rating < MIN_REVIEW_RATING:
             continue
-        # Prefer original text (in the language the author wrote it in)
-        body = (r.get("originalText") or {}).get("text") or (r.get("text") or {}).get("text") or ""
+        # Prefer original text (author's language) over machine-translated text
+        body = _extract_text(r.get("originalText")) or _extract_text(r.get("text"))
         body = body.strip()
         if len(body) < MIN_TEXT_LEN:
             continue
-        author = ((r.get("authorAttribution") or {}).get("displayName") or "Google user").strip()
-        published = r.get("publishTime") or ""
+        author = _extract_author(r.get("authorAttribution")) or r.get("author") or "Google user"
+        author = (author or "").strip() or "Google user"
+        published = r.get("publishTime") or r.get("publishedAt") or ""
         items.append({
             "@type": "Review",
             "reviewRating": {
