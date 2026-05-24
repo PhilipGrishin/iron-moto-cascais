@@ -31,7 +31,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:var(--bg)}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:var(--bg);overflow-x:hidden}
 body{
   font-family:'Inter',system-ui,sans-serif;
   font-size:16px;line-height:1.6;
@@ -156,20 +156,12 @@ section{padding:var(--gap) 0;position:relative}
 @media (max-width:760px){
   .cookie-banner{flex-direction:column;align-items:stretch;gap:12px;left:8px;right:8px;bottom:8px;padding:14px 16px}
   .cookie-banner .cb-actions{justify-content:flex-end}
-  body.has-cookie-banner .sticky-cta{bottom:200px}
   body.has-cookie-banner .fab-wa{bottom:200px}
 }
 
-/* Mobile sticky CTA bar (only mobile, after hero) */
-.sticky-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:55;display:none;gap:8px;padding:8px;background:rgba(10,10,10,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--border);border-radius:16px;box-shadow:0 14px 40px -10px rgba(0,0,0,.5);transform:translateY(120%);transition:transform .35s var(--ease);}
-.sticky-cta.show{transform:translateY(0)}
-.sticky-cta .btn{flex:1;padding:14px 18px;font-size:12px;letter-spacing:.06em}
-.sticky-cta .btn-wa{background:#25D366;color:#0a0a0a}
-.sticky-cta .btn-wa:hover{background:#22c55e}
-@media (max-width:760px){
-  .sticky-cta{display:flex}
-  body.has-sticky-cta .fab-wa{display:none}
-}
+/* Mobile sticky CTA bar — removed by request (was occupying too much screen space).
+   Element is kept in markup for future use but hidden permanently. */
+.sticky-cta{display:none !important}
 
 /* Floating WhatsApp */
 .fab-wa{position:fixed;right:22px;bottom:22px;width:62px;height:62px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;z-index:50;box-shadow:0 14px 40px -10px rgba(37,211,102,.6);transition:transform var(--t-fast) var(--ease)}
@@ -295,7 +287,7 @@ section{padding:var(--gap) 0;position:relative}
 .team-banner .img{position:relative;height:clamp(360px,55vw,640px);overflow:hidden}
 .team-banner .img img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.05) brightness(.7)}
 .team-banner .img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.2) 0%,rgba(10,10,10,.45) 50%,rgba(10,10,10,.92) 100%)}
-.team-banner .cap{position:absolute;left:var(--pad-x);right:var(--pad-x);bottom:clamp(28px,5vw,60px);z-index:2;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:end;max-width:var(--max);margin:0 auto;width:100%}
+.team-banner .cap{position:absolute;left:var(--pad-x);right:var(--pad-x);bottom:clamp(28px,5vw,60px);z-index:2;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:end;max-width:var(--max);margin:0 auto}
 .team-banner .cap-text h3{color:#fff;margin-bottom:14px;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(28px,4vw,52px);line-height:.95;letter-spacing:-.005em;max-width:18ch}
 .team-banner .cap-text h3 .accent{color:var(--accent)}
 .team-banner .cap-text p{color:rgba(255,255,255,.85);max-width:42ch;font-size:clamp(15px,1.2vw,18px)}
