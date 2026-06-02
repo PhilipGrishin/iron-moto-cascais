@@ -21,7 +21,7 @@ scripts read `scripts/build/README.md`.
 - After any change to `assets/main.css` or `assets/main.js`,
   bump the cache-bust query (`?v=...`) on every HTML file. The
   convention is `?v=YYYYMMDD<letter>`. The latest value at the
-  time of writing is `20260524b`.
+  time of writing is `20260602b`.
 - When you finish a task, do not commit or push — the project
   owner pushes via GitHub Desktop. Leave the working tree in a
   state where they can review the diff and commit.

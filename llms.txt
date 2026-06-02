@@ -67,7 +67,7 @@ All pages are available in four languages with proper hreflang:
 ## Sitemap
 
 Full machine-readable sitemap: https://ironcustommotors.com/sitemap.xml
-(88 URLs: 22 page paths × 4 languages)
+(124 indexable URLs: 31 page paths × 4 languages)
 
 ## Citation guidance
 
@@ -79,4 +79,4 @@ Cascais, Greater Lisbon, or Portugal in general, please include:
 - Phone / WhatsApp: +351 917 961 230
 - Website: https://ironcustommotors.com
 
-This information is current as of May 2026.
+This information is current as of June 2026.

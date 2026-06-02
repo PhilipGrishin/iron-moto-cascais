@@ -90,13 +90,16 @@ Push these in order on home + ads:
 
 ## Current site stack (what's actually built)
 
-- Plain static **HTML + CSS + vanilla JS** in this repo. No build step.
+- Plain static **HTML + CSS + vanilla JS** in this repo. The checked-in
+  HTML is what users see; Python/Node build scripts in `scripts/build/`
+  regenerate the static pages from source data when content changes.
 - Hosted on **GitHub Pages** with custom domain `ironcustommotors.com` (CNAME).
 - Multi-language: pre-rendered static pages per language at `/`, `/ru/`,
   `/uk/`, `/pt/`. JS picks correct lang from URL and navigates between them
   on lang switcher click. Translations dict for runtime lives in
   `assets/main.js` (`I18N` object) — keep in sync if you change copy.
-- 22 page paths × 4 languages = **88 main URLs** in `sitemap.xml`.
+- 31 indexable page paths × 4 languages = **124 URLs** in `sitemap.xml`.
+  The repo also contains `404.html` plus 2 noindex redirect stubs.
 - Project pages have an inline `window.ICM_I18N_PAGE` with project-specific
   copy in 4 langs.
 - Form: posts to `https://formsubmit.co/Ironcustom.office@gmail.com` and
@@ -112,8 +115,9 @@ Push these in order on home + ads:
 ## SEO posture (what's in place)
 
 ✓ Schema.org JSON-LD on every main page: LocalBusiness + MotorcycleRepair,
-  Organization, WebSite, BreadcrumbList, FAQPage on home, CreativeWork on
-  project pages. **This is the asset that AI engines (ChatGPT, Perplexity,
+  Organization, WebSite, BreadcrumbList, FAQPage, CollectionPage, Service,
+  AboutPage, ContactPage, NewsArticle, Blog, AggregateRating and Review where
+  relevant. **This is the asset that AI engines (ChatGPT, Perplexity,
   Google AI Overviews) read to cite the brand.**
 ✓ Unique title + meta description per page per language.
 ✓ OG + Twitter cards localized.
@@ -123,10 +127,12 @@ Push these in order on home + ads:
 ✓ Branded 404 with language auto-detection.
 ✓ Cache-bust query `?v=YYYYMMDDx` on CSS/JS — bump when you change `assets/`.
 
-## Site structure (as of 2026-05)
+## Site structure (as of 2026-06)
 
-22 URLs per language. Each is a real page with its own H1, meta, JSON-LD,
-content depth — not an anchor on the home page.
+31 indexable URLs per language. Each is a real page with its own H1, meta,
+JSON-LD, content depth and hreflang alternates — not an anchor on the home
+page. Legacy `/projects/nezlamniy/` and `/projects/quanta/` are noindex
+redirect stubs in English only.
 
 **Hubs / landing pages (5 new in May 2026):**
 - `/services/` — services hub (CollectionPage schema, links to all 5 service pages)
@@ -146,6 +152,8 @@ content depth — not an anchor on the home page.
 - `/` — overview / home (still has all sections, but main nav goes to deep pages)
 - `/pricing/` — full price list with PDF downloads per language
 - `/projects/<slug>/` — 10 individual custom build case studies
+- `/news/` and `/news/<slug>/` — news hub and articles
+- `/privacy/`, `/cookies/`, `/terms/` — legal pages
 
 ## Navigation philosophy (after May 2026 refactor)
 
@@ -168,21 +176,20 @@ content depth — not an anchor on the home page.
   `/blog/<slug>/` with `Article` schema, hub at `/blog/`.
 - ❌ **Diagnostics** as a separate landing page (TZ flags it P1; currently
   folded into motorcycle-service).
-- ❌ **Legal pages**: Privacy Policy, Cookie Policy, Terms — required for
-  GDPR compliance. Footer no longer references them (cleaned up May 2026).
 - ❌ **Advanced lead form**: TZ asks for brand, model, year, urgency,
   preferred date, photo upload. Current form is the short version only.
 - ❌ **Anti-spam** (reCAPTCHA v3 / honeypot / rate-limit). Form is exposed.
 - ❌ **Thank-you / success state page** as a separate URL with its own
   analytics event.
-- ❌ **GTM container** — events are pushed to `dataLayer` but no GTM is
-  loaded, so they don't fire anywhere. Either add GTM or wire `gtag` events
-  directly.
-- ❌ **Custom event tracking** per TZ: `click_whatsapp`, `click_phone`,
-  `click_email`, `click_map`, `book_service`, `view_service_page`,
-  `lead_success`. Only `form_submit` is partially wired.
-- ❌ **Schema gaps**: no `Article` (needs blog first), no `Review` markup
-  (Google reviews come via JS — could be SSR'd into JSON-LD).
+- ⚠️ **GTM container** is not loaded by design. Events are sent directly to
+  GA4 via `gtag` after consent and also queued in `dataLayer` for a future
+  GTM migration.
+- ⚠️ **Custom event tracking** is wired for `form_submit`, `click_whatsapp`,
+  `click_phone`, `click_email`, `click_map`, `book_service`,
+  `view_service_page`, and `lead_success`; real lead-delivery verification
+  still depends on FormSubmit mailbox activation and a controlled test lead.
+- ⚠️ **Schema gap**: no long-form `Article` content beyond news yet. Blog or
+  insights pages are still the main content/SEO expansion path.
 - ⚠️ Site is static HTML — **no CMS**. The TZ leaves the stack open; the
   current implementation trades CMS-convenience for speed + free hosting.
   Acceptable for MVP; revisit if non-tech team needs to edit content.
@@ -190,7 +197,8 @@ content depth — not an anchor on the home page.
 ## Acceptance criteria from TZ (use as a checklist)
 
 - Mobile + desktop both work correctly ✓
-- All forms send leads and track as events — partially ✗
+- All forms send leads and track as events — repo wiring ✓; real email
+  delivery must be verified with FormSubmit activation/test lead
 - All language versions linked properly ✓
 - title/description/OG/canonical/hreflang correct ✓
 - CTAs work from all key screens ✓
@@ -217,6 +225,9 @@ content depth — not an anchor on the home page.
 ## Useful commands / scripts (in `scripts/build/`)
 
 - `build_new_pages.py` — generates the 5 hub pages from `new_pages_data.py`.
+- `build_brand_pages.py` — generates BMW / Harley / Ducati service pages.
+- `build_legal_pages.py` — generates privacy / cookies / terms pages.
+- `build_news.py` — generates the news hub and article pages.
 - `nav_patch.py` — rewrites primary nav + footer columns on all EN pages.
 - `build_i18n.py` — regenerates `/ru/`, `/uk/`, `/pt/` pages from EN sources.
 - `localize_internal_links.py` — rewrites internal links to localized URLs.
@@ -228,9 +239,12 @@ Typical sequence after content/translation changes:
 ```
 node extract_i18n.js              # main.js → i18n.json
 python3 build_new_pages.py        # 5 hubs
+python3 build_brand_pages.py      # brand service pages
+python3 build_legal_pages.py      # legal pages
+python3 build_news.py             # news hub/articles
+python3 build_pricing.py          # pricing 4 langs
 python3 nav_patch.py              # consistent nav
 python3 build_i18n.py             # RU/UK/PT
-python3 build_pricing.py          # pricing 4 langs
 python3 localize_internal_links.py
 python3 add_image_dims.py
 python3 build_sitemap.py

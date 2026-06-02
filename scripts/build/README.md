@@ -16,11 +16,17 @@ root (works from any cwd because paths are absolute).
 - Node.js 14+ (only for `extract_i18n.js`)
 
 ```
-pip3 install beautifulsoup4 lxml pillow
+python3 -m pip install -r requirements.txt
 ```
 
 If `pip3 install` fails with `externally-managed-environment`,
-add `--break-system-packages`.
+use a virtual environment:
+
+```
+python3 -m venv .venv
+. .venv/bin/activate
+python3 -m pip install -r requirements.txt
+```
 
 ## Files
 
@@ -54,6 +60,29 @@ add `--break-system-packages`.
 | `i18n.json` | A snapshot of the runtime `I18N` object that lives inside `assets/main.js`. Regenerate with `node scripts/build/extract_i18n.js` after editing translations in `main.js`. |
 
 ## Typical sequences
+
+### Full safe rebuild
+
+Use this sequence after structural content changes, or before a
+release when you want to verify the generated pages from source
+data:
+
+```
+node scripts/build/extract_i18n.js
+python3 scripts/build/build_new_pages.py
+python3 scripts/build/build_brand_pages.py
+python3 scripts/build/build_legal_pages.py
+python3 scripts/build/build_news.py
+python3 scripts/build/build_pricing.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/build_i18n.py
+python3 scripts/build/localize_internal_links.py
+python3 scripts/build/add_image_dims.py
+python3 scripts/build/build_sitemap.py
+```
+
+Run `build_reviews_schema.py` separately only when a fresh Google
+reviews snapshot is needed, because it calls the Cloudflare Worker.
 
 ### After editing translations in `assets/main.js`
 
@@ -136,7 +165,7 @@ with a one-liner, e.g.:
 ```
 python3 -c "
 from pathlib import Path
-OLD, NEW = '20260524b', '20260525a'
+OLD, NEW = '20260602b', '20260525a'
 for f in Path('.').rglob('*.html'):
     if '.git' in f.parts: continue
     t = f.read_text(encoding='utf-8')
@@ -150,8 +179,9 @@ at the top — keep it in sync when bumping.
 
 ## Notes
 
-- `build_i18n.py` uses `lxml` for HTML parsing. If unavailable, the
-  fallback parser changes whitespace; results may differ trivially.
+- The HTML-rewriting Python scripts prefer `lxml`. If unavailable,
+  they fall back to Python's built-in `html.parser`; whitespace and
+  serialization can differ trivially.
 - `extract_i18n.js` is fragile to formatting of the `I18N` literal
   in `main.js`. It walks brace depth starting from `const I18N = {`.
   Keep that marker intact.

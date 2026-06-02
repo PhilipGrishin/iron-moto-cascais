@@ -28,7 +28,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="/assets/main.css?v=20260524b" rel="stylesheet"/>
+<link href="/assets/main.css?v=20260602b" rel="stylesheet"/>
 <style>
 .subpage{padding:160px 0 100px;background:#0a0a0a;position:relative;overflow:hidden;isolation:isolate}
 .subpage::before{content:"";position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,87,34,.20),transparent 60%);pointer-events:none;z-index:1}
@@ -64,6 +64,7 @@
 .ctc-card h3{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:22px;color:#fff}
 .ctc-card p{font-size:15px;color:var(--text-dim)}
 .ctc-card .cta{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-family:'Saira',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+/* Whole-card click handling is done in main.js (CARD_PATTERNS) */
 .hours-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px 28px;margin-top:30px;max-width:640px}
 .hours-card .row{font-family:'Saira',sans-serif;font-size:18px;color:#fff;padding:6px 0}
 .hours-card .row:last-of-type{color:var(--text-dim)}
@@ -71,7 +72,6 @@
 .map-wrap{margin-top:30px;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);aspect-ratio:16/8;background:#0a0a0a}
 .map-wrap iframe{width:100%;height:100%;border:0;display:block}
 @media (max-width:900px){.ctc-cards{grid-template-columns:1fr}.map-wrap{aspect-ratio:4/5}}
-
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact Iron Custom Motors","url":"https://ironcustommotors.com/pt/contact/","isPartOf":{"@id":"https://ironcustommotors.com/#website"},"mainEntity":{"@id":"https://ironcustommotors.com/#business"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://ironcustommotors.com/pt/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://ironcustommotors.com/pt/contact/"}]}</script>
@@ -289,7 +289,8 @@
 </div>
 <div class="footer-bottom">
 <span>© <span id="yr">2026</span> Iron Custom Motors · <span data-i18n="footer.rights">Todos os direitos reservados</span></span>
-<div class="legal-links"><a data-i18n="footer.privacy" href="/pt/privacy/">Privacy</a><a data-i18n="footer.cookies" href="/pt/cookies/">Cookies</a><a data-i18n="footer.terms" href="/pt/terms/">Terms</a></div><div class="socials">
+<div class="legal-links"><a data-i18n="footer.privacy" href="/pt/privacy/">Privacy</a><a data-i18n="footer.cookies" href="/pt/cookies/">Cookies</a><a data-i18n="footer.terms" href="/pt/terms/">Terms</a></div>
+<div class="socials">
 <a aria-label="Instagram" href="https://www.instagram.com/ironcustommotors/" rel="noopener" target="_blank"><svg fill="none" height="16" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="16"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" fill="currentColor" r="1"></circle></svg></a>
 <a aria-label="Facebook" href="https://www.facebook.com/IronCustomMotors/" rel="noopener" target="_blank"><svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M14 9h3V5h-3c-2 0-4 2-4 4v2H7v4h3v8h4v-8h3l1-4h-4V9z"></path></svg></a>
 <a aria-label="YouTube" href="https://www.youtube.com/c/IronmotoUacom" rel="noopener" target="_blank"><svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M22 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16 4.7 12 4.7 12 4.7s-4 0-7 .3c-.4 0-1.3.1-2.1.9C2.2 6.5 2 8 2 8s-.2 1.7-.2 3.5v1.7c0 1.7.2 3.5.2 3.5s.2 1.5.8 2.1c.8.8 1.9.8 2.4.9 1.7.2 7 .3 7 .3s4 0 7-.3c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.7.2-3.5v-1.7C22.2 9.7 22 8 22 8zM10 15V9l5 3-5 3z"></path></svg></a>
@@ -328,6 +329,6 @@
 </div>
 </div>
 </div>
-<script defer="" src="/assets/main.js?v=20260524b"></script>
+<script defer="" src="/assets/main.js?v=20260602b"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 # Iron Custom Motors — project handoff
 
-State of the repository as of 2026-05-24. This document is the
+State of the repository as of 2026-06-02. This document is the
 single entry point for anyone (human or AI agent) picking up the
 project. It is factual and current; opinions, priorities and
 roadmap recommendations are intentionally not included.
@@ -246,7 +246,7 @@ them when editing by hand.
 - Cache-bust query string is bumped on every change to
   `assets/main.css` or `assets/main.js`. The convention is
   `?v=YYYYMMDD<letter>`. The current value at the time of this
-  handoff is `20260524b`.
+  handoff is `20260602b`.
 - All `<img>` elements have explicit `width` and `height`
   attributes plus `loading="lazy"`. `scripts/build/add_image_dims.py`
   reads pixel sizes from the actual image files.
@@ -256,14 +256,17 @@ them when editing by hand.
 
 ## 11. Resume point
 
-The most recent commit on `main` is:
+For the latest commit on `main`, run:
 
 ```
-dc21b54 2026-05-24 fix: remove mobile sticky-CTA, fix horizontal overflow on mobile
+git log -1 --oneline
 ```
 
-The previous commit added the second news article. Before that,
-brand pages were added. Detailed history is in `CHANGELOG.md`.
+Recent hardening work includes `7ea6b1b fix: harden multilingual SEO
+rendering`, which removed an exposed sample Google API key from docs,
+fixed localized JSON-LD URLs, fixed pre-rendering for `data-i18n-html`,
+and regenerated the multilingual HTML. Detailed history is in
+`CHANGELOG.md`.
 
 The next stretches of work that were under discussion (as listed
 in the TZ and tracked in the project owner's todo) include

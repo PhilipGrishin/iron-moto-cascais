@@ -18,7 +18,7 @@ from new_pages_data import PAGE_HEAD_META, PAGE_I18N, PROJECT_TILES, FAQ_QA
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260524b"  # bump on each change to main.css/main.js
+CACHE_BUST = "20260602b"  # bump on each change to main.css/main.js
 
 # ---------- shared chrome fragments ----------
 
@@ -237,6 +237,7 @@ def footer_html():
 </div>
 <div class="footer-bottom">
 <span>© <span id="yr">2026</span> Iron Custom Motors · <span data-i18n="footer.rights">All rights reserved</span></span>
+<div class="legal-links"><a href="/privacy/" data-i18n="footer.privacy">Privacy</a><a href="/cookies/" data-i18n="footer.cookies">Cookies</a><a href="/terms/" data-i18n="footer.terms">Terms</a></div>
 <div class="socials">
 <a aria-label="Instagram" href="https://www.instagram.com/ironcustommotors/" rel="noopener" target="_blank"><svg fill="none" height="16" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="16"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" fill="currentColor" r="1"></circle></svg></a>
 <a aria-label="Facebook" href="https://www.facebook.com/IronCustomMotors/" rel="noopener" target="_blank"><svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M14 9h3V5h-3c-2 0-4 2-4 4v2H7v4h3v8h4v-8h3l1-4h-4V9z"></path></svg></a>
@@ -476,7 +477,7 @@ def render_projects():
     ]
 
     extra_css = """.subpage.prj{padding:140px 0 80px}
-.subpage.prj .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45);background-image:url('/photos/inspirium/inspirium-1600.jpg')}
+.subpage.prj .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45);background-image:url('/photos/projects/inspirium-hero-1600.jpg')}
 .awards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px}
 .award{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px 26px}
 .award .num{font-family:'Saira Condensed',sans-serif;font-weight:800;color:var(--accent);font-size:36px;line-height:1;margin-bottom:14px}
@@ -498,7 +499,7 @@ def render_projects():
     tiles_html = ""
     for p in PROJECT_TILES:
         tiles_html += f'''<a class="prj-tile" href="/projects/{p["slug"]}/">
-<img alt="{p["label"]["en"]}" loading="lazy" src="{p["img"]}" width="1600" height="1200"/>
+<img alt="{p["label"]["en"]}" loading="lazy" src="{p["img"]}" width="800" height="600"/>
 <div class="meta">
 <div class="y">{p["year"]}</div>
 <div class="n" data-i18n-proj-label="{p["slug"]}">{p["label"]["en"]}</div>

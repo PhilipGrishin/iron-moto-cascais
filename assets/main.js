@@ -344,6 +344,10 @@ function navigateLang(lang){
   location.href = urlForLang(lang);
 }
 
+function normalizeTranslatedHtml(value){
+  return String(value).replace(/(\S)\s*<br\s*\/?>\s*/gi, '$1 <br/>');
+}
+
 // applyLang is kept for graceful re-rendering if the page somehow has the
 // wrong language content. On pre-rendered pages this is a no-op visually.
 function applyLang(lang){
@@ -354,11 +358,11 @@ function applyLang(lang){
   document.documentElement.dataset.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const k = el.getAttribute('data-i18n');
-    if(dict[k] !== undefined){ el.innerHTML = dict[k]; }
+    if(dict[k] !== undefined){ el.innerHTML = normalizeTranslatedHtml(dict[k]); }
   });
   document.querySelectorAll('[data-i18n-html]').forEach(el=>{
     const k = el.getAttribute('data-i18n-html');
-    if(dict[k] !== undefined){ el.innerHTML = dict[k]; }
+    if(dict[k] !== undefined){ el.innerHTML = normalizeTranslatedHtml(dict[k]); }
   });
   const cur = document.getElementById('langCurrent');
   if(cur) cur.textContent = lang.toUpperCase();

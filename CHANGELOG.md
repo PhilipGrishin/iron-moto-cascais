@@ -3,6 +3,12 @@
 Chronological log of changes. Each entry corresponds to a commit
 on `main`. Dates are commit dates.
 
+## 2026-06
+
+### 2026-06-02
+- `7ea6b1b` fix: harden multilingual SEO rendering
+- `1f37f70` docs: full project handoff package
+
 ## 2026-05
 
 ### 2026-05-24

@@ -28,7 +28,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="/assets/main.css?v=20260524b" rel="stylesheet"/>
+<link href="/assets/main.css?v=20260602b" rel="stylesheet"/>
 <style>
 .subpage{padding:160px 0 100px;background:#0a0a0a;position:relative;overflow:hidden;isolation:isolate}
 .subpage::before{content:"";position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,87,34,.20),transparent 60%);pointer-events:none;z-index:1}
@@ -67,12 +67,12 @@
 .svc-card .cta{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-family:'Saira',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
 .svc-card .cta:hover{transform:translateX(3px)}
 .svc-card.feature{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 2fr;gap:30px;align-items:center}
+/* Whole-card click handling is done in main.js (CARD_PATTERNS) */
 .price-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:36px 0 0}
 .price-strip .ph-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 20px}
 .price-strip .ph-card .v{font-family:'Saira Condensed',sans-serif;font-weight:800;color:var(--accent);font-size:34px;line-height:1}
 .price-strip .ph-card .t{font-size:13px;color:var(--text-dim);margin-top:8px}
 @media (max-width:900px){.svc-grid{grid-template-columns:1fr}.svc-card.feature{grid-template-columns:1fr}.price-strip{grid-template-columns:repeat(2,1fr)}}
-
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Motorcycle Services in Cascais","url":"https://ironcustommotors.com/uk/services/","isPartOf":{"@id":"https://ironcustommotors.com/#website"},"about":{"@id":"https://ironcustommotors.com/#business"},"hasPart":[{"@type":"Service","name":"Motorcycle service & repair","url":"https://ironcustommotors.com/uk/motorcycle-service/"},{"@type":"Service","name":"Motorcycle parts & consumables","url":"https://ironcustommotors.com/uk/parts/"},{"@type":"Service","name":"Upgrades & tuning","url":"https://ironcustommotors.com/uk/upgrades-tuning/"},{"@type":"Service","name":"Custom & special projects","url":"https://ironcustommotors.com/uk/custom/"},{"@type":"Service","name":"Pre-purchase inspection","url":"https://ironcustommotors.com/uk/pre-purchase-inspection/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://ironcustommotors.com/uk/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://ironcustommotors.com/uk/services/"}]}</script>
@@ -283,7 +283,8 @@
 </div>
 <div class="footer-bottom">
 <span>© <span id="yr">2026</span> Iron Custom Motors · <span data-i18n="footer.rights">Усі права захищені</span></span>
-<div class="legal-links"><a data-i18n="footer.privacy" href="/uk/privacy/">Privacy</a><a data-i18n="footer.cookies" href="/uk/cookies/">Cookies</a><a data-i18n="footer.terms" href="/uk/terms/">Terms</a></div><div class="socials">
+<div class="legal-links"><a data-i18n="footer.privacy" href="/uk/privacy/">Privacy</a><a data-i18n="footer.cookies" href="/uk/cookies/">Cookies</a><a data-i18n="footer.terms" href="/uk/terms/">Terms</a></div>
+<div class="socials">
 <a aria-label="Instagram" href="https://www.instagram.com/ironcustommotors/" rel="noopener" target="_blank"><svg fill="none" height="16" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="16"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" fill="currentColor" r="1"></circle></svg></a>
 <a aria-label="Facebook" href="https://www.facebook.com/IronCustomMotors/" rel="noopener" target="_blank"><svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M14 9h3V5h-3c-2 0-4 2-4 4v2H7v4h3v8h4v-8h3l1-4h-4V9z"></path></svg></a>
 <a aria-label="YouTube" href="https://www.youtube.com/c/IronmotoUacom" rel="noopener" target="_blank"><svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M22 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16 4.7 12 4.7 12 4.7s-4 0-7 .3c-.4 0-1.3.1-2.1.9C2.2 6.5 2 8 2 8s-.2 1.7-.2 3.5v1.7c0 1.7.2 3.5.2 3.5s.2 1.5.8 2.1c.8.8 1.9.8 2.4.9 1.7.2 7 .3 7 .3s4 0 7-.3c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.7.2-3.5v-1.7C22.2 9.7 22 8 22 8zM10 15V9l5 3-5 3z"></path></svg></a>
@@ -322,6 +323,6 @@
 </div>
 </div>
 </div>
-<script defer="" src="/assets/main.js?v=20260524b"></script>
+<script defer="" src="/assets/main.js?v=20260602b"></script>
 </body>
 </html>

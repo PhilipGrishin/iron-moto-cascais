@@ -1,102 +1,167 @@
-# Iron Custom Motors — Website
+# Iron Custom Motors - Website
 
-Premium motorcycle service, parts, upgrades and custom expertise in Cascais.
-Multipage marketing website with 4 languages (EN / RU / UK / PT).
+Production marketing and lead-generation website for Iron Custom Motors, a
+premium motorcycle workshop in Cascais, Greater Lisbon.
 
-## Domain
+Production domain: https://ironcustommotors.com/
 
-Production: **https://ironcustommotors.com/**
+## Current State
 
-`CNAME` file in repo root tells GitHub Pages to serve the site on this custom domain.
-
-## Site map
-
-```
-/                              — Homepage (long-scroll, all sections)
-/motorcycle-service/           — Service & repair landing
-/parts/                        — Parts & consumables landing
-/upgrades-tuning/              — Upgrades & tuning landing
-/custom/                       — Custom & special projects landing
-/pre-purchase-inspection/      — Pre-purchase inspection landing (SEO target)
-/v2/                           — Alternative concept (editorial racing)
-/v3/                           — Alternative concept (cyberpunk neon)
-
-/assets/main.css               — Shared styles
-/assets/main.js                — Shared interactivity + i18n
-/photos/                       — Brand assets (logo, OG image, lounge photo)
-/sitemap.xml                   — Search engine sitemap
-/robots.txt                    — Crawl directives
-/CNAME                         — GitHub Pages custom domain
-```
+- Static HTML, CSS, and vanilla JavaScript served by GitHub Pages.
+- Four pre-rendered languages: English at `/`, Russian at `/ru/`, Ukrainian at `/uk/`, Portuguese at `/pt/`.
+- 127 HTML files in the repository: 124 indexable pages, `404.html`, and 2 noindex redirect stubs.
+- 124 sitemap URLs: 31 indexable path patterns times 4 languages.
+- JSON-LD, canonical, Open Graph, Twitter metadata, and hreflang are generated per language.
+- Reviews are proxied through a Cloudflare Worker and embedded into home-page JSON-LD from `assets/reviews-snapshot.json`.
+- Lead form posts to FormSubmit and also opens a WhatsApp fallback path.
 
 ## Stack
 
-- Plain HTML + CSS + vanilla JS in static files
-- No build step, no dependencies
-- Google Fonts (Saira, Saira Condensed, Inter) loaded via CDN
-- Photos served from `/photos/` (replace placeholders with brand photos as ready)
+- Static HTML/CSS/JS, no application framework.
+- Python build scripts in `scripts/build/` regenerate pages and metadata.
+- Node.js is used only to extract the runtime `I18N` object from `assets/main.js`.
+- GitHub Pages serves the repo root.
+- Cloudflare DNS fronts the production domain.
+- Cloudflare Worker proxies Google Places reviews so no Google Places API key is exposed in client HTML/JS.
 
-## Languages
+## Key Paths
 
-The four languages live in the `I18N` dictionary in `assets/main.js`.
-Switch is instant (no reload), choice persists in `localStorage`.
-Default is English.
+```
+/                              Home
+/services/                     Services hub
+/motorcycle-service/           Service and repair landing
+/parts/                        Parts and consumables landing
+/upgrades-tuning/              Upgrades and tuning landing
+/custom/                       Custom and special projects landing
+/pre-purchase-inspection/      Pre-purchase inspection landing
+/bmw-service/                  BMW Motorrad service landing
+/harley-service/               Harley-Davidson service landing
+/ducati-service/               Ducati service landing
+/projects/                     Custom projects portfolio hub
+/projects/<slug>/              Individual project pages
+/pricing/                      Price list with PDF downloads
+/about/                        Workshop and brand story
+/contact/                      Contact details and map
+/faq/                          Frequently asked questions
+/news/                         News hub
+/news/<slug>/                  News articles
+/privacy/                      Privacy policy
+/cookies/                      Cookie policy
+/terms/                        Terms and conditions
+```
 
-## Real data integrated
+Legacy noindex redirect stubs:
 
-- Phone / WhatsApp: +351 917 961 230
-- Email: Ironcustom.office@gmail.com
-- Address: R. António José da Silva 100 B, 2785-253 São Domingos de Rana, Cascais
-- Hours: Tue–Sat · 10:00–18:00 · Closed Sun & Mon
-- GA4: G-PJWZKP1CFW
-- Meta Pixel: 1708697916976439
-- Form backend: formsubmit.co/Ironcustom.office@gmail.com (needs first-time activation by clicking the verification email)
+```
+/projects/nezlamniy/           Redirects to /projects/unbreakable/
+/projects/quanta/              Redirects to /projects/quanta-r/
+```
 
-## Cloudflare DNS setup for ironcustommotors.com
-
-After GitHub Pages is enabled and the repo is deployed:
-
-1. In **Cloudflare DNS** for `ironcustommotors.com` add records:
-
-   | Type  | Name | Target                                  | Proxy   |
-   |-------|------|-----------------------------------------|---------|
-   | CNAME | @    | `<your-github-username>.github.io`      | Proxied |
-   | CNAME | www  | `<your-github-username>.github.io`      | Proxied |
-
-   _GitHub Pages also accepts 4 A records pointing to GitHub IPs (185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153) on the apex `@` if your DNS provider doesn't do CNAME flattening — Cloudflare does, so CNAME on `@` works._
-
-2. In **GitHub repo Settings → Pages**:
-   - Source: Deploy from a branch
-   - Branch: `main` (root)
-   - Custom domain: `ironcustommotors.com`
-   - Enforce HTTPS: ✅
-
-3. In **Cloudflare SSL/TLS**: set to **Full (strict)**.
-
-4. **Cloudflare → Rules → Page Rules** (recommended):
-   - `http://ironcustommotors.com/*` → Always Use HTTPS
-   - `www.ironcustommotors.com/*` → Forwarding URL 301 → `https://ironcustommotors.com/$1`
-
-## Local preview
+## Setup
 
 ```bash
-# from project root
-python3 -m http.server 8080
-# open http://localhost:8080
+python3 -m pip install -r requirements.txt
 ```
+
+If macOS reports an externally managed Python environment, use a virtual
+environment:
+
+```bash
+python3 -m venv .venv
+. .venv/bin/activate
+python3 -m pip install -r requirements.txt
+```
+
+## Local Preview
+
+```bash
+python3 -m http.server 8080
+```
+
+Open http://localhost:8080/ in a browser.
+
+## Build Workflow
+
+Detailed source-of-truth instructions live in `scripts/build/README.md`.
+
+Full safe rebuild after content or page-structure changes:
+
+```bash
+node scripts/build/extract_i18n.js
+python3 scripts/build/build_new_pages.py
+python3 scripts/build/build_brand_pages.py
+python3 scripts/build/build_legal_pages.py
+python3 scripts/build/build_news.py
+python3 scripts/build/build_pricing.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/build_i18n.py
+python3 scripts/build/localize_internal_links.py
+python3 scripts/build/add_image_dims.py
+python3 scripts/build/build_sitemap.py
+```
+
+Run `scripts/build/build_reviews_schema.py` only when a fresh Google reviews
+snapshot is needed. It calls the Cloudflare Worker and requires network
+access.
+
+When `assets/main.css` or `assets/main.js` changes, bump the cache-bust query
+string across generated HTML and keep the `CACHE_BUST` constants in build
+scripts in sync.
+
+## Verification Checklist
+
+Before publishing substantial work:
+
+```bash
+node --check assets/main.js
+node --check assets/projects.js
+node --check worker/reviews.js
+python3 -m py_compile scripts/build/*.py
+python3 scripts/build/build_sitemap.py
+git diff --check
+```
+
+Also verify:
+
+- sitemap URL count matches indexable HTML pages
+- canonical and hreflang are correct for every language
+- localized JSON-LD URLs match the localized page URL
+- internal links in `/ru/`, `/uk/`, `/pt/` stay inside the same language subtree
+- all local image, CSS, JS, and PDF references resolve
+- no Google Places API key or other secret is present in repo text
+- key desktop and mobile pages render without horizontal overflow
+
+## External Services
+
+- Domain: `ironcustommotors.com`
+- Hosting: GitHub Pages
+- DNS/CDN: Cloudflare
+- Reviews Worker: `https://icm-reviews.vg-ab6.workers.dev/`
+- Google Analytics 4: `G-D15BLYEKBN`
+- Meta Pixel: `1708697916976439`
+- Form backend: FormSubmit for `Ironcustom.office@gmail.com`
+
+Secrets are documented by variable name in `.env.example`. Do not commit real
+secret values.
 
 ## Deploy
 
 ```bash
-git add . && git commit -m "..." && git push
+git add .
+git commit -m "..."
+git push
 ```
 
-GitHub Pages re-deploys within 30–60 seconds.
+GitHub Pages deploys from `main`. Cloudflare may keep cached HTML/assets for a
+short time after a push unless the cache is purged.
 
-## Roadmap (next iteration)
+## Scaling Priorities
 
-- Replace Unsplash placeholder photos in homepage Hero/Projects/Why with real workshop / project photography
-- Add real Google Reviews integration via Google Places API or static screenshots after first 10 reviews are collected
-- Add pricing transparency block ("from €X") under each service page
-- Add `/about/`, `/community/` standalone pages (currently sections on home)
-- Phase 2: blog/insights for SEO content marketing
+The technical base is static, fast, and suitable for SEO content scaling. The
+next content/product expansions are:
+
+- Blog or insights section for long-tail SEO and AI citations.
+- Dedicated diagnostics landing page.
+- Advanced lead form fields and anti-spam protection.
+- Thank-you or lead-success page if paid acquisition needs cleaner conversion attribution.
+- CMS or structured content pipeline only if non-developers must publish pages regularly.

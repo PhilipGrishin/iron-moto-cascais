@@ -5,9 +5,17 @@ Eliminates Cumulative Layout Shift (CLS), one of Google's Core Web Vitals."""
 import re
 from pathlib import Path
 from PIL import Image
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, FeatureNotFound
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
+
+# Prefer lxml for stable serialization, but keep the script runnable
+# on a fresh machine before optional parser dependencies are installed.
+try:
+    BeautifulSoup("", "lxml")
+    HTML_PARSER = "lxml"
+except FeatureNotFound:
+    HTML_PARSER = "html.parser"
 
 # Cache dimensions to avoid reading the same file twice
 DIM_CACHE = {}
@@ -41,7 +49,7 @@ def get_dims(image_src: str, html_path: Path = None):
 
 def process(html_path: Path):
     text = html_path.read_text(encoding="utf-8")
-    soup = BeautifulSoup(text, "lxml")
+    soup = BeautifulSoup(text, HTML_PARSER)
     changed = 0
     for img in soup.find_all("img"):
         if img.get("width") or img.get("height"):
