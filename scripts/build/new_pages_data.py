@@ -426,7 +426,7 @@ PROJECT_TILES = [
 PAGE_I18N["about"] = {
     "en": {
         "abt.eyebrow": "About · Iron Custom Motors",
-        "abt.h1": "A workshop with a<br/><span class=\"accent\">backstory.</span>",
+        "abt.h1": "A workshop with a <br/><span class=\"accent\">backstory.</span>",
         "abt.sub": "Iron Custom Motors didn't start in Portugal. It started in a competition workshop that won world titles, set a Bonneville record and earned BMW Motorrad recognition. That culture now serves riders in Cascais and Greater Lisbon — every day, on every job.",
         "abt.breadHome": "Home",
         "abt.h1Crumb": "About",
@@ -473,7 +473,7 @@ PAGE_I18N["about"] = {
     },
     "ru": {
         "abt.eyebrow": "О нас · Iron Custom Motors",
-        "abt.h1": "Мастерская<br/><span class=\"accent\">со своей историей.</span>",
+        "abt.h1": "Мастерская <br/><span class=\"accent\">со своей историей.</span>",
         "abt.sub": "Iron Custom Motors начался не в Португалии. Он начался в соревновательной мастерской, которая брала чемпионства мира, поставила рекорд Bonneville и получила признание BMW Motorrad. Эту культуру мы теперь применяем для байкеров в Кашкайше и Большом Лиссабоне — каждый день, на каждой работе.",
         "abt.breadHome": "Главная",
         "abt.h1Crumb": "О нас",
@@ -520,7 +520,7 @@ PAGE_I18N["about"] = {
     },
     "uk": {
         "abt.eyebrow": "Про нас · Iron Custom Motors",
-        "abt.h1": "Майстерня<br/><span class=\"accent\">зі своєю історією.</span>",
+        "abt.h1": "Майстерня <br/><span class=\"accent\">зі своєю історією.</span>",
         "abt.sub": "Iron Custom Motors почався не в Португалії. Він почався у змагальній майстерні, яка брала чемпіонати світу, поставила рекорд Bonneville і отримала визнання BMW Motorrad. Цю культуру ми тепер застосовуємо для байкерів у Кашкайші та Великому Лісабоні — щодня, на кожній роботі.",
         "abt.breadHome": "Головна",
         "abt.h1Crumb": "Про нас",
@@ -567,7 +567,7 @@ PAGE_I18N["about"] = {
     },
     "pt": {
         "abt.eyebrow": "Sobre · Iron Custom Motors",
-        "abt.h1": "Oficina<br/><span class=\"accent\">com história.</span>",
+        "abt.h1": "Oficina <br/><span class=\"accent\">com história.</span>",
         "abt.sub": "A Iron Custom Motors não começou em Portugal. Começou numa oficina de competição que conquistou títulos mundiais, estabeleceu um recorde em Bonneville e ganhou reconhecimento da BMW Motorrad. Essa cultura serve agora riders em Cascais e Grande Lisboa — todos os dias, em cada trabalho.",
         "abt.breadHome": "Início",
         "abt.h1Crumb": "Sobre",

@@ -204,17 +204,17 @@ content depth — not an anchor on the home page.
   break inside `/ru/`, `/uk/`, `/pt/` subtrees.
 - **Internal page links inside localized trees must include the lang prefix**
   (`/ru/motorcycle-service/`, not `/motorcycle-service/`). There's a helper
-  script `localize_internal_links.py` in the outputs/build directory.
+  script `localize_internal_links.py` in `scripts/build/`.
 - **When editing translations**, update both `I18N` in `assets/main.js` AND
   the rendered text in each pre-rendered HTML file (or re-run
-  `build_i18n.py` in outputs/build).
+  `build_i18n.py` in `scripts/build/`).
 - **When adding a new page**, add it to all 4 languages, to `sitemap.xml`,
   and add hreflang block.
 - **Cache-bust query string** — bump `?v=...` everywhere when you change
   `main.css` / `main.js`. Use `?v=YYYYMMDDx` format.
 - **No emojis in copy** — TZ explicitly calls for a premium, restrained tone.
 
-## Useful commands / scripts (in outputs/build)
+## Useful commands / scripts (in `scripts/build/`)
 
 - `build_new_pages.py` — generates the 5 hub pages from `new_pages_data.py`.
 - `nav_patch.py` — rewrites primary nav + footer columns on all EN pages.

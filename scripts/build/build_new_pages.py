@@ -18,7 +18,7 @@ from new_pages_data import PAGE_HEAD_META, PAGE_I18N, PROJECT_TILES, FAQ_QA
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260521c"  # bump on each change to main.css/main.js
+CACHE_BUST = "20260524b"  # bump on each change to main.css/main.js
 
 # ---------- shared chrome fragments ----------
 
@@ -603,7 +603,7 @@ def render_about():
     ]
 
     extra_css = """.subpage.abt{padding:140px 0 80px}
-.subpage.abt .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45);background-image:url('/photos/workshop-1600.jpg')}
+.subpage.abt .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45);background-image:url('/photos/team-1600.jpg')}
 .values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:30px}
 .value-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 26px}
 .value-card .num{font-family:'Saira Condensed',sans-serif;font-weight:800;color:var(--accent);font-size:30px;line-height:1;margin-bottom:10px}
@@ -742,7 +742,7 @@ def render_contact():
     ]
 
     extra_css = """.subpage.ctc{padding:140px 0 80px}
-.subpage.ctc .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45);background-image:url('/photos/workshop-1600.jpg')}
+.subpage.ctc .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45);background-image:url('/photos/exterior-1600.jpg')}
 .ctc-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:30px}
 .ctc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px 28px;display:flex;flex-direction:column;gap:10px}
 .ctc-card .icon{width:36px;height:36px;color:var(--accent);margin-bottom:8px}

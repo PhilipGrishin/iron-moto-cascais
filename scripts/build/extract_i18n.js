@@ -1,5 +1,9 @@
 const fs = require('fs');
-const content = fs.readFileSync('/sessions/gracious-confident-meitner/mnt/ICM WebSite/assets/main.js', 'utf8');
+const path = require('path');
+
+const BUILD_DIR = __dirname;
+const SITE_ROOT = path.resolve(BUILD_DIR, '..', '..');
+const content = fs.readFileSync(path.join(SITE_ROOT, 'assets', 'main.js'), 'utf8');
 
 // Find I18N block by content marker — robust against other additions earlier in file.
 const startMarker = 'const I18N = {';
@@ -32,7 +36,7 @@ for (; i < content.length; i++) {
 const literal = content.slice(startIdx + 'const I18N = '.length, i);
 const I18N = eval('(' + literal + ')');
 
-fs.writeFileSync('/sessions/gracious-confident-meitner/mnt/outputs/build/i18n.json', JSON.stringify(I18N, null, 2));
+fs.writeFileSync(path.join(BUILD_DIR, 'i18n.json'), JSON.stringify(I18N, null, 2));
 console.log('Saved i18n.json with languages:', Object.keys(I18N).join(', '));
 for (const lang of Object.keys(I18N)) {
   console.log(`  ${lang}: ${Object.keys(I18N[lang]).length} keys`);

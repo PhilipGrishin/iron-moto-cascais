@@ -9,7 +9,7 @@ import json
 import re
 from pathlib import Path
 from copy import deepcopy
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, FeatureNotFound
 
 from pricing_data import LABELS, SECTIONS, LANGS
 
@@ -22,6 +22,16 @@ OG_LOCALES = {"en": "en_US", "ru": "ru_RU", "uk": "uk_UA", "pt": "pt_PT"}
 # Per-page background photo (shared across languages)
 HERO_BG = "/photos/parts-shelf-1600.jpg"
 HERO_BG_MOBILE = "/photos/parts-shelf-800.jpg"
+
+try:
+    BeautifulSoup("", "lxml")
+    HTML_PARSER = "lxml"
+except FeatureNotFound:
+    HTML_PARSER = "html.parser"
+
+
+def parse_html(markup: str) -> BeautifulSoup:
+    return BeautifulSoup(markup, HTML_PARSER)
 
 
 def esc(text: str) -> str:
@@ -435,7 +445,7 @@ def absolutize_paths(soup):
 def build_page(lang: str) -> str:
     # Load template (motorcycle-service is fully self-contained with all chrome)
     template = TEMPLATE.read_text(encoding="utf-8")
-    soup = BeautifulSoup(template, "lxml")
+    soup = parse_html(template)
 
     # 0) Absolutize all asset paths — pricing pages live at /pricing/ AND /ru/pricing/
     # etc., so relative paths from /motorcycle-service/ template would break.
@@ -503,7 +513,7 @@ def build_page(lang: str) -> str:
     main = soup.find("main")
     main.clear()
     main_html = build_pricing_main(lang)
-    new_main = BeautifulSoup(f"<wrapper>{main_html}</wrapper>", "lxml")
+    new_main = parse_html(f"<wrapper>{main_html}</wrapper>")
     for child in list(new_main.find("wrapper").children):
         main.append(child)
 

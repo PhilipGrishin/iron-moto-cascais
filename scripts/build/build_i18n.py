@@ -14,7 +14,7 @@ import shutil
 from pathlib import Path
 from copy import deepcopy
 
-from bs4 import BeautifulSoup, NavigableString
+from bs4 import BeautifulSoup, FeatureNotFound, NavigableString
 
 from page_meta import PAGE_META, PROJECT_NAMES, OG_LOCALES
 
@@ -24,6 +24,22 @@ BUILD_DIR = Path(__file__).resolve().parent
 DOMAIN = "https://ironcustommotors.com"
 LANGS = ["en", "ru", "uk", "pt"]
 TARGET_LANGS = ["ru", "uk", "pt"]  # generate these from EN source
+LOCALIZED_URL_SKIP_PREFIXES = (
+    f"{DOMAIN}/assets/",
+    f"{DOMAIN}/photos/",
+    f"{DOMAIN}/pricing/files/",
+    f"{DOMAIN}/worker/",
+)
+GLOBAL_SCHEMA_IDS = {
+    f"{DOMAIN}/#business",
+    f"{DOMAIN}/#website",
+}
+
+try:
+    BeautifulSoup("", "lxml")
+    HTML_PARSER = "lxml"
+except FeatureNotFound:
+    HTML_PARSER = "html.parser"
 
 # Pages to translate: (source_path_relative_to_site_root, page_id)
 MAIN_PAGES = [
@@ -88,6 +104,78 @@ def make_hreflang_block(soup, page_id, project_name=None):
     return tags
 
 
+def parse_html(markup: str) -> BeautifulSoup:
+    return BeautifulSoup(markup, HTML_PARSER)
+
+
+def replace_element_html(el, html_fragment: str):
+    """Replace element contents with a translated HTML fragment."""
+    fragment_soup = parse_html(html_fragment)
+    container = fragment_soup.body or fragment_soup
+    el.clear()
+    for child in list(container.children):
+        el.append(child)
+
+
+def normalize_h1_break_spacing(soup):
+    """Keep h1 textContent readable when visual line breaks split words."""
+    for h1 in soup.find_all("h1"):
+        for br in h1.find_all("br"):
+            prev = br.previous_sibling
+            if prev is None:
+                continue
+            prev_text = prev.get_text() if hasattr(prev, "get_text") else str(prev)
+            if prev_text and not prev_text[-1].isspace():
+                br.insert_before(NavigableString(" "))
+
+
+def localize_schema_url(value: str, lang: str) -> str:
+    """Localize site URLs inside JSON-LD while preserving global IDs and assets."""
+    if lang == "en" or not isinstance(value, str):
+        return value
+    if value in GLOBAL_SCHEMA_IDS:
+        return value
+    if value == f"{DOMAIN}/#projects":
+        return f"{DOMAIN}/{lang}/projects/"
+    if value == f"{DOMAIN}/#reviews":
+        return f"{DOMAIN}/{lang}/#reviews"
+    if value == f"{DOMAIN}/":
+        return f"{DOMAIN}/{lang}/"
+    if any(value.startswith(prefix) for prefix in LOCALIZED_URL_SKIP_PREFIXES):
+        return value
+    if value.startswith(f"{DOMAIN}/{lang}/"):
+        return value
+    if any(value.startswith(f"{DOMAIN}/{other}/") for other in TARGET_LANGS):
+        return value
+    if value.startswith(f"{DOMAIN}/"):
+        return value.replace(f"{DOMAIN}/", f"{DOMAIN}/{lang}/", 1)
+    return value
+
+
+def localize_jsonld_value(value, lang: str):
+    if isinstance(value, dict):
+        return {key: localize_jsonld_value(val, lang) for key, val in value.items()}
+    if isinstance(value, list):
+        return [localize_jsonld_value(item, lang) for item in value]
+    if isinstance(value, str):
+        return localize_schema_url(value, lang)
+    return value
+
+
+def localize_jsonld_blocks(soup, lang: str):
+    """Update URL-like strings in JSON-LD blocks for localized pages."""
+    for script in soup.find_all("script", attrs={"type": "application/ld+json"}):
+        raw = script.string or script.get_text()
+        if not raw.strip():
+            continue
+        try:
+            data = json.loads(raw)
+        except json.JSONDecodeError:
+            continue
+        localized = localize_jsonld_value(data, lang)
+        script.string = json.dumps(localized, ensure_ascii=False, separators=(",", ":"))
+
+
 def absolutize_paths(soup):
     """Convert relative paths (../foo, ./foo) in head links/scripts to absolute /foo.
     Required so a page at /ru/motorcycle-service/ correctly resolves /photos, /assets."""
@@ -127,7 +215,7 @@ def upsert_meta(soup, *, prop=None, name=None, content):
 
 def localize_page(en_html: str, lang: str, page_id: str, *, project_name=None) -> str:
     """Take English HTML, produce a fully translated version for `lang`."""
-    soup = BeautifulSoup(en_html, "lxml")
+    soup = parse_html(en_html)
 
     # 1. html lang attribute
     html = soup.find("html")
@@ -138,7 +226,7 @@ def localize_page(en_html: str, lang: str, page_id: str, *, project_name=None) -
     # 2. Absolutize relative paths so the page works at /lang/path/
     absolutize_paths(soup)
 
-    # 3. Translate elements with data-i18n
+    # 3. Translate elements with data-i18n / data-i18n-html
     page_dict = I18N.get(lang, {})
     extra_dict = {}
     # ALL pages may have an inline ICM_I18N_PAGE (sub-page-specific translations)
@@ -158,14 +246,12 @@ def localize_page(en_html: str, lang: str, page_id: str, *, project_name=None) -
     for el in soup.find_all(attrs={"data-i18n": True}):
         key = el["data-i18n"]
         if key in full_dict:
-            # innerHTML replacement: parse translated fragment and replace contents
-            new_html = full_dict[key]
-            new_soup = BeautifulSoup(new_html, "lxml")
-            # body wraps fragments; extract its children
-            new_children = list(new_soup.body.children) if new_soup.body else []
-            el.clear()
-            for child in new_children:
-                el.append(child)
+            replace_element_html(el, full_dict[key])
+
+    for el in soup.find_all(attrs={"data-i18n-html": True}):
+        key = el["data-i18n-html"]
+        if key in full_dict:
+            replace_element_html(el, full_dict[key])
 
     # 4. Update title / description / OG / Twitter / canonical
     meta = PAGE_META.get(page_id, {}).get(lang, {})
@@ -251,7 +337,13 @@ def localize_page(en_html: str, lang: str, page_id: str, *, project_name=None) -
     for tag in make_hreflang_block(soup, page_id, project_name):
         soup.head.append(tag)
 
-    # 6. Optional: update og:locale:alternate entries for English locale
+    # 6. Localize JSON-LD URLs so structured data matches the current URL.
+    localize_jsonld_blocks(soup, lang)
+
+    # 7. Make h1 textContent readable for crawlers and assistive tech.
+    normalize_h1_break_spacing(soup)
+
+    # 8. Optional: update og:locale:alternate entries for English locale
     # (kept on home page only — handled via upsert above)
 
     return str(soup)
@@ -259,10 +351,11 @@ def localize_page(en_html: str, lang: str, page_id: str, *, project_name=None) -
 
 def update_en_page(en_html: str, page_id: str, project_name=None) -> str:
     """For English source page: only update hreflang block & ensure canonical points to root."""
-    soup = BeautifulSoup(en_html, "lxml")
+    soup = parse_html(en_html)
     remove_existing_hreflang(soup)
     for tag in make_hreflang_block(soup, page_id, project_name):
         soup.head.append(tag)
+    normalize_h1_break_spacing(soup)
     # Also ensure og:locale:alternate covers all langs (for home page)
     if page_id == "" and project_name is None:
         # Remove existing alternates and add fresh

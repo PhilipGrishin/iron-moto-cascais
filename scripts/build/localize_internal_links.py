@@ -5,10 +5,16 @@ so they point to the correct localized version. Without this, clicking
 
 import re
 from pathlib import Path
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, FeatureNotFound
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 TARGET_LANGS = ["ru", "uk", "pt"]
+
+try:
+    BeautifulSoup("", "lxml")
+    HTML_PARSER = "lxml"
+except FeatureNotFound:
+    HTML_PARSER = "html.parser"
 
 # All page paths that have localized versions (must match generator)
 LOCALIZED_PATHS = {
@@ -66,7 +72,7 @@ def rewrite_href(href: str, lang: str) -> str:
 
 def process_file(html_path: Path, lang: str) -> int:
     text = html_path.read_text(encoding="utf-8")
-    soup = BeautifulSoup(text, "lxml")
+    soup = BeautifulSoup(text, HTML_PARSER)
     changed = 0
     for a in soup.find_all("a", href=True):
         new = rewrite_href(a["href"], lang)

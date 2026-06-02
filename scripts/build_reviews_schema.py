@@ -19,11 +19,7 @@ import urllib.request
 from pathlib import Path
 from bs4 import BeautifulSoup
 
-SITE_ROOT = Path(__file__).resolve().parents[2] / "ICM WebSite"
-# Adjust path if you run this from a different location:
-if not SITE_ROOT.exists():
-    # Try sandbox path
-    SITE_ROOT = Path("/sessions/gracious-confident-meitner/mnt/ICM WebSite")
+SITE_ROOT = Path(__file__).resolve().parents[1]
 
 WORKER_URL = "https://icm-reviews.vg-ab6.workers.dev/"
 N_REVIEWS_IN_SCHEMA = 8       # how many reviews to include in JSON-LD

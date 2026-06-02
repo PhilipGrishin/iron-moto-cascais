@@ -36,9 +36,13 @@ From the project root:
 ```bash
 cd worker
 wrangler secret put GOOGLE_API_KEY
-# paste: AIzaSyBxhQ4qdihRNVcYxPnsHaew5rgfWmoUmS0
+# paste the rotated, API-restricted Google Places API key when prompted
 wrangler deploy
 ```
+
+If a Google API key was ever committed to this public repository, revoke it in
+Google Cloud before relying on this Worker. Removing the value from this file
+does not remove it from Git history.
 
 Wrangler will print the Worker URL, e.g.:
 

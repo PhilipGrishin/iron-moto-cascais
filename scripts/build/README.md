@@ -10,7 +10,8 @@ root (works from any cwd because paths are absolute).
 ## Requirements
 
 - Python 3.8+
-- `beautifulsoup4`, `lxml` (HTML parsing/rewriting)
+- `beautifulsoup4` (HTML parsing/rewriting)
+- `lxml` (recommended for stable HTML rewriting; scripts fall back to Python's built-in `html.parser`)
 - `Pillow` (only for `add_image_dims.py`)
 - Node.js 14+ (only for `extract_i18n.js`)
 

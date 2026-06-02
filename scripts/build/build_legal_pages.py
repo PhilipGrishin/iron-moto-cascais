@@ -7,17 +7,27 @@ substitutes the body with legal-policy content.
 
 import json, re
 from pathlib import Path
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, FeatureNotFound
 
 from legal_pages_data import LEGAL_PAGES, PRIVACY_HEAD, COOKIES_HEAD, TERMS_HEAD, LAST_UPDATED
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260521e"
+CACHE_BUST = "20260524b"
 
 OG_LOCALES = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
 LANGS = ["en", "ru", "uk", "pt"]
 TARGET_LANGS = ["ru", "uk", "pt"]
+
+try:
+    BeautifulSoup("", "lxml")
+    HTML_PARSER = "lxml"
+except FeatureNotFound:
+    HTML_PARSER = "html.parser"
+
+
+def parse_html(markup: str) -> BeautifulSoup:
+    return BeautifulSoup(markup, HTML_PARSER)
 
 # Inline CSS for legal pages
 LEGAL_CSS = """.subpage.lg{padding:140px 0 60px;background:#0a0a0a;position:relative;overflow:hidden;isolation:isolate}
@@ -103,7 +113,7 @@ def build_page(slug, lang):
     body = body_dict[lang]
 
     # Start from motorcycle-service template
-    chrome = BeautifulSoup(CHROME_SOURCE.read_text(encoding="utf-8"), "lxml")
+    chrome = parse_html(CHROME_SOURCE.read_text(encoding="utf-8"))
 
     # 1. html lang
     chrome.html["lang"] = lang
@@ -170,7 +180,7 @@ def build_page(slug, lang):
         "@context":"https://schema.org",
         "@type":"BreadcrumbList",
         "itemListElement":[
-            {"@type":"ListItem","position":1,"name":I18N_LABELS[lang]["home"],"item":f"{DOMAIN}/"},
+            {"@type":"ListItem","position":1,"name":I18N_LABELS[lang]["home"],"item":(f"{DOMAIN}/" if lang=="en" else f"{DOMAIN}/{lang}/")},
             {"@type":"ListItem","position":2,"name":body["h1"],"item":(f"{DOMAIN}/{slug}/" if lang=="en" else f"{DOMAIN}/{lang}/{slug}/")},
         ],
     }, ensure_ascii=False)
@@ -192,7 +202,7 @@ def build_page(slug, lang):
     # 9. Replace <main>
     main_old = chrome.find("main")
     if main_old:
-        new_main = BeautifulSoup(build_main(slug, lang, head_meta, body), "lxml")
+        new_main = parse_html(build_main(slug, lang, head_meta, body))
         main_old.replace_with(new_main.main)
 
     # 10. Update nav lang switcher current
@@ -218,8 +228,9 @@ def build_page(slug, lang):
         key = el["data-i18n"]
         if key in page_dict:
             new_html = page_dict[key]
-            new_soup = BeautifulSoup(new_html, "lxml")
-            children = list(new_soup.body.children) if new_soup.body else []
+            new_soup = parse_html(new_html)
+            container = new_soup.body or new_soup
+            children = list(container.children)
             el.clear()
             for child in children:
                 el.append(child)
