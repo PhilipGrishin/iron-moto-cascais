@@ -28,6 +28,7 @@ LOCALIZED_PATHS = {
     "/services/",
     "/projects/",
     "/about/",
+    "/community/",
     "/contact/",
     "/faq/",
     "/privacy/",

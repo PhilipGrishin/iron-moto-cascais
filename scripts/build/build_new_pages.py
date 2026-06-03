@@ -17,8 +17,10 @@ from pathlib import Path
 from new_pages_data import PAGE_HEAD_META, PAGE_I18N, PROJECT_TILES, FAQ_QA
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
+BUILD_DIR = Path(__file__).resolve().parent
 DOMAIN = "https://ironcustommotors.com"
 CACHE_BUST = "20260602b"  # bump on each change to main.css/main.js
+GLOBAL_I18N = json.loads((BUILD_DIR / "i18n.json").read_text(encoding="utf-8"))
 
 # ---------- shared chrome fragments ----------
 
@@ -152,6 +154,7 @@ def header_html():
 <nav aria-label="Primary" class="nav">
 <a data-i18n="nav.services" href="/services/">Services</a>
 <a data-i18n="nav.projects" href="/projects/">Projects</a>
+<a data-i18n="nav.community" href="/community/">Community</a>
 <a data-i18n="nav.pricing" href="/pricing/">Pricing</a>
 <a data-i18n="nav.about" href="/about/">About</a>
 <a data-i18n="nav.faq" href="/faq/">FAQ</a>
@@ -178,6 +181,7 @@ def header_html():
 <nav class="nav-mobile">
 <a data-i18n="nav.services" href="/services/">Services</a>
 <a data-i18n="nav.projects" href="/projects/">Projects</a>
+<a data-i18n="nav.community" href="/community/">Community</a>
 <a data-i18n="nav.pricing" href="/pricing/">Pricing</a>
 <a data-i18n="nav.about" href="/about/">About</a>
 <a data-i18n="nav.faq" href="/faq/">FAQ</a>
@@ -220,6 +224,7 @@ def footer_html():
 <ul>
 <li><a data-i18n="nav.about" href="/about/">About</a></li>
 <li><a data-i18n="nav.projects" href="/projects/">Projects</a></li>
+<li><a data-i18n="nav.community" href="/community/">Community</a></li>
 <li><a data-i18n="nav.reviews" href="/#reviews">Reviews</a></li>
 <li><a data-i18n="nav.faq" href="/faq/">FAQ</a></li>
 <li><a data-i18n="nav.contact" href="/contact/">Contact</a></li>
@@ -616,11 +621,16 @@ def render_about():
 .award-row .y{font-family:'Saira',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 .award-row h4{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(18px,1.6vw,22px);color:#fff;margin-bottom:6px}
 .award-row p{font-size:15px;color:var(--text-dim);max-width:64ch}
+.timeline-list{display:grid;grid-template-columns:1fr;gap:0;margin-top:30px}
+.timeline-row{display:grid;grid-template-columns:130px 1fr;gap:34px;padding:26px 0;border-bottom:1px solid var(--border);align-items:start}
+.timeline-row .y{font-family:'Saira Condensed',sans-serif;font-weight:800;color:var(--accent);font-size:34px;line-height:1}
+.timeline-row h4{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(18px,1.8vw,24px);color:#fff;margin-bottom:6px}
+.timeline-row p{font-size:15px;color:var(--text-dim);max-width:66ch}
 .loc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:34px 30px;margin-top:30px}
 .loc-card h3{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:24px;color:#fff;margin-bottom:14px}
 .loc-card p{font-size:16px;color:var(--text-dim);margin-bottom:10px}
 .loc-card .cta-row{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-@media (max-width:900px){.values-grid{grid-template-columns:1fr}.award-row{grid-template-columns:1fr;gap:8px}}"""
+@media (max-width:900px){.values-grid{grid-template-columns:1fr}.award-row,.timeline-row{grid-template-columns:1fr;gap:8px}}"""
 
     body = f'''<main>
 <section class="subpage abt">
@@ -685,6 +695,24 @@ def render_about():
 <section class="sub-section">
 <div class="container">
 <div class="heading">
+<span class="h-eyebrow" data-i18n="abt.timelineEyebrow">{en["abt.timelineEyebrow"]}</span>
+<div>
+<h2 data-i18n="abt.timelineTitle">{en["abt.timelineTitle"]}</h2>
+<p class="lead" data-i18n="abt.timelineLead">{en["abt.timelineLead"]}</p>
+</div>
+</div>
+<div class="timeline-list">
+<div class="timeline-row"><div class="y" data-i18n="abt.tl1y">{en["abt.tl1y"]}</div><div><h4 data-i18n="abt.tl1t">{en["abt.tl1t"]}</h4><p data-i18n="abt.tl1d">{en["abt.tl1d"]}</p></div></div>
+<div class="timeline-row"><div class="y" data-i18n="abt.tl2y">{en["abt.tl2y"]}</div><div><h4 data-i18n="abt.tl2t">{en["abt.tl2t"]}</h4><p data-i18n="abt.tl2d">{en["abt.tl2d"]}</p></div></div>
+<div class="timeline-row"><div class="y" data-i18n="abt.tl3y">{en["abt.tl3y"]}</div><div><h4 data-i18n="abt.tl3t">{en["abt.tl3t"]}</h4><p data-i18n="abt.tl3d">{en["abt.tl3d"]}</p></div></div>
+<div class="timeline-row"><div class="y" data-i18n="abt.tl4y">{en["abt.tl4y"]}</div><div><h4 data-i18n="abt.tl4t">{en["abt.tl4t"]}</h4><p data-i18n="abt.tl4d">{en["abt.tl4d"]}</p></div></div>
+<div class="timeline-row"><div class="y" data-i18n="abt.tl5y">{en["abt.tl5y"]}</div><div><h4 data-i18n="abt.tl5t">{en["abt.tl5t"]}</h4><p data-i18n="abt.tl5d">{en["abt.tl5d"]}</p></div></div>
+</div>
+</div>
+</section>
+<section class="sub-section">
+<div class="container">
+<div class="heading">
 <span class="h-eyebrow" data-i18n="abt.locEyebrow">{en["abt.locEyebrow"]}</span>
 <div>
 <h2 data-i18n="abt.locTitle">{en["abt.locTitle"]}</h2>
@@ -709,6 +737,159 @@ def render_about():
 <div class="btns">
 <a class="btn btn-primary" data-wa="" href="https://wa.me/351917961230" rel="noopener" target="_blank"><span data-i18n="abt.btnWA">{en["abt.btnWA"]}</span>{ARROW_SVG}</a>
 <a class="btn btn-ghost" data-i18n="abt.btnBack" href="/">{en["abt.btnBack"]}</a>
+</div>
+</div>
+</section>
+</main>'''
+
+    html = head(page_id, "en", extra_styles=extra_css, json_ld_blocks=json_ld) + "\n<body>\n" + header_html() + body + footer_html() + end_html()
+    out = SITE_ROOT / page_id / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html, encoding="utf-8")
+    return out
+
+
+# =========================================================================
+# /community/ — rider lounge and local motorcycle community
+# =========================================================================
+
+def render_community():
+    page_id = "community"
+    page_url = f"{DOMAIN}/{page_id}/"
+    en = {**GLOBAL_I18N["en"], **PAGE_I18N[page_id]["en"]}
+
+    json_ld = [
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": page_url,
+            "name": "Motorcycle Community & Rider Lounge in Cascais",
+            "description": PAGE_HEAD_META[page_id]["en"]["description"],
+            "url": page_url,
+            "isPartOf": {"@id": f"{DOMAIN}/#website"},
+            "about": [
+                {"@id": f"{DOMAIN}/#business"},
+                {
+                    "@type": "Place",
+                    "name": "Iron Custom Motors rider lounge",
+                    "address": "R. António José da Silva 100 B, 2785-253 São Domingos de Rana, Cascais, Portugal",
+                },
+            ],
+        },
+        breadcrumb_jsonld("Community", page_url),
+    ]
+
+    extra_css = """.subpage.comm{padding:140px 0 80px}
+.subpage.comm .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.9) contrast(1.05) brightness(.46);background-image:url('/photos/lounge-1600.jpg')}
+.comm-media{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:36px;align-items:stretch}
+.comm-photo{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);min-height:360px;background:#111}
+.comm-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.comm-note{display:flex;flex-direction:column;justify-content:center;padding:34px 30px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface)}
+.comm-note h3{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(28px,3.4vw,46px);line-height:.98;color:#fff;margin-bottom:16px}
+.comm-note h3 em{color:var(--accent);font-style:italic}
+.comm-note p{color:var(--text-dim);font-size:16px;line-height:1.6}
+.comm-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:30px}
+.comm-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 22px;min-height:190px}
+.comm-card .num{font-family:'Saira Condensed',sans-serif;font-weight:800;color:var(--accent);font-size:28px;line-height:1;margin-bottom:12px}
+.comm-card h3{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:20px;line-height:1.05;color:#fff;margin-bottom:10px}
+.comm-card p{font-size:14px;color:var(--text-dim);line-height:1.55}
+.comm-local{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:30px;align-items:stretch}
+.comm-local .panel{border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px 28px;background:var(--surface)}
+.comm-local .panel h3{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:28px;color:#fff;margin-bottom:12px}
+.comm-local .panel p{font-size:16px;color:var(--text-dim);line-height:1.6}
+.comm-local .panel .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.comm-local .photo{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);background:#111}
+.comm-local .photo img{width:100%;height:100%;object-fit:cover;display:block;min-height:360px}
+@media (max-width:1200px){.comm-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:900px){.comm-media,.comm-local{grid-template-columns:1fr}.comm-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.comm-grid{grid-template-columns:1fr}.comm-photo{min-height:260px}}"""
+
+    cards = []
+    for idx in range(1, 6):
+        cards.append(f'''<article class="comm-card">
+<div class="num">{idx:02d}</div>
+<h3 data-i18n="community.f{idx}.t">{en[f"community.f{idx}.t"]}</h3>
+<p data-i18n="community.f{idx}.d">{en[f"community.f{idx}.d"]}</p>
+</article>''')
+
+    body = f'''<main>
+<section class="subpage comm">
+<div aria-hidden="true" class="bg"></div>
+<div class="container">
+<div class="crumb"><a data-i18n="comm.breadHome" href="/">Home</a><span class="sep">→</span><span data-i18n="comm.h1Crumb">Community</span></div>
+<div class="h-eyebrow" data-i18n="community.eyebrow" style="margin-bottom:18px">{en["community.eyebrow"]}</div>
+<h1 data-i18n="community.title">{en["community.title"]}</h1>
+<p class="lead" data-i18n="community.sub">{en["community.sub"]}</p>
+<div class="subpage-cta">
+<a class="btn btn-primary" data-i18n="comm.btnContact" href="/contact/">{en["comm.btnContact"]}</a>
+<a class="btn btn-ghost" data-i18n="comm.btnProjects" href="/projects/">{en["comm.btnProjects"]}</a>
+</div>
+</div>
+</section>
+<section class="sub-section sub-intro">
+<div class="container">
+<div class="heading">
+<span class="h-eyebrow" data-i18n="comm.storyEyebrow">{en["comm.storyEyebrow"]}</span>
+<div>
+<h2 data-i18n="comm.storyTitle">{en["comm.storyTitle"]}</h2>
+<p class="lead" data-i18n="community.heroSub">{en["community.heroSub"]}</p>
+</div>
+</div>
+<div class="comm-media">
+<div class="comm-photo"><img alt="Iron Custom Motors rider lounge with championship motorcycle culture" loading="lazy" src="/photos/lounge-detail-1600.jpg" width="1600" height="1067"/></div>
+<div class="comm-note">
+<h3 data-i18n="community.heroTitle">{en["community.heroTitle"]}</h3>
+<p data-i18n="community.introP1">{en["community.introP1"]}</p>
+</div>
+</div>
+<p data-i18n="community.introP2" style="margin-top:28px">{en["community.introP2"]}</p>
+<p data-i18n="community.introP3">{en["community.introP3"]}</p>
+</div>
+</section>
+<section class="sub-section">
+<div class="container">
+<div class="heading">
+<span class="h-eyebrow" data-i18n="comm.findEyebrow">{en["comm.findEyebrow"]}</span>
+<div>
+<h2 data-i18n="community.findTitle">{en["community.findTitle"]}</h2>
+<p class="lead" data-i18n="comm.findLead">{en["comm.findLead"]}</p>
+</div>
+</div>
+<div class="comm-grid">
+{''.join(cards)}
+</div>
+</div>
+</section>
+<section class="sub-section">
+<div class="container">
+<div class="heading">
+<span class="h-eyebrow" data-i18n="comm.localEyebrow">{en["comm.localEyebrow"]}</span>
+<div>
+<h2 data-i18n="comm.localTitle">{en["comm.localTitle"]}</h2>
+<p class="lead" data-i18n="comm.localLead">{en["comm.localLead"]}</p>
+</div>
+</div>
+<div class="comm-local">
+<div class="panel">
+<h3 data-i18n="community.promiseTitle">{en["community.promiseTitle"]}</h3>
+<p data-i18n="community.promiseSub">{en["community.promiseSub"]}</p>
+<div class="cta-row">
+<a class="btn btn-primary" data-wa="" href="https://wa.me/351917961230" rel="noopener" target="_blank"><span data-i18n="comm.btnWA">{en["comm.btnWA"]}</span>{ARROW_SVG}</a>
+<a class="btn btn-ghost" data-i18n="comm.btnProjects" href="/projects/">{en["comm.btnProjects"]}</a>
+</div>
+</div>
+<div class="photo"><img alt="Inspirium Bonneville motorcycle displayed by Iron Custom Motors" loading="lazy" src="/photos/projects/inspirium-hero-1600.jpg" width="1600" height="1067"/></div>
+</div>
+</div>
+</section>
+<section class="cta-back">
+<div class="container">
+<span class="h-eyebrow" data-i18n="comm.ctaEyebrow">{en["comm.ctaEyebrow"]}</span>
+<h2 data-i18n="comm.ctaTitle">{en["comm.ctaTitle"]}</h2>
+<p class="lead" data-i18n="comm.ctaText">{en["comm.ctaText"]}</p>
+<div class="btns">
+<a class="btn btn-primary" data-i18n="comm.btnContact" href="/contact/">{en["comm.btnContact"]}</a>
+<a class="btn btn-ghost" data-i18n="comm.btnBack" href="/">{en["comm.btnBack"]}</a>
 </div>
 </div>
 </section>
@@ -981,6 +1162,7 @@ def main():
         render_services(),
         render_projects(),
         render_about(),
+        render_community(),
         render_contact(),
         render_faq(),
     ]

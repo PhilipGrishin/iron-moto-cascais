@@ -116,7 +116,7 @@ ARTICLE_OPENING_BODY = {
 
         "s4.h2": "On the lift: every brand, every level of work",
         "s4.p1": "We service the full multi-brand lineup — BMW Motorrad, Harley-Davidson, Ducati, Triumph, KTM, Honda, Yamaha, Kawasaki, Suzuki, Aprilia, MV Agusta, Indian. From a 25,000 km major service to brake fluid bleed, from carb sync to ECU re-flash on an aftermarket exhaust — it's all under one roof.",
-        "s4.p2": "We also have brand-specific diagnostic equipment and tooling, plus authorized-dealer access to the major international parts and aftermarket catalogs. That combination lets us do work properly, source exactly what your bike needs, and stand behind the result.",
+        "s4.p2": "We also have brand-specific diagnostic equipment and tooling, plus trusted supplier access to major international parts and aftermarket catalog networks. That combination lets us do work properly, source exactly what your bike needs, and stand behind the result.",
 
         "s5.h2": "More than a service bay — a rider lounge",
         "s5.p1": "One of the most important parts of the new space is the rider lounge area. This is a large, carefully designed client zone where visitors can drink coffee, slow down, talk about motorcycles, and spend time in an atmosphere built around real motorcycle culture.",
@@ -172,7 +172,7 @@ ARTICLE_OPENING_BODY = {
 
         "s4.h2": "На подъёмнике — любой бренд, любой уровень работ",
         "s4.p1": "Мы работаем с полным мульти-брендовым спектром — BMW Motorrad, Harley-Davidson, Ducati, Triumph, KTM, Honda, Yamaha, Kawasaki, Suzuki, Aprilia, MV Agusta, Indian. От ТО на 25 000 км до прокачки тормозов, от синхронизации карбюраторов до перепрошивки ЭБУ под афтермаркет-выхлоп — всё под одной крышей.",
-        "s4.p2": "У нас также есть brand-специфичное диагностическое оборудование и инструмент, плюс авторизованный дилерский доступ к крупным международным каталогам запчастей и афтермаркета. Эта комбинация позволяет делать работу корректно, заказывать именно то, что нужно вашему мотоциклу, и нести ответственность за результат.",
+        "s4.p2": "У нас также есть brand-специфичное диагностическое оборудование и инструмент, плюс доступ к проверенным поставщикам и крупным международным сетям каталогов запчастей и афтермаркета. Эта комбинация позволяет делать работу корректно, заказывать именно то, что нужно вашему мотоциклу, и нести ответственность за результат.",
 
         "s5.h2": "Не просто сервисная зона — лаунж для мотоциклистов",
         "s5.p1": "Одна из самых важных частей нового пространства — лаунж-зона для гостей. Это большая, специально продуманная клиентская зона, где можно выпить кофе, замедлиться, поговорить о мотоциклах и провести время в атмосфере, построенной вокруг настоящей мото-культуры.",
@@ -228,7 +228,7 @@ ARTICLE_OPENING_BODY = {
 
         "s4.h2": "На підйомнику — будь-який бренд, будь-який рівень робіт",
         "s4.p1": "Працюємо з повним мульти-брендовим спектром — BMW Motorrad, Harley-Davidson, Ducati, Triumph, KTM, Honda, Yamaha, Kawasaki, Suzuki, Aprilia, MV Agusta, Indian. Від ТО на 25 000 км до прокачки гальм, від синхронізації карбюраторів до перепрошивки ЕБУ під афтермаркет-вихлоп — усе під одним дахом.",
-        "s4.p2": "У нас також є brand-специфічне діагностичне обладнання та інструмент, плюс авторизований дилерський доступ до великих міжнародних каталогів запчастин і афтермаркету. Ця комбінація дозволяє робити роботу коректно, замовляти саме те, що потрібно вашому мотоциклу, і нести відповідальність за результат.",
+        "s4.p2": "У нас також є brand-специфічне діагностичне обладнання та інструмент, плюс доступ до перевірених постачальників і великих міжнародних мереж каталогів запчастин та афтермаркету. Ця комбінація дозволяє робити роботу коректно, замовляти саме те, що потрібно вашому мотоциклу, і нести відповідальність за результат.",
 
         "s5.h2": "Не лише сервісна зона — лаунж для мотоциклістів",
         "s5.p1": "Одна з найважливіших частин нового простору — лаунж-зона для гостей. Це велика, спеціально продумана клієнтська зона, де можна випити кави, уповільнитись, поговорити про мотоцикли й провести час в атмосфері, побудованій навколо справжньої мото-культури.",
@@ -284,7 +284,7 @@ ARTICLE_OPENING_BODY = {
 
         "s4.h2": "No elevador — qualquer marca, qualquer nível de trabalho",
         "s4.p1": "Trabalhamos com todo o leque multi-marca — BMW Motorrad, Harley-Davidson, Ducati, Triumph, KTM, Honda, Yamaha, Kawasaki, Suzuki, Aprilia, MV Agusta, Indian. De um serviço grande de 25 000 km à sangria do fluido de travões, da sincronização de carburadores ao remapeamento ECU para um escape aftermarket — tudo sob o mesmo teto.",
-        "s4.p2": "Temos também equipamento de diagnóstico e ferramenta específicos por marca, mais acesso de revendedor autorizado aos principais catálogos internacionais de peças e aftermarket. Esta combinação permite fazer o trabalho como deve ser, encomendar exatamente o que a sua moto precisa e responder pelo resultado.",
+        "s4.p2": "Temos também equipamento de diagnóstico e ferramenta específicos por marca, mais acesso a fornecedores de confiança e grandes redes internacionais de catálogos de peças e aftermarket. Esta combinação permite fazer o trabalho como deve ser, encomendar exatamente o que a sua moto precisa e responder pelo resultado.",
 
         "s5.h2": "Mais do que uma baia de serviço — um rider lounge",
         "s5.p1": "Uma das partes mais importantes do novo espaço é a área de rider lounge. É uma zona de cliente grande e cuidadosamente desenhada, onde os visitantes podem tomar café, abrandar, falar de motas e passar tempo numa atmosfera construída em torno de cultura motociclista real.",

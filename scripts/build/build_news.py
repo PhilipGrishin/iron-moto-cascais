@@ -25,6 +25,41 @@ CACHE_BUST = "20260602b"
 LANGS = ["en", "ru", "uk", "pt"]
 OG_LOCALE = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
 
+NEWS_RELATED_I18N = {
+    "en": {
+        "newsRel.eyebrow": "Related pages",
+        "newsRel.title": "Keep exploring <em>Iron Custom Motors.</em>",
+        "newsRel.lead": "News should connect back to the workshop: service, community, projects and the practical next step for your motorcycle.",
+        "newsRel.serviceDesc": "Service, diagnostics, repair, parts and upgrades in Cascais and Greater Lisbon.",
+        "newsRel.communityDesc": "Rider lounge, championship machines, coffee, local events and motorcycle culture.",
+        "newsRel.projectsDesc": "The custom builds, records and competition projects behind the current workshop standard.",
+    },
+    "ru": {
+        "newsRel.eyebrow": "Связанные страницы",
+        "newsRel.title": "Продолжайте изучать <em>Iron Custom Motors.</em>",
+        "newsRel.lead": "Новости должны вести обратно к мастерской: сервису, community, проектам и практическому следующему шагу для вашего мотоцикла.",
+        "newsRel.serviceDesc": "Сервис, диагностика, ремонт, запчасти и апгрейды в Cascais и Greater Lisbon.",
+        "newsRel.communityDesc": "Rider lounge, чемпионские мотоциклы, кофе, локальные события и мотокультура.",
+        "newsRel.projectsDesc": "Кастом-сборки, рекорды и соревновательные проекты, на которых держится нынешний стандарт мастерской.",
+    },
+    "uk": {
+        "newsRel.eyebrow": "Пов'язані сторінки",
+        "newsRel.title": "Продовжуйте вивчати <em>Iron Custom Motors.</em>",
+        "newsRel.lead": "Новини мають вести назад до майстерні: сервісу, community, проєктів і практичного наступного кроку для вашого мотоцикла.",
+        "newsRel.serviceDesc": "Сервіс, діагностика, ремонт, запчастини й апґрейди у Cascais і Greater Lisbon.",
+        "newsRel.communityDesc": "Rider lounge, чемпіонські мотоцикли, кава, локальні події і мотокультура.",
+        "newsRel.projectsDesc": "Кастом-збірки, рекорди і змагальні проєкти, на яких тримається нинішній стандарт майстерні.",
+    },
+    "pt": {
+        "newsRel.eyebrow": "Páginas relacionadas",
+        "newsRel.title": "Continue a explorar a <em>Iron Custom Motors.</em>",
+        "newsRel.lead": "As notícias devem voltar à oficina: serviço, comunidade, projetos e o próximo passo prático para a sua moto.",
+        "newsRel.serviceDesc": "Serviço, diagnóstico, reparação, peças e upgrades em Cascais e Grande Lisboa.",
+        "newsRel.communityDesc": "Rider lounge, máquinas campeãs, café, eventos locais e cultura motociclista.",
+        "newsRel.projectsDesc": "Builds custom, recordes e projetos de competição por trás do padrão atual da oficina.",
+    },
+}
+
 # --- shared chrome (same as other pages) ---
 
 LOGO_SVG = """<svg aria-hidden="true" class="logo-svg" viewbox="0 0 270.91 46.88" xmlns="http://www.w3.org/2000/svg">
@@ -242,6 +277,16 @@ ARTICLE_CSS = """.subpage.news-article{padding:0;position:relative;overflow:hidd
 .article-fig figcaption{padding:14px 20px;font-family:'Saira',sans-serif;font-size:13px;color:var(--text-mute);font-style:italic;border-top:1px solid var(--border);background:#0c0c10}
 .article-author{margin-top:60px;padding-top:30px;border-top:1px solid var(--border);display:flex;align-items:center;gap:14px;font-family:'Saira',sans-serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-mute)}
 .article-author .pill{padding:6px 14px;border:1px solid var(--accent);border-radius:30px;color:var(--accent);font-weight:600}
+.news-related{padding:var(--gap) 0;background:#0a0a0a;border-top:1px solid var(--border)}
+.news-related .heading{margin-bottom:50px;display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:end;padding-bottom:30px;border-bottom:1px solid var(--border)}
+.news-related .heading h2{margin:0;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(34px,5.4vw,72px);line-height:.95;color:#fff}
+.news-related .heading h2 em{color:var(--accent);font-style:italic}
+.news-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.news-related-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px 24px;display:flex;flex-direction:column;gap:12px;min-height:190px}
+.news-related-card h3{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:24px;color:#fff}
+.news-related-card p{font-size:15px;color:var(--text-dim);line-height:1.55}
+.news-related-card a{margin-top:auto;color:var(--accent);font-family:'Saira',sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
+@media (max-width:900px){.news-related .heading{grid-template-columns:1fr;gap:24px}.news-related-grid{grid-template-columns:1fr}}
 @media (max-width:760px){.news-article .container{padding-top:110px}.article-fig{margin:36px -20px;border-left:none;border-right:none;border-radius:0}}"""
 
 
@@ -480,6 +525,7 @@ def render_article(slug, article):
         ab = article["body"][lang]
         for k, v in ab.items():
             inline_i18n[lang][f"{pre}.{k}"] = v
+        inline_i18n[lang].update(NEWS_RELATED_I18N[lang])
 
     # Compose head + override the ICM_I18N_PAGE
     head_html = head(f"news/{slug}", "en", en_meta, en_body, json_ld_blocks, og_image=hero_img_url).replace(
@@ -547,6 +593,35 @@ def render_article(slug, article):
 <span data-i18n="{pre}.publishedLabel">{en_body["publishedLabel"]}</span>
 </div>
 
+</div>
+</section>
+
+<section class="news-related">
+<div class="container">
+<div class="heading reveal">
+<span class="h-eyebrow" data-i18n="newsRel.eyebrow">{NEWS_RELATED_I18N["en"]["newsRel.eyebrow"]}</span>
+<div>
+<h2 data-i18n="newsRel.title">{NEWS_RELATED_I18N["en"]["newsRel.title"]}</h2>
+<p class="lead" data-i18n="newsRel.lead">{NEWS_RELATED_I18N["en"]["newsRel.lead"]}</p>
+</div>
+</div>
+<div class="news-related-grid reveal-stagger">
+<article class="news-related-card">
+<h3 data-i18n="nav.services">Services</h3>
+<p data-i18n="newsRel.serviceDesc">{NEWS_RELATED_I18N["en"]["newsRel.serviceDesc"]}</p>
+<a data-i18n="services.learn" href="/services/">Learn more</a>
+</article>
+<article class="news-related-card">
+<h3 data-i18n="nav.community">Community</h3>
+<p data-i18n="newsRel.communityDesc">{NEWS_RELATED_I18N["en"]["newsRel.communityDesc"]}</p>
+<a data-i18n="services.learn" href="/community/">Learn more</a>
+</article>
+<article class="news-related-card">
+<h3 data-i18n="nav.projects">Projects</h3>
+<p data-i18n="newsRel.projectsDesc">{NEWS_RELATED_I18N["en"]["newsRel.projectsDesc"]}</p>
+<a data-i18n="services.learn" href="/projects/">Learn more</a>
+</article>
+</div>
 </div>
 </section>
 

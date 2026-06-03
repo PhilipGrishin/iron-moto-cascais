@@ -34,11 +34,13 @@ python3 -m pip install -r requirements.txt
 
 | Script | Output |
 |---|---|
-| `build_new_pages.py` | `services/`, `projects/`, `about/`, `contact/`, `faq/` |
+| `build_new_pages.py` | `services/`, `projects/`, `about/`, `community/`, `contact/`, `faq/` |
 | `build_brand_pages.py` | `bmw-service/`, `harley-service/`, `ducati-service/` |
 | `build_legal_pages.py` | `privacy/`, `cookies/`, `terms/` |
 | `build_news.py` | `news/` hub + each `news/<slug>/` article |
 | `build_pricing.py` | `pricing/` in all 4 languages |
+| `enhance_money_pages.py` | Adds reusable local SEO + related-page blocks to service and brand pages |
+| `enhance_project_pages.py` | Adds reusable highlights + related-page blocks to project detail pages |
 | `build_i18n.py` | `/ru/`, `/uk/`, `/pt/` copies of the EN main pages |
 | `nav_patch.py` | Rewrites primary nav and footer on every EN page |
 | `localize_internal_links.py` | Rewrites internal links in `/ru/`, `/uk/`, `/pt/` pages so they point inside the same language subtree |
@@ -46,6 +48,7 @@ python3 -m pip install -r requirements.txt
 | `build_sitemap.py` | Regenerates `sitemap.xml` with all 4 languages |
 | `build_reviews_schema.py` | Pulls fresh Google reviews via the Cloudflare Worker and injects `AggregateRating` + `Review` JSON-LD into the home pages |
 | `extract_i18n.js` | Reads `assets/main.js` and writes `scripts/build/i18n.json` (consumed by `build_i18n.py`) |
+| `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD and localized internal links |
 
 ### Data
 
@@ -75,10 +78,13 @@ python3 scripts/build/build_legal_pages.py
 python3 scripts/build/build_news.py
 python3 scripts/build/build_pricing.py
 python3 scripts/build/nav_patch.py
+python3 scripts/build/enhance_money_pages.py
+python3 scripts/build/enhance_project_pages.py
 python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/add_image_dims.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/validate_seo.py
 ```
 
 Run `build_reviews_schema.py` separately only when a fresh Google
@@ -98,9 +104,12 @@ python3 scripts/build/localize_internal_links.py
 ```
 python3 scripts/build/build_new_pages.py
 python3 scripts/build/nav_patch.py
+python3 scripts/build/enhance_money_pages.py
+python3 scripts/build/enhance_project_pages.py
 python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/validate_seo.py
 # bump cache-bust
 ```
 
@@ -109,9 +118,12 @@ python3 scripts/build/build_sitemap.py
 ```
 # edit brand_pages_data.py (BRAND_HEAD / PAGE_I18N / BRAND_BG)
 python3 scripts/build/build_brand_pages.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/enhance_money_pages.py
 python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/validate_seo.py
 # bump cache-bust
 ```
 
@@ -143,6 +155,7 @@ python3 scripts/build/build_news.py
 python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/validate_seo.py
 # bump cache-bust
 ```
 

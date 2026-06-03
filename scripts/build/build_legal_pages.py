@@ -239,7 +239,7 @@ def build_page(slug, lang):
     if lang != "en":
         LOCALIZED_PATHS = {"/","/motorcycle-service/","/parts/","/upgrades-tuning/","/custom/",
                           "/pre-purchase-inspection/","/pricing/","/services/","/projects/",
-                          "/about/","/contact/","/faq/","/privacy/","/cookies/","/terms/"}
+                          "/about/","/community/","/contact/","/faq/","/privacy/","/cookies/","/terms/"}
         for proj in ["inspirium","beckman","unbreakable","quanta-r","burly","sturmvogel",
                     "geometric","joker","hellboy","true-religion"]:
             LOCALIZED_PATHS.add(f"/projects/{proj}/")

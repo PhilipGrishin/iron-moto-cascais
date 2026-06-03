@@ -42,6 +42,7 @@ EN_PAGES = [
     "services/index.html",
     "projects/index.html",
     "about/index.html",
+    "community/index.html",
     "contact/index.html",
     "faq/index.html",
     # Project pages
@@ -61,6 +62,7 @@ EN_PAGES = [
     "ducati-service/index.html",
     "news/index.html",
     "news/opens-new-workshop-in-cascais/index.html",
+    "news/lisbon-motorcycle-film-fest-2026-beckman/index.html",
 ]
 
 
@@ -69,6 +71,7 @@ PRIMARY_NAV_LINKS = [
     ("nav.services", "/services/",  "Services"),
     ("nav.projects", "/projects/",  "Projects"),
     ("nav.news",     "/news/",      "News"),
+    ("nav.community", "/community/", "Community"),
     ("nav.pricing",  "/pricing/",   "Pricing"),
     ("nav.about",    "/about/",     "About"),
     ("nav.faq",      "/faq/",       "FAQ"),
@@ -91,6 +94,7 @@ FOOTER_COMPANY_LINKS = [
     ("nav.about",    "/about/",     "About"),
     ("nav.projects", "/projects/",  "Projects"),
     ("nav.news",     "/news/",      "News"),
+    ("nav.community", "/community/", "Community"),
     ("nav.reviews",  "/#reviews",   "Reviews"),
     ("nav.faq",      "/faq/",       "FAQ"),
     ("nav.contact",  "/contact/",   "Contact"),

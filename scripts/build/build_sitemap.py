@@ -19,6 +19,7 @@ PAGES = [
     ("services/", "weekly", "0.95"),
     ("projects/", "monthly", "0.85"),
     ("about/", "monthly", "0.7"),
+    ("community/", "monthly", "0.75"),
     ("contact/", "monthly", "0.8"),
     ("faq/", "monthly", "0.75"),
     ("privacy/", "yearly", "0.3"),

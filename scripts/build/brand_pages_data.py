@@ -169,8 +169,8 @@ PAGE_I18N["bmw-service"] = {
         "bmw.m6d": "Vintage R 80/100, R 90 S, K-bricks. Restoration and ongoing service welcome.",
 
         "bmw.partsEyebrow": "Parts and accessories",
-        "bmw.partsTitle": "Authorized dealer for <em>major BMW catalogs.</em>",
-        "bmw.partsLead": "We have authorized-dealer access to the international BMW Motorrad accessory and aftermarket catalogs. Whatever your bike needs — OEM, performance, touring, protection — we source it directly.",
+        "bmw.partsTitle": "Catalog access for <em>major BMW parts.</em>",
+        "bmw.partsLead": "We source through international BMW Motorrad accessory, OEM and aftermarket catalog networks. Whatever your bike needs — OEM, performance, touring, protection — we order it directly through trusted suppliers.",
         "bmw.partsList": "<strong>Catalogs we work with:</strong> Wunderlich · Touratech · Hepco &amp; Becker · SW-Motech · Akrapovič · Wilbers · Öhlins · Brembo · AltRider · Rizoma · Mitas · Avon · OEM BMW Motorrad parts via distributor network. Order ahead even if you're not booking service.",
 
         "bmw.faqEyebrow": "FAQ",
@@ -269,8 +269,8 @@ PAGE_I18N["bmw-service"] = {
         "bmw.m6d": "Винтажные R 80/100, R 90 S, K-bricks. Реставрация и текущий сервис.",
 
         "bmw.partsEyebrow": "Запчасти и аксессуары",
-        "bmw.partsTitle": "Авторизованный дилер <em>крупных каталогов BMW.</em>",
-        "bmw.partsLead": "У нас авторизованный дилерский доступ к международным каталогам аксессуаров и афтермаркета BMW Motorrad. Что бы вашему мотоциклу ни потребовалось — оригинал, производительность, туринг, защита — заказываем напрямую.",
+        "bmw.partsTitle": "Доступ к <em>крупным каталогам BMW.</em>",
+        "bmw.partsLead": "Мы заказываем через международные сети каталогов аксессуаров, OEM-запчастей и афтермаркета BMW Motorrad. Что бы вашему мотоциклу ни потребовалось — оригинал, производительность, туринг, защита — заказываем напрямую у проверенных поставщиков.",
         "bmw.partsList": "<strong>Каталоги:</strong> Wunderlich · Touratech · Hepco &amp; Becker · SW-Motech · Akrapovič · Wilbers · Öhlins · Brembo · AltRider · Rizoma · Mitas · Avon · оригинальные запчасти BMW Motorrad через дистрибьюторскую сеть. Заказ возможен даже без записи на сервис.",
 
         "bmw.faqEyebrow": "FAQ",
@@ -369,8 +369,8 @@ PAGE_I18N["bmw-service"] = {
         "bmw.m6d": "Вінтажні R 80/100, R 90 S, K-bricks. Реставрація і поточний сервіс.",
 
         "bmw.partsEyebrow": "Запчастини й аксесуари",
-        "bmw.partsTitle": "Авторизований дилер <em>великих каталогів BMW.</em>",
-        "bmw.partsLead": "У нас авторизований дилерський доступ до міжнародних каталогів аксесуарів і афтермаркету BMW Motorrad. Що б вашому мотоциклу не знадобилось — оригінал, продуктивність, туринг, захист — замовляємо напряму.",
+        "bmw.partsTitle": "Доступ до <em>великих каталогів BMW.</em>",
+        "bmw.partsLead": "Ми замовляємо через міжнародні мережі каталогів аксесуарів, OEM-запчастин і афтермаркету BMW Motorrad. Що б вашому мотоциклу не знадобилось — оригінал, продуктивність, туринг, захист — замовляємо напряму у перевірених постачальників.",
         "bmw.partsList": "<strong>Каталоги:</strong> Wunderlich · Touratech · Hepco &amp; Becker · SW-Motech · Akrapovič · Wilbers · Öhlins · Brembo · AltRider · Rizoma · Mitas · Avon · оригінальні запчастини BMW Motorrad через дистриб'юторську мережу. Замовлення можливе навіть без запису на сервіс.",
 
         "bmw.faqEyebrow": "FAQ",
@@ -469,8 +469,8 @@ PAGE_I18N["bmw-service"] = {
         "bmw.m6d": "R 80/100 vintage, R 90 S, K-bricks. Restauro e serviço contínuo.",
 
         "bmw.partsEyebrow": "Peças e acessórios",
-        "bmw.partsTitle": "Revendedor autorizado dos <em>principais catálogos BMW.</em>",
-        "bmw.partsLead": "Temos acesso de revendedor autorizado aos catálogos internacionais de acessórios e aftermarket BMW Motorrad. Seja qual for a necessidade da sua moto — OEM, performance, touring, proteção — encomendamos diretamente.",
+        "bmw.partsTitle": "Acesso aos <em>principais catálogos BMW.</em>",
+        "bmw.partsLead": "Encomendamos através de redes internacionais de catálogos de acessórios, peças OEM e aftermarket BMW Motorrad. Seja qual for a necessidade da sua moto — OEM, performance, touring, proteção — fazemos o pedido diretamente a fornecedores de confiança.",
         "bmw.partsList": "<strong>Catálogos:</strong> Wunderlich · Touratech · Hepco &amp; Becker · SW-Motech · Akrapovič · Wilbers · Öhlins · Brembo · AltRider · Rizoma · Mitas · Avon · peças originais BMW Motorrad via rede de distribuidores. Encomendas possíveis mesmo sem agendar serviço.",
 
         "bmw.faqEyebrow": "FAQ",
@@ -575,8 +575,8 @@ PAGE_I18N["harley-service"] = {
         "hd.m6d": "Night Rod, V-Rod Muscle, plus vintage Shovelhead, Knucklehead and Panhead projects.",
 
         "hd.partsEyebrow": "Parts and aftermarket",
-        "hd.partsTitle": "Authorized dealer for <em>major Harley catalogs.</em>",
-        "hd.partsLead": "We have authorized-dealer access to the largest Harley OEM and aftermarket catalogs in the world. Direct access to thousands of SKUs — parts, performance, custom hardware, exhausts.",
+        "hd.partsTitle": "Catalog access for <em>major Harley parts.</em>",
+        "hd.partsLead": "We source through large Harley OEM and aftermarket catalog networks. Direct access to thousands of SKUs — parts, performance, custom hardware, exhausts.",
         "hd.partsList": "<strong>Catalogs we work with:</strong> Drag Specialties · Custom Chrome · Biltwell · V-Twin · J&amp;P Cycles · Performance Machine · S&amp;S Cycle · Vance &amp; Hines · Screamin' Eagle Performance · Roland Sands Design · Klock Werks · Rinehart · Bassani · Burly Brand · OEM Harley-Davidson parts via distributor network.",
 
         "hd.faqEyebrow": "FAQ",
@@ -675,8 +675,8 @@ PAGE_I18N["harley-service"] = {
         "hd.m6d": "Night Rod, V-Rod Muscle, плюс винтажные Shovelhead, Knucklehead и Panhead.",
 
         "hd.partsEyebrow": "Запчасти и афтермаркет",
-        "hd.partsTitle": "Авторизованный дилер <em>крупнейших каталогов Harley.</em>",
-        "hd.partsLead": "У нас авторизованный дилерский доступ к самым крупным каталогам OEM и афтермаркет Harley в мире. Прямой доступ к тысячам артикулов — запчасти, производительность, кастом-фурнитура, выхлопы.",
+        "hd.partsTitle": "Доступ к <em>крупнейшим каталогам Harley.</em>",
+        "hd.partsLead": "Мы заказываем через крупные сети каталогов OEM и афтермаркета Harley. Прямой доступ к тысячам артикулов — запчасти, производительность, кастом-фурнитура, выхлопы.",
         "hd.partsList": "<strong>Каталоги:</strong> Drag Specialties · Custom Chrome · Biltwell · V-Twin · J&amp;P Cycles · Performance Machine · S&amp;S Cycle · Vance &amp; Hines · Screamin' Eagle Performance · Roland Sands Design · Klock Werks · Rinehart · Bassani · Burly Brand · оригинальные запчасти Harley-Davidson через дистрибьюторскую сеть.",
 
         "hd.faqEyebrow": "FAQ",
@@ -775,8 +775,8 @@ PAGE_I18N["harley-service"] = {
         "hd.m6d": "Night Rod, V-Rod Muscle, плюс вінтажні Shovelhead, Knucklehead і Panhead.",
 
         "hd.partsEyebrow": "Запчастини та афтермаркет",
-        "hd.partsTitle": "Авторизований дилер <em>найбільших каталогів Harley.</em>",
-        "hd.partsLead": "У нас авторизований дилерський доступ до найбільших каталогів OEM та афтермаркету Harley у світі. Прямий доступ до тисяч артикулів — запчастини, продуктивність, кастом-фурнітура, вихлопи.",
+        "hd.partsTitle": "Доступ до <em>найбільших каталогів Harley.</em>",
+        "hd.partsLead": "Ми замовляємо через великі мережі каталогів OEM та афтермаркету Harley. Прямий доступ до тисяч артикулів — запчастини, продуктивність, кастом-фурнітура, вихлопи.",
         "hd.partsList": "<strong>Каталоги:</strong> Drag Specialties · Custom Chrome · Biltwell · V-Twin · J&amp;P Cycles · Performance Machine · S&amp;S Cycle · Vance &amp; Hines · Screamin' Eagle Performance · Roland Sands Design · Klock Werks · Rinehart · Bassani · Burly Brand · оригінальні запчастини Harley-Davidson через дистриб'юторську мережу.",
 
         "hd.faqEyebrow": "FAQ",
@@ -875,8 +875,8 @@ PAGE_I18N["harley-service"] = {
         "hd.m6d": "Night Rod, V-Rod Muscle, mais Shovelhead, Knucklehead e Panhead vintage.",
 
         "hd.partsEyebrow": "Peças e aftermarket",
-        "hd.partsTitle": "Revendedor autorizado dos <em>maiores catálogos Harley.</em>",
-        "hd.partsLead": "Temos acesso de revendedor autorizado aos maiores catálogos OEM e aftermarket Harley do mundo. Acesso direto a milhares de SKUs — peças, performance, hardware custom, escapes.",
+        "hd.partsTitle": "Acesso aos <em>maiores catálogos Harley.</em>",
+        "hd.partsLead": "Encomendamos através de grandes redes de catálogos OEM e aftermarket Harley. Acesso direto a milhares de SKUs — peças, performance, hardware custom, escapes.",
         "hd.partsList": "<strong>Catálogos:</strong> Drag Specialties · Custom Chrome · Biltwell · V-Twin · J&amp;P Cycles · Performance Machine · S&amp;S Cycle · Vance &amp; Hines · Screamin' Eagle Performance · Roland Sands Design · Klock Werks · Rinehart · Bassani · Burly Brand · peças originais Harley-Davidson via rede de distribuidores.",
 
         "hd.faqEyebrow": "FAQ",
@@ -981,8 +981,8 @@ PAGE_I18N["ducati-service"] = {
         "duc.m6d": "Diavel 1260, Diavel V4; Hypermotard 821/939/950; SuperSport 939/950; plus 916/996/999 vintage projects.",
 
         "duc.partsEyebrow": "Parts and aftermarket",
-        "duc.partsTitle": "Authorized dealer for <em>major Ducati catalogs.</em>",
-        "duc.partsLead": "Authorized-dealer access to Ducati OEM, Ducati Performance and the top Italian/international Ducati aftermarket. From a brake pad to a full Akrapovič system to a CNC Racing dress kit — we source it.",
+        "duc.partsTitle": "Catalog access for <em>major Ducati parts.</em>",
+        "duc.partsLead": "We source Ducati OEM, Ducati Performance and top Italian/international Ducati aftermarket parts through trusted catalog and supplier networks. From a brake pad to a full Akrapovič system to a CNC Racing dress kit — we order it.",
         "duc.partsList": "<strong>Catalogs we work with:</strong> Ducati Performance · DucatiOmnia · Termignoni · Akrapovič · Öhlins · ÖHLINS Mechatronic · Brembo · STM Italy · Rizoma · CNC Racing · Ducabike · Carbonin · Spark · MWR · BST · OEM Ducati parts via distributor network.",
 
         "duc.faqEyebrow": "FAQ",
@@ -1081,8 +1081,8 @@ PAGE_I18N["ducati-service"] = {
         "duc.m6d": "Diavel 1260, Diavel V4; Hypermotard 821/939/950; SuperSport 939/950; плюс винтажные 916/996/999.",
 
         "duc.partsEyebrow": "Запчасти и афтермаркет",
-        "duc.partsTitle": "Авторизованный дилер <em>крупных каталогов Ducati.</em>",
-        "duc.partsLead": "Авторизованный дилерский доступ к Ducati OEM, Ducati Performance и топовому итальянскому/международному афтермаркету. От тормозной колодки до полной системы Akrapovič и dress-kit от CNC Racing — заказываем.",
+        "duc.partsTitle": "Доступ к <em>крупным каталогам Ducati.</em>",
+        "duc.partsLead": "Мы заказываем Ducati OEM, Ducati Performance и топовый итальянский/международный афтермаркет через проверенные сети каталогов и поставщиков. От тормозной колодки до полной системы Akrapovič и dress-kit от CNC Racing — заказываем.",
         "duc.partsList": "<strong>Каталоги:</strong> Ducati Performance · DucatiOmnia · Termignoni · Akrapovič · Öhlins · ÖHLINS Mechatronic · Brembo · STM Italy · Rizoma · CNC Racing · Ducabike · Carbonin · Spark · MWR · BST · оригинал Ducati через дистрибьюторскую сеть.",
 
         "duc.faqEyebrow": "FAQ",
@@ -1181,8 +1181,8 @@ PAGE_I18N["ducati-service"] = {
         "duc.m6d": "Diavel 1260, Diavel V4; Hypermotard 821/939/950; SuperSport 939/950; плюс вінтажні 916/996/999.",
 
         "duc.partsEyebrow": "Запчастини й афтермаркет",
-        "duc.partsTitle": "Авторизований дилер <em>великих каталогів Ducati.</em>",
-        "duc.partsLead": "Авторизований дилерський доступ до Ducati OEM, Ducati Performance і топового італійського/міжнародного афтермаркету. Від гальмівної колодки до повної системи Akrapovič і dress-kit від CNC Racing — замовляємо.",
+        "duc.partsTitle": "Доступ до <em>великих каталогів Ducati.</em>",
+        "duc.partsLead": "Ми замовляємо Ducati OEM, Ducati Performance і топовий італійський/міжнародний афтермаркет через перевірені мережі каталогів і постачальників. Від гальмівної колодки до повної системи Akrapovič і dress-kit від CNC Racing — замовляємо.",
         "duc.partsList": "<strong>Каталоги:</strong> Ducati Performance · DucatiOmnia · Termignoni · Akrapovič · Öhlins · ÖHLINS Mechatronic · Brembo · STM Italy · Rizoma · CNC Racing · Ducabike · Carbonin · Spark · MWR · BST · оригінал Ducati через дистриб'юторську мережу.",
 
         "duc.faqEyebrow": "FAQ",
@@ -1281,8 +1281,8 @@ PAGE_I18N["ducati-service"] = {
         "duc.m6d": "Diavel 1260, Diavel V4; Hypermotard 821/939/950; SuperSport 939/950; mais 916/996/999 vintage.",
 
         "duc.partsEyebrow": "Peças e aftermarket",
-        "duc.partsTitle": "Revendedor autorizado dos <em>principais catálogos Ducati.</em>",
-        "duc.partsLead": "Acesso de revendedor autorizado a Ducati OEM, Ducati Performance e o melhor aftermarket italiano/internacional. De uma pastilha a um sistema Akrapovič completo a um dress-kit CNC Racing — encomendamos.",
+        "duc.partsTitle": "Acesso aos <em>principais catálogos Ducati.</em>",
+        "duc.partsLead": "Encomendamos Ducati OEM, Ducati Performance e o melhor aftermarket italiano/internacional através de redes de catálogos e fornecedores de confiança. De uma pastilha a um sistema Akrapovič completo a um dress-kit CNC Racing — fazemos o pedido.",
         "duc.partsList": "<strong>Catálogos:</strong> Ducati Performance · DucatiOmnia · Termignoni · Akrapovič · Öhlins · ÖHLINS Mechatronic · Brembo · STM Italy · Rizoma · CNC Racing · Ducabike · Carbonin · Spark · MWR · BST · peças OEM Ducati via rede de distribuidores.",
 
         "duc.faqEyebrow": "FAQ",

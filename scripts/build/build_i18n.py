@@ -53,6 +53,7 @@ MAIN_PAGES = [
     ("services/index.html", "services"),
     ("projects/index.html", "projects"),
     ("about/index.html", "about"),
+    ("community/index.html", "community"),
     ("contact/index.html", "contact"),
     ("faq/index.html", "faq"),
     ("bmw-service/index.html", "bmw-service"),
@@ -152,6 +153,158 @@ def localize_schema_url(value: str, lang: str) -> str:
     return value
 
 
+def clean_text(value: str) -> str:
+    return re.sub(r"\s+", " ", value or "").strip()
+
+
+def schema_type_in(data: dict, schema_type: str) -> bool:
+    value = data.get("@type")
+    if isinstance(value, str):
+        return value == schema_type
+    if isinstance(value, list):
+        return schema_type in value
+    return False
+
+
+def extract_inline_i18n(soup, lang: str) -> dict:
+    """Read the per-page inline ICM_I18N_PAGE dictionary for one language."""
+    for script in soup.find_all("script"):
+        txt = script.string or ""
+        m = re.search(r"window\.ICM_I18N_PAGE\s*=\s*(\{.*?\});", txt, re.DOTALL)
+        if m:
+            try:
+                page_i18n = json.loads(m.group(1))
+                return page_i18n.get(lang, {})
+            except json.JSONDecodeError:
+                return {}
+    return {}
+
+
+def translation_dict_for_soup(soup, lang: str) -> dict:
+    page_dict = I18N.get(lang, {})
+    extra_dict = extract_inline_i18n(soup, lang)
+    return {**page_dict, **extra_dict}
+
+
+def apply_translations(soup, lang: str) -> dict:
+    """Apply data-i18n/data-i18n-html translations and return the merged dictionary."""
+    full_dict = translation_dict_for_soup(soup, lang)
+
+    for el in soup.find_all(attrs={"data-i18n": True}):
+        key = el["data-i18n"]
+        if key in full_dict:
+            replace_element_html(el, full_dict[key])
+
+    for el in soup.find_all(attrs={"data-i18n-html": True}):
+        key = el["data-i18n-html"]
+        if key in full_dict:
+            replace_element_html(el, full_dict[key])
+
+    return full_dict
+
+
+def extract_breadcrumb_names(soup) -> list[str]:
+    crumb = soup.find(class_="crumb")
+    if crumb is None:
+        return []
+    names = []
+    for child in crumb.find_all(["a", "span"], recursive=False):
+        if "sep" in child.get("class", []):
+            continue
+        text = clean_text(child.get_text(" ", strip=True))
+        if text:
+            names.append(text)
+    return names
+
+
+def extract_faq_entities(soup) -> list[dict]:
+    """Build FAQPage entities from the visible, already translated FAQ blocks."""
+    entities = []
+    seen = set()
+
+    def add_pair(q_el, a_el):
+        if q_el is None or a_el is None:
+            return
+        question = clean_text(q_el.get_text(" ", strip=True))
+        answer = clean_text(a_el.get_text(" ", strip=True))
+        key = (question, answer)
+        if not question or not answer or key in seen:
+            return
+        seen.add(key)
+        entities.append({
+            "@type": "Question",
+            "name": question,
+            "acceptedAnswer": {"@type": "Answer", "text": answer},
+        })
+
+    for details in soup.find_all("details"):
+        add_pair(details.find(class_="q") or details.find("summary"),
+                 details.find(class_="a"))
+
+    for item in soup.select(".faq-item"):
+        q_el = item.select_one(".faq-q [data-i18n], .faq-q span, .q")
+        a_el = item.select_one(".faq-a p, .a")
+        add_pair(q_el, a_el)
+
+    return entities
+
+
+def page_jsonld_context(soup, canonical_url: str) -> dict:
+    title = clean_text(soup.title.get_text(" ", strip=True)) if soup.title else ""
+    description_el = soup.head.find("meta", attrs={"name": "description"}) if soup.head else None
+    h1 = soup.find("h1")
+    return {
+        "canonical_url": canonical_url,
+        "title": title,
+        "description": description_el.get("content", "") if description_el else "",
+        "h1": clean_text(h1.get_text(" ", strip=True)) if h1 else "",
+        "breadcrumbs": extract_breadcrumb_names(soup),
+        "faq_entities": extract_faq_entities(soup),
+    }
+
+
+def is_current_page_entity(data: dict, canonical_url: str) -> bool:
+    if data.get("@id") == canonical_url or data.get("url") == canonical_url:
+        return True
+    main_entity = data.get("mainEntityOfPage")
+    return isinstance(main_entity, dict) and main_entity.get("@id") == canonical_url
+
+
+def enhance_jsonld_value(value, context: dict):
+    if isinstance(value, list):
+        return [enhance_jsonld_value(item, context) for item in value]
+    if not isinstance(value, dict):
+        return value
+
+    data = {key: enhance_jsonld_value(val, context) for key, val in value.items()}
+
+    if schema_type_in(data, "FAQPage") and context["faq_entities"]:
+        data["mainEntity"] = context["faq_entities"]
+
+    if schema_type_in(data, "BreadcrumbList") and context["breadcrumbs"]:
+        items = data.get("itemListElement")
+        if isinstance(items, list):
+            for idx, item in enumerate(items):
+                if isinstance(item, dict) and idx < len(context["breadcrumbs"]):
+                    item["name"] = context["breadcrumbs"][idx]
+
+    if is_current_page_entity(data, context["canonical_url"]):
+        if schema_type_in(data, "NewsArticle"):
+            data["headline"] = context["h1"] or context["title"]
+            if context["description"]:
+                data["description"] = context["description"]
+        elif schema_type_in(data, "Service") or schema_type_in(data, "CollectionPage") or schema_type_in(data, "WebPage") or schema_type_in(data, "AboutPage") or schema_type_in(data, "ContactPage") or schema_type_in(data, "CreativeWork"):
+            if context["h1"]:
+                data["name"] = context["h1"]
+            if context["description"] and "description" in data:
+                data["description"] = context["description"]
+        elif schema_type_in(data, "Blog") or schema_type_in(data, "FAQPage"):
+            if context["title"]:
+                data["name"] = context["title"]
+
+    return data
+
+
 def localize_jsonld_value(value, lang: str):
     if isinstance(value, dict):
         return {key: localize_jsonld_value(val, lang) for key, val in value.items()}
@@ -162,8 +315,9 @@ def localize_jsonld_value(value, lang: str):
     return value
 
 
-def localize_jsonld_blocks(soup, lang: str):
-    """Update URL-like strings in JSON-LD blocks for localized pages."""
+def localize_jsonld_blocks(soup, lang: str, canonical_url: str):
+    """Update JSON-LD URLs and visible page text for the current language."""
+    context = page_jsonld_context(soup, canonical_url)
     for script in soup.find_all("script", attrs={"type": "application/ld+json"}):
         raw = script.string or script.get_text()
         if not raw.strip():
@@ -173,7 +327,8 @@ def localize_jsonld_blocks(soup, lang: str):
         except json.JSONDecodeError:
             continue
         localized = localize_jsonld_value(data, lang)
-        script.string = json.dumps(localized, ensure_ascii=False, separators=(",", ":"))
+        enhanced = enhance_jsonld_value(localized, context)
+        script.string = json.dumps(enhanced, ensure_ascii=False, separators=(",", ":"))
 
 
 def absolutize_paths(soup):
@@ -227,31 +382,8 @@ def localize_page(en_html: str, lang: str, page_id: str, *, project_name=None) -
     absolutize_paths(soup)
 
     # 3. Translate elements with data-i18n / data-i18n-html
-    page_dict = I18N.get(lang, {})
-    extra_dict = {}
-    # ALL pages may have an inline ICM_I18N_PAGE (sub-page-specific translations)
-    for script in soup.find_all("script"):
-        txt = script.string or ""
-        m = re.search(r"window\.ICM_I18N_PAGE\s*=\s*(\{.*?\});", txt, re.DOTALL)
-        if m:
-            try:
-                proj_i18n = json.loads(m.group(1))
-                extra_dict = proj_i18n.get(lang, {})
-                break
-            except json.JSONDecodeError:
-                pass
-
-    full_dict = {**page_dict, **extra_dict}  # page-specific keys override common ones
-
-    for el in soup.find_all(attrs={"data-i18n": True}):
-        key = el["data-i18n"]
-        if key in full_dict:
-            replace_element_html(el, full_dict[key])
-
-    for el in soup.find_all(attrs={"data-i18n-html": True}):
-        key = el["data-i18n-html"]
-        if key in full_dict:
-            replace_element_html(el, full_dict[key])
+    extra_dict = extract_inline_i18n(soup, lang)
+    apply_translations(soup, lang)
 
     # 4. Update title / description / OG / Twitter / canonical
     meta = PAGE_META.get(page_id, {}).get(lang, {})
@@ -337,8 +469,8 @@ def localize_page(en_html: str, lang: str, page_id: str, *, project_name=None) -
     for tag in make_hreflang_block(soup, page_id, project_name):
         soup.head.append(tag)
 
-    # 6. Localize JSON-LD URLs so structured data matches the current URL.
-    localize_jsonld_blocks(soup, lang)
+    # 6. Localize JSON-LD URLs and visible text so structured data matches the page.
+    localize_jsonld_blocks(soup, lang, canonical_url)
 
     # 7. Make h1 textContent readable for crawlers and assistive tech.
     normalize_h1_break_spacing(soup)
@@ -350,11 +482,17 @@ def localize_page(en_html: str, lang: str, page_id: str, *, project_name=None) -
 
 
 def update_en_page(en_html: str, page_id: str, project_name=None) -> str:
-    """For English source page: only update hreflang block & ensure canonical points to root."""
+    """For English source page: sync visible copy, hreflang and JSON-LD."""
     soup = parse_html(en_html)
+    apply_translations(soup, "en")
     remove_existing_hreflang(soup)
     for tag in make_hreflang_block(soup, page_id, project_name):
         soup.head.append(tag)
+    base_path = "" if page_id == "" else f"{page_id}/"
+    if project_name:
+        base_path = f"projects/{project_name}/"
+    canonical_url = f"{DOMAIN}/{base_path}"
+    localize_jsonld_blocks(soup, "en", canonical_url)
     normalize_h1_break_spacing(soup)
     # Also ensure og:locale:alternate covers all langs (for home page)
     if page_id == "" and project_name is None:
