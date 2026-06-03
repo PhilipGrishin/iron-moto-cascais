@@ -22,11 +22,14 @@ scripts read `scripts/build/README.md`.
   bump the cache-bust query (`?v=...`) on every HTML file. The
   convention is `?v=YYYYMMDD<letter>`. The latest value at the
   time of writing is `20260602b`.
-- When you finish a task, do not commit or push unless the
-  project owner explicitly asks Codex to do it. Leave the working
-  tree in a state where they can review the diff and commit.
-- If the project owner explicitly asks Codex to push changes,
-  verification does not stop at `git push`. After every push,
+- When the project owner asks Codex to do implementation work,
+  treat the request as an end-to-end delivery by default: make
+  the change, run the relevant verification, commit, push, and
+  verify the result after the push. Do not stop at a proposal or
+  an unpushed working tree unless the owner explicitly says
+  "no commit", "no push", "analysis only", "draft", or gives
+  another limiting instruction.
+- Verification does not stop at `git push`. After every push,
   automatically verify the exact work that was pushed. For site
   changes, check the public production URLs after deployment
   whenever possible, confirm the relevant pages/assets/schema are
