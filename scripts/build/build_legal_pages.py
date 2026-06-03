@@ -13,7 +13,7 @@ from legal_pages_data import LEGAL_PAGES, PRIVACY_HEAD, COOKIES_HEAD, TERMS_HEAD
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260602b"
+CACHE_BUST = "20260603b"
 
 OG_LOCALES = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
 LANGS = ["en", "ru", "uk", "pt"]
@@ -38,7 +38,7 @@ LEGAL_CSS = """.subpage.lg{padding:140px 0 60px;background:#0a0a0a;position:rela
 .crumb a{color:var(--text-dim)}
 .crumb a:hover{color:var(--accent)}
 .crumb .sep{color:var(--accent)}
-.subpage.lg h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.95;letter-spacing:-.01em;text-transform:uppercase;font-size:clamp(40px,6.4vw,84px);color:#fff;margin-bottom:14px;max-width:18ch}
+.subpage.lg h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.95;letter-spacing:-.01em;text-transform:uppercase;font-size:clamp(34px,5.6vw,72px);color:#fff;margin-bottom:14px;max-width:18ch}
 .subpage.lg .lead{max-width:62ch;color:var(--text-dim);font-size:clamp(15px,1.3vw,18px)}
 .legal-body{padding:60px 0 80px;background:#0a0a0a;border-top:1px solid var(--border)}
 .legal-body .container{max-width:840px}
