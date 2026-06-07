@@ -21,7 +21,7 @@ from news_data import (
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260603d"
+CACHE_BUST = "20260607a"
 LANGS = ["en", "ru", "uk", "pt"]
 OG_LOCALE = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
 
@@ -557,8 +557,9 @@ def render_article(slug, article):
         return "\n".join(parts)
 
     def render_figure(img_num):
+        width, height = article.get("imageDims", {}).get(img_num, (1600, 1200))
         return f'''<figure class="article-fig">
-<img alt="{en_body[f"img{img_num}.alt"]}" data-i18n-alt="{pre}.img{img_num}.alt" loading="lazy" src="{article['imageBase']}-{img_num:02d}-1600.jpg" width="1600" height="1200"/>
+<img alt="{en_body[f"img{img_num}.alt"]}" data-i18n-alt="{pre}.img{img_num}.alt" loading="lazy" src="{article['imageBase']}-{img_num:02d}-1600.jpg" width="{width}" height="{height}"/>
 <figcaption data-i18n="{pre}.img{img_num}.cap">{en_body[f"img{img_num}.cap"]}</figcaption>
 </figure>'''
 

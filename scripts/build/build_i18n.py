@@ -60,6 +60,7 @@ MAIN_PAGES = [
     ("harley-service/index.html", "harley-service"),
     ("ducati-service/index.html", "ducati-service"),
     ("news/index.html", "news"),
+    ("news/ericeira-kustom-fest-2026/index.html", "news/ericeira-kustom-fest-2026"),
     ("news/opens-new-workshop-in-cascais/index.html", "news/opens-new-workshop-in-cascais"),
     ("news/lisbon-motorcycle-film-fest-2026-beckman/index.html", "news/lisbon-motorcycle-film-fest-2026-beckman"),
 ]

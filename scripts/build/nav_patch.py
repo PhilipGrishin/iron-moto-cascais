@@ -61,6 +61,7 @@ EN_PAGES = [
     "harley-service/index.html",
     "ducati-service/index.html",
     "news/index.html",
+    "news/ericeira-kustom-fest-2026/index.html",
     "news/opens-new-workshop-in-cascais/index.html",
     "news/lisbon-motorcycle-film-fest-2026-beckman/index.html",
 ]

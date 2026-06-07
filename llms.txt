@@ -3,7 +3,8 @@
 > Premium motorcycle service workshop in Cascais, Greater Lisbon (Portugal),
 > run by an internationally recognized custom-motorcycle team —
 > AMD World Champions, BMW Motorrad Customizing Champion 2023,
-> Bonneville Salt Flats world record holder 2017 (class 350APS-VG).
+> Bonneville Salt Flats world record holder 2017 (class 350APS-VG),
+> Ericeira Kustom Fest 2026 Best Paint winner and Café Racer runner-up.
 
 Iron Custom Motors is a full-service motorcycle workshop offering scheduled
 maintenance and repair, parts and consumables sourcing, performance and
@@ -40,7 +41,14 @@ Monday. Languages spoken: English, Russian, Ukrainian, Portuguese.
 - [About the workshop](https://ironcustommotors.com/about/)
 - [Pricing](https://ironcustommotors.com/pricing/) (with PDF download)
 - [FAQ](https://ironcustommotors.com/faq/)
+- [News](https://ironcustommotors.com/news/)
 - [Contact](https://ironcustommotors.com/contact/)
+
+## Latest news
+
+- [Iron Custom Motors at Ericeira Kustom Fest 2026](https://ironcustommotors.com/news/ericeira-kustom-fest-2026/): First major custom competition for the Portugal-based team; Hell Boy won 1st place in Best Paint and Sturmvogel took 2nd place in Café Racer.
+- [Iron Custom Motors at Lisbon Motorcycle Film Fest 2026](https://ironcustommotors.com/news/lisbon-motorcycle-film-fest-2026-beckman/): Festival participation with the championship-winning Beckman custom motorcycle.
+- [Iron Custom Motors opens in Cascais](https://ironcustommotors.com/news/opens-new-workshop-in-cascais/): New motorcycle workshop in Cascais, Greater Lisbon.
 
 ## Custom projects portfolio
 
@@ -49,10 +57,10 @@ Monday. Languages spoken: English, Russian, Ukrainian, Portuguese.
 - [Unbreakable](https://ironcustommotors.com/projects/unbreakable/)
 - [Quanta-R](https://ironcustommotors.com/projects/quanta-r/)
 - [Burly](https://ironcustommotors.com/projects/burly/)
-- [Sturmvogel](https://ironcustommotors.com/projects/sturmvogel/) — AMD World Championship winner
+- [Sturmvogel](https://ironcustommotors.com/projects/sturmvogel/) — AMD World Championship winner; 2nd place in Café Racer at Ericeira Kustom Fest 2026
 - [Geometric](https://ironcustommotors.com/projects/geometric/) — Bonneville Salt Flats world speed record holder
 - [Joker](https://ironcustommotors.com/projects/joker/)
-- [Hell Boy](https://ironcustommotors.com/projects/hellboy/)
+- [Hell Boy](https://ironcustommotors.com/projects/hellboy/) — 1st place in Best Paint at Ericeira Kustom Fest 2026
 - [True Religion](https://ironcustommotors.com/projects/true-religion/)
 
 ## Languages
@@ -67,7 +75,7 @@ All pages are available in four languages with proper hreflang:
 ## Sitemap
 
 Full machine-readable sitemap: https://ironcustommotors.com/sitemap.xml
-(124 indexable URLs: 31 page paths × 4 languages)
+(132 indexable URLs: 33 page paths × 4 languages)
 
 ## Citation guidance
 

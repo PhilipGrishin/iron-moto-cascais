@@ -29,6 +29,7 @@ PAGES = [
     ("harley-service/", "monthly", "0.9"),
     ("ducati-service/", "monthly", "0.9"),
     ("news/", "weekly", "0.9"),
+    ("news/ericeira-kustom-fest-2026/", "yearly", "0.9"),
     ("news/opens-new-workshop-in-cascais/", "yearly", "0.8"),
     ("news/lisbon-motorcycle-film-fest-2026-beckman/", "yearly", "0.85"),
     ("projects/inspirium/", "yearly", "0.8"),

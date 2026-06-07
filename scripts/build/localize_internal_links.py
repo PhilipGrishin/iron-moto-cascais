@@ -38,6 +38,7 @@ LOCALIZED_PATHS = {
     "/harley-service/",
     "/ducati-service/",
     "/news/",
+    "/news/ericeira-kustom-fest-2026/",
     "/news/opens-new-workshop-in-cascais/",
     "/news/lisbon-motorcycle-film-fest-2026-beckman/",
 }
