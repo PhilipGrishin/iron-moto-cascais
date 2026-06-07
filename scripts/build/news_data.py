@@ -564,7 +564,7 @@ ARTICLE_LMFF_BODY = {
 
 # ============================================================
 # Article 3: "Iron Custom Motors at Ericeira Kustom Fest 2026"
-# Published 2026-06-23
+# Published 2026-06-07
 # ============================================================
 
 ARTICLE_ERICEIRA_META = {
@@ -592,7 +592,7 @@ ARTICLE_ERICEIRA_META = {
 
 ARTICLE_ERICEIRA_BODY = {
     "en": {
-        "eyebrow": "News · 23 June 2026",
+        "eyebrow": "News · 7 June 2026",
         "h1": "Iron Custom Motors at Ericeira Kustom Fest 2026:<br/><span class=\"accent\">two award-winning bikes</span> at our first major custom show in Portugal.",
         "lede": "From June 5 to 7, Iron Custom Motors took part in Ericeira Kustom Fest 2026 — our first major custom show in Portugal where we entered motorcycles into competition. It became a milestone for our Portuguese chapter: <a href=\"/projects/hellboy/\">Hell Boy</a> won 1st place in Best Paint, and <a href=\"/projects/sturmvogel/\">Sturmvogel</a> took 2nd place in the Café Racer category. For us, this was more than a festival weekend: it was the first big confirmation that Iron Custom Motors is becoming part of the Portuguese custom scene with real projects, real history and real results.",
 
@@ -650,11 +650,11 @@ ARTICLE_ERICEIRA_BODY = {
         "img5.alt": "Ericeira Kustom Fest 2026 classification board showing Best Bike, Café Racer, Kustom and Best Paint results.",
         "img5.cap": "The Ericeira Kustom Fest 2026 classification board with Iron Custom Motors bikes among the winning numbers.",
 
-        "publishedISO": "2026-06-23",
-        "publishedLabel": "Published 23 June 2026",
+        "publishedISO": "2026-06-07",
+        "publishedLabel": "Published 7 June 2026",
     },
     "ru": {
-        "eyebrow": "Новости · 23 июня 2026",
+        "eyebrow": "Новости · 7 июня 2026",
         "h1": "Iron Custom Motors на Ericeira Kustom Fest 2026:<br/><span class=\"accent\">два призовых мотоцикла</span> на первом большом кастом-шоу в Португалии.",
         "lede": "С 5 по 7 июня Iron Custom Motors участвовал в Ericeira Kustom Fest 2026 — первом для нас большом кастом-шоу в Португалии, где мы выставили мотоциклы в конкурс. Для нашей португальской главы это стало важной точкой: <a href=\"/projects/hellboy/\">Hell Boy</a> получил 1-е место в Best Paint, а <a href=\"/projects/sturmvogel/\">Sturmvogel</a> занял 2-е место в категории Café Racer. Для нас это был не просто фестивальный уикенд, а первое большое подтверждение: Iron Custom Motors становится частью португальской кастом-сцены с реальными проектами, историей и результатами.",
 
@@ -712,11 +712,11 @@ ARTICLE_ERICEIRA_BODY = {
         "img5.alt": "Классификационная доска Ericeira Kustom Fest 2026 с результатами Best Bike, Café Racer, Kustom и Best Paint.",
         "img5.cap": "Доска результатов Ericeira Kustom Fest 2026 с номерами мотоциклов Iron Custom Motors среди победителей.",
 
-        "publishedISO": "2026-06-23",
-        "publishedLabel": "Опубликовано 23 июня 2026",
+        "publishedISO": "2026-06-07",
+        "publishedLabel": "Опубликовано 7 июня 2026",
     },
     "uk": {
-        "eyebrow": "Новини · 23 червня 2026",
+        "eyebrow": "Новини · 7 червня 2026",
         "h1": "Iron Custom Motors на Ericeira Kustom Fest 2026:<br/><span class=\"accent\">два призові мотоцикли</span> на першому великому кастом-шоу в Португалії.",
         "lede": "З 5 до 7 червня Iron Custom Motors брав участь в Ericeira Kustom Fest 2026 — першому для нас великому кастом-шоу в Португалії, де ми виставили мотоцикли на конкурс. Для нашої португальської глави це стало важливою точкою: <a href=\"/projects/hellboy/\">Hell Boy</a> здобув 1-е місце в Best Paint, а <a href=\"/projects/sturmvogel/\">Sturmvogel</a> посів 2-е місце в категорії Café Racer. Для нас це був не просто фестивальний вікенд, а перше велике підтвердження: Iron Custom Motors стає частиною португальської кастом-сцени з реальними проєктами, історією та результатами.",
 
@@ -774,11 +774,11 @@ ARTICLE_ERICEIRA_BODY = {
         "img5.alt": "Класифікаційна дошка Ericeira Kustom Fest 2026 з результатами Best Bike, Café Racer, Kustom і Best Paint.",
         "img5.cap": "Дошка результатів Ericeira Kustom Fest 2026 з номерами мотоциклів Iron Custom Motors серед переможців.",
 
-        "publishedISO": "2026-06-23",
-        "publishedLabel": "Опубліковано 23 червня 2026",
+        "publishedISO": "2026-06-07",
+        "publishedLabel": "Опубліковано 7 червня 2026",
     },
     "pt": {
-        "eyebrow": "Notícias · 23 de junho 2026",
+        "eyebrow": "Notícias · 7 de junho 2026",
         "h1": "Iron Custom Motors no Ericeira Kustom Fest 2026:<br/><span class=\"accent\">duas motas premiadas</span> no nosso primeiro grande show custom em Portugal.",
         "lede": "De 5 a 7 de junho, a Iron Custom Motors participou no Ericeira Kustom Fest 2026 — o nosso primeiro grande show custom em Portugal onde inscrevemos motos em competição. Foi um marco para o nosso capítulo português: a <a href=\"/projects/hellboy/\">Hell Boy</a> venceu o 1.º lugar em Best Paint e a <a href=\"/projects/sturmvogel/\">Sturmvogel</a> ficou em 2.º lugar na categoria Café Racer. Para nós, foi mais do que um fim de semana de festival: foi a primeira grande confirmação de que a Iron Custom Motors está a tornar-se parte da cena custom portuguesa com projetos reais, história real e resultados reais.",
 
@@ -836,15 +836,15 @@ ARTICLE_ERICEIRA_BODY = {
         "img5.alt": "Tabela de classificação do Ericeira Kustom Fest 2026 com resultados de Best Bike, Café Racer, Kustom e Best Paint.",
         "img5.cap": "A tabela de resultados do Ericeira Kustom Fest 2026 com motos da Iron Custom Motors entre os números vencedores.",
 
-        "publishedISO": "2026-06-23",
-        "publishedLabel": "Publicado a 23 de junho de 2026",
+        "publishedISO": "2026-06-07",
+        "publishedLabel": "Publicado a 7 de junho de 2026",
     },
 }
 
 # Article metadata (slug → meta + body)
 NEWS_ARTICLES = {
     "ericeira-kustom-fest-2026": {
-        "publishedISO": "2026-06-23",
+        "publishedISO": "2026-06-07",
         "imageBase": "/photos/news/news-ericeira-kustom-fest-2026",
         "imageCount": 5,
         "imageHero": 1,
