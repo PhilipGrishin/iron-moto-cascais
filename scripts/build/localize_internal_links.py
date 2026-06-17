@@ -37,6 +37,7 @@ LOCALIZED_PATHS = {
     "/bmw-service/",
     "/harley-service/",
     "/ducati-service/",
+    "/blog/",
     "/news/",
     "/news/ericeira-kustom-fest-2026/",
     "/news/opens-new-workshop-in-cascais/",

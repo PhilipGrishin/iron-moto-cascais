@@ -42,6 +42,7 @@ Monday. Languages spoken: English, Russian, Ukrainian, Portuguese.
 - [About the workshop](https://ironcustommotors.com/about/)
 - [Pricing](https://ironcustommotors.com/pricing/) (with PDF download)
 - [FAQ](https://ironcustommotors.com/faq/)
+- [Blog](https://ironcustommotors.com/blog/)
 - [News](https://ironcustommotors.com/news/)
 - [Contact](https://ironcustommotors.com/contact/)
 
@@ -76,7 +77,7 @@ All pages are available in four languages with proper hreflang:
 ## Sitemap
 
 Full machine-readable sitemap: https://ironcustommotors.com/sitemap.xml
-(132 indexable URLs: 33 page paths × 4 languages)
+(136 indexable URLs: 34 page paths × 4 languages)
 
 ## Citation guidance
 

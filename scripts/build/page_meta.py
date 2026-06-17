@@ -159,6 +159,17 @@ try:
 except ImportError:
     pass
 
+# --------- Blog section ---------
+try:
+    from blog_data import BLOG_HUB_META as _BLOG_HUB, BLOG_POSTS as _BLOG_POSTS
+    # Hub: page_id = "blog"
+    PAGE_META["blog"] = _BLOG_HUB
+    # Future posts: page_id = "blog/<slug>"
+    for _slug, _data in _BLOG_POSTS.items():
+        PAGE_META[f"blog/{_slug}"] = _data["meta"]
+except ImportError:
+    pass
+
 # --------- Project pages ---------
 # The badge translation comes from inline ICM_I18N_PAGE on each page (e.g. proj.inspirium.badge).
 # We just need title pattern: "<Name> — <badge> | Iron Custom Motors"

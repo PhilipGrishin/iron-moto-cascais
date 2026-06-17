@@ -9,8 +9,8 @@ Production domain: https://ironcustommotors.com/
 
 - Static HTML, CSS, and vanilla JavaScript served by GitHub Pages.
 - Four pre-rendered languages: English at `/`, Russian at `/ru/`, Ukrainian at `/uk/`, Portuguese at `/pt/`.
-- 127 HTML files in the repository: 124 indexable pages, `404.html`, and 2 noindex redirect stubs.
-- 124 sitemap URLs: 31 indexable path patterns times 4 languages.
+- 139 HTML files in the repository: 136 indexable pages, `404.html`, and 2 noindex redirect stubs.
+- 136 sitemap URLs: 34 indexable path patterns times 4 languages.
 - JSON-LD, canonical, Open Graph, Twitter metadata, and hreflang are generated per language.
 - Reviews are proxied through a Cloudflare Worker and embedded into home-page JSON-LD from `assets/reviews-snapshot.json`.
 - Lead form posts to FormSubmit and also opens a WhatsApp fallback path.
@@ -43,6 +43,7 @@ Production domain: https://ironcustommotors.com/
 /about/                        Workshop and brand story
 /contact/                      Contact details and map
 /faq/                          Frequently asked questions
+/blog/                         Practical workshop blog hub
 /news/                         News hub
 /news/<slug>/                  News articles
 /privacy/                      Privacy policy

@@ -21,7 +21,7 @@ from news_data import (
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260607a"
+CACHE_BUST = "20260617a"
 LANGS = ["en", "ru", "uk", "pt"]
 OG_LOCALE = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
 
@@ -89,6 +89,7 @@ HEADER_HTML = f'''<div aria-label="Cookie consent" class="cookie-banner" id="coo
 <nav aria-label="Primary" class="nav">
 <a data-i18n="nav.services" href="/services/">Services</a>
 <a data-i18n="nav.projects" href="/projects/">Projects</a>
+<a data-i18n="nav.blog" href="/blog/">Blog</a>
 <a data-i18n="nav.news" href="/news/">News</a>
 <a data-i18n="nav.pricing" href="/pricing/">Pricing</a>
 <a data-i18n="nav.about" href="/about/">About</a>
@@ -116,6 +117,7 @@ HEADER_HTML = f'''<div aria-label="Cookie consent" class="cookie-banner" id="coo
 <nav class="nav-mobile">
 <a data-i18n="nav.services" href="/services/">Services</a>
 <a data-i18n="nav.projects" href="/projects/">Projects</a>
+<a data-i18n="nav.blog" href="/blog/">Blog</a>
 <a data-i18n="nav.news" href="/news/">News</a>
 <a data-i18n="nav.pricing" href="/pricing/">Pricing</a>
 <a data-i18n="nav.about" href="/about/">About</a>
@@ -160,6 +162,7 @@ FOOTER_HTML = f'''<footer class="site-footer">
 <ul>
 <li><a data-i18n="nav.about" href="/about/">About</a></li>
 <li><a data-i18n="nav.projects" href="/projects/">Projects</a></li>
+<li><a data-i18n="nav.blog" href="/blog/">Blog</a></li>
 <li><a data-i18n="nav.news" href="/news/">News</a></li>
 <li><a data-i18n="nav.reviews" href="/#reviews">Reviews</a></li>
 <li><a data-i18n="nav.faq" href="/faq/">FAQ</a></li>

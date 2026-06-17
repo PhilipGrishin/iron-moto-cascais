@@ -1,0 +1,143 @@
+"""
+Blog section content: hub + future workshop articles.
+Each future post should have full multilingual content (en, ru, uk, pt).
+
+Post slug will be keyed in BLOG_POSTS.
+"""
+
+# ============================================================
+# Hub /blog/ — title + description + heading per language
+# ============================================================
+
+BLOG_HUB_META = {
+    "en": {
+        "title": "Blog — Motorcycle Workshop Guides | Iron Custom Motors",
+        "description": "Practical motorcycle blog from Iron Custom Motors in Cascais: workshop notes, maintenance guidance, diagnostics, parts, upgrades and used-bike advice.",
+    },
+    "ru": {
+        "title": "Блог — полезные материалы мотомастерской | Iron Custom Motors",
+        "description": "Практический мотоблог Iron Custom Motors в Кашкайше: заметки из мастерской, обслуживание, диагностика, запчасти, апгрейды и советы по покупке мотоциклов.",
+    },
+    "uk": {
+        "title": "Блог — корисні матеріали мотомайстерні | Iron Custom Motors",
+        "description": "Практичний мотоблог Iron Custom Motors у Кашкайші: нотатки з майстерні, обслуговування, діагностика, запчастини, апґрейди та поради щодо купівлі мотоциклів.",
+    },
+    "pt": {
+        "title": "Blog — Guias de Oficina de Motas | Iron Custom Motors",
+        "description": "Blog prático de motos da Iron Custom Motors em Cascais: notas de oficina, manutenção, diagnóstico, peças, upgrades e conselhos para comprar motos usadas.",
+    },
+}
+
+BLOG_HUB_BODY = {
+    "en": {
+        "eyebrow": "Blog · Workshop knowledge",
+        "h1": "Workshop notes for<br/><span class=\"accent\">real riders.</span>",
+        "sub": "Useful articles from the Iron Custom Motors bench: maintenance, diagnostics, parts choices, upgrades, pre-purchase checks and the small details that keep motorcycles honest.",
+        "breadHome": "Home",
+        "h1Crumb": "Blog",
+        "readMore": "Read the guide →",
+        "noPosts": "The first workshop guide is being prepared.",
+        "topicsEyebrow": "What will live here",
+        "topicsTitle": "Practical articles, <em>not noise.</em>",
+        "topicsLead": "The blog is for useful, searchable material: what riders ask us in the workshop, what we check before buying a bike, how we choose parts, and why some jobs should be done before they become expensive.",
+        "topic1Title": "Maintenance",
+        "topic1Text": "Service intervals, fluids, brakes, chains, tires and seasonal preparation for Portugal.",
+        "topic2Title": "Diagnostics",
+        "topic2Text": "How symptoms turn into real causes: electrical, engine, suspension and running issues.",
+        "topic3Title": "Parts & upgrades",
+        "topic3Text": "OEM, aftermarket and tuning choices explained from a workshop point of view.",
+        "topic4Title": "Buying used",
+        "topic4Text": "What to inspect before buying a motorcycle and when a cheap bike becomes expensive.",
+        "topic5Title": "Workshop life",
+        "topic5Text": "Stories from the bench, project decisions and the culture behind Iron Custom Motors.",
+        "ctaEyebrow": "Need an answer now?",
+        "ctaTitle": "Ask the workshop.",
+        "ctaText": "Send your motorcycle model and question via WhatsApp. If it needs a proper check, we will tell you the next step.",
+        "btnWA": "WhatsApp us",
+        "btnContact": "Contact page",
+    },
+    "ru": {
+        "eyebrow": "Блог · знания из мастерской",
+        "h1": "Заметки из мастерской<br/>для <span class=\"accent\">реальных райдеров.</span>",
+        "sub": "Полезные материалы от Iron Custom Motors: обслуживание, диагностика, выбор запчастей, апгрейды, предпокупочные проверки и мелочи, которые помогают мотоциклу оставаться честным.",
+        "breadHome": "Главная",
+        "h1Crumb": "Блог",
+        "readMore": "Читать материал →",
+        "noPosts": "Первый материал уже готовится.",
+        "topicsEyebrow": "Что здесь будет",
+        "topicsTitle": "Практические статьи, <em>а не шум.</em>",
+        "topicsLead": "Блог нужен для полезных материалов, которые ищут владельцы мотоциклов: что спрашивают в мастерской, что проверять перед покупкой, как выбирать запчасти и почему некоторые работы лучше сделать до того, как они станут дорогими.",
+        "topic1Title": "Обслуживание",
+        "topic1Text": "Интервалы сервиса, жидкости, тормоза, цепи, шины и сезонная подготовка для Португалии.",
+        "topic2Title": "Диагностика",
+        "topic2Text": "Как симптомы превращаются в реальные причины: электрика, двигатель, подвеска и ходовая.",
+        "topic3Title": "Запчасти и апгрейды",
+        "topic3Text": "OEM, aftermarket и тюнинг-решения с точки зрения мастерской.",
+        "topic4Title": "Покупка б/у",
+        "topic4Text": "Что проверять перед покупкой мотоцикла и когда дешёвый байк становится дорогим.",
+        "topic5Title": "Жизнь мастерской",
+        "topic5Text": "Истории со стенда, решения по проектам и культура Iron Custom Motors.",
+        "ctaEyebrow": "Нужен ответ сейчас?",
+        "ctaTitle": "Спросите мастерскую.",
+        "ctaText": "Отправьте модель мотоцикла и вопрос в WhatsApp. Если нужна проверка, подскажем следующий шаг.",
+        "btnWA": "WhatsApp",
+        "btnContact": "Контакты",
+    },
+    "uk": {
+        "eyebrow": "Блог · знання з майстерні",
+        "h1": "Нотатки з майстерні<br/>для <span class=\"accent\">реальних райдерів.</span>",
+        "sub": "Корисні матеріали від Iron Custom Motors: обслуговування, діагностика, вибір запчастин, апґрейди, передкупівельні перевірки й дрібниці, що допомагають мотоциклу залишатися чесним.",
+        "breadHome": "Головна",
+        "h1Crumb": "Блог",
+        "readMore": "Читати матеріал →",
+        "noPosts": "Перший матеріал уже готується.",
+        "topicsEyebrow": "Що тут буде",
+        "topicsTitle": "Практичні статті, <em>а не шум.</em>",
+        "topicsLead": "Блог потрібен для корисних матеріалів, які шукають власники мотоциклів: що запитують у майстерні, що перевіряти перед купівлею, як обирати запчастини і чому деякі роботи краще зробити до того, як вони стануть дорогими.",
+        "topic1Title": "Обслуговування",
+        "topic1Text": "Інтервали сервісу, рідини, гальма, ланцюги, шини та сезонна підготовка для Португалії.",
+        "topic2Title": "Діагностика",
+        "topic2Text": "Як симптоми перетворюються на реальні причини: електрика, двигун, підвіска та ходова.",
+        "topic3Title": "Запчастини й апґрейди",
+        "topic3Text": "OEM, aftermarket і тюнінг-рішення з точки зору майстерні.",
+        "topic4Title": "Купівля б/в",
+        "topic4Text": "Що перевіряти перед купівлею мотоцикла і коли дешевий байк стає дорогим.",
+        "topic5Title": "Життя майстерні",
+        "topic5Text": "Історії зі стенда, рішення щодо проєктів і культура Iron Custom Motors.",
+        "ctaEyebrow": "Потрібна відповідь зараз?",
+        "ctaTitle": "Запитайте майстерню.",
+        "ctaText": "Надішліть модель мотоцикла і питання у WhatsApp. Якщо потрібна перевірка, підкажемо наступний крок.",
+        "btnWA": "WhatsApp",
+        "btnContact": "Контакти",
+    },
+    "pt": {
+        "eyebrow": "Blog · Conhecimento de oficina",
+        "h1": "Notas de oficina<br/>para <span class=\"accent\">riders reais.</span>",
+        "sub": "Artigos úteis da bancada da Iron Custom Motors: manutenção, diagnóstico, escolha de peças, upgrades, inspeções pré-compra e detalhes que mantêm a moto honesta.",
+        "breadHome": "Início",
+        "h1Crumb": "Blog",
+        "readMore": "Ler o guia →",
+        "noPosts": "O primeiro guia de oficina está a ser preparado.",
+        "topicsEyebrow": "O que vai viver aqui",
+        "topicsTitle": "Artigos práticos, <em>não ruído.</em>",
+        "topicsLead": "O blog é para material útil e pesquisável: o que os riders nos perguntam na oficina, o que verificar antes de comprar uma moto, como escolher peças e porque alguns trabalhos devem ser feitos antes de ficarem caros.",
+        "topic1Title": "Manutenção",
+        "topic1Text": "Intervalos de serviço, fluidos, travões, correntes, pneus e preparação sazonal em Portugal.",
+        "topic2Title": "Diagnóstico",
+        "topic2Text": "Como sintomas viram causas reais: elétrica, motor, suspensão e comportamento em andamento.",
+        "topic3Title": "Peças e upgrades",
+        "topic3Text": "OEM, aftermarket e tuning explicados do ponto de vista da oficina.",
+        "topic4Title": "Comprar usada",
+        "topic4Text": "O que verificar antes de comprar uma moto e quando uma moto barata fica cara.",
+        "topic5Title": "Vida de oficina",
+        "topic5Text": "Histórias da bancada, decisões de projeto e a cultura por trás da Iron Custom Motors.",
+        "ctaEyebrow": "Precisa de resposta agora?",
+        "ctaTitle": "Pergunte à oficina.",
+        "ctaText": "Envie o modelo da moto e a pergunta por WhatsApp. Se precisar de uma verificação, dizemos o próximo passo.",
+        "btnWA": "WhatsApp",
+        "btnContact": "Contacto",
+    },
+}
+
+# Future structure mirrors news_data.py. The first post will be added here.
+BLOG_POSTS = {}

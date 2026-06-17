@@ -44,6 +44,7 @@ LOCALIZED_PATHS = {
     "/bmw-service/",
     "/harley-service/",
     "/ducati-service/",
+    "/blog/",
     "/news/",
     "/news/opens-new-workshop-in-cascais/",
     "/news/lisbon-motorcycle-film-fest-2026-beckman/",

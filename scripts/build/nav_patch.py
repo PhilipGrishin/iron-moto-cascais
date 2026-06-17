@@ -60,6 +60,7 @@ EN_PAGES = [
     "bmw-service/index.html",
     "harley-service/index.html",
     "ducati-service/index.html",
+    "blog/index.html",
     "news/index.html",
     "news/ericeira-kustom-fest-2026/index.html",
     "news/opens-new-workshop-in-cascais/index.html",
@@ -71,6 +72,7 @@ EN_PAGES = [
 PRIMARY_NAV_LINKS = [
     ("nav.services", "/services/",  "Services"),
     ("nav.projects", "/projects/",  "Projects"),
+    ("nav.blog",     "/blog/",      "Blog"),
     ("nav.news",     "/news/",      "News"),
     ("nav.community", "/community/", "Community"),
     ("nav.pricing",  "/pricing/",   "Pricing"),
@@ -94,6 +96,7 @@ FOOTER_SERVICES_LINKS = [
 FOOTER_COMPANY_LINKS = [
     ("nav.about",    "/about/",     "About"),
     ("nav.projects", "/projects/",  "Projects"),
+    ("nav.blog",     "/blog/",      "Blog"),
     ("nav.news",     "/news/",      "News"),
     ("nav.community", "/community/", "Community"),
     ("nav.reviews",  "/#reviews",   "Reviews"),

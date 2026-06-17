@@ -1,6 +1,6 @@
 # Iron Custom Motors — project handoff
 
-State of the repository as of 2026-06-02. This document is the
+State of the repository as of 2026-06-17. This document is the
 single entry point for anyone (human or AI agent) picking up the
 project. It is factual and current; opinions, priorities and
 roadmap recommendations are intentionally not included.
@@ -23,8 +23,8 @@ deployed via GitHub Pages.
 - Hosting: GitHub Pages with a `CNAME` file (`ironcustommotors.com`)
 - Repository: `https://github.com/dreamcarua/iron-moto-cascais`
 - Languages: English (default at `/`), Russian (`/ru/`), Ukrainian (`/uk/`), Portuguese (`/pt/`)
-- Total indexable URLs: 124 (31 path patterns × 4 languages)
-- HTML files in repo: 127 (124 indexable + 404.html + 2 redirect stubs)
+- Total indexable URLs: 136 (34 path patterns × 4 languages)
+- HTML files in repo: 139 (136 indexable + 404.html + 2 redirect stubs)
 
 ## 2. Tech stack
 
@@ -67,7 +67,7 @@ Top-level directories and their roles:
   .gitignore
   llms.txt                         Site map and citation guidance for LLMs
   robots.txt                       Allows all; points to sitemap.xml
-  sitemap.xml                      124 URLs (31 paths × 4 langs)
+  sitemap.xml                      136 URLs (34 paths × 4 langs)
   404.html                         Branded 404 with language auto-detect
   deploy.sh                        Legacy shell script (not used currently)
 
@@ -83,7 +83,8 @@ upgrades-tuning/, custom/,
 pre-purchase-inspection/           Service landing pages
 bmw-service/, harley-service/,
 ducati-service/                    Brand-specific landing pages (2026-05-23)
-news/                              News hub + 2 articles (2026-05-24)
+blog/                              Practical workshop blog hub (2026-06-17)
+news/                              News hub + 3 articles
 privacy/, cookies/, terms/         GDPR boilerplate pages (2026-05)
 
 projects/<slug>/                   10 project pages (Inspirium, Beckman, …)

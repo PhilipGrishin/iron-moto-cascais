@@ -38,6 +38,7 @@ python3 -m pip install -r requirements.txt
 | `build_brand_pages.py` | `bmw-service/`, `harley-service/`, `ducati-service/` |
 | `build_legal_pages.py` | `privacy/`, `cookies/`, `terms/` |
 | `build_news.py` | `news/` hub + each `news/<slug>/` article |
+| `build_blog.py` | `blog/` hub + future `blog/<slug>/` articles |
 | `build_pricing.py` | `pricing/` in all 4 languages |
 | `enhance_money_pages.py` | Adds reusable local SEO + related-page blocks to service and brand pages |
 | `enhance_project_pages.py` | Adds reusable highlights + related-page blocks to project detail pages |
@@ -59,6 +60,7 @@ python3 -m pip install -r requirements.txt
 | `brand_pages_data.py` | `build_brand_pages.py` (BMW / Harley / Ducati) |
 | `legal_pages_data.py` | `build_legal_pages.py` (Privacy / Cookies / Terms) |
 | `news_data.py` | `build_news.py` (one entry per article slug, 4 languages) |
+| `blog_data.py` | `build_blog.py` (blog hub and future posts, 4 languages) |
 | `pricing_data.py` | `build_pricing.py` (LABELS + SECTIONS, 4 languages) |
 | `i18n.json` | A snapshot of the runtime `I18N` object that lives inside `assets/main.js`. Regenerate with `node scripts/build/extract_i18n.js` after editing translations in `main.js`. |
 
@@ -76,6 +78,7 @@ python3 scripts/build/build_new_pages.py
 python3 scripts/build/build_brand_pages.py
 python3 scripts/build/build_legal_pages.py
 python3 scripts/build/build_news.py
+python3 scripts/build/build_blog.py
 python3 scripts/build/build_pricing.py
 python3 scripts/build/nav_patch.py
 python3 scripts/build/enhance_money_pages.py
@@ -157,6 +160,23 @@ python3 scripts/build/localize_internal_links.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/validate_seo.py
 # bump cache-bust
+```
+
+### After adding a blog post
+
+```
+# 1. Add the post content to blog_data.py (BLOG_POSTS dict)
+# 2. Add the slug to build_i18n.py MAIN_PAGES
+# 3. Add it to build_sitemap.py PAGES
+# 4. Add it to localize_internal_links.py LOCALIZED_PATHS
+# 5. Add it to nav_patch.py EN_PAGES if the post has standard nav/footer
+python3 scripts/build/build_blog.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/build_i18n.py
+python3 scripts/build/localize_internal_links.py
+python3 scripts/build/build_sitemap.py
+python3 scripts/build/validate_seo.py
+# bump cache-bust if assets/main.css or assets/main.js changed
 ```
 
 ### After regenerating Google reviews snapshot

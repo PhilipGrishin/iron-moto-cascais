@@ -59,6 +59,7 @@ MAIN_PAGES = [
     ("bmw-service/index.html", "bmw-service"),
     ("harley-service/index.html", "harley-service"),
     ("ducati-service/index.html", "ducati-service"),
+    ("blog/index.html", "blog"),
     ("news/index.html", "news"),
     ("news/ericeira-kustom-fest-2026/index.html", "news/ericeira-kustom-fest-2026"),
     ("news/opens-new-workshop-in-cascais/index.html", "news/opens-new-workshop-in-cascais"),
@@ -250,12 +251,13 @@ def extract_faq_entities(soup) -> list[dict]:
     return entities
 
 
-def page_jsonld_context(soup, canonical_url: str) -> dict:
+def page_jsonld_context(soup, canonical_url: str, lang: str) -> dict:
     title = clean_text(soup.title.get_text(" ", strip=True)) if soup.title else ""
     description_el = soup.head.find("meta", attrs={"name": "description"}) if soup.head else None
     h1 = soup.find("h1")
     return {
         "canonical_url": canonical_url,
+        "lang": lang,
         "title": title,
         "description": description_el.get("content", "") if description_el else "",
         "h1": clean_text(h1.get_text(" ", strip=True)) if h1 else "",
@@ -290,6 +292,8 @@ def enhance_jsonld_value(value, context: dict):
                     item["name"] = context["breadcrumbs"][idx]
 
     if is_current_page_entity(data, context["canonical_url"]):
+        if "inLanguage" in data:
+            data["inLanguage"] = context["lang"]
         if schema_type_in(data, "NewsArticle"):
             data["headline"] = context["h1"] or context["title"]
             if context["description"]:
@@ -302,6 +306,8 @@ def enhance_jsonld_value(value, context: dict):
         elif schema_type_in(data, "Blog") or schema_type_in(data, "FAQPage"):
             if context["title"]:
                 data["name"] = context["title"]
+            if context["description"] and "description" in data:
+                data["description"] = context["description"]
 
     return data
 
@@ -318,7 +324,7 @@ def localize_jsonld_value(value, lang: str):
 
 def localize_jsonld_blocks(soup, lang: str, canonical_url: str):
     """Update JSON-LD URLs and visible page text for the current language."""
-    context = page_jsonld_context(soup, canonical_url)
+    context = page_jsonld_context(soup, canonical_url, lang)
     for script in soup.find_all("script", attrs={"type": "application/ld+json"}):
         raw = script.string or script.get_text()
         if not raw.strip():
