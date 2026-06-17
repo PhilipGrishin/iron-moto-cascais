@@ -21,7 +21,7 @@ from news_data import (
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260617a"
+CACHE_BUST = "20260617b"
 LANGS = ["en", "ru", "uk", "pt"]
 OG_LOCALE = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
 
@@ -268,20 +268,20 @@ ARTICLE_CSS = """.subpage.news-article{padding:0;position:relative;overflow:hidd
 .news-article h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.92;letter-spacing:-.01em;text-transform:uppercase;font-size:clamp(34px,6vw,86px);color:#fff;max-width:22ch;margin-bottom:24px}
 .news-article h1 .accent{color:var(--accent)}
 .news-article .lede{font-family:'Saira',sans-serif;font-size:clamp(17px,1.5vw,21px);color:var(--text);max-width:64ch;line-height:1.5}
-.article-body{padding:80px 0;background:#0a0a0a;border-top:1px solid var(--border)}
+.article-body{padding:56px 0;background:#0a0a0a;border-top:1px solid var(--border)}
 .article-body .container{max-width:780px}
-.article-body section{margin-bottom:60px}
+.article-body section{padding:0;margin-bottom:36px}
 .article-body section:last-child{margin-bottom:0}
 .article-body h2{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(26px,3vw,40px);color:#fff;line-height:1.05;margin-bottom:24px}
 .article-body p{font-family:'Saira',sans-serif;font-weight:400;font-size:clamp(16px,1.3vw,19px);line-height:1.65;color:var(--text);margin-bottom:18px}
 .article-body p:last-child{margin-bottom:0}
-.article-fig{margin:50px 0;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);background:#0a0a0a}
+.article-fig{margin:34px 0;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);background:#0a0a0a}
 .article-fig img{width:100%;height:auto;display:block}
 .article-fig figcaption{padding:14px 20px;font-family:'Saira',sans-serif;font-size:13px;color:var(--text-mute);font-style:italic;border-top:1px solid var(--border);background:#0c0c10}
-.article-author{margin-top:60px;padding-top:30px;border-top:1px solid var(--border);display:flex;align-items:center;gap:14px;font-family:'Saira',sans-serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-mute)}
+.article-author{margin-top:44px;padding-top:24px;border-top:1px solid var(--border);display:flex;align-items:center;gap:14px;font-family:'Saira',sans-serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-mute)}
 .article-author .pill{padding:6px 14px;border:1px solid var(--accent);border-radius:30px;color:var(--accent);font-weight:600}
 .news-related{padding:var(--gap) 0;background:#0a0a0a;border-top:1px solid var(--border)}
-.news-related .heading{margin-bottom:50px;display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:end;padding-bottom:30px;border-bottom:1px solid var(--border)}
+.news-related .heading{margin-bottom:34px;display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:end;padding-bottom:24px;border-bottom:1px solid var(--border)}
 .news-related .heading h2{margin:0;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(30px,4.6vw,62px);line-height:.95;color:#fff}
 .news-related .heading h2 em{color:var(--accent);font-style:italic}
 .news-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
