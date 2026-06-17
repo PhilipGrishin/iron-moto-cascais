@@ -68,14 +68,14 @@ ARTICLE_CSS = """.subpage.blog-article{padding:0;position:relative;overflow:hidd
 .blog-article-body h2{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(26px,3vw,42px);line-height:1.04;color:#fff;margin-bottom:22px}
 .blog-article-body p{font-family:'Saira',sans-serif;font-size:clamp(16px,1.25vw,19px);line-height:1.66;color:var(--text);margin-bottom:18px}
 .blog-article-body p:last-child{margin-bottom:0}
-.blog-article-lead{padding:26px 26px;border:1px solid var(--border);border-left:3px solid var(--accent);background:var(--surface);border-radius:var(--radius-lg)}
+.blog-article-body .blog-article-lead{padding:34px 36px;border:1px solid var(--border);border-left:3px solid var(--accent);background:var(--surface);border-radius:var(--radius-lg)}
 .blog-list{display:grid;gap:12px;margin:0;padding:0;list-style:none}
 .blog-list li{position:relative;padding-left:28px;font-family:'Saira',sans-serif;font-size:clamp(16px,1.2vw,18px);line-height:1.6;color:var(--text)}
 .blog-list li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:9px;border:2px solid var(--accent);border-radius:50%}
 .blog-media{margin:34px 0;padding:18px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface)}
 .blog-media img{display:block;width:100%;height:auto;border-radius:calc(var(--radius-lg) - 4px)}
 .blog-media figcaption{padding:14px 2px 0;font-family:'Saira',sans-serif;font-size:13px;color:var(--text-mute);font-style:italic}
-.blog-video{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,360px);gap:28px;align-items:center;padding:24px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface)}
+.blog-article-body .blog-video{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,360px);gap:28px;align-items:center;padding:34px 36px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface)}
 .blog-video .video-copy{display:grid;gap:14px}
 .blog-video .video-eyebrow{font-family:'Saira',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
 .blog-video .video-frame{position:relative;aspect-ratio:9/16;overflow:hidden;border-radius:var(--radius);border:1px solid var(--border);background:#111}
@@ -85,10 +85,10 @@ ARTICLE_CSS = """.subpage.blog-article{padding:0;position:relative;overflow:hidd
 .blog-faq-item{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);overflow:hidden}
 .blog-faq-item summary{cursor:pointer;padding:18px 20px;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(19px,2vw,25px);line-height:1.1;color:#fff}
 .blog-faq-item .a{padding:0 20px 20px}
-.blog-cta-box{padding:28px 28px;border:1px solid var(--border);border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(255,87,34,.14),rgba(255,255,255,.03));text-align:left}
+.blog-article-body .blog-cta-box{padding:34px 36px;border:1px solid var(--border);border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(255,87,34,.14),rgba(255,255,255,.03));text-align:left}
 .blog-cta-box .btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
 @media (max-width:900px){.blog-video{grid-template-columns:1fr}.blog-video .video-frame{max-width:320px;margin:0 auto;width:100%}}
-@media (max-width:760px){.blog-article{min-height:84vh}.blog-article .container{padding-top:112px}.blog-article-body{padding:44px 0}.blog-article-body section{margin-bottom:30px}.blog-media{margin:28px -20px;border-left:none;border-right:none;border-radius:0}.blog-media img{border-radius:0}.blog-video{margin-left:-20px;margin-right:-20px;border-left:none;border-right:none;border-radius:0}.blog-cta-box{margin-left:-20px;margin-right:-20px;border-left:none;border-right:none;border-radius:0}}"""
+@media (max-width:760px){.blog-article{min-height:84vh}.blog-article .container{padding-top:112px}.blog-article-body{padding:44px 0}.blog-article-body section{margin-bottom:30px}.blog-article-body .blog-article-lead{padding:26px 24px}.blog-media{margin:28px -20px;border-left:none;border-right:none;border-radius:0}.blog-media img{border-radius:0}.blog-article-body .blog-video{margin-left:-20px;margin-right:-20px;padding:28px 20px;border-left:none;border-right:none;border-radius:0}.blog-article-body .blog-cta-box{margin-left:-20px;margin-right:-20px;padding:28px 20px;border-left:none;border-right:none;border-radius:0}}"""
 
 
 def h(value):
