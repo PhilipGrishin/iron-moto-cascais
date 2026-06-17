@@ -60,6 +60,7 @@ MAIN_PAGES = [
     ("harley-service/index.html", "harley-service"),
     ("ducati-service/index.html", "ducati-service"),
     ("blog/index.html", "blog"),
+    ("blog/revtech-110-oil-service-engine-gearbox-drive/index.html", "blog/revtech-110-oil-service-engine-gearbox-drive"),
     ("news/index.html", "news"),
     ("news/ericeira-kustom-fest-2026/index.html", "news/ericeira-kustom-fest-2026"),
     ("news/opens-new-workshop-in-cascais/index.html", "news/opens-new-workshop-in-cascais"),
@@ -202,6 +203,16 @@ def apply_translations(soup, lang: str) -> dict:
         if key in full_dict:
             replace_element_html(el, full_dict[key])
 
+    for el in soup.find_all(attrs={"data-i18n-alt": True}):
+        key = el["data-i18n-alt"]
+        if key in full_dict:
+            el["alt"] = full_dict[key]
+
+    for el in soup.find_all(attrs={"data-i18n-title": True}):
+        key = el["data-i18n-title"]
+        if key in full_dict:
+            el["title"] = full_dict[key]
+
     return full_dict
 
 
@@ -255,12 +266,16 @@ def page_jsonld_context(soup, canonical_url: str, lang: str) -> dict:
     title = clean_text(soup.title.get_text(" ", strip=True)) if soup.title else ""
     description_el = soup.head.find("meta", attrs={"name": "description"}) if soup.head else None
     h1 = soup.find("h1")
+    video_title = soup.select_one(".blog-video h2")
+    video_description = soup.select_one(".blog-video p")
     return {
         "canonical_url": canonical_url,
         "lang": lang,
         "title": title,
         "description": description_el.get("content", "") if description_el else "",
         "h1": clean_text(h1.get_text(" ", strip=True)) if h1 else "",
+        "video_title": clean_text(video_title.get_text(" ", strip=True)) if video_title else "",
+        "video_description": clean_text(video_description.get_text(" ", strip=True)) if video_description else "",
         "breadcrumbs": extract_breadcrumb_names(soup),
         "faq_entities": extract_faq_entities(soup),
     }
@@ -291,10 +306,18 @@ def enhance_jsonld_value(value, context: dict):
                 if isinstance(item, dict) and idx < len(context["breadcrumbs"]):
                     item["name"] = context["breadcrumbs"][idx]
 
+    if schema_type_in(data, "VideoObject"):
+        if context["video_title"]:
+            data["name"] = context["video_title"]
+        if context["video_description"] and "description" in data:
+            data["description"] = context["video_description"]
+        if "inLanguage" in data:
+            data["inLanguage"] = context["lang"]
+
     if is_current_page_entity(data, context["canonical_url"]):
         if "inLanguage" in data:
             data["inLanguage"] = context["lang"]
-        if schema_type_in(data, "NewsArticle"):
+        if schema_type_in(data, "NewsArticle") or schema_type_in(data, "BlogPosting") or schema_type_in(data, "Article") or schema_type_in(data, "TechArticle"):
             data["headline"] = context["h1"] or context["title"]
             if context["description"]:
                 data["description"] = context["description"]

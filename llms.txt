@@ -52,6 +52,10 @@ Monday. Languages spoken: English, Russian, Ukrainian, Portuguese.
 - [Iron Custom Motors at Lisbon Motorcycle Film Fest 2026](https://ironcustommotors.com/news/lisbon-motorcycle-film-fest-2026-beckman/): Festival participation with the championship-winning Beckman custom motorcycle.
 - [Iron Custom Motors opens in Cascais](https://ironcustommotors.com/news/opens-new-workshop-in-cascais/): New motorcycle workshop in Cascais, Greater Lisbon.
 
+## Workshop blog
+
+- [RevTech 110 Oil Service: Engine, Gearbox & Final Drive](https://ironcustommotors.com/blog/revtech-110-oil-service-engine-gearbox-drive/): Practical guide explaining why engine oil, gearbox oil and drive-side lubrication should be treated as separate service zones on RevTech 110 and similar Harley-style V-twin motorcycles.
+
 ## Custom projects portfolio
 
 - [Inspirium](https://ironcustommotors.com/projects/inspirium/) — BMW Motorrad Customizing Championship 2023 winner
@@ -77,7 +81,7 @@ All pages are available in four languages with proper hreflang:
 ## Sitemap
 
 Full machine-readable sitemap: https://ironcustommotors.com/sitemap.xml
-(136 indexable URLs: 34 page paths × 4 languages)
+(140 indexable URLs: 35 page paths × 4 languages)
 
 ## Citation guidance
 

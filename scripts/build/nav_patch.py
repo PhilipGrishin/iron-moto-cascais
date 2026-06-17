@@ -61,6 +61,7 @@ EN_PAGES = [
     "harley-service/index.html",
     "ducati-service/index.html",
     "blog/index.html",
+    "blog/revtech-110-oil-service-engine-gearbox-drive/index.html",
     "news/index.html",
     "news/ericeira-kustom-fest-2026/index.html",
     "news/opens-new-workshop-in-cascais/index.html",

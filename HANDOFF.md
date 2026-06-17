@@ -23,8 +23,8 @@ deployed via GitHub Pages.
 - Hosting: GitHub Pages with a `CNAME` file (`ironcustommotors.com`)
 - Repository: `https://github.com/dreamcarua/iron-moto-cascais`
 - Languages: English (default at `/`), Russian (`/ru/`), Ukrainian (`/uk/`), Portuguese (`/pt/`)
-- Total indexable URLs: 136 (34 path patterns × 4 languages)
-- HTML files in repo: 139 (136 indexable + 404.html + 2 redirect stubs)
+- Total indexable URLs: 140 (35 path patterns × 4 languages)
+- HTML files in repo: 143 (140 indexable + 404.html + 2 redirect stubs)
 
 ## 2. Tech stack
 
@@ -35,7 +35,7 @@ deployed via GitHub Pages.
 - Inline JSON-LD (`Schema.org`) on every page: `LocalBusiness`,
   `MotorcycleRepair`, `Organization`, `WebSite`, `BreadcrumbList`,
   `FAQPage`, `CollectionPage`, `Service`, `AboutPage`,
-  `ContactPage`, `NewsArticle`, `Blog`.
+  `ContactPage`, `NewsArticle`, `Blog`, `BlogPosting`.
 - Internationalization: each page is pre-rendered per language.
   Runtime language switch is via `assets/main.js` with the
   `I18N` object. Per-page translation deltas are stored as
@@ -67,7 +67,7 @@ Top-level directories and their roles:
   .gitignore
   llms.txt                         Site map and citation guidance for LLMs
   robots.txt                       Allows all; points to sitemap.xml
-  sitemap.xml                      136 URLs (34 paths × 4 langs)
+  sitemap.xml                      140 URLs (35 paths × 4 langs)
   404.html                         Branded 404 with language auto-detect
   deploy.sh                        Legacy shell script (not used currently)
 
@@ -83,7 +83,7 @@ upgrades-tuning/, custom/,
 pre-purchase-inspection/           Service landing pages
 bmw-service/, harley-service/,
 ducati-service/                    Brand-specific landing pages (2026-05-23)
-blog/                              Practical workshop blog hub (2026-06-17)
+blog/                              Practical workshop blog hub + articles (2026-06-17)
 news/                              News hub + 3 articles
 privacy/, cookies/, terms/         GDPR boilerplate pages (2026-05)
 
@@ -97,6 +97,7 @@ photos/                            Image assets
   hero-1600.jpg etc.               Top-level home/team/lounge photos
   projects/                        Photos per project
   news/                            Photos per news article (with -800 and -1600 sizes)
+  blog/                            Photos per blog article (with -800 and -1600 sizes)
   brands/                          (empty as of writing — for future brand-specific hero images)
 
 scripts/                           Locally-run helpers
@@ -124,7 +125,7 @@ worker/                            Cloudflare Worker source (reviews proxy)
 
 ## 5. URL inventory
 
-124 URLs are listed in `sitemap.xml`. Path patterns:
+140 URLs are listed in `sitemap.xml`. Path patterns:
 
 ```
 /                                       (home)
@@ -150,9 +151,13 @@ worker/                            Cloudflare Worker source (reviews proxy)
 /projects/hellboy/                      (project)
 /projects/true-religion/                (project)
 /about/                                 (about the workshop)
+/community/                             (rider lounge and community)
 /contact/                               (contacts + form + map)
 /faq/                                   (10 Q/A, FAQPage schema)
+/blog/                                  (blog hub)
+/blog/revtech-110-oil-service-engine-gearbox-drive/  (blog article)
 /news/                                  (news hub)
+/news/ericeira-kustom-fest-2026/        (news article)
 /news/opens-new-workshop-in-cascais/    (news article)
 /news/lisbon-motorcycle-film-fest-2026-beckman/  (news article)
 /privacy/                               (GDPR)
@@ -160,7 +165,7 @@ worker/                            Cloudflare Worker source (reviews proxy)
 /terms/                                 (GDPR)
 ```
 
-Each of the 31 path patterns has 4 language variants: `/path/`,
+Each of the 35 path patterns has 4 language variants: `/path/`,
 `/ru/path/`, `/uk/path/`, `/pt/path/`.
 
 ## 6. External services
@@ -203,11 +208,11 @@ These are embedded in the site copy and in `pricing_data.py`.
 
 ## 9. Known incomplete / pending items
 
-These are listed in the original TZ
+These are remaining planned items from the original TZ
 (`ICM_TZ_website_development_ru.docx`, archived locally by the
-project owner) as planned but not implemented as of 2026-05-24.
+project owner) and later scaling discussions as of 2026-06-17.
 
-- Blog section `/blog/` and `Article` JSON-LD
+- Additional blog articles beyond the first workshop guide
 - Separate `/diagnostics/` service landing page (TZ flags as P1;
   content currently included in `/motorcycle-service/`)
 - Advanced lead form with brand, model, year, urgency, preferred

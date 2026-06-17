@@ -38,7 +38,7 @@ python3 -m pip install -r requirements.txt
 | `build_brand_pages.py` | `bmw-service/`, `harley-service/`, `ducati-service/` |
 | `build_legal_pages.py` | `privacy/`, `cookies/`, `terms/` |
 | `build_news.py` | `news/` hub + each `news/<slug>/` article |
-| `build_blog.py` | `blog/` hub + future `blog/<slug>/` articles |
+| `build_blog.py` | `blog/` hub + `blog/<slug>/` articles |
 | `build_pricing.py` | `pricing/` in all 4 languages |
 | `enhance_money_pages.py` | Adds reusable local SEO + related-page blocks to service and brand pages |
 | `enhance_project_pages.py` | Adds reusable highlights + related-page blocks to project detail pages |
@@ -60,7 +60,7 @@ python3 -m pip install -r requirements.txt
 | `brand_pages_data.py` | `build_brand_pages.py` (BMW / Harley / Ducati) |
 | `legal_pages_data.py` | `build_legal_pages.py` (Privacy / Cookies / Terms) |
 | `news_data.py` | `build_news.py` (one entry per article slug, 4 languages) |
-| `blog_data.py` | `build_blog.py` (blog hub and future posts, 4 languages) |
+| `blog_data.py` | `build_blog.py` (blog hub and posts, 4 languages) |
 | `pricing_data.py` | `build_pricing.py` (LABELS + SECTIONS, 4 languages) |
 | `i18n.json` | A snapshot of the runtime `I18N` object that lives inside `assets/main.js`. Regenerate with `node scripts/build/extract_i18n.js` after editing translations in `main.js`. |
 
@@ -165,11 +165,13 @@ python3 scripts/build/validate_seo.py
 ### After adding a blog post
 
 ```
-# 1. Add the post content to blog_data.py (BLOG_POSTS dict)
-# 2. Add the slug to build_i18n.py MAIN_PAGES
-# 3. Add it to build_sitemap.py PAGES
-# 4. Add it to localize_internal_links.py LOCALIZED_PATHS
-# 5. Add it to nav_patch.py EN_PAGES if the post has standard nav/footer
+# 1. Drop processed JPEG photos into photos/blog/ named
+#    blog-<slug>-NN-1600.jpg and blog-<slug>-NN-800.jpg
+# 2. Add the post content to blog_data.py (BLOG_POSTS dict)
+# 3. Add the slug to build_i18n.py MAIN_PAGES
+# 4. Add it to build_sitemap.py PAGES
+# 5. Add it to localize_internal_links.py LOCALIZED_PATHS
+# 6. Add it to nav_patch.py EN_PAGES if the post has standard nav/footer
 python3 scripts/build/build_blog.py
 python3 scripts/build/nav_patch.py
 python3 scripts/build/build_i18n.py

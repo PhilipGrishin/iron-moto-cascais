@@ -9,8 +9,8 @@ Production domain: https://ironcustommotors.com/
 
 - Static HTML, CSS, and vanilla JavaScript served by GitHub Pages.
 - Four pre-rendered languages: English at `/`, Russian at `/ru/`, Ukrainian at `/uk/`, Portuguese at `/pt/`.
-- 139 HTML files in the repository: 136 indexable pages, `404.html`, and 2 noindex redirect stubs.
-- 136 sitemap URLs: 34 indexable path patterns times 4 languages.
+- 143 HTML files in the repository: 140 indexable pages, `404.html`, and 2 noindex redirect stubs.
+- 140 sitemap URLs: 35 indexable path patterns times 4 languages.
 - JSON-LD, canonical, Open Graph, Twitter metadata, and hreflang are generated per language.
 - Reviews are proxied through a Cloudflare Worker and embedded into home-page JSON-LD from `assets/reviews-snapshot.json`.
 - Lead form posts to FormSubmit and also opens a WhatsApp fallback path.
@@ -44,6 +44,7 @@ Production domain: https://ironcustommotors.com/
 /contact/                      Contact details and map
 /faq/                          Frequently asked questions
 /blog/                         Practical workshop blog hub
+/blog/<slug>/                  Workshop guide articles
 /news/                         News hub
 /news/<slug>/                  News articles
 /privacy/                      Privacy policy
@@ -93,6 +94,7 @@ python3 scripts/build/build_new_pages.py
 python3 scripts/build/build_brand_pages.py
 python3 scripts/build/build_legal_pages.py
 python3 scripts/build/build_news.py
+python3 scripts/build/build_blog.py
 python3 scripts/build/build_pricing.py
 python3 scripts/build/nav_patch.py
 python3 scripts/build/build_i18n.py
@@ -161,7 +163,7 @@ short time after a push unless the cache is purged.
 The technical base is static, fast, and suitable for SEO content scaling. The
 next content/product expansions are:
 
-- Blog or insights section for long-tail SEO and AI citations.
+- More workshop blog articles for long-tail SEO and AI citations.
 - Dedicated diagnostics landing page.
 - Advanced lead form fields and anti-spam protection.
 - Thank-you or lead-success page if paid acquisition needs cleaner conversion attribution.

@@ -29,6 +29,7 @@ PAGES = [
     ("harley-service/", "monthly", "0.9"),
     ("ducati-service/", "monthly", "0.9"),
     ("blog/", "weekly", "0.85"),
+    ("blog/revtech-110-oil-service-engine-gearbox-drive/", "monthly", "0.82"),
     ("news/", "weekly", "0.9"),
     ("news/ericeira-kustom-fest-2026/", "yearly", "0.9"),
     ("news/opens-new-workshop-in-cascais/", "yearly", "0.8"),
