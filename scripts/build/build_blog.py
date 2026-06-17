@@ -180,11 +180,14 @@ def render_hub():
             inline_i18n[lang][f"blogHub.{slug}.excerpt"] = data["meta"][lang]["excerpt"]
             inline_i18n[lang][f"blogHub.{slug}.date"] = post_body["publishedLabel"]
 
-    posts_sorted = sorted(
-        BLOG_POSTS.items(),
-        key=lambda item: item[1]["publishedISO"],
-        reverse=True,
-    )
+    posts_sorted = [
+        item
+        for _, item in sorted(
+            enumerate(BLOG_POSTS.items()),
+            key=lambda entry: (entry[1][1]["publishedISO"], entry[0]),
+            reverse=True,
+        )
+    ]
 
     if posts_sorted:
         posts_html = ""

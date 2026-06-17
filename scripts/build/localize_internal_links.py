@@ -39,6 +39,7 @@ LOCALIZED_PATHS = {
     "/ducati-service/",
     "/blog/",
     "/blog/revtech-110-oil-service-engine-gearbox-drive/",
+    "/blog/motorcycle-brake-pad-replacement-cascais/",
     "/news/",
     "/news/ericeira-kustom-fest-2026/",
     "/news/opens-new-workshop-in-cascais/",

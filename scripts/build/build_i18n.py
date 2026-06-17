@@ -61,6 +61,7 @@ MAIN_PAGES = [
     ("ducati-service/index.html", "ducati-service"),
     ("blog/index.html", "blog"),
     ("blog/revtech-110-oil-service-engine-gearbox-drive/index.html", "blog/revtech-110-oil-service-engine-gearbox-drive"),
+    ("blog/motorcycle-brake-pad-replacement-cascais/index.html", "blog/motorcycle-brake-pad-replacement-cascais"),
     ("news/index.html", "news"),
     ("news/ericeira-kustom-fest-2026/index.html", "news/ericeira-kustom-fest-2026"),
     ("news/opens-new-workshop-in-cascais/index.html", "news/opens-new-workshop-in-cascais"),

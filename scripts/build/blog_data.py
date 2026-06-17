@@ -2025,4 +2025,616 @@ BLOG_POSTS = {'revtech-110-oil-service-engine-gearbox-drive': {'publishedISO': '
                                                                       'óleo do motor',
                                                                       'óleo da caixa',
                                                                       'primária',
-                                                                      'serviço de motos Cascais']}}}
+                                                                      'serviço de motos Cascais']}},
+    'motorcycle-brake-pad-replacement-cascais': {
+        'publishedISO': '2026-06-17',
+        'modifiedISO': '2026-06-17',
+        'imageBase': '/photos/blog/blog-motorcycle-brake-pad-replacement-cascais',
+        'imageHero': 1,
+        'imageCount': 1,
+        'imageDims': {
+            1: (1600, 900),
+        },
+        'youtubeUrl': 'https://www.youtube.com/shorts/mskf3enVe4M',
+        'youtubeEmbed': 'https://www.youtube.com/embed/mskf3enVe4M',
+        'sourceLocalizedSlugs': {
+            'en': 'motorcycle-brake-pad-replacement-cascais',
+            'ru': 'zamena-tormoznyh-kolodok-motocikla-cascais',
+            'pt': 'substituicao-pastilhas-travao-mota-cascais',
+            'uk': 'zamina-galmivnyh-kolodok-motocykla-cascais',
+        },
+        'meta': {
+            'en': {
+                'title': 'Motorcycle Brake Pad Replacement: What Riders Should Know | Iron Custom Motors',
+                'description': 'Brake pads are more than a wear part. Learn how pad condition affects braking feel, safety, discs, ABS and riding confidence.',
+                'excerpt': 'Brake pads are more than a wear part. Learn how pad condition affects braking feel, safety, discs, ABS and riding confidence.',
+            },
+            'ru': {
+                'title': 'Замена тормозных колодок мотоцикла: что важно знать | Iron Custom Motors',
+                'description': 'Тормозные колодки - не просто расходник. Как их состояние влияет на торможение, безопасность, диски, ABS и уверенность райдера.',
+                'excerpt': 'Тормозные колодки - не просто расходник. Как их состояние влияет на торможение, безопасность, диски, ABS и уверенность райдера.',
+            },
+            'pt': {
+                'title': 'Substituição das pastilhas de travão da moto | Iron Custom Motors',
+                'description': 'As pastilhas de travão não são apenas uma peça de desgaste. Saiba como afetam a travagem, a segurança, os discos, o ABS e a confiança.',
+                'excerpt': 'As pastilhas de travão não são apenas uma peça de desgaste. Saiba como afetam a travagem, a segurança, os discos, o ABS e a confiança.',
+            },
+            'uk': {
+                'title': 'Заміна гальмівних колодок мотоцикла: що варто знати | Iron Custom Motors',
+                'description': 'Гальмівні колодки - не просто витратник. Як їхній стан впливає на гальмування, безпеку, диски, ABS і впевненість райдера.',
+                'excerpt': 'Гальмівні колодки - не просто витратник. Як їхній стан впливає на гальмування, безпеку, диски, ABS і впевненість райдера.',
+            },
+        },
+        'body': {
+            'en': {
+                'eyebrow': 'Workshop guide · 17 June 2026',
+                'publishedLabel': 'Published 17 June 2026',
+                'breadHome': 'Home',
+                'breadBlog': 'Blog',
+                'introTitle': 'Brake service is a system',
+                'videoEyebrow': 'Workshop video',
+                'videoTitle': 'Watch the brake pad replacement',
+                'videoText': 'A short workshop look at motorcycle brake pad replacement: pad condition, caliper inspection, disc health and the final brake-system check.',
+                'videoLink': 'Open on YouTube',
+                'faqTitle': 'Motorcycle brake pad replacement FAQ',
+                'ctaEyebrow': 'Need brake service?',
+                'ctaTitle': 'Book a brake inspection or pad replacement.',
+                'btnWA': 'WhatsApp us',
+                'btnBack': 'Back to blog',
+                'imageAlt': 'Motorcycle brake pad replacement cover graphic showing a Brembo brake caliper and brake pads in the Iron Custom Motors workshop.',
+                'imageCaption': 'Brake pad replacement at Iron Custom Motors: pad choice, caliper inspection, disc condition and final system check.',
+                'h1': 'Motorcycle Brake Pad Replacement:<br/><span class="accent">What Riders Should Know.</span>',
+                'h1Crumb': 'Motorcycle Brake Pad Replacement: What Riders Should Know',
+                'lede': 'The brake lever does not always become dangerous in one ride. Usually, the change is quieter than that. The lever starts to feel a little softer. The bike needs slightly more distance to stop. There is a faint scraping sound when rolling slowly. The rear brake feels weak in traffic. Or the front brake still works, but it no longer gives the same confidence before a corner.',
+                'intro': {
+                    'title': 'Brake service is a system',
+                    'paragraphs': [
+                        'Brake pads are simple parts from the outside: a friction material bonded to a metal backing plate. But on the motorcycle, they are part of a much bigger system - calipers, discs, brake fluid, brake lines, ABS, tyres, suspension and rider input all work together every time you slow down.',
+                        'That is why replacing brake pads is not just “putting new pads in.” A proper brake service is inspection, diagnosis, correct parts selection, careful installation, bedding-in and a final safety check.',
+                        'At Iron Custom Motors, we treat brakes as a system, not as an isolated part.',
+                    ],
+                },
+                'sections': [
+                    {
+                        'title': 'Why Brake Pad Condition Matters',
+                        'paragraphs': [
+                            'Brake pads convert motion into heat through friction. Every time you brake, the pad presses against the disc and the motorcycle’s speed is reduced. That process looks simple, but the loads are high - especially on the front brake, during downhill riding, with a passenger, on a loaded touring bike, or on a heavy Harley-Davidson or custom motorcycle.',
+                            'As brake pads wear, braking feel becomes less precise, stopping distance can increase, heat management becomes worse, the disc can wear unevenly, and the brake lever or pedal may travel further than before.',
+                            'The problem is not only pad thickness. A pad can still have material left, but be glazed, contaminated, cracked, overheated, unevenly worn or poorly matched to the disc. In those cases, the brake may still “work,” but not as cleanly or predictably as it should.',
+                            'On a motorcycle, predictability matters. A brake that bites too suddenly, fades when hot, vibrates through the lever or feels wooden can change how the rider approaches corners, traffic and emergency stops.',
+                        ],
+                    },
+                    {
+                        'title': 'Brake Pads Are Only One Part of the System',
+                        'paragraphs': [
+                            'A common mistake is to assume that weak braking always means worn pads. Sometimes it does. But sometimes the real cause is somewhere else.',
+                            'A proper inspection should look at pad thickness and wear pattern, disc condition and surface, caliper movement, piston condition, brake fluid age and contamination, brake hose condition, lever or pedal feel, ABS warning lights, tyre condition and suspension behavior under braking.',
+                            'A motorcycle with fresh brake pads but old brake fluid can still have a soft, spongy lever. A motorcycle with new pads and a damaged disc may vibrate or make noise. A bike with sticky caliper pistons can wear one pad faster than the other. A bike with poor tyres can have strong brakes but poor stopping performance because the tyre cannot transfer the force to the road properly.',
+                            'This is why brake work should never be treated as a quick cosmetic repair. It is part of the motorcycle’s safety architecture.',
+                        ],
+                    },
+                    {
+                        'title': 'Choosing the Correct Brake Pads',
+                        'paragraphs': [
+                            'Brake pads are not all the same. Different compounds are designed for different motorcycles, riding styles, disc materials and temperature ranges.',
+                            'Some pads are built for everyday road use, with stable performance from cold and smooth control in traffic. Others are designed for heavier bikes, sport riding or higher temperatures. Some compounds may offer stronger bite but create more disc wear, more dust or a different feel at the lever.',
+                            'The correct choice depends on the motorcycle, the rider and the brake system: scooter or maxi-scooter, naked bike used daily in Lisbon traffic, touring motorcycle with luggage and passenger, Harley-Davidson or heavy cruiser, adventure bike used on mixed roads, sport motorcycle with aggressive braking, or a custom bike with modified wheels, calipers or discs.',
+                            'There is no universal “best brake pad.” The best pad is the one that matches the motorcycle, the brake disc, the riding conditions and the manufacturer’s specification.',
+                            'For custom motorcycles, this becomes even more important. A bike may have aftermarket calipers, custom wheels, non-standard discs, a changed master cylinder or different brake lines. In that case, pad selection should be based on the actual components installed - not only on the model name.',
+                        ],
+                    },
+                    {
+                        'title': 'Bedding-In: Why New Pads Need Time',
+                        'paragraphs': [
+                            'New brake pads do not deliver their best performance immediately. They need to mate correctly with the brake disc. This process is usually called bedding-in.',
+                            'During bedding-in, the contact surfaces adapt to each other and a proper friction layer develops on the disc. If this process is rushed, ignored or done incorrectly, the rider may experience noise, vibration, uneven braking feel or reduced performance.',
+                            'This is one of the reasons why we do not like the phrase “just changed the pads, now everything is perfect.” New pads need correct installation, a suitable disc surface and a controlled bedding-in period. The brake should feel predictable, but the rider should still avoid aggressive braking until the pads and discs are properly settled, unless an emergency stop is necessary.',
+                            'The exact bedding-in recommendation depends on the pad manufacturer and compound. A road pad, a sintered pad and a race compound may not require the same approach.',
+                        ],
+                    },
+                    {
+                        'title': 'What Riders Often Miss',
+                        'paragraphs': [
+                            'Uneven wear matters. One pad may look acceptable while the other is almost finished. This can happen because of caliper piston issues, guide pin problems, dirt, corrosion or a caliper that is not moving freely.',
+                            'Brake fluid can make new pads feel bad. If the brake lever feels spongy after pad replacement, the pads may not be the problem. Old fluid, air in the system, rubber hose expansion or internal contamination can change lever feel.',
+                            'Discs matter as much as pads. New pads installed on a heavily worn, grooved, warped or contaminated disc may never perform correctly. Surface condition, thickness and runout all matter, and exact limits must be checked according to the motorcycle manufacturer’s specification.',
+                            'Coastal climate can affect brakes. Around Cascais and Lisbon, motorcycles live with humidity and sea air. That can accelerate corrosion on fasteners, pad pins, caliper hardware and exposed metal surfaces.',
+                            'Heavy bikes are less forgiving. A touring motorcycle, cruiser or Harley-Davidson with passenger and luggage puts serious load into the braking system. Pads, discs, fluid and tyres work harder.',
+                        ],
+                    },
+                    {
+                        'title': 'Common Mistakes Owners Make',
+                        'paragraphs': [
+                            'The first mistake is waiting until the brake starts making metal-on-metal noise. At that point, the disc may already be damaged, and the repair can become more expensive.',
+                            'The second mistake is replacing pads without inspecting the disc. If the disc surface is poor, new pads may wear badly, make noise or give weak braking feel.',
+                            'The third mistake is contaminating the pads or discs during other service work. Brake pads and discs do not like oil, chain lube, fork oil, incorrectly used cleaner residue or general workshop dirt.',
+                            'The fourth mistake is mixing parts without checking compatibility. Not every pad compound suits every disc or riding style.',
+                            'The fifth mistake is assuming that rear brake weakness is not important. The rear brake helps with low-speed control, traffic riding, hill starts, two-up riding and stabilizing the motorcycle.',
+                        ],
+                    },
+                    {
+                        'title': 'When to Visit a Workshop',
+                        'paragraphs': [
+                            'Do not delay a brake inspection if you notice scraping, grinding or metallic noise, vibration through the lever or pedal, brake lever coming closer to the grip, weak bite, delayed response, burning smell after normal riding, uneven pad wear, visible cracks, missing material, glazing, brake fluid leak, ABS warning light, the bike pulling to one side under braking, or brake performance changing when hot.',
+                            'These symptoms do not always mean the same fault. But with brakes, guessing is the wrong approach. The system needs to be inspected before the motorcycle is pushed harder.',
+                        ],
+                    },
+                    {
+                        'title': 'What We Check at Iron Custom Motors',
+                        'paragraphs': [
+                            'When we replace brake pads at Iron Custom Motors, the work does not stop at removing the old pads and fitting new ones.',
+                            'We check the condition of the pads, discs, calipers, pistons, pad pins, hardware, brake fluid condition, lever or pedal feel, hose condition and visible signs of leaks or contamination. On motorcycles with ABS, we also pay attention to warning lights and system behavior.',
+                            'For custom motorcycles, Harley-Davidson models, touring bikes and premium motorcycles, we also look at the bigger picture: weight, riding style, tyre condition, suspension behavior and whether the installed brake components match the motorcycle’s real use.',
+                            'A proper brake service should leave the rider with more than new parts. It should leave them with a clear understanding of what was worn, what was checked and what may need attention later.',
+                        ],
+                    },
+                    {
+                        'title': 'Conclusion',
+                        'paragraphs': [
+                            'Brake pads are wear parts, but braking is not a small subject. A motorcycle brake system is one of the most important safety systems on the bike, and pad replacement is the right moment to inspect the system properly.',
+                            'Good brakes are not only about stopping power. They are about feel, control, predictability and trust. When the lever feels right, the discs are healthy, the pads are correctly matched and the system is clean, the motorcycle gives the rider confidence.',
+                            'If your brakes feel different, make noise, show uneven wear or simply have not been checked for a while, it is better to inspect them before the problem becomes expensive - or unsafe.',
+                        ],
+                    },
+                    {
+                        'title': 'Sources checked',
+                        'paragraphs': [
+                            'MSF T-CLOCS pre-ride inspection checklist; Brembo brake maintenance and bedding guidance; Galfer bedding-in guidance; EBC brake pad bedding guidance.',
+                        ],
+                    },
+                ],
+                'ctaText': 'If your motorcycle needs brake pad replacement or a brake system inspection, book a service at Iron Custom Motors in Cascais. We will check the system properly, explain what needs attention and make sure the bike leaves the workshop ready for the road.',
+                'faqs': [
+                    {
+                        'q': 'How do I know when motorcycle brake pads need replacement?',
+                        'a': 'Common signs include reduced braking bite, scraping noise, vibration, uneven wear, longer lever travel or visible low pad material. The exact minimum thickness depends on the motorcycle and brake manufacturer, so it should be checked against the correct specification.',
+                    },
+                    {
+                        'q': 'Should brake discs be replaced together with pads?',
+                        'a': 'Not always. But the discs must be inspected during pad replacement. If they are below the manufacturer’s limit, heavily grooved, warped, cracked or contaminated, fitting new pads alone is not enough.',
+                    },
+                    {
+                        'q': 'Why do new brake pads sometimes make noise?',
+                        'a': 'New pads can make noise if they are not bedded in correctly, if the disc surface is poor, if hardware is dirty or worn, or if the pad compound does not suit the application. Persistent noise should be checked.',
+                    },
+                    {
+                        'q': 'Can old brake fluid affect braking even with new pads?',
+                        'a': 'Yes. Old or contaminated brake fluid can make the lever feel soft or inconsistent. Pad replacement and brake fluid service are different operations, but both affect braking feel and safety.',
+                    },
+                    {
+                        'q': 'Are sintered brake pads better than organic pads?',
+                        'a': 'Not universally. Sintered pads often handle heat well and can offer strong performance, but the correct choice depends on the motorcycle, disc material, riding style and manufacturer recommendation.',
+                    },
+                ],
+            },
+            'ru': {
+                'eyebrow': 'Гайд мастерской · 17 июня 2026',
+                'publishedLabel': 'Опубликовано 17 июня 2026',
+                'breadHome': 'Главная',
+                'breadBlog': 'Блог',
+                'introTitle': 'Тормозной сервис — это система',
+                'videoEyebrow': 'Видео из мастерской',
+                'videoTitle': 'Смотрите замену тормозных колодок',
+                'videoText': 'Короткий взгляд на замену тормозных колодок: состояние колодок, осмотр суппорта, здоровье диска и финальная проверка тормозной системы.',
+                'videoLink': 'Открыть на YouTube',
+                'faqTitle': 'FAQ по замене тормозных колодок мотоцикла',
+                'ctaEyebrow': 'Нужен сервис тормозов?',
+                'ctaTitle': 'Запишитесь на проверку тормозов или замену колодок.',
+                'btnWA': 'WhatsApp',
+                'btnBack': 'Назад в блог',
+                'imageAlt': 'Обложка статьи о замене тормозных колодок мотоцикла: суппорт Brembo и тормозные колодки в мастерской Iron Custom Motors.',
+                'imageCaption': 'Замена тормозных колодок в Iron Custom Motors: подбор колодок, осмотр суппорта, состояние диска и финальная проверка системы.',
+                'h1': 'Замена тормозных колодок мотоцикла:<br/><span class="accent">что важно знать.</span>',
+                'h1Crumb': 'Замена тормозных колодок мотоцикла: что важно знать',
+                'lede': 'Тормозная ручка редко становится опасной за одну поездку. Обычно всё меняется тише. Ручка начинает казаться немного мягче. Мотоциклу нужно чуть больше расстояния, чтобы остановиться. На малой скорости появляется лёгкий скрежет. Задний тормоз в пробке ощущается слабее. Или передний тормоз всё ещё работает, но перед поворотом уже не даёт прежней уверенности.',
+                'intro': {
+                    'title': 'Тормозной сервис — это система',
+                    'paragraphs': [
+                        'Снаружи тормозные колодки выглядят просто: фрикционный материал на металлической основе. Но на мотоцикле они работают внутри большой системы. Суппорты, диски, тормозная жидкость, шланги, ABS, шины, подвеска и действия райдера участвуют в каждом торможении.',
+                        'Поэтому замена тормозных колодок - это не просто “поставить новые колодки”. Правильный тормозной сервис - это осмотр, диагностика, подбор корректных деталей, аккуратная установка, притирка и финальная проверка безопасности.',
+                        'В Iron Custom Motors мы рассматриваем тормоза как систему, а не как отдельную деталь.',
+                    ],
+                },
+                'sections': [
+                    {
+                        'title': 'Почему состояние тормозных колодок так важно',
+                        'paragraphs': [
+                            'Тормозные колодки превращают движение в тепло за счёт трения. Каждый раз, когда вы тормозите, колодка прижимается к диску, и скорость мотоцикла снижается. Процесс выглядит простым, но нагрузки высокие - особенно на переднем тормозе, на спусках, с пассажиром, с багажом, на тяжёлом touring-мотоцикле, Harley-Davidson или кастомном байке.',
+                            'По мере износа колодок меняется ощущение тормоза: торможение становится менее точным, тормозной путь может увеличиваться, тепло отводится хуже, диск может изнашиваться неравномерно, а ручка или педаль тормоза могут иметь больший ход.',
+                            'Проблема не только в толщине колодки. На ней ещё может оставаться материал, но она может быть застеклована, загрязнена, перегрета, потрескана, изношена неравномерно или плохо подходить к диску. В таком состоянии тормоз вроде бы “работает”, но уже не так чисто и предсказуемо.',
+                            'На мотоцикле предсказуемость важна. Тормоз, который слишком резко схватывает, плывёт при нагреве, отдаёт вибрацией в ручку или кажется деревянным, меняет то, как райдер входит в повороты, едет в трафике и реагирует на экстренные ситуации.',
+                        ],
+                    },
+                    {
+                        'title': 'Колодки - только часть тормозной системы',
+                        'paragraphs': [
+                            'Частая ошибка - считать, что слабое торможение всегда означает изношенные колодки. Иногда это действительно так. Но иногда причина находится в другом месте.',
+                            'Правильный осмотр должен включать толщину и характер износа колодок, состояние и поверхность диска, работу суппорта, состояние поршней, возраст и загрязнение тормозной жидкости, состояние тормозных шлангов, ощущение ручки или педали, предупреждения ABS, состояние шин и поведение подвески при торможении.',
+                            'Мотоцикл с новыми колодками, но старой тормозной жидкостью всё равно может иметь мягкую, “ватную” ручку. Мотоцикл с новыми колодками и повреждённым диском может вибрировать или шуметь. Закисшие поршни суппорта могут съедать одну колодку быстрее другой. А плохая резина может не дать реализовать даже сильные тормоза, потому что шина не передаёт усилие на дорогу.',
+                            'Именно поэтому тормозные работы нельзя воспринимать как быстрый косметический ремонт. Это часть архитектуры безопасности мотоцикла.',
+                        ],
+                    },
+                    {
+                        'title': 'Как подобрать правильные тормозные колодки',
+                        'paragraphs': [
+                            'Тормозные колодки не одинаковые. Разные составы рассчитаны на разные мотоциклы, стиль езды, тип дисков и температурные режимы.',
+                            'Одни колодки хорошо подходят для повседневной езды: стабильно работают с холодного состояния и дают плавный контроль в городском трафике. Другие рассчитаны на тяжёлые мотоциклы, активную езду или более высокие температуры. Некоторые составы дают более сильный bite, но могут быстрее изнашивать диск, сильнее пылить или иначе ощущаться на ручке.',
+                            'Правильный выбор зависит от мотоцикла, райдера и тормозной системы: scooter или maxi-scooter, naked для ежедневной езды по Лиссабону, touring-мотоцикл с багажом и пассажиром, Harley-Davidson или тяжёлый cruiser, adventure bike для mixed roads, sport bike с агрессивным торможением или custom bike с изменёнными колёсами, суппортами или дисками.',
+                            'Универсальной “лучшей колодки” не существует. Лучшая колодка - та, которая подходит конкретному мотоциклу, диску, условиям езды и требованиям производителя.',
+                            'Для кастомных мотоциклов это особенно важно. На байке могут стоять aftermarket-суппорты, custom wheels, нестандартные диски, другой главный тормозной цилиндр или иные тормозные шланги. В таком случае подбор должен идти от фактически установленных компонентов, а не только от названия модели.',
+                        ],
+                    },
+                    {
+                        'title': 'Притирка: почему новым колодкам нужно время',
+                        'paragraphs': [
+                            'Новые тормозные колодки не раскрывают свои лучшие свойства сразу. Им нужно правильно приработаться к тормозному диску. Этот процесс обычно называют bedding-in или притиркой.',
+                            'Во время притирки контактные поверхности адаптируются друг к другу, а на диске формируется стабильный фрикционный слой. Если процесс торопить, игнорировать или выполнять неправильно, райдер может получить шум, вибрацию, неравномерное ощущение тормоза или сниженное тормозное усилие.',
+                            'Поэтому нам не нравится фраза “колодки поменяли - теперь всё идеально”. Новым колодкам нужна правильная установка, подходящая поверхность диска и контролируемый период притирки. Тормоз должен быть предсказуемым, но райдеру всё равно стоит избегать агрессивного торможения, пока колодки и диски не приработаются, кроме случаев, когда нужно экстренно остановиться.',
+                            'Точная рекомендация по притирке зависит от производителя колодок и их состава. Дорожные, sintered и гоночные составы могут требовать разного подхода.',
+                        ],
+                    },
+                    {
+                        'title': 'Что райдеры часто упускают',
+                        'paragraphs': [
+                            'Неравномерный износ имеет значение. Одна колодка может выглядеть нормально, а другая быть почти законченной. Это бывает из-за проблем с поршнями суппорта, направляющими, грязью, коррозией или суппортом, который не двигается свободно.',
+                            'Тормозная жидкость может испортить ощущение даже с новыми колодками. Если после замены колодок ручка остаётся ватной, проблема может быть не в колодках. Старая жидкость, воздух в системе, расширение резинового шланга или внутреннее загрязнение меняют ощущение тормоза.',
+                            'Диски важны не меньше колодок. Новые колодки на сильно изношенном, бороздчатом, поведённом или загрязнённом диске могут никогда не работать правильно. Поверхность, толщина и биение диска имеют значение, а точные пределы нужно проверять по спецификации производителя мотоцикла.',
+                            'Морской климат влияет на тормоза. В районе Cascais и Lisbon мотоциклы живут во влажности и морском воздухе. Это ускоряет коррозию крепежа, пальцев колодок, элементов суппорта и открытого металла.',
+                            'Тяжёлые мотоциклы менее прощают ошибки. Touring, cruiser или Harley-Davidson с пассажиром и багажом серьёзно нагружают тормозную систему. Колодки, диски, жидкость и шины работают тяжелее.',
+                        ],
+                    },
+                    {
+                        'title': 'Типичные ошибки владельцев',
+                        'paragraphs': [
+                            'Первая ошибка - ждать, пока тормоз начнёт скрежетать металлом по металлу. К этому моменту диск уже может быть повреждён, а ремонт станет дороже.',
+                            'Вторая ошибка - менять колодки без осмотра диска. Если поверхность диска плохая, новые колодки могут шуметь, быстро изнашиваться или давать слабое торможение.',
+                            'Третья ошибка - загрязнить колодки или диски во время других работ. Тормозные колодки и диски не любят масло, chain lube, fork oil, неправильно использованные очистители и обычную мастерскую грязь.',
+                            'Четвёртая ошибка - смешивать детали без проверки совместимости. Не каждый состав колодок подходит каждому диску и стилю езды.',
+                            'Пятая ошибка - считать слабый задний тормоз неважным. Задний тормоз помогает на малой скорости, в пробках, на подъёме, при езде с пассажиром и при стабилизации мотоцикла.',
+                        ],
+                    },
+                    {
+                        'title': 'Когда стоит приехать в мастерскую',
+                        'paragraphs': [
+                            'Не откладывайте проверку тормозов, если появились скрежет, металлический звук, вибрация в ручке или педали, ручка стала подходить ближе к грипсе, тормоз стал слабее, реакция задерживается, после обычной езды появляется запах перегрева, колодки изнашиваются неравномерно, видны трещины, сколы, застеклованная поверхность, подтёк тормозной жидкости, горит ABS, мотоцикл уводит в сторону при торможении или тормоза меняют поведение при нагреве.',
+                            'Эти симптомы не всегда означают одну и ту же неисправность. Но с тормозами угадывать нельзя. Систему нужно проверить до того, как мотоцикл начнут нагружать сильнее.',
+                        ],
+                    },
+                    {
+                        'title': 'Что мы проверяем в Iron Custom Motors',
+                        'paragraphs': [
+                            'Когда мы меняем тормозные колодки в Iron Custom Motors, работа не заканчивается снятием старых колодок и установкой новых.',
+                            'Мы проверяем состояние колодок, дисков, суппортов, поршней, пальцев, крепежа, тормозной жидкости, ощущение ручки или педали, состояние шлангов и видимые признаки подтёков или загрязнения. На мотоциклах с ABS мы также обращаем внимание на предупреждения и поведение системы.',
+                            'Для custom motorcycles, Harley-Davidson, touring bikes и premium motorcycles мы смотрим шире: масса мотоцикла, стиль езды, состояние шин, работа подвески и соответствие установленных тормозных компонентов реальному использованию мотоцикла.',
+                            'Правильный тормозной сервис должен дать райдеру не только новые детали. Он должен дать понимание: что было изношено, что проверено и на что стоит обратить внимание позже.',
+                        ],
+                    },
+                    {
+                        'title': 'Заключение',
+                        'paragraphs': [
+                            'Тормозные колодки - расходник, но тормоза не мелочь. Тормозная система мотоцикла - одна из важнейших систем безопасности, а замена колодок - правильный момент для полноценного осмотра.',
+                            'Хорошие тормоза - это не только сила остановки. Это ощущение, контроль, предсказуемость и доверие. Когда ручка работает правильно, диски здоровы, колодки подобраны корректно, а система чистая, мотоцикл даёт райдеру уверенность.',
+                            'Если тормоза стали ощущаться иначе, шумят, изнашиваются неравномерно или давно не проверялись, лучше осмотреть их заранее - до того, как проблема станет дорогой или небезопасной.',
+                        ],
+                    },
+                    {
+                        'title': 'Проверенные источники',
+                        'paragraphs': [
+                            'MSF T-CLOCS pre-ride inspection checklist; материалы Brembo по обслуживанию тормозов и притирке; рекомендации Galfer по bedding-in; рекомендации EBC по притирке тормозных колодок.',
+                        ],
+                    },
+                ],
+                'ctaText': 'Если вашему мотоциклу нужна замена тормозных колодок или проверка тормозной системы, запишитесь на сервис в Iron Custom Motors в Cascais. Мы проверим систему правильно, объясним, что требует внимания, и подготовим мотоцикл к дороге.',
+                'faqs': [
+                    {
+                        'q': 'Как понять, что тормозные колодки мотоцикла пора менять?',
+                        'a': 'Типичные признаки: слабее bite, скрежет, вибрация, неравномерный износ, увеличенный ход ручки или визуально малый остаток материала. Точная минимальная толщина зависит от мотоцикла и производителя тормозов, поэтому её нужно проверять по правильной спецификации.',
+                    },
+                    {
+                        'q': 'Нужно ли менять тормозные диски вместе с колодками?',
+                        'a': 'Не всегда. Но диски обязательно нужно осматривать при замене колодок. Если они ниже допустимой толщины, сильно изношены, имеют борозды, биение, трещины или загрязнение, одних новых колодок недостаточно.',
+                    },
+                    {
+                        'q': 'Почему новые тормозные колодки иногда шумят?',
+                        'a': 'Новые колодки могут шуметь из-за неправильной притирки, плохой поверхности диска, грязного или изношенного крепежа, либо неподходящего состава колодок. Постоянный шум стоит проверить.',
+                    },
+                    {
+                        'q': 'Может ли старая тормозная жидкость влиять на торможение с новыми колодками?',
+                        'a': 'Да. Старая или загрязнённая тормозная жидкость может делать ручку мягкой и непредсказуемой. Замена колодок и сервис тормозной жидкости - разные операции, но обе влияют на ощущение тормоза и безопасность.',
+                    },
+                    {
+                        'q': 'Sintered колодки лучше organic?',
+                        'a': 'Не универсально. Sintered-колодки часто хорошо держат нагрев и дают сильное торможение, но правильный выбор зависит от мотоцикла, материала диска, стиля езды и рекомендаций производителя.',
+                    },
+                ],
+            },
+            'pt': {
+                'eyebrow': 'Guia de oficina · 17 de junho de 2026',
+                'publishedLabel': 'Publicado 17 de junho de 2026',
+                'breadHome': 'Início',
+                'breadBlog': 'Blog',
+                'introTitle': 'O serviço de travões é um sistema',
+                'videoEyebrow': 'Vídeo de oficina',
+                'videoTitle': 'Veja a substituição das pastilhas de travão',
+                'videoText': 'Um olhar rápido de oficina sobre substituição de pastilhas: estado das pastilhas, inspeção da pinça, saúde do disco e verificação final do sistema.',
+                'videoLink': 'Abrir no YouTube',
+                'faqTitle': 'FAQ sobre substituição de pastilhas de travão',
+                'ctaEyebrow': 'Precisa de serviço de travões?',
+                'ctaTitle': 'Marque uma inspeção de travões ou substituição de pastilhas.',
+                'btnWA': 'WhatsApp',
+                'btnBack': 'Voltar ao blog',
+                'imageAlt': 'Imagem de capa sobre substituição das pastilhas de travão da moto, com pinça Brembo e pastilhas na oficina Iron Custom Motors.',
+                'imageCaption': 'Substituição de pastilhas na Iron Custom Motors: escolha correta, inspeção da pinça, estado do disco e verificação final do sistema.',
+                'h1': 'Substituição das pastilhas de travão:<br/><span class="accent">o que deve saber.</span>',
+                'h1Crumb': 'Substituição das pastilhas de travão da moto: o que o motociclista deve saber',
+                'lede': 'A manete do travão raramente fica perigosa de um dia para o outro. Normalmente, a mudança é mais discreta. A manete começa a parecer um pouco mais esponjosa. A moto precisa de um pouco mais de distância para parar. Surge um leve som metálico a baixa velocidade. O travão traseiro parece fraco no trânsito. Ou o travão dianteiro ainda trava, mas já não transmite a mesma confiança antes de entrar numa curva.',
+                'intro': {
+                    'title': 'O serviço de travões é um sistema',
+                    'paragraphs': [
+                        'Por fora, as pastilhas de travão parecem peças simples: material de fricção ligado a uma base metálica. Mas numa moto elas fazem parte de um sistema muito maior. Pinças, discos, fluido de travão, tubos, ABS, pneus, suspensão e a ação do condutor trabalham juntos sempre que a moto desacelera.',
+                        'Por isso, substituir pastilhas de travão não é apenas “montar pastilhas novas”. Um serviço de travões bem feito envolve inspeção, diagnóstico, escolha correta das peças, montagem cuidada, rodagem inicial e verificação final de segurança.',
+                        'Na Iron Custom Motors, tratamos os travões como um sistema, não como uma peça isolada.',
+                    ],
+                },
+                'sections': [
+                    {
+                        'title': 'Porque o estado das pastilhas é tão importante',
+                        'paragraphs': [
+                            'As pastilhas de travão transformam movimento em calor através da fricção. Sempre que trava, a pastilha pressiona o disco e a velocidade da moto diminui. O processo parece simples, mas as cargas são elevadas - sobretudo no travão dianteiro, em descidas, com passageiro, numa moto carregada para touring, numa Harley-Davidson pesada ou numa custom motorcycle.',
+                            'À medida que as pastilhas se desgastam, a sensação de travagem pode ficar menos precisa, a distância de paragem pode aumentar, a gestão de calor piora, o disco pode desgastar-se de forma irregular e a manete ou o pedal podem ganhar mais curso.',
+                            'O problema não é apenas a espessura da pastilha. Uma pastilha ainda pode ter material, mas estar vitrificada, contaminada, fissurada, sobreaquecida, gasta de forma irregular ou mal compatível com o disco. Nesses casos, o travão ainda pode “funcionar”, mas não de forma tão limpa e previsível como deveria.',
+                            'Numa moto, a previsibilidade é essencial. Um travão que morde de forma brusca, perde eficácia a quente, vibra na manete ou parece “duro” e sem sensibilidade muda a forma como o motociclista aborda curvas, trânsito e travagens de emergência.',
+                        ],
+                    },
+                    {
+                        'title': 'As pastilhas são apenas uma parte do sistema',
+                        'paragraphs': [
+                            'Um erro comum é assumir que uma travagem fraca significa sempre pastilhas gastas. Às vezes é verdade. Mas nem sempre a causa está ali.',
+                            'Uma inspeção correta deve avaliar a espessura e o padrão de desgaste das pastilhas, o estado e a superfície dos discos, o movimento da pinça, o estado dos pistões, a idade e possível contaminação do fluido de travão, o estado dos tubos, a sensação na manete ou pedal, avisos de ABS, estado dos pneus e comportamento da suspensão durante a travagem.',
+                            'Uma moto com pastilhas novas, mas fluido de travão antigo, pode continuar com uma manete mole e esponjosa. Uma moto com pastilhas novas e um disco danificado pode vibrar ou fazer ruído. Pistões de pinça presos podem gastar uma pastilha mais depressa do que a outra. Pneus em mau estado podem impedir que travões fortes sejam realmente eficazes, porque o pneu não consegue transferir a força para o asfalto.',
+                            'É por isso que o trabalho nos travões nunca deve ser tratado como uma reparação rápida ou cosmética. Faz parte da arquitetura de segurança da moto.',
+                        ],
+                    },
+                    {
+                        'title': 'Escolher as pastilhas de travão corretas',
+                        'paragraphs': [
+                            'Nem todas as pastilhas de travão são iguais. Diferentes compostos são concebidos para diferentes motos, estilos de condução, materiais de disco e faixas de temperatura.',
+                            'Algumas pastilhas são feitas para uso diário, com desempenho estável a frio e bom controlo no trânsito. Outras são pensadas para motos mais pesadas, condução desportiva ou temperaturas mais elevadas. Alguns compostos oferecem uma mordida mais forte, mas podem aumentar o desgaste do disco, gerar mais pó ou alterar a sensação na manete.',
+                            'A escolha correta depende da moto, do condutor e do sistema de travagem: scooter ou maxi-scooter, naked usada diariamente no trânsito de Lisboa, touring com bagagem e passageiro, Harley-Davidson ou cruiser pesado, adventure bike em estradas mistas, sport bike com travagem agressiva ou custom bike com jantes, pinças ou discos modificados.',
+                            'Não existe uma “melhor pastilha” universal. A melhor pastilha é a que combina com a moto, com o disco, com as condições de utilização e com a especificação do fabricante.',
+                            'Nas motos customizadas, isto é ainda mais importante. A moto pode ter pinças aftermarket, custom wheels, discos não standard, bomba de travão diferente ou tubos de travão alterados. Nesse caso, a escolha deve ser feita com base nos componentes realmente instalados - não apenas no nome do modelo.',
+                        ],
+                    },
+                    {
+                        'title': 'Bedding-in: porque as pastilhas novas precisam de tempo',
+                        'paragraphs': [
+                            'As pastilhas novas não entregam o seu melhor desempenho imediatamente. Precisam de assentar corretamente no disco de travão. Este processo é normalmente chamado bedding-in ou rodagem inicial das pastilhas.',
+                            'Durante o bedding-in, as superfícies de contacto adaptam-se uma à outra e forma-se uma camada de fricção estável no disco. Se este processo for apressado, ignorado ou feito de forma incorreta, o motociclista pode sentir ruído, vibração, travagem irregular ou menor desempenho.',
+                            'É por isso que não gostamos da frase “trocaram as pastilhas, agora está tudo perfeito”. Pastilhas novas precisam de montagem correta, superfície de disco adequada e um período controlado de rodagem. O travão deve ser previsível, mas o motociclista deve evitar travagens agressivas até pastilhas e discos assentarem corretamente, exceto em situações de emergência.',
+                            'A recomendação exata de bedding-in depende do fabricante e do composto da pastilha. Uma pastilha de estrada, uma pastilha sinterizada e um composto de competição podem exigir abordagens diferentes.',
+                        ],
+                    },
+                    {
+                        'title': 'O que muitos motociclistas não veem',
+                        'paragraphs': [
+                            'O desgaste irregular é importante. Uma pastilha pode parecer aceitável enquanto a outra está quase no fim. Isto pode acontecer por problemas nos pistões da pinça, guias, sujidade, corrosão ou uma pinça que não se move livremente.',
+                            'O fluido de travão pode fazer pastilhas novas parecerem más. Se a manete continuar esponjosa depois da substituição, o problema pode não estar nas pastilhas. Fluido antigo, ar no sistema, expansão de tubos de borracha ou contaminação interna podem alterar a sensação de travagem.',
+                            'Os discos são tão importantes como as pastilhas. Pastilhas novas montadas num disco muito gasto, riscado, empenado ou contaminado podem nunca funcionar corretamente. Superfície, espessura e empeno têm importância, e os limites exatos devem ser verificados segundo a especificação do fabricante da moto.',
+                            'O clima costeiro afeta os travões. Em Cascais e Lisboa, as motos vivem com humidade e ar marítimo. Isso pode acelerar a corrosão em parafusos, pinos das pastilhas, hardware da pinça e metal exposto.',
+                            'Motos pesadas perdoam menos. Uma touring, cruiser ou Harley-Davidson com passageiro e bagagem coloca muita carga no sistema de travagem. Pastilhas, discos, fluido e pneus trabalham mais.',
+                        ],
+                    },
+                    {
+                        'title': 'Erros comuns dos proprietários',
+                        'paragraphs': [
+                            'O primeiro erro é esperar até o travão começar a fazer ruído de metal contra metal. Nessa fase, o disco pode já estar danificado e a reparação torna-se mais cara.',
+                            'O segundo erro é substituir pastilhas sem inspecionar o disco. Se a superfície do disco estiver em mau estado, as pastilhas novas podem desgastar mal, fazer ruído ou travar pouco.',
+                            'O terceiro erro é contaminar pastilhas ou discos durante outros trabalhos. Pastilhas e discos não gostam de óleo, lubrificante de corrente, óleo de suspensão, resíduos de produtos mal utilizados ou sujidade geral de oficina.',
+                            'O quarto erro é misturar peças sem verificar compatibilidade. Nem todos os compostos de pastilha servem para todos os discos ou estilos de condução.',
+                            'O quinto erro é achar que um travão traseiro fraco não importa. O travão traseiro ajuda no controlo a baixa velocidade, no trânsito, em arranques em subida, com passageiro e na estabilização da moto.',
+                        ],
+                    },
+                    {
+                        'title': 'Quando visitar uma oficina',
+                        'paragraphs': [
+                            'Não adie uma inspeção aos travões se notar ruído de raspagem, rangido metálico, vibração na manete ou no pedal, manete a aproximar-se mais do punho, mordida fraca, resposta atrasada, cheiro a queimado depois de uma utilização normal, desgaste irregular das pastilhas, fissuras visíveis, falta de material, vitrificação, fuga de fluido de travão, aviso de ABS, a moto a puxar para um lado ao travar ou travagem que muda quando aquece.',
+                            'Estes sintomas nem sempre apontam para a mesma avaria. Mas com travões, adivinhar é a abordagem errada. O sistema deve ser inspecionado antes de a moto ser exigida com mais força.',
+                        ],
+                    },
+                    {
+                        'title': 'O que verificamos na Iron Custom Motors',
+                        'paragraphs': [
+                            'Quando substituímos pastilhas de travão na Iron Custom Motors, o trabalho não termina ao retirar as pastilhas antigas e montar as novas.',
+                            'Verificamos o estado das pastilhas, discos, pinças, pistões, pinos, hardware, fluido de travão, sensação da manete ou pedal, estado dos tubos e sinais visíveis de fugas ou contaminação. Em motos com ABS, também observamos avisos e comportamento do sistema.',
+                            'Em custom motorcycles, Harley-Davidson, touring bikes e premium motorcycles, olhamos também para o conjunto: peso, estilo de condução, estado dos pneus, comportamento da suspensão e se os componentes de travagem instalados correspondem ao uso real da moto.',
+                            'Um serviço de travões bem feito deve deixar o motociclista com mais do que peças novas. Deve deixar uma explicação clara sobre o que estava gasto, o que foi verificado e o que pode precisar de atenção mais tarde.',
+                        ],
+                    },
+                    {
+                        'title': 'Conclusão',
+                        'paragraphs': [
+                            'As pastilhas de travão são peças de desgaste, mas travagem não é um assunto pequeno. O sistema de travagem de uma moto é um dos sistemas de segurança mais importantes, e a substituição das pastilhas é o momento certo para inspecionar tudo corretamente.',
+                            'Bons travões não são apenas força de paragem. São sensação, controlo, previsibilidade e confiança. Quando a manete transmite a informação certa, os discos estão saudáveis, as pastilhas são adequadas e o sistema está limpo, a moto dá confiança ao motociclista.',
+                            'Se os travões da sua moto parecem diferentes, fazem ruído, mostram desgaste irregular ou simplesmente não são verificados há algum tempo, é melhor inspecionar antes de o problema se tornar caro - ou inseguro.',
+                        ],
+                    },
+                    {
+                        'title': 'Fontes verificadas',
+                        'paragraphs': [
+                            'Checklist MSF T-CLOCS de inspeção antes da condução; orientações Brembo sobre manutenção de travões e bedding-in; orientação Galfer sobre bedding-in; orientação EBC sobre rodagem de pastilhas de travão.',
+                        ],
+                    },
+                ],
+                'ctaText': 'Se a sua moto precisa de substituição das pastilhas de travão ou de uma inspeção ao sistema de travagem, marque um serviço na Iron Custom Motors em Cascais. Vamos verificar o sistema corretamente, explicar o que precisa de atenção e garantir que a moto sai da oficina pronta para a estrada.',
+                'faqs': [
+                    {
+                        'q': 'Como saber quando as pastilhas de travão da moto precisam de substituição?',
+                        'a': 'Sinais comuns incluem menor força de travagem, ruído de raspagem, vibração, desgaste irregular, maior curso da manete ou pouco material visível na pastilha. A espessura mínima exata depende da moto e do fabricante do travão, por isso deve ser verificada pela especificação correta.',
+                    },
+                    {
+                        'q': 'Os discos devem ser substituídos juntamente com as pastilhas?',
+                        'a': 'Nem sempre. Mas os discos devem ser inspecionados durante a substituição das pastilhas. Se estiverem abaixo do limite do fabricante, muito riscados, empenados, fissurados ou contaminados, montar apenas pastilhas novas não é suficiente.',
+                    },
+                    {
+                        'q': 'Porque é que pastilhas novas às vezes fazem ruído?',
+                        'a': 'Pastilhas novas podem fazer ruído se não forem corretamente rodadas, se a superfície do disco estiver em mau estado, se o hardware estiver sujo ou gasto, ou se o composto não for adequado à aplicação. Ruído persistente deve ser verificado.',
+                    },
+                    {
+                        'q': 'Fluido de travão antigo pode afetar a travagem mesmo com pastilhas novas?',
+                        'a': 'Sim. Fluido antigo ou contaminado pode deixar a manete mole ou inconsistente. A substituição das pastilhas e o serviço do fluido são operações diferentes, mas ambas influenciam a sensação de travagem e a segurança.',
+                    },
+                    {
+                        'q': 'Pastilhas sinterizadas são melhores do que orgânicas?',
+                        'a': 'Não de forma universal. Pastilhas sinterizadas costumam lidar bem com calor e podem oferecer bom desempenho, mas a escolha correta depende da moto, do material do disco, do estilo de condução e da recomendação do fabricante.',
+                    },
+                ],
+            },
+            'uk': {
+                'eyebrow': 'Гайд майстерні · 17 червня 2026',
+                'publishedLabel': 'Опубліковано 17 червня 2026',
+                'breadHome': 'Головна',
+                'breadBlog': 'Блог',
+                'introTitle': 'Сервіс гальм — це система',
+                'videoEyebrow': 'Відео з майстерні',
+                'videoTitle': 'Дивіться заміну гальмівних колодок',
+                'videoText': 'Короткий погляд на заміну гальмівних колодок: стан колодок, огляд супорта, здоров’я диска та фінальна перевірка гальмівної системи.',
+                'videoLink': 'Відкрити на YouTube',
+                'faqTitle': 'FAQ щодо заміни гальмівних колодок мотоцикла',
+                'ctaEyebrow': 'Потрібен сервіс гальм?',
+                'ctaTitle': 'Запишіться на перевірку гальм або заміну колодок.',
+                'btnWA': 'WhatsApp',
+                'btnBack': 'Назад до блогу',
+                'imageAlt': 'Обкладинка статті про заміну гальмівних колодок мотоцикла: супорт Brembo і колодки в майстерні Iron Custom Motors.',
+                'imageCaption': 'Заміна гальмівних колодок в Iron Custom Motors: підбір колодок, огляд супорта, стан диска та фінальна перевірка системи.',
+                'h1': 'Заміна гальмівних колодок мотоцикла:<br/><span class="accent">що варто знати.</span>',
+                'h1Crumb': 'Заміна гальмівних колодок мотоцикла: що варто знати',
+                'lede': 'Гальмівна ручка рідко стає небезпечною за одну поїздку. Зазвичай зміни приходять тихо. Ручка починає відчуватися трохи м’якшою. Мотоциклу потрібно трохи більше дистанції для зупинки. На малій швидкості з’являється легкий металевий звук. Заднє гальмо в трафіку здається слабшим. Або переднє гальмо все ще працює, але вже не дає тієї самої впевненості перед поворотом.',
+                'intro': {
+                    'title': 'Сервіс гальм — це система',
+                    'paragraphs': [
+                        'Ззовні гальмівні колодки виглядають просто: фрикційний матеріал на металевій основі. Але на мотоциклі вони працюють у великій системі. Супорти, диски, гальмівна рідина, шланги, ABS, шини, підвіска та дії райдера беруть участь у кожному уповільненні.',
+                        'Тому заміна гальмівних колодок - це не просто “поставити нові колодки”. Правильний сервіс гальм - це огляд, діагностика, правильний підбір деталей, акуратне встановлення, притирка та фінальна перевірка безпеки.',
+                        'В Iron Custom Motors ми розглядаємо гальма як систему, а не як окрему деталь.',
+                    ],
+                },
+                'sections': [
+                    {
+                        'title': 'Чому стан гальмівних колодок важливий',
+                        'paragraphs': [
+                            'Гальмівні колодки перетворюють рух на тепло через тертя. Щоразу, коли ви гальмуєте, колодка притискається до диска, і швидкість мотоцикла зменшується. Процес виглядає простим, але навантаження високі - особливо на передньому гальмі, на спусках, з пасажиром, із багажем, на важкому touring-мотоциклі, Harley-Davidson або кастомному байку.',
+                            'У міру зношення колодок відчуття гальмування може ставати менш точним, гальмівний шлях може збільшуватися, відведення тепла погіршується, диск може зношуватися нерівномірно, а ручка чи педаль можуть мати більший хід.',
+                            'Проблема не лише в товщині колодки. Матеріал ще може залишатися, але колодка може бути засклована, забруднена, перегріта, потріскана, нерівномірно зношена або погано підібрана до диска. У таких випадках гальмо ще може “працювати”, але вже не так чисто й передбачувано, як має.',
+                            'На мотоциклі передбачуваність критично важлива. Гальмо, яке занадто різко схоплює, втрачає ефективність при нагріванні, віддає вібрацією в ручку або здається “дерев’яним”, змінює те, як райдер заходить у повороти, рухається в трафіку та реагує на екстрені ситуації.',
+                        ],
+                    },
+                    {
+                        'title': 'Колодки - лише частина гальмівної системи',
+                        'paragraphs': [
+                            'Поширена помилка - вважати, що слабке гальмування завжди означає зношені колодки. Іноді так і є. Але іноді причина зовсім в іншому місці.',
+                            'Правильний огляд має включати товщину й характер зношення колодок, стан і поверхню дисків, роботу супорта, стан поршнів, вік і можливе забруднення гальмівної рідини, стан шлангів, відчуття ручки чи педалі, попередження ABS, стан шин і поведінку підвіски під час гальмування.',
+                            'Мотоцикл із новими колодками, але старою гальмівною рідиною, може все одно мати м’яку, “ватну” ручку. Мотоцикл із новими колодками та пошкодженим диском може вібрувати або шуміти. Підклинені поршні супорта можуть з’їдати одну колодку швидше за іншу. А погані шини можуть не дати реалізувати навіть сильні гальма, бо покришка не передає зусилля на дорогу.',
+                            'Саме тому роботи з гальмами не можна сприймати як швидкий косметичний ремонт. Це частина архітектури безпеки мотоцикла.',
+                        ],
+                    },
+                    {
+                        'title': 'Як підібрати правильні гальмівні колодки',
+                        'paragraphs': [
+                            'Гальмівні колодки не однакові. Різні суміші розраховані на різні мотоцикли, стилі їзди, матеріали дисків і температурні режими.',
+                            'Одні колодки створені для щоденної їзди: стабільно працюють з холодного стану й дають плавний контроль у трафіку. Інші розраховані на важкі мотоцикли, спортивнішу їзду або вищі температури. Деякі суміші дають сильніший bite, але можуть швидше зношувати диск, створювати більше пилу або інакше відчуватися на ручці.',
+                            'Правильний вибір залежить від мотоцикла, райдера й гальмівної системи: scooter або maxi-scooter, naked для щоденної їзди Лісабоном, touring-мотоцикл із багажем і пасажиром, Harley-Davidson або важкий cruiser, adventure bike для mixed roads, sport bike з агресивним гальмуванням або custom bike зі зміненими колесами, супортами чи дисками.',
+                            'Універсальної “найкращої колодки” не існує. Найкраща колодка - та, що підходить конкретному мотоциклу, диску, умовам їзди та специфікації виробника.',
+                            'Для кастомних мотоциклів це особливо важливо. На байку можуть стояти aftermarket-супорти, custom wheels, нестандартні диски, інший головний гальмівний циліндр або змінені гальмівні шланги. У такому випадку підбір має базуватися на фактично встановлених компонентах, а не лише на назві моделі.',
+                        ],
+                    },
+                    {
+                        'title': 'Притирка: чому новим колодкам потрібен час',
+                        'paragraphs': [
+                            'Нові гальмівні колодки не показують свій найкращий результат одразу. Вони мають правильно притертися до гальмівного диска. Цей процес зазвичай називають bedding-in або притиркою.',
+                            'Під час притирки контактні поверхні адаптуються одна до одної, а на диску формується стабільний фрикційний шар. Якщо цей процес поспішити, проігнорувати або виконати неправильно, райдер може отримати шум, вібрацію, нерівномірне відчуття гальма або знижену ефективність.',
+                            'Саме тому нам не подобається фраза “колодки замінили - тепер усе ідеально”. Новим колодкам потрібне правильне встановлення, відповідна поверхня диска й контрольований період притирки. Гальмо має бути передбачуваним, але райдеру варто уникати агресивного гальмування, поки колодки й диски не притруться, окрім ситуацій екстреної зупинки.',
+                            'Точна рекомендація щодо притирки залежить від виробника колодок і складу матеріалу. Дорожні, sintered і гоночні склади можуть вимагати різного підходу.',
+                        ],
+                    },
+                    {
+                        'title': 'Що райдери часто пропускають',
+                        'paragraphs': [
+                            'Нерівномірне зношення має значення. Одна колодка може виглядати нормально, а інша бути майже закінченою. Таке буває через проблеми з поршнями супорта, напрямними, брудом, корозією або супортом, який не рухається вільно.',
+                            'Гальмівна рідина може зіпсувати відчуття навіть із новими колодками. Якщо після заміни колодок ручка залишається ватною, проблема може бути не в колодках. Стара рідина, повітря в системі, розширення гумового шланга або внутрішнє забруднення змінюють відчуття гальма.',
+                            'Диски важливі не менше за колодки. Нові колодки на сильно зношеному, подряпаному, поведеному або забрудненому диску можуть ніколи не працювати правильно. Поверхня, товщина й биття диска мають значення, а точні межі потрібно перевіряти за специфікацією виробника мотоцикла.',
+                            'Прибережний клімат впливає на гальма. У Cascais і Lisbon мотоцикли живуть у вологості та морському повітрі. Це може прискорювати корозію кріплення, пальців колодок, елементів супорта й відкритого металу.',
+                            'Важкі мотоцикли менше пробачають помилки. Touring, cruiser або Harley-Davidson із пасажиром і багажем серйозно навантажують гальмівну систему. Колодки, диски, рідина й шини працюють важче.',
+                        ],
+                    },
+                    {
+                        'title': 'Типові помилки власників',
+                        'paragraphs': [
+                            'Перша помилка - чекати, поки гальмо почне скреготати металом по металу. На цьому етапі диск уже може бути пошкоджений, а ремонт стане дорожчим.',
+                            'Друга помилка - міняти колодки без огляду диска. Якщо поверхня диска погана, нові колодки можуть неправильно зношуватися, шуміти або давати слабке гальмування.',
+                            'Третя помилка - забруднити колодки чи диски під час інших робіт. Гальмівні колодки й диски не люблять оливу, мастило для ланцюга, оливу з вилки, неправильно використані очищувачі або звичайний бруд майстерні.',
+                            'Четверта помилка - поєднувати деталі без перевірки сумісності. Не кожен склад колодок підходить кожному диску чи стилю їзди.',
+                            'П’ята помилка - вважати слабке заднє гальмо неважливим. Заднє гальмо допомагає на малій швидкості, у трафіку, під час старту вгору, при їзді з пасажиром і для стабілізації мотоцикла.',
+                        ],
+                    },
+                    {
+                        'title': 'Коли варто звернутися до майстерні',
+                        'paragraphs': [
+                            'Не відкладайте перевірку гальм, якщо з’явився скрегіт, металевий звук, вібрація в ручці чи педалі, ручка підходить ближче до грипси, гальмо стало слабшим, реакція запізнюється, після звичайної їзди є запах перегріву, колодки зношуються нерівномірно, видно тріщини, відсутній матеріал, є засклована поверхня, підтікання гальмівної рідини, індикатор ABS, мотоцикл тягне вбік під час гальмування або гальма змінюють поведінку при нагріванні.',
+                            'Ці симптоми не завжди означають одну й ту саму несправність. Але з гальмами вгадувати не можна. Систему потрібно оглянути до того, як мотоцикл отримуватиме більше навантаження.',
+                        ],
+                    },
+                    {
+                        'title': 'Що ми перевіряємо в Iron Custom Motors',
+                        'paragraphs': [
+                            'Коли ми замінюємо гальмівні колодки в Iron Custom Motors, робота не закінчується зняттям старих колодок і встановленням нових.',
+                            'Ми перевіряємо стан колодок, дисків, супортів, поршнів, пальців, кріплення, гальмівної рідини, відчуття ручки чи педалі, стан шлангів і видимі ознаки підтікань або забруднення. На мотоциклах з ABS ми також звертаємо увагу на попередження та поведінку системи.',
+                            'Для custom motorcycles, Harley-Davidson, touring bikes і premium motorcycles ми дивимося ширше: вага мотоцикла, стиль їзди, стан шин, робота підвіски та відповідність встановлених гальмівних компонентів реальному використанню мотоцикла.',
+                            'Правильний сервіс гальм має дати райдеру більше, ніж нові деталі. Він має дати розуміння: що було зношено, що перевірено і на що варто звернути увагу пізніше.',
+                        ],
+                    },
+                    {
+                        'title': 'Висновок',
+                        'paragraphs': [
+                            'Гальмівні колодки - витратні деталі, але гальмування не є дрібницею. Гальмівна система мотоцикла - одна з найважливіших систем безпеки, а заміна колодок - правильний момент для повного огляду.',
+                            'Хороші гальма - це не лише сила зупинки. Це відчуття, контроль, передбачуваність і довіра. Коли ручка працює правильно, диски здорові, колодки підібрані коректно, а система чиста, мотоцикл дає райдеру впевненість.',
+                            'Якщо гальма відчуваються інакше, шумлять, мають нерівномірне зношення або просто давно не перевірялися, краще оглянути їх заздалегідь - до того, як проблема стане дорогою або небезпечною.',
+                        ],
+                    },
+                    {
+                        'title': 'Перевірені джерела',
+                        'paragraphs': [
+                            'MSF T-CLOCS pre-ride inspection checklist; матеріали Brembo щодо обслуговування гальм і bedding-in; рекомендації Galfer щодо bedding-in; рекомендації EBC щодо притирки гальмівних колодок.',
+                        ],
+                    },
+                ],
+                'ctaText': 'Якщо вашому мотоциклу потрібна заміна гальмівних колодок або перевірка гальмівної системи, запишіться на сервіс в Iron Custom Motors у Cascais. Ми правильно перевіримо систему, пояснимо, що потребує уваги, і підготуємо мотоцикл до дороги.',
+                'faqs': [
+                    {
+                        'q': 'Як зрозуміти, що гальмівні колодки мотоцикла потрібно міняти?',
+                        'a': 'Типові ознаки: слабший bite, скрегіт, вібрація, нерівномірне зношення, більший хід ручки або візуально малий залишок матеріалу. Точна мінімальна товщина залежить від мотоцикла й виробника гальм, тому її потрібно перевіряти за правильною специфікацією.',
+                    },
+                    {
+                        'q': 'Чи потрібно міняти гальмівні диски разом із колодками?',
+                        'a': 'Не завжди. Але диски обов’язково потрібно оглядати під час заміни колодок. Якщо вони нижче допустимої товщини, сильно зношені, мають борозни, биття, тріщини або забруднення, самих нових колодок недостатньо.',
+                    },
+                    {
+                        'q': 'Чому нові гальмівні колодки іноді шумлять?',
+                        'a': 'Нові колодки можуть шуміти через неправильну притирку, погану поверхню диска, брудне або зношене кріплення, або невідповідний склад колодки. Постійний шум варто перевірити.',
+                    },
+                    {
+                        'q': 'Чи може стара гальмівна рідина впливати на гальмування з новими колодками?',
+                        'a': 'Так. Стара або забруднена гальмівна рідина може робити ручку м’якою чи непередбачуваною. Заміна колодок і сервіс гальмівної рідини - різні операції, але обидві впливають на відчуття гальма й безпеку.',
+                    },
+                    {
+                        'q': 'Sintered колодки кращі за organic?',
+                        'a': 'Не універсально. Sintered-колодки часто добре витримують нагрівання й можуть давати сильне гальмування, але правильний вибір залежить від мотоцикла, матеріалу диска, стилю їзди та рекомендацій виробника.',
+                    },
+                ],
+            },
+        },
+        'keywords': {
+            'en': ['motorcycle brake pad replacement', 'motorcycle brake service', 'brake system inspection', 'brake pads Cascais', 'motorcycle service Lisbon', 'Iron Custom Motors brakes'],
+            'ru': ['замена тормозных колодок мотоцикла', 'сервис тормозов мотоцикла', 'проверка тормозной системы', 'тормозные колодки Кашкайш', 'мотосервис Лиссабон', 'Iron Custom Motors тормоза'],
+            'uk': ['заміна гальмівних колодок мотоцикла', 'сервіс гальм мотоцикла', 'перевірка гальмівної системи', 'гальмівні колодки Cascais', 'мотосервіс Lisbon', 'Iron Custom Motors гальма'],
+            'pt': ['substituição pastilhas travão moto', 'serviço de travões moto', 'inspeção sistema de travagem', 'pastilhas de travão Cascais', 'oficina de motos Lisboa', 'Iron Custom Motors travões'],
+        },
+    }}
