@@ -56,13 +56,14 @@ ARTICLE_CSS = """.subpage.blog-article{padding:0;position:relative;overflow:hidd
 .blog-article::before,.blog-article::after{display:none}
 .blog-article .bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;filter:saturate(.88) contrast(1.08) brightness(.55)}
 .blog-article .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(10,10,10,.92) 0%,rgba(10,10,10,.7) 42%,rgba(10,10,10,.18) 74%),linear-gradient(180deg,rgba(10,10,10,.30) 0%,rgba(10,10,10,.42) 48%,rgba(10,10,10,.96) 100%);pointer-events:none}
-.blog-article .container{position:relative;z-index:2;padding-top:140px;padding-bottom:64px}
+.blog-article .container{position:relative;z-index:2;padding-top:140px;padding-bottom:64px;width:100%;min-width:0}
 .blog-article .date{font-family:'Saira',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
-.blog-article h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.92;letter-spacing:0;text-transform:uppercase;font-size:clamp(34px,6vw,86px);color:#fff;max-width:20ch;margin-bottom:24px}
+.blog-article .crumb,.blog-article h1,.blog-article .lede,.blog-article-body h2,.blog-article-body p,.blog-list li,.blog-faq-item summary{overflow-wrap:anywhere}
+.blog-article h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.92;letter-spacing:0;text-transform:uppercase;font-size:clamp(34px,6vw,86px);color:#fff;max-width:min(20ch,100%);margin-bottom:24px}
 .blog-article h1 .accent{color:var(--accent)}
-.blog-article .lede{font-family:'Saira',sans-serif;font-size:clamp(17px,1.45vw,21px);color:var(--text);max-width:66ch;line-height:1.55}
+.blog-article .lede{font-family:'Saira',sans-serif;font-size:clamp(17px,1.45vw,21px);color:var(--text);max-width:min(66ch,100%);line-height:1.55}
 .blog-article-body{padding:56px 0;background:#0a0a0a;border-top:1px solid var(--border)}
-.blog-article-body .container{max-width:820px}
+.blog-article-body .container{max-width:820px;min-width:0}
 .blog-article-body section{padding:0;margin-bottom:34px}
 .blog-article-body section:last-child{margin-bottom:0}
 .blog-article-body h2{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(26px,3vw,42px);line-height:1.04;color:#fff;margin-bottom:22px}
@@ -88,7 +89,7 @@ ARTICLE_CSS = """.subpage.blog-article{padding:0;position:relative;overflow:hidd
 .blog-article-body .blog-cta-box{padding:34px 36px;border:1px solid var(--border);border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(255,87,34,.14),rgba(255,255,255,.03));text-align:left}
 .blog-cta-box .btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
 @media (max-width:900px){.blog-video{grid-template-columns:1fr}.blog-video .video-frame{max-width:320px;margin:0 auto;width:100%}}
-@media (max-width:760px){.blog-article{min-height:84vh}.blog-article .container{padding-top:112px}.blog-article-body{padding:44px 0}.blog-article-body section{margin-bottom:30px}.blog-article-body .blog-article-lead{padding:26px 24px}.blog-media{margin:28px -20px;border-left:none;border-right:none;border-radius:0}.blog-media img{border-radius:0}.blog-article-body .blog-video{margin-left:-20px;margin-right:-20px;padding:28px 20px;border-left:none;border-right:none;border-radius:0}.blog-article-body .blog-cta-box{margin-left:-20px;margin-right:-20px;padding:28px 20px;border-left:none;border-right:none;border-radius:0}}"""
+@media (max-width:760px){.blog-article{min-height:84vh}.blog-article .container{padding-top:112px}.blog-article .crumb{line-height:1.5}.blog-article .crumb span:last-child{flex-basis:100%;min-width:0}.blog-article-body{padding:44px 0}.blog-article-body section{margin-bottom:30px}.blog-article-body .blog-article-lead{padding:26px 24px}.blog-media{margin:28px -20px;border-left:none;border-right:none;border-radius:0}.blog-media img{border-radius:0}.blog-article-body .blog-video{margin-left:-20px;margin-right:-20px;padding:28px 20px;border-left:none;border-right:none;border-radius:0}.blog-article-body .blog-cta-box{margin-left:-20px;margin-right:-20px;padding:28px 20px;border-left:none;border-right:none;border-radius:0}}"""
 
 
 def h(value):
@@ -425,17 +426,19 @@ def render_article(slug, article):
 
     section_parts = []
     for idx, section in enumerate(en_body["sections"], start=1):
+        paragraph_html = "\n".join(
+            f'<p data-i18n="{pre}.section{idx}.p{p_idx}">{h(paragraph)}</p>'
+            for p_idx, paragraph in enumerate(section.get("paragraphs", []), start=1)
+        )
         if "bullets" in section:
             bullets = "\n".join(
                 f'<li data-i18n="{pre}.section{idx}.b{b_idx}">{h(bullet)}</li>'
                 for b_idx, bullet in enumerate(section["bullets"], start=1)
             )
-            section_body = f'<ul class="blog-list">\n{bullets}\n</ul>'
+            list_html = f'<ul class="blog-list">\n{bullets}\n</ul>'
+            section_body = "\n".join(part for part in [paragraph_html, list_html] if part)
         else:
-            section_body = "\n".join(
-                f'<p data-i18n="{pre}.section{idx}.p{p_idx}">{h(paragraph)}</p>'
-                for p_idx, paragraph in enumerate(section.get("paragraphs", []), start=1)
-            )
+            section_body = paragraph_html
         section_parts.append(f'''<section>
 <h2 data-i18n="{pre}.section{idx}.title">{h(section["title"])}</h2>
 {section_body}

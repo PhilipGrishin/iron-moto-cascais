@@ -2638,3 +2638,780 @@ BLOG_POSTS = {'revtech-110-oil-service-engine-gearbox-drive': {'publishedISO': '
             'pt': ['substituição pastilhas travão moto', 'serviço de travões moto', 'inspeção sistema de travagem', 'pastilhas de travão Cascais', 'oficina de motos Lisboa', 'Iron Custom Motors travões'],
         },
     }}
+
+BLOG_POSTS['front-fork-service-motorcycle-cascais'] = {'publishedISO': '2026-06-18',
+ 'modifiedISO': '2026-06-18',
+ 'imageBase': '/photos/blog/blog-front-fork-service-motorcycle-cascais',
+ 'imageHero': 1,
+ 'imageCount': 1,
+ 'imageDims': {1: (1600, 900)},
+ 'youtubeUrl': 'https://www.youtube.com/shorts/WkXuGSn0-yw',
+ 'youtubeEmbed': 'https://www.youtube.com/embed/WkXuGSn0-yw',
+ 'sourceLocalizedSlugs': {'en': 'front-fork-service-motorcycle-cascais',
+                          'ru': 'obsluzhivanie-peredney-vilki-mototsikl-cascais',
+                          'pt': 'servico-forquilha-dianteira-moto-cascais',
+                          'uk': 'obsluhovuvannia-perednoi-vylky-mototsykl-cascais'},
+ 'meta': {'en': {'title': 'Front Fork Service: Control Starts at the Front | Iron Custom Motors',
+                 'description': 'Why front fork service matters: seals, bushings, clean parts, correct fork '
+                                'oil viscosity and precise oil level for safer handling.',
+                 'excerpt': 'Why front fork service matters: seals, bushings, clean parts, correct fork oil '
+                            'viscosity and precise oil level for safer handling.'},
+          'ru': {'title': 'Обслуживание передней вилки: контроль начинается спереди | Iron Custom Motors',
+                 'description': 'Почему важно обслуживание вилки: сальники, направляющие, чистые детали, '
+                                'правильная вязкость и точный уровень масла.',
+                 'excerpt': 'Почему важно обслуживание вилки: сальники, направляющие, чистые детали, '
+                            'правильная вязкость и точный уровень масла.'},
+          'pt': {'title': 'Serviço da Forquilha Dianteira: Controlo à Frente | Iron Custom Motors',
+                 'description': 'Porque o serviço da forquilha é importante: retentores, guias, limpeza, '
+                                'óleo correto e nível preciso para melhor controlo.',
+                 'excerpt': 'Porque o serviço da forquilha é importante: retentores, guias, limpeza, óleo '
+                            'correto e nível preciso para melhor controlo.'},
+          'uk': {'title': 'Обслуговування передньої вилки: контроль спереду | Iron Custom Motors',
+                 'description': 'Чому важливе обслуговування вилки: сальники, напрямні, чисті деталі, '
+                                'правильна олива і точний рівень.',
+                 'excerpt': 'Чому важливе обслуговування вилки: сальники, напрямні, чисті деталі, правильна '
+                            'олива і точний рівень.'}},
+ 'body': {'en': {'eyebrow': 'Workshop guide · 18 June 2026',
+                 'publishedLabel': 'Published 18 June 2026',
+                 'breadHome': 'Home',
+                 'breadBlog': 'Blog',
+                 'introTitle': 'Fork service is handling service',
+                 'videoEyebrow': 'Workshop video',
+                 'videoTitle': 'Watch the front fork service',
+                 'videoText': 'A short look at front fork service: fork oil, seal inspection, internal '
+                              'cleaning and precise setup checked as one handling system.',
+                 'videoLink': 'Open on YouTube',
+                 'faqTitle': 'Front fork service FAQ',
+                 'ctaEyebrow': 'Need fork service?',
+                 'ctaTitle': 'Book a front fork inspection.',
+                 'btnWA': 'WhatsApp us',
+                 'btnBack': 'Back to blog',
+                 'imageAlt': 'Front fork service cover graphic showing fork oil service and fork tube work '
+                             'in the Iron Custom Motors workshop.',
+                 'imageCaption': 'Front fork service at Iron Custom Motors: seals, guides, clean internals, '
+                                 'correct fork oil viscosity and precise oil level.',
+                 'h1': 'Front Fork Service:<br/><span class="accent">Control Starts at the Front.</span>',
+                 'h1Crumb': 'Front Fork Service: Control Starts at the Front',
+                 'lede': 'A front fork rarely fails without warning. Usually, the motorcycle starts to feel '
+                         'slightly different first. The front end dives more under braking. The bike feels '
+                         'vague in corners. There is oil on one fork tube. The handlebar gives a small knock '
+                         'over bumps. Or the front tyre no longer feels as planted as it used to. Many '
+                         'riders first think about tyres, brakes or wheel balance. Sometimes they are right. '
+                         'But very often, the front fork is part of the problem.',
+                 'intro': {'title': 'Fork service is handling service',
+                           'paragraphs': ['The fork is not just two tubes holding the front wheel. It '
+                                          'controls braking stability, steering feel, tyre contact and rider '
+                                          'confidence. That is why proper fork service is not just replacing '
+                                          'seals. It is diagnosis, cleaning, inspection, correct parts, '
+                                          'correct fork oil and precise oil level.',
+                                          'At Iron Custom Motors, we treat front fork service as a handling '
+                                          'and safety job.']},
+                 'sections': [{'title': 'Why It Matters',
+                               'paragraphs': ['The front fork supports the front of the motorcycle, absorbs '
+                                              'bumps and controls how the bike behaves under braking. When '
+                                              'it works properly, the motorcycle turns cleanly, brakes with '
+                                              'control and holds the road with confidence.',
+                                              'When the fork is tired, the symptoms can be subtle:',
+                                              'In Cascais and Lisbon, motorcycles deal with city traffic, '
+                                              'speed bumps, coastal roads, humidity, sea air and weekend '
+                                              'rides. The fork works constantly, even when the rider does '
+                                              'not think about it.'],
+                               'bullets': ['excessive dive under braking;',
+                                           'vague steering;',
+                                           'harshness over small bumps;',
+                                           'knocking or clicking from the front;',
+                                           'oil around the fork seal;',
+                                           'uneven front tyre wear;',
+                                           'instability when braking or cornering.']},
+                              {'title': 'Fork Seals Are Only the Visible Part',
+                               'paragraphs': ['A leaking fork seal is easy to notice, but the seal itself is '
+                                              'not always the root cause.',
+                                              'Fork seals can fail because of age, dirt, dried '
+                                              'contamination, corrosion, stone chips, damaged fork tubes or '
+                                              'worn internal guides. If we replace only the seal and ignore '
+                                              'the reason it failed, the new seal may start leaking again.',
+                                              'That is why we always inspect the fork tubes, dust seals, '
+                                              'retaining areas and sealing surfaces before reassembly.']},
+                              {'title': 'Bushings and Guides Matter',
+                               'paragraphs': ['Inside the fork, bushings and guide components control how '
+                                              'smoothly the fork tubes slide. Riders do not see them, but '
+                                              'they affect seal life, fork alignment, braking stability and '
+                                              'suspension feel.',
+                                              'If the guides are worn, the fork can develop play or '
+                                              'friction. New seals fitted into a fork with worn bushings are '
+                                              'not a proper repair. When needed, we replace the seals and '
+                                              'guides together, because the fork must work cleanly as a '
+                                              'complete sliding system.']},
+                              {'title': 'Fork Oil: Correct Viscosity, Not Guesswork',
+                               'paragraphs': ['Fork oil is not just fluid inside the fork. It is part of the '
+                                              'damping system.',
+                                              'If the oil is too thin for the motorcycle, the fork can feel '
+                                              'loose, soft or underdamped. If it is too thick, the fork can '
+                                              'feel harsh, slow or sticky over small bumps.',
+                                              'The correct viscosity depends on the motorcycle, fork design, '
+                                              'rider weight, riding style and manufacturer specification. '
+                                              'That is why we do not choose fork oil “by habit.” We use the '
+                                              'correct specification for the motorcycle and the actual fork '
+                                              'system.']},
+                              {'title': 'Oil Level Is Critical',
+                               'paragraphs': ['Fork oil level is one of the most important details in this '
+                                              'job.',
+                                              'Many people think only oil quantity matters. In reality, the '
+                                              'oil level — often measured as an air gap — changes how the '
+                                              'fork behaves, especially near the end of travel.',
+                                              'Too much oil can make the fork harsh and increase internal '
+                                              'pressure. Too little oil can reduce support and make the fork '
+                                              'dive too much or bottom too easily.',
+                                              'The correct level depends on the fork design and service '
+                                              'procedure. It should not be estimated by eye. Both fork legs '
+                                              'must be measured and matched properly. A few millimeters can '
+                                              'change how the front end feels.']},
+                              {'title': 'Cleaning Is Part of the Repair',
+                               'paragraphs': ['When we service a fork, we do not just drain oil and install '
+                                              'new parts.',
+                                              'Old fork oil can carry metal particles, seal material, '
+                                              'bushing wear residue and dirt. If the fork is assembled '
+                                              'dirty, the new oil becomes contaminated quickly and new parts '
+                                              'wear faster.',
+                                              'All internal parts must be carefully cleaned. In Portugal’s '
+                                              'coastal climate, we also pay close attention to corrosion. A '
+                                              'small rust mark on a fork tube can damage a new seal very '
+                                              'quickly.']},
+                              {'title': 'What Riders Often Miss',
+                               'bullets': ['A leaking seal may be a symptom, not the cause.',
+                                           'Worn bushings can destroy new seals.',
+                                           'Fork oil ages even when the bike is not ridden hard.',
+                                           'Oil level changes braking feel and support under deep '
+                                           'compression.',
+                                           'Fork service affects brakes and tyres because it changes how the '
+                                           'front tyre loads the road.',
+                                           'Both fork legs must work as a matched pair.']},
+                              {'title': 'When to Visit a Workshop',
+                               'paragraphs': ['Book a fork inspection if you notice:',
+                                              'Fork oil leaks should not be ignored. Oil near the front '
+                                              'wheel and brakes is a safety issue.'],
+                               'bullets': ['oil on the fork tube;',
+                                           'dirt stuck around the seal;',
+                                           'excessive dive under braking;',
+                                           'knocking or looseness at the front;',
+                                           'vague steering;',
+                                           'harshness over small bumps;',
+                                           'unusual front tyre wear;',
+                                           'instability during braking;',
+                                           'oil near the brake caliper or disc.']},
+                              {'title': 'What We Check at Iron Custom Motors',
+                               'paragraphs': ['At Iron Custom Motors, front fork service starts with '
+                                              'diagnosis.',
+                                              'We inspect the fork tubes, seals, dust seals, bushings, '
+                                              'guides, springs, oil condition, corrosion and front-end '
+                                              'behavior. When seals or guides are worn, we replace what '
+                                              'needs to be replaced. We clean all parts thoroughly before '
+                                              'assembly.',
+                                              'We use fork oil of the correct viscosity and set the oil '
+                                              'level precisely according to the motorcycle’s specification. '
+                                              'After service, we check alignment, cleanliness, leakage and '
+                                              'front-end feel.',
+                                              'For custom motorcycles, Harley-Davidson models, touring bikes '
+                                              'and premium motorcycles, we also look at the whole system: '
+                                              'rider use, tyres, brakes, rear suspension, weight, luggage '
+                                              'and real riding conditions around Cascais and Lisbon.']},
+                              {'title': 'Conclusion',
+                               'paragraphs': ['Front fork service is not just about stopping an oil leak.',
+                                              'Fresh seals matter. Good guides matter. Clean internal parts '
+                                              'matter. Correct oil viscosity matters. Accurate oil level '
+                                              'matters a lot.',
+                                              'The front fork is where braking, steering, suspension and '
+                                              'tyre grip meet. Servicing it properly gives the rider more '
+                                              'control, more confidence and a motorcycle that feels right '
+                                              'again.']}],
+                 'ctaText': 'If your motorcycle dives too much under braking, feels vague in corners, shows '
+                            'oil on the fork tubes or has not had its front fork checked for a long time, '
+                            'book a front fork inspection at Iron Custom Motors in Cascais. We will diagnose '
+                            'the system properly and service it with the right parts, clean assembly, '
+                            'correct oil and precise oil level.',
+                 'faqs': [{'q': 'How do I know if my fork seals are leaking?',
+                           'a': 'Oil on the fork tube, wetness around the seal or dirt sticking to the fork '
+                                'leg are common signs. If the leak gets worse, it can affect damping and '
+                                'contaminate brake components.'},
+                          {'q': 'Is replacing fork seals enough?',
+                           'a': 'Not always. The fork tubes, guides, bushings and internal condition must '
+                                'also be checked. If these parts are worn, new seals may fail again.'},
+                          {'q': 'Why is fork oil viscosity important?',
+                           'a': 'Fork oil controls damping. The wrong viscosity can make the fork too soft, '
+                                'too harsh, too slow or inconsistent.'},
+                          {'q': 'Why is fork oil level important?',
+                           'a': 'Oil level changes the air chamber inside the fork. It affects support under '
+                                'braking and deep compression. Incorrect level can seriously change the '
+                                'front-end feel.'},
+                          {'q': 'Does fork service affect braking?',
+                           'a': 'Yes. The fork controls how the front tyre is loaded under braking. Poor '
+                                'fork condition can make braking feel unstable or less predictable.'}]},
+          'ru': {'eyebrow': 'Гайд мастерской · 18 июня 2026',
+                 'publishedLabel': 'Опубликовано 18 июня 2026',
+                 'breadHome': 'Главная',
+                 'breadBlog': 'Блог',
+                 'introTitle': 'Сервис вилки — это управляемость',
+                 'videoEyebrow': 'Видео из мастерской',
+                 'videoTitle': 'Смотрите обслуживание передней вилки',
+                 'videoText': 'Короткий взгляд на обслуживание вилки: масло, проверка сальников, внутренняя '
+                              'мойка и точная настройка как единая система управляемости.',
+                 'videoLink': 'Открыть на YouTube',
+                 'faqTitle': 'FAQ по обслуживанию передней вилки',
+                 'ctaEyebrow': 'Нужен сервис вилки?',
+                 'ctaTitle': 'Запишитесь на диагностику передней вилки.',
+                 'btnWA': 'WhatsApp',
+                 'btnBack': 'Назад в блог',
+                 'imageAlt': 'Обложка статьи про обслуживание передней вилки: сервис масла и работа с пером '
+                             'вилки в мастерской Iron Custom Motors.',
+                 'imageCaption': 'Обслуживание передней вилки в Iron Custom Motors: сальники, направляющие, '
+                                 'чистые внутренние детали, правильная вязкость и точный уровень масла.',
+                 'h1': 'Обслуживание передней вилки:<br/><span class="accent">контроль начинается '
+                       'спереди.</span>',
+                 'h1Crumb': 'Обслуживание передней вилки: контроль начинается спереди',
+                 'lede': 'Передняя вилка редко выходит из строя без предупреждения. Чаще мотоцикл просто '
+                         'начинает ощущаться немного иначе. Перед сильнее клюёт при торможении. Мотоцикл '
+                         'становится менее точным в поворотах. На одном пере появляется масляная плёнка. На '
+                         'неровностях слышен лёгкий стук. Или переднее колесо уже не даёт той уверенности, '
+                         'что раньше. Многие сначала думают о шинах, тормозах или балансировке. Иногда '
+                         'причина действительно там. Но очень часто передняя вилка тоже участвует в '
+                         'проблеме.',
+                 'intro': {'title': 'Сервис вилки — это управляемость',
+                           'paragraphs': ['Вилка — это не просто две трубы, которые держат колесо. Она '
+                                          'отвечает за стабильность при торможении, точность руления, '
+                                          'контакт шины с дорогой и уверенность райдера. Поэтому нормальное '
+                                          'обслуживание вилки — это не только замена сальников. Это '
+                                          'диагностика, мойка, проверка деталей, правильные сальники и '
+                                          'направляющие, правильное масло и точный уровень масла.',
+                                          'В Iron Custom Motors мы относимся к обслуживанию вилки как к '
+                                          'работе с управляемостью и безопасностью.']},
+                 'sections': [{'title': 'Почему это важно',
+                               'paragraphs': ['Передняя вилка поддерживает перед мотоцикла, гасит неровности '
+                                              'и контролирует поведение байка при торможении. Когда она '
+                                              'работает правильно, мотоцикл охотно поворачивает, стабильно '
+                                              'тормозит и уверенно держит дорогу.',
+                                              'Когда вилка устала, симптомы могут быть незаметными:',
+                                              'В Cascais и Lisbon мотоциклы постоянно работают в смешанных '
+                                              'условиях: город, лежачие полицейские, прибрежные дороги, '
+                                              'влажность, морской воздух и поездки выходного дня. Вилка '
+                                              'трудится всё время, даже когда райдер об этом не думает.'],
+                               'bullets': ['слишком сильный клевок при торможении;',
+                                           'нечёткое руление;',
+                                           'жёсткая работа на мелких неровностях;',
+                                           'стук или щелчки спереди;',
+                                           'масло возле сальника;',
+                                           'неравномерный износ передней шины;',
+                                           'нестабильность при торможении или в повороте.']},
+                              {'title': 'Сальники — только видимая часть проблемы',
+                               'paragraphs': ['Потёкший сальник легко заметить, но сам сальник не всегда '
+                                              'является главной причиной.',
+                                              'Сальники могут выходить из строя из-за возраста, грязи, '
+                                              'засохшего налёта, коррозии, сколов на пере, повреждённой '
+                                              'трубы или изношенных направляющих. Если просто заменить '
+                                              'сальник и не найти причину, новый сальник может снова потечь.',
+                                              'Поэтому перед сборкой мы проверяем перья, пыльники, '
+                                              'посадочные места, стопорные зоны и рабочие поверхности.']},
+                              {'title': 'Направляющие имеют значение',
+                               'paragraphs': ['Внутри вилки направляющие и втулки контролируют, насколько '
+                                              'ровно и плавно двигаются трубы. Снаружи их не видно, но они '
+                                              'влияют на ресурс сальников, геометрию вилки, стабильность при '
+                                              'торможении и работу подвески.',
+                                              'Если направляющие изношены, появляется люфт или лишнее '
+                                              'трение. Новые сальники в вилке с уставшими направляющими — '
+                                              'это не полноценный ремонт. Когда нужно, мы меняем сальники и '
+                                              'направляющие вместе, чтобы вилка работала как чистая и точная '
+                                              'скользящая система.']},
+                              {'title': 'Масло в вилке: правильная вязкость, а не привычка',
+                               'paragraphs': ['Масло в вилке — это не просто жидкость внутри. Оно является '
+                                              'частью системы демпфирования.',
+                                              'Если масло слишком жидкое для конкретной вилки, перед может '
+                                              'стать мягким, рыхлым и недодемпфированным. Если слишком '
+                                              'густое — вилка может работать жёстко, медленно и липко на '
+                                              'мелких неровностях.',
+                                              'Правильная вязкость зависит от мотоцикла, конструкции вилки, '
+                                              'веса райдера, стиля езды и спецификации производителя. '
+                                              'Поэтому мы не выбираем масло “по привычке”. Мы используем '
+                                              'спецификацию конкретного мотоцикла и фактической вилки.']},
+                              {'title': 'Уровень масла критически важен',
+                               'paragraphs': ['Уровень масла в вилке — один из самых важных моментов этой '
+                                              'работы.',
+                                              'Многие думают только об объёме масла. На практике уровень, '
+                                              'часто измеряемый как воздушный зазор, меняет поведение вилки, '
+                                              'особенно в конце хода.',
+                                              'Слишком высокий уровень может сделать вилку жёсткой и поднять '
+                                              'внутреннее давление. Слишком низкий — уменьшить поддержку, '
+                                              'усилить клевок и привести к пробою.',
+                                              'Правильный уровень зависит от конструкции вилки и процедуры '
+                                              'обслуживания. Его нельзя выставлять “на глаз”. Оба пера '
+                                              'должны быть точно измерены и согласованы между собой. Иногда '
+                                              'несколько миллиметров заметно меняют ощущение передка.']},
+                              {'title': 'Мойка деталей — часть ремонта',
+                               'paragraphs': ['При обслуживании вилки мы не просто сливаем масло и ставим '
+                                              'новые детали.',
+                                              'Старое масло может содержать металлическую пыль, остатки '
+                                              'сальников, продукты износа направляющих и грязь. Если собрать '
+                                              'вилку грязной, новое масло быстро загрязнится, а новые детали '
+                                              'будут изнашиваться быстрее.',
+                                              'Все внутренние детали нужно тщательно вымыть. В прибрежном '
+                                              'климате Португалии мы также внимательно смотрим на коррозию. '
+                                              'Маленькая точка ржавчины на пере может быстро повредить новый '
+                                              'сальник.']},
+                              {'title': 'Что райдеры часто упускают',
+                               'bullets': ['Потёкший сальник может быть симптомом, а не причиной.',
+                                           'Изношенные направляющие могут быстро убить новые сальники.',
+                                           'Масло в вилке стареет даже без агрессивной езды.',
+                                           'Уровень масла меняет поддержку при торможении и глубоком ходе '
+                                           'вилки.',
+                                           'Обслуживание вилки влияет на тормоза и шины, потому что меняет '
+                                           'загрузку переднего колеса.',
+                                           'Оба пера должны работать как пара.']},
+                              {'title': 'Когда ехать в мастерскую',
+                               'paragraphs': ['Запишитесь на диагностику вилки, если заметили:',
+                                              'Течь вилочного масла нельзя игнорировать. Масло рядом с '
+                                              'передним колесом и тормозами — это вопрос безопасности.'],
+                               'bullets': ['масло на пере вилки;',
+                                           'грязь вокруг сальника;',
+                                           'слишком сильный клевок при торможении;',
+                                           'стук или люфт спереди;',
+                                           'нечёткое руление;',
+                                           'жёсткость на мелких неровностях;',
+                                           'необычный износ передней шины;',
+                                           'нестабильность при торможении;',
+                                           'масло возле суппорта или тормозного диска.']},
+                              {'title': 'Что мы проверяем в Iron Custom Motors',
+                               'paragraphs': ['В Iron Custom Motors обслуживание передней вилки начинается с '
+                                              'диагностики.',
+                                              'Мы проверяем перья, сальники, пыльники, направляющие, '
+                                              'пружины, состояние масла, коррозию и общее поведение передней '
+                                              'части. Если сальники или направляющие изношены, мы меняем то, '
+                                              'что действительно требует замены. Перед сборкой все детали '
+                                              'тщательно очищаются.',
+                                              'Мы используем масло нужной вязкости и точно выставляем '
+                                              'уровень согласно спецификации мотоцикла. После обслуживания '
+                                              'проверяем выравнивание, чистоту, отсутствие течей и ощущение '
+                                              'передней части.',
+                                              'Для кастомных мотоциклов, Harley-Davidson, touring и '
+                                              'премиальных байков мы также смотрим на систему целиком: стиль '
+                                              'езды, шины, тормоза, заднюю подвеску, вес, багаж и реальные '
+                                              'условия эксплуатации в Cascais и Lisbon.']},
+                              {'title': 'Вывод',
+                               'paragraphs': ['Обслуживание передней вилки — это не только устранение течи '
+                                              'масла.',
+                                              'Свежие сальники важны. Хорошие направляющие важны. Чистые '
+                                              'внутренние детали важны. Правильная вязкость масла важна. '
+                                              'Точный уровень масла очень важен.',
+                                              'Передняя вилка — место, где сходятся торможение, руление, '
+                                              'подвеска и сцепление шины с дорогой. Правильное обслуживание '
+                                              'возвращает райдеру контроль, уверенность и ощущение, что '
+                                              'мотоцикл снова работает как надо.']}],
+                 'ctaText': 'Если ваш мотоцикл слишком сильно клюёт при торможении, стал нечётким в '
+                            'поворотах, показывает масло на перьях или давно не проходил проверку передней '
+                            'вилки, запишитесь на диагностику в Iron Custom Motors в Cascais. Мы правильно '
+                            'проверим систему и обслужим вилку с нужными деталями, чистой сборкой, '
+                            'правильным маслом и точным уровнем.',
+                 'faqs': [{'q': 'Как понять, что сальники вилки текут?',
+                           'a': 'Типичные признаки — масло на пере, влажность вокруг сальника или грязь, '
+                                'которая липнет к вилке. Если течь усиливается, она может повлиять на '
+                                'демпфирование и загрязнить тормозные элементы.'},
+                          {'q': 'Достаточно ли просто заменить сальники?',
+                           'a': 'Не всегда. Нужно проверить перья, направляющие, втулки и внутреннее '
+                                'состояние вилки. Если эти детали изношены, новые сальники могут снова '
+                                'быстро потечь.'},
+                          {'q': 'Почему важна вязкость вилочного масла?',
+                           'a': 'Вилочное масло отвечает за демпфирование. Неправильная вязкость может '
+                                'сделать вилку слишком мягкой, слишком жёсткой, медленной или нестабильной.'},
+                          {'q': 'Почему важен уровень масла?',
+                           'a': 'Уровень масла меняет воздушную камеру внутри вилки. Это влияет на поддержку '
+                                'при торможении и глубоком сжатии. Неправильный уровень может серьёзно '
+                                'изменить ощущение передней части.'},
+                          {'q': 'Влияет ли обслуживание вилки на торможение?',
+                           'a': 'Да. Вилка контролирует загрузку передней шины при торможении. Плохое '
+                                'состояние вилки может сделать торможение менее стабильным и '
+                                'предсказуемым.'}]},
+          'pt': {'eyebrow': 'Guia de oficina · 18 junho 2026',
+                 'publishedLabel': 'Publicado 18 junho 2026',
+                 'breadHome': 'Início',
+                 'breadBlog': 'Blog',
+                 'introTitle': 'Serviço da forquilha é controlo',
+                 'videoEyebrow': 'Vídeo de oficina',
+                 'videoTitle': 'Veja o serviço da forquilha dianteira',
+                 'videoText': 'Um olhar rápido ao serviço da forquilha: óleo, inspeção de retentores, '
+                              'limpeza interna e afinação precisa como um só sistema de controlo.',
+                 'videoLink': 'Abrir no YouTube',
+                 'faqTitle': 'FAQ sobre serviço da forquilha dianteira',
+                 'ctaEyebrow': 'Precisa de serviço da forquilha?',
+                 'ctaTitle': 'Marque uma inspeção da forquilha dianteira.',
+                 'btnWA': 'WhatsApp',
+                 'btnBack': 'Voltar ao blog',
+                 'imageAlt': 'Capa do artigo sobre serviço da forquilha dianteira: óleo de forquilha e '
+                             'trabalho no tubo na oficina Iron Custom Motors.',
+                 'imageCaption': 'Serviço da forquilha dianteira na Iron Custom Motors: retentores, guias, '
+                                 'peças internas limpas, óleo correto e nível preciso.',
+                 'h1': 'Serviço da Forquilha Dianteira:<br/><span class="accent">controlo à frente.</span>',
+                 'h1Crumb': 'Serviço da Forquilha Dianteira: o Controlo Começa à Frente',
+                 'lede': 'Uma forquilha dianteira raramente falha sem avisar. Normalmente, a moto começa '
+                         'primeiro a sentir-se ligeiramente diferente. A frente afunda mais ao travar. A '
+                         'moto fica menos precisa nas curvas. Aparece óleo num dos tubos. O guiador dá uma '
+                         'pequena pancada em pisos irregulares. Ou o pneu dianteiro já não transmite a mesma '
+                         'confiança. Muitos motociclistas pensam primeiro em pneus, travões ou equilibragem. '
+                         'Às vezes estão certos. Mas muitas vezes a forquilha dianteira também faz parte do '
+                         'problema.',
+                 'intro': {'title': 'Serviço da forquilha é controlo',
+                           'paragraphs': ['A forquilha não são apenas dois tubos que seguram a roda '
+                                          'dianteira. Ela controla a estabilidade na travagem, a sensação de '
+                                          'direção, o contacto do pneu com a estrada e a confiança do '
+                                          'condutor. Por isso, um bom serviço de forquilha não é apenas '
+                                          'trocar retentores. É diagnóstico, limpeza, inspeção, peças '
+                                          'corretas, óleo adequado e nível de óleo preciso.',
+                                          'Na Iron Custom Motors, tratamos o serviço da forquilha como um '
+                                          'trabalho de segurança e comportamento dinâmico.']},
+                 'sections': [{'title': 'Porque É Importante',
+                               'paragraphs': ['A forquilha dianteira suporta a frente da moto, absorve '
+                                              'irregularidades e controla o comportamento da moto durante a '
+                                              'travagem. Quando trabalha corretamente, a moto vira com '
+                                              'precisão, trava com controlo e mantém a estrada com '
+                                              'confiança.',
+                                              'Quando a forquilha está cansada, os sintomas podem ser '
+                                              'subtis:',
+                                              'Em Cascais e Lisboa, as motos vivem num ambiente exigente: '
+                                              'trânsito urbano, lombas, estradas costeiras, humidade, ar '
+                                              'marítimo e passeios de fim de semana. A forquilha trabalha '
+                                              'constantemente, mesmo quando o condutor não pensa nisso.'],
+                               'bullets': ['afundamento excessivo ao travar;',
+                                           'direção pouco precisa;',
+                                           'dureza em pequenas irregularidades;',
+                                           'batidas ou cliques na frente;',
+                                           'óleo junto ao retentor;',
+                                           'desgaste irregular do pneu dianteiro;',
+                                           'instabilidade ao travar ou curvar.']},
+                              {'title': 'Os Retentores São Apenas a Parte Visível',
+                               'paragraphs': ['Um retentor com fuga é fácil de ver, mas o retentor nem '
+                                              'sempre é a causa principal.',
+                                              'Os retentores podem falhar por idade, sujidade, contaminação '
+                                              'seca, corrosão, marcas de pedra, tubos danificados ou guias '
+                                              'internas gastas. Se trocarmos apenas o retentor e ignorarmos '
+                                              'a causa, o novo retentor pode voltar a perder óleo.',
+                                              'Por isso, antes da montagem verificamos os tubos, guarda-pós, '
+                                              'zonas de retenção e superfícies de vedação.']},
+                              {'title': 'Buchas e Guias Também Contam',
+                               'paragraphs': ['Dentro da forquilha, buchas e componentes de guia controlam o '
+                                              'deslizamento dos tubos. O condutor não os vê, mas eles afetam '
+                                              'a vida dos retentores, o alinhamento da forquilha, a '
+                                              'estabilidade na travagem e a sensação da suspensão.',
+                                              'Se as guias estiverem gastas, a forquilha pode ganhar folga '
+                                              'ou fricção. Montar retentores novos numa forquilha com buchas '
+                                              'gastas não é um serviço completo. Quando necessário, '
+                                              'substituímos retentores e guias em conjunto para que a '
+                                              'forquilha trabalhe como um sistema de deslizamento limpo e '
+                                              'preciso.']},
+                              {'title': 'Óleo da Forquilha: Viscosidade Correta, Não Hábito',
+                               'paragraphs': ['O óleo da forquilha não é apenas um fluido dentro do tubo. '
+                                              'Ele faz parte do sistema de amortecimento.',
+                                              'Se o óleo for demasiado fino para aquela moto, a forquilha '
+                                              'pode ficar mole, solta ou com pouco amortecimento. Se for '
+                                              'demasiado espesso, pode ficar dura, lenta ou presa em '
+                                              'pequenas irregularidades.',
+                                              'A viscosidade correta depende da moto, do desenho da '
+                                              'forquilha, do peso do condutor, do estilo de condução e da '
+                                              'especificação do fabricante. Por isso, não escolhemos óleo '
+                                              '“por hábito”. Usamos a especificação correta para a moto e '
+                                              'para o sistema real da forquilha.']},
+                              {'title': 'O Nível de Óleo É Crítico',
+                               'paragraphs': ['O nível do óleo da forquilha é um dos detalhes mais '
+                                              'importantes deste serviço.',
+                                              'Muitas pessoas pensam apenas na quantidade de óleo. Na '
+                                              'prática, o nível — muitas vezes medido como air gap — altera '
+                                              'o comportamento da forquilha, especialmente no fim do curso.',
+                                              'Óleo a mais pode tornar a forquilha dura e aumentar a pressão '
+                                              'interna. Óleo a menos pode reduzir suporte, aumentar o '
+                                              'afundamento e facilitar o fim de curso.',
+                                              'O nível correto depende do desenho da forquilha e do '
+                                              'procedimento de serviço. Não deve ser feito “a olho”. As duas '
+                                              'pernas devem ser medidas e igualadas corretamente. Alguns '
+                                              'milímetros podem mudar a sensação da frente.']},
+                              {'title': 'A Limpeza Faz Parte da Reparação',
+                               'paragraphs': ['Ao fazer serviço de forquilha, não basta drenar óleo e montar '
+                                              'peças novas.',
+                                              'O óleo antigo pode transportar partículas metálicas, material '
+                                              'de retentor, resíduos de desgaste das buchas e sujidade. Se a '
+                                              'forquilha for montada suja, o óleo novo contamina-se '
+                                              'rapidamente e as peças novas gastam-se mais cedo.',
+                                              'Todas as peças internas devem ser bem limpas. No clima '
+                                              'costeiro de Portugal, também prestamos atenção à corrosão. '
+                                              'Uma pequena marca de ferrugem no tubo pode danificar '
+                                              'rapidamente um retentor novo.']},
+                              {'title': 'O Que Muitos Motociclistas Não Veem',
+                               'bullets': ['Um retentor com fuga pode ser sintoma, não causa.',
+                                           'Buchas gastas podem destruir retentores novos.',
+                                           'O óleo da forquilha envelhece mesmo sem condução agressiva.',
+                                           'O nível de óleo altera o suporte na travagem e em compressão '
+                                           'profunda.',
+                                           'O serviço da forquilha influencia travões e pneus, porque muda a '
+                                           'carga no pneu dianteiro.',
+                                           'As duas pernas da forquilha devem trabalhar como um par.']},
+                              {'title': 'Quando Visitar a Oficina',
+                               'paragraphs': ['Marque uma inspeção da forquilha se notar:',
+                                              'Fugas de óleo da forquilha não devem ser ignoradas. Óleo '
+                                              'perto da roda dianteira e dos travões é uma questão de '
+                                              'segurança.'],
+                               'bullets': ['óleo no tubo da forquilha;',
+                                           'sujidade presa junto ao retentor;',
+                                           'afundamento excessivo ao travar;',
+                                           'batida ou folga na frente;',
+                                           'direção pouco precisa;',
+                                           'dureza em pequenas irregularidades;',
+                                           'desgaste estranho do pneu dianteiro;',
+                                           'instabilidade na travagem;',
+                                           'óleo perto da pinça ou do disco de travão.']},
+                              {'title': 'O Que Verificamos na Iron Custom Motors',
+                               'paragraphs': ['Na Iron Custom Motors, o serviço da forquilha dianteira '
+                                              'começa com diagnóstico.',
+                                              'Verificamos tubos, retentores, guarda-pós, buchas, guias, '
+                                              'molas, estado do óleo, corrosão e comportamento geral da '
+                                              'frente. Quando retentores ou guias estão gastos, substituímos '
+                                              'o que precisa de ser substituído. Antes da montagem, limpamos '
+                                              'cuidadosamente todas as peças.',
+                                              'Usamos óleo de viscosidade correta e ajustamos o nível de '
+                                              'óleo com precisão, de acordo com a especificação da moto. '
+                                              'Depois do serviço, verificamos alinhamento, limpeza, fugas e '
+                                              'sensação da frente.',
+                                              'Em motos custom, Harley-Davidson, touring e motos premium, '
+                                              'olhamos também para o sistema completo: utilização do '
+                                              'condutor, pneus, travões, suspensão traseira, peso, bagagem e '
+                                              'condições reais de condução em Cascais e Lisboa.']},
+                              {'title': 'Conclusão',
+                               'paragraphs': ['O serviço da forquilha dianteira não serve apenas para parar '
+                                              'uma fuga de óleo.',
+                                              'Retentores novos importam. Guias em bom estado importam. '
+                                              'Peças internas limpas importam. A viscosidade correta do óleo '
+                                              'importa. O nível exato de óleo importa muito.',
+                                              'A forquilha dianteira é onde travagem, direção, suspensão e '
+                                              'aderência do pneu se encontram. Um serviço bem feito devolve '
+                                              'controlo, confiança e uma moto que volta a sentir-se '
+                                              'certa.']}],
+                 'ctaText': 'Se a sua moto afunda demasiado ao travar, parece vaga nas curvas, mostra óleo '
+                            'nos tubos da forquilha ou não faz uma verificação da frente há muito tempo, '
+                            'marque uma inspeção na Iron Custom Motors em Cascais. Vamos diagnosticar o '
+                            'sistema corretamente e fazer o serviço com as peças certas, montagem limpa, '
+                            'óleo correto e nível preciso.',
+                 'faqs': [{'q': 'Como sei se os retentores da forquilha estão a perder óleo?',
+                           'a': 'Óleo no tubo, humidade junto ao retentor ou sujidade colada à perna da '
+                                'forquilha são sinais comuns. Se a fuga piorar, pode afetar o amortecimento '
+                                'e contaminar os travões.'},
+                          {'q': 'Trocar os retentores é suficiente?',
+                           'a': 'Nem sempre. Tubos, guias, buchas e estado interno da forquilha também devem '
+                                'ser verificados. Se estas peças estiverem gastas, os retentores novos podem '
+                                'voltar a falhar.'},
+                          {'q': 'Porque é importante a viscosidade do óleo da forquilha?',
+                           'a': 'O óleo controla o amortecimento. A viscosidade errada pode tornar a '
+                                'forquilha demasiado mole, dura, lenta ou inconsistente.'},
+                          {'q': 'Porque é importante o nível de óleo?',
+                           'a': 'O nível de óleo altera a câmara de ar dentro da forquilha. Isso influencia '
+                                'o suporte na travagem e em compressão profunda. Um nível incorreto pode '
+                                'mudar muito a sensação da frente.'},
+                          {'q': 'O serviço da forquilha afeta a travagem?',
+                           'a': 'Sim. A forquilha controla a carga no pneu dianteiro durante a travagem. Uma '
+                                'forquilha em mau estado pode tornar a travagem menos estável e '
+                                'previsível.'}]},
+          'uk': {'eyebrow': 'Гайд майстерні · 18 червня 2026',
+                 'publishedLabel': 'Опубліковано 18 червня 2026',
+                 'breadHome': 'Головна',
+                 'breadBlog': 'Блог',
+                 'introTitle': 'Сервіс вилки — це керованість',
+                 'videoEyebrow': 'Відео з майстерні',
+                 'videoTitle': 'Дивіться обслуговування передньої вилки',
+                 'videoText': 'Короткий погляд на сервіс вилки: олива, перевірка сальників, внутрішнє '
+                              'очищення і точне налаштування як єдина система керованості.',
+                 'videoLink': 'Відкрити на YouTube',
+                 'faqTitle': 'FAQ щодо обслуговування передньої вилки',
+                 'ctaEyebrow': 'Потрібен сервіс вилки?',
+                 'ctaTitle': 'Запишіться на діагностику передньої вилки.',
+                 'btnWA': 'WhatsApp',
+                 'btnBack': 'Назад до блогу',
+                 'imageAlt': 'Обкладинка статті про обслуговування передньої вилки: сервіс оливи та робота з '
+                             'пером вилки в майстерні Iron Custom Motors.',
+                 'imageCaption': 'Обслуговування передньої вилки в Iron Custom Motors: сальники, напрямні, '
+                                 'чисті внутрішні деталі, правильна олива і точний рівень.',
+                 'h1': 'Обслуговування передньої вилки:<br/><span class="accent">контроль починається '
+                       'спереду.</span>',
+                 'h1Crumb': 'Обслуговування передньої вилки: контроль починається спереду',
+                 'lede': 'Передня вилка рідко виходить з ладу без попередження. Зазвичай мотоцикл спочатку '
+                         'просто починає відчуватися трохи інакше. Перед сильніше клює під час гальмування. '
+                         'Мотоцикл стає менш точним у поворотах. На одному пері з’являється масляна плівка. '
+                         'На нерівностях чути легкий стук. Або переднє колесо вже не дає тієї впевненості, '
+                         'що раніше. Багато райдерів спочатку думають про шини, гальма або балансування. '
+                         'Іноді причина справді там. Але дуже часто передня вилка теж є частиною проблеми.',
+                 'intro': {'title': 'Сервіс вилки — це керованість',
+                           'paragraphs': ['Вилка — це не просто дві труби, які тримають колесо. Вона '
+                                          'відповідає за стабільність під час гальмування, точність керма, '
+                                          'контакт шини з дорогою і впевненість райдера. Тому правильне '
+                                          'обслуговування вилки — це не лише заміна сальників. Це '
+                                          'діагностика, очищення, перевірка деталей, правильні сальники й '
+                                          'напрямні, правильна олива і точний рівень оливи.',
+                                          'В Iron Custom Motors ми ставимося до обслуговування передньої '
+                                          'вилки як до роботи з керованістю та безпекою.']},
+                 'sections': [{'title': 'Чому це важливо',
+                               'paragraphs': ['Передня вилка підтримує перед мотоцикла, поглинає нерівності '
+                                              'та контролює поведінку байка під час гальмування. Коли вона '
+                                              'працює правильно, мотоцикл чітко повертає, стабільно гальмує '
+                                              'і впевнено тримає дорогу.',
+                                              'Коли вилка втомлена, симптоми можуть бути непомітними:',
+                                              'У Cascais та Lisbon мотоцикли працюють у змішаних умовах: '
+                                              'місто, лежачі поліцейські, прибережні дороги, вологість, '
+                                              'морське повітря і поїздки на вихідних. Вилка працює постійно, '
+                                              'навіть коли райдер про це не думає.'],
+                               'bullets': ['надмірний клювок під час гальмування;',
+                                           'нечітке кермування;',
+                                           'жорстка робота на дрібних нерівностях;',
+                                           'стукіт або клацання спереду;',
+                                           'олива біля сальника;',
+                                           'нерівномірний знос передньої шини;',
+                                           'нестабільність під час гальмування або в повороті.']},
+                              {'title': 'Сальники — лише видима частина проблеми',
+                               'paragraphs': ['Сальник, що потік, легко помітити, але сам сальник не завжди '
+                                              'є головною причиною.',
+                                              'Сальники можуть виходити з ладу через вік, бруд, засохлі '
+                                              'забруднення, корозію, сколи на пері, пошкоджену трубу або '
+                                              'зношені внутрішні напрямні. Якщо замінити лише сальник і не '
+                                              'знайти причину, новий сальник може знову потекти.',
+                                              'Тому перед складанням ми перевіряємо пера, пильники, '
+                                              'посадкові місця, стопорні зони та робочі поверхні.']},
+                              {'title': 'Напрямні мають значення',
+                               'paragraphs': ['Всередині вилки напрямні та втулки контролюють, наскільки '
+                                              'рівно і плавно рухаються труби. Райдер їх не бачить, але вони '
+                                              'впливають на ресурс сальників, вирівнювання вилки, '
+                                              'стабільність під час гальмування і роботу підвіски.',
+                                              'Якщо напрямні зношені, з’являється люфт або зайве тертя. Нові '
+                                              'сальники у вилці зі зношеними напрямними — це не повноцінний '
+                                              'ремонт. Коли потрібно, ми міняємо сальники й напрямні разом, '
+                                              'щоб вилка працювала як чиста і точна ковзна система.']},
+                              {'title': 'Олива у вилці: правильна в’язкість, а не звичка',
+                               'paragraphs': ['Олива у вилці — це не просто рідина всередині. Вона є '
+                                              'частиною системи демпфування.',
+                                              'Якщо олива занадто рідка для конкретного мотоцикла, вилка '
+                                              'може бути м’якою, розхлябаною і недостатньо демпфованою. Якщо '
+                                              'занадто густа — вона може працювати жорстко, повільно або '
+                                              'липко на дрібних нерівностях.',
+                                              'Правильна в’язкість залежить від мотоцикла, конструкції '
+                                              'вилки, ваги райдера, стилю їзди та специфікації виробника. '
+                                              'Тому ми не обираємо оливу “за звичкою”. Ми використовуємо '
+                                              'правильну специфікацію для конкретного мотоцикла і фактичної '
+                                              'вилки.']},
+                              {'title': 'Рівень оливи критично важливий',
+                               'paragraphs': ['Рівень оливи у вилці — один із найважливіших моментів цієї '
+                                              'роботи.',
+                                              'Багато хто думає лише про кількість оливи. Насправді рівень, '
+                                              'який часто вимірюється як повітряний зазор, змінює поведінку '
+                                              'вилки, особливо наприкінці ходу.',
+                                              'Занадто високий рівень може зробити вилку жорсткою і '
+                                              'підвищити внутрішній тиск. Занадто низький — зменшити '
+                                              'підтримку, посилити клювок і сприяти пробою.',
+                                              'Правильний рівень залежить від конструкції вилки і процедури '
+                                              'обслуговування. Його не можна виставляти “на око”. Обидва '
+                                              'пера мають бути точно виміряні та узгоджені між собою. Кілька '
+                                              'міліметрів можуть змінити відчуття передньої частини.']},
+                              {'title': 'Очищення — частина ремонту',
+                               'paragraphs': ['Під час обслуговування вилки ми не просто зливаємо оливу і '
+                                              'ставимо нові деталі.',
+                                              'Стара олива може містити металевий пил, залишки сальників, '
+                                              'продукти зносу напрямних і бруд. Якщо зібрати вилку брудною, '
+                                              'нова олива швидко забрудниться, а нові деталі зношуватимуться '
+                                              'швидше.',
+                                              'Усі внутрішні деталі потрібно ретельно очистити. У '
+                                              'прибережному кліматі Португалії ми також уважно дивимося на '
+                                              'корозію. Маленька точка іржі на пері може швидко пошкодити '
+                                              'новий сальник.']},
+                              {'title': 'Що райдери часто не помічають',
+                               'bullets': ['Сальник, що потік, може бути симптомом, а не причиною.',
+                                           'Зношені напрямні можуть швидко знищити нові сальники.',
+                                           'Олива у вилці старіє навіть без агресивної їзди.',
+                                           'Рівень оливи змінює підтримку під час гальмування і глибокого '
+                                           'стискання.',
+                                           'Обслуговування вилки впливає на гальма і шини, бо змінює '
+                                           'навантаження на переднє колесо.',
+                                           'Обидва пера мають працювати як пара.']},
+                              {'title': 'Коли варто звернутися до майстерні',
+                               'paragraphs': ['Запишіться на діагностику вилки, якщо помітили:',
+                                              'Підтікання вилкової оливи не можна ігнорувати. Олива біля '
+                                              'переднього колеса і гальм — це питання безпеки.'],
+                               'bullets': ['оливу на пері вилки;',
+                                           'бруд навколо сальника;',
+                                           'надмірний клювок під час гальмування;',
+                                           'стукіт або люфт спереду;',
+                                           'нечітке кермування;',
+                                           'жорсткість на дрібних нерівностях;',
+                                           'незвичний знос передньої шини;',
+                                           'нестабільність під час гальмування;',
+                                           'оливу біля супорта або гальмівного диска.']},
+                              {'title': 'Що ми перевіряємо в Iron Custom Motors',
+                               'paragraphs': ['В Iron Custom Motors обслуговування передньої вилки '
+                                              'починається з діагностики.',
+                                              'Ми перевіряємо пера, сальники, пильники, напрямні, пружини, '
+                                              'стан оливи, корозію і загальну поведінку передньої частини. '
+                                              'Якщо сальники або напрямні зношені, ми міняємо те, що справді '
+                                              'потребує заміни. Перед складанням усі деталі ретельно '
+                                              'очищуються.',
+                                              'Ми використовуємо оливу правильної в’язкості і точно '
+                                              'виставляємо рівень відповідно до специфікації мотоцикла. '
+                                              'Після обслуговування перевіряємо вирівнювання, чистоту, '
+                                              'відсутність підтікань і відчуття передньої частини.',
+                                              'Для кастомних мотоциклів, Harley-Davidson, touring і '
+                                              'преміальних байків ми також дивимося на систему в цілому: '
+                                              'стиль їзди, шини, гальма, задню підвіску, вагу, багаж і '
+                                              'реальні умови експлуатації в Cascais та Lisbon.']},
+                              {'title': 'Висновок',
+                               'paragraphs': ['Обслуговування передньої вилки — це не лише усунення '
+                                              'підтікання оливи.',
+                                              'Свіжі сальники важливі. Хороші напрямні важливі. Чисті '
+                                              'внутрішні деталі важливі. Правильна в’язкість оливи важлива. '
+                                              'Точний рівень оливи дуже важливий.',
+                                              'Передня вилка — це місце, де зустрічаються гальмування, '
+                                              'кермування, підвіска і зчеплення шини з дорогою. Правильне '
+                                              'обслуговування повертає райдеру контроль, впевненість і '
+                                              'відчуття, що мотоцикл знову працює як треба.']}],
+                 'ctaText': 'Якщо ваш мотоцикл занадто сильно клює під час гальмування, нечітко поводиться в '
+                            'поворотах, має оливу на перах або давно не проходив перевірку передньої вилки, '
+                            'запишіться на діагностику в Iron Custom Motors у Cascais. Ми правильно '
+                            'перевіримо систему і обслужимо вилку з потрібними деталями, чистим складанням, '
+                            'правильною оливою і точним рівнем.',
+                 'faqs': [{'q': 'Як зрозуміти, що сальники вилки течуть?',
+                           'a': 'Типові ознаки — олива на пері, вологість біля сальника або бруд, що '
+                                'прилипає до вилки. Якщо підтікання посилюється, воно може вплинути на '
+                                'демпфування і забруднити гальмівні елементи.'},
+                          {'q': 'Чи достатньо просто замінити сальники?',
+                           'a': 'Не завжди. Потрібно перевірити пера, напрямні, втулки і внутрішній стан '
+                                'вилки. Якщо ці деталі зношені, нові сальники можуть знову швидко потекти.'},
+                          {'q': 'Чому важлива в’язкість вилкової оливи?',
+                           'a': 'Вилкова олива відповідає за демпфування. Неправильна в’язкість може зробити '
+                                'вилку занадто м’якою, занадто жорсткою, повільною або нестабільною.'},
+                          {'q': 'Чому важливий рівень оливи?',
+                           'a': 'Рівень оливи змінює повітряну камеру всередині вилки. Це впливає на '
+                                'підтримку під час гальмування і глибокого стискання. Неправильний рівень '
+                                'може сильно змінити відчуття передньої частини.'},
+                          {'q': 'Чи впливає обслуговування вилки на гальмування?',
+                           'a': 'Так. Вилка контролює навантаження передньої шини під час гальмування. '
+                                'Поганий стан вилки може зробити гальмування менш стабільним і '
+                                'передбачуваним.'}]}},
+ 'keywords': {'en': ['front fork service',
+                     'motorcycle fork seals',
+                     'fork oil change',
+                     'motorcycle suspension service',
+                     'fork service Cascais',
+                     'Iron Custom Motors fork service'],
+              'ru': ['обслуживание передней вилки',
+                     'сальники вилки мотоцикла',
+                     'замена масла в вилке',
+                     'сервис подвески мотоцикла',
+                     'сервис вилки Кашкайш',
+                     'Iron Custom Motors вилка'],
+              'pt': ['serviço forquilha dianteira',
+                     'retentores forquilha moto',
+                     'troca óleo forquilha',
+                     'serviço suspensão moto',
+                     'forquilha Cascais',
+                     'Iron Custom Motors forquilha'],
+              'uk': ['обслуговування передньої вилки',
+                     'сальники вилки мотоцикла',
+                     'заміна оливи у вилці',
+                     'сервіс підвіски мотоцикла',
+                     'сервіс вилки Cascais',
+                     'Iron Custom Motors вилка']}}
