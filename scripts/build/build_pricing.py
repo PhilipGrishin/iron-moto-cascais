@@ -12,6 +12,7 @@ from copy import deepcopy
 from bs4 import BeautifulSoup, FeatureNotFound
 
 from pricing_data import LABELS, SECTIONS, LANGS
+from seo_meta import upsert_robots_image_preview
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 TEMPLATE = SITE_ROOT / "motorcycle-service" / "index.html"
@@ -483,6 +484,7 @@ def build_page(lang: str) -> str:
     set_meta(prop="og:locale", content=OG_LOCALES[lang])
     set_meta(name="twitter:title", content=L["page_title"])
     set_meta(name="twitter:description", content=L["page_description"])
+    upsert_robots_image_preview(soup)
 
     # 6) Remove existing JSON-LD; add new one
     for s in soup.head.find_all("script", attrs={"type": "application/ld+json"}):

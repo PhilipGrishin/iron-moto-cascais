@@ -12,11 +12,24 @@ from urllib.parse import urlparse
 
 from bs4 import BeautifulSoup, FeatureNotFound
 
+from seo_meta import robots_has_large_image_preview
+
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
+OWN_HOSTS = {"ironcustommotors.com", "www.ironcustommotors.com"}
 LANGS = ["en", "ru", "uk", "pt"]
 TARGET_LANGS = ["ru", "uk", "pt"]
 LEGAL_PATHS = {"/privacy/", "/cookies/", "/terms/"}
+LOCALIZED_URL_SKIP_PATH_PREFIXES = (
+    "/assets/",
+    "/photos/",
+    "/pricing/files/",
+    "/worker/",
+)
+GLOBAL_SCHEMA_IDS = {
+    f"{DOMAIN}/#business",
+    f"{DOMAIN}/#website",
+}
 
 try:
     BeautifulSoup("", "lxml")
@@ -46,6 +59,8 @@ LOCALIZED_PATHS = {
     "/ducati-service/",
     "/blog/",
     "/blog/revtech-110-oil-service-engine-gearbox-drive/",
+    "/blog/motorcycle-brake-pad-replacement-cascais/",
+    "/blog/front-fork-service-motorcycle-cascais/",
     "/news/",
     "/news/ericeira-kustom-fest-2026/",
     "/news/opens-new-workshop-in-cascais/",
@@ -77,9 +92,15 @@ def srcset_refs(value: str) -> list[str]:
 
 def local_ref_path(ref: str, html_path: Path) -> Path | None:
     ref = ref.strip()
-    if not ref or ref.startswith(("#", "data:", "mailto:", "tel:", "javascript:", "http://", "https://", "//")):
+    if not ref or ref.startswith(("#", "data:", "mailto:", "tel:", "javascript:", "//")):
         return None
     parsed = urlparse(ref)
+    if parsed.scheme in {"http", "https"}:
+        if parsed.netloc not in OWN_HOSTS:
+            return None
+        if not parsed.path:
+            return None
+        return SITE_ROOT / parsed.path.lstrip("/")
     if not parsed.path:
         return None
     if parsed.path.startswith("/"):
@@ -121,6 +142,13 @@ def check_local_assets(soup, html_path: Path) -> list[str]:
         rel = {str(item).lower() for item in link.get("rel", [])}
         if rel & {"stylesheet", "preload", "modulepreload", "icon", "apple-touch-icon", "manifest"}:
             issue = check_ref_exists(link["href"], html_path, "link[href]")
+            if issue:
+                issues.append(issue)
+
+    for meta in soup.find_all("meta"):
+        key = str(meta.get("property") or meta.get("name") or "").lower()
+        if key in {"og:image", "twitter:image"} and meta.get("content"):
+            issue = check_ref_exists(meta["content"], html_path, f"meta[{key}]")
             if issue:
                 issues.append(issue)
 
@@ -175,6 +203,17 @@ def parse_jsonld(soup) -> tuple[list[object], list[str]]:
     return blocks, errors
 
 
+def jsonld_strings(value):
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, list):
+        for item in value:
+            yield from jsonld_strings(item)
+    elif isinstance(value, dict):
+        for item in value.values():
+            yield from jsonld_strings(item)
+
+
 def schema_contains_type(value, schema_type: str) -> bool:
     if isinstance(value, list):
         return any(schema_contains_type(item, schema_type) for item in value)
@@ -193,6 +232,84 @@ def expected_url(lang: str, canonical_path: str) -> str:
     if lang == "en":
         return f"{DOMAIN}/{suffix}"
     return f"{DOMAIN}/{lang}/{suffix}"
+
+
+def check_jsonld_localized_urls(blocks: list[object], lang: str) -> list[str]:
+    issues = []
+    for value in jsonld_strings(blocks):
+        if not value.startswith(f"{DOMAIN}/"):
+            continue
+        if value in GLOBAL_SCHEMA_IDS:
+            continue
+        parsed = urlparse(value)
+        path = parsed.path or "/"
+        if any(path.startswith(prefix) for prefix in LOCALIZED_URL_SKIP_PATH_PREFIXES):
+            continue
+        if lang == "en":
+            if re.match(r"^/(ru|uk|pt)(/|$)", path):
+                issues.append(f"English JSON-LD points to localized URL {value}")
+            continue
+        if path == f"/{lang}" or path.startswith(f"/{lang}/"):
+            continue
+        issues.append(f"localized JSON-LD points outside /{lang}/: {value}")
+    return issues
+
+
+def check_jsonld_assets(blocks: list[object], html_path: Path) -> list[str]:
+    issues = []
+    for value in jsonld_strings(blocks):
+        if not value.startswith(f"{DOMAIN}/"):
+            continue
+        parsed = urlparse(value)
+        if any(parsed.path.startswith(prefix) for prefix in LOCALIZED_URL_SKIP_PATH_PREFIXES):
+            issue = check_ref_exists(value, html_path, "JSON-LD asset")
+            if issue:
+                issues.append(issue)
+    return issues
+
+
+def clean_text(value: str) -> str:
+    return re.sub(r"\s+", " ", value or "").strip()
+
+
+def extract_inline_i18n(soup, lang: str) -> dict:
+    for script in soup.find_all("script"):
+        txt = script.string or ""
+        match = re.search(r"window\.ICM_I18N_PAGE\s*=\s*(\{.*?\});", txt, re.DOTALL)
+        if not match:
+            continue
+        try:
+            page_i18n = json.loads(match.group(1))
+            return page_i18n.get(lang, {})
+        except json.JSONDecodeError:
+            return {}
+    return {}
+
+
+def translation_dict_for_soup(soup, lang: str) -> dict:
+    i18n_path = SITE_ROOT / "scripts" / "build" / "i18n.json"
+    main_i18n = json.loads(i18n_path.read_text(encoding="utf-8"))
+    return {**main_i18n.get(lang, {}), **extract_inline_i18n(soup, lang)}
+
+
+def html_fragment_text(fragment: str) -> str:
+    return clean_text(BeautifulSoup(fragment, HTML_PARSER).get_text(" ", strip=True))
+
+
+def check_i18n_html_prerender(soup, lang: str) -> list[str]:
+    issues = []
+    dictionary = translation_dict_for_soup(soup, lang)
+    for el in soup.find_all(attrs={"data-i18n-html": True}):
+        key = el["data-i18n-html"]
+        expected = dictionary.get(key)
+        if expected is None:
+            issues.append(f"data-i18n-html missing translation key {key}")
+            continue
+        actual_text = clean_text(el.get_text(" ", strip=True))
+        expected_text = html_fragment_text(expected)
+        if actual_text != expected_text:
+            issues.append(f"data-i18n-html not pre-rendered for {key}: {actual_text!r} != {expected_text!r}")
+    return issues
 
 
 def check_internal_links(soup, lang: str) -> list[str]:
@@ -229,6 +346,8 @@ def validate_page(url: str) -> list[str]:
     meta_desc = soup.find("meta", attrs={"name": "description"})
     if meta_desc is None or not meta_desc.get("content", "").strip():
         issues.append("missing meta description")
+    if not robots_has_large_image_preview(soup):
+        issues.append("missing robots max-image-preview:large")
     canonical = soup.find("link", attrs={"rel": "canonical"})
     if canonical is None:
         issues.append("missing canonical")
@@ -251,7 +370,10 @@ def validate_page(url: str) -> list[str]:
         issues.append("missing JSON-LD")
     elif canonical_path not in LEGAL_PATHS and not schema_contains_type(jsonld_blocks, "BreadcrumbList"):
         issues.append("missing BreadcrumbList JSON-LD")
+    issues.extend(check_jsonld_localized_urls(jsonld_blocks, lang))
+    issues.extend(check_jsonld_assets(jsonld_blocks, html_path))
 
+    issues.extend(check_i18n_html_prerender(soup, lang))
     issues.extend(check_internal_links(soup, lang))
     issues.extend(check_local_assets(soup, html_path))
     return [f"{url}: {issue}" for issue in issues]

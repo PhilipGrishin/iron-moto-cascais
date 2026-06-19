@@ -171,6 +171,7 @@ def head(slug, lang):
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#0a0a0a" name="theme-color"/>
+<meta content="max-image-preview:large" name="robots"/>
 <title>{meta["title"]}</title>
 <meta content="{meta["description"]}" name="description"/>
 <link href="{canonical}" rel="canonical"/>

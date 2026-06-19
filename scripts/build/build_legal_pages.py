@@ -10,6 +10,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup, FeatureNotFound
 
 from legal_pages_data import LEGAL_PAGES, PRIVACY_HEAD, COOKIES_HEAD, TERMS_HEAD, LAST_UPDATED
+from seo_meta import upsert_robots_image_preview
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
@@ -143,6 +144,7 @@ def build_page(slug, lang):
     upsert_meta(prop="og:locale", content=OG_LOCALES[lang])
     upsert_meta(name="twitter:title", content=head_meta["title"])
     upsert_meta(name="twitter:description", content=head_meta["description"])
+    upsert_robots_image_preview(chrome)
 
     # Canonical
     can = head.find("link", attrs={"rel":"canonical"})

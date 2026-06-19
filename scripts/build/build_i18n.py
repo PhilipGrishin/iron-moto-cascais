@@ -17,6 +17,7 @@ from copy import deepcopy
 from bs4 import BeautifulSoup, FeatureNotFound, NavigableString
 
 from page_meta import PAGE_META, PROJECT_NAMES, OG_LOCALES
+from seo_meta import upsert_robots_image_preview
 
 # --------- Paths ---------
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -509,6 +510,7 @@ def localize_page(en_html: str, lang: str, page_id: str, *, project_name=None) -
 
     # 8. Optional: update og:locale:alternate entries for English locale
     # (kept on home page only — handled via upsert above)
+    upsert_robots_image_preview(soup)
 
     return str(soup)
 
@@ -536,6 +538,7 @@ def update_en_page(en_html: str, page_id: str, project_name=None) -> str:
             t.attrs["property"] = "og:locale:alternate"
             t.attrs["content"] = OG_LOCALES[lang]
             soup.head.append(t)
+    upsert_robots_image_preview(soup)
     return str(soup)
 
 

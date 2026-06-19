@@ -46,10 +46,11 @@ python3 -m pip install -r requirements.txt
 | `nav_patch.py` | Rewrites primary nav and footer on every EN page |
 | `localize_internal_links.py` | Rewrites internal links in `/ru/`, `/uk/`, `/pt/` pages so they point inside the same language subtree |
 | `add_image_dims.py` | Adds `width`/`height` attributes to every `<img>` based on the real image file |
+| `apply_seo_meta.py` | Applies shared SEO meta invariants, including `max-image-preview:large`, to every HTML file |
 | `build_sitemap.py` | Regenerates `sitemap.xml` with all 4 languages |
 | `build_reviews_schema.py` | Pulls fresh Google reviews via the Cloudflare Worker and injects `AggregateRating` + `Review` JSON-LD into the home pages |
 | `extract_i18n.js` | Reads `assets/main.js` and writes `scripts/build/i18n.json` (consumed by `build_i18n.py`) |
-| `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD and localized internal links |
+| `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD, localized internal links, SEO robots meta and local assets |
 
 ### Data
 
@@ -86,6 +87,7 @@ python3 scripts/build/enhance_project_pages.py
 python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/add_image_dims.py
+python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/validate_seo.py
 ```
@@ -99,6 +101,7 @@ reviews snapshot is needed, because it calls the Cloudflare Worker.
 node   scripts/build/extract_i18n.js
 python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
+python3 scripts/build/apply_seo_meta.py
 # bump cache-bust query in HTML
 ```
 
@@ -111,6 +114,7 @@ python3 scripts/build/enhance_money_pages.py
 python3 scripts/build/enhance_project_pages.py
 python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
+python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/validate_seo.py
 # bump cache-bust
@@ -125,6 +129,7 @@ python3 scripts/build/nav_patch.py
 python3 scripts/build/enhance_money_pages.py
 python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
+python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/validate_seo.py
 # bump cache-bust
@@ -157,6 +162,7 @@ python3 scripts/build/build_news.py
 # 6. Add it to localize_internal_links.py LOCALIZED_PATHS
 python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
+python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/validate_seo.py
 # bump cache-bust
@@ -176,6 +182,7 @@ python3 scripts/build/build_blog.py
 python3 scripts/build/nav_patch.py
 python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
+python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/validate_seo.py
 # bump cache-bust if assets/main.css or assets/main.js changed

@@ -132,6 +132,7 @@ def head(slug_for_url, lang, head_meta, json_ld_blocks, og_image=None, og_type="
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#0a0a0a" name="theme-color"/>
+<meta content="max-image-preview:large" name="robots"/>
 <title>{h(head_meta["title"])}</title>
 <meta content="{a(head_meta["description"])}" name="description"/>
 <link href="{canonical}" rel="canonical"/>
