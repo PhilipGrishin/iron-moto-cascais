@@ -20,6 +20,7 @@ OWN_HOSTS = {"ironcustommotors.com", "www.ironcustommotors.com"}
 LANGS = ["en", "ru", "uk", "pt"]
 TARGET_LANGS = ["ru", "uk", "pt"]
 LEGAL_PATHS = {"/privacy/", "/cookies/", "/terms/"}
+GOOGLE_SITE_VERIFICATION = "jEDdF1jlSckwwEuSXOJCd1jvUmrEG--kgn_xfhzF3eg"
 LOCALIZED_URL_SKIP_PATH_PREFIXES = (
     "/assets/",
     "/photos/",
@@ -346,6 +347,12 @@ def validate_page(url: str) -> list[str]:
     meta_desc = soup.find("meta", attrs={"name": "description"})
     if meta_desc is None or not meta_desc.get("content", "").strip():
         issues.append("missing meta description")
+    if lang == "en" and canonical_path == "/":
+        verification = soup.find("meta", attrs={"name": "google-site-verification"})
+        if verification is None:
+            issues.append("missing google-site-verification meta")
+        elif verification.get("content") != GOOGLE_SITE_VERIFICATION:
+            issues.append("google-site-verification content mismatch")
     if not robots_has_large_image_preview(soup):
         issues.append("missing robots max-image-preview:large")
     canonical = soup.find("link", attrs={"rel": "canonical"})
