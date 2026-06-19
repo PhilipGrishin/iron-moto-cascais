@@ -25,10 +25,11 @@ from build_news import (
     SITE_ROOT,
     CACHE_BUST,
 )
+from hero_images import hero_background_css
 
 
 BLOG_CSS = """.subpage.blog-hub{padding:126px 0 58px}
-.blog-hub .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.82) contrast(1.08) brightness(.46);background-image:url('/photos/lounge-1600.jpg')}
+.blog-hub .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.82) contrast(1.08) brightness(.46);""" + hero_background_css('/photos/lounge-1600.jpg') + """}
 .blog-posts{padding:44px 0 12px;background:#0a0a0a;border-top:1px solid var(--border)}
 .blog-grid{display:grid;grid-template-columns:1fr;gap:24px}
 .blog-card{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .25s var(--ease),transform .25s var(--ease)}
@@ -199,7 +200,7 @@ def render_hub():
             hero_img = article_image(data, data["imageHero"])
             posts_html += f'''
 <a class="blog-card" href="/blog/{slug}/">
-<div class="img" style="background-image:url('{hero_img}')"></div>
+<div class="img" style="{hero_background_css(hero_img, 768)}"></div>
 <div class="body">
 <div class="date" data-i18n="blogHub.{slug}.date">{h(body["publishedLabel"])}</div>
 <h3 data-i18n="blogHub.{slug}.title">{h(body["h1Crumb"])}</h3>
@@ -457,7 +458,7 @@ def render_article(slug, article):
     body = f'''<main>
 <article>
 <section class="subpage blog-article">
-<div aria-hidden="true" class="bg" style="background-image:url('{hero_img_path}')"></div>
+<div aria-hidden="true" class="bg" style="{hero_background_css(hero_img_path)}"></div>
 <div aria-hidden="true" class="scrim"></div>
 <div class="container">
 <div class="crumb"><a data-i18n="{pre}.breadHome" href="/">Home</a><span class="sep">→</span><a data-i18n="{pre}.breadBlog" href="/blog/">Blog</a><span class="sep">→</span><span data-i18n="{pre}.h1Crumb">{h(en_body["h1Crumb"])}</span></div>

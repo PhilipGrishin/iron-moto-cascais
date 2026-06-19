@@ -11,10 +11,11 @@ import json
 from pathlib import Path
 
 from brand_pages_data import BRAND_BG, BRAND_HEAD, PAGE_I18N
+from hero_images import hero_background_css
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260617b"
+CACHE_BUST = "20260619a"
 
 # Per-brand prefix mapping (e.g. "bmw-service" → I18N key prefix "bmw")
 BRAND_PREFIX = {
@@ -381,7 +382,7 @@ def render(slug):
 
     body = f'''<main>
 <section class="subpage brand">
-<div aria-hidden="true" class="bg" style="background-image:url('{bg}')"></div>
+<div aria-hidden="true" class="bg" style="{hero_background_css(bg)}"></div>
 <div class="container">
 <div class="crumb"><a data-i18n="{pre}.breadHome" href="/">Home</a><span class="sep">→</span><span data-i18n="{pre}.h1Crumb">{en[f"{pre}.h1Crumb"]}</span></div>
 <div class="h-eyebrow" data-i18n="{pre}.eyebrow" style="margin-bottom:18px">{en[f"{pre}.eyebrow"]}</div>

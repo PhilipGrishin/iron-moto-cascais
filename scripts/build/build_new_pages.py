@@ -14,12 +14,13 @@ import json
 import re
 from pathlib import Path
 
+from hero_images import hero_background_css
 from new_pages_data import PAGE_HEAD_META, PAGE_I18N, PROJECT_TILES, FAQ_QA
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260617b"  # bump on each change to main.css/main.js
+CACHE_BUST = "20260619a"  # bump on each change to main.css/main.js
 GLOBAL_I18N = json.loads((BUILD_DIR / "i18n.json").read_text(encoding="utf-8"))
 
 # ---------- shared chrome fragments ----------
@@ -332,7 +333,7 @@ def render_services():
     ]
 
     extra_css = """.subpage.svc{padding:140px 0 80px}
-.subpage.svc .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.5);background-image:url('/photos/service-action-1600.jpg')}
+.subpage.svc .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.5);""" + hero_background_css('/photos/service-action-1600.jpg') + """}
 .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:40px}
 .svc-card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:34px 30px;display:flex;flex-direction:column;gap:14px;transition:border-color .25s var(--ease),transform .25s var(--ease)}
 .svc-card:hover{border-color:var(--accent);transform:translateY(-2px)}
@@ -483,7 +484,7 @@ def render_projects():
     ]
 
     extra_css = """.subpage.prj{padding:140px 0 80px}
-.subpage.prj .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45);background-image:url('/photos/projects/inspirium-hero-1600.jpg')}
+.subpage.prj .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45);""" + hero_background_css('/photos/projects/inspirium-hero-1600.jpg') + """}
 .awards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px}
 .award{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px 26px}
 .award .num{font-family:'Saira Condensed',sans-serif;font-weight:800;color:var(--accent);font-size:36px;line-height:1;margin-bottom:14px}
@@ -610,7 +611,7 @@ def render_about():
     ]
 
     extra_css = """.subpage.abt{padding:140px 0 80px}
-.subpage.abt .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45);background-image:url('/photos/team-1600.jpg')}
+.subpage.abt .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45);""" + hero_background_css('/photos/team-1600.jpg') + """}
 .values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:30px}
 .value-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 26px}
 .value-card .num{font-family:'Saira Condensed',sans-serif;font-weight:800;color:var(--accent);font-size:30px;line-height:1;margin-bottom:10px}
@@ -781,7 +782,7 @@ def render_community():
     ]
 
     extra_css = """.subpage.comm{padding:140px 0 80px}
-.subpage.comm .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.9) contrast(1.05) brightness(.46);background-image:url('/photos/lounge-1600.jpg')}
+.subpage.comm .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.9) contrast(1.05) brightness(.46);""" + hero_background_css('/photos/lounge-1600.jpg') + """}
 .comm-media{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:36px;align-items:stretch}
 .comm-photo{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);min-height:360px;background:#111}
 .comm-photo img{width:100%;height:100%;object-fit:cover;display:block}
@@ -925,7 +926,7 @@ def render_contact():
     ]
 
     extra_css = """.subpage.ctc{padding:140px 0 80px}
-.subpage.ctc .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45);background-image:url('/photos/exterior-1600.jpg')}
+.subpage.ctc .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45);""" + hero_background_css('/photos/exterior-1600.jpg') + """}
 .ctc-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:30px}
 .ctc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px 28px;display:flex;flex-direction:column;gap:10px}
 .ctc-card .icon{width:36px;height:36px;color:var(--accent);margin-bottom:8px}
@@ -1077,7 +1078,7 @@ def render_faq():
     ]
 
     extra_css = """.subpage.fq{padding:140px 0 80px}
-.subpage.fq .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.5);background-image:url('/photos/service-action-1600.jpg')}
+.subpage.fq .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.5);""" + hero_background_css('/photos/service-action-1600.jpg') + """}
 .faq-list{display:grid;grid-template-columns:1fr;gap:14px;margin-top:30px}
 .faq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
 .faq-item summary{cursor:pointer;list-style:none;padding:22px 26px;display:flex;align-items:flex-start;gap:18px;font-family:'Saira Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(16px,1.4vw,20px);color:#fff;line-height:1.25;letter-spacing:.01em;transition:color .2s var(--ease)}

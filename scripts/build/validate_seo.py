@@ -347,6 +347,8 @@ def validate_page(url: str) -> list[str]:
     meta_desc = soup.find("meta", attrs={"name": "description"})
     if meta_desc is None or not meta_desc.get("content", "").strip():
         issues.append("missing meta description")
+    if soup.find("meta", attrs={"name": "keywords"}) is not None:
+        issues.append("legacy meta keywords present")
     if lang == "en" and canonical_path == "/":
         verification = soup.find("meta", attrs={"name": "google-site-verification"})
         if verification is None:

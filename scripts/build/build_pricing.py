@@ -11,6 +11,7 @@ from pathlib import Path
 from copy import deepcopy
 from bs4 import BeautifulSoup, FeatureNotFound
 
+from hero_images import hero_background_css
 from pricing_data import LABELS, SECTIONS, LANGS
 from seo_meta import upsert_robots_image_preview
 
@@ -270,8 +271,8 @@ def build_pricing_main(lang: str) -> str:
 
 PAGE_STYLE = """
 .pricing-hero{padding:160px 0 80px;min-height:auto}
-.pricing-hero .bg{background-image:url('""" + HERO_BG + """');background-size:cover;background-position:center;filter:saturate(.8) contrast(1.05) brightness(.4)}
-@media (max-width:900px){.pricing-hero .bg{background-image:url('""" + HERO_BG_MOBILE + """')}}
+.pricing-hero .bg{""" + hero_background_css(HERO_BG, 1280) + """;background-size:cover;background-position:center;filter:saturate(.8) contrast(1.05) brightness(.4)}
+@media (max-width:900px){.pricing-hero .bg{""" + hero_background_css(HERO_BG_MOBILE, 768) + """}}
 .pricing-hero .lead{font-family:'Saira',sans-serif;font-size:clamp(16px,1.4vw,19px);line-height:1.65;color:var(--text-dim);max-width:62ch;margin-bottom:28px}
 .pricing-hero .tax-note{margin-top:24px;font-family:'Saira',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
 .pdf-dl svg{stroke:currentColor;flex-shrink:0}

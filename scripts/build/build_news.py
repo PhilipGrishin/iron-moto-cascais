@@ -14,6 +14,7 @@ Author for every article: Iron Custom Motors (per project policy).
 import json
 from pathlib import Path
 
+from hero_images import hero_background_css
 from news_data import (
     NEWS_HUB_META, NEWS_HUB_BODY,
     NEWS_ARTICLES,
@@ -21,7 +22,7 @@ from news_data import (
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260617b"
+CACHE_BUST = "20260619a"
 LANGS = ["en", "ru", "uk", "pt"]
 OG_LOCALE = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
 
@@ -245,7 +246,7 @@ SHARED_STYLES = """.subpage{padding:160px 0 100px;background:#0a0a0a;position:re
 
 # Hub-specific CSS
 HUB_CSS = """.subpage.news-hub{padding:140px 0 70px}
-.news-hub .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.5);background-image:url('/photos/news/news-opening-01-1600.jpg')}
+.news-hub .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.5);""" + hero_background_css('/photos/news/news-opening-01-1600.jpg') + """}
 .news-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-top:30px}
 .news-card{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:border-color .25s var(--ease),transform .25s var(--ease)}
 .news-card:hover{border-color:var(--accent);transform:translateY(-2px)}
@@ -376,7 +377,7 @@ def render_hub():
         })
         articles_html += f'''
 <a class="news-card" href="/news/{slug}/">
-<div class="img" style="background-image:url('{hero_img}')"></div>
+<div class="img" style="{hero_background_css(hero_img, 768)}"></div>
 <div class="body">
 <div class="date">{abody["publishedLabel"]}</div>
 <h3>{abody["h1Crumb"]}</h3>
@@ -442,7 +443,7 @@ def render_hub():
         hero_img = f"{data['imageBase']}-{data['imageHero']:02d}-1600.jpg"
         articles_html_i18n += f'''
 <a class="news-card" href="/news/{slug}/">
-<div class="img" style="background-image:url('{hero_img}')"></div>
+<div class="img" style="{hero_background_css(hero_img, 768)}"></div>
 <div class="body">
 <div class="date" data-i18n="newsHub.{slug}.date">{abody["publishedLabel"]}</div>
 <h3 data-i18n="newsHub.{slug}.title">{abody["h1Crumb"]}</h3>
@@ -579,7 +580,7 @@ def render_article(slug, article):
     body = f'''<main>
 <article>
 <section class="subpage news-article">
-<div aria-hidden="true" class="bg" style="background-image:url('{article['imageBase']}-01-1600.jpg')"></div>
+<div aria-hidden="true" class="bg" style="{hero_background_css(article['imageBase'] + '-01-1600.jpg')}"></div>
 <div aria-hidden="true" class="scrim"></div>
 <div class="container">
 <div class="crumb"><a data-i18n="{pre}.breadHome" href="/">Home</a><span class="sep">→</span><a data-i18n="{pre}.breadNews" href="/news/">News</a><span class="sep">→</span><span data-i18n="{pre}.h1Crumb">{en_body["h1Crumb"]}</span></div>
