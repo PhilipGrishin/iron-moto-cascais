@@ -48,7 +48,7 @@ python3 -m pip install -r requirements.txt
 | `add_image_dims.py` | Adds `width`/`height` attributes to every `<img>` based on the real image file |
 | `apply_seo_meta.py` | Applies shared SEO meta invariants, including `max-image-preview:large`, to every HTML file |
 | `build_sitemap.py` | Regenerates `sitemap.xml` with all 4 languages |
-| `build_reviews_schema.py` | Pulls fresh Google reviews via the Cloudflare Worker and injects `AggregateRating` + `Review` JSON-LD into the home pages |
+| `build_reviews_schema.py` | Pulls fresh Google reviews via the Cloudflare Worker, injects `AggregateRating` + `Review` JSON-LD into the home pages, and refreshes the static reviews HTML fallback |
 | `extract_i18n.js` | Reads `assets/main.js` and writes `scripts/build/i18n.json` (consumed by `build_i18n.py`) |
 | `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD, localized internal links, SEO robots meta and local assets |
 

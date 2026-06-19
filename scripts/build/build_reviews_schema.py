@@ -16,6 +16,7 @@ import json
 import re
 import sys
 import urllib.request
+from html import escape
 from pathlib import Path
 from bs4 import BeautifulSoup
 
@@ -27,6 +28,7 @@ MIN_REVIEW_RATING = 4         # surface only 4★+ reviews
 MIN_TEXT_LEN = 20             # skip 1-2 word reviews
 BUSINESS_ID = "https://ironcustommotors.com/#business"
 ORG_NAME = "Iron Custom Motors"
+STAR_PATH = "M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"
 
 
 def fetch_reviews():
@@ -101,6 +103,109 @@ def build_review_items(data):
         if len(items) >= N_REVIEWS_IN_SCHEMA:
             break
     return items
+
+
+def _stars_svg(rating):
+    filled = round(float(rating or 0))
+    stars = []
+    for i in range(1, 6):
+        class_attr = ' class="dim"' if i > filled else ""
+        stars.append(f'<svg{class_attr} viewBox="0 0 24 24"><path d="{STAR_PATH}"></path></svg>')
+    return "".join(stars)
+
+
+def _initials(name):
+    parts = (name or "").strip().split()
+    letters = "".join(part[:1] for part in parts[:2]).upper()
+    return letters or "IC"
+
+
+def _truncate(text, limit):
+    text = re.sub(r"\s+", " ", (text or "").strip())
+    if len(text) <= limit:
+        return text
+    trimmed = text[:limit].rsplit(" ", 1)[0].rstrip()
+    return f"{trimmed}..."
+
+
+def _static_review_cards(data):
+    reviews = []
+    for review in data.get("reviews", []):
+        text = (_extract_text(review.get("originalText")) or _extract_text(review.get("text"))).strip()
+        if len(text) < MIN_TEXT_LEN:
+            continue
+        reviews.append({
+            "author": _extract_author(review.get("authorAttribution")) or review.get("author") or "Google user",
+            "rating": review.get("rating") or 5,
+            "text": text,
+            "when": review.get("when") or "Google review",
+        })
+
+    reviews.sort(key=lambda r: (-(r["rating"] or 0), -len(r["text"])))
+    cards = []
+    for review in reviews[:3]:
+        author = (review["author"] or "Google user").strip()
+        text = _truncate(review["text"], 380)
+        role = f"Google review · {review['when']}" if review.get("when") else "Google review"
+        cards.append(f'''<article class="review">
+<div class="stars">{_stars_svg(review["rating"])}</div>
+<p>&ldquo;{escape(text)}&rdquo;</p>
+<div class="author"><div class="avatar">{escape(_initials(author))}</div><div class="author-info"><span class="name">{escape(author)}</span><span class="role">{escape(role)}</span></div></div>
+</article>''')
+    return "\n".join(cards)
+
+
+def inject_static_review_fallback(html: str, data: dict) -> tuple[str, bool]:
+    """Patch the no-network HTML fallback so raw HTML and no-JS views do not
+       show placeholder review data."""
+    rating = data.get("rating")
+    total = data.get("total")
+    cards = _static_review_cards(data)
+    if not rating or not total or not cards:
+        return html, False
+
+    new_html = html
+    new_html = re.sub(
+        r'(<span[^>]*id="rsRating"[^>]*>)(.*?)(</span>)',
+        rf"\g<1>{float(rating):.1f}\g<3>",
+        new_html,
+        count=1,
+        flags=re.DOTALL,
+    )
+    new_html = re.sub(
+        r'(<span[^>]*id="rsStars"[^>]*>)(.*?)(</span>)',
+        rf"\g<1>{_stars_svg(rating)}\g<3>",
+        new_html,
+        count=1,
+        flags=re.DOTALL,
+    )
+    new_html = re.sub(
+        r'(<strong[^>]*id="rsTotal"[^>]*>)(.*?)(</strong>)',
+        rf"\g<1>{int(total)}\g<3>",
+        new_html,
+        count=1,
+        flags=re.DOTALL,
+    )
+    new_html = re.sub(
+        r'(<div(?=[^>]*\sid="reviewsSummary")[^>]*?)\s+hidden(?:="")?([^>]*>)',
+        r"\1\2",
+        new_html,
+        count=1,
+    )
+    new_html = re.sub(
+        r'(<div(?=[^>]*\sid="reviewsFoot")[^>]*?)\s+hidden(?:="")?([^>]*>)',
+        r"\1\2",
+        new_html,
+        count=1,
+    )
+    new_html = re.sub(
+        r'(<div class="reviews-row reveal-stagger" id="reviewsRow">\n)(.*?)(\n</div>\n<div class="reviews-foot")',
+        rf"\g<1>{cards}\g<3>",
+        new_html,
+        count=1,
+        flags=re.DOTALL,
+    )
+    return new_html, new_html != html
 
 
 def inject_into_business_graph(html: str, agg: dict, reviews: list[dict]) -> tuple[str, bool]:
@@ -181,7 +286,8 @@ def main():
             continue
         html = p.read_text(encoding="utf-8")
         new_html, ok = inject_into_business_graph(html, agg, reviews)
-        if ok and new_html != html:
+        new_html, fallback_ok = inject_static_review_fallback(new_html, data)
+        if (ok or fallback_ok) and new_html != html:
             p.write_text(new_html, encoding="utf-8")
             patched += 1
             print(f"  patched: {p.relative_to(SITE_ROOT)}")
