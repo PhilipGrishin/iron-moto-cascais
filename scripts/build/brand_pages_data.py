@@ -508,7 +508,7 @@ PAGE_I18N["harley-service"] = {
 
         "hd.introEyebrow": "Why Harleys come to us",
         "hd.introTitle": "Harley is our <em>deepest specialization.</em>",
-        "hd.introP1": "Iron Custom Motors has worked Harley-Davidson platforms for over a decade. Several of our internationally award-winning custom builds — including projects that placed at the AMD World Championship of Custom Bike Building — were Harley-based. That history isn't decoration; it's the reason we know these motorcycles inside-out.",
+        "hd.introP1": "Iron Custom Motors has worked Harley-Davidson platforms for over a decade. Several of our internationally award-winning custom builds — including projects that placed at the AMD World Championship of Custom Bike Building — were Harley-based. That history isn't decoration; it's the reason we know these motorcycles inside-out. You can see that Harley / American custom experience in <a href=\"/projects/joker/\">Joker</a>, <a href=\"/projects/true-religion/\">True Religion</a> and <a href=\"/projects/sturmvogel/\">Sturmvogel</a>.",
         "hd.introP2": "We are an independent Harley-Davidson workshop, and Harley is the brand we work with most. Service, repair, modifications, performance upgrades, full custom — it's not a side gig for us, it's the core of what we do every week.",
         "hd.introP3": "We service every modern platform: Sportster (XL, RH Sportster S, Nightster), Softail family, Dyna (legacy), Touring (Road King, Street Glide, Road Glide, Electra Glide, Tri Glide), V-Rod (legacy) and Pan America. Stock daily commuter or a 2003 Twin Cam with 80,000 miles — we know what your bike needs.",
 
@@ -542,7 +542,7 @@ PAGE_I18N["harley-service"] = {
         "hd.s7t": "Suspension upgrades",
         "hd.s7d": "Öhlins, Progressive, Legend Air, Race Tech — height changes, ride quality fixes, full re-builds.",
         "hd.s8t": "Full custom — frame, paint, hand-built parts",
-        "hd.s8d": "Our championship work. Frame mods, paint, leather, hand-machined components — bring the brief.",
+        "hd.s8d": "Our championship work. Frame mods, paint, leather, hand-machined components — proven on Harley-based builds like <a href=\"/projects/joker/\">Joker</a> and <a href=\"/projects/sturmvogel/\">Sturmvogel</a>. Bring the brief.",
 
         "hd.issuesEyebrow": "Typical Harley issues we know",
         "hd.issuesTitle": "We've seen these <em>a thousand times.</em>",
@@ -608,7 +608,7 @@ PAGE_I18N["harley-service"] = {
 
         "hd.introEyebrow": "Почему Harley — к нам",
         "hd.introTitle": "Harley — наша <em>самая глубокая специализация.</em>",
-        "hd.introP1": "Iron Custom Motors работает с платформами Harley-Davidson более десяти лет. Несколько наших международно признанных кастом-сборок — включая проекты, занимавшие призовые места на AMD World Championship of Custom Bike Building — были на базе Harley. Эта история не для декорации; именно она дала нам понимание этих мотоциклов изнутри.",
+        "hd.introP1": "Iron Custom Motors работает с платформами Harley-Davidson более десяти лет. Несколько наших международно признанных кастом-сборок — включая проекты, занимавшие призовые места на AMD World Championship of Custom Bike Building — были на базе Harley. Эта история не для декорации; именно она дала нам понимание этих мотоциклов изнутри. Этот опыт Harley / American custom виден в проектах <a href=\"/ru/projects/joker/\">Joker</a>, <a href=\"/ru/projects/true-religion/\">True Religion</a> и <a href=\"/ru/projects/sturmvogel/\">Sturmvogel</a>.",
         "hd.introP2": "Мы — независимая мастерская Harley-Davidson, и Harley это бренд, с которым мы работаем больше всего. Сервис, ремонт, модификации, апгрейды производительности, полный кастом — это не побочное направление, это ядро нашей работы каждую неделю.",
         "hd.introP3": "Мы работаем со всеми современными платформами: Sportster (XL, RH Sportster S, Nightster), Softail-семейство, Dyna (legacy), Touring (Road King, Street Glide, Road Glide, Electra Glide, Tri Glide), V-Rod (legacy) и Pan America. Стоковый ежедневник или Twin Cam 2003 года с пробегом 130,000 км — мы понимаем, что нужно вашему мотоциклу.",
 
@@ -642,7 +642,7 @@ PAGE_I18N["harley-service"] = {
         "hd.s7t": "Апгрейды подвески",
         "hd.s7d": "Öhlins, Progressive, Legend Air, Race Tech — смена высоты, улучшение комфорта, полный ребилд.",
         "hd.s8t": "Полный кастом — рама, краска, ручные детали",
-        "hd.s8d": "Наша чемпионская работа. Модификации рамы, краска, кожа, фрезеровка под ТЗ — приносите бриф.",
+        "hd.s8d": "Наша чемпионская работа. Модификации рамы, краска, кожа, фрезеровка под ТЗ — проверено на Harley-based проектах вроде <a href=\"/ru/projects/joker/\">Joker</a> и <a href=\"/ru/projects/sturmvogel/\">Sturmvogel</a>. Приносите бриф.",
 
         "hd.issuesEyebrow": "Типичные болезни Harley",
         "hd.issuesTitle": "Мы это видели <em>тысячу раз.</em>",
@@ -708,7 +708,7 @@ PAGE_I18N["harley-service"] = {
 
         "hd.introEyebrow": "Чому Harley — до нас",
         "hd.introTitle": "Harley — наша <em>найглибша спеціалізація.</em>",
-        "hd.introP1": "Iron Custom Motors працює з платформами Harley-Davidson більше десяти років. Декілька наших міжнародно визнаних кастом-збірок — включаючи проєкти, що посідали призові місця на AMD World Championship of Custom Bike Building — були на базі Harley. Ця історія не для декорації; саме вона дала нам розуміння цих мотоциклів зсередини.",
+        "hd.introP1": "Iron Custom Motors працює з платформами Harley-Davidson більше десяти років. Декілька наших міжнародно визнаних кастом-збірок — включаючи проєкти, що посідали призові місця на AMD World Championship of Custom Bike Building — були на базі Harley. Ця історія не для декорації; саме вона дала нам розуміння цих мотоциклів зсередини. Цей досвід Harley / American custom видно в проєктах <a href=\"/uk/projects/joker/\">Joker</a>, <a href=\"/uk/projects/true-religion/\">True Religion</a> і <a href=\"/uk/projects/sturmvogel/\">Sturmvogel</a>.",
         "hd.introP2": "Ми — незалежна майстерня Harley-Davidson, і Harley це бренд, з яким ми працюємо найбільше. Сервіс, ремонт, модифікації, апґрейди продуктивності, повний кастом — це не побічний напрямок, це ядро нашої роботи щотижня.",
         "hd.introP3": "Працюємо з усіма сучасними платформами: Sportster (XL, RH Sportster S, Nightster), Softail-родина, Dyna (legacy), Touring (Road King, Street Glide, Road Glide, Electra Glide, Tri Glide), V-Rod (legacy) і Pan America. Стоковий щоденник або Twin Cam 2003-го з 130,000 км — ми розуміємо, що потрібно вашому мотоциклу.",
 
@@ -742,7 +742,7 @@ PAGE_I18N["harley-service"] = {
         "hd.s7t": "Апґрейди підвіски",
         "hd.s7d": "Öhlins, Progressive, Legend Air, Race Tech — зміна висоти, покращення комфорту, повний ребілд.",
         "hd.s8t": "Повний кастом — рама, фарба, ручні деталі",
-        "hd.s8d": "Наша чемпіонська робота. Модифікації рами, фарба, шкіра, фрезерування під ТЗ — приносьте бриф.",
+        "hd.s8d": "Наша чемпіонська робота. Модифікації рами, фарба, шкіра, фрезерування під ТЗ — перевірено на Harley-based проєктах на кшталт <a href=\"/uk/projects/joker/\">Joker</a> і <a href=\"/uk/projects/sturmvogel/\">Sturmvogel</a>. Приносьте бриф.",
 
         "hd.issuesEyebrow": "Типові болячки Harley",
         "hd.issuesTitle": "Ми це бачили <em>тисячу разів.</em>",
@@ -808,7 +808,7 @@ PAGE_I18N["harley-service"] = {
 
         "hd.introEyebrow": "Porquê Harley connosco",
         "hd.introTitle": "Harley é a nossa <em>especialização mais profunda.</em>",
-        "hd.introP1": "A Iron Custom Motors trabalha plataformas Harley-Davidson há mais de uma década. Várias das nossas construções custom premiadas internacionalmente — incluindo projetos que ficaram em posições de pódio no AMD World Championship of Custom Bike Building — foram em base Harley. Essa história não é decoração; é a razão pela qual conhecemos estas motos por dentro.",
+        "hd.introP1": "A Iron Custom Motors trabalha plataformas Harley-Davidson há mais de uma década. Várias das nossas construções custom premiadas internacionalmente — incluindo projetos que ficaram em posições de pódio no AMD World Championship of Custom Bike Building — foram em base Harley. Essa história não é decoração; é a razão pela qual conhecemos estas motos por dentro. Essa experiência Harley / American custom aparece em <a href=\"/pt/projects/joker/\">Joker</a>, <a href=\"/pt/projects/true-religion/\">True Religion</a> e <a href=\"/pt/projects/sturmvogel/\">Sturmvogel</a>.",
         "hd.introP2": "Somos uma oficina independente Harley-Davidson, e Harley é a marca com que mais trabalhamos. Serviço, reparação, modificações, upgrades de performance, custom completo — não é um trabalho secundário, é o núcleo do que fazemos todas as semanas.",
         "hd.introP3": "Trabalhamos com todas as plataformas modernas: Sportster (XL, RH Sportster S, Nightster), família Softail, Dyna (legacy), Touring (Road King, Street Glide, Road Glide, Electra Glide, Tri Glide), V-Rod (legacy) e Pan America. Stock daily ou Twin Cam de 2003 com 130,000 km — sabemos o que a sua moto precisa.",
 
@@ -842,7 +842,7 @@ PAGE_I18N["harley-service"] = {
         "hd.s7t": "Upgrades de suspensão",
         "hd.s7d": "Öhlins, Progressive, Legend Air, Race Tech — alterações de altura, melhoria de conforto, reconstrução completa.",
         "hd.s8t": "Custom completo — quadro, pintura, peças à mão",
-        "hd.s8d": "O nosso trabalho campeão. Modificações de quadro, pintura, couro, peças maquinadas à mão — traga o briefing.",
+        "hd.s8d": "O nosso trabalho campeão. Modificações de quadro, pintura, couro, peças maquinadas à mão — provado em projetos Harley-based como <a href=\"/pt/projects/joker/\">Joker</a> e <a href=\"/pt/projects/sturmvogel/\">Sturmvogel</a>. Traga o briefing.",
 
         "hd.issuesEyebrow": "Problemas típicos Harley",
         "hd.issuesTitle": "Já vimos isto <em>mil vezes.</em>",
