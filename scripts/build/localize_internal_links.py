@@ -51,6 +51,16 @@ for proj in ["inspirium", "beckman", "unbreakable", "quanta-r",
              "hellboy", "true-religion"]:
     LOCALIZED_PATHS.add(f"/projects/{proj}/")
 
+LANG_HOME_HREFS = {"/", "/ru/", "/uk/", "/pt/"}
+LANG_HREFLANGS = {"en", "ru", "uk", "pt"}
+
+
+def is_language_switch_link(anchor) -> bool:
+    """Keep explicit language switcher links pointing to their target locale."""
+    href = anchor.get("href")
+    hreflang = anchor.get("hreflang")
+    return href in LANG_HOME_HREFS and hreflang in LANG_HREFLANGS
+
 
 def rewrite_href(href: str, lang: str) -> str:
     """If href points to a path that has a localized version, prepend /lang."""
@@ -81,6 +91,8 @@ def process_file(html_path: Path, lang: str) -> int:
     soup = BeautifulSoup(text, HTML_PARSER)
     changed = 0
     for a in soup.find_all("a", href=True):
+        if is_language_switch_link(a):
+            continue
         new = rewrite_href(a["href"], lang)
         if new != a["href"]:
             a["href"] = new

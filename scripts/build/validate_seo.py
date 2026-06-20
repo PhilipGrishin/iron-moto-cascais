@@ -31,6 +31,8 @@ GLOBAL_SCHEMA_IDS = {
     f"{DOMAIN}/#business",
     f"{DOMAIN}/#website",
 }
+LANG_HOME_HREFS = {"/", "/ru/", "/uk/", "/pt/"}
+LANG_HREFLANGS = {"en", "ru", "uk", "pt"}
 
 try:
     BeautifulSoup("", "lxml")
@@ -319,6 +321,8 @@ def check_internal_links(soup, lang: str) -> list[str]:
     issues = []
     for a in soup.find_all("a", href=True):
         href = a["href"]
+        if href in LANG_HOME_HREFS and a.get("hreflang") in LANG_HREFLANGS:
+            continue
         if href.startswith(("http://", "https://", "mailto:", "tel:", "#", "javascript:")):
             continue
         if href.startswith(("/assets/", "/photos/", "/pricing/files/", "/worker/")):
