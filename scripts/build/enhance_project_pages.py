@@ -113,6 +113,32 @@ RELATED = [
     ("nav.contact", "/contact/", "Contact"),
 ]
 
+PROJECT_TILE_KEYS = {
+    "inspirium": ("projects.p1.title", "projects.p1.desc"),
+    "beckman": ("projects.p2.title", "projects.p2.desc"),
+    "unbreakable": ("projects.p3.title", "projects.p3.desc"),
+    "quanta-r": ("projects.p4.title", "projects.p4.desc"),
+    "burly": ("projects.p5.title", "projects.p5.desc"),
+    "sturmvogel": ("projects.p6.title", "projects.p6.desc"),
+    "geometric": ("projects.p7.title", "projects.p7.desc"),
+    "joker": ("projects.p8.title", "projects.p8.desc"),
+    "hellboy": ("projects.p9.title", "projects.p9.desc"),
+    "true-religion": ("projects.p10.title", "projects.p10.desc"),
+}
+
+RELATED_PROJECTS = {
+    "inspirium": ["beckman", "geometric", "unbreakable"],
+    "beckman": ["inspirium", "sturmvogel", "geometric"],
+    "unbreakable": ["inspirium", "quanta-r", "geometric"],
+    "quanta-r": ["unbreakable", "inspirium", "geometric"],
+    "burly": ["unbreakable", "joker", "true-religion"],
+    "sturmvogel": ["hellboy", "beckman", "geometric"],
+    "geometric": ["inspirium", "beckman", "sturmvogel"],
+    "joker": ["hellboy", "true-religion", "burly"],
+    "hellboy": ["sturmvogel", "joker", "true-religion"],
+    "true-religion": ["joker", "hellboy", "burly"],
+}
+
 
 def parse_html(markup: str) -> BeautifulSoup:
     return BeautifulSoup(markup, HTML_PARSER)
@@ -150,9 +176,21 @@ def sync_en_text(soup):
             replace_html(el, full[key])
 
 
-def related_rows():
+def related_rows(slug: str):
     rows = []
-    for idx, (key, href, fallback) in enumerate(RELATED, start=1):
+    for idx, related_slug in enumerate(RELATED_PROJECTS.get(slug, []), start=1):
+        title_key, desc_key = PROJECT_TILE_KEYS[related_slug]
+        label = GLOBAL_I18N["en"].get(title_key, related_slug.replace("-", " ").title())
+        desc = GLOBAL_I18N["en"].get(desc_key, "")
+        rows.append(f'''<article class="project-enhance-row">
+<span class="num">{idx:02d}</span>
+<div>
+<h4><a data-i18n="{title_key}" href="/projects/{related_slug}/">{label}</a></h4>
+<p data-i18n="{desc_key}">{desc}</p>
+</div>
+</article>''')
+    offset = len(rows)
+    for idx, (key, href, fallback) in enumerate(RELATED, start=offset + 1):
         label = GLOBAL_I18N["en"].get(key, fallback)
         rows.append(f'''<article class="project-enhance-row">
 <span class="num">{idx:02d}</span>
@@ -238,7 +276,7 @@ def enhancement_html(slug: str):
 </div>
 </div>
 <div class="reveal-stagger" style="max-width:900px">
-{related_rows()}
+{related_rows(slug)}
 </div>
 </div>
 </section>'''

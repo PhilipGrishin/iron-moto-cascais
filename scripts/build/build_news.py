@@ -530,6 +530,12 @@ def render_article(slug, article):
         ab = article["body"][lang]
         for k, v in ab.items():
             inline_i18n[lang][f"{pre}.{k}"] = v
+        inline_i18n[lang][f"{pre}.related.readMore"] = NEWS_HUB_BODY[lang]["readMore"]
+        for other_slug, other_data in NEWS_ARTICLES.items():
+            if other_slug == slug:
+                continue
+            inline_i18n[lang][f"{pre}.related.{other_slug}.title"] = other_data["body"][lang]["h1Crumb"]
+            inline_i18n[lang][f"{pre}.related.{other_slug}.excerpt"] = other_data["meta"][lang]["excerpt"]
         inline_i18n[lang].update(NEWS_RELATED_I18N[lang])
 
     # Compose head + override the ICM_I18N_PAGE
@@ -577,6 +583,21 @@ def render_article(slug, article):
 
     sections_html = "\n\n".join(sections_html_parts)
 
+    related_news_cards = ""
+    related_articles = sorted(
+        ((other_slug, other_data) for other_slug, other_data in NEWS_ARTICLES.items() if other_slug != slug),
+        key=lambda x: x[1]["publishedISO"],
+        reverse=True,
+    )
+    for other_slug, other_data in related_articles:
+        related_news_cards += f'''
+<article class="news-related-card">
+<h3 data-i18n="{pre}.related.{other_slug}.title">{other_data["body"]["en"]["h1Crumb"]}</h3>
+<p data-i18n="{pre}.related.{other_slug}.excerpt">{other_data["meta"]["en"]["excerpt"]}</p>
+<a data-i18n="{pre}.related.readMore" href="/news/{other_slug}/">{NEWS_HUB_BODY["en"]["readMore"]}</a>
+</article>
+'''
+
     body = f'''<main>
 <article>
 <section class="subpage news-article">
@@ -612,6 +633,7 @@ def render_article(slug, article):
 </div>
 </div>
 <div class="news-related-grid reveal-stagger">
+{related_news_cards}
 <article class="news-related-card">
 <h3 data-i18n="nav.services">Services</h3>
 <p data-i18n="newsRel.serviceDesc">{NEWS_RELATED_I18N["en"]["newsRel.serviceDesc"]}</p>
