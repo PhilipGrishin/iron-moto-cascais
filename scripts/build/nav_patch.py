@@ -4,7 +4,7 @@ Patch navigation (header + mobile drawer + footer) on every EN page of the
 ICM site so that all anchor-based nav links are replaced with proper URLs.
 
 New nav (everywhere):
-  Services / Projects / Pricing / About / FAQ / Contact
+  Services dropdown / Projects / Blog / News / Community / Pricing / About / FAQ / Contact
 
 Footer "Services" column:
   Motorcycle service & repair → /motorcycle-service/
@@ -84,6 +84,18 @@ PRIMARY_NAV_LINKS = [
     ("nav.contact",  "/contact/",   "Contact"),
 ]
 
+SERVICE_NAV_LINKS = [
+    ("nav.allServices",     "/services/",                "All services"),
+    ("services.s1.title",   "/motorcycle-service/",      "Motorcycle service &amp; repair"),
+    ("services.s2.title",   "/parts/",                   "Parts &amp; consumables"),
+    ("services.s3.title",   "/upgrades-tuning/",         "Upgrades &amp; tuning"),
+    ("services.s4.title",   "/custom/",                  "Custom &amp; special projects"),
+    ("nav.preInsp",        "/pre-purchase-inspection/", "Pre-purchase inspection"),
+    ("nav.bmwServ",        "/bmw-service/",             "BMW Motorrad service"),
+    ("nav.hdServ",         "/harley-service/",          "Harley-Davidson service"),
+    ("nav.ducServ",        "/ducati-service/",          "Ducati service"),
+]
+
 FOOTER_SERVICES_LINKS = [
     ("services.s1.title", "/motorcycle-service/",      "Motorcycle service &amp; repair"),
     ("services.s2.title", "/parts/",                   "Parts &amp; consumables"),
@@ -108,15 +120,46 @@ FOOTER_COMPANY_LINKS = [
 ]
 
 
+def render_service_dropdown():
+    items = []
+    for key, href, label in SERVICE_NAV_LINKS:
+        items.append(f'<a data-i18n="{key}" href="{href}">{label}</a>')
+    menu_html = "\n".join(items)
+    return f'''<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.services" href="/services/">Services</a>
+<div aria-label="Services" class="nav-dropdown-menu">
+{menu_html}
+</div>
+</div>'''
+
+
 def render_primary_nav():
     parts = []
     for key, href, label in PRIMARY_NAV_LINKS:
+        if key == "nav.services":
+            parts.append(render_service_dropdown())
+            continue
         parts.append(f'<a data-i18n="{key}" href="{href}">{label}</a>')
     return "\n".join(parts)
 
 
 def render_mobile_nav():
-    return render_primary_nav()
+    items = []
+    for key, href, label in SERVICE_NAV_LINKS:
+        items.append(f'<a data-i18n="{key}" href="{href}">{label}</a>')
+    subnav_html = "\n".join(items)
+    service_group = f'''<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.services">Services</span></summary>
+<div class="mobile-subnav">
+{subnav_html}
+</div>
+</details>'''
+    parts = [service_group]
+    for key, href, label in PRIMARY_NAV_LINKS:
+        if key == "nav.services":
+            continue
+        parts.append(f'<a data-i18n="{key}" href="{href}">{label}</a>')
+    return "\n".join(parts)
 
 
 def render_footer_services():
