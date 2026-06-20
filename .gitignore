@@ -15,6 +15,10 @@ dist/
 .cache/
 *.log
 
+# Python build/cache files
+__pycache__/
+*.pyc
+
 # Env
 .env
 .env.local

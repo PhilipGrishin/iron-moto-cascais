@@ -13,6 +13,7 @@ root (works from any cwd because paths are absolute).
 - `beautifulsoup4` (HTML parsing/rewriting)
 - `lxml` (recommended for stable HTML rewriting; scripts fall back to Python's built-in `html.parser`)
 - `Pillow` (only for `add_image_dims.py`)
+- `reportlab`, `pdfplumber`, `pypdf` (only for pricing PDF generation and PDF checks)
 - Node.js 14+ (only for `extract_i18n.js`)
 
 ```
@@ -40,6 +41,7 @@ python3 -m pip install -r requirements.txt
 | `build_news.py` | `news/` hub + each `news/<slug>/` article |
 | `build_blog.py` | `blog/` hub + `blog/<slug>/` articles |
 | `build_pricing.py` | `pricing/` in all 4 languages |
+| `build_pricing_pdfs.py` | `pricing/files/*.pdf` downloadable price lists in all 4 languages |
 | `enhance_money_pages.py` | Adds reusable local SEO + related-page blocks to service and brand pages |
 | `enhance_project_pages.py` | Adds reusable highlights + related-page blocks to project detail pages |
 | `build_i18n.py` | `/ru/`, `/uk/`, `/pt/` copies of the EN main pages |
@@ -62,7 +64,7 @@ python3 -m pip install -r requirements.txt
 | `legal_pages_data.py` | `build_legal_pages.py` (Privacy / Cookies / Terms) |
 | `news_data.py` | `build_news.py` (one entry per article slug, 4 languages) |
 | `blog_data.py` | `build_blog.py` (blog hub and posts, 4 languages) |
-| `pricing_data.py` | `build_pricing.py` (LABELS + SECTIONS, 4 languages) |
+| `pricing_data.py` | `build_pricing.py` and `build_pricing_pdfs.py` (LABELS + SECTIONS, 4 languages) |
 | `i18n.json` | A snapshot of the runtime `I18N` object that lives inside `assets/main.js`. Regenerate with `node scripts/build/extract_i18n.js` after editing translations in `main.js`. |
 
 ## Typical sequences
@@ -81,6 +83,7 @@ python3 scripts/build/build_legal_pages.py
 python3 scripts/build/build_news.py
 python3 scripts/build/build_blog.py
 python3 scripts/build/build_pricing.py
+python3 scripts/build/build_pricing_pdfs.py
 python3 scripts/build/nav_patch.py
 python3 scripts/build/enhance_money_pages.py
 python3 scripts/build/enhance_project_pages.py
@@ -186,6 +189,15 @@ python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/validate_seo.py
 # bump cache-bust if assets/main.css or assets/main.js changed
+```
+
+### After editing pricing data
+
+```
+python3 scripts/build/build_pricing.py
+python3 scripts/build/build_pricing_pdfs.py
+python3 scripts/build/build_sitemap.py
+python3 scripts/build/validate_seo.py
 ```
 
 ### After regenerating Google reviews snapshot

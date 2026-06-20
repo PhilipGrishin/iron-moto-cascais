@@ -395,9 +395,9 @@ SEC_04 = {
             "pt": ["Operação", "Street / Sport / Naked", "Chopper / Touring", "Custom"],
         },
         "rows": [
-            [{"en":"Front wheel","ru":"Переднее колесо","uk":"Переднє колесо","pt":"Roda dianteira"}, "40", "80", "100+"],
-            [{"en":"Rear wheel","ru":"Заднее колесо","uk":"Заднє колесо","pt":"Roda traseira"}, "60", "100", "100+"],
-            [{"en":"Front + rear set","ru":"Комплект перёд + зад","uk":"Комплект перед + зад","pt":"Conjunto frente + trás"}, "90", "150", "200+"],
+            [{"en":"Front wheel","ru":"Переднее колесо","uk":"Переднє колесо","pt":"Roda dianteira"}, "40+", "80+", "100+"],
+            [{"en":"Rear wheel","ru":"Заднее колесо","uk":"Заднє колесо","pt":"Roda traseira"}, "60+", "100+", "100+"],
+            [{"en":"Front + rear set","ru":"Комплект перёд + зад","uk":"Комплект перед + зад","pt":"Conjunto frente + trás"}, "90+", "150+", "200+"],
             [{"en":"Puncture repair","ru":"Ремонт проколов","uk":"Ремонт проколів","pt":"Reparação de furos"}, "40+", "40+", "40+"],
         ],
         "note": {"en":"All prices in euro.","ru":"Все цены в евро.","uk":"Усі ціни в євро.","pt":"Todos os preços em euro."},
@@ -405,7 +405,7 @@ SEC_04 = {
     "chain": {
         "name": {"en":"Chain clean, lube & adjust","ru":"Чистка, смазка и регулировка цепи","uk":"Чищення, змащення та регулювання ланцюга","pt":"Limpeza, lubrificação e regulação da corrente"},
         "desc": {"en":"Complete chain-drive care — extends chain and sprocket life","ru":"Комплексный уход за цепным приводом — продлевает ресурс цепи и звёзд","uk":"Комплексний догляд за ланцюговим приводом — подовжує ресурс ланцюга та зірок","pt":"Cuidado completo da transmissão — prolonga a vida da corrente e cremalheiras"},
-        "price": "50 EUR",
+        "price": "40 EUR",
         "note": {
             "en": "The chain rewards regularity. Timely care noticeably extends the life of the chain and sprockets — one of the cheapest preventive jobs in the price list. A neglected chain-and-sprocket set costs many times more.",
             "ru": "Цепь любит регулярность. Своевременный уход заметно продлевает ресурс цепи и звёзд — одна из самых недорогих профилактических работ в прайсе. Запущенный комплект цепь–звёзды обходится в разы дороже.",
