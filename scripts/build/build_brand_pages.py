@@ -15,7 +15,7 @@ from hero_images import hero_background_css
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260619a"
+CACHE_BUST = "20260620c"
 
 # Per-brand prefix mapping (e.g. "bmw-service" → I18N key prefix "bmw")
 BRAND_PREFIX = {
@@ -30,6 +30,96 @@ BRAND_NAME = {
     "harley-service": "Harley-Davidson",
     "ducati-service": "Ducati",
 }
+
+RELATED_LINKS = {
+    "bmw-service": [
+        ("services.s1.title", "/motorcycle-service/", "Motorcycle service &amp; repair"),
+        ("services.s2.title", "/parts/", "Parts &amp; consumables"),
+        ("nav.pricing", "/pricing/", "Pricing"),
+        ("nav.community", "/community/", "Community"),
+    ],
+    "harley-service": [
+        ("services.s1.title", "/motorcycle-service/", "Motorcycle service &amp; repair"),
+        ("services.s4.title", "/custom/", "Custom &amp; special projects"),
+        ("nav.projects", "/projects/", "Projects"),
+        ("nav.pricing", "/pricing/", "Pricing"),
+    ],
+    "ducati-service": [
+        ("services.s1.title", "/motorcycle-service/", "Motorcycle service &amp; repair"),
+        ("services.s3.title", "/upgrades-tuning/", "Upgrades &amp; tuning"),
+        ("services.s2.title", "/parts/", "Parts &amp; consumables"),
+        ("nav.pricing", "/pricing/", "Pricing"),
+    ],
+}
+
+SEO_I18N = {
+    "en": {
+        "seo.localEyebrow": "Local service area",
+        "seo.localTitle": "Serving Cascais, Lisbon <em>and Greater Lisbon.</em>",
+        "seo.localLead": "Iron Custom Motors is based in São Domingos de Rana, Cascais. We work with riders from Cascais, Estoril, Oeiras, Sintra, Lisbon and the wider Greater Lisbon area.",
+        "seo.area1t": "Cascais workshop",
+        "seo.area1d": "A real workshop and client lounge, not a remote parts counter. Book service, drop off the bike, or visit to discuss a project.",
+        "seo.area2t": "Multilingual process",
+        "seo.area2d": "English, Russian, Ukrainian and Portuguese communication with written estimates and clear next steps.",
+        "seo.area3t": "One accountable path",
+        "seo.area3d": "Diagnostics, parts sourcing, installation, upgrades and follow-up happen under one workshop standard.",
+        "seo.relatedEyebrow": "Related workshop paths",
+        "seo.relatedTitle": "Continue through the <em>same service system.</em>",
+        "seo.relatedLead": "These pages connect the most common next steps: service, parts, upgrades, pricing, brand-specific help and the rider lounge.",
+        "seo.relatedText": "Open the related page for details, process, pricing context and booking options.",
+    },
+    "ru": {
+        "seo.localEyebrow": "Локальная зона сервиса",
+        "seo.localTitle": "Работаем для Cascais, Lisbon <em>и Большого Лиссабона.</em>",
+        "seo.localLead": "Iron Custom Motors находится в São Domingos de Rana, Cascais. Мы работаем с райдерами из Cascais, Estoril, Oeiras, Sintra, Lisbon и всего Greater Lisbon.",
+        "seo.area1t": "Мастерская в Cascais",
+        "seo.area1d": "Реальная мастерская и клиентский lounge, а не удалённая стойка запчастей. Можно записаться на сервис, оставить мотоцикл или приехать обсудить проект.",
+        "seo.area2t": "Процесс на вашем языке",
+        "seo.area2d": "Английский, русский, украинский и португальский, письменные сметы и понятные следующие шаги.",
+        "seo.area3t": "Одна точка ответственности",
+        "seo.area3d": "Диагностика, подбор запчастей, установка, апгрейды и сопровождение идут по одному стандарту мастерской.",
+        "seo.relatedEyebrow": "Связанные направления",
+        "seo.relatedTitle": "Двигайтесь дальше в <em>той же сервисной системе.</em>",
+        "seo.relatedLead": "Эти страницы связывают самые частые следующие шаги: сервис, запчасти, апгрейды, цены, брендовые страницы и rider lounge.",
+        "seo.relatedText": "Откройте связанную страницу, чтобы увидеть детали, процесс, контекст цены и варианты записи.",
+    },
+    "uk": {
+        "seo.localEyebrow": "Локальна зона сервісу",
+        "seo.localTitle": "Працюємо для Cascais, Lisbon <em>і Великого Лісабона.</em>",
+        "seo.localLead": "Iron Custom Motors знаходиться у São Domingos de Rana, Cascais. Ми працюємо з райдерами з Cascais, Estoril, Oeiras, Sintra, Lisbon і всього Greater Lisbon.",
+        "seo.area1t": "Майстерня у Cascais",
+        "seo.area1d": "Реальна майстерня і клієнтський lounge, а не віддалена стійка запчастин. Можна записатися на сервіс, залишити мотоцикл або приїхати обговорити проєкт.",
+        "seo.area2t": "Процес вашою мовою",
+        "seo.area2d": "Англійська, російська, українська і португальська, письмові кошториси і зрозумілі наступні кроки.",
+        "seo.area3t": "Одна точка відповідальності",
+        "seo.area3d": "Діагностика, підбір запчастин, встановлення, апґрейди і супровід ідуть за одним стандартом майстерні.",
+        "seo.relatedEyebrow": "Пов'язані напрямки",
+        "seo.relatedTitle": "Рухайтесь далі у <em>тій самій системі сервісу.</em>",
+        "seo.relatedLead": "Ці сторінки пов'язують найчастіші наступні кроки: сервіс, запчастини, апґрейди, ціни, брендові сторінки і rider lounge.",
+        "seo.relatedText": "Відкрийте пов'язану сторінку, щоб побачити деталі, процес, контекст ціни і варіанти запису.",
+    },
+    "pt": {
+        "seo.localEyebrow": "Área local de serviço",
+        "seo.localTitle": "Servimos Cascais, Lisboa <em>e a Grande Lisboa.</em>",
+        "seo.localLead": "A Iron Custom Motors fica em São Domingos de Rana, Cascais. Trabalhamos com riders de Cascais, Estoril, Oeiras, Sintra, Lisboa e toda a Grande Lisboa.",
+        "seo.area1t": "Oficina em Cascais",
+        "seo.area1d": "Uma oficina real com lounge para clientes, não um balcão remoto de peças. Marque serviço, deixe a moto ou visite para discutir um projeto.",
+        "seo.area2t": "Processo multilingue",
+        "seo.area2d": "Comunicação em inglês, russo, ucraniano e português, com orçamentos escritos e próximos passos claros.",
+        "seo.area3t": "Uma rota responsável",
+        "seo.area3d": "Diagnóstico, sourcing de peças, instalação, upgrades e acompanhamento seguem o mesmo padrão de oficina.",
+        "seo.relatedEyebrow": "Caminhos relacionados",
+        "seo.relatedTitle": "Continue no <em>mesmo sistema de serviço.</em>",
+        "seo.relatedLead": "Estas páginas ligam os próximos passos mais comuns: serviço, peças, upgrades, preços, ajuda por marca e rider lounge.",
+        "seo.relatedText": "Abra a página relacionada para detalhes, processo, contexto de preço e opções de marcação.",
+    },
+}
+
+def page_i18n_for(slug):
+    return {
+        lang: {**values, **SEO_I18N[lang]}
+        for lang, values in PAGE_I18N[slug].items()
+    }
 
 LOGO_SVG = """<svg aria-hidden="true" class="logo-svg" viewbox="0 0 270.91 46.88" xmlns="http://www.w3.org/2000/svg">
 <g fill="#fff"><path d="M18.01,28.94v-10.44h2.16v10.44h-2.16Z"></path><path d="M32.75,28.94v-3.3c0-.47-.37-.83-.83-.83h-8.16v4.13h-2.16v-10.44h10.31c1.13,0,2.05.6,2.59,1.49.27.47.41,1.07.41,1.67,0,.85-.26,1.53-.69,2.05.44.53.69,1.17.69,1.91v3.31h-2.15ZM32.5,22.41c.17-.17.25-.46.25-.75s-.09-.58-.25-.75c-.17-.16-.36-.24-.59-.24h-8.14v1.97h8.14c.23,0,.42-.08.59-.24Z"></path><path d="M39.32,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM48.41,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"></path><path d="M63.45,28.94v-7.45c0-.45-.36-.83-.83-.83h-8.46v8.27h-2.16v-10.44h10.62c1.69,0,2.98,1.36,2.98,2.97v7.46h-2.15Z"></path><path d="M74.32,28.94c-1.69,0-2.99-1.37-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h7.64c1.69,0,2.99,1.36,2.99,2.99v.19h-2.17v-.19c0-.47-.36-.82-.82-.82h-7.64c-.46,0-.83.35-.83.82v4.45c0,.47.36.83.83.83h7.64c.47,0,.82-.36.82-.83v-.19h2.17c0,.68-.06,1.13-.4,1.7-.52.87-1.44,1.49-2.59,1.49h-7.64Z"></path><path d="M89.17,28.94c-1.69,0-2.98-1.36-2.98-2.98v-7.46h2.16v7.44c0,.46.35.83.83.83h7.64c.47,0,.83-.37.83-.83v-7.44h2.16v7.44c0,1.69-1.36,3-2.99,3h-7.64Z"></path><path d="M104,28.94c-1.52,0-2.79-1.21-2.79-2.74v-.45h2.16v.45c0,.34.27.57.62.57h7.4c.35,0,.62-.24.62-.57v-.83c0-.34-.27-.57-.62-.57h-7.4c-1.55,0-2.79-1.24-2.79-2.74v-.83c0-1.54,1.28-2.74,2.79-2.74h7.4c1.59,0,2.79,1.26,2.79,2.74v.45h-2.16v-.45c0-.34-.27-.57-.62-.57h-7.4c-.35,0-.62.23-.62.57v.83c0,.34.27.57.62.57h7.4c1.59,0,2.79,1.26,2.79,2.73v.83c0,1.52-1.24,2.74-2.79,2.74h-7.4Z"></path><path d="M120.64,28.94v-8.27h-2.78c-.18,0-.32.05-.44.16-.12.11-.18.25-.18.42v.45h-2.16v-.45c0-.51.13-.97.38-1.38.25-.41.59-.73,1.01-.98s.88-.37,1.39-.37h7.72c.51,0,.97.12,1.39.37s.76.57,1.01.98c.25.41.38.87.38,1.38v.45h-2.16v-.45c0-.17-.06-.31-.18-.42-.12-.11-.26-.16-.44-.16h-2.78v8.27h-2.16Z"></path><path d="M132.25,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM141.34,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"></path><path d="M157.18,28.94v-7.45c0-.45-.36-.83-.83-.83h-3.16c.08.27.12.54.12.83v7.45h-2.16v-7.45c0-.46-.36-.83-.83-.83h-2.41c-.47,0-.83.37-.83.83v7.45h-2.15v-7.46c0-1.7,1.37-2.97,2.98-2.97h8.44c1.69,0,2.98,1.36,2.98,2.97v7.46h-2.15Z"></path><path d="M177.32,28.94v-7.45c0-.45-.36-.83-.83-.83h-3.16c.08.27.12.54.12.83v7.45h-2.16v-7.45c0-.46-.36-.83-.83-.83h-2.41c-.47,0-.83.37-.83.83v7.45h-2.16v-7.46c0-1.7,1.37-2.97,2.98-2.97h8.44c1.69,0,2.98,1.36,2.98,2.97v7.46h-2.15Z"></path><path d="M183.87,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM192.96,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"></path><path d="M201.58,28.94v-8.27h-2.78c-.18,0-.32.05-.44.16-.12.11-.18.25-.18.42v.45h-2.16v-.45c0-.51.13-.97.38-1.38.25-.41.59-.73,1.01-.98s.88-.37,1.39-.37h7.72c.51,0,.97.12,1.39.37s.76.57,1.01.98c.25.41.38.87.38,1.38v.45h-2.16v-.45c0-.17-.06-.31-.18-.42-.12-.11-.26-.16-.44-.16h-2.78v8.27h-2.16Z"></path><path d="M213.18,28.94c-1.7,0-2.99-1.38-2.99-3v-4.45c0-1.7,1.37-2.99,2.99-2.99h8.27c1.67,0,2.99,1.34,2.99,2.99v4.45c0,1.69-1.34,3-2.99,3h-8.27ZM222.27,25.94v-4.45c0-.49-.37-.82-.83-.82h-8.27c-.46,0-.83.34-.83.82v4.45c0,.47.36.83.83.83h8.27c.47,0,.83-.37.83-.83Z"></path><path d="M237.01,28.94v-3.3c0-.47-.37-.83-.83-.83h-8.16v4.13h-2.16v-10.44h10.31c1.13,0,2.05.6,2.59,1.49.27.47.41,1.07.41,1.67,0,.85-.26,1.53-.69,2.05.44.53.69,1.17.69,1.91v3.31h-2.15ZM236.76,22.41c.17-.17.25-.46.25-.75s-.09-.58-.25-.75c-.17-.16-.36-.24-.59-.24h-8.14v1.97h8.14c.23,0,.42-.08.59-.24Z"></path><path d="M243.37,28.94c-1.52,0-2.79-1.21-2.79-2.74v-.45h2.16v.45c0,.34.27.57.62.57h7.4c.35,0,.62-.24.62-.57v-.83c0-.34-.27-.57-.62-.57h-7.4c-1.55,0-2.79-1.24-2.79-2.74v-.83c0-1.54,1.28-2.74,2.79-2.74h7.4c1.59,0,2.79,1.26,2.79,2.74v.45h-2.16v-.45c0-.34-.27-.57-.62-.57h-7.4c-.35,0-.62.23-.62.57v.83c0,.34.27.57.62.57h7.4c1.59,0,2.79,1.26,2.79,2.73v.83c0,1.52-1.24,2.74-2.79,2.74h-7.4Z"></path></g>
@@ -97,7 +187,19 @@ BRAND_CSS = """.subpage.brand{padding:140px 0 90px}
 .brand-faq .chev{margin-left:auto;color:var(--text-dim);transition:transform .25s var(--ease);flex-shrink:0}
 .brand-faq details[open] .chev{transform:rotate(180deg)}
 .brand-faq .a{padding:0 24px 22px 24px;color:var(--text-dim);font-size:14px;line-height:1.65;max-width:84ch}
-@media (max-width:900px){.tools-grid,.brand-srv-grid,.models-grid{grid-template-columns:1fr}.issue-row{grid-template-columns:30px 1fr}}"""
+.trust-row{display:grid;grid-template-columns:30px 1fr;gap:26px;padding:24px 0;border-bottom:1px solid var(--border);align-items:start;transition:padding-left .25s var(--ease)}
+.trust-row:hover{padding-left:10px}
+.trust-row .bullet{width:14px;height:14px;background:var(--accent);clip-path:polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);margin-top:6px}
+.trust-row h4{margin-bottom:8px;color:#fff;font-size:clamp(16px,1.4vw,20px)}
+.trust-row p{font-size:15px;color:var(--text-dim);max-width:64ch}
+.proc-row{display:grid;grid-template-columns:80px 1fr;gap:30px;padding:24px 0;border-bottom:1px solid var(--border);align-items:start}
+.proc-row .num{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:28px;color:var(--accent);line-height:1}
+.proc-row h4{margin-bottom:6px;color:#fff;font-size:clamp(16px,1.4vw,20px)}
+.proc-row h4 a{color:#fff;text-decoration:none}
+.proc-row h4 a:hover{color:var(--accent)}
+.proc-row p{font-size:14px;color:var(--text-dim);max-width:60ch}
+@media (max-width:900px){.tools-grid,.brand-srv-grid,.models-grid{grid-template-columns:1fr}.issue-row{grid-template-columns:30px 1fr}}
+@media (max-width:760px){.proc-row{grid-template-columns:50px 1fr;gap:18px}.proc-row .num{font-size:24px}.trust-row{grid-template-columns:20px 1fr;gap:16px}}"""
 
 
 def head(slug, lang):
@@ -135,7 +237,7 @@ def head(slug, lang):
     ]
 
     # Build FAQPage from in-page Q/A (en source — translated copy at /lang)
-    en = PAGE_I18N[slug]["en"]
+    en = page_i18n_for(slug)["en"]
     faq_main_entity = []
     for i in range(1, 6):
         q = en.get(f"{pre}.q{i}")
@@ -164,7 +266,7 @@ def head(slug, lang):
     )
     hreflang_html += f'<link rel="alternate" hreflang="x-default" href="{DOMAIN}/{slug}/"/>'
 
-    i18n_json = json.dumps(PAGE_I18N[slug], ensure_ascii=False)
+    i18n_json = json.dumps(page_i18n_for(slug), ensure_ascii=False)
 
     return f'''<!DOCTYPE html>
 <html data-lang="{lang}" lang="{lang}">
@@ -353,9 +455,54 @@ MODAL_HTML = '''<div aria-labelledby="modalTitle" aria-modal="true" class="modal
 </div>'''
 
 
+def render_related_sections(slug, en):
+    related = "\n".join(
+        f'''<article class="proc-row">
+<span class="num">{idx:02d}</span>
+<div>
+<h4><a data-i18n="{key}" href="{href}">{label}</a></h4>
+<p data-i18n="seo.relatedText">{en["seo.relatedText"]}</p>
+</div>
+</article>'''
+        for idx, (key, href, label) in enumerate(RELATED_LINKS[slug], 1)
+    )
+
+    return f'''<section class="sub-section" data-enhancement="money-related">
+<div class="container">
+<div class="heading reveal">
+<span class="h-eyebrow" data-i18n="seo.relatedEyebrow">{en["seo.relatedEyebrow"]}</span>
+<div>
+<h2 data-i18n="seo.relatedTitle">{en["seo.relatedTitle"]}</h2>
+<p class="lead" data-i18n="seo.relatedLead">{en["seo.relatedLead"]}</p>
+</div>
+</div>
+<div class="reveal-stagger" style="max-width:900px">
+{related}
+</div>
+</div>
+</section>
+
+<section class="sub-section" data-enhancement="money-local">
+<div class="container">
+<div class="heading reveal">
+<span class="h-eyebrow" data-i18n="seo.localEyebrow">{en["seo.localEyebrow"]}</span>
+<div>
+<h2 data-i18n="seo.localTitle">{en["seo.localTitle"]}</h2>
+<p class="lead" data-i18n="seo.localLead">{en["seo.localLead"]}</p>
+</div>
+</div>
+<div class="reveal-stagger">
+<div class="trust-row"><span class="bullet"></span><div><h4 data-i18n="seo.area1t">{en["seo.area1t"]}</h4><p data-i18n="seo.area1d">{en["seo.area1d"]}</p></div></div>
+<div class="trust-row"><span class="bullet"></span><div><h4 data-i18n="seo.area2t">{en["seo.area2t"]}</h4><p data-i18n="seo.area2d">{en["seo.area2d"]}</p></div></div>
+<div class="trust-row"><span class="bullet"></span><div><h4 data-i18n="seo.area3t">{en["seo.area3t"]}</h4><p data-i18n="seo.area3d">{en["seo.area3d"]}</p></div></div>
+</div>
+</div>
+</section>'''
+
+
 def render(slug):
     pre = BRAND_PREFIX[slug]
-    en = PAGE_I18N[slug]["en"]
+    en = page_i18n_for(slug)["en"]
     bg = BRAND_BG[slug]
 
     # 8 services, 5 issues, 6 models
@@ -459,6 +606,8 @@ def render(slug):
 </div>
 </div>
 </section>
+
+{render_related_sections(slug, en)}
 
 <section class="cta-back">
 <div class="container">

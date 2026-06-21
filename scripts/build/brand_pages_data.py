@@ -542,7 +542,7 @@ PAGE_I18N["harley-service"] = {
         "hd.s7t": "Suspension upgrades",
         "hd.s7d": "Öhlins, Progressive, Legend Air, Race Tech — height changes, ride quality fixes, full re-builds.",
         "hd.s8t": "Full custom — frame, paint, hand-built parts",
-        "hd.s8d": "Our championship work. Frame mods, paint, leather, hand-machined components — proven on Harley-based builds like <a href=\"/projects/joker/\">Joker</a> and <a href=\"/projects/sturmvogel/\">Sturmvogel</a>. Bring the brief.",
+        "hd.s8d": "Our championship work. Frame mods, paint, leather, hand-machined components — proven on Harley-based builds like <a href=\"/projects/joker/\">Joker</a> and <a href=\"/projects/sturmvogel/\">Sturmvogel</a>. For Harley fat tyres, spoked wheels and custom wheel setups, use our <a href=\"/motorcycle-tyre-service/\">motorcycle tyre service</a>. Bring the brief.",
 
         "hd.issuesEyebrow": "Typical Harley issues we know",
         "hd.issuesTitle": "We've seen these <em>a thousand times.</em>",
@@ -642,7 +642,7 @@ PAGE_I18N["harley-service"] = {
         "hd.s7t": "Апгрейды подвески",
         "hd.s7d": "Öhlins, Progressive, Legend Air, Race Tech — смена высоты, улучшение комфорта, полный ребилд.",
         "hd.s8t": "Полный кастом — рама, краска, ручные детали",
-        "hd.s8d": "Наша чемпионская работа. Модификации рамы, краска, кожа, фрезеровка под ТЗ — проверено на Harley-based проектах вроде <a href=\"/ru/projects/joker/\">Joker</a> и <a href=\"/ru/projects/sturmvogel/\">Sturmvogel</a>. Приносите бриф.",
+        "hd.s8d": "Наша чемпионская работа. Модификации рамы, краска, кожа, фрезеровка под ТЗ — проверено на Harley-based проектах вроде <a href=\"/ru/projects/joker/\">Joker</a> и <a href=\"/ru/projects/sturmvogel/\">Sturmvogel</a>. Для широких Harley-шин, спицованных колёс и кастомных колёсных сетапов используйте наш <a href=\"/ru/shinomontazh-mototsiklov/\">мотоциклетный шиномонтаж</a>. Приносите бриф.",
 
         "hd.issuesEyebrow": "Типичные болезни Harley",
         "hd.issuesTitle": "Мы это видели <em>тысячу раз.</em>",
@@ -742,7 +742,7 @@ PAGE_I18N["harley-service"] = {
         "hd.s7t": "Апґрейди підвіски",
         "hd.s7d": "Öhlins, Progressive, Legend Air, Race Tech — зміна висоти, покращення комфорту, повний ребілд.",
         "hd.s8t": "Повний кастом — рама, фарба, ручні деталі",
-        "hd.s8d": "Наша чемпіонська робота. Модифікації рами, фарба, шкіра, фрезерування під ТЗ — перевірено на Harley-based проєктах на кшталт <a href=\"/uk/projects/joker/\">Joker</a> і <a href=\"/uk/projects/sturmvogel/\">Sturmvogel</a>. Приносьте бриф.",
+        "hd.s8d": "Наша чемпіонська робота. Модифікації рами, фарба, шкіра, фрезерування під ТЗ — перевірено на Harley-based проєктах на кшталт <a href=\"/uk/projects/joker/\">Joker</a> і <a href=\"/uk/projects/sturmvogel/\">Sturmvogel</a>. Для широких Harley-шин, спицьованих коліс і кастомних колісних сетапів використовуйте наш <a href=\"/uk/shynomontazh-mototsykliv/\">мотоциклетний шиномонтаж</a>. Приносьте бриф.",
 
         "hd.issuesEyebrow": "Типові болячки Harley",
         "hd.issuesTitle": "Ми це бачили <em>тисячу разів.</em>",
@@ -842,7 +842,7 @@ PAGE_I18N["harley-service"] = {
         "hd.s7t": "Upgrades de suspensão",
         "hd.s7d": "Öhlins, Progressive, Legend Air, Race Tech — alterações de altura, melhoria de conforto, reconstrução completa.",
         "hd.s8t": "Custom completo — quadro, pintura, peças à mão",
-        "hd.s8d": "O nosso trabalho campeão. Modificações de quadro, pintura, couro, peças maquinadas à mão — provado em projetos Harley-based como <a href=\"/pt/projects/joker/\">Joker</a> e <a href=\"/pt/projects/sturmvogel/\">Sturmvogel</a>. Traga o briefing.",
+        "hd.s8d": "O nosso trabalho campeão. Modificações de quadro, pintura, couro, peças maquinadas à mão — provado em projetos Harley-based como <a href=\"/pt/projects/joker/\">Joker</a> e <a href=\"/pt/projects/sturmvogel/\">Sturmvogel</a>. Para pneus largos Harley, rodas de raios e configurações custom, use o nosso <a href=\"/pt/montagem-de-pneus-mota/\">serviço de pneus de mota</a>. Traga o briefing.",
 
         "hd.issuesEyebrow": "Problemas típicos Harley",
         "hd.issuesTitle": "Já vimos isto <em>mil vezes.</em>",

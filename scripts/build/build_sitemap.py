@@ -28,6 +28,7 @@ PAGES = [
     ("bmw-service/", "monthly", "0.9"),
     ("harley-service/", "monthly", "0.9"),
     ("ducati-service/", "monthly", "0.9"),
+    ("motorcycle-tyre-service/", "monthly", "0.95"),
     ("blog/", "weekly", "0.85"),
     ("blog/revtech-110-oil-service-engine-gearbox-drive/", "monthly", "0.82"),
     ("blog/motorcycle-brake-pad-replacement-cascais/", "monthly", "0.82"),
@@ -50,9 +51,19 @@ PAGES = [
 
 LANGS = ["en", "ru", "uk", "pt"]
 TODAY = date.today().isoformat()
+CUSTOM_LOCALIZED_PATHS = {
+    "motorcycle-tyre-service/": {
+        "en": "motorcycle-tyre-service/",
+        "ru": "ru/shinomontazh-mototsiklov/",
+        "uk": "uk/shynomontazh-mototsykliv/",
+        "pt": "pt/montagem-de-pneus-mota/",
+    }
+}
 
 
 def url_for(lang, path):
+    if path in CUSTOM_LOCALIZED_PATHS:
+        return f"{DOMAIN}/{CUSTOM_LOCALIZED_PATHS[path][lang]}"
     if lang == "en":
         return f"{DOMAIN}/{path}"
     return f"{DOMAIN}/{lang}/{path}"

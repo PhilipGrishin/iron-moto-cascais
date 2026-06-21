@@ -34,6 +34,7 @@ SITE_ROOT = Path(__file__).resolve().parents[2]
 EN_PAGES = [
     "index.html",
     "motorcycle-service/index.html",
+    "motorcycle-tyre-service/index.html",
     "parts/index.html",
     "upgrades-tuning/index.html",
     "custom/index.html",
@@ -90,6 +91,7 @@ SERVICE_NAV_LINKS = [
     ("services.s2.title",   "/parts/",                   "Parts &amp; consumables"),
     ("services.s3.title",   "/upgrades-tuning/",         "Upgrades &amp; tuning"),
     ("services.s4.title",   "/custom/",                  "Custom &amp; special projects"),
+    ("nav.tyreServ",        "/motorcycle-tyre-service/", "Tyre fitting &amp; wheel balancing"),
     ("nav.preInsp",        "/pre-purchase-inspection/", "Pre-purchase inspection"),
     ("nav.bmwServ",        "/bmw-service/",             "BMW Motorrad service"),
     ("nav.hdServ",         "/harley-service/",          "Harley-Davidson service"),
@@ -101,6 +103,7 @@ FOOTER_SERVICES_LINKS = [
     ("services.s2.title", "/parts/",                   "Parts &amp; consumables"),
     ("services.s3.title", "/upgrades-tuning/",         "Upgrades &amp; tuning"),
     ("services.s4.title", "/custom/",                  "Custom &amp; special projects"),
+    ("nav.tyreServ",      "/motorcycle-tyre-service/", "Tyre fitting &amp; wheel balancing"),
     ("nav.preInsp",       "/pre-purchase-inspection/", "Pre-purchase inspection"),
     ("nav.bmwServ",       "/bmw-service/",             "BMW Motorrad service"),
     ("nav.hdServ",        "/harley-service/",          "Harley-Davidson service"),

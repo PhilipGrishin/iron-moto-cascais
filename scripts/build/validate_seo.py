@@ -60,6 +60,7 @@ LOCALIZED_PATHS = {
     "/bmw-service/",
     "/harley-service/",
     "/ducati-service/",
+    "/motorcycle-tyre-service/",
     "/blog/",
     "/blog/revtech-110-oil-service-engine-gearbox-drive/",
     "/blog/motorcycle-brake-pad-replacement-cascais/",

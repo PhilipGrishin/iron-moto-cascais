@@ -35,6 +35,13 @@ GLOBAL_SCHEMA_IDS = {
     f"{DOMAIN}/#business",
     f"{DOMAIN}/#website",
 }
+CUSTOM_LOCALIZED_URLS = {
+    f"{DOMAIN}/motorcycle-tyre-service/": {
+        "ru": f"{DOMAIN}/ru/shinomontazh-mototsiklov/",
+        "uk": f"{DOMAIN}/uk/shynomontazh-mototsykliv/",
+        "pt": f"{DOMAIN}/pt/montagem-de-pneus-mota/",
+    },
+}
 
 try:
     BeautifulSoup("", "lxml")
@@ -142,6 +149,8 @@ def localize_schema_url(value: str, lang: str) -> str:
         return value
     if value in GLOBAL_SCHEMA_IDS:
         return value
+    if value in CUSTOM_LOCALIZED_URLS:
+        return CUSTOM_LOCALIZED_URLS[value].get(lang, value)
     if value == f"{DOMAIN}/#projects":
         return f"{DOMAIN}/{lang}/projects/"
     if value == f"{DOMAIN}/#reviews":

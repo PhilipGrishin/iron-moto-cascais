@@ -20,7 +20,7 @@ from new_pages_data import PAGE_HEAD_META, PAGE_I18N, PROJECT_TILES, FAQ_QA
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260619a"  # bump on each change to main.css/main.js
+CACHE_BUST = "20260620c"  # bump on each change to main.css/main.js
 GLOBAL_I18N = json.loads((BUILD_DIR / "i18n.json").read_text(encoding="utf-8"))
 
 # ---------- shared chrome fragments ----------
@@ -326,6 +326,7 @@ def render_services():
                 {"@type": "Service", "name": "Motorcycle parts & consumables", "url": f"{DOMAIN}/parts/"},
                 {"@type": "Service", "name": "Upgrades & tuning", "url": f"{DOMAIN}/upgrades-tuning/"},
                 {"@type": "Service", "name": "Custom & special projects", "url": f"{DOMAIN}/custom/"},
+                {"@type": "Service", "name": "Motorcycle tyre fitting & wheel balancing", "url": f"{DOMAIN}/motorcycle-tyre-service/"},
                 {"@type": "Service", "name": "Pre-purchase inspection", "url": f"{DOMAIN}/pre-purchase-inspection/"},
             ],
         },
@@ -398,9 +399,15 @@ def render_services():
 <p data-i18n="svc.s4d">{en["svc.s4d"]}</p>
 <a class="cta" data-i18n="svc.s4cta" href="/custom/">{en["svc.s4cta"]}</a>
 </article>
+<article class="svc-card">
+<div class="num">05</div>
+<h3 data-i18n="svc.s6t">{en["svc.s6t"]}</h3>
+<p data-i18n="svc.s6d">{en["svc.s6d"]}</p>
+<a class="cta" data-i18n="svc.s6cta" href="/motorcycle-tyre-service/">{en["svc.s6cta"]}</a>
+</article>
 <article class="svc-card feature">
 <div>
-<div class="num">05</div>
+<div class="num">06</div>
 <h3 data-i18n="svc.s5t">{en["svc.s5t"]}</h3>
 </div>
 <div>

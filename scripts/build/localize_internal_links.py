@@ -37,6 +37,7 @@ LOCALIZED_PATHS = {
     "/bmw-service/",
     "/harley-service/",
     "/ducati-service/",
+    "/motorcycle-tyre-service/",
     "/blog/",
     "/blog/revtech-110-oil-service-engine-gearbox-drive/",
     "/blog/motorcycle-brake-pad-replacement-cascais/",
@@ -53,6 +54,13 @@ for proj in ["inspirium", "beckman", "unbreakable", "quanta-r",
 
 LANG_HOME_HREFS = {"/", "/ru/", "/uk/", "/pt/"}
 LANG_HREFLANGS = {"en", "ru", "uk", "pt"}
+CUSTOM_LOCALIZED_PATHS = {
+    "/motorcycle-tyre-service/": {
+        "ru": "/ru/shinomontazh-mototsiklov/",
+        "uk": "/uk/shynomontazh-mototsykliv/",
+        "pt": "/pt/montagem-de-pneus-mota/",
+    }
+}
 
 
 def is_language_switch_link(anchor) -> bool:
@@ -77,6 +85,9 @@ def rewrite_href(href: str, lang: str) -> str:
         return href
     # Try matching a known localized path. Strip fragment/query for comparison.
     base = re.split(r"[?#]", href, 1)[0]
+    if base in CUSTOM_LOCALIZED_PATHS:
+        suffix = href[len(base):]  # keep fragment/query
+        return f"{CUSTOM_LOCALIZED_PATHS[base][lang]}{suffix}"
     if base in LOCALIZED_PATHS:
         # Replace leading / with /lang/
         suffix = href[len(base):]  # keep fragment/query

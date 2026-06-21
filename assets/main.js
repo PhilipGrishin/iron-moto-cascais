@@ -38,7 +38,7 @@ window.icmFlushEventQueue = function(){
 /* ---------- Translations ---------- */
 const I18N = {
   en: {
-    "nav.services":"Services","nav.projects":"Projects","nav.pricing":"Pricing","nav.about":"About","nav.community":"Community","nav.reviews":"Reviews","nav.faq":"FAQ","nav.contact":"Contact","nav.blog":"Blog","nav.news":"News","nav.allServices":"All services","nav.preInsp":"Pre-purchase inspection","nav.bmwServ":"BMW Motorrad service","nav.hdServ":"Harley-Davidson service","nav.ducServ":"Ducati service",
+    "nav.services":"Services","nav.projects":"Projects","nav.pricing":"Pricing","nav.about":"About","nav.community":"Community","nav.reviews":"Reviews","nav.faq":"FAQ","nav.contact":"Contact","nav.blog":"Blog","nav.news":"News","nav.allServices":"All services","nav.preInsp":"Pre-purchase inspection","nav.tyreServ":"Tyre fitting & wheel balancing","nav.bmwServ":"BMW Motorrad service","nav.hdServ":"Harley-Davidson service","nav.ducServ":"Ducati service",
     "cta.bookHeader":"Book service","cta.bookService":"Book service","cta.whatsapp":"WhatsApp us","cta.requestForm":"Send request",
     "wa.prefill":"Hi Iron Custom Motors, I'd like to ask about service for my motorcycle. Please reply when you can.","contact.directions":"Get directions","brands.label":"Multi-brand workshop · OEM & aftermarket parts sourcing",
     "cookie.text":"We use cookies to measure traffic and improve the site. No third-party advertising.","cookie.accept":"Accept","cookie.reject":"Reject",
@@ -53,6 +53,7 @@ const I18N = {
     "services.s2.title":"Parts & consumables","services.s2.desc":"OEM, aftermarket and tuning parts. Service consumables and accessories. Sourced through major international catalogs — request even if you don't need our workshop.","services.cta2":"Request parts",
     "services.s3.title":"Upgrades & tuning","services.s3.desc":"Performance, suspension, brakes, exhaust, lighting, protection, touring and luggage. Functional upgrades selected for how you actually ride.","services.cta3":"Ask about upgrades",
     "services.s4.title":"Custom & special projects","services.s4.desc":"Custom consultations, bespoke builds, individual engineering solutions and project planning. The team that delivered world-champion motorcycles is the team that builds yours.","services.cta4":"Discuss a project",
+    "services.s5.title":"Tyre fitting & wheel balancing","services.s5.desc":"Motorcycle-specific tyre fitting and wheel balancing for wheels up to 30 inches and 400 mm, including spoked, vintage, Harley fat and custom wheels.","services.cta5":"Tyre service",
     "pricing.eyebrow":"Pricing · 2025","pricing.title":"Transparent pricing,<br/>no surprises.","pricing.sub":"Written estimates before any work begins. Fixed or \"from\" prices for every service. All taxes included. The full 2025 price list covers diagnostics, scheduled maintenance, brakes, valves, wheels, accessories, tuning and seasonal preparation.","pricing.p1.title":"Pre-purchase inspection","pricing.p1.desc":"Full technical check before you buy a used motorcycle in Portugal.","pricing.p1.price":"150","pricing.p1.cur":"EUR","pricing.p2.title":"Scheduled service","pricing.p2.desc":"Manufacturer-spec maintenance. Consumables included in the price.","pricing.p2.price":"150","pricing.p2.cur":"EUR","pricing.p2.from":"from","pricing.p3.title":"Fault diagnostics","pricing.p3.desc":"We find the root cause, not just the symptom. Electrics, engine, running gear.","pricing.p3.price":"50–350","pricing.p3.cur":"EUR","pricing.p4.title":"Hourly work","pricing.p4.desc":"Anything outside the price list — transparent time tracking, written estimate up front.","pricing.p4.price":"50","pricing.p4.cur":"EUR / hour","pricing.cta":"View full price list","pricing.tax":"All prices include taxes and fees",
     "why.eyebrow":"Why Iron Custom Motors","why.title":"Championship-grade<br/>workshop, daily-rider service","why.sub":"A world-class custom team that actually picks up the phone when your bike won't start. That's the gap we close.",
     "why.r1.t":"World-level engineering","why.r1.d":"AMD World Champions. Bonneville record holders. BMW Motorrad Customizing Champions 2023. The expertise behind your routine service.",
@@ -106,7 +107,7 @@ const I18N = {
     "form.message":"Tell us about the job","form.note":"By sending you agree to be contacted about this request. No spam, ever.","form.submit":"Send request","form.successT":"Request received","form.successP":"We'll reply via WhatsApp or email within business hours. Talk soon."
   },
   ru: {
-    "nav.services":"Услуги","nav.projects":"Проекты","nav.pricing":"Цены","nav.about":"О нас","nav.community":"Сообщество","nav.reviews":"Отзывы","nav.faq":"FAQ","nav.contact":"Контакты","nav.blog":"Блог","nav.news":"Новости","nav.allServices":"Все услуги","nav.preInsp":"Инспекция перед покупкой","nav.bmwServ":"Сервис BMW Motorrad","nav.hdServ":"Сервис Harley-Davidson","nav.ducServ":"Сервис Ducati",
+    "nav.services":"Услуги","nav.projects":"Проекты","nav.pricing":"Цены","nav.about":"О нас","nav.community":"Сообщество","nav.reviews":"Отзывы","nav.faq":"FAQ","nav.contact":"Контакты","nav.blog":"Блог","nav.news":"Новости","nav.allServices":"Все услуги","nav.preInsp":"Инспекция перед покупкой","nav.tyreServ":"Шиномонтаж и балансировка","nav.bmwServ":"Сервис BMW Motorrad","nav.hdServ":"Сервис Harley-Davidson","nav.ducServ":"Сервис Ducati",
     "cta.bookHeader":"Записаться","cta.bookService":"Записаться на сервис","cta.whatsapp":"Написать в WhatsApp","cta.requestForm":"Отправить заявку",
     "wa.prefill":"Здравствуйте, Iron Custom Motors! Хочу обсудить сервис для своего мотоцикла. Ответьте, когда сможете.","contact.directions":"Маршрут","brands.label":"Мульти-бренд сервис · поставка OEM и aftermarket запчастей",
     "cookie.text":"Мы используем cookies, чтобы понимать посещаемость и улучшать сайт. Без сторонней рекламы.","cookie.accept":"Принять","cookie.reject":"Отклонить",
@@ -121,6 +122,7 @@ const I18N = {
     "services.s2.title":"Запчасти и расходники","services.s2.desc":"OEM, афтермаркет и тюнинг-запчасти. Расходники и аксессуары из ведущих международных каталогов — даже если вам не нужен наш сервис, можем заказать.","services.cta2":"Запросить запчасти",
     "services.s3.title":"Апгрейды и тюнинг","services.s3.desc":"Производительность, подвеска, тормоза, выхлоп, свет, защита, тур-обвес и кофры. Функциональные апгрейды под ваш стиль езды.","services.cta3":"Узнать про апгрейды",
     "services.s4.title":"Кастом и спец-проекты","services.s4.desc":"Кастом-консультации, индивидуальные сборки, инженерные решения и планирование проекта. Та же команда, что строила чемпионов мира — для вашего мотоцикла.","services.cta4":"Обсудить проект",
+    "services.s5.title":"Шиномонтаж и балансировка","services.s5.desc":"Профильный мотоциклетный шиномонтаж и балансировка колёс до 30 дюймов и 400 мм, включая спицы, винтаж, Harley fat и кастом.","services.cta5":"Шиномонтаж",
     "pricing.eyebrow":"Прайс-лист · 2025","pricing.title":"Прозрачные цены,<br/>без сюрпризов.","pricing.sub":"Письменная смета до начала работ. Фиксированные цены или «от» на каждую услугу. Все налоги включены. Полный прайс 2025 года покрывает диагностику, плановое ТО, тормоза, клапаны, колёса, аксессуары, тюнинг и сезонную подготовку.","pricing.p1.title":"Диагностика перед покупкой","pricing.p1.desc":"Полная техническая проверка перед покупкой б/у мотоцикла в Португалии.","pricing.p1.price":"150","pricing.p1.cur":"EUR","pricing.p2.title":"Плановое ТО","pricing.p2.desc":"Обслуживание по нормативам производителя. Расходники включены в цену.","pricing.p2.price":"150","pricing.p2.cur":"EUR","pricing.p2.from":"от","pricing.p3.title":"Диагностика неисправностей","pricing.p3.desc":"Ищем причину, а не симптом. Электрика, двигатель, ходовая часть.","pricing.p3.price":"50–350","pricing.p3.cur":"EUR","pricing.p4.title":"Почасовая работа","pricing.p4.desc":"Всё, что не вошло в прайс — прозрачный учёт времени, смета вперёд.","pricing.p4.price":"50","pricing.p4.cur":"EUR / час","pricing.cta":"Посмотреть полный прайс","pricing.tax":"Все цены включают налоги и сборы",
     "why.eyebrow":"Почему Iron Custom Motors","why.title":"Чемпионская мастерская,<br/>сервис каждый день","why.sub":"Команда мирового уровня, которая действительно отвечает на звонок, когда мотоцикл не заводится. Этот разрыв мы и закрываем.",
     "why.r1.t":"Инжиниринг мирового уровня","why.r1.d":"Чемпионы мира AMD. Рекордсмены Bonneville. Чемпионы BMW Motorrad 2023. Эта экспертиза стоит за каждым рутинным сервисом.",
@@ -174,7 +176,7 @@ const I18N = {
     "form.message":"Расскажите о работе","form.note":"Отправляя, вы соглашаетесь, что мы свяжемся с вами по данному запросу. Без спама.","form.submit":"Отправить заявку","form.successT":"Заявка получена","form.successP":"Ответим в WhatsApp или на email в рабочее время. До связи."
   },
   uk: {
-    "nav.services":"Послуги","nav.projects":"Проєкти","nav.pricing":"Ціни","nav.about":"Про нас","nav.community":"Спільнота","nav.reviews":"Відгуки","nav.faq":"FAQ","nav.contact":"Контакти","nav.blog":"Блог","nav.news":"Новини","nav.allServices":"Усі послуги","nav.preInsp":"Інспекція перед купівлею","nav.bmwServ":"Сервіс BMW Motorrad","nav.hdServ":"Сервіс Harley-Davidson","nav.ducServ":"Сервіс Ducati",
+    "nav.services":"Послуги","nav.projects":"Проєкти","nav.pricing":"Ціни","nav.about":"Про нас","nav.community":"Спільнота","nav.reviews":"Відгуки","nav.faq":"FAQ","nav.contact":"Контакти","nav.blog":"Блог","nav.news":"Новини","nav.allServices":"Усі послуги","nav.preInsp":"Інспекція перед купівлею","nav.tyreServ":"Шиномонтаж і балансування","nav.bmwServ":"Сервіс BMW Motorrad","nav.hdServ":"Сервіс Harley-Davidson","nav.ducServ":"Сервіс Ducati",
     "cta.bookHeader":"Записатися","cta.bookService":"Записатися на сервіс","cta.whatsapp":"Написати в WhatsApp","cta.requestForm":"Надіслати заявку",
     "wa.prefill":"Привіт, Iron Custom Motors! Хочу обговорити сервіс для свого мотоцикла. Дайте відповідь, коли зможете.","contact.directions":"Маршрут","brands.label":"Мульти-бренд сервіс · постачання OEM і aftermarket запчастин",
     "cookie.text":"Ми використовуємо cookies, щоб розуміти відвідуваність і покращувати сайт. Без сторонньої реклами.","cookie.accept":"Прийняти","cookie.reject":"Відхилити",
@@ -189,6 +191,7 @@ const I18N = {
     "services.s2.title":"Запчастини та витратники","services.s2.desc":"OEM, афтермаркет та тюнінг-запчастини. Витратні матеріали та аксесуари з провідних міжнародних каталогів — навіть якщо вам не потрібен наш сервіс.","services.cta2":"Замовити запчастини",
     "services.s3.title":"Апгрейди та тюнінг","services.s3.desc":"Продуктивність, підвіска, гальма, вихлоп, світло, захист, тур-обвіс і кофри. Функціональні апгрейди під ваш стиль їзди.","services.cta3":"Дізнатися про апгрейди",
     "services.s4.title":"Кастом і спецпроекти","services.s4.desc":"Кастом-консультації, індивідуальні збірки, інженерні рішення та планування проекту. Та сама команда, що будувала чемпіонів світу — для вашого мотоцикла.","services.cta4":"Обговорити проект",
+    "services.s5.title":"Шиномонтаж і балансування","services.s5.desc":"Профільний мотоциклетний шиномонтаж і балансування коліс до 30 дюймів і 400 мм, зокрема спиці, вінтаж, Harley fat і кастом.","services.cta5":"Шиномонтаж",
     "pricing.eyebrow":"Прайс-лист · 2025","pricing.title":"Прозорі ціни,<br/>без сюрпризів.","pricing.sub":"Письмовий кошторис до початку робіт. Фіксовані ціни або «від» на кожну послугу. Усі податки включено. Повний прайс 2025 року покриває діагностику, планове ТО, гальма, клапани, колеса, аксесуари, тюнінг і сезонну підготовку.","pricing.p1.title":"Діагностика перед купівлею","pricing.p1.desc":"Повна технічна перевірка перед купівлею б/в мотоцикла в Португалії.","pricing.p1.price":"150","pricing.p1.cur":"EUR","pricing.p2.title":"Планове ТО","pricing.p2.desc":"Обслуговування за нормативами виробника. Витратні матеріали включено в ціну.","pricing.p2.price":"150","pricing.p2.cur":"EUR","pricing.p2.from":"від","pricing.p3.title":"Діагностика несправностей","pricing.p3.desc":"Шукаємо причину, а не симптом. Електрика, двигун, ходова частина.","pricing.p3.price":"50–350","pricing.p3.cur":"EUR","pricing.p4.title":"Погодинна робота","pricing.p4.desc":"Усе, що не увійшло до прайсу — прозорий облік часу, кошторис наперед.","pricing.p4.price":"50","pricing.p4.cur":"EUR / год","pricing.cta":"Переглянути повний прайс","pricing.tax":"Усі ціни включають податки та збори",
     "why.eyebrow":"Чому Iron Custom Motors","why.title":"Чемпіонська майстерня,<br/>сервіс щодня","why.sub":"Команда світового рівня, яка справді бере слухавку, коли мотоцикл не заводиться. Цей розрив ми й закриваємо.",
     "why.r1.t":"Інжиніринг світового рівня","why.r1.d":"Чемпіони світу AMD. Рекордсмени Bonneville. Чемпіони BMW Motorrad 2023. Ця експертиза стоїть за кожним рутинним сервісом.",
@@ -242,7 +245,7 @@ const I18N = {
     "form.message":"Розкажіть про роботу","form.note":"Надсилаючи, ви погоджуєтесь, що ми зв'яжемося з вами щодо цього запиту. Жодного спаму.","form.submit":"Надіслати заявку","form.successT":"Заявку отримано","form.successP":"Відповімо у WhatsApp або на email у робочий час. До зв'язку."
   },
   pt: {
-    "nav.services":"Serviços","nav.projects":"Projetos","nav.pricing":"Preços","nav.about":"Sobre","nav.community":"Comunidade","nav.reviews":"Avaliações","nav.faq":"FAQ","nav.contact":"Contacto","nav.blog":"Blog","nav.news":"Notícias","nav.allServices":"Todos os serviços","nav.preInsp":"Inspeção pré-compra","nav.bmwServ":"Serviço BMW Motorrad","nav.hdServ":"Serviço Harley-Davidson","nav.ducServ":"Serviço Ducati",
+    "nav.services":"Serviços","nav.projects":"Projetos","nav.pricing":"Preços","nav.about":"Sobre","nav.community":"Comunidade","nav.reviews":"Avaliações","nav.faq":"FAQ","nav.contact":"Contacto","nav.blog":"Blog","nav.news":"Notícias","nav.allServices":"Todos os serviços","nav.preInsp":"Inspeção pré-compra","nav.tyreServ":"Pneus e equilibragem","nav.bmwServ":"Serviço BMW Motorrad","nav.hdServ":"Serviço Harley-Davidson","nav.ducServ":"Serviço Ducati",
     "cta.bookHeader":"Marcar serviço","cta.bookService":"Marcar serviço","cta.whatsapp":"WhatsApp","cta.requestForm":"Enviar pedido",
     "wa.prefill":"Olá Iron Custom Motors, gostaria de saber sobre o serviço para a minha moto. Respondam quando puderem.","contact.directions":"Como chegar","brands.label":"Oficina multi-marca · sourcing de peças OEM e aftermarket",
     "cookie.text":"Usamos cookies para medir tráfego e melhorar o site. Sem publicidade de terceiros.","cookie.accept":"Aceitar","cookie.reject":"Rejeitar",
@@ -257,6 +260,7 @@ const I18N = {
     "services.s2.title":"Peças e consumíveis","services.s2.desc":"Peças OEM, aftermarket e tuning. Consumíveis e acessórios obtidos através dos principais catálogos internacionais — mesmo sem precisar do nosso workshop.","services.cta2":"Pedir peças",
     "services.s3.title":"Upgrades e tuning","services.s3.desc":"Performance, suspensão, travões, escape, iluminação, proteção, touring e bagagem. Upgrades funcionais escolhidos para o seu estilo de condução.","services.cta3":"Sobre upgrades",
     "services.s4.title":"Custom e projetos especiais","services.s4.desc":"Consultoria custom, builds bespoke, soluções de engenharia e planeamento de projetos. A equipa que entregou motos campeãs do mundo é a que constrói a sua.","services.cta4":"Discutir projeto",
+    "services.s5.title":"Pneus e equilibragem","services.s5.desc":"Montagem de pneus de mota e equilibragem em equipamento dedicado para rodas até 30 polegadas e 400 mm, incluindo raios, clássicas, Harley fat e custom.","services.cta5":"Serviço de pneus",
     "pricing.eyebrow":"Tabela de preços · 2025","pricing.title":"Preços transparentes,<br/>sem surpresas.","pricing.sub":"Orçamento escrito antes do início dos trabalhos. Preços fixos ou \"desde\" para cada serviço. Todos os impostos incluídos. A tabela completa de 2025 cobre diagnóstico, manutenção programada, travões, válvulas, rodas, acessórios, afinação e preparação sazonal.","pricing.p1.title":"Inspeção pré-compra","pricing.p1.desc":"Verificação técnica completa antes de comprar uma moto usada em Portugal.","pricing.p1.price":"150","pricing.p1.cur":"EUR","pricing.p2.title":"Manutenção programada","pricing.p2.desc":"Manutenção segundo normas do fabricante. Consumíveis incluídos no preço.","pricing.p2.price":"150","pricing.p2.cur":"EUR","pricing.p2.from":"desde","pricing.p3.title":"Diagnóstico de avarias","pricing.p3.desc":"Procuramos a causa, não o sintoma. Elétrica, motor, chassis.","pricing.p3.price":"50–350","pricing.p3.cur":"EUR","pricing.p4.title":"Trabalho à hora","pricing.p4.desc":"Tudo o que não está na tabela — registo transparente do tempo, orçamento prévio.","pricing.p4.price":"50","pricing.p4.cur":"EUR / hora","pricing.cta":"Ver tabela completa","pricing.tax":"Todos os preços incluem impostos e taxas",
     "why.eyebrow":"Porquê Iron Custom Motors","why.title":"Workshop de nível campeonato,<br/>serviço de todos os dias","why.sub":"Uma equipa custom de classe mundial que atende o telefone quando a sua moto não pega. É essa lacuna que fechamos.",
     "why.r1.t":"Engenharia de classe mundial","why.r1.d":"Campeões do Mundo AMD. Detentores de recorde em Bonneville. Campeões BMW Motorrad Customizing 2023. A expertise por trás do seu serviço de rotina.",
@@ -335,8 +339,37 @@ function pathWithoutLang(){
   return m ? (m[2] || '/') : p;
 }
 
+const LOCALIZED_PAGE_PATHS = {
+  '/motorcycle-tyre-service/': {
+    en: '/motorcycle-tyre-service/',
+    ru: '/ru/shinomontazh-mototsiklov/',
+    uk: '/uk/shynomontazh-mototsykliv/',
+    pt: '/pt/montagem-de-pneus-mota/'
+  },
+  '/shinomontazh-mototsiklov/': {
+    en: '/motorcycle-tyre-service/',
+    ru: '/ru/shinomontazh-mototsiklov/',
+    uk: '/uk/shynomontazh-mototsykliv/',
+    pt: '/pt/montagem-de-pneus-mota/'
+  },
+  '/shynomontazh-mototsykliv/': {
+    en: '/motorcycle-tyre-service/',
+    ru: '/ru/shinomontazh-mototsiklov/',
+    uk: '/uk/shynomontazh-mototsykliv/',
+    pt: '/pt/montagem-de-pneus-mota/'
+  },
+  '/montagem-de-pneus-mota/': {
+    en: '/motorcycle-tyre-service/',
+    ru: '/ru/shinomontazh-mototsiklov/',
+    uk: '/uk/shynomontazh-mototsykliv/',
+    pt: '/pt/montagem-de-pneus-mota/'
+  }
+};
+
 function urlForLang(lang){
   const rest = pathWithoutLang();
+  const mapped = LOCALIZED_PAGE_PATHS[rest] && LOCALIZED_PAGE_PATHS[rest][lang];
+  if(mapped) return mapped + location.search + location.hash;
   if(lang === 'en') return rest + location.search + location.hash;
   return '/' + lang + (rest === '/' ? '/' : rest) + location.search + location.hash;
 }
@@ -612,7 +645,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
   (function(){
     const services = {
       'motorcycle-service':'service','parts':'parts','upgrades-tuning':'upgrades',
-      'custom':'custom','pre-purchase-inspection':'inspection'
+      'custom':'custom','pre-purchase-inspection':'inspection',
+      'motorcycle-tyre-service':'tyre_service','shinomontazh-mototsiklov':'tyre_service',
+      'shynomontazh-mototsykliv':'tyre_service','montagem-de-pneus-mota':'tyre_service'
     };
     const hubs = {
       'services':'services_hub', 'projects':'projects_hub',
