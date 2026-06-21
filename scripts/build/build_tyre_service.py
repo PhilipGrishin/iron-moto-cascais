@@ -26,8 +26,9 @@ COPY_FILE = BUILD_DIR / "content" / "tyre_service_copy_4lang.md"
 I18N_FILE = BUILD_DIR / "i18n.json"
 VIDEO_ID = "KGEPaj46fBg"
 VIDEO_SHORT_URL = f"https://youtube.com/shorts/{VIDEO_ID}"
-VIDEO_EMBED_URL = f"https://www.youtube-nocookie.com/embed/{VIDEO_ID}"
+VIDEO_EMBED_URL = f"https://www.youtube.com/embed/{VIDEO_ID}"
 VIDEO_THUMB = f"https://i.ytimg.com/vi/{VIDEO_ID}/hqdefault.jpg"
+VIDEO_UPLOAD_DATE = "2026-06-20"
 
 LANGS = ("en", "ru", "uk", "pt")
 PATHS = {
@@ -554,9 +555,11 @@ def render_standard_section(section: dict[str, str], index: int, lang: str) -> s
         media = picture("changer", lang) + video_facade(lang)
         layout_class = "tyre-split tyre-split-video"
     elif index == 2:
-        media = '<div class="tyre-photo-stack">' + picture("wide", lang) + picture("spoked", lang) + "</div>"
+        media = '<div class="tyre-photo-row">' + picture("wide", lang) + picture("spoked", lang) + "</div>"
+        layout_class = "tyre-gallery-section"
     elif index == 3:
-        media = '<div class="tyre-photo-stack">' + picture("balance_fat", lang) + picture("balance_wide", lang) + "</div>"
+        media = '<div class="tyre-photo-row">' + picture("balance_fat", lang) + picture("balance_wide", lang) + "</div>"
+        layout_class = "tyre-gallery-section"
     elif index == 4:
         actions = f'<div class="tyre-actions"><a class="btn btn-primary" href="{localized_href("/parts/", lang)}">{rich_text(UI[lang]["parts"])}</a><a class="btn btn-ghost" href="{localized_href("/contact/", lang)}">{rich_text(UI[lang]["contact"])}</a></div>'
     elif index == 6:
@@ -682,6 +685,7 @@ def json_ld(content: dict, lang: str) -> list[dict]:
             "thumbnailUrl": VIDEO_THUMB,
             "embedUrl": VIDEO_EMBED_URL,
             "contentUrl": VIDEO_SHORT_URL,
+            "uploadDate": VIDEO_UPLOAD_DATE,
         },
     ]
 
@@ -811,6 +815,10 @@ PAGE_CSS = """.tyre-hero{position:relative;isolation:isolate;overflow:hidden;min
 .tyre-photo{display:block;overflow:hidden;border:1px solid var(--border);border-radius:var(--radius-lg);background:#111}
 .tyre-photo img{display:block;width:100%;height:100%;min-height:360px;object-fit:cover}
 .tyre-photo-stack{display:grid;gap:18px}
+.tyre-gallery-section{display:grid;gap:28px}
+.tyre-gallery-section .tyre-copy p{max-width:min(1120px,76vw,calc(100vw - 40px))}
+.tyre-photo-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch}
+.tyre-photo-row .tyre-photo img{aspect-ratio:16/10;min-height:300px}
 .tyre-video-panel{display:grid;grid-template-columns:.9fr 1fr;gap:18px;align-items:stretch;margin-top:18px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);overflow:hidden}
 .tyre-video-copy{padding:28px 26px;align-self:center}
 .tyre-video-copy h3{margin:12px 0 10px;font-family:'Saira Condensed',sans-serif;font-size:clamp(25px,3vw,42px);font-weight:900;line-height:.98;text-transform:uppercase;color:#fff}
@@ -842,6 +850,7 @@ PAGE_CSS = """.tyre-hero{position:relative;isolation:isolate;overflow:hidden;min
 .tyre-faq-list details[open] .chev{transform:rotate(180deg)}
 .tyre-faq-list .answer{padding:0 24px 24px;color:var(--text-dim);font-size:16px;line-height:1.65}
 @media (max-width:980px){.tyre-heading,.tyre-split,.tyre-split-video{grid-template-columns:1fr}.tyre-answer-grid{grid-template-columns:1fr}.tyre-video-panel{grid-template-columns:1fr}.tyre-photo img{min-height:260px}}
+@media (max-width:720px){.tyre-photo-row{grid-template-columns:1fr}}
 @media (max-width:640px){.tyre-hero{min-height:auto;padding:124px 0 62px}.tyre-hero h1{max-width:calc(100vw - 40px);font-size:clamp(30px,9vw,38px);line-height:.94;overflow-wrap:anywhere}.tyre-hero .lead,.tyre-copy,.tyre-copy p{max-width:calc(100vw - 40px);overflow-wrap:break-word}.tyre-section{padding:48px 0}.tyre-heading{gap:16px;margin-bottom:24px}.tyre-heading h2{font-size:clamp(31px,11vw,42px);overflow-wrap:anywhere}.tyre-actions{display:grid;grid-template-columns:1fr;max-width:calc(100vw - 40px)}.tyre-actions .btn{width:100%;justify-content:center;white-space:normal;text-align:center;line-height:1.15;padding-left:18px;padding-right:18px}.tyre-video-copy{padding:24px 20px}.tyre-price-table th,.tyre-price-table td{padding:18px}.play-dot{width:58px;height:58px}}
 """
 
