@@ -55,6 +55,7 @@ jobs:
             faq \
             harley-service \
             motorcycle-service \
+            motorcycle-tyre-service \
             news \
             parts \
             photos \
