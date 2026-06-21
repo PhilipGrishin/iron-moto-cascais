@@ -43,7 +43,7 @@ BLOG_CSS = """.subpage.blog-hub{padding:126px 0 58px}
 .blog-empty{padding:46px 28px;text-align:center;color:var(--text-dim);font-size:16px;border:1px solid var(--border);background:var(--surface);border-radius:var(--radius-lg)}
 .blog-topics{padding:56px 0;background:#0a0a0a;border-top:1px solid var(--border)}
 .blog-topics .heading{margin-bottom:34px;display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:end;padding-bottom:24px;border-bottom:1px solid var(--border)}
-.blog-topics .heading h2{margin:0;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(30px,4.6vw,62px);line-height:.95;color:#fff}
+.blog-topics .heading h2{margin:0;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.2vw,44px);line-height:.95;color:#fff}
 .blog-topics .heading h2 em{color:var(--accent);font-style:italic}
 .topic-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
 .topic-card{min-height:170px;padding:22px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);display:flex;flex-direction:column;gap:14px}
@@ -60,14 +60,14 @@ ARTICLE_CSS = """.subpage.blog-article{padding:0;position:relative;overflow:hidd
 .blog-article .container{position:relative;z-index:2;padding-top:140px;padding-bottom:64px;width:100%;min-width:0}
 .blog-article .date{font-family:'Saira',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
 .blog-article .crumb,.blog-article h1,.blog-article .lede,.blog-article-body h2,.blog-article-body p,.blog-list li,.blog-faq-item summary{overflow-wrap:anywhere}
-.blog-article h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.92;letter-spacing:0;text-transform:uppercase;font-size:clamp(34px,6vw,86px);color:#fff;max-width:min(20ch,100%);margin-bottom:24px}
+.blog-article h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.92;letter-spacing:0;text-transform:uppercase;font-size:clamp(30px,4vw,52px);color:#fff;max-width:min(20ch,100%);margin-bottom:24px}
 .blog-article h1 .accent{color:var(--accent)}
 .blog-article .lede{font-family:'Saira',sans-serif;font-size:clamp(17px,1.45vw,21px);color:var(--text);max-width:min(66ch,100%);line-height:1.55}
 .blog-article-body{padding:56px 0;background:#0a0a0a;border-top:1px solid var(--border)}
 .blog-article-body .container{max-width:820px;min-width:0}
 .blog-article-body section{padding:0;margin-bottom:34px}
 .blog-article-body section:last-child{margin-bottom:0}
-.blog-article-body h2{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(26px,3vw,42px);line-height:1.04;color:#fff;margin-bottom:22px}
+.blog-article-body h2{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(22px,2.1vw,30px);line-height:1.04;color:#fff;margin-bottom:22px}
 .blog-article-body p{font-family:'Saira',sans-serif;font-size:clamp(16px,1.25vw,19px);line-height:1.66;color:var(--text);margin-bottom:18px}
 .blog-article-body p:last-child{margin-bottom:0}
 .blog-article-body .blog-article-lead{padding:34px 36px;border:1px solid var(--border);border-left:3px solid var(--accent);background:var(--surface);border-radius:var(--radius-lg)}

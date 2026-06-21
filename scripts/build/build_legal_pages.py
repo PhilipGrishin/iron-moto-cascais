@@ -14,7 +14,7 @@ from seo_meta import upsert_robots_image_preview
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260620c"
+CACHE_BUST = "20260621a"
 
 OG_LOCALES = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
 LANGS = ["en", "ru", "uk", "pt"]
@@ -39,13 +39,13 @@ LEGAL_CSS = """.subpage.lg{padding:140px 0 60px;background:#0a0a0a;position:rela
 .crumb a{color:var(--text-dim)}
 .crumb a:hover{color:var(--accent)}
 .crumb .sep{color:var(--accent)}
-.subpage.lg h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.95;letter-spacing:-.01em;text-transform:uppercase;font-size:clamp(34px,5.6vw,72px);color:#fff;margin-bottom:14px;max-width:18ch}
+.subpage.lg h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.95;letter-spacing:-.01em;text-transform:uppercase;font-size:clamp(30px,3.5vw,42px);color:#fff;margin-bottom:14px;max-width:18ch}
 .subpage.lg .lead{max-width:62ch;color:var(--text-dim);font-size:clamp(15px,1.3vw,18px)}
 .legal-body{padding:60px 0 80px;background:#0a0a0a;border-top:1px solid var(--border)}
 .legal-body .container{max-width:840px}
 .legal-body section{padding:24px 0;border-bottom:1px solid var(--border)}
 .legal-body section:last-child{border-bottom:none}
-.legal-body h2{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(20px,1.8vw,26px);color:#fff;line-height:1.1;margin-bottom:14px}
+.legal-body h2{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(18px,1.5vw,22px);color:#fff;line-height:1.1;margin-bottom:14px}
 .legal-body p{font-family:'Saira',sans-serif;font-weight:400;font-size:15px;line-height:1.65;color:var(--text-dim);max-width:72ch}
 .legal-body .updated{margin-top:30px;font-family:'Saira',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-mute)}
 .legal-body .legal-nav{margin-top:40px;padding-top:30px;border-top:1px solid var(--border);display:flex;gap:18px;flex-wrap:wrap;font-family:'Saira',sans-serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase}

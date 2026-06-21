@@ -22,7 +22,7 @@ from news_data import (
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260620c"
+CACHE_BUST = "20260621a"
 LANGS = ["en", "ru", "uk", "pt"]
 OG_LOCALE = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
 
@@ -233,13 +233,13 @@ SHARED_STYLES = """.subpage{padding:160px 0 100px;background:#0a0a0a;position:re
 .crumb a{color:var(--text-dim)}
 .crumb a:hover{color:var(--accent)}
 .crumb .sep{color:var(--accent)}
-.subpage h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.92;letter-spacing:-.01em;text-transform:uppercase;font-size:clamp(34px,6vw,84px);color:#fff;max-width:22ch;margin-bottom:24px}
+.subpage h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.92;letter-spacing:-.01em;text-transform:uppercase;font-size:clamp(30px,4vw,52px);color:#fff;max-width:22ch;margin-bottom:24px}
 .subpage h1 .accent{color:var(--accent)}
 .subpage .lead{max-width:62ch;color:var(--text-dim)}
 .subpage-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
 .cta-back{padding:var(--gap) 0;background:#0a0a0a;text-align:center;border-top:1px solid var(--border)}
 .cta-back .container{max-width:760px}
-.cta-back h2{margin-bottom:18px;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(30px,4.6vw,60px);line-height:.95;color:#fff}
+.cta-back h2{margin-bottom:18px;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.2vw,42px);line-height:.95;color:#fff}
 .cta-back .lead{margin:0 auto 30px;max-width:54ch}
 .cta-back .btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 @media (max-width:760px){.subpage{padding-top:130px}}"""
@@ -266,14 +266,14 @@ ARTICLE_CSS = """.subpage.news-article{padding:0;position:relative;overflow:hidd
 .news-article .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.6) 40%,rgba(10,10,10,.95) 100%);pointer-events:none}
 .news-article .container{position:relative;z-index:2;padding-top:140px;padding-bottom:60px}
 .news-article .date{font-family:'Saira',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
-.news-article h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.92;letter-spacing:-.01em;text-transform:uppercase;font-size:clamp(34px,6vw,86px);color:#fff;max-width:22ch;margin-bottom:24px}
+.news-article h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.92;letter-spacing:-.01em;text-transform:uppercase;font-size:clamp(30px,4vw,52px);color:#fff;max-width:22ch;margin-bottom:24px}
 .news-article h1 .accent{color:var(--accent)}
 .news-article .lede{font-family:'Saira',sans-serif;font-size:clamp(17px,1.5vw,21px);color:var(--text);max-width:64ch;line-height:1.5}
 .article-body{padding:56px 0;background:#0a0a0a;border-top:1px solid var(--border)}
 .article-body .container{max-width:780px}
 .article-body section{padding:0;margin-bottom:36px}
 .article-body section:last-child{margin-bottom:0}
-.article-body h2{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(26px,3vw,40px);color:#fff;line-height:1.05;margin-bottom:24px}
+.article-body h2{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(22px,2.1vw,28px);color:#fff;line-height:1.05;margin-bottom:24px}
 .article-body p{font-family:'Saira',sans-serif;font-weight:400;font-size:clamp(16px,1.3vw,19px);line-height:1.65;color:var(--text);margin-bottom:18px}
 .article-body p:last-child{margin-bottom:0}
 .article-fig{margin:34px 0;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);background:#0a0a0a}
@@ -283,7 +283,7 @@ ARTICLE_CSS = """.subpage.news-article{padding:0;position:relative;overflow:hidd
 .article-author .pill{padding:6px 14px;border:1px solid var(--accent);border-radius:30px;color:var(--accent);font-weight:600}
 .news-related{padding:var(--gap) 0;background:#0a0a0a;border-top:1px solid var(--border)}
 .news-related .heading{margin-bottom:34px;display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:end;padding-bottom:24px;border-bottom:1px solid var(--border)}
-.news-related .heading h2{margin:0;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(30px,4.6vw,62px);line-height:.95;color:#fff}
+.news-related .heading h2{margin:0;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.2vw,44px);line-height:.95;color:#fff}
 .news-related .heading h2 em{color:var(--accent);font-style:italic}
 .news-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .news-related-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px 24px;display:flex;flex-direction:column;gap:12px;min-height:190px}

@@ -281,7 +281,7 @@ PAGE_STYLE = """
 .section-eyebrow{font-family:'Saira',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-mute);margin-bottom:18px}
 .section-eyebrow span{color:var(--accent);font-weight:600}
 .price-section .heading{margin-bottom:40px;padding-bottom:30px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:end}
-.price-section .heading h2{margin:0;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(30px,4.6vw,60px);line-height:.95;letter-spacing:-.005em;color:#fff}
+.price-section .heading h2{margin:0;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.2vw,42px);line-height:.95;letter-spacing:-.005em;color:#fff}
 .price-section .heading .lead{margin:0;font-family:'Saira',sans-serif;font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:var(--text-dim)}
 @media (max-width:1100px){.price-section .heading{grid-template-columns:1fr;gap:18px}}
 
