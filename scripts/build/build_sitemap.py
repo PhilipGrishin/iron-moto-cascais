@@ -16,7 +16,7 @@ PAGES = [
     ("parts/", "monthly", "0.9"),
     ("upgrades-tuning/", "monthly", "0.85"),
     ("custom/", "monthly", "0.8"),
-    ("pre-purchase-inspection/", "monthly", "0.85"),
+    ("pre-purchase-inspection/", "monthly", "0.95"),
     ("pricing/", "monthly", "0.9"),
     ("services/", "weekly", "0.95"),
     ("projects/", "monthly", "0.85"),

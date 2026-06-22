@@ -58,7 +58,9 @@ MAIN_PAGES = [
     ("parts/index.html", "parts"),
     ("upgrades-tuning/index.html", "upgrades-tuning"),
     ("custom/index.html", "custom"),
-    ("pre-purchase-inspection/index.html", "pre-purchase-inspection"),
+    # pre-purchase-inspection is generated directly in four languages by
+    # build_pre_purchase_inspection.py because the page has rich service-page
+    # structure, language-specific copy, and structured data.
     # pricing is handled by build_pricing.py (it has its own per-language generator)
     ("services/index.html", "services"),
     ("projects/index.html", "projects"),

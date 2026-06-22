@@ -113,20 +113,20 @@ PAGE_META = {
     # --------- Pre-Purchase Inspection ---------
     "pre-purchase-inspection": {
         "en": {
-            "title": "Motorcycle Pre-Purchase Inspection in Cascais | Iron Custom Motors",
-            "description": "Buying a used motorcycle in Portugal? Get a professional pre-purchase inspection in Cascais. Mechanical, electrical, frame check + written report with photos.",
+            "title": "Motorcycle Pre-Purchase Inspection in Cascais & Lisbon",
+            "description": "Independent motorcycle pre-purchase inspection in Cascais & Lisbon. Compression test, videoscope cylinder check, written report. English-speaking. From €150.",
         },
         "ru": {
-            "title": "Предпокупочная инспекция мотоцикла в Кашкайше | Iron Custom Motors",
-            "description": "Покупаете б/у мотоцикл в Португалии? Профессиональная предпокупочная инспекция в Кашкайше: механика, электрика, проверка рамы + письменный отчёт с фото.",
+            "title": "Проверка мотоцикла перед покупкой · Кашкайш, Лиссабон",
+            "description": "Независимая проверка мотоцикла перед покупкой в Кашкайше и Лиссабоне. Замер компрессии, осмотр цилиндра видеоскопом, письменный отчёт. От 150 €.",
         },
         "uk": {
-            "title": "Передкупівельна інспекція мотоцикла у Кашкайші | Iron Custom Motors",
-            "description": "Купуєте б/в мотоцикл у Португалії? Професійна передкупівельна інспекція в Кашкайші: механіка, електрика, перевірка рами + письмовий звіт з фото.",
+            "title": "Перевірка мотоцикла перед купівлею · Кашкайш, Лісабон",
+            "description": "Незалежна перевірка мотоцикла перед купівлею в Кашкайші та Лісабоні. Замір компресії, огляд циліндра відеоскопом, письмовий звіт. Від 150 €.",
         },
         "pt": {
-            "title": "Inspeção de Motos Antes da Compra em Cascais | Iron Custom Motors",
-            "description": "A comprar uma moto usada em Portugal? Inspeção profissional pré-compra em Cascais: verificação mecânica, elétrica e do quadro + relatório escrito com fotos.",
+            "title": "Inspeção Pré-Compra de Mota em Cascais e Lisboa",
+            "description": "Inspeção pré-compra de mota independente em Cascais e Lisboa. Teste de compressão, inspeção do cilindro com videoscópio e relatório escrito. Desde 150 €.",
         },
     },
 }

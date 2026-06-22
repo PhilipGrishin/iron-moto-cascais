@@ -134,15 +134,6 @@ PAGES = {
             ("nav.contact", "/contact/", "Contact"),
         ],
     },
-    "pre-purchase-inspection": {
-        "path": "pre-purchase-inspection/index.html",
-        "related": [
-            ("services.s1.title", "/motorcycle-service/", "Motorcycle service & repair"),
-            ("services.s2.title", "/parts/", "Parts & consumables"),
-            ("nav.pricing", "/pricing/", "Pricing"),
-            ("nav.contact", "/contact/", "Contact"),
-        ],
-    },
 }
 
 for _slug in BRAND_ORDER:
