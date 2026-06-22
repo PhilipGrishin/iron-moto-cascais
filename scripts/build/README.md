@@ -36,7 +36,7 @@ python3 -m pip install -r requirements.txt
 | Script | Output |
 |---|---|
 | `build_new_pages.py` | `services/`, `projects/`, `about/`, `community/`, `contact/`, `faq/` |
-| `build_brand_pages.py` | `bmw-service/`, `harley-service/`, `ducati-service/` |
+| `build_brand_pages.py` | Registered brand service pages from `brand_pages_data.py` |
 | `build_legal_pages.py` | `privacy/`, `cookies/`, `terms/` |
 | `build_news.py` | `news/` hub + each `news/<slug>/` article |
 | `build_blog.py` | `blog/` hub + `blog/<slug>/` articles |
@@ -53,6 +53,7 @@ python3 -m pip install -r requirements.txt
 | `build_reviews_schema.py` | Pulls fresh Google reviews via the Cloudflare Worker, injects `AggregateRating` + `Review` JSON-LD into the home pages, and refreshes the static reviews HTML fallback |
 | `extract_i18n.js` | Reads `assets/main.js` and writes `scripts/build/i18n.json` (consumed by `build_i18n.py`) |
 | `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD, localized internal links, SEO robots meta and local assets |
+| `validate_brand_pages.py` | Validates brand page registry, 4 language outputs, schema, sitemap, optimized hero assets, deploy workflow and reciprocal brand links |
 
 ### Data
 
@@ -60,7 +61,7 @@ python3 -m pip install -r requirements.txt
 |---|---|
 | `page_meta.py` | `build_i18n.py` (per-page title / description / OG / Twitter, per language) |
 | `new_pages_data.py` | `build_new_pages.py` (services / projects / about / contact / faq) |
-| `brand_pages_data.py` | `build_brand_pages.py` (BMW / Harley / Ducati) |
+| `brand_pages_data.py` | `build_brand_pages.py` and brand aggregators (brand registry, meta, hero image, related links, 4-language content) |
 | `legal_pages_data.py` | `build_legal_pages.py` (Privacy / Cookies / Terms) |
 | `news_data.py` | `build_news.py` (one entry per article slug, 4 languages) |
 | `blog_data.py` | `build_blog.py` (blog hub and posts, 4 languages) |
@@ -126,8 +127,14 @@ python3 scripts/build/validate_seo.py
 ### After adding a brand page
 
 ```
-# edit brand_pages_data.py (BRAND_HEAD / PAGE_I18N / BRAND_BG)
+# 1. Add the brand to BRAND_CONFIG and BRAND_ORDER in brand_pages_data.py.
+# 2. Add BRAND_HEAD and PAGE_I18N content for all 4 languages.
+# 3. Add the nav label key to assets/main.js and regenerate i18n.json.
+# 4. Add the hero source photo to photos/ and run optimize_hero_images.py for that brand.
+node scripts/build/extract_i18n.js
+python3 scripts/build/optimize_hero_images.py <new-brand-slug>
 python3 scripts/build/build_brand_pages.py
+python3 scripts/build/build_new_pages.py
 python3 scripts/build/nav_patch.py
 python3 scripts/build/enhance_money_pages.py
 python3 scripts/build/build_i18n.py
@@ -135,8 +142,33 @@ python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/validate_seo.py
+python3 scripts/build/validate_brand_pages.py <new-brand-slug>
 # bump cache-bust
 ```
+
+### Brand page intake format
+
+Future brand pages should arrive in the same format used for Suzuki:
+
+- One Markdown file with 4 language blocks: English, Português, Русский, Українська.
+- For each language: slug, SEO title, meta description, hero ALT, breadcrumb/eyebrow, H1, intro, section copy, cards, FAQ, related links, local area and CTA.
+- One hero photo, named clearly enough to become `<brand>-service-main-1600.jpg`.
+- Confirmed facts only: service prices, model names, diagnostic tools, contacts and opening hours.
+
+The single source of truth for a new brand is `BRAND_CONFIG` in
+`brand_pages_data.py`. Once a brand is registered there, these build helpers
+consume it automatically:
+
+- `build_brand_pages.py` for page rendering and reciprocal brand links.
+- `nav_patch.py` for the Brands dropdown, mobile menu and footer.
+- `build_new_pages.py` for the services hub brand list.
+- `build_i18n.py`, `localize_internal_links.py`, `build_sitemap.py` and `validate_seo.py`.
+- `optimize_hero_images.py` for AVIF/WebP/JPEG hero variants.
+- `validate_brand_pages.py` for final brand-specific QA.
+
+The GitHub Pages workflow is intentionally explicit. `validate_brand_pages.py`
+checks that the new root-level brand folder is copied into the deploy artifact,
+so a page cannot silently work locally but 404 on production.
 
 ### After adding a news article
 

@@ -1,26 +1,78 @@
 """
-Content for brand-specific service landing pages:
-  /bmw-service/    — BMW Motorrad
-  /harley-service/ — Harley-Davidson
-  /ducati-service/ — Ducati
-  /suzuki-service/ — Suzuki
+Content and registry for brand-specific service landing pages.
 
-Each brand has full multilingual content (en, ru, uk, pt) and a default
-hero background image. Backgrounds can be replaced later with brand-specific
-photos by editing BRAND_BG below.
+Add future motorcycle brands here first. The build scripts import this registry
+to keep the brand dropdown, footer links, service hub, sitemap, localized links,
+SEO validation and page rendering in sync.
 
-Used by build_brand_pages.py.
+Used by build_brand_pages.py and the site-wide build helpers.
 """
 
+LANGS = ("en", "ru", "uk", "pt")
+BRAND_ORDER = ("harley-service", "bmw-service", "ducati-service", "suzuki-service")
+
 # ============================================================
-# Per-brand background images (defaults, will be replaced later)
+# Per-brand registry
 # ============================================================
-BRAND_BG = {
-    "bmw-service":    "/photos/bmw-service-main-1600.jpg",
-    "harley-service": "/photos/harley-service-main-1600.jpg",
-    "ducati-service": "/photos/mechanic-1600.jpg",
-    "suzuki-service": "/photos/suzuki-service-main-1600.jpg",
+BRAND_CONFIG = {
+    "harley-service": {
+        "prefix": "hd",
+        "name": "Harley-Davidson",
+        "nav_key": "nav.brandHarley",
+        "hero": "/photos/harley-service-main-1600.jpg",
+        "related_links": [
+            ("services.s1.title", "/motorcycle-service/", "Motorcycle service &amp; repair"),
+            ("services.s4.title", "/custom/", "Custom &amp; special projects"),
+            ("nav.projects", "/projects/", "Projects"),
+            ("nav.pricing", "/pricing/", "Pricing"),
+        ],
+    },
+    "bmw-service": {
+        "prefix": "bmw",
+        "name": "BMW Motorrad",
+        "nav_key": "nav.brandBmw",
+        "hero": "/photos/bmw-service-main-1600.jpg",
+        "related_links": [
+            ("services.s1.title", "/motorcycle-service/", "Motorcycle service &amp; repair"),
+            ("services.s2.title", "/parts/", "Parts &amp; consumables"),
+            ("nav.pricing", "/pricing/", "Pricing"),
+            ("nav.community", "/community/", "Community"),
+        ],
+    },
+    "ducati-service": {
+        "prefix": "duc",
+        "name": "Ducati",
+        "nav_key": "nav.brandDucati",
+        "hero": "/photos/mechanic.jpg",
+        "related_links": [
+            ("services.s1.title", "/motorcycle-service/", "Motorcycle service &amp; repair"),
+            ("services.s3.title", "/upgrades-tuning/", "Upgrades &amp; tuning"),
+            ("services.s2.title", "/parts/", "Parts &amp; consumables"),
+            ("nav.pricing", "/pricing/", "Pricing"),
+        ],
+    },
+    "suzuki-service": {
+        "prefix": "suz",
+        "name": "Suzuki",
+        "nav_key": "nav.brandSuzuki",
+        "hero": "/photos/suzuki-service-main-1600.jpg",
+        "related_links": [
+            ("services.s1.title", "/motorcycle-service/", "Motorcycle service &amp; repair"),
+            ("services.s3.title", "/upgrades-tuning/", "Upgrades &amp; tuning"),
+            ("services.s2.title", "/parts/", "Parts &amp; consumables"),
+            ("nav.pricing", "/pricing/", "Pricing"),
+            ("services.s4.title", "/custom/", "Custom &amp; special projects"),
+            ("nav.contact", "/contact/", "Contact"),
+            ("nav.faq", "/faq/", "FAQ"),
+        ],
+    },
 }
+
+BRAND_BG = {slug: config["hero"] for slug, config in BRAND_CONFIG.items()}
+BRAND_PREFIX = {slug: config["prefix"] for slug, config in BRAND_CONFIG.items()}
+BRAND_NAME = {slug: config["name"] for slug, config in BRAND_CONFIG.items()}
+BRAND_NAV_KEYS = {slug: config["nav_key"] for slug, config in BRAND_CONFIG.items()}
+BRAND_RELATED_LINKS = {slug: config["related_links"] for slug, config in BRAND_CONFIG.items()}
 
 # ============================================================
 # Per-brand head meta (title + description) per language
@@ -102,6 +154,7 @@ PAGE_I18N["bmw-service"] = {
         "bmw.h1Crumb": "BMW Motorrad service",
         "bmw.btnWA": "WhatsApp us",
         "bmw.btnSend": "Send a request",
+        "bmw.heroAlt": "BMW Motorrad motorcycle service at Iron Custom Motors workshop in Cascais",
 
         "bmw.introEyebrow": "Why bring your BMW to us",
         "bmw.introTitle": "BMW-first expertise, <em>independent rates.</em>",
@@ -199,6 +252,7 @@ PAGE_I18N["bmw-service"] = {
         "bmw.h1Crumb": "Сервис BMW Motorrad",
         "bmw.btnWA": "WhatsApp",
         "bmw.btnSend": "Отправить заявку",
+        "bmw.heroAlt": "Сервис мотоциклов BMW Motorrad в мастерской Iron Custom Motors, Кашкайш",
 
         "bmw.introEyebrow": "Почему BMW — к нам",
         "bmw.introTitle": "Глубокая BMW-экспертиза, <em>независимые цены.</em>",
@@ -296,6 +350,7 @@ PAGE_I18N["bmw-service"] = {
         "bmw.h1Crumb": "Сервіс BMW Motorrad",
         "bmw.btnWA": "WhatsApp",
         "bmw.btnSend": "Надіслати заявку",
+        "bmw.heroAlt": "Сервіс мотоциклів BMW Motorrad у майстерні Iron Custom Motors, Кашкайш",
 
         "bmw.introEyebrow": "Чому BMW — до нас",
         "bmw.introTitle": "Глибока BMW-експертиза, <em>незалежні ціни.</em>",
@@ -393,6 +448,7 @@ PAGE_I18N["bmw-service"] = {
         "bmw.h1Crumb": "Serviço BMW Motorrad",
         "bmw.btnWA": "WhatsApp",
         "bmw.btnSend": "Enviar pedido",
+        "bmw.heroAlt": "Serviço de motas BMW Motorrad na oficina Iron Custom Motors em Cascais",
 
         "bmw.introEyebrow": "Porquê BMW connosco",
         "bmw.introTitle": "Expertise BMW profunda, <em>preços independentes.</em>",
@@ -496,6 +552,7 @@ PAGE_I18N["harley-service"] = {
         "hd.h1Crumb": "Harley-Davidson service",
         "hd.btnWA": "WhatsApp us",
         "hd.btnSend": "Send a request",
+        "hd.heroAlt": "Harley-Davidson motorcycles in service at Iron Custom Motors workshop in Cascais",
 
         "hd.introEyebrow": "Why Harleys come to us",
         "hd.introTitle": "Harley is our <em>deepest specialization.</em>",
@@ -596,6 +653,7 @@ PAGE_I18N["harley-service"] = {
         "hd.h1Crumb": "Сервис Harley-Davidson",
         "hd.btnWA": "WhatsApp",
         "hd.btnSend": "Отправить заявку",
+        "hd.heroAlt": "Мотоциклы Harley-Davidson на сервисе в мастерской Iron Custom Motors, Кашкайш",
 
         "hd.introEyebrow": "Почему Harley — к нам",
         "hd.introTitle": "Harley — наша <em>самая глубокая специализация.</em>",
@@ -696,6 +754,7 @@ PAGE_I18N["harley-service"] = {
         "hd.h1Crumb": "Сервіс Harley-Davidson",
         "hd.btnWA": "WhatsApp",
         "hd.btnSend": "Надіслати заявку",
+        "hd.heroAlt": "Мотоцикли Harley-Davidson на сервісі в майстерні Iron Custom Motors, Кашкайш",
 
         "hd.introEyebrow": "Чому Harley — до нас",
         "hd.introTitle": "Harley — наша <em>найглибша спеціалізація.</em>",
@@ -796,6 +855,7 @@ PAGE_I18N["harley-service"] = {
         "hd.h1Crumb": "Serviço Harley-Davidson",
         "hd.btnWA": "WhatsApp",
         "hd.btnSend": "Enviar pedido",
+        "hd.heroAlt": "Motas Harley-Davidson em serviço na oficina Iron Custom Motors em Cascais",
 
         "hd.introEyebrow": "Porquê Harley connosco",
         "hd.introTitle": "Harley é a nossa <em>especialização mais profunda.</em>",
@@ -902,6 +962,7 @@ PAGE_I18N["ducati-service"] = {
         "duc.h1Crumb": "Ducati service",
         "duc.btnWA": "WhatsApp us",
         "duc.btnSend": "Send a request",
+        "duc.heroAlt": "Ducati motorcycle service at Iron Custom Motors workshop in Cascais",
 
         "duc.introEyebrow": "Why Ducati owners come to us",
         "duc.introTitle": "Desmo done <em>properly.</em>",
@@ -1002,6 +1063,7 @@ PAGE_I18N["ducati-service"] = {
         "duc.h1Crumb": "Сервис Ducati",
         "duc.btnWA": "WhatsApp",
         "duc.btnSend": "Отправить заявку",
+        "duc.heroAlt": "Сервис мотоциклов Ducati в мастерской Iron Custom Motors, Кашкайш",
 
         "duc.introEyebrow": "Почему владельцы Ducati — к нам",
         "duc.introTitle": "Desmo сделанный <em>правильно.</em>",
@@ -1102,6 +1164,7 @@ PAGE_I18N["ducati-service"] = {
         "duc.h1Crumb": "Сервіс Ducati",
         "duc.btnWA": "WhatsApp",
         "duc.btnSend": "Надіслати заявку",
+        "duc.heroAlt": "Сервіс мотоциклів Ducati у майстерні Iron Custom Motors, Кашкайш",
 
         "duc.introEyebrow": "Чому власники Ducati — до нас",
         "duc.introTitle": "Desmo зроблений <em>правильно.</em>",
@@ -1202,6 +1265,7 @@ PAGE_I18N["ducati-service"] = {
         "duc.h1Crumb": "Serviço Ducati",
         "duc.btnWA": "WhatsApp",
         "duc.btnSend": "Enviar pedido",
+        "duc.heroAlt": "Serviço de motas Ducati na oficina Iron Custom Motors em Cascais",
 
         "duc.introEyebrow": "Porquê os donos Ducati vêm ter connosco",
         "duc.introTitle": "Desmo feito <em>como deve ser.</em>",

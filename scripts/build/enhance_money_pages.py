@@ -4,8 +4,11 @@
 import json
 import re
 from pathlib import Path
+from typing import Optional
 
 from bs4 import BeautifulSoup, FeatureNotFound
+
+from brand_pages_data import BRAND_NAME, BRAND_NAV_KEYS, BRAND_ORDER, BRAND_RELATED_LINKS
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
@@ -34,6 +37,9 @@ COMMON_I18N = {
         "seo.relatedTitle": "Continue through the <em>same service system.</em>",
         "seo.relatedLead": "These pages connect the most common next steps: service, parts, upgrades, pricing, brand-specific help and the rider lounge.",
         "seo.relatedText": "Open the related page for details, process, pricing context and booking options.",
+        "seo.otherBrandsTitle": "Other brands we service.",
+        "seo.otherBrandsLead": "Compare the same workshop process across our brand-specific service pages.",
+        "seo.otherBrandText": "Open the brand page for model-specific service details, diagnostics, parts and booking context.",
     },
     "ru": {
         "seo.localEyebrow": "Локальная зона сервиса",
@@ -49,6 +55,9 @@ COMMON_I18N = {
         "seo.relatedTitle": "Двигайтесь дальше в <em>той же системе сервиса.</em>",
         "seo.relatedLead": "Эти страницы связывают самые частые следующие шаги: сервис, запчасти, апгрейды, цены, брендовые страницы и rider lounge.",
         "seo.relatedText": "Откройте связанную страницу, чтобы посмотреть детали, процесс, контекст цены и варианты записи.",
+        "seo.otherBrandsTitle": "Другие марки, которые обслуживаем.",
+        "seo.otherBrandsLead": "Сравните тот же процесс мастерской на брендовых страницах сервиса.",
+        "seo.otherBrandText": "Откройте страницу бренда, чтобы увидеть сервисные детали по моделям, диагностике, запчастям и записи.",
     },
     "uk": {
         "seo.localEyebrow": "Локальна зона сервісу",
@@ -64,6 +73,9 @@ COMMON_I18N = {
         "seo.relatedTitle": "Рухайтесь далі у <em>тій самій системі сервісу.</em>",
         "seo.relatedLead": "Ці сторінки пов'язують найчастіші наступні кроки: сервіс, запчастини, апґрейди, ціни, брендові сторінки і rider lounge.",
         "seo.relatedText": "Відкрийте пов'язану сторінку, щоб побачити деталі, процес, контекст ціни і варіанти запису.",
+        "seo.otherBrandsTitle": "Інші марки, які обслуговуємо.",
+        "seo.otherBrandsLead": "Порівняйте той самий процес майстерні на брендових сторінках сервісу.",
+        "seo.otherBrandText": "Відкрийте сторінку бренду, щоб побачити сервісні деталі за моделями, діагностикою, запчастинами й записом.",
     },
     "pt": {
         "seo.localEyebrow": "Área local de serviço",
@@ -79,6 +91,9 @@ COMMON_I18N = {
         "seo.relatedTitle": "Continue no <em>mesmo sistema de serviço.</em>",
         "seo.relatedLead": "Estas páginas ligam os próximos passos mais comuns: serviço, peças, upgrades, preços, ajuda por marca e rider lounge.",
         "seo.relatedText": "Abra a página relacionada para detalhes, processo, contexto de preço e opções de marcação.",
+        "seo.otherBrandsTitle": "Outras marcas que servimos.",
+        "seo.otherBrandsLead": "Compare o mesmo processo de oficina nas nossas páginas de serviço por marca.",
+        "seo.otherBrandText": "Abra a página da marca para detalhes de serviço por modelo, diagnóstico, peças e marcação.",
     },
 }
 
@@ -128,34 +143,13 @@ PAGES = {
             ("nav.contact", "/contact/", "Contact"),
         ],
     },
-    "bmw-service": {
-        "path": "bmw-service/index.html",
-        "related": [
-            ("services.s1.title", "/motorcycle-service/", "Motorcycle service & repair"),
-            ("services.s2.title", "/parts/", "Parts & consumables"),
-            ("nav.pricing", "/pricing/", "Pricing"),
-            ("nav.community", "/community/", "Community"),
-        ],
-    },
-    "harley-service": {
-        "path": "harley-service/index.html",
-        "related": [
-            ("services.s1.title", "/motorcycle-service/", "Motorcycle service & repair"),
-            ("services.s4.title", "/custom/", "Custom & special projects"),
-            ("nav.projects", "/projects/", "Projects"),
-            ("nav.pricing", "/pricing/", "Pricing"),
-        ],
-    },
-    "ducati-service": {
-        "path": "ducati-service/index.html",
-        "related": [
-            ("services.s1.title", "/motorcycle-service/", "Motorcycle service & repair"),
-            ("services.s3.title", "/upgrades-tuning/", "Upgrades & tuning"),
-            ("services.s2.title", "/parts/", "Parts & consumables"),
-            ("nav.pricing", "/pricing/", "Pricing"),
-        ],
-    },
 }
+
+for _slug in BRAND_ORDER:
+    PAGES[_slug] = {
+        "path": f"{_slug}/index.html",
+        "related": BRAND_RELATED_LINKS[_slug],
+    }
 
 
 def parse_html(markup: str) -> BeautifulSoup:
@@ -232,7 +226,29 @@ def related_rows(links):
     return "\n".join(rows)
 
 
-def enhancement_html(links):
+def other_brand_rows(slug: Optional[str], start: int) -> str:
+    if slug not in BRAND_ORDER:
+        return ""
+
+    rows = [
+        f'''<div class="related-subhead">
+<h3 data-i18n="seo.otherBrandsTitle">{COMMON_I18N["en"]["seo.otherBrandsTitle"]}</h3>
+<p data-i18n="seo.otherBrandsLead">{COMMON_I18N["en"]["seo.otherBrandsLead"]}</p>
+</div>'''
+    ]
+    for idx, other_slug in enumerate((item for item in BRAND_ORDER if item != slug), start=start):
+        rows.append(f'''<article class="proc-row">
+<span class="num">{idx:02d}</span>
+<div>
+<h4><a data-i18n="{BRAND_NAV_KEYS[other_slug]}" href="/{other_slug}/">{BRAND_NAME[other_slug]}</a></h4>
+<p data-i18n="seo.otherBrandText">{COMMON_I18N["en"]["seo.otherBrandText"]}</p>
+</div>
+</article>''')
+    return "\n".join(rows)
+
+
+def enhancement_html(links, slug: Optional[str] = None):
+    brand_rows = other_brand_rows(slug, len(links) + 1)
     return f'''<section class="sub-section" data-enhancement="money-local">
 <div class="container">
 <div class="heading reveal">
@@ -260,6 +276,7 @@ def enhancement_html(links):
 </div>
 <div class="reveal-stagger" style="max-width:900px">
 {related_rows(links)}
+{brand_rows}
 </div>
 </div>
 </section>'''
@@ -285,7 +302,7 @@ def process_page(slug: str, config: dict) -> bool:
         print(f"  SKIP no insertion point: {config['path']}")
         return False
 
-    fragment = parse_html(enhancement_html(config["related"]))
+    fragment = parse_html(enhancement_html(config["related"], slug))
     new_sections = [child for child in (fragment.body or fragment).children if getattr(child, "name", None)]
     for section in reversed(new_sections):
         target.insert_before(section)

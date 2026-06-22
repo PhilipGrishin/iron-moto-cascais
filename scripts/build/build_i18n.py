@@ -16,6 +16,7 @@ from copy import deepcopy
 
 from bs4 import BeautifulSoup, FeatureNotFound, NavigableString
 
+from brand_pages_data import BRAND_ORDER
 from page_meta import PAGE_META, PROJECT_NAMES, OG_LOCALES
 from seo_meta import upsert_robots_image_preview
 
@@ -65,10 +66,7 @@ MAIN_PAGES = [
     ("community/index.html", "community"),
     ("contact/index.html", "contact"),
     ("faq/index.html", "faq"),
-    ("bmw-service/index.html", "bmw-service"),
-    ("harley-service/index.html", "harley-service"),
-    ("ducati-service/index.html", "ducati-service"),
-    ("suzuki-service/index.html", "suzuki-service"),
+    *[(f"{slug}/index.html", slug) for slug in BRAND_ORDER],
     ("blog/index.html", "blog"),
     ("blog/revtech-110-oil-service-engine-gearbox-drive/index.html", "blog/revtech-110-oil-service-engine-gearbox-drive"),
     ("blog/motorcycle-brake-pad-replacement-cascais/index.html", "blog/motorcycle-brake-pad-replacement-cascais"),

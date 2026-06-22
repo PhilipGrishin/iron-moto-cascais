@@ -4,6 +4,8 @@
 from datetime import date
 from pathlib import Path
 
+from brand_pages_data import BRAND_ORDER
+
 DOMAIN = "https://ironcustommotors.com"
 SITE_ROOT = Path(__file__).resolve().parents[2]
 
@@ -25,10 +27,7 @@ PAGES = [
     ("privacy/", "yearly", "0.3"),
     ("cookies/", "yearly", "0.3"),
     ("terms/", "yearly", "0.3"),
-    ("bmw-service/", "monthly", "0.9"),
-    ("harley-service/", "monthly", "0.9"),
-    ("ducati-service/", "monthly", "0.9"),
-    ("suzuki-service/", "monthly", "0.9"),
+    *[(f"{slug}/", "monthly", "0.9") for slug in BRAND_ORDER],
     ("motorcycle-tyre-service/", "monthly", "0.95"),
     ("blog/", "weekly", "0.85"),
     ("blog/revtech-110-oil-service-engine-gearbox-drive/", "monthly", "0.82"),

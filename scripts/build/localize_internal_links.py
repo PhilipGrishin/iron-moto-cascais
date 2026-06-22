@@ -7,6 +7,8 @@ import re
 from pathlib import Path
 from bs4 import BeautifulSoup, FeatureNotFound
 
+from brand_pages_data import BRAND_ORDER
+
 SITE_ROOT = Path(__file__).resolve().parents[2]
 TARGET_LANGS = ["ru", "uk", "pt"]
 
@@ -34,10 +36,7 @@ LOCALIZED_PATHS = {
     "/privacy/",
     "/cookies/",
     "/terms/",
-    "/bmw-service/",
-    "/harley-service/",
-    "/ducati-service/",
-    "/suzuki-service/",
+    *[f"/{slug}/" for slug in BRAND_ORDER],
     "/motorcycle-tyre-service/",
     "/blog/",
     "/blog/revtech-110-oil-service-engine-gearbox-drive/",

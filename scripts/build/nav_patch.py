@@ -28,6 +28,8 @@ import re
 from pathlib import Path
 from bs4 import BeautifulSoup
 
+from brand_pages_data import BRAND_NAME, BRAND_NAV_KEYS, BRAND_ORDER
+
 SITE_ROOT = Path(__file__).resolve().parents[2]
 
 # All EN pages whose header + footer must be rewritten.
@@ -61,10 +63,7 @@ EN_PAGES = [
     "projects/hellboy/index.html",
     "projects/true-religion/index.html",
     # Brand & news pages added 2026-05
-    "bmw-service/index.html",
-    "harley-service/index.html",
-    "ducati-service/index.html",
-    "suzuki-service/index.html",
+    *[f"{slug}/index.html" for slug in BRAND_ORDER],
     "blog/index.html",
     "blog/revtech-110-oil-service-engine-gearbox-drive/index.html",
     "blog/motorcycle-brake-pad-replacement-cascais/index.html",
@@ -97,10 +96,8 @@ SERVICE_NAV_LINKS = [
 ]
 
 BRAND_NAV_LINKS = [
-    ("nav.brandHarley", "/harley-service/", "Harley-Davidson"),
-    ("nav.brandBmw",    "/bmw-service/",    "BMW Motorrad"),
-    ("nav.brandDucati", "/ducati-service/", "Ducati"),
-    ("nav.brandSuzuki", "/suzuki-service/", "Suzuki"),
+    (BRAND_NAV_KEYS[slug], f"/{slug}/", BRAND_NAME[slug])
+    for slug in BRAND_ORDER
 ]
 
 PROJECT_NAV_LINKS = [
@@ -139,10 +136,7 @@ FOOTER_SERVICES_LINKS = [
     ("services.s4.title", "/custom/",                  "Custom &amp; special projects"),
     ("nav.tyreServ",      "/motorcycle-tyre-service/", "Tyre fitting &amp; wheel balancing"),
     ("nav.preInsp",       "/pre-purchase-inspection/", "Pre-purchase inspection"),
-    ("nav.brandHarley",    "/harley-service/",          "Harley-Davidson"),
-    ("nav.brandBmw",       "/bmw-service/",             "BMW Motorrad"),
-    ("nav.brandDucati",    "/ducati-service/",          "Ducati"),
-    ("nav.brandSuzuki",    "/suzuki-service/",          "Suzuki"),
+    *BRAND_NAV_LINKS,
     ("nav.pricing",       "/pricing/",                 "Pricing"),
 ]
 

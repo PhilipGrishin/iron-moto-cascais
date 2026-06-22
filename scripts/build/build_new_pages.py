@@ -14,6 +14,7 @@ import json
 import re
 from pathlib import Path
 
+from brand_pages_data import BRAND_NAME, BRAND_NAV_KEYS, BRAND_ORDER
 from hero_images import hero_background_css
 from new_pages_data import PAGE_HEAD_META, PAGE_I18N, PROJECT_TILES, FAQ_QA
 
@@ -312,6 +313,10 @@ def render_services():
     page_id = "services"
     page_url = f"{DOMAIN}/{page_id}/"
     en = PAGE_I18N[page_id]["en"]
+    brand_service_links = "\n".join(
+        f'<a class="brand-service-link" data-i18n="{BRAND_NAV_KEYS[slug]}" href="/{slug}/">{BRAND_NAME[slug]}</a>'
+        for slug in BRAND_ORDER
+    )
 
     json_ld = [
         {
@@ -344,7 +349,7 @@ def render_services():
 .svc-card .cta{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-family:'Saira',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
 .svc-card .cta:hover{transform:translateX(3px)}
 .svc-card.feature{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 2fr;gap:30px;align-items:center}
-.brand-service-list{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
+.brand-service-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:28px}
 .brand-service-link{display:flex;align-items:center;justify-content:center;min-height:76px;padding:18px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(18px,1.7vw,24px);line-height:1;color:#fff;text-align:center;transition:border-color .25s var(--ease),transform .25s var(--ease),color .25s var(--ease)}
 .brand-service-link:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
 /* Whole-card click handling is done in main.js (CARD_PATTERNS) */
@@ -421,10 +426,7 @@ def render_services():
 </article>
 </div>
 <div class="brand-service-list" aria-label="Brand service pages">
-<a class="brand-service-link" data-i18n="nav.brandHarley" href="/harley-service/">Harley-Davidson</a>
-<a class="brand-service-link" data-i18n="nav.brandBmw" href="/bmw-service/">BMW Motorrad</a>
-<a class="brand-service-link" data-i18n="nav.brandDucati" href="/ducati-service/">Ducati</a>
-<a class="brand-service-link" data-i18n="nav.brandSuzuki" href="/suzuki-service/">Suzuki</a>
+{brand_service_links}
 </div>
 </div>
 </section>

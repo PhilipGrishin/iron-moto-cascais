@@ -3,15 +3,17 @@
 
 from __future__ import annotations
 
+import argparse
 import sys
 from pathlib import Path
 
+from brand_pages_data import BRAND_CONFIG
 from hero_images import HERO_IMAGE_FORMATS, HERO_IMAGE_WIDTHS, hero_image_slug
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 OUTPUT_DIR = SITE_ROOT / "photos" / "optimized"
 
-HERO_SOURCES = [
+DEFAULT_HERO_SOURCES = [
     "photos/hero.jpg",
     "photos/service-action.jpg",
     "photos/mechanic.jpg",
@@ -27,8 +29,15 @@ HERO_SOURCES = [
     "photos/blog/blog-revtech-110-oil-service-01-1600.jpg",
     "photos/blog/blog-motorcycle-brake-pad-replacement-cascais-01-1600.jpg",
     "photos/blog/blog-front-fork-service-motorcycle-cascais-01-1600.jpg",
-    "photos/suzuki-service-main-1600.jpg",
 ]
+HERO_SOURCES = list(
+    dict.fromkeys(
+        [
+            *DEFAULT_HERO_SOURCES,
+            *[config["hero"].lstrip("/") for config in BRAND_CONFIG.values()],
+        ]
+    )
+)
 
 
 try:
@@ -76,9 +85,32 @@ def optimize_source(relative_path: str) -> list[str]:
     return messages
 
 
+def requested_sources(values: list[str]) -> list[str]:
+    if not values:
+        return HERO_SOURCES
+
+    sources: list[str] = []
+    for value in values:
+        if value in BRAND_CONFIG:
+            sources.append(BRAND_CONFIG[value]["hero"].lstrip("/"))
+        else:
+            sources.append(value.lstrip("/"))
+    return list(dict.fromkeys(sources))
+
+
 def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="Generate responsive AVIF/WebP/JPEG hero background variants."
+    )
+    parser.add_argument(
+        "sources",
+        nargs="*",
+        help="Optional brand slug or source image path. Defaults to all configured hero images.",
+    )
+    args = parser.parse_args()
+
     all_messages: list[str] = []
-    for relative_path in HERO_SOURCES:
+    for relative_path in requested_sources(args.sources):
         all_messages.extend(optimize_source(relative_path))
     for message in all_messages:
         print(message)

@@ -11,6 +11,7 @@ from urllib.parse import urlsplit, urlunsplit
 
 from bs4 import BeautifulSoup
 
+from brand_pages_data import BRAND_ORDER
 from hero_images import hero_background_css, hero_preload_links, optimized_hero_url
 from nav_patch import (
     DROPDOWN_NAV_LINKS,
@@ -55,9 +56,7 @@ COMMON_LOCALIZED_PATHS = {
     "/privacy/",
     "/cookies/",
     "/terms/",
-    "/bmw-service/",
-    "/harley-service/",
-    "/ducati-service/",
+    *[f"/{slug}/" for slug in BRAND_ORDER],
     "/blog/",
     "/news/",
 }

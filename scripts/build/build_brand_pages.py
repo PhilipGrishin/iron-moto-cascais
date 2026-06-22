@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate brand-specific landing pages: /bmw-service/, /harley-service/, /ducati-service/, /suzuki-service/.
+Generate registered brand-specific landing pages.
 EN sources, then run build_i18n.py to produce /ru/, /uk/, /pt/ versions.
 
 Same skeleton for every brand:
@@ -10,65 +10,21 @@ Same skeleton for every brand:
 import json
 from pathlib import Path
 
-from brand_pages_data import BRAND_BG, BRAND_HEAD, PAGE_I18N
+from brand_pages_data import (
+    BRAND_BG,
+    BRAND_HEAD,
+    BRAND_NAME,
+    BRAND_NAV_KEYS,
+    BRAND_ORDER,
+    BRAND_PREFIX,
+    BRAND_RELATED_LINKS,
+    PAGE_I18N,
+)
 from hero_images import hero_background_css, optimized_hero_url
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
 CACHE_BUST = "20260622c"
-
-# Per-brand prefix mapping (e.g. "bmw-service" → I18N key prefix "bmw")
-BRAND_PREFIX = {
-    "bmw-service":    "bmw",
-    "harley-service": "hd",
-    "ducati-service": "duc",
-    "suzuki-service": "suz",
-}
-
-# Display name + schema brand for JSON-LD
-BRAND_NAME = {
-    "bmw-service":    "BMW Motorrad",
-    "harley-service": "Harley-Davidson",
-    "ducati-service": "Ducati",
-    "suzuki-service": "Suzuki",
-}
-
-BRAND_NAV_KEYS = {
-    "bmw-service": "nav.brandBmw",
-    "harley-service": "nav.brandHarley",
-    "ducati-service": "nav.brandDucati",
-    "suzuki-service": "nav.brandSuzuki",
-}
-
-RELATED_LINKS = {
-    "bmw-service": [
-        ("services.s1.title", "/motorcycle-service/", "Motorcycle service &amp; repair"),
-        ("services.s2.title", "/parts/", "Parts &amp; consumables"),
-        ("nav.pricing", "/pricing/", "Pricing"),
-        ("nav.community", "/community/", "Community"),
-    ],
-    "harley-service": [
-        ("services.s1.title", "/motorcycle-service/", "Motorcycle service &amp; repair"),
-        ("services.s4.title", "/custom/", "Custom &amp; special projects"),
-        ("nav.projects", "/projects/", "Projects"),
-        ("nav.pricing", "/pricing/", "Pricing"),
-    ],
-    "ducati-service": [
-        ("services.s1.title", "/motorcycle-service/", "Motorcycle service &amp; repair"),
-        ("services.s3.title", "/upgrades-tuning/", "Upgrades &amp; tuning"),
-        ("services.s2.title", "/parts/", "Parts &amp; consumables"),
-        ("nav.pricing", "/pricing/", "Pricing"),
-    ],
-    "suzuki-service": [
-        ("services.s1.title", "/motorcycle-service/", "Motorcycle service &amp; repair"),
-        ("services.s3.title", "/upgrades-tuning/", "Upgrades &amp; tuning"),
-        ("services.s2.title", "/parts/", "Parts &amp; consumables"),
-        ("nav.pricing", "/pricing/", "Pricing"),
-        ("services.s4.title", "/custom/", "Custom &amp; special projects"),
-        ("nav.contact", "/contact/", "Contact"),
-        ("nav.faq", "/faq/", "FAQ"),
-    ],
-}
 
 SEO_I18N = {
     "en": {
@@ -353,6 +309,24 @@ def head(slug, lang):
 </head>'''
 
 
+def render_brand_nav_items() -> str:
+    return "\n".join(
+        f'<a data-i18n="{BRAND_NAV_KEYS[slug]}" href="/{slug}/">{BRAND_NAME[slug]}</a>'
+        for slug in BRAND_ORDER
+    )
+
+
+def render_brand_footer_items() -> str:
+    return "\n".join(
+        f'<li><a data-i18n="{BRAND_NAV_KEYS[slug]}" href="/{slug}/">{BRAND_NAME[slug]}</a></li>'
+        for slug in BRAND_ORDER
+    )
+
+
+BRAND_NAV_HTML = render_brand_nav_items()
+BRAND_FOOTER_HTML = render_brand_footer_items()
+
+
 HEADER_HTML = f'''<div aria-label="Cookie consent" class="cookie-banner" id="cookieBanner" role="dialog">
 <p data-i18n="cookie.text">We use cookies to measure traffic and improve the site. No third-party advertising.</p>
 <div class="cb-actions">
@@ -385,10 +359,7 @@ HEADER_HTML = f'''<div aria-label="Cookie consent" class="cookie-banner" id="coo
 <div class="nav-dropdown">
 <a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.brands" href="/#brands">Brands</a>
 <div aria-label="Brands" class="nav-dropdown-menu">
-<a data-i18n="nav.brandHarley" href="/harley-service/">Harley-Davidson</a>
-<a data-i18n="nav.brandBmw" href="/bmw-service/">BMW Motorrad</a>
-<a data-i18n="nav.brandDucati" href="/ducati-service/">Ducati</a>
-<a data-i18n="nav.brandSuzuki" href="/suzuki-service/">Suzuki</a>
+{BRAND_NAV_HTML}
 </div>
 </div>
 <div class="nav-dropdown">
@@ -454,10 +425,7 @@ HEADER_HTML = f'''<div aria-label="Cookie consent" class="cookie-banner" id="coo
 <details class="mobile-nav-group">
 <summary class="mobile-nav-summary"><span data-i18n="nav.brands">Brands</span></summary>
 <div class="mobile-subnav">
-<a data-i18n="nav.brandHarley" href="/harley-service/">Harley-Davidson</a>
-<a data-i18n="nav.brandBmw" href="/bmw-service/">BMW Motorrad</a>
-<a data-i18n="nav.brandDucati" href="/ducati-service/">Ducati</a>
-<a data-i18n="nav.brandSuzuki" href="/suzuki-service/">Suzuki</a>
+{BRAND_NAV_HTML}
 </div>
 </details>
 <details class="mobile-nav-group">
@@ -518,10 +486,7 @@ FOOTER_HTML = f'''<footer class="site-footer">
 <li><a data-i18n="services.s4.title" href="/custom/">Custom &amp; special projects</a></li>
 <li><a data-i18n="nav.tyreServ" href="/motorcycle-tyre-service/">Tyre fitting &amp; wheel balancing</a></li>
 <li><a data-i18n="nav.preInsp" href="/pre-purchase-inspection/">Pre-purchase inspection</a></li>
-<li><a data-i18n="nav.brandHarley" href="/harley-service/">Harley-Davidson</a></li>
-<li><a data-i18n="nav.brandBmw" href="/bmw-service/">BMW Motorrad</a></li>
-<li><a data-i18n="nav.brandDucati" href="/ducati-service/">Ducati</a></li>
-<li><a data-i18n="nav.brandSuzuki" href="/suzuki-service/">Suzuki</a></li>
+{BRAND_FOOTER_HTML}
 <li><a data-i18n="nav.pricing" href="/pricing/">Pricing</a></li>
 </ul>
 </div>
@@ -603,7 +568,7 @@ def render_related_sections(slug, en):
 <p data-i18n="seo.relatedText">{en["seo.relatedText"]}</p>
 </div>
 </article>'''
-        for idx, (key, href, label) in enumerate(RELATED_LINKS[slug], 1)
+        for idx, (key, href, label) in enumerate(BRAND_RELATED_LINKS[slug], 1)
     )
     other_brands = "\n".join(
         f'''<article class="proc-row">
@@ -614,8 +579,8 @@ def render_related_sections(slug, en):
 </div>
 </article>'''
         for idx, other_slug in enumerate(
-            [brand_slug for brand_slug in BRAND_NAME if brand_slug != slug],
-            len(RELATED_LINKS[slug]) + 1,
+            [brand_slug for brand_slug in BRAND_ORDER if brand_slug != slug],
+            len(BRAND_RELATED_LINKS[slug]) + 1,
         )
     )
 
@@ -799,11 +764,11 @@ def render(slug):
 
 
 def main():
-    for slug in BRAND_HEAD:
+    for slug in BRAND_ORDER:
         out = render(slug)
         size = out.stat().st_size
         print(f"  wrote {out.relative_to(SITE_ROOT)} ({size:,} bytes)")
-    print(f"\nDone. {len(BRAND_HEAD)} brand pages written.")
+    print(f"\nDone. {len(BRAND_ORDER)} brand pages written.")
 
 
 if __name__ == "__main__":
