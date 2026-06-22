@@ -25,8 +25,8 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="/assets/main.css?v=20260621a" rel="stylesheet"/>
-<link href="/assets/projects.css?v=20260621a" rel="stylesheet"/>
+<link href="/assets/main.css?v=20260622a" rel="stylesheet"/>
+<link href="/assets/projects.css?v=20260622a" rel="stylesheet"/>
 <style>
 .subpage{padding:160px 0 100px;background:#0a0a0a;position:relative;overflow:hidden;isolation:isolate;min-height:560px}
 .subpage .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45)}
@@ -118,18 +118,43 @@
 <a data-i18n="services.s4.title" href="/ru/custom/">Кастом и спец-проекты</a>
 <a data-i18n="nav.tyreServ" href="/ru/shinomontazh-mototsiklov/">Шиномонтаж и балансировка</a>
 <a data-i18n="nav.preInsp" href="/ru/pre-purchase-inspection/">Инспекция перед покупкой</a>
-<a data-i18n="nav.bmwServ" href="/ru/bmw-service/">Сервис BMW Motorrad</a>
-<a data-i18n="nav.hdServ" href="/ru/harley-service/">Сервис Harley-Davidson</a>
-<a data-i18n="nav.ducServ" href="/ru/ducati-service/">Сервис Ducati</a>
 </div>
 </div>
-<a data-i18n="nav.projects" href="/ru/projects/">Проекты</a>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.brands" href="/ru/#brands">Бренды</a>
+<div aria-label="Brands" class="nav-dropdown-menu">
+<a data-i18n="nav.brandHarley" href="/ru/harley-service/">Harley-Davidson</a>
+<a data-i18n="nav.brandBmw" href="/ru/bmw-service/">BMW Motorrad</a>
+<a data-i18n="nav.brandDucati" href="/ru/ducati-service/">Ducati</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.projects" href="/ru/projects/">Проекты</a>
+<div aria-label="Projects" class="nav-dropdown-menu">
+<a data-i18n="nav.allProjects" href="/ru/projects/">Все проекты</a>
+<a href="/ru/projects/inspirium/">Inspirium</a>
+<a href="/ru/projects/beckman/">Beckman</a>
+<a href="/ru/projects/unbreakable/">Unbreakable</a>
+<a href="/ru/projects/quanta-r/">Quanta R</a>
+<a href="/ru/projects/burly/">Burly</a>
+<a href="/ru/projects/sturmvogel/">Sturmvogel</a>
+<a href="/ru/projects/geometric/">Geometric</a>
+<a href="/ru/projects/joker/">Joker</a>
+<a href="/ru/projects/hellboy/">Hell Boy</a>
+<a href="/ru/projects/true-religion/">True Religion</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.about" href="/ru/about/">О нас</a>
+<div aria-label="About" class="nav-dropdown-menu">
+<a data-i18n="nav.aboutUs" href="/ru/about/">О нас</a>
 <a data-i18n="nav.blog" href="/ru/blog/">Блог</a>
 <a data-i18n="nav.news" href="/ru/news/">Новости</a>
 <a data-i18n="nav.community" href="/ru/community/">Сообщество</a>
-<a data-i18n="nav.pricing" href="/ru/pricing/">Цены</a>
-<a data-i18n="nav.about" href="/ru/about/">О нас</a>
 <a data-i18n="nav.faq" href="/ru/faq/">FAQ</a>
+</div>
+</div>
+<a data-i18n="nav.pricing" href="/ru/pricing/">Цены</a>
 <a data-i18n="nav.contact" href="/ru/contact/">Контакты</a>
 </nav>
 <div class="header-actions">
@@ -161,18 +186,43 @@
 <a data-i18n="services.s4.title" href="/ru/custom/">Кастом и спец-проекты</a>
 <a data-i18n="nav.tyreServ" href="/ru/shinomontazh-mototsiklov/">Шиномонтаж и балансировка</a>
 <a data-i18n="nav.preInsp" href="/ru/pre-purchase-inspection/">Инспекция перед покупкой</a>
-<a data-i18n="nav.bmwServ" href="/ru/bmw-service/">Сервис BMW Motorrad</a>
-<a data-i18n="nav.hdServ" href="/ru/harley-service/">Сервис Harley-Davidson</a>
-<a data-i18n="nav.ducServ" href="/ru/ducati-service/">Сервис Ducati</a>
 </div>
 </details>
-<a data-i18n="nav.projects" href="/ru/projects/">Проекты</a>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.brands">Бренды</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.brandHarley" href="/ru/harley-service/">Harley-Davidson</a>
+<a data-i18n="nav.brandBmw" href="/ru/bmw-service/">BMW Motorrad</a>
+<a data-i18n="nav.brandDucati" href="/ru/ducati-service/">Ducati</a>
+</div>
+</details>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.projects">Проекты</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.allProjects" href="/ru/projects/">Все проекты</a>
+<a href="/ru/projects/inspirium/">Inspirium</a>
+<a href="/ru/projects/beckman/">Beckman</a>
+<a href="/ru/projects/unbreakable/">Unbreakable</a>
+<a href="/ru/projects/quanta-r/">Quanta R</a>
+<a href="/ru/projects/burly/">Burly</a>
+<a href="/ru/projects/sturmvogel/">Sturmvogel</a>
+<a href="/ru/projects/geometric/">Geometric</a>
+<a href="/ru/projects/joker/">Joker</a>
+<a href="/ru/projects/hellboy/">Hell Boy</a>
+<a href="/ru/projects/true-religion/">True Religion</a>
+</div>
+</details>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.about">О нас</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.aboutUs" href="/ru/about/">О нас</a>
 <a data-i18n="nav.blog" href="/ru/blog/">Блог</a>
 <a data-i18n="nav.news" href="/ru/news/">Новости</a>
 <a data-i18n="nav.community" href="/ru/community/">Сообщество</a>
-<a data-i18n="nav.pricing" href="/ru/pricing/">Цены</a>
-<a data-i18n="nav.about" href="/ru/about/">О нас</a>
 <a data-i18n="nav.faq" href="/ru/faq/">FAQ</a>
+</div>
+</details>
+<a data-i18n="nav.pricing" href="/ru/pricing/">Цены</a>
 <a data-i18n="nav.contact" href="/ru/contact/">Контакты</a>
 </nav>
 <div class="mobile-actions">
@@ -359,9 +409,6 @@
 <li><a data-i18n="services.s4.title" href="/ru/custom/">Кастом и спец-проекты</a></li>
 <li><a data-i18n="nav.tyreServ" href="/ru/shinomontazh-mototsiklov/">Шиномонтаж и балансировка</a></li>
 <li><a data-i18n="nav.preInsp" href="/ru/pre-purchase-inspection/">Инспекция перед покупкой</a></li>
-<li><a data-i18n="nav.bmwServ" href="/ru/bmw-service/">Сервис BMW Motorrad</a></li>
-<li><a data-i18n="nav.hdServ" href="/ru/harley-service/">Сервис Harley-Davidson</a></li>
-<li><a data-i18n="nav.ducServ" href="/ru/ducati-service/">Сервис Ducati</a></li>
 <li><a data-i18n="nav.pricing" href="/ru/pricing/">Цены</a></li>
 </ul>
 </div>
@@ -398,7 +445,7 @@
 </div>
 </div>
 </footer>
-<script defer="" src="/assets/main.js?v=20260621a"></script>
-<script defer="" src="/assets/projects.js?v=20260621a"></script>
+<script defer="" src="/assets/main.js?v=20260622a"></script>
+<script defer="" src="/assets/projects.js?v=20260622a"></script>
 </body>
 </html>

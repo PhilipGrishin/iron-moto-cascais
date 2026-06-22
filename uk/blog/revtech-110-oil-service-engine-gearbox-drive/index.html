@@ -29,7 +29,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="/assets/main.css?v=20260621a" rel="stylesheet"/>
+<link href="/assets/main.css?v=20260622a" rel="stylesheet"/>
 <style>
 .subpage{padding:160px 0 100px;background:#0a0a0a;position:relative;overflow:hidden;isolation:isolate}
 .subpage::before{content:"";position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,87,34,.20),transparent 60%);pointer-events:none;z-index:1}
@@ -146,18 +146,43 @@
 <a data-i18n="services.s4.title" href="/uk/custom/">Кастом і спецпроекти</a>
 <a data-i18n="nav.tyreServ" href="/uk/shynomontazh-mototsykliv/">Шиномонтаж і балансування</a>
 <a data-i18n="nav.preInsp" href="/uk/pre-purchase-inspection/">Інспекція перед купівлею</a>
-<a data-i18n="nav.bmwServ" href="/uk/bmw-service/">Сервіс BMW Motorrad</a>
-<a data-i18n="nav.hdServ" href="/uk/harley-service/">Сервіс Harley-Davidson</a>
-<a data-i18n="nav.ducServ" href="/uk/ducati-service/">Сервіс Ducati</a>
 </div>
 </div>
-<a data-i18n="nav.projects" href="/uk/projects/">Проєкти</a>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.brands" href="/uk/#brands">Бренди</a>
+<div aria-label="Brands" class="nav-dropdown-menu">
+<a data-i18n="nav.brandHarley" href="/uk/harley-service/">Harley-Davidson</a>
+<a data-i18n="nav.brandBmw" href="/uk/bmw-service/">BMW Motorrad</a>
+<a data-i18n="nav.brandDucati" href="/uk/ducati-service/">Ducati</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.projects" href="/uk/projects/">Проєкти</a>
+<div aria-label="Projects" class="nav-dropdown-menu">
+<a data-i18n="nav.allProjects" href="/uk/projects/">Усі проєкти</a>
+<a href="/uk/projects/inspirium/">Inspirium</a>
+<a href="/uk/projects/beckman/">Beckman</a>
+<a href="/uk/projects/unbreakable/">Unbreakable</a>
+<a href="/uk/projects/quanta-r/">Quanta R</a>
+<a href="/uk/projects/burly/">Burly</a>
+<a href="/uk/projects/sturmvogel/">Sturmvogel</a>
+<a href="/uk/projects/geometric/">Geometric</a>
+<a href="/uk/projects/joker/">Joker</a>
+<a href="/uk/projects/hellboy/">Hell Boy</a>
+<a href="/uk/projects/true-religion/">True Religion</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.about" href="/uk/about/">Про нас</a>
+<div aria-label="About" class="nav-dropdown-menu">
+<a data-i18n="nav.aboutUs" href="/uk/about/">Про нас</a>
 <a data-i18n="nav.blog" href="/uk/blog/">Блог</a>
 <a data-i18n="nav.news" href="/uk/news/">Новини</a>
 <a data-i18n="nav.community" href="/uk/community/">Спільнота</a>
-<a data-i18n="nav.pricing" href="/uk/pricing/">Ціни</a>
-<a data-i18n="nav.about" href="/uk/about/">Про нас</a>
 <a data-i18n="nav.faq" href="/uk/faq/">FAQ</a>
+</div>
+</div>
+<a data-i18n="nav.pricing" href="/uk/pricing/">Ціни</a>
 <a data-i18n="nav.contact" href="/uk/contact/">Контакти</a>
 </nav>
 <div class="header-actions">
@@ -189,18 +214,43 @@
 <a data-i18n="services.s4.title" href="/uk/custom/">Кастом і спецпроекти</a>
 <a data-i18n="nav.tyreServ" href="/uk/shynomontazh-mototsykliv/">Шиномонтаж і балансування</a>
 <a data-i18n="nav.preInsp" href="/uk/pre-purchase-inspection/">Інспекція перед купівлею</a>
-<a data-i18n="nav.bmwServ" href="/uk/bmw-service/">Сервіс BMW Motorrad</a>
-<a data-i18n="nav.hdServ" href="/uk/harley-service/">Сервіс Harley-Davidson</a>
-<a data-i18n="nav.ducServ" href="/uk/ducati-service/">Сервіс Ducati</a>
 </div>
 </details>
-<a data-i18n="nav.projects" href="/uk/projects/">Проєкти</a>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.brands">Бренди</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.brandHarley" href="/uk/harley-service/">Harley-Davidson</a>
+<a data-i18n="nav.brandBmw" href="/uk/bmw-service/">BMW Motorrad</a>
+<a data-i18n="nav.brandDucati" href="/uk/ducati-service/">Ducati</a>
+</div>
+</details>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.projects">Проєкти</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.allProjects" href="/uk/projects/">Усі проєкти</a>
+<a href="/uk/projects/inspirium/">Inspirium</a>
+<a href="/uk/projects/beckman/">Beckman</a>
+<a href="/uk/projects/unbreakable/">Unbreakable</a>
+<a href="/uk/projects/quanta-r/">Quanta R</a>
+<a href="/uk/projects/burly/">Burly</a>
+<a href="/uk/projects/sturmvogel/">Sturmvogel</a>
+<a href="/uk/projects/geometric/">Geometric</a>
+<a href="/uk/projects/joker/">Joker</a>
+<a href="/uk/projects/hellboy/">Hell Boy</a>
+<a href="/uk/projects/true-religion/">True Religion</a>
+</div>
+</details>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.about">Про нас</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.aboutUs" href="/uk/about/">Про нас</a>
 <a data-i18n="nav.blog" href="/uk/blog/">Блог</a>
 <a data-i18n="nav.news" href="/uk/news/">Новини</a>
 <a data-i18n="nav.community" href="/uk/community/">Спільнота</a>
-<a data-i18n="nav.pricing" href="/uk/pricing/">Ціни</a>
-<a data-i18n="nav.about" href="/uk/about/">Про нас</a>
 <a data-i18n="nav.faq" href="/uk/faq/">FAQ</a>
+</div>
+</details>
+<a data-i18n="nav.pricing" href="/uk/pricing/">Ціни</a>
 <a data-i18n="nav.contact" href="/uk/contact/">Контакти</a>
 </nav>
 <div class="mobile-actions">
@@ -356,9 +406,6 @@
 <li><a data-i18n="services.s4.title" href="/uk/custom/">Кастом і спецпроекти</a></li>
 <li><a data-i18n="nav.tyreServ" href="/uk/shynomontazh-mototsykliv/">Шиномонтаж і балансування</a></li>
 <li><a data-i18n="nav.preInsp" href="/uk/pre-purchase-inspection/">Інспекція перед купівлею</a></li>
-<li><a data-i18n="nav.bmwServ" href="/uk/bmw-service/">Сервіс BMW Motorrad</a></li>
-<li><a data-i18n="nav.hdServ" href="/uk/harley-service/">Сервіс Harley-Davidson</a></li>
-<li><a data-i18n="nav.ducServ" href="/uk/ducati-service/">Сервіс Ducati</a></li>
 <li><a data-i18n="nav.pricing" href="/uk/pricing/">Ціни</a></li>
 </ul>
 </div>
@@ -427,6 +474,6 @@
 </div>
 </div>
 </div>
-<script defer="" src="/assets/main.js?v=20260621a"></script>
+<script defer="" src="/assets/main.js?v=20260622a"></script>
 </body>
 </html>

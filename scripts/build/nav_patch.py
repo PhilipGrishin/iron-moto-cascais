@@ -4,7 +4,7 @@ Patch navigation (header + mobile drawer + footer) on every EN page of the
 ICM site so that all anchor-based nav links are replaced with proper URLs.
 
 New nav (everywhere):
-  Services dropdown / Projects / Blog / News / Community / Pricing / About / FAQ / Contact
+  Services dropdown / Brands dropdown / Projects dropdown / About dropdown / Pricing / Contact
 
 Footer "Services" column:
   Motorcycle service & repair → /motorcycle-service/
@@ -46,6 +46,9 @@ EN_PAGES = [
     "community/index.html",
     "contact/index.html",
     "faq/index.html",
+    "privacy/index.html",
+    "cookies/index.html",
+    "terms/index.html",
     # Project pages
     "projects/inspirium/index.html",
     "projects/beckman/index.html",
@@ -75,13 +78,10 @@ EN_PAGES = [
 # Canonical primary nav (used as the source of truth)
 PRIMARY_NAV_LINKS = [
     ("nav.services", "/services/",  "Services"),
+    ("nav.brands",   "/#brands",    "Brands"),
     ("nav.projects", "/projects/",  "Projects"),
-    ("nav.blog",     "/blog/",      "Blog"),
-    ("nav.news",     "/news/",      "News"),
-    ("nav.community", "/community/", "Community"),
-    ("nav.pricing",  "/pricing/",   "Pricing"),
     ("nav.about",    "/about/",     "About"),
-    ("nav.faq",      "/faq/",       "FAQ"),
+    ("nav.pricing",  "/pricing/",   "Pricing"),
     ("nav.contact",  "/contact/",   "Contact"),
 ]
 
@@ -93,10 +93,42 @@ SERVICE_NAV_LINKS = [
     ("services.s4.title",   "/custom/",                  "Custom &amp; special projects"),
     ("nav.tyreServ",        "/motorcycle-tyre-service/", "Tyre fitting &amp; wheel balancing"),
     ("nav.preInsp",        "/pre-purchase-inspection/", "Pre-purchase inspection"),
-    ("nav.bmwServ",        "/bmw-service/",             "BMW Motorrad service"),
-    ("nav.hdServ",         "/harley-service/",          "Harley-Davidson service"),
-    ("nav.ducServ",        "/ducati-service/",          "Ducati service"),
 ]
+
+BRAND_NAV_LINKS = [
+    ("nav.brandHarley", "/harley-service/", "Harley-Davidson"),
+    ("nav.brandBmw",    "/bmw-service/",    "BMW Motorrad"),
+    ("nav.brandDucati", "/ducati-service/", "Ducati"),
+]
+
+PROJECT_NAV_LINKS = [
+    ("nav.allProjects", "/projects/",                "All projects"),
+    (None,              "/projects/inspirium/",       "Inspirium"),
+    (None,              "/projects/beckman/",         "Beckman"),
+    (None,              "/projects/unbreakable/",     "Unbreakable"),
+    (None,              "/projects/quanta-r/",        "Quanta R"),
+    (None,              "/projects/burly/",           "Burly"),
+    (None,              "/projects/sturmvogel/",      "Sturmvogel"),
+    (None,              "/projects/geometric/",       "Geometric"),
+    (None,              "/projects/joker/",           "Joker"),
+    (None,              "/projects/hellboy/",         "Hell Boy"),
+    (None,              "/projects/true-religion/",   "True Religion"),
+]
+
+ABOUT_NAV_LINKS = [
+    ("nav.aboutUs",   "/about/",     "About us"),
+    ("nav.blog",      "/blog/",      "Blog"),
+    ("nav.news",      "/news/",      "News"),
+    ("nav.community", "/community/", "Community"),
+    ("nav.faq",       "/faq/",       "FAQ"),
+]
+
+DROPDOWN_NAV_LINKS = {
+    "nav.services": SERVICE_NAV_LINKS,
+    "nav.brands": BRAND_NAV_LINKS,
+    "nav.projects": PROJECT_NAV_LINKS,
+    "nav.about": ABOUT_NAV_LINKS,
+}
 
 FOOTER_SERVICES_LINKS = [
     ("services.s1.title", "/motorcycle-service/",      "Motorcycle service &amp; repair"),
@@ -105,9 +137,6 @@ FOOTER_SERVICES_LINKS = [
     ("services.s4.title", "/custom/",                  "Custom &amp; special projects"),
     ("nav.tyreServ",      "/motorcycle-tyre-service/", "Tyre fitting &amp; wheel balancing"),
     ("nav.preInsp",       "/pre-purchase-inspection/", "Pre-purchase inspection"),
-    ("nav.bmwServ",       "/bmw-service/",             "BMW Motorrad service"),
-    ("nav.hdServ",        "/harley-service/",          "Harley-Davidson service"),
-    ("nav.ducServ",       "/ducati-service/",          "Ducati service"),
     ("nav.pricing",       "/pricing/",                 "Pricing"),
 ]
 
@@ -123,14 +152,19 @@ FOOTER_COMPANY_LINKS = [
 ]
 
 
-def render_service_dropdown():
+def render_nav_link(key, href, label):
+    i18n = f' data-i18n="{key}"' if key else ""
+    return f'<a{i18n} href="{href}">{label}</a>'
+
+
+def render_dropdown(key, href, label, links):
     items = []
-    for key, href, label in SERVICE_NAV_LINKS:
-        items.append(f'<a data-i18n="{key}" href="{href}">{label}</a>')
+    for item_key, item_href, item_label in links:
+        items.append(render_nav_link(item_key, item_href, item_label))
     menu_html = "\n".join(items)
     return f'''<div class="nav-dropdown">
-<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.services" href="/services/">Services</a>
-<div aria-label="Services" class="nav-dropdown-menu">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="{key}" href="{href}">{label}</a>
+<div aria-label="{label}" class="nav-dropdown-menu">
 {menu_html}
 </div>
 </div>'''
@@ -139,27 +173,33 @@ def render_service_dropdown():
 def render_primary_nav():
     parts = []
     for key, href, label in PRIMARY_NAV_LINKS:
-        if key == "nav.services":
-            parts.append(render_service_dropdown())
+        dropdown_links = DROPDOWN_NAV_LINKS.get(key)
+        if dropdown_links:
+            parts.append(render_dropdown(key, href, label, dropdown_links))
             continue
         parts.append(f'<a data-i18n="{key}" href="{href}">{label}</a>')
     return "\n".join(parts)
 
 
-def render_mobile_nav():
+def render_mobile_group(key, label, links):
     items = []
-    for key, href, label in SERVICE_NAV_LINKS:
-        items.append(f'<a data-i18n="{key}" href="{href}">{label}</a>')
+    for item_key, href, item_label in links:
+        items.append(render_nav_link(item_key, href, item_label))
     subnav_html = "\n".join(items)
-    service_group = f'''<details class="mobile-nav-group">
-<summary class="mobile-nav-summary"><span data-i18n="nav.services">Services</span></summary>
+    return f'''<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="{key}">{label}</span></summary>
 <div class="mobile-subnav">
 {subnav_html}
 </div>
 </details>'''
-    parts = [service_group]
+
+
+def render_mobile_nav():
+    parts = []
     for key, href, label in PRIMARY_NAV_LINKS:
-        if key == "nav.services":
+        dropdown_links = DROPDOWN_NAV_LINKS.get(key)
+        if dropdown_links:
+            parts.append(render_mobile_group(key, label, dropdown_links))
             continue
         parts.append(f'<a data-i18n="{key}" href="{href}">{label}</a>')
     return "\n".join(parts)

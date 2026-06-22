@@ -13,10 +13,10 @@ from bs4 import BeautifulSoup
 
 from hero_images import hero_background_css, hero_preload_links, optimized_hero_url
 from nav_patch import (
+    DROPDOWN_NAV_LINKS,
     FOOTER_COMPANY_LINKS,
     FOOTER_SERVICES_LINKS,
     PRIMARY_NAV_LINKS,
-    SERVICE_NAV_LINKS,
 )
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -188,7 +188,7 @@ UI = {
 def detect_cache_bust() -> str:
     text = (SITE_ROOT / "index.html").read_text(encoding="utf-8")
     match = re.search(r"/assets/main\.css\?v=([a-zA-Z0-9]+)", text)
-    return match.group(1) if match else "20260621a"
+    return match.group(1) if match else "20260622a"
 
 
 CACHE_BUST = detect_cache_bust()
@@ -228,21 +228,28 @@ def localized_href(href: str, lang: str) -> str:
     return urlunsplit(("", "", localized, parsed.query, parsed.fragment))
 
 
-def label_for(key: str, lang: str, fallback: str) -> str:
+def label_for(key: str | None, lang: str, fallback: str) -> str:
+    if not key:
+        return fallback
     return GLOBAL_I18N.get(lang, {}).get(key) or GLOBAL_I18N["en"].get(key) or fallback
 
 
-def render_service_dropdown(lang: str) -> str:
+def render_nav_link(key: str | None, href: str, fallback: str, lang: str) -> str:
+    label = html.escape(label_for(key, lang, fallback), quote=False)
+    i18n = f' data-i18n="{key}"' if key else ""
+    return f'<a{i18n} href="{localized_href(href, lang)}">{label}</a>'
+
+
+def render_dropdown(key: str, href: str, fallback: str, links: list[tuple[str | None, str, str]], lang: str) -> str:
     items = []
-    for key, href, fallback in SERVICE_NAV_LINKS:
-        items.append(
-            f'<a data-i18n="{key}" href="{localized_href(href, lang)}">{html.escape(label_for(key, lang, fallback), quote=False)}</a>'
-        )
+    for item_key, item_href, item_fallback in links:
+        items.append(render_nav_link(item_key, item_href, item_fallback, lang))
+    label = html.escape(label_for(key, lang, fallback), quote=False)
     return (
         '<div class="nav-dropdown">\n'
-        f'<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.services" href="{localized_href("/services/", lang)}">'
-        f'{html.escape(label_for("nav.services", lang, "Services"), quote=False)}</a>\n'
-        '<div aria-label="Services" class="nav-dropdown-menu">\n'
+        f'<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="{key}" href="{localized_href(href, lang)}">'
+        f'{label}</a>\n'
+        f'<div aria-label="{label}" class="nav-dropdown-menu">\n'
         + "\n".join(items)
         + "\n</div>\n</div>"
     )
@@ -251,35 +258,30 @@ def render_service_dropdown(lang: str) -> str:
 def render_primary_nav(lang: str) -> str:
     parts = []
     for key, href, fallback in PRIMARY_NAV_LINKS:
-        if key == "nav.services":
-            parts.append(render_service_dropdown(lang))
+        dropdown_links = DROPDOWN_NAV_LINKS.get(key)
+        if dropdown_links:
+            parts.append(render_dropdown(key, href, fallback, dropdown_links, lang))
         else:
-            parts.append(
-                f'<a data-i18n="{key}" href="{localized_href(href, lang)}">{html.escape(label_for(key, lang, fallback), quote=False)}</a>'
-            )
+            parts.append(render_nav_link(key, href, fallback, lang))
     joined = "\n".join(parts)
     return f'<nav aria-label="Primary" class="nav">\n{joined}\n</nav>'
 
 
 def render_mobile_nav(lang: str) -> str:
-    service_items = []
-    for key, href, fallback in SERVICE_NAV_LINKS:
-        service_items.append(
-            f'<a data-i18n="{key}" href="{localized_href(href, lang)}">{html.escape(label_for(key, lang, fallback), quote=False)}</a>'
-        )
-    parts = [
-        '<details class="mobile-nav-group">\n'
-        f'<summary class="mobile-nav-summary"><span data-i18n="nav.services">{html.escape(label_for("nav.services", lang, "Services"), quote=False)}</span></summary>\n'
-        '<div class="mobile-subnav">\n'
-        + "\n".join(service_items)
-        + "\n</div>\n</details>"
-    ]
+    parts = []
     for key, href, fallback in PRIMARY_NAV_LINKS:
-        if key == "nav.services":
-            continue
-        parts.append(
-            f'<a data-i18n="{key}" href="{localized_href(href, lang)}">{html.escape(label_for(key, lang, fallback), quote=False)}</a>'
-        )
+        dropdown_links = DROPDOWN_NAV_LINKS.get(key)
+        if dropdown_links:
+            dropdown_items = [render_nav_link(item_key, item_href, item_fallback, lang) for item_key, item_href, item_fallback in dropdown_links]
+            parts.append(
+                '<details class="mobile-nav-group">\n'
+                f'<summary class="mobile-nav-summary"><span data-i18n="{key}">{html.escape(label_for(key, lang, fallback), quote=False)}</span></summary>\n'
+                '<div class="mobile-subnav">\n'
+                + "\n".join(dropdown_items)
+                + "\n</div>\n</details>"
+            )
+        else:
+            parts.append(render_nav_link(key, href, fallback, lang))
     joined = "\n".join(parts)
     return f'<nav class="nav-mobile">\n{joined}\n</nav>'
 
@@ -287,9 +289,7 @@ def render_mobile_nav(lang: str) -> str:
 def render_footer_links(items: list[tuple[str, str, str]], lang: str) -> str:
     rows = []
     for key, href, fallback in items:
-        rows.append(
-            f'<li><a data-i18n="{key}" href="{localized_href(href, lang)}">{html.escape(label_for(key, lang, fallback), quote=False)}</a></li>'
-        )
+        rows.append(f"<li>{render_nav_link(key, href, fallback, lang)}</li>")
     return "<ul>\n" + "\n".join(rows) + "\n</ul>"
 
 

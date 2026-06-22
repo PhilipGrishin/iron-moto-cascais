@@ -20,7 +20,7 @@ from new_pages_data import PAGE_HEAD_META, PAGE_I18N, PROJECT_TILES, FAQ_QA
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260621a"  # bump on each change to main.css/main.js
+CACHE_BUST = "20260622a"  # bump on each change to main.css/main.js
 GLOBAL_I18N = json.loads((BUILD_DIR / "i18n.json").read_text(encoding="utf-8"))
 
 # ---------- shared chrome fragments ----------

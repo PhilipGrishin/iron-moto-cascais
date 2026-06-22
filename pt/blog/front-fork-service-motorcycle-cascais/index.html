@@ -29,7 +29,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="/assets/main.css?v=20260621a" rel="stylesheet"/>
+<link href="/assets/main.css?v=20260622a" rel="stylesheet"/>
 <style>
 .subpage{padding:160px 0 100px;background:#0a0a0a;position:relative;overflow:hidden;isolation:isolate}
 .subpage::before{content:"";position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,87,34,.20),transparent 60%);pointer-events:none;z-index:1}
@@ -146,18 +146,43 @@
 <a data-i18n="services.s4.title" href="/pt/custom/">Custom e projetos especiais</a>
 <a data-i18n="nav.tyreServ" href="/pt/montagem-de-pneus-mota/">Pneus e equilibragem</a>
 <a data-i18n="nav.preInsp" href="/pt/pre-purchase-inspection/">Inspeção pré-compra</a>
-<a data-i18n="nav.bmwServ" href="/pt/bmw-service/">Serviço BMW Motorrad</a>
-<a data-i18n="nav.hdServ" href="/pt/harley-service/">Serviço Harley-Davidson</a>
-<a data-i18n="nav.ducServ" href="/pt/ducati-service/">Serviço Ducati</a>
 </div>
 </div>
-<a data-i18n="nav.projects" href="/pt/projects/">Projetos</a>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.brands" href="/pt/#brands">Marcas</a>
+<div aria-label="Brands" class="nav-dropdown-menu">
+<a data-i18n="nav.brandHarley" href="/pt/harley-service/">Harley-Davidson</a>
+<a data-i18n="nav.brandBmw" href="/pt/bmw-service/">BMW Motorrad</a>
+<a data-i18n="nav.brandDucati" href="/pt/ducati-service/">Ducati</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.projects" href="/pt/projects/">Projetos</a>
+<div aria-label="Projects" class="nav-dropdown-menu">
+<a data-i18n="nav.allProjects" href="/pt/projects/">Todos os projetos</a>
+<a href="/pt/projects/inspirium/">Inspirium</a>
+<a href="/pt/projects/beckman/">Beckman</a>
+<a href="/pt/projects/unbreakable/">Unbreakable</a>
+<a href="/pt/projects/quanta-r/">Quanta R</a>
+<a href="/pt/projects/burly/">Burly</a>
+<a href="/pt/projects/sturmvogel/">Sturmvogel</a>
+<a href="/pt/projects/geometric/">Geometric</a>
+<a href="/pt/projects/joker/">Joker</a>
+<a href="/pt/projects/hellboy/">Hell Boy</a>
+<a href="/pt/projects/true-religion/">True Religion</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.about" href="/pt/about/">Sobre</a>
+<div aria-label="About" class="nav-dropdown-menu">
+<a data-i18n="nav.aboutUs" href="/pt/about/">Sobre nós</a>
 <a data-i18n="nav.blog" href="/pt/blog/">Blog</a>
 <a data-i18n="nav.news" href="/pt/news/">Notícias</a>
 <a data-i18n="nav.community" href="/pt/community/">Comunidade</a>
-<a data-i18n="nav.pricing" href="/pt/pricing/">Preços</a>
-<a data-i18n="nav.about" href="/pt/about/">Sobre</a>
 <a data-i18n="nav.faq" href="/pt/faq/">FAQ</a>
+</div>
+</div>
+<a data-i18n="nav.pricing" href="/pt/pricing/">Preços</a>
 <a data-i18n="nav.contact" href="/pt/contact/">Contacto</a>
 </nav>
 <div class="header-actions">
@@ -189,18 +214,43 @@
 <a data-i18n="services.s4.title" href="/pt/custom/">Custom e projetos especiais</a>
 <a data-i18n="nav.tyreServ" href="/pt/montagem-de-pneus-mota/">Pneus e equilibragem</a>
 <a data-i18n="nav.preInsp" href="/pt/pre-purchase-inspection/">Inspeção pré-compra</a>
-<a data-i18n="nav.bmwServ" href="/pt/bmw-service/">Serviço BMW Motorrad</a>
-<a data-i18n="nav.hdServ" href="/pt/harley-service/">Serviço Harley-Davidson</a>
-<a data-i18n="nav.ducServ" href="/pt/ducati-service/">Serviço Ducati</a>
 </div>
 </details>
-<a data-i18n="nav.projects" href="/pt/projects/">Projetos</a>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.brands">Marcas</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.brandHarley" href="/pt/harley-service/">Harley-Davidson</a>
+<a data-i18n="nav.brandBmw" href="/pt/bmw-service/">BMW Motorrad</a>
+<a data-i18n="nav.brandDucati" href="/pt/ducati-service/">Ducati</a>
+</div>
+</details>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.projects">Projetos</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.allProjects" href="/pt/projects/">Todos os projetos</a>
+<a href="/pt/projects/inspirium/">Inspirium</a>
+<a href="/pt/projects/beckman/">Beckman</a>
+<a href="/pt/projects/unbreakable/">Unbreakable</a>
+<a href="/pt/projects/quanta-r/">Quanta R</a>
+<a href="/pt/projects/burly/">Burly</a>
+<a href="/pt/projects/sturmvogel/">Sturmvogel</a>
+<a href="/pt/projects/geometric/">Geometric</a>
+<a href="/pt/projects/joker/">Joker</a>
+<a href="/pt/projects/hellboy/">Hell Boy</a>
+<a href="/pt/projects/true-religion/">True Religion</a>
+</div>
+</details>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.about">Sobre</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.aboutUs" href="/pt/about/">Sobre nós</a>
 <a data-i18n="nav.blog" href="/pt/blog/">Blog</a>
 <a data-i18n="nav.news" href="/pt/news/">Notícias</a>
 <a data-i18n="nav.community" href="/pt/community/">Comunidade</a>
-<a data-i18n="nav.pricing" href="/pt/pricing/">Preços</a>
-<a data-i18n="nav.about" href="/pt/about/">Sobre</a>
 <a data-i18n="nav.faq" href="/pt/faq/">FAQ</a>
+</div>
+</details>
+<a data-i18n="nav.pricing" href="/pt/pricing/">Preços</a>
 <a data-i18n="nav.contact" href="/pt/contact/">Contacto</a>
 </nav>
 <div class="mobile-actions">
@@ -389,9 +439,6 @@
 <li><a data-i18n="services.s4.title" href="/pt/custom/">Custom e projetos especiais</a></li>
 <li><a data-i18n="nav.tyreServ" href="/pt/montagem-de-pneus-mota/">Pneus e equilibragem</a></li>
 <li><a data-i18n="nav.preInsp" href="/pt/pre-purchase-inspection/">Inspeção pré-compra</a></li>
-<li><a data-i18n="nav.bmwServ" href="/pt/bmw-service/">Serviço BMW Motorrad</a></li>
-<li><a data-i18n="nav.hdServ" href="/pt/harley-service/">Serviço Harley-Davidson</a></li>
-<li><a data-i18n="nav.ducServ" href="/pt/ducati-service/">Serviço Ducati</a></li>
 <li><a data-i18n="nav.pricing" href="/pt/pricing/">Preços</a></li>
 </ul>
 </div>
@@ -460,6 +507,6 @@
 </div>
 </div>
 </div>
-<script defer="" src="/assets/main.js?v=20260621a"></script>
+<script defer="" src="/assets/main.js?v=20260622a"></script>
 </body>
 </html>

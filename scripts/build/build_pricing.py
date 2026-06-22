@@ -12,12 +12,15 @@ from copy import deepcopy
 from bs4 import BeautifulSoup, FeatureNotFound
 
 from hero_images import hero_background_css
+from localize_internal_links import rewrite_href
 from pricing_data import LABELS, SECTIONS, LANGS
 from seo_meta import upsert_robots_image_preview
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 TEMPLATE = SITE_ROOT / "motorcycle-service" / "index.html"
 DOMAIN = "https://ironcustommotors.com"
+I18N_FILE = SITE_ROOT / "scripts" / "build" / "i18n.json"
+GLOBAL_I18N = json.loads(I18N_FILE.read_text(encoding="utf-8"))
 
 OG_LOCALES = {"en": "en_US", "ru": "ru_RU", "uk": "uk_UA", "pt": "pt_PT"}
 
@@ -39,6 +42,41 @@ def parse_html(markup: str) -> BeautifulSoup:
 def esc(text: str) -> str:
     """Escape for HTML attribute or text content (preserves &mdash; etc.)."""
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
+
+def apply_i18n(soup: BeautifulSoup, lang: str) -> None:
+    dictionary = GLOBAL_I18N.get(lang, GLOBAL_I18N["en"])
+    for element in soup.select("[data-i18n]"):
+        key = element.get("data-i18n")
+        if key in dictionary:
+            element.clear()
+            fragment = BeautifulSoup(dictionary[key], "html.parser")
+            if fragment.contents:
+                for child in list(fragment.contents):
+                    element.append(child)
+            else:
+                element.string = dictionary[key]
+    for element in soup.select("[data-i18n-html]"):
+        key = element.get("data-i18n-html")
+        if key in dictionary:
+            element.clear()
+            fragment = BeautifulSoup(dictionary[key], "html.parser")
+            if fragment.contents:
+                for child in list(fragment.contents):
+                    element.append(child)
+            else:
+                element.string = dictionary[key]
+
+
+def set_language_state(soup: BeautifulSoup, lang: str) -> None:
+    current = soup.find(id="langCurrent")
+    if current:
+        current.string = lang.upper()
+    for button in soup.select("button[data-lang]"):
+        if button.get("data-lang") == lang:
+            button["aria-current"] = "true"
+        elif button.has_attr("aria-current"):
+            del button["aria-current"]
 
 
 def url_for(lang: str, path: str = "pricing/") -> str:
@@ -520,19 +558,13 @@ def build_page(lang: str) -> str:
     for child in list(new_main.find("wrapper").children):
         main.append(child)
 
-    # 10) Update header nav data-i18n links to use lang-prefixed URLs
-    for a in soup.find_all("a", href=True):
-        href = a["href"]
-        # Skip already-correct external / fragment / asset / mailto / tel
-        if href.startswith(("http", "mailto:", "tel:", "#", "/photos/", "/assets/", "/pricing/files/")):
-            continue
-        # Localize internal absolute paths if non-EN
-        if lang != "en" and href.startswith("/") and not re.match(r"^/(ru|uk|pt)(/|$)", href):
-            # Special: home is "/" — localize to /<lang>/
-            if href == "/":
-                a["href"] = f"/{lang}/"
-            else:
-                a["href"] = f"/{lang}{href}"
+    # 10) Update chrome links to the correct localized URLs, including custom slugs.
+    if lang != "en":
+        for a in soup.find_all("a", href=True):
+            a["href"] = rewrite_href(a["href"], lang)
+
+    apply_i18n(soup, lang)
+    set_language_state(soup, lang)
 
     return str(soup)
 
