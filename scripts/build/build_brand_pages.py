@@ -325,11 +325,53 @@ HEADER_HTML = f'''<div aria-label="Cookie consent" class="cookie-banner" id="coo
 <header class="site-header" id="header">
 <a aria-label="Iron Custom Motors" class="brand" href="/">{LOGO_SVG}</a>
 <nav aria-label="Primary" class="nav">
-<a data-i18n="nav.services" href="/services/">Services</a>
-<a data-i18n="nav.projects" href="/projects/">Projects</a>
-<a data-i18n="nav.pricing" href="/pricing/">Pricing</a>
-<a data-i18n="nav.about" href="/about/">About</a>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.services" href="/services/">Services</a>
+<div aria-label="Services" class="nav-dropdown-menu">
+<a data-i18n="nav.allServices" href="/services/">All services</a>
+<a data-i18n="services.s1.title" href="/motorcycle-service/">Motorcycle service &amp; repair</a>
+<a data-i18n="services.s2.title" href="/parts/">Parts &amp; consumables</a>
+<a data-i18n="services.s3.title" href="/upgrades-tuning/">Upgrades &amp; tuning</a>
+<a data-i18n="services.s4.title" href="/custom/">Custom &amp; special projects</a>
+<a data-i18n="nav.tyreServ" href="/motorcycle-tyre-service/">Tyre fitting &amp; wheel balancing</a>
+<a data-i18n="nav.preInsp" href="/pre-purchase-inspection/">Pre-purchase inspection</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.brands" href="/#brands">Brands</a>
+<div aria-label="Brands" class="nav-dropdown-menu">
+<a data-i18n="nav.brandHarley" href="/harley-service/">Harley-Davidson</a>
+<a data-i18n="nav.brandBmw" href="/bmw-service/">BMW Motorrad</a>
+<a data-i18n="nav.brandDucati" href="/ducati-service/">Ducati</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.projects" href="/projects/">Projects</a>
+<div aria-label="Projects" class="nav-dropdown-menu">
+<a data-i18n="nav.allProjects" href="/projects/">All projects</a>
+<a href="/projects/inspirium/">Inspirium</a>
+<a href="/projects/beckman/">Beckman</a>
+<a href="/projects/unbreakable/">Unbreakable</a>
+<a href="/projects/quanta-r/">Quanta R</a>
+<a href="/projects/burly/">Burly</a>
+<a href="/projects/sturmvogel/">Sturmvogel</a>
+<a href="/projects/geometric/">Geometric</a>
+<a href="/projects/joker/">Joker</a>
+<a href="/projects/hellboy/">Hell Boy</a>
+<a href="/projects/true-religion/">True Religion</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.about" href="/about/">About</a>
+<div aria-label="About" class="nav-dropdown-menu">
+<a data-i18n="nav.aboutUs" href="/about/">About us</a>
+<a data-i18n="nav.blog" href="/blog/">Blog</a>
+<a data-i18n="nav.news" href="/news/">News</a>
+<a data-i18n="nav.community" href="/community/">Community</a>
 <a data-i18n="nav.faq" href="/faq/">FAQ</a>
+</div>
+</div>
+<a data-i18n="nav.pricing" href="/pricing/">Pricing</a>
 <a data-i18n="nav.contact" href="/contact/">Contact</a>
 </nav>
 <div class="header-actions">
@@ -351,11 +393,53 @@ HEADER_HTML = f'''<div aria-label="Cookie consent" class="cookie-banner" id="coo
 </header>
 <div class="mobile-drawer" id="mobileDrawer">
 <nav class="nav-mobile">
-<a data-i18n="nav.services" href="/services/">Services</a>
-<a data-i18n="nav.projects" href="/projects/">Projects</a>
-<a data-i18n="nav.pricing" href="/pricing/">Pricing</a>
-<a data-i18n="nav.about" href="/about/">About</a>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.services">Services</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.allServices" href="/services/">All services</a>
+<a data-i18n="services.s1.title" href="/motorcycle-service/">Motorcycle service &amp; repair</a>
+<a data-i18n="services.s2.title" href="/parts/">Parts &amp; consumables</a>
+<a data-i18n="services.s3.title" href="/upgrades-tuning/">Upgrades &amp; tuning</a>
+<a data-i18n="services.s4.title" href="/custom/">Custom &amp; special projects</a>
+<a data-i18n="nav.tyreServ" href="/motorcycle-tyre-service/">Tyre fitting &amp; wheel balancing</a>
+<a data-i18n="nav.preInsp" href="/pre-purchase-inspection/">Pre-purchase inspection</a>
+</div>
+</details>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.brands">Brands</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.brandHarley" href="/harley-service/">Harley-Davidson</a>
+<a data-i18n="nav.brandBmw" href="/bmw-service/">BMW Motorrad</a>
+<a data-i18n="nav.brandDucati" href="/ducati-service/">Ducati</a>
+</div>
+</details>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.projects">Projects</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.allProjects" href="/projects/">All projects</a>
+<a href="/projects/inspirium/">Inspirium</a>
+<a href="/projects/beckman/">Beckman</a>
+<a href="/projects/unbreakable/">Unbreakable</a>
+<a href="/projects/quanta-r/">Quanta R</a>
+<a href="/projects/burly/">Burly</a>
+<a href="/projects/sturmvogel/">Sturmvogel</a>
+<a href="/projects/geometric/">Geometric</a>
+<a href="/projects/joker/">Joker</a>
+<a href="/projects/hellboy/">Hell Boy</a>
+<a href="/projects/true-religion/">True Religion</a>
+</div>
+</details>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.about">About</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.aboutUs" href="/about/">About us</a>
+<a data-i18n="nav.blog" href="/blog/">Blog</a>
+<a data-i18n="nav.news" href="/news/">News</a>
+<a data-i18n="nav.community" href="/community/">Community</a>
 <a data-i18n="nav.faq" href="/faq/">FAQ</a>
+</div>
+</details>
+<a data-i18n="nav.pricing" href="/pricing/">Pricing</a>
 <a data-i18n="nav.contact" href="/contact/">Contact</a>
 </nav>
 <div class="mobile-actions">
@@ -376,7 +460,7 @@ FOOTER_HTML = f'''<footer class="site-footer">
 <div class="footer-grid">
 <div class="footer-brand">
 <a aria-label="Iron Custom Motors" class="logo" href="/">{LOGO_SVG}</a>
-<p data-i18n="footer.tagline">Premium motorcycle service, parts, upgrades and custom expertise in Cascais.</p>
+<p data-i18n="footer.tagline">Premium motorcycle service, parts, upgrades and custom expertise in Cascais. Engineering culture from world-champion projects, applied to every job.</p>
 </div>
 <div class="footer-col">
 <h5 data-i18n="footer.col1">Services</h5>
@@ -385,6 +469,7 @@ FOOTER_HTML = f'''<footer class="site-footer">
 <li><a data-i18n="services.s2.title" href="/parts/">Parts &amp; consumables</a></li>
 <li><a data-i18n="services.s3.title" href="/upgrades-tuning/">Upgrades &amp; tuning</a></li>
 <li><a data-i18n="services.s4.title" href="/custom/">Custom &amp; special projects</a></li>
+<li><a data-i18n="nav.tyreServ" href="/motorcycle-tyre-service/">Tyre fitting &amp; wheel balancing</a></li>
 <li><a data-i18n="nav.preInsp" href="/pre-purchase-inspection/">Pre-purchase inspection</a></li>
 <li><a data-i18n="nav.pricing" href="/pricing/">Pricing</a></li>
 </ul>
@@ -394,6 +479,9 @@ FOOTER_HTML = f'''<footer class="site-footer">
 <ul>
 <li><a data-i18n="nav.about" href="/about/">About</a></li>
 <li><a data-i18n="nav.projects" href="/projects/">Projects</a></li>
+<li><a data-i18n="nav.blog" href="/blog/">Blog</a></li>
+<li><a data-i18n="nav.news" href="/news/">News</a></li>
+<li><a data-i18n="nav.community" href="/community/">Community</a></li>
 <li><a data-i18n="nav.reviews" href="/#reviews">Reviews</a></li>
 <li><a data-i18n="nav.faq" href="/faq/">FAQ</a></li>
 <li><a data-i18n="nav.contact" href="/contact/">Contact</a></li>
