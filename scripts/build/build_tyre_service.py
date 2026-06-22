@@ -28,7 +28,7 @@ VIDEO_ID = "KGEPaj46fBg"
 VIDEO_SHORT_URL = f"https://youtube.com/shorts/{VIDEO_ID}"
 VIDEO_EMBED_URL = f"https://www.youtube.com/embed/{VIDEO_ID}"
 VIDEO_THUMB = f"https://i.ytimg.com/vi/{VIDEO_ID}/hqdefault.jpg"
-VIDEO_UPLOAD_DATE = "2026-06-20"
+VIDEO_UPLOAD_DATE = "2026-06-20T12:00:00+01:00"
 
 LANGS = ("en", "ru", "uk", "pt")
 PATHS = {
