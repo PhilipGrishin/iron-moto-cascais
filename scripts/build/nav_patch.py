@@ -64,6 +64,7 @@ EN_PAGES = [
     "bmw-service/index.html",
     "harley-service/index.html",
     "ducati-service/index.html",
+    "suzuki-service/index.html",
     "blog/index.html",
     "blog/revtech-110-oil-service-engine-gearbox-drive/index.html",
     "blog/motorcycle-brake-pad-replacement-cascais/index.html",
@@ -99,6 +100,7 @@ BRAND_NAV_LINKS = [
     ("nav.brandHarley", "/harley-service/", "Harley-Davidson"),
     ("nav.brandBmw",    "/bmw-service/",    "BMW Motorrad"),
     ("nav.brandDucati", "/ducati-service/", "Ducati"),
+    ("nav.brandSuzuki", "/suzuki-service/", "Suzuki"),
 ]
 
 PROJECT_NAV_LINKS = [
@@ -137,6 +139,10 @@ FOOTER_SERVICES_LINKS = [
     ("services.s4.title", "/custom/",                  "Custom &amp; special projects"),
     ("nav.tyreServ",      "/motorcycle-tyre-service/", "Tyre fitting &amp; wheel balancing"),
     ("nav.preInsp",       "/pre-purchase-inspection/", "Pre-purchase inspection"),
+    ("nav.brandHarley",    "/harley-service/",          "Harley-Davidson"),
+    ("nav.brandBmw",       "/bmw-service/",             "BMW Motorrad"),
+    ("nav.brandDucati",    "/ducati-service/",          "Ducati"),
+    ("nav.brandSuzuki",    "/suzuki-service/",          "Suzuki"),
     ("nav.pricing",       "/pricing/",                 "Pricing"),
 ]
 

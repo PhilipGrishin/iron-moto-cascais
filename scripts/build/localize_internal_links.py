@@ -37,6 +37,7 @@ LOCALIZED_PATHS = {
     "/bmw-service/",
     "/harley-service/",
     "/ducati-service/",
+    "/suzuki-service/",
     "/motorcycle-tyre-service/",
     "/blog/",
     "/blog/revtech-110-oil-service-engine-gearbox-drive/",
@@ -53,7 +54,7 @@ for proj in ["inspirium", "beckman", "unbreakable", "quanta-r",
     LOCALIZED_PATHS.add(f"/projects/{proj}/")
 
 LANG_HOME_HREFS = {"/", "/ru/", "/uk/", "/pt/"}
-LANG_HREFLANGS = {"en", "ru", "uk", "pt"}
+LANG_HREFLANGS = {"en", "ru", "uk", "pt", "pt-PT"}
 CUSTOM_LOCALIZED_PATHS = {
     "/motorcycle-tyre-service/": {
         "ru": "/ru/shinomontazh-mototsiklov/",

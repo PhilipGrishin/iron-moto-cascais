@@ -18,6 +18,7 @@ SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
 OWN_HOSTS = {"ironcustommotors.com", "www.ironcustommotors.com"}
 LANGS = ["en", "ru", "uk", "pt"]
+HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 TARGET_LANGS = ["ru", "uk", "pt"]
 LEGAL_PATHS = {"/privacy/", "/cookies/", "/terms/"}
 GOOGLE_SITE_VERIFICATION = "jEDdF1jlSckwwEuSXOJCd1jvUmrEG--kgn_xfhzF3eg"
@@ -32,7 +33,7 @@ GLOBAL_SCHEMA_IDS = {
     f"{DOMAIN}/#website",
 }
 LANG_HOME_HREFS = {"/", "/ru/", "/uk/", "/pt/"}
-LANG_HREFLANGS = {"en", "ru", "uk", "pt"}
+LANG_HREFLANGS = {"en", "ru", "uk", "pt", "pt-PT"}
 
 try:
     BeautifulSoup("", "lxml")
@@ -60,6 +61,7 @@ LOCALIZED_PATHS = {
     "/bmw-service/",
     "/harley-service/",
     "/ducati-service/",
+    "/suzuki-service/",
     "/motorcycle-tyre-service/",
     "/blog/",
     "/blog/revtech-110-oil-service-engine-gearbox-drive/",
@@ -374,7 +376,7 @@ def validate_page(url: str) -> list[str]:
 
     alternates = soup.find_all("link", attrs={"rel": "alternate", "hreflang": True})
     hreflangs = {tag.get("hreflang") for tag in alternates}
-    expected_hreflangs = set(LANGS + ["x-default"])
+    expected_hreflangs = set(HREFLANG_CODES.values()) | {"x-default"}
     if hreflangs != expected_hreflangs:
         issues.append(f"hreflang set mismatch: {sorted(hreflangs)}")
 

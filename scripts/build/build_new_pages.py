@@ -20,7 +20,7 @@ from new_pages_data import PAGE_HEAD_META, PAGE_I18N, PROJECT_TILES, FAQ_QA
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260622b"  # bump on each change to main.css/main.js
+CACHE_BUST = "20260622c"  # bump on each change to main.css/main.js
 GLOBAL_I18N = json.loads((BUILD_DIR / "i18n.json").read_text(encoding="utf-8"))
 
 # ---------- shared chrome fragments ----------
@@ -344,12 +344,16 @@ def render_services():
 .svc-card .cta{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-family:'Saira',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
 .svc-card .cta:hover{transform:translateX(3px)}
 .svc-card.feature{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 2fr;gap:30px;align-items:center}
+.brand-service-list{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
+.brand-service-link{display:flex;align-items:center;justify-content:center;min-height:76px;padding:18px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(18px,1.7vw,24px);line-height:1;color:#fff;text-align:center;transition:border-color .25s var(--ease),transform .25s var(--ease),color .25s var(--ease)}
+.brand-service-link:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
 /* Whole-card click handling is done in main.js (CARD_PATTERNS) */
 .price-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:36px 0 0}
 .price-strip .ph-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 20px}
 .price-strip .ph-card .v{font-family:'Saira Condensed',sans-serif;font-weight:800;color:var(--accent);font-size:34px;line-height:1}
 .price-strip .ph-card .t{font-size:13px;color:var(--text-dim);margin-top:8px}
-@media (max-width:900px){.svc-grid{grid-template-columns:1fr}.svc-card.feature{grid-template-columns:1fr}.price-strip{grid-template-columns:repeat(2,1fr)}}"""
+@media (max-width:900px){.svc-grid{grid-template-columns:1fr}.svc-card.feature{grid-template-columns:1fr}.brand-service-list{grid-template-columns:repeat(2,1fr)}.price-strip{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.brand-service-list{grid-template-columns:1fr}}"""
 
     body = f'''<main>
 <section class="subpage svc">
@@ -415,6 +419,12 @@ def render_services():
 <a class="cta" data-i18n="svc.s5cta" href="/pre-purchase-inspection/">{en["svc.s5cta"]}</a>
 </div>
 </article>
+</div>
+<div class="brand-service-list" aria-label="Brand service pages">
+<a class="brand-service-link" data-i18n="nav.brandHarley" href="/harley-service/">Harley-Davidson</a>
+<a class="brand-service-link" data-i18n="nav.brandBmw" href="/bmw-service/">BMW Motorrad</a>
+<a class="brand-service-link" data-i18n="nav.brandDucati" href="/ducati-service/">Ducati</a>
+<a class="brand-service-link" data-i18n="nav.brandSuzuki" href="/suzuki-service/">Suzuki</a>
 </div>
 </div>
 </section>

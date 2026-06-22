@@ -24,6 +24,7 @@ SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
 DOMAIN = "https://ironcustommotors.com"
 LANGS = ["en", "ru", "uk", "pt"]
+HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 TARGET_LANGS = ["ru", "uk", "pt"]  # generate these from EN source
 LOCALIZED_URL_SKIP_PREFIXES = (
     f"{DOMAIN}/assets/",
@@ -67,6 +68,7 @@ MAIN_PAGES = [
     ("bmw-service/index.html", "bmw-service"),
     ("harley-service/index.html", "harley-service"),
     ("ducati-service/index.html", "ducati-service"),
+    ("suzuki-service/index.html", "suzuki-service"),
     ("blog/index.html", "blog"),
     ("blog/revtech-110-oil-service-engine-gearbox-drive/index.html", "blog/revtech-110-oil-service-engine-gearbox-drive"),
     ("blog/motorcycle-brake-pad-replacement-cascais/index.html", "blog/motorcycle-brake-pad-replacement-cascais"),
@@ -106,7 +108,7 @@ def make_hreflang_block(soup, page_id, project_name=None):
     for lang in LANGS:
         tag = soup.new_tag("link")
         tag.attrs["rel"] = "alternate"
-        tag.attrs["hreflang"] = lang
+        tag.attrs["hreflang"] = HREFLANG_CODES[lang]
         tag.attrs["href"] = url_for(lang)
         tags.append(tag)
     # x-default points to English (default)

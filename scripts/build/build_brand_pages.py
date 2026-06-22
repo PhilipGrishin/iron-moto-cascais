@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate brand-specific landing pages: /bmw-service/, /harley-service/, /ducati-service/.
+Generate brand-specific landing pages: /bmw-service/, /harley-service/, /ducati-service/, /suzuki-service/.
 EN sources, then run build_i18n.py to produce /ru/, /uk/, /pt/ versions.
 
 Same skeleton for every brand:
@@ -11,17 +11,18 @@ import json
 from pathlib import Path
 
 from brand_pages_data import BRAND_BG, BRAND_HEAD, PAGE_I18N
-from hero_images import hero_background_css
+from hero_images import hero_background_css, optimized_hero_url
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260622b"
+CACHE_BUST = "20260622c"
 
 # Per-brand prefix mapping (e.g. "bmw-service" → I18N key prefix "bmw")
 BRAND_PREFIX = {
     "bmw-service":    "bmw",
     "harley-service": "hd",
     "ducati-service": "duc",
+    "suzuki-service": "suz",
 }
 
 # Display name + schema brand for JSON-LD
@@ -29,6 +30,14 @@ BRAND_NAME = {
     "bmw-service":    "BMW Motorrad",
     "harley-service": "Harley-Davidson",
     "ducati-service": "Ducati",
+    "suzuki-service": "Suzuki",
+}
+
+BRAND_NAV_KEYS = {
+    "bmw-service": "nav.brandBmw",
+    "harley-service": "nav.brandHarley",
+    "ducati-service": "nav.brandDucati",
+    "suzuki-service": "nav.brandSuzuki",
 }
 
 RELATED_LINKS = {
@@ -50,6 +59,15 @@ RELATED_LINKS = {
         ("services.s2.title", "/parts/", "Parts &amp; consumables"),
         ("nav.pricing", "/pricing/", "Pricing"),
     ],
+    "suzuki-service": [
+        ("services.s1.title", "/motorcycle-service/", "Motorcycle service &amp; repair"),
+        ("services.s3.title", "/upgrades-tuning/", "Upgrades &amp; tuning"),
+        ("services.s2.title", "/parts/", "Parts &amp; consumables"),
+        ("nav.pricing", "/pricing/", "Pricing"),
+        ("services.s4.title", "/custom/", "Custom &amp; special projects"),
+        ("nav.contact", "/contact/", "Contact"),
+        ("nav.faq", "/faq/", "FAQ"),
+    ],
 }
 
 SEO_I18N = {
@@ -67,6 +85,9 @@ SEO_I18N = {
         "seo.relatedTitle": "Continue through the <em>same service system.</em>",
         "seo.relatedLead": "These pages connect the most common next steps: service, parts, upgrades, pricing, brand-specific help and the rider lounge.",
         "seo.relatedText": "Open the related page for details, process, pricing context and booking options.",
+        "seo.otherBrandsTitle": "Other brands we service.",
+        "seo.otherBrandsLead": "Compare the same workshop process across our brand-specific service pages.",
+        "seo.otherBrandText": "Open the brand page for model-specific service details, diagnostics, parts and booking context.",
     },
     "ru": {
         "seo.localEyebrow": "Локальная зона сервиса",
@@ -82,6 +103,9 @@ SEO_I18N = {
         "seo.relatedTitle": "Двигайтесь дальше в <em>той же сервисной системе.</em>",
         "seo.relatedLead": "Эти страницы связывают самые частые следующие шаги: сервис, запчасти, апгрейды, цены, брендовые страницы и rider lounge.",
         "seo.relatedText": "Откройте связанную страницу, чтобы увидеть детали, процесс, контекст цены и варианты записи.",
+        "seo.otherBrandsTitle": "Другие марки, которые обслуживаем.",
+        "seo.otherBrandsLead": "Сравните тот же процесс мастерской на брендовых страницах сервиса.",
+        "seo.otherBrandText": "Откройте страницу бренда, чтобы увидеть сервисные детали по моделям, диагностике, запчастям и записи.",
     },
     "uk": {
         "seo.localEyebrow": "Локальна зона сервісу",
@@ -97,6 +121,9 @@ SEO_I18N = {
         "seo.relatedTitle": "Рухайтесь далі у <em>тій самій системі сервісу.</em>",
         "seo.relatedLead": "Ці сторінки пов'язують найчастіші наступні кроки: сервіс, запчастини, апґрейди, ціни, брендові сторінки і rider lounge.",
         "seo.relatedText": "Відкрийте пов'язану сторінку, щоб побачити деталі, процес, контекст ціни і варіанти запису.",
+        "seo.otherBrandsTitle": "Інші марки, які обслуговуємо.",
+        "seo.otherBrandsLead": "Порівняйте той самий процес майстерні на брендових сторінках сервісу.",
+        "seo.otherBrandText": "Відкрийте сторінку бренду, щоб побачити сервісні деталі за моделями, діагностикою, запчастинами й записом.",
     },
     "pt": {
         "seo.localEyebrow": "Área local de serviço",
@@ -112,6 +139,9 @@ SEO_I18N = {
         "seo.relatedTitle": "Continue no <em>mesmo sistema de serviço.</em>",
         "seo.relatedLead": "Estas páginas ligam os próximos passos mais comuns: serviço, peças, upgrades, preços, ajuda por marca e rider lounge.",
         "seo.relatedText": "Abra a página relacionada para detalhes, processo, contexto de preço e opções de marcação.",
+        "seo.otherBrandsTitle": "Outras marcas que servimos.",
+        "seo.otherBrandsLead": "Compare o mesmo processo de oficina nas nossas páginas de serviço por marca.",
+        "seo.otherBrandText": "Abra a página da marca para detalhes de serviço por modelo, diagnóstico, peças e marcação.",
     },
 }
 
@@ -202,6 +232,10 @@ BRAND_CSS = """.subpage.brand{padding:140px 0 90px}
 .proc-row h4 a{color:#fff;text-decoration:none}
 .proc-row h4 a:hover{color:var(--accent)}
 .proc-row p{font-size:14px;color:var(--text-dim);max-width:60ch}
+.related-subhead{margin:36px 0 6px;padding-top:20px;border-top:1px solid var(--border)}
+.related-subhead h3{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(20px,2vw,30px);line-height:1;color:#fff;margin-bottom:8px}
+.related-subhead p{font-size:14px;color:var(--text-dim);max-width:62ch}
+.hero-alt-img{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;clip-path:inset(50%)!important;white-space:nowrap!important}
 @media (max-width:900px){.tools-grid,.brand-srv-grid,.models-grid{grid-template-columns:1fr}.issue-row{grid-template-columns:30px 1fr}}
 @media (max-width:760px){.proc-row{grid-template-columns:50px 1fr;gap:18px}.proc-row .num{font-size:24px}.trust-row{grid-template-columns:20px 1fr;gap:16px}}"""
 
@@ -225,8 +259,11 @@ def head(slug, lang):
             "brand": {"@type": "Brand", "name": brand_name},
             "areaServed": [
                 {"@type": "City", "name": "Cascais"},
-                {"@type": "City", "name": "Lisbon"},
                 {"@type": "City", "name": "Estoril"},
+                {"@type": "City", "name": "Oeiras"},
+                {"@type": "City", "name": "Sintra"},
+                {"@type": "City", "name": "Lisbon"},
+                {"@type": "AdministrativeArea", "name": "Greater Lisbon"},
             ],
             "url": page_url,
         },
@@ -243,14 +280,17 @@ def head(slug, lang):
     # Build FAQPage from in-page Q/A (en source — translated copy at /lang)
     en = page_i18n_for(slug)["en"]
     faq_main_entity = []
-    for i in range(1, 6):
+    i = 1
+    while True:
         q = en.get(f"{pre}.q{i}")
         a = en.get(f"{pre}.a{i}")
-        if q and a:
-            faq_main_entity.append({
-                "@type": "Question", "name": q,
-                "acceptedAnswer": {"@type": "Answer", "text": a},
-            })
+        if not (q and a):
+            break
+        faq_main_entity.append({
+            "@type": "Question", "name": q,
+            "acceptedAnswer": {"@type": "Answer", "text": a},
+        })
+        i += 1
     if faq_main_entity:
         json_ld_blocks.append({
             "@context": "https://schema.org",
@@ -263,9 +303,10 @@ def head(slug, lang):
         f'<script type="application/ld+json">{json.dumps(b, ensure_ascii=False)}</script>' for b in json_ld_blocks
     )
 
+    hreflang_codes = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
     hreflang_html = "".join(
-        f'<link rel="alternate" hreflang="{lg}" href="{DOMAIN}/{slug}/"/>' if lg == "en"
-        else f'<link rel="alternate" hreflang="{lg}" href="{DOMAIN}/{lg}/{slug}/"/>'
+        f'<link rel="alternate" hreflang="{hreflang_codes[lg]}" href="{DOMAIN}/{slug}/"/>' if lg == "en"
+        else f'<link rel="alternate" hreflang="{hreflang_codes[lg]}" href="{DOMAIN}/{lg}/{slug}/"/>'
         for lg in ["en","ru","uk","pt"]
     )
     hreflang_html += f'<link rel="alternate" hreflang="x-default" href="{DOMAIN}/{slug}/"/>'
@@ -347,6 +388,7 @@ HEADER_HTML = f'''<div aria-label="Cookie consent" class="cookie-banner" id="coo
 <a data-i18n="nav.brandHarley" href="/harley-service/">Harley-Davidson</a>
 <a data-i18n="nav.brandBmw" href="/bmw-service/">BMW Motorrad</a>
 <a data-i18n="nav.brandDucati" href="/ducati-service/">Ducati</a>
+<a data-i18n="nav.brandSuzuki" href="/suzuki-service/">Suzuki</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -415,6 +457,7 @@ HEADER_HTML = f'''<div aria-label="Cookie consent" class="cookie-banner" id="coo
 <a data-i18n="nav.brandHarley" href="/harley-service/">Harley-Davidson</a>
 <a data-i18n="nav.brandBmw" href="/bmw-service/">BMW Motorrad</a>
 <a data-i18n="nav.brandDucati" href="/ducati-service/">Ducati</a>
+<a data-i18n="nav.brandSuzuki" href="/suzuki-service/">Suzuki</a>
 </div>
 </details>
 <details class="mobile-nav-group">
@@ -475,6 +518,10 @@ FOOTER_HTML = f'''<footer class="site-footer">
 <li><a data-i18n="services.s4.title" href="/custom/">Custom &amp; special projects</a></li>
 <li><a data-i18n="nav.tyreServ" href="/motorcycle-tyre-service/">Tyre fitting &amp; wheel balancing</a></li>
 <li><a data-i18n="nav.preInsp" href="/pre-purchase-inspection/">Pre-purchase inspection</a></li>
+<li><a data-i18n="nav.brandHarley" href="/harley-service/">Harley-Davidson</a></li>
+<li><a data-i18n="nav.brandBmw" href="/bmw-service/">BMW Motorrad</a></li>
+<li><a data-i18n="nav.brandDucati" href="/ducati-service/">Ducati</a></li>
+<li><a data-i18n="nav.brandSuzuki" href="/suzuki-service/">Suzuki</a></li>
 <li><a data-i18n="nav.pricing" href="/pricing/">Pricing</a></li>
 </ul>
 </div>
@@ -558,6 +605,19 @@ def render_related_sections(slug, en):
 </article>'''
         for idx, (key, href, label) in enumerate(RELATED_LINKS[slug], 1)
     )
+    other_brands = "\n".join(
+        f'''<article class="proc-row">
+<span class="num">{idx:02d}</span>
+<div>
+<h4><a data-i18n="{BRAND_NAV_KEYS[other_slug]}" href="/{other_slug}/">{BRAND_NAME[other_slug]}</a></h4>
+<p data-i18n="seo.otherBrandText">{en["seo.otherBrandText"]}</p>
+</div>
+</article>'''
+        for idx, other_slug in enumerate(
+            [brand_slug for brand_slug in BRAND_NAME if brand_slug != slug],
+            len(RELATED_LINKS[slug]) + 1,
+        )
+    )
 
     return f'''<section class="sub-section" data-enhancement="money-related">
 <div class="container">
@@ -570,6 +630,11 @@ def render_related_sections(slug, en):
 </div>
 <div class="reveal-stagger" style="max-width:900px">
 {related}
+<div class="related-subhead">
+<h3 data-i18n="seo.otherBrandsTitle">{en["seo.otherBrandsTitle"]}</h3>
+<p data-i18n="seo.otherBrandsLead">{en["seo.otherBrandsLead"]}</p>
+</div>
+{other_brands}
 </div>
 </div>
 </section>
@@ -596,6 +661,11 @@ def render(slug):
     pre = BRAND_PREFIX[slug]
     en = page_i18n_for(slug)["en"]
     bg = BRAND_BG[slug]
+    hero_alt = en.get(f"{pre}.heroAlt", f"{BRAND_NAME[slug]} motorcycle service at Iron Custom Motors")
+    hero_alt_src = optimized_hero_url(bg, 768, "jpg")
+    hero_alt_srcset = ", ".join(
+        f"{optimized_hero_url(bg, width, 'jpg')} {width}w" for width in (768, 1280, 1920)
+    )
 
     # 8 services, 5 issues, 6 models
     services_html = "\n".join(
@@ -614,14 +684,20 @@ def render(slug):
         f'<div class="tool-card"><h3 data-i18n="{pre}.t{i}t">{en[f"{pre}.t{i}t"]}</h3><p data-i18n="{pre}.t{i}d">{en[f"{pre}.t{i}d"]}</p></div>'
         for i in range(1, 5)
     )
+    faq_keys = []
+    faq_idx = 1
+    while en.get(f"{pre}.q{faq_idx}") and en.get(f"{pre}.a{faq_idx}"):
+        faq_keys.append(faq_idx)
+        faq_idx += 1
     faq_html = "\n".join(
         f'<details><summary><span class="q" data-i18n="{pre}.q{i}">{en[f"{pre}.q{i}"]}</span><svg class="chev" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M6 9l6 6 6-6"></path></svg></summary><div class="a" data-i18n="{pre}.a{i}">{en[f"{pre}.a{i}"]}</div></details>'
-        for i in range(1, 6)
+        for i in faq_keys
     )
 
     body = f'''<main>
 <section class="subpage brand">
 <div aria-hidden="true" class="bg" style="{hero_background_css(bg)}"></div>
+<img alt="{hero_alt}" class="hero-alt-img" data-i18n-alt="{pre}.heroAlt" height="432" loading="lazy" sizes="1px" src="{hero_alt_src}" srcset="{hero_alt_srcset}" width="768"/>
 <div class="container">
 <div class="crumb"><a data-i18n="{pre}.breadHome" href="/">Home</a><span class="sep">→</span><span data-i18n="{pre}.h1Crumb">{en[f"{pre}.h1Crumb"]}</span></div>
 <div class="h-eyebrow" data-i18n="{pre}.eyebrow" style="margin-bottom:18px">{en[f"{pre}.eyebrow"]}</div>

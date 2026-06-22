@@ -27,6 +27,7 @@ HERO_SOURCES = [
     "photos/blog/blog-revtech-110-oil-service-01-1600.jpg",
     "photos/blog/blog-motorcycle-brake-pad-replacement-cascais-01-1600.jpg",
     "photos/blog/blog-front-fork-service-motorcycle-cascais-01-1600.jpg",
+    "photos/suzuki-service-main-1600.jpg",
 ]
 
 

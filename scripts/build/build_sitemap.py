@@ -28,6 +28,7 @@ PAGES = [
     ("bmw-service/", "monthly", "0.9"),
     ("harley-service/", "monthly", "0.9"),
     ("ducati-service/", "monthly", "0.9"),
+    ("suzuki-service/", "monthly", "0.9"),
     ("motorcycle-tyre-service/", "monthly", "0.95"),
     ("blog/", "weekly", "0.85"),
     ("blog/revtech-110-oil-service-engine-gearbox-drive/", "monthly", "0.82"),
@@ -50,6 +51,7 @@ PAGES = [
 ]
 
 LANGS = ["en", "ru", "uk", "pt"]
+HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 TODAY = date.today().isoformat()
 CUSTOM_LOCALIZED_PATHS = {
     "motorcycle-tyre-service/": {
@@ -78,7 +80,7 @@ def build_url_entry(lang, path, changefreq, priority):
     parts.append(f"    <priority>{priority}</priority>")
     # Alternates pointing to all language versions, including self
     for alt in LANGS:
-        parts.append(f'    <xhtml:link rel="alternate" hreflang="{alt}" href="{url_for(alt, path)}"/>')
+        parts.append(f'    <xhtml:link rel="alternate" hreflang="{HREFLANG_CODES[alt]}" href="{url_for(alt, path)}"/>')
     parts.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{url_for("en", path)}"/>')
     parts.append(f"  </url>")
     return "\n".join(parts)

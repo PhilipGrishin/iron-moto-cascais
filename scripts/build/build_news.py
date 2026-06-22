@@ -22,7 +22,7 @@ from news_data import (
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260622b"
+CACHE_BUST = "20260622c"
 LANGS = ["en", "ru", "uk", "pt"]
 OG_LOCALE = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
 

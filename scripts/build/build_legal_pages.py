@@ -14,7 +14,7 @@ from seo_meta import upsert_robots_image_preview
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260622b"
+CACHE_BUST = "20260622c"
 
 OG_LOCALES = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
 LANGS = ["en", "ru", "uk", "pt"]
