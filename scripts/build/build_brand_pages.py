@@ -190,18 +190,25 @@ BRAND_CSS = """.subpage.brand{padding:140px 0 90px}
 .trust-row .bullet{width:14px;height:14px;background:var(--accent);clip-path:polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);margin-top:6px}
 .trust-row h4{margin-bottom:8px;color:#fff;font-size:clamp(16px,1.4vw,20px)}
 .trust-row p{font-size:15px;color:var(--text-dim);max-width:64ch}
-.proc-row{display:grid;grid-template-columns:80px 1fr;gap:30px;padding:24px 0;border-bottom:1px solid var(--border);align-items:start}
-.proc-row .num{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:28px;color:var(--accent);line-height:1}
-.proc-row h4{margin-bottom:6px;color:#fff;font-size:clamp(16px,1.4vw,20px)}
-.proc-row h4 a{color:#fff;text-decoration:none}
-.proc-row h4 a:hover{color:var(--accent)}
-.proc-row p{font-size:14px;color:var(--text-dim);max-width:60ch}
-.related-subhead{margin:36px 0 6px;padding-top:20px;border-top:1px solid var(--border)}
+.related-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px}
+.related-card{position:relative;display:flex;min-height:128px;flex-direction:column;justify-content:space-between;gap:18px;padding:20px 18px;border:1px solid var(--border);border-radius:16px;background:var(--surface);color:#fff;text-decoration:none;overflow:hidden;transition:transform .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease)}
+.related-card::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 10%,rgba(255,87,34,.16),transparent 52%);opacity:0;transition:opacity .25s var(--ease);pointer-events:none}
+.related-card:hover,.related-card:focus-visible{transform:translateY(-4px);border-color:var(--accent);background:var(--surface-2);outline:none}
+.related-card:hover::after,.related-card:focus-visible::after{opacity:1}
+.related-card-label{position:relative;z-index:1;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(17px,1.35vw,22px);line-height:1;color:#fff}
+.related-card-text{position:relative;z-index:1;font-size:13px;line-height:1.45;color:var(--text-dim);max-width:26ch}
+.related-card-arrow{position:relative;z-index:1;align-self:flex-start;font-family:'Saira',sans-serif;font-weight:700;color:var(--accent);letter-spacing:.08em}
+.related-subhead{margin:36px 0 14px;padding-top:20px;border-top:1px solid var(--border)}
 .related-subhead h3{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(20px,2vw,30px);line-height:1;color:#fff;margin-bottom:8px}
 .related-subhead p{font-size:14px;color:var(--text-dim);max-width:62ch}
+.brand-pill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.brand-pill{display:flex;min-height:58px;align-items:center;justify-content:space-between;gap:14px;padding:15px 16px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.035);font-family:'Saira',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:#fff;text-decoration:none;transition:transform .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease),color .25s var(--ease)}
+.brand-pill::after{content:"→";color:var(--accent);font-size:16px;line-height:1}
+.brand-pill:hover,.brand-pill:focus-visible{transform:translateY(-3px);border-color:var(--accent);background:rgba(255,87,34,.08);color:var(--accent);outline:none}
 .hero-alt-img{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;clip-path:inset(50%)!important;white-space:nowrap!important}
 @media (max-width:900px){.tools-grid,.brand-srv-grid,.models-grid{grid-template-columns:1fr}.issue-row{grid-template-columns:30px 1fr}}
-@media (max-width:760px){.proc-row{grid-template-columns:50px 1fr;gap:18px}.proc-row .num{font-size:24px}.trust-row{grid-template-columns:20px 1fr;gap:16px}}"""
+@media (max-width:900px){.related-card-grid,.brand-pill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.related-card-grid,.brand-pill-grid{grid-template-columns:1fr}.related-card{min-height:112px}.trust-row{grid-template-columns:20px 1fr;gap:16px}}"""
 
 
 def head(slug, lang):
@@ -569,27 +576,16 @@ MODAL_HTML = '''<div aria-labelledby="modalTitle" aria-modal="true" class="modal
 
 def render_related_sections(slug, en):
     related = "\n".join(
-        f'''<article class="proc-row">
-<span class="num">{idx:02d}</span>
-<div>
-<h4><a data-i18n="{key}" href="{href}">{label}</a></h4>
-<p data-i18n="seo.relatedText">{en["seo.relatedText"]}</p>
-</div>
-</article>'''
-        for idx, (key, href, label) in enumerate(BRAND_RELATED_LINKS[slug], 1)
+        f'''<a class="related-card" href="{href}">
+<span class="related-card-label" data-i18n="{key}">{label}</span>
+<span class="related-card-text" data-i18n="seo.relatedText">{en["seo.relatedText"]}</span>
+<span aria-hidden="true" class="related-card-arrow">→</span>
+</a>'''
+        for key, href, label in BRAND_RELATED_LINKS[slug]
     )
     other_brands = "\n".join(
-        f'''<article class="proc-row">
-<span class="num">{idx:02d}</span>
-<div>
-<h4><a data-i18n="{BRAND_NAV_KEYS[other_slug]}" href="/{other_slug}/">{BRAND_NAME[other_slug]}</a></h4>
-<p data-i18n="seo.otherBrandText">{en["seo.otherBrandText"]}</p>
-</div>
-</article>'''
-        for idx, other_slug in enumerate(
-            [brand_slug for brand_slug in BRAND_ORDER if brand_slug != slug],
-            len(BRAND_RELATED_LINKS[slug]) + 1,
-        )
+        f'''<a class="brand-pill" data-i18n="{BRAND_NAV_KEYS[other_slug]}" href="/{other_slug}/">{BRAND_NAME[other_slug]}</a>'''
+        for other_slug in [brand_slug for brand_slug in BRAND_ORDER if brand_slug != slug]
     )
 
     return f'''<section class="sub-section" data-enhancement="money-related">
@@ -601,13 +597,17 @@ def render_related_sections(slug, en):
 <p class="lead" data-i18n="seo.relatedLead">{en["seo.relatedLead"]}</p>
 </div>
 </div>
-<div class="reveal-stagger" style="max-width:900px">
+<div class="reveal-stagger">
+<div class="related-card-grid">
 {related}
+</div>
 <div class="related-subhead">
 <h3 data-i18n="seo.otherBrandsTitle">{en["seo.otherBrandsTitle"]}</h3>
 <p data-i18n="seo.otherBrandsLead">{en["seo.otherBrandsLead"]}</p>
 </div>
+<div class="brand-pill-grid">
 {other_brands}
+</div>
 </div>
 </div>
 </section>

@@ -208,7 +208,23 @@ def insert_css(soup):
 .proc-row h4 a{color:#fff;text-decoration:none}
 .proc-row h4 a:hover{color:var(--accent)}
 .proc-row p{font-size:14px;color:var(--text-dim);max-width:60ch}
-@media (max-width:760px){.proc-row{grid-template-columns:50px 1fr;gap:18px}.proc-row .num{font-size:24px}.trust-row{grid-template-columns:20px 1fr;gap:16px}}
+.related-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px}
+.related-card{position:relative;display:flex;min-height:128px;flex-direction:column;justify-content:space-between;gap:18px;padding:20px 18px;border:1px solid var(--border);border-radius:16px;background:var(--surface);color:#fff;text-decoration:none;overflow:hidden;transition:transform .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease)}
+.related-card::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 10%,rgba(255,87,34,.16),transparent 52%);opacity:0;transition:opacity .25s var(--ease);pointer-events:none}
+.related-card:hover,.related-card:focus-visible{transform:translateY(-4px);border-color:var(--accent);background:var(--surface-2);outline:none}
+.related-card:hover::after,.related-card:focus-visible::after{opacity:1}
+.related-card-label{position:relative;z-index:1;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(17px,1.35vw,22px);line-height:1;color:#fff}
+.related-card-text{position:relative;z-index:1;font-size:13px;line-height:1.45;color:var(--text-dim);max-width:26ch}
+.related-card-arrow{position:relative;z-index:1;align-self:flex-start;font-family:'Saira',sans-serif;font-weight:700;color:var(--accent);letter-spacing:.08em}
+.related-subhead{margin:36px 0 14px;padding-top:20px;border-top:1px solid var(--border)}
+.related-subhead h3{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(20px,2vw,30px);line-height:1;color:#fff;margin-bottom:8px}
+.related-subhead p{font-size:14px;color:var(--text-dim);max-width:62ch}
+.brand-pill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.brand-pill{display:flex;min-height:58px;align-items:center;justify-content:space-between;gap:14px;padding:15px 16px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.035);font-family:'Saira',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:#fff;text-decoration:none;transition:transform .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease),color .25s var(--ease)}
+.brand-pill::after{content:"→";color:var(--accent);font-size:16px;line-height:1}
+.brand-pill:hover,.brand-pill:focus-visible{transform:translateY(-3px);border-color:var(--accent);background:rgba(255,87,34,.08);color:var(--accent);outline:none}
+@media (max-width:900px){.related-card-grid,.brand-pill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.proc-row{grid-template-columns:50px 1fr;gap:18px}.proc-row .num{font-size:24px}.related-card-grid,.brand-pill-grid{grid-template-columns:1fr}.related-card{min-height:112px}.trust-row{grid-template-columns:20px 1fr;gap:16px}}
 """
 
 
@@ -247,8 +263,49 @@ def other_brand_rows(slug: Optional[str], start: int) -> str:
     return "\n".join(rows)
 
 
+def brand_related_cards(links):
+    cards = []
+    for key, href, fallback in links:
+        label = GLOBAL_I18N["en"].get(key, fallback)
+        cards.append(f'''<a class="related-card" href="{href}">
+<span class="related-card-label" data-i18n="{key}">{label}</span>
+<span class="related-card-text" data-i18n="seo.relatedText">{COMMON_I18N["en"]["seo.relatedText"]}</span>
+<span aria-hidden="true" class="related-card-arrow">→</span>
+</a>''')
+    return "\n".join(cards)
+
+
+def other_brand_cards(slug: Optional[str]) -> str:
+    if slug not in BRAND_ORDER:
+        return ""
+
+    cards = [
+        f'''<div class="related-subhead">
+<h3 data-i18n="seo.otherBrandsTitle">{COMMON_I18N["en"]["seo.otherBrandsTitle"]}</h3>
+<p data-i18n="seo.otherBrandsLead">{COMMON_I18N["en"]["seo.otherBrandsLead"]}</p>
+</div>'''
+    ]
+    cards.append('<div class="brand-pill-grid">')
+    cards.extend(
+        f'''<a class="brand-pill" data-i18n="{BRAND_NAV_KEYS[other_slug]}" href="/{other_slug}/">{BRAND_NAME[other_slug]}</a>'''
+        for other_slug in (item for item in BRAND_ORDER if item != slug)
+    )
+    cards.append("</div>")
+    return "\n".join(cards)
+
+
 def enhancement_html(links, slug: Optional[str] = None):
-    brand_rows = other_brand_rows(slug, len(links) + 1)
+    if slug in BRAND_ORDER:
+        related_content = f'''<div class="related-card-grid">
+{brand_related_cards(links)}
+</div>
+{other_brand_cards(slug)}'''
+        related_wrapper_attrs = 'class="reveal-stagger"'
+    else:
+        related_content = f'''{related_rows(links)}
+{other_brand_rows(slug, len(links) + 1)}'''
+        related_wrapper_attrs = 'class="reveal-stagger" style="max-width:900px"'
+
     return f'''<section class="sub-section" data-enhancement="money-local">
 <div class="container">
 <div class="heading reveal">
@@ -274,9 +331,8 @@ def enhancement_html(links, slug: Optional[str] = None):
 <p class="lead" data-i18n="seo.relatedLead">{COMMON_I18N["en"]["seo.relatedLead"]}</p>
 </div>
 </div>
-<div class="reveal-stagger" style="max-width:900px">
-{related_rows(links)}
-{brand_rows}
+<div {related_wrapper_attrs}>
+{related_content}
 </div>
 </div>
 </section>'''
