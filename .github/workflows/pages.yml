@@ -54,6 +54,7 @@ jobs:
             ducati-service \
             faq \
             harley-service \
+            honda-service \
             motorcycle-service \
             motorcycle-tyre-service \
             news \

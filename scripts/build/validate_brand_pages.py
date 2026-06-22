@@ -86,7 +86,14 @@ def extract_inline_i18n(soup: BeautifulSoup) -> dict:
     return {}
 
 
-def required_content_keys(prefix: str) -> list[str]:
+def numbered_count(values: dict[str, str], prefix: str, item_prefix: str, suffixes: tuple[str, ...]) -> int:
+    idx = 1
+    while all(values.get(f"{prefix}.{item_prefix}{idx}{suffix}") for suffix in suffixes):
+        idx += 1
+    return idx - 1
+
+
+def required_content_keys(prefix: str, values: dict[str, str]) -> tuple[list[str], list[str]]:
     keys = [
         "eyebrow", "h1", "sub", "breadHome", "h1Crumb", "btnWA", "btnSend",
         "heroAlt",
@@ -99,13 +106,25 @@ def required_content_keys(prefix: str) -> list[str]:
         "faqEyebrow", "faqTitle",
         "ctaEyebrow", "ctaTitle", "ctaText", "btnBack",
     ]
-    keys.extend(f"t{i}{suffix}" for i in range(1, 5) for suffix in ("t", "d"))
-    keys.extend(f"s{i}{suffix}" for i in range(1, 9) for suffix in ("t", "d"))
-    keys.extend(f"i{i}{suffix}" for i in range(1, 6) for suffix in ("t", "d"))
-    keys.extend(f"m{i}{suffix}" for i in range(1, 7) for suffix in ("t", "d"))
-    keys.extend(f"q{i}" for i in range(1, 6))
-    keys.extend(f"a{i}" for i in range(1, 6))
-    return [f"{prefix}.{key}" for key in keys]
+    group_requirements = [
+        ("t", ("t", "d"), 4, "tools"),
+        ("s", ("t", "d"), 8, "services"),
+        ("i", ("t", "d"), 5, "issues"),
+        ("m", ("t", "d"), 6, "models"),
+        ("q", ("",), 5, "FAQ questions"),
+        ("a", ("",), 5, "FAQ answers"),
+    ]
+    group_issues: list[str] = []
+    for item_prefix, suffixes, minimum, label in group_requirements:
+        count = numbered_count(values, prefix, item_prefix, suffixes)
+        if count < minimum:
+            group_issues.append(f"{label} has {count}, expected at least {minimum}")
+        for i in range(1, count + 1):
+            if suffixes == ("",):
+                keys.append(f"{item_prefix}{i}")
+            else:
+                keys.extend(f"{item_prefix}{i}{suffix}" for suffix in suffixes)
+    return [f"{prefix}.{key}" for key in keys], group_issues
 
 
 def sitemap_urls() -> set[str]:
@@ -146,7 +165,10 @@ def check_registry(slug: str) -> list[str]:
             continue
         prefix = BRAND_PREFIX.get(slug)
         if prefix:
-            missing = [key for key in required_content_keys(prefix) if key not in PAGE_I18N[slug][lang]]
+            required_keys, group_issues = required_content_keys(prefix, PAGE_I18N[slug][lang])
+            for group_issue in group_issues:
+                issues.append(f"{group_issue} in {lang}")
+            missing = [key for key in required_keys if key not in PAGE_I18N[slug][lang]]
             for key in missing[:20]:
                 issues.append(f"missing content key {key} in {lang}")
             if len(missing) > 20:
