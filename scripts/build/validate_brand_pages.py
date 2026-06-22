@@ -110,7 +110,7 @@ def required_content_keys(prefix: str, values: dict[str, str]) -> tuple[list[str
         ("t", ("t", "d"), 4, "tools"),
         ("s", ("t", "d"), 8, "services"),
         ("i", ("t", "d"), 5, "issues"),
-        ("m", ("t", "d"), 6, "models"),
+        ("m", ("t", "d"), 5, "models"),
         ("q", ("",), 5, "FAQ questions"),
         ("a", ("",), 5, "FAQ answers"),
     ]
