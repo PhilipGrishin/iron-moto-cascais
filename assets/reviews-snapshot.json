@@ -1,7 +1,7 @@
 {
   "name": "Iron Custom Motors",
   "rating": 5,
-  "total": 10,
+  "total": 13,
   "reviews": [
     {
       "author": "Александр Рыбалко",
@@ -10,20 +10,9 @@
       "rating": 5,
       "text": "I was very happy to meet highly qualified specialists! The service and approach simply exceeded all my expectations. I didn't think that my problem would be solved so easily, since this was not the first service I contacted, and everyone refused, but these guys just did it without any extra words in the shortest possible time. I am very glad that I met these guys on the road, huge thanks to Yaroslav and his team for the perfect service and warm welcome!",
       "lang": "en",
-      "when": "2 weeks ago",
+      "when": "3 weeks ago",
       "publishedAt": "2026-05-31T15:11:38.214307844Z",
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2s1TUxYTnlSR0pGTkVaTWF6UlRObE53WjE5emQxRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
-    },
-    {
-      "author": "Марія Легкун",
-      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjX08JjwyC0szSsBh0uqQMjy-874C01D3pgLDm9Be5rM_ejxKK68=s128-c0x00000000-cc-rp-mo-ba2",
-      "profileUrl": "https://www.google.com/maps/contrib/111045777906992332814/reviews",
-      "rating": 5,
-      "text": "Super friendly founders and stuff, great service, totally recommend!",
-      "lang": "en",
-      "when": "a month ago",
-      "publishedAt": "2026-05-02T16:21:50.889876458Z",
-      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2pCRVRrRTRNRmRCZUZObFNrSklTamxWYlU0eFRIYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     },
     {
       "author": "Aleksandr Nevedrov",
@@ -35,6 +24,17 @@
       "when": "a month ago",
       "publishedAt": "2026-05-03T05:05:37.722363365Z",
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2taaGVIQnpRbk5HUTNOM1VFOXlaREJRTjFNM2NVRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
+    },
+    {
+      "author": "Марія Легкун",
+      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjX08JjwyC0szSsBh0uqQMjy-874C01D3pgLDm9Be5rM_ejxKK68=s128-c0x00000000-cc-rp-mo-ba2",
+      "profileUrl": "https://www.google.com/maps/contrib/111045777906992332814/reviews",
+      "rating": 5,
+      "text": "Super friendly founders and stuff, great service, totally recommend!",
+      "lang": "en",
+      "when": "a month ago",
+      "publishedAt": "2026-05-02T16:21:50.889876458Z",
+      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2pCRVRrRTRNRmRCZUZObFNrSklTamxWYlU0eFRIYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     },
     {
       "author": "Ksenia Moroz",
@@ -59,5 +59,5 @@
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xjd1l6QnVUbXBhU1RKeUxYY3lWbEl4WlZwNlEyYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     }
   ],
-  "fetchedAt": "2026-06-19T20:25:09.866Z"
+  "fetchedAt": "2026-06-23T08:36:22.656Z"
 }

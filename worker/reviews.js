@@ -51,6 +51,21 @@ function corsHeaders(origin) {
   };
 }
 
+function reviewTimestamp(review) {
+  const time = Date.parse(review?.publishedAt || review?.publishTime || '');
+  return Number.isFinite(time) ? time : 0;
+}
+
+function sortReviewsNewestFirst(reviews) {
+  return [...reviews].sort((a, b) => {
+    const byDate = reviewTimestamp(b) - reviewTimestamp(a);
+    if (byDate !== 0) return byDate;
+    const byRating = (b.rating || 0) - (a.rating || 0);
+    if (byRating !== 0) return byRating;
+    return String(b.text || '').length - String(a.text || '').length;
+  });
+}
+
 export default {
   async fetch(request, env, ctx) {
     const origin = request.headers.get('Origin') || '';
@@ -100,8 +115,8 @@ export default {
 
     const raw = await apiResp.json();
 
-    // Map to clean schema, sort newest first
-    const reviews = (raw.reviews || []).slice(0, 5).map(r => ({
+    // Map to clean schema and surface the newest Google-provided reviews first.
+    const reviews = sortReviewsNewestFirst((raw.reviews || []).map(r => ({
       author: r.authorAttribution?.displayName || 'Anonymous',
       avatar: r.authorAttribution?.photoUri || null,
       profileUrl: r.authorAttribution?.uri || null,
@@ -112,7 +127,7 @@ export default {
       when: r.relativePublishTimeDescription || '',
       publishedAt: r.publishTime || null,
       url: r.googleMapsUri || null
-    }));
+    }))).slice(0, 5);
 
     const payload = {
       name: raw.displayName?.text || 'Iron Custom Motors',

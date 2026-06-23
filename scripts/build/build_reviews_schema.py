@@ -75,7 +75,7 @@ def _extract_author(v):
 def build_review_items(data):
     """Filter and convert reviews → Review schema items."""
     items = []
-    for r in data.get("reviews", []):
+    for r in _sort_reviews_newest_first(data.get("reviews", [])):
         rating = r.get("rating")
         if not rating or rating < MIN_REVIEW_RATING:
             continue
@@ -128,9 +128,26 @@ def _truncate(text, limit):
     return f"{trimmed}..."
 
 
+def _review_timestamp(review):
+    value = review.get("publishTime") or review.get("publishedAt") or ""
+    return value or ""
+
+
+def _sort_reviews_newest_first(reviews):
+    return sorted(
+        reviews,
+        key=lambda r: (
+            _review_timestamp(r),
+            r.get("rating") or 0,
+            len(_extract_text(r.get("originalText")) or _extract_text(r.get("text"))),
+        ),
+        reverse=True,
+    )
+
+
 def _static_review_cards(data):
     reviews = []
-    for review in data.get("reviews", []):
+    for review in _sort_reviews_newest_first(data.get("reviews", [])):
         text = (_extract_text(review.get("originalText")) or _extract_text(review.get("text"))).strip()
         if len(text) < MIN_TEXT_LEN:
             continue
@@ -139,9 +156,9 @@ def _static_review_cards(data):
             "rating": review.get("rating") or 5,
             "text": text,
             "when": review.get("when") or "Google review",
+            "publishedAt": review.get("publishTime") or review.get("publishedAt") or "",
         })
 
-    reviews.sort(key=lambda r: (-(r["rating"] or 0), -len(r["text"])))
     cards = []
     for review in reviews[:3]:
         author = (review["author"] or "Google user").strip()
@@ -261,6 +278,8 @@ def main():
     if not data.get("rating") or not data.get("total"):
         print("Worker response missing rating/total — aborting.", file=sys.stderr)
         sys.exit(1)
+
+    data["reviews"] = _sort_reviews_newest_first(data.get("reviews", []))
 
     agg = build_aggregate_rating(data)
     reviews = build_review_items(data)

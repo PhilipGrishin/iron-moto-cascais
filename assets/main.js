@@ -836,6 +836,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
     return s.slice(0, n).replace(/\s+\S*$/,'') + '…';
   }
 
+  function reviewTimestamp(review){
+    const time = Date.parse(review?.publishedAt || review?.publishTime || '');
+    return Number.isFinite(time) ? time : 0;
+  }
+
+  function sortReviewsNewestFirst(reviews){
+    return [...reviews].sort((a,b)=>{
+      const byDate = reviewTimestamp(b) - reviewTimestamp(a);
+      if(byDate !== 0) return byDate;
+      const byRating = (b.rating||0) - (a.rating||0);
+      if(byRating !== 0) return byRating;
+      return String(b.text||'').length - String(a.text||'').length;
+    });
+  }
+
   function renderReviews(data){
     if(!data || !data.reviews || !data.reviews.length) return false;
 
@@ -848,15 +863,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
       summary.removeAttribute('hidden');
     }
 
-    // Reviews row — render up to 3 best
+    // Reviews row — render up to 3 newest reviews returned by Google
     const row = document.getElementById('reviewsRow');
     if(row){
-      // Pick up to 3 reviews — prefer 5-star with longest text
-      const sorted = [...data.reviews].sort((a,b)=>{
-        const ra = (a.rating||0) - (b.rating||0);
-        if(ra !== 0) return -ra;
-        return (b.text?.length||0) - (a.text?.length||0);
-      });
+      const sorted = sortReviewsNewestFirst(data.reviews);
       const picks = sorted.slice(0, 3);
       row.innerHTML = picks.map(r => `
         <article class="review">
