@@ -21,7 +21,7 @@ from new_pages_data import PAGE_HEAD_META, PAGE_I18N, PROJECT_TILES, FAQ_QA
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260622e"  # bump on each change to main.css/main.js
+CACHE_BUST = "20260624a"  # bump on each change to main.css/main.js
 GLOBAL_I18N = json.loads((BUILD_DIR / "i18n.json").read_text(encoding="utf-8"))
 
 # ---------- shared chrome fragments ----------
@@ -348,7 +348,6 @@ def render_services():
 .svc-card p{font-size:15px;color:var(--text-dim);max-width:46ch}
 .svc-card .cta{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-family:'Saira',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
 .svc-card .cta:hover{transform:translateX(3px)}
-.svc-card.feature{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 2fr;gap:30px;align-items:center}
 .brand-service-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:28px}
 .brand-service-link{display:flex;align-items:center;justify-content:center;min-height:76px;padding:18px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(18px,1.7vw,24px);line-height:1;color:#fff;text-align:center;transition:border-color .25s var(--ease),transform .25s var(--ease),color .25s var(--ease)}
 .brand-service-link:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
@@ -357,7 +356,7 @@ def render_services():
 .price-strip .ph-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 20px}
 .price-strip .ph-card .v{font-family:'Saira Condensed',sans-serif;font-weight:800;color:var(--accent);font-size:34px;line-height:1}
 .price-strip .ph-card .t{font-size:13px;color:var(--text-dim);margin-top:8px}
-@media (max-width:900px){.svc-grid{grid-template-columns:1fr}.svc-card.feature{grid-template-columns:1fr}.brand-service-list{grid-template-columns:repeat(2,1fr)}.price-strip{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:900px){.svc-grid{grid-template-columns:1fr}.brand-service-list{grid-template-columns:repeat(2,1fr)}.price-strip{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.brand-service-list{grid-template-columns:1fr}}"""
 
     body = f'''<main>
@@ -414,15 +413,11 @@ def render_services():
 <p data-i18n="svc.s6d">{en["svc.s6d"]}</p>
 <a class="cta" data-i18n="svc.s6cta" href="/motorcycle-tyre-service/">{en["svc.s6cta"]}</a>
 </article>
-<article class="svc-card feature">
-<div>
+<article class="svc-card">
 <div class="num">06</div>
 <h3 data-i18n="svc.s5t">{en["svc.s5t"]}</h3>
-</div>
-<div>
 <p data-i18n="svc.s5d">{en["svc.s5d"]}</p>
 <a class="cta" data-i18n="svc.s5cta" href="/pre-purchase-inspection/">{en["svc.s5cta"]}</a>
-</div>
 </article>
 </div>
 <div class="brand-service-list" aria-label="Brand service pages">
