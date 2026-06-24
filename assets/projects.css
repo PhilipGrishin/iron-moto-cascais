@@ -24,13 +24,13 @@
 
 /* Scrolling indicator under hero */
 .scroll-hint{position:absolute;left:50%;bottom:40px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.7;animation:hintBob 2.4s ease-in-out infinite}
-.scroll-hint span{font-family:'Saira',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-mute)}
+.scroll-hint span{font-family:var(--font-ui);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-mute)}
 .scroll-hint svg{stroke:var(--text-mute)}
 @keyframes hintBob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
 @media (max-width:760px){.scroll-hint{display:none}}
 
 /* --- Counter (KPI for Inspirium speed) --- */
-.proj-meta .val.kpi{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.005em;color:#fff;font-variant-numeric:tabular-nums}
+.proj-meta .val.kpi{font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:-.005em;color:#fff;font-variant-numeric:tabular-nums}
 
 /* --- Story enhancements --- */
 .proj-story{position:relative}
@@ -84,8 +84,8 @@
 .lb-next{right:24px;top:50%;transform:translateY(-50%)}
 .lb-prev:hover{transform:translateY(-50%) scale(1.06)}
 .lb-next:hover{transform:translateY(-50%) scale(1.06)}
-.lb-counter{position:absolute;top:30px;left:50%;transform:translateX(-50%);font-family:'Saira',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7);z-index:2}
-.lb-caption{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:'Saira',monospace;font-size:13px;color:rgba(255,255,255,.7);text-align:center;max-width:80%;z-index:2}
+.lb-counter{position:absolute;top:30px;left:50%;transform:translateX(-50%);font-family:var(--font-ui);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7);z-index:2}
+.lb-caption{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:var(--font-ui);font-size:13px;color:rgba(255,255,255,.7);text-align:center;max-width:80%;z-index:2}
 @media (max-width:760px){
   .lb-stage{padding:60px 14px}
   .lb-close{top:14px;right:14px;width:44px;height:44px}

@@ -667,7 +667,7 @@ def head_html(content: dict, lang: str) -> str:
 <link href="/photos/site.webmanifest" rel="manifest"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 {hero_preload_links(hero_url)}
 {json_scripts}
 <link href="/assets/main.css?v={CACHE_BUST}" rel="stylesheet"/>
@@ -715,13 +715,13 @@ PAGE_CSS = """.ppi-hero{position:relative;isolation:isolate;overflow:hidden;min-
 .ppi-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,8,8,.94),rgba(8,8,8,.72) 48%,rgba(8,8,8,.28)),linear-gradient(180deg,rgba(8,8,8,.18),#080808 95%)}
 .ppi-hero-bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;filter:saturate(.92) contrast(1.08) brightness(.68);""" + hero_background_css("/" + HERO_IMAGE) + """}
 .ppi-hero-alt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
-.ppi-hero h1{max-width:min(930px,76vw,calc(100vw - 40px));margin:18px 0 24px;font-family:'Saira Condensed',sans-serif;font-size:clamp(30px,4vw,58px);font-weight:900;line-height:.9;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
+.ppi-hero h1{max-width:min(930px,76vw,calc(100vw - 40px));margin:18px 0 24px;font-family:var(--font-display);font-size:clamp(30px,4vw,58px);font-weight:900;line-height:.9;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
 .ppi-hero .lead{max-width:min(920px,76vw,calc(100vw - 40px));font-size:clamp(18px,1.35vw,23px);line-height:1.62;color:var(--text)}
 .ppi-hero .lead p{margin:0 0 16px}
 .ppi-section{padding:clamp(58px,7vw,96px) 0;background:#080808;border-top:1px solid var(--border)}
 .ppi-heading{display:grid;grid-template-columns:minmax(180px,.62fr) minmax(0,1.38fr);gap:36px;align-items:end;margin-bottom:34px}
 .ppi-heading.compact{display:block;max-width:780px}
-.ppi-heading h2{max-width:min(860px,76vw,calc(100vw - 40px));margin:0;font-family:'Saira Condensed',sans-serif;font-size:clamp(26px,3.5vw,50px);font-weight:900;line-height:.94;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
+.ppi-heading h2{max-width:min(860px,76vw,calc(100vw - 40px));margin:0;font-family:var(--font-display);font-size:clamp(26px,3.5vw,50px);font-weight:900;line-height:.94;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
 .ppi-copy{font-size:clamp(17px,1.28vw,21px);line-height:1.68;color:var(--text)}
 .ppi-copy p{margin:0 0 18px;max-width:min(1120px,76vw,calc(100vw - 40px));overflow-wrap:break-word}
 .ppi-check-intro,.ppi-process-intro{margin-bottom:26px}
@@ -729,20 +729,20 @@ PAGE_CSS = """.ppi-hero{position:relative;isolation:isolate;overflow:hidden;min-
 .ppi-copy strong,.lead strong,.ppi-check-card strong,.ppi-process-row strong,.ppi-price-card strong,.answer strong{color:#fff}
 .ppi-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;max-width:min(850px,76vw,calc(100vw - 40px));margin-top:26px}
 .ppi-actions .btn{white-space:normal}
-.ppi-hours{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border:1px solid var(--border);border-radius:999px;color:var(--text-dim);font-family:'Saira',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.ppi-hours{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border:1px solid var(--border);border-radius:999px;color:var(--text-dim);font-family:var(--font-ui);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .ppi-feature-section{background:radial-gradient(circle at 78% 20%,rgba(255,87,34,.18),transparent 38%),#080808}
 .ppi-feature-card{position:relative;overflow:hidden;border:1px solid rgba(255,87,34,.55);border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(255,87,34,.12),rgba(255,255,255,.035));padding:clamp(26px,4vw,48px);box-shadow:0 24px 90px rgba(255,87,34,.08)}
-.ppi-feature-card::before{content:"02";position:absolute;right:clamp(18px,4vw,42px);top:clamp(10px,2vw,22px);font-family:'Saira Condensed',sans-serif;font-size:clamp(64px,11vw,150px);font-weight:900;line-height:1;color:rgba(255,87,34,.12)}
-.ppi-feature-card>span{position:relative;z-index:1;display:inline-flex;margin-bottom:22px;color:var(--accent);font-family:'Saira',sans-serif;font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+.ppi-feature-card::before{content:"02";position:absolute;right:clamp(18px,4vw,42px);top:clamp(10px,2vw,22px);font-family:var(--font-display);font-size:clamp(64px,11vw,150px);font-weight:900;line-height:1;color:rgba(255,87,34,.12)}
+.ppi-feature-card>span{position:relative;z-index:1;display:inline-flex;margin-bottom:22px;color:var(--accent);font-family:var(--font-ui);font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
 .ppi-feature-card p{position:relative;z-index:1;max-width:min(980px,76vw,calc(100vw - 40px));margin:0 0 18px;color:var(--text);font-size:clamp(18px,1.42vw,23px);line-height:1.62}
 .ppi-check-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .ppi-check-card{border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);padding:24px 22px}
-.ppi-check-card h3{margin:0 0 10px;font-family:'Saira Condensed',sans-serif;font-size:clamp(20px,1.8vw,28px);font-weight:900;line-height:1;text-transform:uppercase;color:#fff}
+.ppi-check-card h3{margin:0 0 10px;font-family:var(--font-display);font-size:clamp(20px,1.8vw,28px);font-weight:900;line-height:1;text-transform:uppercase;color:#fff}
 .ppi-check-card p{font-size:15px;line-height:1.62;color:var(--text-dim)}
 .ppi-process-list{display:grid;gap:14px;max-width:980px}
 .ppi-process-row{display:grid;grid-template-columns:70px 1fr;gap:22px;padding:22px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface)}
-.ppi-process-row .num{font-family:'Saira Condensed',sans-serif;font-weight:900;font-size:32px;line-height:1;color:var(--accent)}
-.ppi-process-row h3{margin:0 0 8px;font-family:'Saira Condensed',sans-serif;font-size:clamp(20px,1.8vw,28px);font-weight:900;line-height:1;text-transform:uppercase;color:#fff}
+.ppi-process-row .num{font-family:var(--font-display);font-weight:900;font-size:32px;line-height:1;color:var(--accent)}
+.ppi-process-row h3{margin:0 0 8px;font-family:var(--font-display);font-size:clamp(20px,1.8vw,28px);font-weight:900;line-height:1;text-transform:uppercase;color:#fff}
 .ppi-process-row p{font-size:16px;line-height:1.62;color:var(--text-dim)}
 .ppi-price-card{border:1px solid var(--border);border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(255,87,34,.11),rgba(255,255,255,.035));padding:clamp(26px,4vw,42px);max-width:980px}
 .ppi-price-card p{font-size:clamp(18px,1.4vw,23px);line-height:1.65;color:var(--text);margin:0 0 18px}
@@ -753,7 +753,7 @@ PAGE_CSS = """.ppi-hero{position:relative;isolation:isolate;overflow:hidden;min-
 .ppi-cta .ppi-actions{justify-content:center;margin-left:auto;margin-right:auto}
 .ppi-faq-list{display:grid;gap:12px}
 .ppi-faq-list details{border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);overflow:hidden}
-.ppi-faq-list summary{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;cursor:pointer;padding:22px 24px;list-style:none;font-family:'Saira Condensed',sans-serif;font-size:clamp(18px,1.6vw,24px);font-weight:800;line-height:1.1;text-transform:uppercase;color:#fff}
+.ppi-faq-list summary{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;cursor:pointer;padding:22px 24px;list-style:none;font-family:var(--font-display);font-size:clamp(18px,1.6vw,24px);font-weight:800;line-height:1.1;text-transform:uppercase;color:#fff}
 .ppi-faq-list summary::-webkit-details-marker{display:none}
 .ppi-faq-list .chev{color:var(--accent);transition:transform .2s var(--ease)}
 .ppi-faq-list details[open] .chev{transform:rotate(180deg)}

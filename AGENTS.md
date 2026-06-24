@@ -8,6 +8,27 @@ For project facts (URLs, IDs, what is deployed where) read
 `HANDOFF.md`. For commit history read `CHANGELOG.md`. For build
 scripts read `scripts/build/README.md`.
 
+## Scalability and handoff rule
+
+- Every site change must leave the project easier for the next
+  developer or the next AI session to understand. Prefer clear
+  source data, shared helpers, and documented build flows over
+  one-off manual edits.
+- Keep the site scalable. Do not introduce a separate generator,
+  compiler, or editing path for each individual page when an
+  existing generic page family or shared renderer can be extended.
+  Typical repeated work belongs in reusable data structures,
+  reusable build scripts, or documented shared utilities.
+- When a change creates or modifies a repeatable pattern, update
+  the relevant documentation (`AGENTS.md`, `README.md`,
+  `scripts/build/README.md`, or an adjacent source comment) so a
+  developer can quickly find where the data lives, which generator
+  owns it, and which verification commands protect it.
+- Stability comes first. Design changes must be implemented in a
+  way that future generated pages inherit safely, and verification
+  must check that previous page families still render and link
+  correctly.
+
 ## How to operate in this repo
 
 - The repo is a static site (HTML, CSS, JS). There is no
@@ -21,7 +42,7 @@ scripts read `scripts/build/README.md`.
 - After any change to `assets/main.css` or `assets/main.js`,
   bump the cache-bust query (`?v=...`) on every HTML file. The
   convention is `?v=YYYYMMDD<letter>`. The latest value at the
-  time of writing is `20260603d`.
+  time of writing is `20260624b`.
 - When the project owner asks Codex to do implementation work,
   treat the request as an end-to-end delivery by default: make
   the change, run the relevant verification, commit, push, and

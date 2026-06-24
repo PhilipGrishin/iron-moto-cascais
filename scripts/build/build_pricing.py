@@ -23,6 +23,7 @@ I18N_FILE = SITE_ROOT / "scripts" / "build" / "i18n.json"
 GLOBAL_I18N = json.loads(I18N_FILE.read_text(encoding="utf-8"))
 
 OG_LOCALES = {"en": "en_US", "ru": "ru_RU", "uk": "uk_UA", "pt": "pt_PT"}
+HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 
 # Per-page background photo (shared across languages)
 HERO_BG = "/photos/parts-shelf-1600.jpg"
@@ -311,16 +312,16 @@ PAGE_STYLE = """
 .pricing-hero{padding:160px 0 80px;min-height:auto}
 .pricing-hero .bg{""" + hero_background_css(HERO_BG, 1280) + """;background-size:cover;background-position:center;filter:saturate(.8) contrast(1.05) brightness(.4)}
 @media (max-width:900px){.pricing-hero .bg{""" + hero_background_css(HERO_BG_MOBILE, 768) + """}}
-.pricing-hero .lead{font-family:'Saira',sans-serif;font-size:clamp(16px,1.4vw,19px);line-height:1.65;color:var(--text-dim);max-width:62ch;margin-bottom:28px}
-.pricing-hero .tax-note{margin-top:24px;font-family:'Saira',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.pricing-hero .lead{font-family:var(--font-ui);font-size:clamp(16px,1.4vw,19px);line-height:1.65;color:var(--text-dim);max-width:62ch;margin-bottom:28px}
+.pricing-hero .tax-note{margin-top:24px;font-family:var(--font-ui);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
 .pdf-dl svg{stroke:currentColor;flex-shrink:0}
 
 .price-section{padding:var(--gap) 0;background:#0a0a0a;border-top:1px solid var(--border)}
-.section-eyebrow{font-family:'Saira',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-mute);margin-bottom:18px}
+.section-eyebrow{font-family:var(--font-ui);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-mute);margin-bottom:18px}
 .section-eyebrow span{color:var(--accent);font-weight:600}
 .price-section .heading{margin-bottom:40px;padding-bottom:30px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:end}
-.price-section .heading h2{margin:0;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.2vw,42px);line-height:.95;letter-spacing:-.005em;color:#fff}
-.price-section .heading .lead{margin:0;font-family:'Saira',sans-serif;font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:var(--text-dim)}
+.price-section .heading h2{margin:0;font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.2vw,42px);line-height:.95;letter-spacing:-.005em;color:#fff}
+.price-section .heading .lead{margin:0;font-family:var(--font-ui);font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:var(--text-dim)}
 @media (max-width:1100px){.price-section .heading{grid-template-columns:1fr;gap:18px}}
 
 /* Cards */
@@ -329,46 +330,46 @@ PAGE_STYLE = """
 .price-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 26px;transition:border-color .25s var(--ease),transform .25s var(--ease)}
 .price-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:16px;flex-wrap:wrap}
-.card-head h3{margin:0;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(17px,1.6vw,22px);line-height:1.05;color:#fff;letter-spacing:-.005em}
-.price{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(20px,2.2vw,28px);line-height:1;color:var(--accent);white-space:nowrap;flex-shrink:0}
-.price .from,.price .suffix{font-family:'Saira',sans-serif;font-weight:500;font-size:.55em;letter-spacing:.05em;color:var(--text-mute);text-transform:uppercase;margin-right:4px}
+.card-head h3{margin:0;font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(17px,1.6vw,22px);line-height:1.05;color:#fff;letter-spacing:-.005em}
+.price{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(20px,2.2vw,28px);line-height:1;color:var(--accent);white-space:nowrap;flex-shrink:0}
+.price .from,.price .suffix{font-family:var(--font-ui);font-weight:500;font-size:.55em;letter-spacing:.05em;color:var(--text-mute);text-transform:uppercase;margin-right:4px}
 .price .suffix{margin-left:4px;margin-right:0}
-.card-desc{font-family:'Saira',sans-serif;font-size:15px;line-height:1.55;color:var(--text-dim);margin-bottom:18px}
+.card-desc{font-family:var(--font-ui);font-size:15px;line-height:1.55;color:var(--text-dim);margin-bottom:18px}
 .card-tags{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
-.card-tags li{position:relative;padding-left:18px;font-family:'Saira',sans-serif;font-size:13px;color:var(--text);line-height:1.45}
+.card-tags li{position:relative;padding-left:18px;font-family:var(--font-ui);font-size:13px;color:var(--text);line-height:1.45}
 .card-tags li:before{content:'';position:absolute;left:0;top:8px;width:8px;height:1px;background:var(--accent)}
 
 /* Group cards (section 02) */
-.consumables-banner{background:linear-gradient(135deg,rgba(255,87,34,.08),transparent 60%);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 28px;margin-bottom:32px;font-family:'Saira',sans-serif;font-size:15px;line-height:1.55;color:var(--text-dim)}
+.consumables-banner{background:linear-gradient(135deg,rgba(255,87,34,.08),transparent 60%);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 28px;margin-bottom:32px;font-family:var(--font-ui);font-size:15px;line-height:1.55;color:var(--text-dim)}
 .consumables-banner strong{display:inline-block;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:13px;margin-right:8px}
 .group-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:24px}
 @media (max-width:900px){.group-cards{grid-template-columns:1fr}}
 .group-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px 28px}
 .group-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border)}
-.group-head h4{margin:0;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:18px;letter-spacing:.02em;color:#fff;line-height:1}
+.group-head h4{margin:0;font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:18px;letter-spacing:.02em;color:#fff;line-height:1}
 .group-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 18px}
-.group-list li{font-family:'Saira',sans-serif;font-size:13px;color:var(--text-dim);position:relative;padding-left:14px;line-height:1.4}
+.group-list li{font-family:var(--font-ui);font-size:13px;color:var(--text-dim);position:relative;padding-left:14px;line-height:1.4}
 .group-list li:before{content:'';position:absolute;left:0;top:8px;width:6px;height:1px;background:var(--accent)}
 @media (max-width:600px){.group-list{grid-template-columns:1fr}}
 
 /* Section 03 / list */
-.subgroup-title{margin:36px 0 18px;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(20px,2.4vw,28px);color:#fff;letter-spacing:.005em;line-height:1.05}
+.subgroup-title{margin:36px 0 18px;font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(20px,2.4vw,28px);color:#fff;letter-spacing:.005em;line-height:1.05}
 .price-list{display:flex;flex-direction:column;border-top:1px solid var(--border)}
 .price-row{display:grid;grid-template-columns:1fr auto;gap:20px;padding:18px 4px;border-bottom:1px solid var(--border);align-items:start}
-.row-text .row-name{font-family:'Saira',sans-serif;font-weight:600;color:#fff;font-size:16px;line-height:1.3;margin-bottom:4px}
-.row-text .row-desc{font-family:'Saira',sans-serif;font-size:14px;color:var(--text-dim);line-height:1.45}
-.row-price{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:clamp(18px,2vw,24px);color:var(--accent);white-space:nowrap;line-height:1;align-self:center}
+.row-text .row-name{font-family:var(--font-ui);font-weight:600;color:#fff;font-size:16px;line-height:1.3;margin-bottom:4px}
+.row-text .row-desc{font-family:var(--font-ui);font-size:14px;color:var(--text-dim);line-height:1.45}
+.row-price{font-family:var(--font-display);font-weight:800;font-size:clamp(18px,2vw,24px);color:var(--accent);white-space:nowrap;line-height:1;align-self:center}
 
 /* Section 04 tables */
 .price-table-wrap{overflow-x:auto;margin-bottom:14px;border:1px solid var(--border);border-radius:var(--radius-lg)}
-.price-table{width:100%;border-collapse:collapse;font-family:'Saira',sans-serif}
+.price-table{width:100%;border-collapse:collapse;font-family:var(--font-ui)}
 .price-table thead{background:rgba(255,87,34,.06)}
-.price-table th{padding:14px 18px;font-family:'Saira',sans-serif;font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:.12em;text-align:left;color:var(--accent);border-bottom:1px solid var(--border)}
+.price-table th{padding:14px 18px;font-family:var(--font-ui);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:.12em;text-align:left;color:var(--accent);border-bottom:1px solid var(--border)}
 .price-table td{padding:14px 18px;font-size:14px;color:var(--text);border-bottom:1px solid var(--border)}
 .price-table tbody tr:last-child td{border-bottom:none}
 .price-table tbody tr:hover{background:rgba(255,255,255,.02)}
 .price-table td:first-child{font-weight:600;color:#fff}
-.price-table td:not(:first-child){font-family:'Saira Condensed',sans-serif;font-weight:700;color:var(--accent);font-size:16px}
+.price-table td:not(:first-child){font-family:var(--font-display);font-weight:700;color:var(--accent);font-size:16px}
 
 /* Accessories columns (sec 05) */
 .acc-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
@@ -376,32 +377,32 @@ PAGE_STYLE = """
 .acc-col h3.subgroup-title{margin-top:0;font-size:clamp(18px,1.8vw,22px)}
 .acc-list{list-style:none;padding:0;margin:0;border-top:1px solid var(--border)}
 .acc-list li{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--border);align-items:baseline}
-.acc-name{font-family:'Saira',sans-serif;font-size:14px;color:#fff}
-.acc-price{font-family:'Saira Condensed',sans-serif;font-weight:700;color:var(--accent);font-size:14px;white-space:nowrap;letter-spacing:.02em}
+.acc-name{font-family:var(--font-ui);font-size:14px;color:#fff}
+.acc-price{font-family:var(--font-display);font-weight:700;color:var(--accent);font-size:14px;white-space:nowrap;letter-spacing:.02em}
 
 /* Section 06: chain card already covered by .price-card */
 .chain-card{margin-top:24px;max-width:560px}
 
 /* Section 07: customizing & community */
 .custom-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px clamp(24px,4vw,48px);margin-bottom:30px}
-.custom-block h3{margin:0 0 14px;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(22px,2.6vw,32px);color:#fff;line-height:1.05;letter-spacing:-.005em}
-.custom-block p{margin:0;font-family:'Saira',sans-serif;font-size:15px;line-height:1.6;color:var(--text-dim)}
+.custom-block h3{margin:0 0 14px;font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(22px,2.6vw,32px);color:#fff;line-height:1.05;letter-spacing:-.005em}
+.custom-block p{margin:0;font-family:var(--font-ui);font-size:15px;line-height:1.6;color:var(--text-dim)}
 .community-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:24px}
 @media (max-width:900px){.community-trio{grid-template-columns:1fr}}
 .trio-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px 24px}
-.trio-num{display:inline-block;font-family:'Saira Condensed',sans-serif;font-weight:800;color:var(--accent);font-size:32px;line-height:1;margin-bottom:14px}
-.trio-item h4{margin:0 0 10px;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:16px;color:#fff;letter-spacing:.02em}
-.trio-item p{margin:0;font-family:'Saira',sans-serif;font-size:13px;line-height:1.5;color:var(--text-dim)}
-.section-slogan{margin-top:24px;font-family:'Saira',sans-serif;font-size:15px;line-height:1.55;color:var(--text-dim);font-style:italic;max-width:80ch}
+.trio-num{display:inline-block;font-family:var(--font-display);font-weight:800;color:var(--accent);font-size:32px;line-height:1;margin-bottom:14px}
+.trio-item h4{margin:0 0 10px;font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:16px;color:#fff;letter-spacing:.02em}
+.trio-item p{margin:0;font-family:var(--font-ui);font-size:13px;line-height:1.5;color:var(--text-dim)}
+.section-slogan{margin-top:24px;font-family:var(--font-ui);font-size:15px;line-height:1.55;color:var(--text-dim);font-style:italic;max-width:80ch}
 
 /* Notes */
-.section-note{margin-top:18px;font-family:'Saira',sans-serif;font-size:13px;line-height:1.55;color:var(--text-mute);max-width:80ch;font-style:italic}
+.section-note{margin-top:18px;font-family:var(--font-ui);font-size:13px;line-height:1.55;color:var(--text-mute);max-width:80ch;font-style:italic}
 .section-note-alt{color:var(--text-dim);font-style:normal}
 
 /* Disclaimer */
 .disclaimer{background:#0e0e12}
-.disclaimer h3{font-family:'Saira',monospace;font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.2em;color:var(--accent);margin-bottom:14px}
-.disclaimer p{font-family:'Saira',sans-serif;font-size:13px;line-height:1.65;color:var(--text-mute);max-width:90ch}
+.disclaimer h3{font-family:var(--font-ui);font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.2em;color:var(--accent);margin-bottom:14px}
+.disclaimer p{font-family:var(--font-ui);font-size:13px;line-height:1.65;color:var(--text-mute);max-width:90ch}
 """
 
 
@@ -536,7 +537,7 @@ def build_page(lang: str) -> str:
     for el in soup.head.find_all("link", attrs={"rel": "alternate", "hreflang": True}):
         el.decompose()
     for hl in ["en", "ru", "uk", "pt"]:
-        link = soup.new_tag("link", rel="alternate", hreflang=hl, href=url_for(hl))
+        link = soup.new_tag("link", rel="alternate", hreflang=HREFLANG_CODES[hl], href=url_for(hl))
         soup.head.append(link)
     xd = soup.new_tag("link", rel="alternate", hreflang="x-default", href=url_for("en"))
     soup.head.append(xd)

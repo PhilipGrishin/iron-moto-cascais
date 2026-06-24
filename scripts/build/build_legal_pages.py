@@ -14,11 +14,12 @@ from seo_meta import upsert_robots_image_preview
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260622e"
+CACHE_BUST = "20260624b"
 
 OG_LOCALES = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
 LANGS = ["en", "ru", "uk", "pt"]
 TARGET_LANGS = ["ru", "uk", "pt"]
+HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 
 try:
     BeautifulSoup("", "lxml")
@@ -35,20 +36,20 @@ LEGAL_CSS = """.subpage.lg{padding:140px 0 60px;background:#0a0a0a;position:rela
 .subpage.lg::before{content:"";position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,87,34,.18),transparent 60%);pointer-events:none;z-index:1}
 .subpage.lg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.4),rgba(10,10,10,.95) 60%);z-index:0;pointer-events:none}
 .subpage.lg .container{position:relative;z-index:1}
-.crumb{display:flex;align-items:center;gap:10px;font-family:'Saira',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-mute);margin-bottom:24px}
+.crumb{display:flex;align-items:center;gap:10px;font-family:var(--font-ui);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-mute);margin-bottom:24px}
 .crumb a{color:var(--text-dim)}
 .crumb a:hover{color:var(--accent)}
 .crumb .sep{color:var(--accent)}
-.subpage.lg h1{font-family:'Saira Condensed',sans-serif;font-weight:800;line-height:.95;letter-spacing:-.01em;text-transform:uppercase;font-size:clamp(30px,3.5vw,42px);color:#fff;margin-bottom:14px;max-width:18ch}
+.subpage.lg h1{font-family:var(--font-display);font-weight:800;line-height:.95;letter-spacing:-.01em;text-transform:uppercase;font-size:clamp(30px,3.5vw,42px);color:#fff;margin-bottom:14px;max-width:18ch}
 .subpage.lg .lead{max-width:62ch;color:var(--text-dim);font-size:clamp(15px,1.3vw,18px)}
 .legal-body{padding:60px 0 80px;background:#0a0a0a;border-top:1px solid var(--border)}
 .legal-body .container{max-width:840px}
 .legal-body section{padding:24px 0;border-bottom:1px solid var(--border)}
 .legal-body section:last-child{border-bottom:none}
-.legal-body h2{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(18px,1.5vw,22px);color:#fff;line-height:1.1;margin-bottom:14px}
-.legal-body p{font-family:'Saira',sans-serif;font-weight:400;font-size:15px;line-height:1.65;color:var(--text-dim);max-width:72ch}
-.legal-body .updated{margin-top:30px;font-family:'Saira',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-mute)}
-.legal-body .legal-nav{margin-top:40px;padding-top:30px;border-top:1px solid var(--border);display:flex;gap:18px;flex-wrap:wrap;font-family:'Saira',sans-serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.legal-body h2{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(18px,1.5vw,22px);color:#fff;line-height:1.1;margin-bottom:14px}
+.legal-body p{font-family:var(--font-ui);font-weight:400;font-size:15px;line-height:1.65;color:var(--text-dim);max-width:72ch}
+.legal-body .updated{margin-top:30px;font-family:var(--font-ui);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-mute)}
+.legal-body .legal-nav{margin-top:40px;padding-top:30px;border-top:1px solid var(--border);display:flex;gap:18px;flex-wrap:wrap;font-family:var(--font-ui);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
 .legal-body .legal-nav a{color:var(--text-dim)}
 .legal-body .legal-nav a:hover{color:var(--accent)}
 .legal-body .legal-nav a[aria-current="page"]{color:var(--accent)}"""
@@ -157,7 +158,7 @@ def build_page(slug, lang):
         el.decompose()
     for lg in LANGS:
         url = f"{DOMAIN}/{slug}/" if lg=="en" else f"{DOMAIN}/{lg}/{slug}/"
-        t = chrome.new_tag("link"); t["rel"]="alternate"; t["hreflang"]=lg; t["href"]=url
+        t = chrome.new_tag("link"); t["rel"]="alternate"; t["hreflang"]=HREFLANG_CODES[lg]; t["href"]=url
         head.append(t)
     xd = chrome.new_tag("link"); xd["rel"]="alternate"; xd["hreflang"]="x-default"
     xd["href"] = f"{DOMAIN}/{slug}/"

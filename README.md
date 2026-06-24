@@ -24,6 +24,19 @@ Production domain: https://ironcustommotors.com/
 - Cloudflare DNS fronts the production domain.
 - Cloudflare Worker proxies Google Places reviews so no Google Places API key is exposed in client HTML/JS.
 
+## Maintenance Principles
+
+- Build for the next developer. Page families, navigation, SEO metadata,
+  schema, typography, and repeated content patterns should be controlled
+  by shared data files, shared renderers, or documented utilities.
+- Avoid isolated one-off generators or page-only editing paths when an
+  existing generic build path can be extended safely.
+- When a repeatable pattern changes, update the relevant documentation so
+  future work can find the source file, generator, rebuild command, and
+  verification check quickly.
+- Prefer small, stable, reusable changes over manual patches that future
+  generated pages will not inherit.
+
 ## Key Paths
 
 ```

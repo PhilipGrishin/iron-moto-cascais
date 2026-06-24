@@ -13,14 +13,15 @@
 <link href="/photos/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;600;800&amp;family=Saira+Condensed:wght@800;900&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;600;800&amp;family=Saira+Condensed:wght@800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <style>
+  :root{--font-body:'Inter',system-ui,sans-serif;--font-ui:'Saira',sans-serif;--font-display:'Saira Condensed',sans-serif}
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
   body{
     background:#0a0a0a;
     color:#eaeaea;
-    font-family:'Saira',sans-serif;
+    font-family:var(--font-ui);
     -webkit-font-smoothing:antialiased;
     display:flex;
     align-items:center;
@@ -34,7 +35,7 @@
   }
   .wrap{max-width:680px;text-align:center}
   .code{
-    font-family:'Saira Condensed',sans-serif;
+    font-family:var(--font-display);
     font-weight:900;
     font-size:clamp(120px,22vw,260px);
     line-height:.85;
@@ -44,7 +45,7 @@
   }
   .code .accent{color:#ff5722}
   h1{
-    font-family:'Saira Condensed',sans-serif;
+    font-family:var(--font-display);
     font-weight:800;
     text-transform:uppercase;
     font-size:clamp(26px,4.5vw,44px);
@@ -73,7 +74,7 @@
     gap:10px;
     padding:14px 24px;
     border-radius:6px;
-    font-family:'Saira',sans-serif;
+    font-family:var(--font-ui);
     font-weight:600;
     font-size:14px;
     letter-spacing:.05em;
@@ -89,7 +90,7 @@
     display:flex;
     gap:0;
     justify-content:center;
-    font-family:'Saira',sans-serif;
+    font-family:var(--font-ui);
     font-size:12px;
     letter-spacing:.15em;
     text-transform:uppercase;
@@ -105,7 +106,7 @@
   .langs a:last-child{border-right:none}
   .langs a:hover{color:#ff5722}
   .label{
-    font-family:'Saira',sans-serif;
+    font-family:var(--font-ui);
     font-size:11px;
     letter-spacing:.25em;
     text-transform:uppercase;

@@ -729,7 +729,7 @@ def head_html(content: dict, lang: str) -> str:
 <link href="/photos/site.webmanifest" rel="manifest"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 {preload}
 {json_scripts}
 <link href="/assets/main.css?v={CACHE_BUST}" rel="stylesheet"/>
@@ -799,12 +799,12 @@ document.querySelectorAll('.tyre-video-facade').forEach(function(button) {{
 PAGE_CSS = """.tyre-hero{position:relative;isolation:isolate;overflow:hidden;min-height:78vh;padding:150px 0 84px;background:#080808}
 .tyre-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,8,8,.92),rgba(8,8,8,.68) 45%,rgba(8,8,8,.22)),linear-gradient(180deg,rgba(8,8,8,.2),#080808 95%)}
 .tyre-hero-bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;filter:saturate(.94) contrast(1.04) brightness(.72);""" + hero_background_css("/" + IMAGES["hero"]) + """}
-.tyre-hero h1{max-width:min(880px,76vw,calc(100vw - 40px));margin:18px 0 24px;font-family:'Saira Condensed',sans-serif;font-size:clamp(30px,4vw,58px);font-weight:900;line-height:.9;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
+.tyre-hero h1{max-width:min(880px,76vw,calc(100vw - 40px));margin:18px 0 24px;font-family:var(--font-display);font-size:clamp(30px,4vw,58px);font-weight:900;line-height:.9;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
 .tyre-hero .lead{max-width:min(900px,76vw,calc(100vw - 40px));font-size:clamp(18px,1.35vw,23px);line-height:1.62;color:var(--text)}
 .tyre-section{padding:clamp(58px,7vw,96px) 0;background:#080808;border-top:1px solid var(--border)}
 .tyre-heading{display:grid;grid-template-columns:minmax(180px,.62fr) minmax(0,1.38fr);gap:36px;align-items:end;margin-bottom:34px}
 .tyre-heading.compact{display:block;max-width:780px}
-.tyre-heading h2{max-width:min(820px,76vw,calc(100vw - 40px));margin:0;font-family:'Saira Condensed',sans-serif;font-size:clamp(26px,3.5vw,50px);font-weight:900;line-height:.94;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
+.tyre-heading h2{max-width:min(820px,76vw,calc(100vw - 40px));margin:0;font-family:var(--font-display);font-size:clamp(26px,3.5vw,50px);font-weight:900;line-height:.94;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
 .tyre-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,.86fr);gap:34px;align-items:start}
 .tyre-split-video{grid-template-columns:minmax(0,.9fr) minmax(390px,1fr)}
 .tyre-copy{font-size:clamp(17px,1.28vw,21px);line-height:1.68;color:var(--text)}
@@ -820,7 +820,7 @@ PAGE_CSS = """.tyre-hero{position:relative;isolation:isolate;overflow:hidden;min
 .tyre-photo-row .tyre-photo img{aspect-ratio:16/10;min-height:300px}
 .tyre-video-panel{display:grid;grid-template-columns:.9fr 1fr;gap:18px;align-items:stretch;margin-top:18px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);overflow:hidden}
 .tyre-video-copy{padding:28px 26px;align-self:center}
-.tyre-video-copy h3{margin:12px 0 10px;font-family:'Saira Condensed',sans-serif;font-size:clamp(25px,3vw,42px);font-weight:900;line-height:.98;text-transform:uppercase;color:#fff}
+.tyre-video-copy h3{margin:12px 0 10px;font-family:var(--font-display);font-size:clamp(25px,3vw,42px);font-weight:900;line-height:.98;text-transform:uppercase;color:#fff}
 .tyre-video-copy p{color:var(--text-dim);line-height:1.55}
 .tyre-video-facade{position:relative;display:block;min-height:280px;border:0;padding:0;background:#000;cursor:pointer;overflow:hidden}
 .tyre-video-facade img{width:100%;height:100%;object-fit:cover;filter:brightness(.72)}
@@ -829,13 +829,13 @@ PAGE_CSS = """.tyre-hero{position:relative;isolation:isolate;overflow:hidden;min
 .tyre-table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-lg);background:rgba(255,255,255,.025)}
 .tyre-price-table{width:100%;border-collapse:collapse;min-width:760px}
 .tyre-price-table th,.tyre-price-table td{padding:22px 24px;border-bottom:1px solid var(--border);text-align:left}
-.tyre-price-table th{font-family:'Saira',sans-serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:rgba(255,87,34,.05)}
-.tyre-price-table td{font-family:'Saira Condensed',sans-serif;font-size:24px;font-weight:800;color:#fff}
+.tyre-price-table th{font-family:var(--font-ui);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:rgba(255,87,34,.05)}
+.tyre-price-table td{font-family:var(--font-display);font-size:24px;font-weight:800;color:#fff}
 .tyre-price-table td:first-child{color:var(--text)}
 .tyre-ai{background:#0b0b0b}
 .tyre-answer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
 .tyre-answer-card{border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);padding:26px 24px}
-.tyre-answer-card h3{font-family:'Saira Condensed',sans-serif;font-size:24px;font-weight:900;line-height:1;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.tyre-answer-card h3{font-family:var(--font-display);font-size:24px;font-weight:900;line-height:1;text-transform:uppercase;color:#fff;margin-bottom:12px}
 .tyre-answer-card p{font-size:15px;line-height:1.65;color:var(--text-dim)}
 .tyre-cta{padding:clamp(54px,6vw,82px) 0;background:#101010;border-top:1px solid var(--border);text-align:center}
 .tyre-cta .container{max-width:980px}
@@ -843,7 +843,7 @@ PAGE_CSS = """.tyre-hero{position:relative;isolation:isolate;overflow:hidden;min
 .tyre-cta .tyre-actions{justify-content:center}
 .tyre-faq-list{display:grid;gap:12px}
 .tyre-faq-list details{border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);overflow:hidden}
-.tyre-faq-list summary{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;cursor:pointer;padding:22px 24px;list-style:none;font-family:'Saira Condensed',sans-serif;font-size:clamp(18px,1.6vw,24px);font-weight:800;line-height:1.1;text-transform:uppercase;color:#fff}
+.tyre-faq-list summary{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;cursor:pointer;padding:22px 24px;list-style:none;font-family:var(--font-display);font-size:clamp(18px,1.6vw,24px);font-weight:800;line-height:1.1;text-transform:uppercase;color:#fff}
 .tyre-faq-list summary::-webkit-details-marker{display:none}
 .tyre-faq-list .chev{color:var(--accent);transition:transform .2s var(--ease)}
 .tyre-faq-list details[open] .chev{transform:rotate(180deg)}

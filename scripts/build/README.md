@@ -285,6 +285,26 @@ print('done')
 Build scripts that produce HTML carry their own `CACHE_BUST` constant
 at the top — keep it in sync when bumping.
 
+## Typography system
+
+`assets/main.css` owns the site font stack through CSS variables:
+
+- `--font-body` for long-form readable text.
+- `--font-ui` for nav, buttons, labels and compact card text.
+- `--font-display` for large uppercase headings.
+
+Generated inline CSS must use these variables instead of hard-coding
+Google font families. This keeps page families consistent when typography
+changes and prevents new generators from reintroducing page-specific font
+behavior.
+
+Russian and Ukrainian pages use language-scoped Cyrillic tuning in
+`assets/main.css`: `html[lang="ru"]` and `html[lang="uk"]` switch UI/display
+type to `Roboto Condensed` and slightly reduce heading sizes and tracking.
+When adding a new page family or generator, keep selectors compatible with
+these language-level overrides, then visual-check at least one RU and one UK
+page before release.
+
 ## Notes
 
 - The HTML-rewriting Python scripts prefer `lxml`. If unavailable,

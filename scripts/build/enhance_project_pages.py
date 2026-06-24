@@ -209,12 +209,12 @@ def insert_css(soup):
     style.string = (style.string or "") + """
 .project-enhance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
 .project-enhance-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px 24px}
-.project-enhance-card .num{font-family:'Saira Condensed',sans-serif;font-weight:800;color:var(--accent);font-size:30px;line-height:1;margin-bottom:12px}
-.project-enhance-card h3{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:22px;color:#fff;margin-bottom:8px}
+.project-enhance-card .num{font-family:var(--font-display);font-weight:800;color:var(--accent);font-size:30px;line-height:1;margin-bottom:12px}
+.project-enhance-card h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:22px;color:#fff;margin-bottom:8px}
 .project-enhance-card p{font-size:15px;color:var(--text-dim);line-height:1.55}
-.project-enhance-card .value{font-family:'Saira',sans-serif;font-weight:600;color:#fff;margin-bottom:12px}
+.project-enhance-card .value{font-family:var(--font-ui);font-weight:600;color:#fff;margin-bottom:12px}
 .project-enhance-row{display:grid;grid-template-columns:70px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--border);align-items:start}
-.project-enhance-row .num{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:28px;color:var(--accent);line-height:1}
+.project-enhance-row .num{font-family:var(--font-display);font-weight:800;font-size:28px;color:var(--accent);line-height:1}
 .project-enhance-row h4{margin-bottom:6px;color:#fff;font-size:clamp(16px,1.4vw,20px)}
 .project-enhance-row h4 a{color:#fff;text-decoration:none}
 .project-enhance-row h4 a:hover{color:var(--accent)}
