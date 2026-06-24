@@ -3415,3 +3415,439 @@ BLOG_POSTS['front-fork-service-motorcycle-cascais'] = {'publishedISO': '2026-06-
                      'сервіс підвіски мотоцикла',
                      'сервіс вилки Cascais',
                      'Iron Custom Motors вилка']}}
+
+BLOG_POSTS["motorcycle-tyre-fitting-specialist-cascais"] = {
+    "publishedISO": "2026-06-24",
+    "modifiedISO": "2026-06-24",
+    "imageBase": "/photos/blog/blog-motorcycle-tyre-fitting-specialist-cascais",
+    "imageHero": 1,
+    "imageCount": 1,
+    "imageDims": {1: (1536, 1024)},
+    "youtubeUrl": "https://youtube.com/shorts/KGEPaj46fBg",
+    "youtubeEmbed": "https://www.youtube.com/embed/KGEPaj46fBg",
+    "youtubeUploadDate": "2026-06-20T12:00:00+01:00",
+    "sourceLocalizedSlugs": {
+        "en": "motorcycle-tyre-fitting-specialist-cascais",
+        "ru": "motoshinomontazh-spetsialist-cascais",
+        "pt": "montagem-pneus-mota-especialista-cascais",
+        "uk": "motoshynomontazh-spetsialist-cascais",
+    },
+    "meta": {
+        "en": {
+            "title": "Motorcycle Tyre Fitting: Why It Needs a Specialist | Iron Custom Motors",
+            "description": "Motorcycle tyre fitting is not car tyre fitting. Learn why correct mounting, balancing and inspection matter for grip, stability and safety.",
+            "excerpt": "Motorcycle tyre fitting is not car tyre fitting. Correct mounting, balancing and inspection change grip, stability and rider confidence.",
+        },
+        "ru": {
+            "title": "Мотошиномонтаж: почему нужен специалист | Iron Custom Motors",
+            "description": "Мотошиномонтаж — это не автомобильный шиномонтаж. Разбираем, почему монтаж, балансировка и осмотр колеса важны для управляемости и безопасности.",
+            "excerpt": "Мотошиномонтаж — это не автомобильный шиномонтаж. Монтаж, балансировка и осмотр колеса напрямую влияют на управляемость и уверенность.",
+        },
+        "pt": {
+            "title": "Montagem de Pneus de Mota: Porque Precisa de Especialista | Iron Custom Motors",
+            "description": "Montagem de pneus de mota não é montagem de pneus de carro. Veja porque montagem, equilibragem e inspeção afetam segurança e confiança.",
+            "excerpt": "Montagem de pneus de mota não é montagem de pneus de carro. Montagem, equilibragem e inspeção mudam segurança, estabilidade e confiança.",
+        },
+        "uk": {
+            "title": "Мотошиномонтаж: чому потрібен спеціаліст | Iron Custom Motors",
+            "description": "Мотошиномонтаж — це не автомобільний шиномонтаж. Пояснюємо, чому монтаж, балансування й огляд колеса важливі для безпеки.",
+            "excerpt": "Мотошиномонтаж — це не автомобільний шиномонтаж. Монтаж, балансування й огляд колеса впливають на стабільність і впевненість.",
+        },
+    },
+    "body": {
+        "en": {
+            "eyebrow": "Workshop guide · 24 June 2026",
+            "publishedLabel": "Published 24 June 2026",
+            "breadHome": "Home",
+            "breadBlog": "Blog",
+            "introTitle": "A tyre service is a handling service",
+            "videoEyebrow": "Workshop video",
+            "videoTitle": "Watch the motorcycle tyre fitting setup",
+            "videoText": "A short look at motorcycle-specific tyre fitting equipment for wide, spoked and custom wheels.",
+            "videoLink": "Open on YouTube",
+            "faqTitle": "Motorcycle tyre fitting FAQ",
+            "ctaEyebrow": "Need tyre fitting?",
+            "ctaTitle": "Book tyre fitting or wheel balancing.",
+            "btnWA": "WhatsApp us",
+            "btnBack": "Back to blog",
+            "imageAlt": "Motorcycle tyre service cover graphic showing tyre fitting at Iron Custom Motors.",
+            "imageCaption": "Motorcycle tyre fitting and wheel balancing at Iron Custom Motors: grip, balance and control prepared on dedicated moto equipment.",
+            "h1": "Motorcycle Tyre Fitting:<br/><span class=\"accent\">Why It Needs a Specialist.</span>",
+            "h1Crumb": "Motorcycle Tyre Fitting: Why It Needs a Specialist",
+            "lede": "A motorcycle tyre can look simple from the outside. Round, black, mounted on a rim. But the way it is fitted and balanced changes how the bike feels on the road.",
+            "intro": {
+                "title": "A tyre service is a handling service",
+                "paragraphs": [
+                    "A motorcycle tyre can look simple from the outside. Round, black, mounted on a rim. But the way it is fitted and balanced changes how the bike feels on the road.",
+                    "A small vibration at speed, a front end that feels nervous, a tyre that wears unevenly, a wheel that was marked by the wrong machine — these are not rare stories. Very often, they start with one mistake: treating a motorcycle wheel like a car wheel.",
+                    "Car tyre fitting is not motorcycle tyre fitting. Motorcycle wheels are lighter, more exposed, more delicate and more directly connected to the rider. The contact patch is small, the lean angle matters, and the wheel carries braking, steering and stability at the same time.",
+                    "At Iron Custom Motors in Cascais, we use motorcycle-specific equipment for <a href=\"/motorcycle-tyre-service/\">tyre fitting and wheel balancing</a>. That means proper handling of spoked wheels, tube and tubeless setups, wide Harley and custom tyres, vintage rims and heavy touring wheels — not a car shop trying to adapt.",
+                ],
+            },
+            "sections": [
+                {
+                    "title": "Why motorcycle tyre fitting matters",
+                    "paragraphs": [
+                        "Tyres are the only contact between the motorcycle and the road. Everything passes through them: braking, cornering, acceleration, ABS behaviour, suspension feel and rider confidence.",
+                        "A tyre can be good on paper and still feel wrong if it is poorly mounted, incorrectly balanced, damaged during fitting, paired with the wrong valve, or installed without checking the wheel and rim condition. On a motorcycle, small errors are easier to feel because the rider is part of the chassis balance.",
+                        "Correct tyre fitting is not only about getting the rubber onto the rim. It is about protecting the rim, respecting the direction of rotation, checking the valve, inspecting the wheel, seating the bead correctly, balancing the assembly and making sure the bike leaves the workshop feeling clean and stable.",
+                    ],
+                },
+                {
+                    "title": "What makes motorcycle wheels different",
+                    "paragraphs": [
+                        "A motorcycle wheel often carries parts that a car wheel does not: brake discs, hubs, spacers, bearings, sprocket carriers, ABS rings, delicate painted rims or polished surfaces. On spoked wheels, there can also be tube or rim-strip considerations.",
+                        "That is why the machine matters. Our tyre changer is built for motorcycle wheels. We can fit tyres up to 30-inch rim size and up to 400 mm width, and we do it without removing brake discs or hubs. This protects components that car-oriented equipment often forces off the wheel.",
+                        "The difference becomes obvious with Harley fat tyres, custom wheels, vintage rims, spoked wheels and large touring wheels. These are exactly the wheels that many generic tyre shops do not want to touch.",
+                    ],
+                },
+                {
+                    "title": "Balancing is not cosmetic",
+                    "paragraphs": [
+                        "A wheel that is not balanced properly does not just create a small vibration. It can make the handlebar buzz, send vibration through the footpegs, wear the tyre unevenly and load wheel bearings more than necessary.",
+                        "At low speed, the problem may be almost invisible. At motorway speed, it becomes part of the way the motorcycle feels. A correctly balanced wheel helps the bike feel planted, smooth and predictable.",
+                        "We balance motorcycle wheels up to 30 inches and 400 mm, including heavy, oversized and custom wheels. For us, balancing is part of <a href=\"/motorcycle-tyre-service/\">tyre service</a>, not an optional detail.",
+                    ],
+                },
+                {
+                    "title": "Workshop nuances riders often miss",
+                    "bullets": [
+                        "A new tyre still needs respect. Fresh rubber can feel different during the first rides, especially before the surface settles and the rider adapts to the new profile.",
+                        "The tyre profile changes the handling. A worn tyre can make the bike turn slowly or fall into corners. A fresh tyre can bring the steering back, but it may feel sharper at first.",
+                        "A tyre change is a good moment to inspect the wheel. Bearings, spacers, valves, rim condition, brake discs and ABS rings are all right there. Ignoring them is a missed opportunity.",
+                        "Old tyres can still have tread. Age, cracking, hard rubber and heat cycles can reduce confidence even when the tread depth looks acceptable.",
+                        "Wide custom tyres need the right equipment. Forcing them on unsuitable machinery can mark rims, stress beads or turn a simple job into damage control.",
+                    ],
+                },
+                {
+                    "title": "When to visit a workshop",
+                    "paragraphs": [
+                        "Book a tyre service if the tyre is worn, cracked, punctured, old, unevenly shaped, losing pressure, vibrating at speed, or if the bike no longer feels stable in corners.",
+                        "Also come in if you bought tyres yourself and need professional fitting, if another shop refused your wheel, or if you ride a Harley, custom bike, chopper, touring motorcycle, spoked wheel setup or wide rear tyre that needs proper equipment.",
+                        "Do not guess tyre pressure, tyre size, load rating or speed rating from the internet. These values depend on the motorcycle, tyre and manufacturer specification. For labour prices, check our <a href=\"/pricing/\">pricing page</a> before booking.",
+                    ],
+                },
+                {
+                    "title": "What we check at Iron Custom Motors",
+                    "paragraphs": [
+                        "At Iron Custom Motors, tyre fitting starts with the wheel, not only the tyre. We check the rim, valve, direction of rotation, visible damage, wheel bearings, spacers, brake disc area and general condition before fitting.",
+                        "We work with customer-supplied tyres, and we can also <a href=\"/parts/\">order the required tyre brand and size</a>. The same specialist approach covers the full job: tyre selection, fitting, balancing and final check.",
+                        "For riders around Cascais, Estoril, Oeiras and Greater Lisbon, this is the difference between a tyre mounted somehow and a wheel prepared properly for the road.",
+                    ],
+                },
+                {
+                    "title": "Conclusion",
+                    "paragraphs": [
+                        "Motorcycle tyre fitting is a small job only if you look at it from far away. Up close, it is one of the services that decides how the bike brakes, turns, tracks and feels at speed.",
+                        "Good tyres deserve good fitting. A clean wheel, correct mounting, proper balancing and a careful inspection give the rider what matters most: confidence.",
+                    ],
+                },
+            ],
+            "ctaText": "If your motorcycle needs <a href=\"/motorcycle-tyre-service/\">tyre fitting</a>, wheel balancing or a new set of tyres, <a href=\"/contact/\">book a service</a> at Iron Custom Motors in Cascais. Bring your own tyre or tell us the brand and size you need — we will fit and balance it on motorcycle-specific equipment. You can also review the tyre labour section on our <a href=\"/pricing/\">pricing page</a>.",
+            "faqs": [
+                {"q": "Can a car tyre shop fit motorcycle tyres?", "a": "Sometimes they try, but car equipment is not designed for motorcycle wheels. Motorcycle rims, brake discs, hubs, spokes and wide custom tyres need proper moto-specific handling."},
+                {"q": "What wheel sizes can Iron Custom Motors handle?", "a": "We fit tyres on rims up to 30 inches and up to 400 mm wide, and we service motorcycle wheels from 10 to 30 inches."},
+                {"q": "Do you balance wide or heavy motorcycle wheels?", "a": "Yes. We balance motorcycle wheels up to 30 inches and 400 mm, including heavy touring, Harley, chopper and custom wheels."},
+                {"q": "Can I bring my own tyre?", "a": "Yes. You can bring your own tyre, or we can order the required tyre brand and size for your motorcycle."},
+                {"q": "Why is balancing important after tyre fitting?", "a": "Balancing helps reduce vibration, uneven tyre wear and unnecessary load on wheel bearings. It also makes the motorcycle feel smoother and more stable at speed."},
+            ],
+        },
+        "ru": {
+            "eyebrow": "Гид мастерской · 24 июня 2026",
+            "publishedLabel": "Опубликовано 24 июня 2026",
+            "breadHome": "Главная",
+            "breadBlog": "Блог",
+            "introTitle": "Шинный сервис — это сервис управляемости",
+            "videoEyebrow": "Видео из мастерской",
+            "videoTitle": "Посмотрите оборудование для мотошиномонтажа",
+            "videoText": "Короткий взгляд на профильное оборудование для широких, спицованных и custom-колёс.",
+            "videoLink": "Открыть на YouTube",
+            "faqTitle": "FAQ по мотошиномонтажу",
+            "ctaEyebrow": "Нужен шиномонтаж?",
+            "ctaTitle": "Запишитесь на шиномонтаж или балансировку.",
+            "btnWA": "WhatsApp",
+            "btnBack": "Назад в блог",
+            "imageAlt": "Обложка статьи о мотошиномонтаже Iron Custom Motors.",
+            "imageCaption": "Мотошиномонтаж и балансировка в Iron Custom Motors: сцепление, баланс и контроль на профильном мотооборудовании.",
+            "h1": "Мотошиномонтаж:<br/><span class=\"accent\">почему это работа для специалиста.</span>",
+            "h1Crumb": "Мотошиномонтаж: почему это работа для специалиста",
+            "lede": "Мотоциклетная шина снаружи выглядит простой деталью. Чёрная, круглая, стоит на диске. Но то, как она смонтирована и отбалансирована, напрямую меняет ощущение мотоцикла на дороге.",
+            "intro": {
+                "title": "Шинный сервис — это сервис управляемости",
+                "paragraphs": [
+                    "Мотоциклетная шина снаружи выглядит простой деталью. Чёрная, круглая, стоит на диске. Но то, как она смонтирована и отбалансирована, напрямую меняет ощущение мотоцикла на дороге.",
+                    "Лёгкая вибрация на скорости, нервный руль, странный износ протектора, поцарапанный диск после “обычного” шиномонтажа — всё это часто начинается с одной ошибки: мотоциклетное колесо обслуживают как автомобильное.",
+                    "Автомобильный шиномонтаж — это не мотошиномонтаж. У мотоцикла другая геометрия, другие риски и гораздо более прямая связь между колесом и райдером. Пятно контакта маленькое, наклон в повороте важен, а колесо одновременно отвечает за торможение, рулёжку и устойчивость.",
+                    "В Iron Custom Motors в Кашкайше мы используем оборудование именно для <a href=\"/ru/shinomontazh-mototsiklov/\">мотошиномонтажа и балансировки</a>. Работаем со спицами, камерными и бескамерными колёсами, широкими Harley и custom-шинами, винтажными дисками и тяжёлыми touring-колёсами — не как автосервис, который пытается приспособиться.",
+                ],
+            },
+            "sections": [
+                {
+                    "title": "Почему мотошиномонтаж важен",
+                    "paragraphs": [
+                        "Шины — единственная точка контакта мотоцикла с дорогой. Через них проходит всё: торможение, поворот, разгон, работа ABS, подвеска и уверенность райдера.",
+                        "Даже хорошая шина может ощущаться плохо, если её неправильно посадили на диск, плохо отбалансировали, повредили при монтаже, поставили не тот вентиль или не проверили состояние колеса. На мотоцикле такие мелочи чувствуются сильнее, потому что райдер буквально живёт внутри баланса мотоцикла.",
+                        "Правильный шиномонтаж — это не просто натянуть резину на диск. Это защита диска, правильное направление вращения, проверка вентиля, осмотр колеса, корректная посадка борта, балансировка и финальная проверка перед дорогой.",
+                    ],
+                },
+                {
+                    "title": "Чем мотоциклетное колесо отличается",
+                    "paragraphs": [
+                        "На мотоциклетном колесе часто есть то, чего нет на автомобильном: тормозные диски, ступицы, дистанционные втулки, подшипники, звёзды, ABS-кольца, окрашенные или полированные поверхности. На спицованных колёсах добавляются камера, лента обода и свои нюансы сборки.",
+                        "Поэтому оборудование имеет значение. Наш станок создан под мотоколёса. Мы монтируем шины на диски до 30 дюймов и шириной до 400 мм — без снятия тормозных дисков и ступиц. Это защищает узлы, которые автомобильное оборудование часто заставляет демонтировать.",
+                        "Особенно разница видна на широких Harley-шинах, кастомных колёсах, винтажных дисках, спицах и крупных touring-колёсах. Именно такие колёса часто не хотят брать универсальные шиномонтажи.",
+                    ],
+                },
+                {
+                    "title": "Балансировка — не косметика",
+                    "paragraphs": [
+                        "Неправильно отбалансированное колесо — это не просто небольшая вибрация. Оно может отдавать в руль и подножки, неравномерно изнашивать шину и лишний раз нагружать подшипники.",
+                        "На маленькой скорости это может почти не чувствоваться. На трассе становится частью поведения мотоцикла. Хорошо отбалансированное колесо помогает мотоциклу ехать ровно, спокойно и предсказуемо.",
+                        "Мы балансируем мотоциклетные колёса до 30 дюймов и 400 мм, включая тяжёлые, широкие и кастомные. Для нас балансировка — часть <a href=\"/ru/shinomontazh-mototsiklov/\">шинного сервиса</a>, а не дополнительная мелочь.",
+                    ],
+                },
+                {
+                    "title": "Нюансы, которые райдеры часто упускают",
+                    "bullets": [
+                        "Новая шина требует аккуратности. Первые поездки она может ощущаться иначе, пока поверхность не приработалась, а райдер не привык к новому профилю.",
+                        "Профиль шины меняет рулёжку. Изношенная шина может заставлять мотоцикл лениво поворачивать или проваливаться в поворот. Новая шина возвращает остроту, но сначала может казаться непривычной.",
+                        "Замена шины — хороший момент осмотреть колесо. Подшипники, втулки, вентиль, диск, тормозные диски и ABS-кольцо уже перед глазами. Игнорировать это — упускать шанс поймать проблему заранее.",
+                        "Старая шина может иметь протектор. Возраст, микротрещины, задубевшая резина и тепловые циклы могут снизить уверенность даже при нормальной глубине рисунка.",
+                        "Широкие custom-шины требуют правильного оборудования. Если ставить их на неподходящем станке, можно повредить диск, борт шины или превратить простую работу в ремонт последствий.",
+                    ],
+                },
+                {
+                    "title": "Когда ехать в мастерскую",
+                    "paragraphs": [
+                        "Записывайтесь на шиномонтаж, если шина изношена, потрескалась, проколота, старая, теряет давление, даёт вибрацию на скорости или мотоцикл стал хуже держать поворот.",
+                        "Также приезжайте, если вы купили шины сами и хотите поставить их правильно, если другой сервис отказался от вашего колеса, или если у вас Harley, custom, chopper, touring, спицованное колесо или широкий задний баллон.",
+                        "Не угадывайте давление, размер, индекс нагрузки и индекс скорости по интернету. Эти значения зависят от мотоцикла, конкретной шины и спецификации производителя. Стоимость работ можно посмотреть на странице <a href=\"/ru/pricing/\">цен</a>.",
+                    ],
+                },
+                {
+                    "title": "Что мы проверяем в Iron Custom Motors",
+                    "paragraphs": [
+                        "В Iron Custom Motors шиномонтаж начинается не с шины, а с колеса. Мы смотрим диск, вентиль, направление вращения, видимые повреждения, подшипники, втулки, зону тормозных дисков и общее состояние сборки.",
+                        "Мы ставим шины клиента и можем <a href=\"/ru/parts/\">заказать нужный бренд и размер</a>. Один подход закрывает весь процесс: подбор, монтаж, балансировку и финальную проверку.",
+                        "Для райдеров из Cascais, Estoril, Oeiras и Greater Lisbon это разница между “как-нибудь поставили” и колесом, подготовленным к дороге нормально.",
+                    ],
+                },
+                {
+                    "title": "Вывод",
+                    "paragraphs": [
+                        "Мотошиномонтаж кажется простой работой только издалека. На деле это сервис, который влияет на торможение, поворот, стабильность и ощущение мотоцикла на скорости.",
+                        "Хорошая шина заслуживает правильного монтажа. Чистое колесо, аккуратная посадка, точная балансировка и внимательный осмотр дают райдеру главное — уверенность.",
+                    ],
+                },
+            ],
+            "ctaText": "Если вашему мотоциклу нужен <a href=\"/ru/shinomontazh-mototsiklov/\">шиномонтаж</a>, балансировка или новый комплект шин, <a href=\"/ru/contact/\">запишитесь</a> в Iron Custom Motors в Кашкайше. Привозите свою шину или скажите нужный бренд и размер — мы установим и отбалансируем колесо на профильном мотооборудовании. Цены на работы есть на странице <a href=\"/ru/pricing/\">прайса</a>.",
+            "faqs": [
+                {"q": "Можно ли ставить мотоциклетную шину в автосервисе?", "a": "Иногда автосервисы пытаются это делать, но автомобильное оборудование не рассчитано на мотоколёса. Диски, тормозные диски, ступицы, спицы и широкие custom-шины требуют профильного подхода."},
+                {"q": "С какими размерами работает Iron Custom Motors?", "a": "Мы монтируем шины на диски до 30 дюймов и шириной до 400 мм, а обслуживаем мотоциклетные колёса от 10 до 30 дюймов."},
+                {"q": "Балансируете ли вы широкие и тяжёлые колёса?", "a": "Да. Мы балансируем мотоциклетные колёса до 30 дюймов и 400 мм, включая тяжёлые touring, Harley, chopper и custom-колёса."},
+                {"q": "Можно ли привезти свою шину?", "a": "Да. Вы можете привезти свою шину, либо мы можем заказать нужный бренд и размер под ваш мотоцикл."},
+                {"q": "Зачем балансировать колесо после замены шины?", "a": "Балансировка помогает убрать вибрацию, снизить неравномерный износ шины и лишнюю нагрузку на подшипники. Мотоцикл становится ровнее и стабильнее на скорости."},
+            ],
+        },
+        "pt": {
+            "eyebrow": "Guia de oficina · 24 de junho de 2026",
+            "publishedLabel": "Publicado 24 de junho de 2026",
+            "breadHome": "Início",
+            "breadBlog": "Blog",
+            "introTitle": "Serviço de pneus é serviço de comportamento",
+            "videoEyebrow": "Vídeo de oficina",
+            "videoTitle": "Veja o setup para montagem de pneus de mota",
+            "videoText": "Um olhar rápido ao equipamento específico para rodas largas, de raios e custom.",
+            "videoLink": "Abrir no YouTube",
+            "faqTitle": "FAQ sobre montagem de pneus de mota",
+            "ctaEyebrow": "Precisa de pneus?",
+            "ctaTitle": "Marque montagem ou equilibragem.",
+            "btnWA": "WhatsApp",
+            "btnBack": "Voltar ao blog",
+            "imageAlt": "Imagem de capa sobre montagem de pneus de mota na Iron Custom Motors.",
+            "imageCaption": "Montagem de pneus de mota e equilibragem na Iron Custom Motors: aderência, equilíbrio e controlo em equipamento dedicado.",
+            "h1": "Montagem de Pneus de Mota:<br/><span class=\"accent\">Porque Precisa de um Especialista.</span>",
+            "h1Crumb": "Montagem de Pneus de Mota: Porque Precisa de um Especialista",
+            "lede": "Um pneu de mota parece simples visto de fora. Redondo, preto, montado numa jante. Mas a forma como é montado e equilibrado muda muito a sensação da mota na estrada.",
+            "intro": {
+                "title": "Serviço de pneus é serviço de comportamento",
+                "paragraphs": [
+                    "Um pneu de mota parece simples visto de fora. Redondo, preto, montado numa jante. Mas a forma como é montado e equilibrado muda muito a sensação da mota na estrada.",
+                    "Uma pequena vibração em velocidade, a frente nervosa, desgaste estranho do pneu, uma jante marcada por uma máquina errada — isto acontece mais vezes do que devia. Muitas vezes começa com o mesmo erro: tratar uma roda de mota como se fosse uma roda de carro.",
+                    "Montagem de pneus de carro não é montagem de pneus de mota. A roda da mota é mais exposta, mais delicada e está ligada diretamente ao que o condutor sente. A área de contacto é pequena, a inclinação conta, e a roda participa ao mesmo tempo na travagem, direção e estabilidade.",
+                    "Na Iron Custom Motors, em Cascais, usamos equipamento específico para <a href=\"/pt/montagem-de-pneus-mota/\">montagem de pneus de mota e equilibragem</a>. Trabalhamos rodas de raios, montagens com câmara e tubeless, pneus largos Harley e custom, jantes vintage e rodas touring pesadas — não como uma oficina de carros a tentar adaptar-se.",
+                ],
+            },
+            "sections": [
+                {
+                    "title": "Porque a montagem correta importa",
+                    "paragraphs": [
+                        "Os pneus são o único contacto entre a mota e a estrada. Tudo passa por eles: travagem, curva, aceleração, ABS, suspensão e confiança do condutor.",
+                        "Um pneu pode ser bom e mesmo assim sentir-se errado se for mal montado, mal equilibrado, danificado durante a montagem, combinado com uma válvula incorreta ou instalado sem olhar para a roda. Numa mota, estes pequenos erros sentem-se mais depressa.",
+                        "Uma boa montagem não é apenas colocar borracha na jante. É proteger a jante, respeitar o sentido de rotação, verificar a válvula, inspecionar a roda, assentar bem o talão, equilibrar o conjunto e confirmar que tudo sai limpo e seguro.",
+                    ],
+                },
+                {
+                    "title": "O que torna uma roda de mota diferente",
+                    "paragraphs": [
+                        "Uma roda de mota pode trazer discos de travão, cubos, espaçadores, rolamentos, cremalheira, anel ABS, jantes pintadas ou polidas. Nas rodas de raios ainda há câmara, fita de jante e outros detalhes.",
+                        "Por isso a máquina importa. O nosso equipamento foi feito para rodas de mota. Montamos pneus em jantes até 30 polegadas e até 400 mm de largura, sem desmontar discos de travão nem cubos. Assim protegemos componentes que uma máquina de carro muitas vezes obriga a retirar.",
+                        "A diferença nota-se sobretudo em pneus largos Harley, rodas custom, jantes vintage, rodas de raios e grandes rodas touring. São exatamente estas rodas que muitas oficinas genéricas preferem recusar.",
+                    ],
+                },
+                {
+                    "title": "Equilibragem não é estética",
+                    "paragraphs": [
+                        "Uma roda mal equilibrada não causa apenas uma pequena vibração. Pode passar vibração para o guiador e pousa-pés, gastar o pneu de forma irregular e carregar os rolamentos mais do que devia.",
+                        "A baixa velocidade quase não se nota. Em autoestrada, passa a fazer parte do comportamento da mota. Uma roda bem equilibrada ajuda a mota a sentir-se mais estável, suave e previsível.",
+                        "Equilibramos rodas de mota até 30 polegadas e 400 mm, incluindo rodas pesadas, largas e custom. Para nós, a equilibragem faz parte do <a href=\"/pt/montagem-de-pneus-mota/\">serviço de pneus</a>, não é um extra decorativo.",
+                    ],
+                },
+                {
+                    "title": "Detalhes que muitos motociclistas ignoram",
+                    "bullets": [
+                        "Um pneu novo precisa de respeito. Nos primeiros quilómetros pode sentir-se diferente, até a superfície assentar e o condutor se habituar ao novo perfil.",
+                        "O perfil muda a direção. Um pneu gasto pode fazer a mota virar devagar ou cair para a curva. Um pneu novo devolve precisão, mas pode parecer mais vivo no início.",
+                        "A troca de pneus é uma boa altura para olhar para a roda. Rolamentos, espaçadores, válvula, jante, discos de travão e anel ABS estão todos ali. Ignorar isso é perder uma oportunidade.",
+                        "Um pneu velho pode ainda ter piso. Idade, pequenas fissuras, borracha endurecida e ciclos de calor podem reduzir a confiança mesmo com desenho visível.",
+                        "Pneus largos custom precisam de equipamento certo. Forçá-los numa máquina inadequada pode marcar a jante, stressar o talão ou transformar um serviço simples num problema.",
+                    ],
+                },
+                {
+                    "title": "Quando visitar uma oficina",
+                    "paragraphs": [
+                        "Marque serviço se o pneu estiver gasto, rachado, furado, velho, a perder pressão, a vibrar em velocidade ou se a mota já não transmitir confiança em curva.",
+                        "Venha também se comprou pneus e precisa de montagem profissional, se outra oficina recusou a roda, ou se conduz uma Harley, custom, chopper, touring, roda de raios ou pneu traseiro largo.",
+                        "Não adivinhe pressão, medida, índice de carga ou índice de velocidade pela internet. Esses valores dependem da mota, do pneu e da especificação do fabricante. Para preços de mão de obra, veja a nossa página de <a href=\"/pt/pricing/\">preços</a>.",
+                    ],
+                },
+                {
+                    "title": "O que verificamos na Iron Custom Motors",
+                    "paragraphs": [
+                        "Na Iron Custom Motors, a montagem começa pela roda, não apenas pelo pneu. Verificamos jante, válvula, sentido de rotação, danos visíveis, rolamentos, espaçadores, zona dos discos e condição geral do conjunto.",
+                        "Montamos pneus trazidos pelo cliente e também podemos <a href=\"/pt/parts/\">encomendar a marca e medida necessária</a>. O mesmo especialista acompanha o processo: escolha, montagem, equilibragem e verificação final.",
+                        "Para motociclistas de Cascais, Estoril, Oeiras e Grande Lisboa, esta é a diferença entre um pneu montado de qualquer maneira e uma roda preparada corretamente para a estrada.",
+                    ],
+                },
+                {
+                    "title": "Conclusão",
+                    "paragraphs": [
+                        "A montagem de pneus de mota só parece simples vista de longe. De perto, é um serviço que influencia travagem, curva, estabilidade e sensação em velocidade.",
+                        "Um bom pneu merece uma boa montagem. Roda limpa, montagem correta, equilibragem precisa e inspeção cuidada dão ao motociclista o que mais importa: confiança.",
+                    ],
+                },
+            ],
+            "ctaText": "Se a sua mota precisa de <a href=\"/pt/montagem-de-pneus-mota/\">montagem de pneus</a>, equilibragem ou um novo conjunto de pneus, <a href=\"/pt/contact/\">marque serviço</a> na Iron Custom Motors em Cascais. Traga o seu pneu ou diga-nos a marca e medida que precisa — montamos e equilibramos em equipamento específico para motas. A secção de pneus está também na nossa página de <a href=\"/pt/pricing/\">preços</a>.",
+            "faqs": [
+                {"q": "Uma oficina de carros pode montar pneus de mota?", "a": "Algumas tentam, mas o equipamento de carro não foi pensado para rodas de mota. Jantes, discos, cubos, raios e pneus custom largos precisam de tratamento específico."},
+                {"q": "Que dimensões conseguem trabalhar?", "a": "Montamos pneus em jantes até 30 polegadas e até 400 mm de largura, e trabalhamos rodas de mota entre 10 e 30 polegadas."},
+                {"q": "Equilibram rodas largas ou pesadas?", "a": "Sim. Equilibramos rodas de mota até 30 polegadas e 400 mm, incluindo rodas touring pesadas, Harley, chopper e custom."},
+                {"q": "Posso trazer o meu próprio pneu?", "a": "Sim. Pode trazer o seu pneu, ou podemos encomendar a marca e medida certa para a sua mota."},
+                {"q": "Porque é importante equilibrar depois da montagem?", "a": "A equilibragem reduz vibração, desgaste irregular do pneu e carga desnecessária nos rolamentos. A mota fica mais suave e estável em velocidade."},
+            ],
+        },
+        "uk": {
+            "eyebrow": "Гід майстерні · 24 червня 2026",
+            "publishedLabel": "Опубліковано 24 червня 2026",
+            "breadHome": "Головна",
+            "breadBlog": "Блог",
+            "introTitle": "Шинний сервіс — це сервіс керованості",
+            "videoEyebrow": "Відео з майстерні",
+            "videoTitle": "Подивіться обладнання для мотошиномонтажу",
+            "videoText": "Короткий погляд на профільне обладнання для широких, спицованих і custom-коліс.",
+            "videoLink": "Відкрити на YouTube",
+            "faqTitle": "FAQ про мотошиномонтаж",
+            "ctaEyebrow": "Потрібен шиномонтаж?",
+            "ctaTitle": "Запишіться на шиномонтаж або балансування.",
+            "btnWA": "WhatsApp",
+            "btnBack": "Назад до блогу",
+            "imageAlt": "Обкладинка статті про мотошиномонтаж Iron Custom Motors.",
+            "imageCaption": "Мотошиномонтаж і балансування в Iron Custom Motors: зчеплення, баланс і контроль на профільному мотообладнанні.",
+            "h1": "Мотошиномонтаж:<br/><span class=\"accent\">чому це робота для спеціаліста.</span>",
+            "h1Crumb": "Мотошиномонтаж: чому це робота для спеціаліста",
+            "lede": "Мотоциклетна шина зовні здається простою деталлю. Чорна, кругла, стоїть на диску. Але те, як її змонтували й відбалансували, дуже впливає на поведінку мотоцикла на дорозі.",
+            "intro": {
+                "title": "Шинний сервіс — це сервіс керованості",
+                "paragraphs": [
+                    "Мотоциклетна шина зовні здається простою деталлю. Чорна, кругла, стоїть на диску. Але те, як її змонтували й відбалансували, дуже впливає на поведінку мотоцикла на дорозі.",
+                    "Легка вібрація на швидкості, нервова передня частина, дивний знос протектора, подряпаний диск після “звичайного” шиномонтажу — усе це часто починається з однієї помилки: мотоциклетне колесо обслуговують як автомобільне.",
+                    "Автомобільний шиномонтаж — це не мотошиномонтаж. У мотоцикла інша геометрія, інші ризики й набагато пряміший зв’язок між колесом і райдером. Пляма контакту маленька, нахил у повороті має значення, а колесо одночасно відповідає за гальмування, керування й стабільність.",
+                    "В Iron Custom Motors у Кашкайші ми використовуємо обладнання саме для <a href=\"/uk/shynomontazh-mototsykliv/\">мотошиномонтажу та балансування</a>. Працюємо зі спицями, камерними й безкамерними колесами, широкими Harley та custom-шинами, вінтажними дисками й важкими touring-колесами — не як автосервіс, що намагається пристосуватися.",
+                ],
+            },
+            "sections": [
+                {
+                    "title": "Чому правильний мотошиномонтаж важливий",
+                    "paragraphs": [
+                        "Шини — це єдиний контакт мотоцикла з дорогою. Через них проходить усе: гальмування, поворот, розгін, робота ABS, підвіска й упевненість райдера.",
+                        "Навіть хороша шина може відчуватися неправильно, якщо її погано посадили на диск, неточно відбалансували, пошкодили під час монтажу, поставили не той вентиль або не перевірили саме колесо. На мотоциклі такі дрібниці відчуваються швидше.",
+                        "Правильний шиномонтаж — це не просто натягнути гуму на диск. Це захист диска, правильний напрямок обертання, перевірка вентиля, огляд колеса, коректна посадка борта, балансування й фінальна перевірка перед дорогою.",
+                    ],
+                },
+                {
+                    "title": "Чим мотоциклетне колесо відрізняється",
+                    "paragraphs": [
+                        "На мотоциклетному колесі часто є те, чого немає на автомобільному: гальмівні диски, маточини, дистанційні втулки, підшипники, зірки, ABS-кільця, фарбовані або поліровані поверхні. На спицях додаються камера, стрічка обода й свої нюанси складання.",
+                        "Тому обладнання має значення. Наш верстат створений під мотоколеса. Ми монтуємо шини на диски до 30 дюймів і завширшки до 400 мм — без зняття гальмівних дисків і маточин. Це зберігає вузли, які автомобільне обладнання часто змушує демонтувати.",
+                        "Особливо різниця помітна на широких Harley-шинах, custom-колесах, вінтажних дисках, спицях і великих touring-колесах. Саме такі колеса часто не хочуть брати універсальні шиномонтажі.",
+                    ],
+                },
+                {
+                    "title": "Балансування — не косметика",
+                    "paragraphs": [
+                        "Погано збалансоване колесо — це не просто легка вібрація. Воно може віддавати в кермо й підніжки, нерівномірно зношувати шину й зайвий раз навантажувати підшипники.",
+                        "На малій швидкості це може майже не відчуватися. На трасі стає частиною поведінки мотоцикла. Добре збалансоване колесо допомагає мотоциклу їхати рівно, спокійно й передбачувано.",
+                        "Ми балансуємо мотоциклетні колеса до 30 дюймів і 400 мм, включно з важкими, широкими та custom. Для нас балансування — частина <a href=\"/uk/shynomontazh-mototsykliv/\">шинного сервісу</a>, а не додаткова дрібниця.",
+                    ],
+                },
+                {
+                    "title": "Нюанси, які райдери часто пропускають",
+                    "bullets": [
+                        "Нова шина потребує обережності. Перші поїздки вона може відчуватися інакше, поки поверхня не приживеться, а райдер не звикне до нового профілю.",
+                        "Профіль шини змінює керованість. Зношена шина може робити мотоцикл млявим у повороті або, навпаки, змушувати його провалюватися. Нова шина повертає точність, але спочатку може здаватися гострішою.",
+                        "Заміна шини — гарний момент оглянути колесо. Підшипники, втулки, вентиль, диск, гальмівні диски й ABS-кільце вже перед очима. Ігнорувати це — втратити шанс знайти проблему раніше.",
+                        "Стара шина може ще мати протектор. Вік, мікротріщини, задубіла гума й теплові цикли можуть знизити впевненість навіть при нормальному малюнку.",
+                        "Широкі custom-шини потребують правильного обладнання. Якщо ставити їх на невідповідному верстаті, можна пошкодити диск, борт шини або перетворити просту роботу на ремонт наслідків.",
+                    ],
+                },
+                {
+                    "title": "Коли їхати в майстерню",
+                    "paragraphs": [
+                        "Записуйтеся на шиномонтаж, якщо шина зношена, потріскана, проколота, стара, втрачає тиск, дає вібрацію на швидкості або мотоцикл гірше тримає поворот.",
+                        "Також приїжджайте, якщо ви купили шини самостійно й хочете встановити їх правильно, якщо інший сервіс відмовився від вашого колеса, або якщо у вас Harley, custom, chopper, touring, спицоване колесо чи широкий задній балон.",
+                        "Не вгадуйте тиск, розмір, індекс навантаження чи індекс швидкості з інтернету. Ці значення залежать від мотоцикла, конкретної шини й специфікації виробника. Вартість робіт є на сторінці <a href=\"/uk/pricing/\">цін</a>.",
+                    ],
+                },
+                {
+                    "title": "Що ми перевіряємо в Iron Custom Motors",
+                    "paragraphs": [
+                        "В Iron Custom Motors шиномонтаж починається не з шини, а з колеса. Ми перевіряємо диск, вентиль, напрямок обертання, видимі пошкодження, підшипники, втулки, зону гальмівних дисків і загальний стан вузла.",
+                        "Ми встановлюємо шини клієнта й можемо <a href=\"/uk/parts/\">замовити потрібний бренд і розмір</a>. Один підхід закриває весь процес: підбір, монтаж, балансування й фінальну перевірку.",
+                        "Для райдерів із Cascais, Estoril, Oeiras і Greater Lisbon це різниця між “якось поставили” і колесом, нормально підготовленим до дороги.",
+                    ],
+                },
+                {
+                    "title": "Висновок",
+                    "paragraphs": [
+                        "Мотошиномонтаж здається простою роботою тільки здалеку. Насправді це сервіс, який впливає на гальмування, поворот, стабільність і відчуття мотоцикла на швидкості.",
+                        "Хороша шина заслуговує правильного монтажу. Чисте колесо, акуратна посадка, точне балансування й уважний огляд дають райдеру головне — впевненість.",
+                    ],
+                },
+            ],
+            "ctaText": "Якщо вашому мотоциклу потрібен <a href=\"/uk/shynomontazh-mototsykliv/\">шиномонтаж</a>, балансування або новий комплект шин, <a href=\"/uk/contact/\">запишіться</a> в Iron Custom Motors у Кашкайші. Привозьте свою шину або скажіть потрібний бренд і розмір — ми встановимо й відбалансуємо колесо на профільному мотообладнанні. Ціни на роботи є на сторінці <a href=\"/uk/pricing/\">прайса</a>.",
+            "faqs": [
+                {"q": "Чи можна ставити мотоциклетну шину в автосервісі?", "a": "Іноді автосервіси намагаються це робити, але автомобільне обладнання не розраховане на мотоколеса. Диски, гальмівні диски, маточини, спиці й широкі custom-шини потребують профільного підходу."},
+                {"q": "З якими розмірами працює Iron Custom Motors?", "a": "Ми монтуємо шини на диски до 30 дюймів і завширшки до 400 мм, а обслуговуємо мотоциклетні колеса від 10 до 30 дюймів."},
+                {"q": "Чи балансуєте ви широкі й важкі колеса?", "a": "Так. Ми балансуємо мотоциклетні колеса до 30 дюймів і 400 мм, включно з важкими touring, Harley, chopper і custom-колесами."},
+                {"q": "Чи можна привезти свою шину?", "a": "Так. Ви можете привезти свою шину, або ми можемо замовити потрібний бренд і розмір під ваш мотоцикл."},
+                {"q": "Навіщо балансувати колесо після заміни шини?", "a": "Балансування допомагає прибрати вібрацію, зменшити нерівномірний знос шини й зайве навантаження на підшипники. Мотоцикл стає рівнішим і стабільнішим на швидкості."},
+            ],
+        },
+    },
+    "keywords": {
+        "en": ["motorcycle tyre fitting", "motorcycle wheel balancing", "tyre service Cascais", "wide motorcycle tyres", "Iron Custom Motors tyre service"],
+        "ru": ["мотошиномонтаж", "балансировка мотоциклетных колес", "шиномонтаж Кашкайш", "широкие мото шины", "Iron Custom Motors шиномонтаж"],
+        "pt": ["montagem pneus mota", "equilibragem rodas mota", "serviço pneus Cascais", "pneus largos mota", "Iron Custom Motors pneus"],
+        "uk": ["мотошиномонтаж", "балансування мотоциклетних коліс", "шиномонтаж Cascais", "широкі мото шини", "Iron Custom Motors шиномонтаж"],
+    },
+}

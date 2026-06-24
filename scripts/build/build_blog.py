@@ -70,6 +70,8 @@ ARTICLE_CSS = """.subpage.blog-article{padding:0;position:relative;overflow:hidd
 .blog-article-body h2{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(22px,2.1vw,30px);line-height:1.04;color:#fff;margin-bottom:22px}
 .blog-article-body p{font-family:'Saira',sans-serif;font-size:clamp(16px,1.25vw,19px);line-height:1.66;color:var(--text);margin-bottom:18px}
 .blog-article-body p:last-child{margin-bottom:0}
+.blog-article-body a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(255,87,34,.45);transition:border-color .2s var(--ease),color .2s var(--ease)}
+.blog-article-body a:hover{border-bottom-color:var(--accent);color:#fff}
 .blog-article-body .blog-article-lead{padding:34px 36px;border:1px solid var(--border);border-left:3px solid var(--accent);background:var(--surface);border-radius:var(--radius-lg)}
 .blog-list{display:grid;gap:12px;margin:0;padding:0;list-style:none}
 .blog-list li{position:relative;padding-left:28px;font-family:'Saira',sans-serif;font-size:clamp(16px,1.2vw,18px);line-height:1.6;color:var(--text)}
@@ -101,6 +103,11 @@ def h(value):
 def a(value):
     """Escape plain text for HTML attributes."""
     return escape(str(value), quote=True)
+
+
+def trusted_html(value):
+    """Render repo-owned article copy that may contain intentional inline links."""
+    return str(value)
 
 
 def article_prefix(slug):
@@ -363,6 +370,18 @@ def render_article(slug, article):
         for faq in en_body["faqs"]
     ]
 
+    video_schema = {
+        "@type": "VideoObject",
+        "name": en_body["videoTitle"],
+        "description": en_body["videoText"],
+        "thumbnailUrl": hero_img_url,
+        "embedUrl": article["youtubeEmbed"],
+        "url": article["youtubeUrl"],
+        "inLanguage": "en",
+    }
+    if article.get("youtubeUploadDate"):
+        video_schema["uploadDate"] = article["youtubeUploadDate"]
+
     json_ld_blocks = [
         {
             "@context": "https://schema.org",
@@ -383,15 +402,7 @@ def render_article(slug, article):
             "inLanguage": "en",
             "articleSection": "Workshop guides",
             "keywords": ", ".join(article["keywords"]["en"]),
-            "video": {
-                "@type": "VideoObject",
-                "name": en_body["videoTitle"],
-                "description": en_body["videoText"],
-                "thumbnailUrl": hero_img_url,
-                "embedUrl": article["youtubeEmbed"],
-                "url": article["youtubeUrl"],
-                "inLanguage": "en",
-            },
+            "video": video_schema,
         },
         {
             "@context": "https://schema.org",
@@ -422,19 +433,19 @@ def render_article(slug, article):
     )
 
     intro_paragraphs = "\n".join(
-        f'<p data-i18n="{pre}.intro.p{idx}">{h(paragraph)}</p>'
+        f'<p data-i18n="{pre}.intro.p{idx}">{trusted_html(paragraph)}</p>'
         for idx, paragraph in enumerate(en_body["intro"]["paragraphs"], start=1)
     )
 
     section_parts = []
     for idx, section in enumerate(en_body["sections"], start=1):
         paragraph_html = "\n".join(
-            f'<p data-i18n="{pre}.section{idx}.p{p_idx}">{h(paragraph)}</p>'
+            f'<p data-i18n="{pre}.section{idx}.p{p_idx}">{trusted_html(paragraph)}</p>'
             for p_idx, paragraph in enumerate(section.get("paragraphs", []), start=1)
         )
         if "bullets" in section:
             bullets = "\n".join(
-                f'<li data-i18n="{pre}.section{idx}.b{b_idx}">{h(bullet)}</li>'
+                f'<li data-i18n="{pre}.section{idx}.b{b_idx}">{trusted_html(bullet)}</li>'
                 for b_idx, bullet in enumerate(section["bullets"], start=1)
             )
             list_html = f'<ul class="blog-list">\n{bullets}\n</ul>'
@@ -504,7 +515,7 @@ def render_article(slug, article):
 <section class="blog-cta-box">
 <span class="h-eyebrow" data-i18n="{pre}.ctaEyebrow">{h(en_body["ctaEyebrow"])}</span>
 <h2 data-i18n="{pre}.ctaTitle">{h(en_body["ctaTitle"])}</h2>
-<p data-i18n="{pre}.ctaText">{h(en_body["ctaText"])}</p>
+<p data-i18n="{pre}.ctaText">{trusted_html(en_body["ctaText"])}</p>
 <div class="btns">
 <a class="btn btn-primary" data-wa="" href="https://wa.me/351917961230" rel="noopener" target="_blank"><span data-i18n="{pre}.btnWA">{h(en_body["btnWA"])}</span>{ARROW_SVG}</a>
 <a class="btn btn-ghost" data-i18n="{pre}.btnBack" href="/blog/">{h(en_body["btnBack"])}</a>

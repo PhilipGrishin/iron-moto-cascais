@@ -33,6 +33,7 @@ PAGES = [
     ("blog/revtech-110-oil-service-engine-gearbox-drive/", "monthly", "0.82"),
     ("blog/motorcycle-brake-pad-replacement-cascais/", "monthly", "0.82"),
     ("blog/front-fork-service-motorcycle-cascais/", "monthly", "0.82"),
+    ("blog/motorcycle-tyre-fitting-specialist-cascais/", "monthly", "0.82"),
     ("news/", "weekly", "0.9"),
     ("news/ericeira-kustom-fest-2026/", "yearly", "0.9"),
     ("news/opens-new-workshop-in-cascais/", "yearly", "0.8"),
