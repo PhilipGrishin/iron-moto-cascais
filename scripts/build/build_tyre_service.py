@@ -32,6 +32,7 @@ VIDEO_THUMB = f"https://i.ytimg.com/vi/{VIDEO_ID}/hqdefault.jpg"
 VIDEO_UPLOAD_DATE = "2026-06-20T12:00:00+01:00"
 
 LANGS = ("en", "ru", "uk", "pt")
+HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 PATHS = {
     "en": "/motorcycle-tyre-service/",
     "ru": "/ru/shinomontazh-mototsiklov/",
@@ -551,8 +552,9 @@ def render_standard_section(section: dict[str, str], index: int, lang: str) -> s
     actions = ""
     layout_class = "tyre-split"
     if index == 1:
-        media = picture("changer", lang) + video_facade(lang)
-        layout_class = "tyre-split tyre-split-video"
+        # Keep the workshop photo and video as one desktop media row.
+        media = '<div class="tyre-photo-row tyre-media-row">' + picture("changer", lang) + video_facade(lang) + "</div>"
+        layout_class = "tyre-gallery-section"
     elif index == 2:
         media = '<div class="tyre-photo-row">' + picture("wide", lang) + picture("spoked", lang) + "</div>"
         layout_class = "tyre-gallery-section"
@@ -691,7 +693,7 @@ def json_ld(content: dict, lang: str) -> list[dict]:
 
 def head_html(content: dict, lang: str) -> str:
     alternates = "\n".join(
-        f'<link rel="alternate" hreflang="{code}" href="{canonical_url(code)}"/>' for code in LANGS
+        f'<link rel="alternate" hreflang="{HREFLANG_CODES[code]}" href="{canonical_url(code)}"/>' for code in LANGS
     )
     json_scripts = "\n".join(
         f'<script type="application/ld+json">{json.dumps(block, ensure_ascii=False)}</script>' for block in json_ld(content, lang)
@@ -818,6 +820,10 @@ PAGE_CSS = """.tyre-hero{position:relative;isolation:isolate;overflow:hidden;min
 .tyre-gallery-section .tyre-copy p{max-width:min(1120px,76vw,calc(100vw - 40px))}
 .tyre-photo-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch}
 .tyre-photo-row .tyre-photo img{aspect-ratio:16/10;min-height:300px}
+.tyre-media-row .tyre-photo img{min-height:340px}
+.tyre-media-row .tyre-video-panel{height:100%;min-height:340px;margin-top:0}
+.tyre-media-row .tyre-video-facade{min-height:340px}
+.tyre-media-row .tyre-video-panel iframe{min-height:340px}
 .tyre-video-panel{display:grid;grid-template-columns:.9fr 1fr;gap:18px;align-items:stretch;margin-top:18px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);overflow:hidden}
 .tyre-video-copy{padding:28px 26px;align-self:center}
 .tyre-video-copy h3{margin:12px 0 10px;font-family:var(--font-display);font-size:clamp(25px,3vw,42px);font-weight:900;line-height:.98;text-transform:uppercase;color:#fff}
@@ -848,7 +854,7 @@ PAGE_CSS = """.tyre-hero{position:relative;isolation:isolate;overflow:hidden;min
 .tyre-faq-list .chev{color:var(--accent);transition:transform .2s var(--ease)}
 .tyre-faq-list details[open] .chev{transform:rotate(180deg)}
 .tyre-faq-list .answer{padding:0 24px 24px;color:var(--text-dim);font-size:16px;line-height:1.65}
-@media (max-width:980px){.tyre-heading,.tyre-split,.tyre-split-video{grid-template-columns:1fr}.tyre-answer-grid{grid-template-columns:1fr}.tyre-video-panel{grid-template-columns:1fr}.tyre-photo img{min-height:260px}}
+@media (max-width:980px){.tyre-heading,.tyre-split,.tyre-split-video{grid-template-columns:1fr}.tyre-answer-grid{grid-template-columns:1fr}.tyre-video-panel{grid-template-columns:1fr}.tyre-media-row{grid-template-columns:1fr}.tyre-photo img{min-height:260px}}
 @media (max-width:720px){.tyre-photo-row{grid-template-columns:1fr}}
 @media (max-width:640px){.tyre-hero{min-height:auto;padding:124px 0 62px}.tyre-hero h1{max-width:calc(100vw - 40px);font-size:clamp(28px,8vw,34px);line-height:.94;overflow-wrap:anywhere}.tyre-hero .lead,.tyre-copy,.tyre-copy p{max-width:calc(100vw - 40px);overflow-wrap:break-word}.tyre-section{padding:48px 0}.tyre-heading{gap:16px;margin-bottom:24px}.tyre-heading h2{font-size:clamp(26px,9vw,34px);overflow-wrap:anywhere}.tyre-actions{display:grid;grid-template-columns:1fr;max-width:calc(100vw - 40px)}.tyre-actions .btn{width:100%;justify-content:center;white-space:normal;text-align:center;line-height:1.15;padding-left:18px;padding-right:18px}.tyre-video-copy{padding:24px 20px}.tyre-price-table th,.tyre-price-table td{padding:18px}.play-dot{width:58px;height:58px}}
 """
