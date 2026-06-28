@@ -10,12 +10,13 @@ Each page:
 After running this, run build_i18n.py to produce /ru/, /uk/, /pt/ versions.
 """
 
+import html as html_lib
 import json
 import re
 from pathlib import Path
 
 from brand_pages_data import BRAND_NAME, BRAND_NAV_KEYS, BRAND_ORDER
-from hero_images import hero_background_css
+from hero_images import hero_background_css, optimized_hero_url
 from new_pages_data import PAGE_HEAD_META, PAGE_I18N, PROJECT_TILES, FAQ_QA
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -303,6 +304,42 @@ def breadcrumb_jsonld(crumb_name, url):
             {"@type": "ListItem", "position": 2, "name": crumb_name, "item": url},
         ],
     }
+
+
+def schema_text(value):
+    """Return readable plain text for JSON-LD from visible HTML-capable copy."""
+    text = re.sub(r"<[^>]+>", "", value or "")
+    return re.sub(r"\s+", " ", html_lib.unescape(text)).strip()
+
+
+def hero_srcset(source_url, ext):
+    return ", ".join(
+        f"{optimized_hero_url(source_url, width, ext)} {width}w"
+        for width in (768, 1280, 1920)
+    )
+
+
+def hero_picture(source_url, alt_text, alt_key, class_name="abt-hero-media", fetchpriority="high"):
+    priority_attr = f' fetchpriority="{fetchpriority}"' if fetchpriority else ""
+    return f'''<picture class="{class_name}">
+<source srcset="{hero_srcset(source_url, "avif")}" sizes="100vw" type="image/avif"/>
+<source srcset="{hero_srcset(source_url, "webp")}" sizes="100vw" type="image/webp"/>
+<img alt="{html_lib.escape(alt_text, quote=True)}" data-i18n-alt="{alt_key}" decoding="async"{priority_attr} height="1440" sizes="100vw" src="{optimized_hero_url(source_url, 1920, "jpg")}" srcset="{hero_srcset(source_url, "jpg")}" width="1920"/>
+</picture>'''
+
+
+def optional_lead(en, key):
+    value = en.get(key, "")
+    if not value:
+        return ""
+    return f'<p class="lead" data-i18n-html="{key}">{value}</p>'
+
+
+def optional_paragraph(en, key):
+    value = en.get(key, "")
+    if not value:
+        return ""
+    return f'<p data-i18n-html="{key}">{value}</p>'
 
 
 # =========================================================================
@@ -611,21 +648,77 @@ def render_about():
     page_id = "about"
     page_url = f"{DOMAIN}/{page_id}/"
     en = PAGE_I18N[page_id]["en"]
+    hero_image = "/photos/about-hero.jpg"
+
+    faq_entities = [
+        {
+            "@type": "Question",
+            "name": schema_text(en[f"abt.faq{idx}q"]),
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": schema_text(en[f"abt.faq{idx}a"]),
+            },
+        }
+        for idx in range(1, 7)
+    ]
 
     json_ld = [
         {
             "@context": "https://schema.org",
             "@type": "AboutPage",
-            "name": "About Iron Custom Motors",
+            "@id": f"{page_url}#about",
+            "name": schema_text(en["abt.h1"]),
+            "description": PAGE_HEAD_META[page_id]["en"]["description"],
             "url": page_url,
+            "inLanguage": "en",
             "mainEntity": {"@id": f"{DOMAIN}/#business"},
             "isPartOf": {"@id": f"{DOMAIN}/#website"},
         },
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "@id": f"{page_url}#company-faq",
+            "url": page_url,
+            "inLanguage": "en",
+            "mainEntity": faq_entities,
+        },
         breadcrumb_jsonld("About", page_url),
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "@id": f"{DOMAIN}/#yaroslav-lutytskyi",
+            "name": "Yaroslav Lutytskyi",
+            "worksFor": {"@id": f"{DOMAIN}/#business"},
+            "founderOf": {"@id": f"{DOMAIN}/#business"},
+        },
     ]
 
-    extra_css = """.subpage.abt{padding:140px 0 80px}
-.subpage.abt .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45);""" + hero_background_css('/photos/team-1600.jpg') + """}
+    value_cards = "\n".join(
+        f'''<div class="value-card"><div class="num">{idx:02d}</div><h3 data-i18n="abt.v{idx}t">{en[f"abt.v{idx}t"]}</h3><p data-i18n="abt.v{idx}d">{en[f"abt.v{idx}d"]}</p></div>'''
+        for idx in range(1, 5)
+    )
+    award_rows = "\n".join(
+        f'''<div class="award-row"><div class="y" data-i18n="abt.a{idx}y">{en[f"abt.a{idx}y"]}</div><div><h4 data-i18n-html="abt.a{idx}t">{en[f"abt.a{idx}t"]}</h4><p data-i18n-html="abt.a{idx}d">{en[f"abt.a{idx}d"]}</p></div></div>'''
+        for idx in range(1, 4)
+    )
+    timeline_rows = "\n".join(
+        f'''<div class="timeline-row"><div class="y" data-i18n="abt.tl{idx}y">{en[f"abt.tl{idx}y"]}</div><div><h4 data-i18n-html="abt.tl{idx}t">{en[f"abt.tl{idx}t"]}</h4>{optional_paragraph(en, f"abt.tl{idx}d")}</div></div>'''
+        for idx in range(1, 7)
+    )
+    faq_items = "\n".join(
+        f'''<details class="company-faq-item"><summary data-i18n="abt.faq{idx}q">{en[f"abt.faq{idx}q"]}</summary><p data-i18n-html="abt.faq{idx}a">{en[f"abt.faq{idx}a"]}</p></details>'''
+        for idx in range(1, 7)
+    )
+    values_lead_html = optional_lead(en, "abt.valuesLead")
+    awards_lead_html = optional_lead(en, "abt.awardsLead")
+    timeline_lead_html = optional_lead(en, "abt.timelineLead")
+    faq_lead_html = optional_lead(en, "abt.faqLead")
+
+    extra_css = """.subpage.abt{padding:140px 0 90px;min-height:760px;display:flex;align-items:center}
+.subpage.abt::after{background:linear-gradient(90deg,rgba(10,10,10,.82) 0%,rgba(10,10,10,.70) 42%,rgba(10,10,10,.42) 100%),linear-gradient(180deg,rgba(10,10,10,.08) 0%,rgba(10,10,10,.20) 48%,rgba(10,10,10,.88) 100%)}
+.subpage.abt .bg{position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 86% 18%,rgba(255,87,34,.20),transparent 36%);pointer-events:none}
+.abt-hero-media{position:absolute;inset:0;z-index:0;display:block;overflow:hidden;background:#050505}
+.abt-hero-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.92) contrast(1.04) brightness(.82)}
 .values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:30px}
 .value-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 26px}
 .value-card .num{font-family:var(--font-display);font-weight:800;color:var(--accent);font-size:30px;line-height:1;margin-bottom:10px}
@@ -642,6 +735,12 @@ def render_about():
 .timeline-row .y{font-family:var(--font-display);font-weight:800;color:var(--accent);font-size:34px;line-height:1}
 .timeline-row h4{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(18px,1.8vw,24px);color:#fff;margin-bottom:6px}
 .timeline-row p{font-size:15px;color:var(--text-dim);max-width:66ch}
+.company-faq-list{display:grid;grid-template-columns:1fr;gap:14px;margin-top:30px}
+.company-faq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:0 24px;overflow:hidden}
+.company-faq-item summary{cursor:pointer;list-style:none;padding:22px 0;font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(18px,1.8vw,24px);line-height:1.08;color:#fff}
+.company-faq-item summary::-webkit-details-marker{display:none}
+.company-faq-item p{padding:0 0 22px;font-size:16px;color:var(--text-dim);max-width:72ch}
+.company-faq-item[open]{border-color:rgba(255,87,34,.45)}
 .loc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:34px 30px;margin-top:30px}
 .loc-card h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:24px;color:#fff;margin-bottom:14px}
 .loc-card p{font-size:16px;color:var(--text-dim);margin-bottom:10px}
@@ -650,11 +749,12 @@ def render_about():
 
     body = f'''<main>
 <section class="subpage abt">
+{hero_picture(hero_image, en["abt.heroAlt"], "abt.heroAlt")}
 <div aria-hidden="true" class="bg"></div>
 <div class="container">
 <div class="crumb"><a data-i18n="abt.breadHome" href="/">Home</a><span class="sep">→</span><span data-i18n="abt.h1Crumb">About</span></div>
 <div class="h-eyebrow" data-i18n="abt.eyebrow" style="margin-bottom:18px">{en["abt.eyebrow"]}</div>
-<h1 data-i18n="abt.h1">{en["abt.h1"]}</h1>
+<h1 data-i18n-html="abt.h1">{en["abt.h1"]}</h1>
 <p class="lead" data-i18n="abt.sub">{en["abt.sub"]}</p>
 <div class="subpage-cta">
 <a class="btn btn-primary" data-wa="" href="https://wa.me/351917961230" rel="noopener" target="_blank"><span data-i18n="abt.btnWA">{en["abt.btnWA"]}</span>{ARROW_SVG}</a>
@@ -666,12 +766,12 @@ def render_about():
 <div class="container">
 <div class="heading">
 <span class="h-eyebrow" data-i18n="abt.storyEyebrow">{en["abt.storyEyebrow"]}</span>
-<div><h2 data-i18n="abt.storyTitle">{en["abt.storyTitle"]}</h2></div>
+<div><h2 data-i18n-html="abt.storyTitle">{en["abt.storyTitle"]}</h2></div>
 </div>
 <div>
-<p data-i18n="abt.storyP1">{en["abt.storyP1"]}</p>
-<p data-i18n="abt.storyP2">{en["abt.storyP2"]}</p>
-<p data-i18n="abt.storyP3">{en["abt.storyP3"]}</p>
+<p data-i18n-html="abt.storyP1">{en["abt.storyP1"]}</p>
+<p data-i18n-html="abt.storyP2">{en["abt.storyP2"]}</p>
+<p data-i18n-html="abt.storyP3">{en["abt.storyP3"]}</p>
 </div>
 </div>
 </section>
@@ -680,15 +780,12 @@ def render_about():
 <div class="heading">
 <span class="h-eyebrow" data-i18n="abt.valuesEyebrow">{en["abt.valuesEyebrow"]}</span>
 <div>
-<h2 data-i18n="abt.valuesTitle">{en["abt.valuesTitle"]}</h2>
-<p class="lead" data-i18n="abt.valuesLead">{en["abt.valuesLead"]}</p>
+<h2 data-i18n-html="abt.valuesTitle">{en["abt.valuesTitle"]}</h2>
+{values_lead_html}
 </div>
 </div>
 <div class="values-grid">
-<div class="value-card"><div class="num">01</div><h3 data-i18n="abt.v1t">{en["abt.v1t"]}</h3><p data-i18n="abt.v1d">{en["abt.v1d"]}</p></div>
-<div class="value-card"><div class="num">02</div><h3 data-i18n="abt.v2t">{en["abt.v2t"]}</h3><p data-i18n="abt.v2d">{en["abt.v2d"]}</p></div>
-<div class="value-card"><div class="num">03</div><h3 data-i18n="abt.v3t">{en["abt.v3t"]}</h3><p data-i18n="abt.v3d">{en["abt.v3d"]}</p></div>
-<div class="value-card"><div class="num">04</div><h3 data-i18n="abt.v4t">{en["abt.v4t"]}</h3><p data-i18n="abt.v4d">{en["abt.v4d"]}</p></div>
+{value_cards}
 </div>
 </div>
 </section>
@@ -697,14 +794,12 @@ def render_about():
 <div class="heading">
 <span class="h-eyebrow" data-i18n="abt.awardsEyebrow">{en["abt.awardsEyebrow"]}</span>
 <div>
-<h2 data-i18n="abt.awardsTitle">{en["abt.awardsTitle"]}</h2>
-<p class="lead" data-i18n="abt.awardsLead">{en["abt.awardsLead"]}</p>
+<h2 data-i18n-html="abt.awardsTitle">{en["abt.awardsTitle"]}</h2>
+{awards_lead_html}
 </div>
 </div>
 <div class="awards-list">
-<div class="award-row"><div class="y" data-i18n="abt.a1y">{en["abt.a1y"]}</div><div><h4 data-i18n="abt.a1t">{en["abt.a1t"]}</h4><p data-i18n="abt.a1d">{en["abt.a1d"]}</p></div></div>
-<div class="award-row"><div class="y" data-i18n="abt.a2y">{en["abt.a2y"]}</div><div><h4 data-i18n="abt.a2t">{en["abt.a2t"]}</h4><p data-i18n="abt.a2d">{en["abt.a2d"]}</p></div></div>
-<div class="award-row"><div class="y" data-i18n="abt.a3y">{en["abt.a3y"]}</div><div><h4 data-i18n="abt.a3t">{en["abt.a3t"]}</h4><p data-i18n="abt.a3d">{en["abt.a3d"]}</p></div></div>
+{award_rows}
 </div>
 </div>
 </section>
@@ -713,16 +808,26 @@ def render_about():
 <div class="heading">
 <span class="h-eyebrow" data-i18n="abt.timelineEyebrow">{en["abt.timelineEyebrow"]}</span>
 <div>
-<h2 data-i18n="abt.timelineTitle">{en["abt.timelineTitle"]}</h2>
-<p class="lead" data-i18n="abt.timelineLead">{en["abt.timelineLead"]}</p>
+<h2 data-i18n-html="abt.timelineTitle">{en["abt.timelineTitle"]}</h2>
+{timeline_lead_html}
 </div>
 </div>
 <div class="timeline-list">
-<div class="timeline-row"><div class="y" data-i18n="abt.tl1y">{en["abt.tl1y"]}</div><div><h4 data-i18n="abt.tl1t">{en["abt.tl1t"]}</h4><p data-i18n="abt.tl1d">{en["abt.tl1d"]}</p></div></div>
-<div class="timeline-row"><div class="y" data-i18n="abt.tl2y">{en["abt.tl2y"]}</div><div><h4 data-i18n="abt.tl2t">{en["abt.tl2t"]}</h4><p data-i18n="abt.tl2d">{en["abt.tl2d"]}</p></div></div>
-<div class="timeline-row"><div class="y" data-i18n="abt.tl3y">{en["abt.tl3y"]}</div><div><h4 data-i18n="abt.tl3t">{en["abt.tl3t"]}</h4><p data-i18n="abt.tl3d">{en["abt.tl3d"]}</p></div></div>
-<div class="timeline-row"><div class="y" data-i18n="abt.tl4y">{en["abt.tl4y"]}</div><div><h4 data-i18n="abt.tl4t">{en["abt.tl4t"]}</h4><p data-i18n="abt.tl4d">{en["abt.tl4d"]}</p></div></div>
-<div class="timeline-row"><div class="y" data-i18n="abt.tl5y">{en["abt.tl5y"]}</div><div><h4 data-i18n="abt.tl5t">{en["abt.tl5t"]}</h4><p data-i18n="abt.tl5d">{en["abt.tl5d"]}</p></div></div>
+{timeline_rows}
+</div>
+</div>
+</section>
+<section class="sub-section">
+<div class="container">
+<div class="heading">
+<span class="h-eyebrow" data-i18n="abt.faqEyebrow">{en["abt.faqEyebrow"]}</span>
+<div>
+<h2 data-i18n-html="abt.faqTitle">{en["abt.faqTitle"]}</h2>
+{faq_lead_html}
+</div>
+</div>
+<div class="company-faq-list">
+{faq_items}
 </div>
 </div>
 </section>
@@ -731,7 +836,7 @@ def render_about():
 <div class="heading">
 <span class="h-eyebrow" data-i18n="abt.locEyebrow">{en["abt.locEyebrow"]}</span>
 <div>
-<h2 data-i18n="abt.locTitle">{en["abt.locTitle"]}</h2>
+<h2 data-i18n-html="abt.locTitle">{en["abt.locTitle"]}</h2>
 <p class="lead" data-i18n="abt.locLead">{en["abt.locLead"]}</p>
 </div>
 </div>

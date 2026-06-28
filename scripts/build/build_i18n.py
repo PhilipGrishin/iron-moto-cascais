@@ -36,6 +36,7 @@ LOCALIZED_URL_SKIP_PREFIXES = (
 GLOBAL_SCHEMA_IDS = {
     f"{DOMAIN}/#business",
     f"{DOMAIN}/#website",
+    f"{DOMAIN}/#yaroslav-lutytskyi",
 }
 CUSTOM_LOCALIZED_URLS = {
     f"{DOMAIN}/motorcycle-tyre-service/": {

@@ -32,6 +32,7 @@ LOCALIZED_URL_SKIP_PATH_PREFIXES = (
 GLOBAL_SCHEMA_IDS = {
     f"{DOMAIN}/#business",
     f"{DOMAIN}/#website",
+    f"{DOMAIN}/#yaroslav-lutytskyi",
 }
 LANG_HOME_HREFS = {"/", "/ru/", "/uk/", "/pt/"}
 LANG_HREFLANGS = {"en", "ru", "uk", "pt", "pt-PT"}

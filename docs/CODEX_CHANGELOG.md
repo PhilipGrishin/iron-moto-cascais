@@ -14,6 +14,19 @@ Format:
 - Notes: ...
 ```
 
+## 2026-06-28 - About page entity rework
+
+- Commit: this commit
+- Changed: Expanded About pages in 4 languages from `new_pages_data.py`,
+  added the About hero image and Company FAQ, refreshed the story/timeline
+  copy, and consolidated site identity around one canonical `#business` entity
+  with sameAs, founder, awards and language metadata.
+- Verified: Local rebuild, SEO validation and focused About
+  canonical/hreflang/schema/hero/sitemap checks before deployment.
+- Notes: About remains owned by `scripts/build/new_pages_data.py` and
+  `scripts/build/build_new_pages.py`; canonical global schema IDs are shared by
+  `build_i18n.py` and `validate_seo.py`.
+
 ## 2026-06-28 - Triumph brand service page
 
 - Commit: this commit
