@@ -25,6 +25,7 @@ LOCALIZED_PATHS = {
     "/parts/",
     "/upgrades-tuning/",
     "/custom/",
+    "/authorized-dealer/",
     "/pre-purchase-inspection/",
     "/pricing/",
     "/services/",

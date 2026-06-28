@@ -140,6 +140,13 @@ try:
 except ImportError:
     pass
 
+# --------- Authorized Dealer hub ---------
+try:
+    from authorized_dealer_data import AUTHORIZED_DEALER_HEAD as _AUTHORIZED_DEALER_META
+    PAGE_META["authorized-dealer"] = _AUTHORIZED_DEALER_META
+except ImportError:
+    pass
+
 # --------- Brand-specific service pages ---------
 try:
     from brand_pages_data import BRAND_HEAD as _BRAND_META

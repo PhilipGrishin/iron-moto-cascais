@@ -36,6 +36,7 @@ python3 -m pip install -r requirements.txt
 | Script | Output |
 |---|---|
 | `build_new_pages.py` | `services/`, `projects/`, `about/`, `community/`, `contact/`, `faq/` |
+| `build_authorized_dealer.py` | `authorized-dealer/` hub for official parts/accessories dealer partners |
 | `build_brand_pages.py` | Registered brand service pages from `brand_pages_data.py` |
 | `build_legal_pages.py` | `privacy/`, `cookies/`, `terms/` |
 | `build_news.py` | `news/` hub + each `news/<slug>/` article |
@@ -62,6 +63,7 @@ python3 -m pip install -r requirements.txt
 |---|---|
 | `page_meta.py` | `build_i18n.py` (per-page title / description / OG / Twitter, per language) |
 | `new_pages_data.py` | `build_new_pages.py` (services / projects / about / contact / faq) |
+| `authorized_dealer_data.py` | `build_authorized_dealer.py` (Authorized Dealer hub copy, FAQ and future dealer-brand card registry) |
 | `brand_pages_data.py` | `build_brand_pages.py` and brand aggregators (brand registry, meta, hero image, related links, 4-language content) |
 | `legal_pages_data.py` | `build_legal_pages.py` (Privacy / Cookies / Terms) |
 | `news_data.py` | `build_news.py` (one entry per article slug, 4 languages) |
@@ -81,6 +83,7 @@ data:
 ```
 node scripts/build/extract_i18n.js
 python3 scripts/build/build_new_pages.py
+python3 scripts/build/build_authorized_dealer.py
 python3 scripts/build/build_brand_pages.py
 python3 scripts/build/build_legal_pages.py
 python3 scripts/build/build_news.py
@@ -127,6 +130,34 @@ python3 scripts/build/build_sitemap.py
 python3 scripts/build/validate_seo.py
 # bump cache-bust
 ```
+
+### After adding or updating the Authorized Dealer hub
+
+The Authorized Dealer hub is a top-level category for official
+parts/accessories dealer partners. Keep it separate from the
+independent motorcycle-brand service pages unless the owner
+provides explicit official partner copy.
+
+```
+# 1. Update scripts/build/authorized_dealer_data.py.
+# 2. If the hero image changed, replace photos/authorized-dealer-main-1600.jpg.
+python3 scripts/build/optimize_hero_images.py photos/authorized-dealer-main-1600.jpg
+python3 scripts/build/build_authorized_dealer.py
+python3 scripts/build/build_new_pages.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/build_i18n.py
+python3 scripts/build/localize_internal_links.py
+python3 scripts/build/apply_seo_meta.py
+python3 scripts/build/build_sitemap.py
+python3 scripts/build/validate_seo.py
+# bump cache-bust if assets/main.css or assets/main.js changed
+```
+
+Future dealer-brand cards should be appended to
+`AUTHORIZED_DEALER_BRANDS` in `authorized_dealer_data.py`. Use
+English-rooted URLs such as `/authorized-dealer/<brand>/`; the
+localized pages will receive `/pt/`, `/ru/` and `/uk/` prefixes
+through the normal localization pipeline.
 
 ### After editing pre-purchase inspection copy
 

@@ -58,6 +58,7 @@ MAIN_PAGES = [
     ("parts/index.html", "parts"),
     ("upgrades-tuning/index.html", "upgrades-tuning"),
     ("custom/index.html", "custom"),
+    ("authorized-dealer/index.html", "authorized-dealer"),
     # pre-purchase-inspection is generated directly in four languages by
     # build_pre_purchase_inspection.py because the page has rich service-page
     # structure, language-specific copy, and structured data.
@@ -266,8 +267,10 @@ def extract_faq_entities(soup) -> list[dict]:
         })
 
     for details in soup.find_all("details"):
-        add_pair(details.find(class_="q") or details.find("summary"),
-                 details.find(class_="a"))
+        add_pair(
+            details.find(class_="q") or details.find("summary"),
+            details.find(class_="a") or details.find("p"),
+        )
 
     for item in soup.select(".faq-item"):
         q_el = item.select_one(".faq-q [data-i18n], .faq-q span, .q")

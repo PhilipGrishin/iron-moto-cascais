@@ -4,7 +4,7 @@ Patch navigation (header + mobile drawer + footer) on every EN page of the
 ICM site so that all anchor-based nav links are replaced with proper URLs.
 
 New nav (everywhere):
-  Services dropdown / Brands dropdown / Projects dropdown / About dropdown / Pricing / Contact
+  Services dropdown / Brands dropdown / Authorized Dealer / Projects dropdown / About dropdown / Pricing / Contact
 
 Footer "Services" column:
   Motorcycle service & repair → /motorcycle-service/
@@ -12,6 +12,7 @@ Footer "Services" column:
   Upgrades & tuning           → /upgrades-tuning/
   Custom & special projects   → /custom/
   Pre-purchase inspection     → /pre-purchase-inspection/
+  Authorized Dealer           → /authorized-dealer/
   Pricing                     → /pricing/
 
 Footer "Company" column:
@@ -41,6 +42,7 @@ EN_PAGES = [
     "upgrades-tuning/index.html",
     "custom/index.html",
     "pre-purchase-inspection/index.html",
+    "authorized-dealer/index.html",
     "pricing/index.html",
     "services/index.html",
     "projects/index.html",
@@ -80,6 +82,7 @@ EN_PAGES = [
 PRIMARY_NAV_LINKS = [
     ("nav.services", "/services/",  "Services"),
     ("nav.brands",   "/#brands",    "Brands"),
+    ("nav.authorizedDealer", "/authorized-dealer/", "Authorized Dealer"),
     ("nav.projects", "/projects/",  "Projects"),
     ("nav.about",    "/about/",     "About"),
     ("nav.pricing",  "/pricing/",   "Pricing"),
@@ -137,6 +140,7 @@ FOOTER_SERVICES_LINKS = [
     ("services.s4.title", "/custom/",                  "Custom &amp; special projects"),
     ("nav.tyreServ",      "/motorcycle-tyre-service/", "Tyre fitting &amp; wheel balancing"),
     ("nav.preInsp",       "/pre-purchase-inspection/", "Pre-purchase inspection"),
+    ("nav.authorizedDealer", "/authorized-dealer/",     "Authorized Dealer"),
     *BRAND_NAV_LINKS,
     ("nav.pricing",       "/pricing/",                 "Pricing"),
 ]

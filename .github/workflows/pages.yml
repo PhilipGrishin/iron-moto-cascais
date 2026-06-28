@@ -45,6 +45,7 @@ jobs:
             sitemap.xml \
             about \
             assets \
+            authorized-dealer \
             blog \
             bmw-service \
             community \

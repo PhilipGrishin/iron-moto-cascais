@@ -2,6 +2,7 @@
   "en": {
     "nav.services": "Services",
     "nav.brands": "Brands",
+    "nav.authorizedDealer": "Authorized Dealer",
     "nav.projects": "Projects",
     "nav.pricing": "Pricing",
     "nav.about": "About",
@@ -262,6 +263,7 @@
   "ru": {
     "nav.services": "Услуги",
     "nav.brands": "Бренды",
+    "nav.authorizedDealer": "Официальный дилер",
     "nav.projects": "Проекты",
     "nav.pricing": "Цены",
     "nav.about": "О нас",
@@ -522,6 +524,7 @@
   "uk": {
     "nav.services": "Послуги",
     "nav.brands": "Бренди",
+    "nav.authorizedDealer": "Офіційний дилер",
     "nav.projects": "Проєкти",
     "nav.pricing": "Ціни",
     "nav.about": "Про нас",
@@ -782,6 +785,7 @@
   "pt": {
     "nav.services": "Serviços",
     "nav.brands": "Marcas",
+    "nav.authorizedDealer": "Revendedor Oficial",
     "nav.projects": "Projetos",
     "nav.pricing": "Preços",
     "nav.about": "Sobre",
