@@ -5,6 +5,26 @@ on `main`. Dates are commit dates.
 
 ## 2026-06
 
+### 2026-06-28
+- `62e6053` Add authorized dealer hub
+
+### 2026-06-27
+- `21dfdcb` Align tyre service media layout
+
+### 2026-06-24
+- `e3f7d0c` Improve Cyrillic typography system
+- `e3d7860` Fix blog WhatsApp CTA text color
+- `ea13d7e` Add motorcycle tyre fitting blog article
+- `0e7725a` Add pre-purchase service cards
+- `c55ea82` Sort Google reviews newest first
+
+### 2026-06-22
+- `a755ed8` Add Royal Enfield service pages
+- `91390e0` Rework pre-purchase inspection page
+- `ea1b786` Update brand related link card design
+- `8bb6a6f` Update Ducati service copy and hero image
+- `41cafe4` Add Honda brand service page
+
 ### 2026-06-02
 - `7ea6b1b` fix: harden multilingual SEO rendering
 - `1f37f70` docs: full project handoff package

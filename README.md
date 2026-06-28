@@ -9,11 +9,24 @@ Production domain: https://ironcustommotors.com/
 
 - Static HTML, CSS, and vanilla JavaScript served by GitHub Pages.
 - Four pre-rendered languages: English at `/`, Russian at `/ru/`, Ukrainian at `/uk/`, Portuguese at `/pt/`.
-- 143 HTML files in the repository: 140 indexable pages, `404.html`, and 2 noindex redirect stubs.
-- 140 sitemap URLs: 35 indexable path patterns times 4 languages.
+- 175 HTML files in the repository: 172 sitemap URLs, `404.html`, and 2 legacy noindex redirect stubs.
+- 172 sitemap URLs: 43 indexable path patterns times 4 languages.
 - JSON-LD, canonical, Open Graph, Twitter metadata, and hreflang are generated per language.
 - Reviews are proxied through a Cloudflare Worker and embedded into home-page JSON-LD from `assets/reviews-snapshot.json`.
 - Lead form posts to FormSubmit and also opens a WhatsApp fallback path.
+
+## Project Memory
+
+The active handoff and context-compaction memory lives in `docs/`:
+
+- `docs/PROJECT_STATE.md` — current project state, URLs, page families and recovery checklist.
+- `docs/CONTENT_TYPES.md` — repeatable page-family templates and verification commands.
+- `docs/CODEX_CHANGELOG.md` — compact implementation memory for recent Codex work.
+- `docs/OPEN_TASKS.md` — temporary risks, external-account checks and unresolved follow-ups.
+- `docs/TASK_BRIEF_TEMPLATE.md` — compact format for future large content tasks.
+
+Read these files before relying on older chat history or the legacy
+`HANDOFF.md`.
 
 ## Stack
 
@@ -47,13 +60,19 @@ Production domain: https://ironcustommotors.com/
 /upgrades-tuning/              Upgrades and tuning landing
 /custom/                       Custom and special projects landing
 /pre-purchase-inspection/      Pre-purchase inspection landing
+/motorcycle-tyre-service/      Motorcycle tyre fitting and wheel balancing
+/authorized-dealer/            Official parts/accessories dealer hub
 /bmw-service/                  BMW Motorrad service landing
 /harley-service/               Harley-Davidson service landing
 /ducati-service/               Ducati service landing
+/suzuki-service/               Suzuki service landing
+/honda-service/                Honda service landing
+/royal-enfield-service/        Royal Enfield service landing
 /projects/                     Custom projects portfolio hub
 /projects/<slug>/              Individual project pages
 /pricing/                      Price list with PDF downloads
 /about/                        Workshop and brand story
+/community/                    Rider lounge and community
 /contact/                      Contact details and map
 /faq/                          Frequently asked questions
 /blog/                         Practical workshop blog hub
@@ -104,16 +123,22 @@ Full safe rebuild after content or page-structure changes:
 ```bash
 node scripts/build/extract_i18n.js
 python3 scripts/build/build_new_pages.py
+python3 scripts/build/build_authorized_dealer.py
 python3 scripts/build/build_brand_pages.py
 python3 scripts/build/build_legal_pages.py
 python3 scripts/build/build_news.py
 python3 scripts/build/build_blog.py
+python3 scripts/build/build_pre_purchase_inspection.py
 python3 scripts/build/build_pricing.py
 python3 scripts/build/nav_patch.py
+python3 scripts/build/enhance_money_pages.py
+python3 scripts/build/enhance_project_pages.py
 python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/add_image_dims.py
+python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/validate_seo.py
 ```
 
 Run `scripts/build/build_reviews_schema.py` only when a fresh Google reviews

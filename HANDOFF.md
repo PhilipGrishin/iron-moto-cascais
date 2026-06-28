@@ -1,5 +1,10 @@
 # Iron Custom Motors — project handoff
 
+> Historical note: this file was originally written on 2026-06-17 and may
+> contain stale counts or page inventory. For current project state and the
+> context-compaction recovery map, read `docs/PROJECT_STATE.md` first. For
+> repeatable page-family workflows, read `docs/CONTENT_TYPES.md`.
+
 State of the repository as of 2026-06-17. This document is the
 single entry point for anyone (human or AI agent) picking up the
 project. It is factual and current; opinions, priorities and

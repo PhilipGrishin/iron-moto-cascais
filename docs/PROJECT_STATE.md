@@ -1,0 +1,249 @@
+# Iron Custom Motors Website - Project State
+
+Last updated: 2026-06-28  
+Production: https://ironcustommotors.com/  
+Repository: https://github.com/dreamcarua/iron-moto-cascais
+
+This file is the fast recovery map for Codex context compaction. Read it after
+`AGENTS.md` before doing site work. It preserves the current project context in
+the repository instead of relying on chat history.
+
+## Context Recovery Checklist
+
+At the start of a new session or after context compaction:
+
+1. Read `AGENTS.md`.
+2. Read this file.
+3. Read `docs/CONTENT_TYPES.md` for the page family you are about to edit.
+4. Read `docs/OPEN_TASKS.md` for current risks and unresolved follow-ups.
+5. Read `docs/TASK_BRIEF_TEMPLATE.md` when shaping a new large task.
+6. Read `scripts/build/README.md` for the exact generator sequence.
+7. Run `git status --short` before editing.
+8. Inspect the relevant source data and generator before changing generated HTML.
+
+## Business Purpose
+
+The site is the production marketing and lead-generation website for Iron Custom
+Motors, a premium motorcycle workshop in Cascais / Greater Lisbon. The business
+goal is SEO, local search, AI-citation readiness and high-quality service leads.
+
+## Current Technical State
+
+- Static HTML/CSS/JavaScript site served from GitHub Pages.
+- No server-side application framework.
+- Four pre-rendered languages:
+  - English at `/`
+  - Russian at `/ru/`
+  - Ukrainian at `/uk/`
+  - Portuguese at `/pt/`
+- Current sitemap: 43 indexable path patterns x 4 languages = 172 URLs.
+- Current repo HTML count: 175 files, including `404.html` and 2 legacy noindex
+  redirect stubs.
+- Current cache-bust convention: `?v=20260628a`.
+- Production deploy is triggered by pushing `main`.
+- Cloudflare fronts the domain and may cache recently deployed HTML/assets.
+
+## Source Of Truth Order
+
+Use sources in this order:
+
+1. `AGENTS.md` - operating rules and non-negotiables.
+2. `docs/PROJECT_STATE.md` - current compact project state.
+3. `docs/CONTENT_TYPES.md` - page-family source maps and task templates.
+4. `docs/OPEN_TASKS.md` - temporary risks and unresolved follow-ups.
+5. `docs/TASK_BRIEF_TEMPLATE.md` - compact intake format for large tasks.
+6. `scripts/build/README.md` - build and verification command order.
+7. `docs/CODEX_CHANGELOG.md` - compact implementation memory.
+8. Actual source data and generators under `scripts/build/`.
+9. Generated HTML only as output or for verification.
+
+`HANDOFF.md` is historical and may contain stale counts from 2026-06-17. Use
+this file for current state unless `HANDOFF.md` has been explicitly refreshed.
+
+## Language And URL Rules
+
+- Every public page must exist in all 4 languages.
+- Default English URLs are root-level paths.
+- Localized paths generally mirror English with `/ru/`, `/uk/`, `/pt/`.
+- Custom localized slugs currently exist for tyre service:
+  - EN `/motorcycle-tyre-service/`
+  - PT `/pt/montagem-de-pneus-mota/`
+  - RU `/ru/shinomontazh-mototsiklov/`
+  - UK `/uk/shynomontazh-mototsykliv/`
+- Internal localized pages must link within their own language subtree.
+- Run `scripts/build/localize_internal_links.py` after generating localized
+  pages.
+
+## Current Page Families
+
+### Top-Level And Hub Pages
+
+- `/` home
+- `/services/`
+- `/projects/`
+- `/about/`
+- `/community/`
+- `/contact/`
+- `/faq/`
+- `/pricing/`
+- `/parts/`
+- `/authorized-dealer/`
+- `/blog/`
+- `/news/`
+- `/privacy/`, `/cookies/`, `/terms/`
+
+### Service Pages
+
+- `/motorcycle-service/`
+- `/parts/`
+- `/upgrades-tuning/`
+- `/custom/`
+- `/pre-purchase-inspection/`
+- `/motorcycle-tyre-service/`
+
+### Brand Service Pages
+
+Current brand order is defined in `scripts/build/brand_pages_data.py`:
+
+1. `/harley-service/`
+2. `/bmw-service/`
+3. `/ducati-service/`
+4. `/suzuki-service/`
+5. `/honda-service/`
+6. `/royal-enfield-service/`
+
+The brand service pages are independent workshop pages. Do not describe Iron
+Custom Motors as an authorized motorcycle-brand dealer for BMW, Harley-Davidson,
+Ducati, Suzuki, Honda or Royal Enfield unless the owner provides explicit
+approved partner wording.
+
+### Authorized Dealer
+
+`/authorized-dealer/` is a separate top-level category for official
+parts/accessories dealer partners. It is not the same as the independent
+motorcycle-brand service pages.
+
+Current hub source:
+
+- Data: `scripts/build/authorized_dealer_data.py`
+- Generator: `scripts/build/build_authorized_dealer.py`
+- Future partner cards: `AUTHORIZED_DEALER_BRANDS`
+- Hero source: `/photos/authorized-dealer-main-1600.jpg`
+
+### Projects
+
+Current project pages:
+
+- `/projects/inspirium/`
+- `/projects/beckman/`
+- `/projects/unbreakable/`
+- `/projects/quanta-r/`
+- `/projects/burly/`
+- `/projects/sturmvogel/`
+- `/projects/geometric/`
+- `/projects/joker/`
+- `/projects/hellboy/`
+- `/projects/true-religion/`
+
+Legacy redirect stubs:
+
+- `/projects/nezlamniy/` -> `/projects/unbreakable/`
+- `/projects/quanta/` -> `/projects/quanta-r/`
+
+### Blog Posts
+
+Current blog posts are registered in `scripts/build/blog_data.py`:
+
+- `/blog/revtech-110-oil-service-engine-gearbox-drive/`
+- `/blog/motorcycle-brake-pad-replacement-cascais/`
+- `/blog/front-fork-service-motorcycle-cascais/`
+- `/blog/motorcycle-tyre-fitting-specialist-cascais/`
+
+### News Articles
+
+Current news articles are registered in `scripts/build/news_data.py`:
+
+- `/news/ericeira-kustom-fest-2026/`
+- `/news/opens-new-workshop-in-cascais/`
+- `/news/lisbon-motorcycle-film-fest-2026-beckman/`
+
+## Core Build Files
+
+- `assets/main.css` - site-wide design, typography, responsive behavior.
+- `assets/main.js` - runtime behavior and shared `I18N` object.
+- `scripts/build/build_new_pages.py` - hub pages.
+- `scripts/build/build_brand_pages.py` - brand service pages.
+- `scripts/build/build_authorized_dealer.py` - Authorized Dealer hub.
+- `scripts/build/build_blog.py` - blog hub and articles.
+- `scripts/build/build_news.py` - news hub and articles.
+- `scripts/build/build_pre_purchase_inspection.py` - flagship inspection page.
+- `scripts/build/build_tyre_service.py` - tyre service page.
+- `scripts/build/build_pricing.py` - pricing pages.
+- `scripts/build/nav_patch.py` - canonical nav and footer on English pages.
+- `scripts/build/build_i18n.py` - localized copies and JSON-LD localization.
+- `scripts/build/localize_internal_links.py` - localized internal link rewrites.
+- `scripts/build/apply_seo_meta.py` - shared SEO meta invariants.
+- `scripts/build/build_sitemap.py` - sitemap and hreflang alternates.
+- `scripts/build/validate_seo.py` - broad SEO and asset validation.
+- `scripts/build/validate_brand_pages.py` - brand-page QA.
+
+## Recent Project Context
+
+Recent high-impact changes:
+
+- Added the Authorized Dealer hub in 4 languages.
+- Added and standardized brand pages for Suzuki, Honda and Royal Enfield.
+- Humanized Harley-Davidson, BMW Motorrad and Ducati pages.
+- Rebuilt Pre-Purchase Inspection as a flagship service.
+- Added Motorcycle Tyre Service and related blog content.
+- Added top-navigation dropdowns for Services, Brands, Projects and About.
+- Improved Cyrillic typography for Russian and Ukrainian pages.
+- Sorted Google reviews newest-first on the client side.
+- Added YouTube social link and blog/video schema workflows.
+- Documented and centralized scalable page-family patterns.
+
+For compact commit memory, see `docs/CODEX_CHANGELOG.md`.
+
+## External Services
+
+- Hosting: GitHub Pages.
+- CDN/DNS: Cloudflare.
+- Reviews Worker: `https://icm-reviews.vg-ab6.workers.dev/`.
+- Google Places API key is stored only as a Cloudflare Worker secret.
+- GA4: `G-D15BLYEKBN`.
+- Meta Pixel: `1708697916976439`.
+- Form backend: FormSubmit to `Ironcustom.office@gmail.com`.
+- Google Search Console requires account access for live manual inspection.
+
+Never expose secrets in chat, docs, commits or logs.
+
+## Verification Standard
+
+After implementation:
+
+1. Run the relevant generator pipeline from `scripts/build/README.md`.
+2. Run focused validators (`validate_seo.py`, `validate_brand_pages.py`, schema
+   checks, `git diff --check`).
+3. Commit and push unless the owner explicitly says not to.
+4. Wait for GitHub Pages deploy.
+5. Verify production URLs with `curl -I` and focused HTML/source checks.
+6. Report what was verified and what could not be externally verified.
+
+For docs-only changes, at minimum run:
+
+```bash
+git diff --check
+git status --short
+```
+
+## Documentation Maintenance Rule
+
+When a task changes a repeatable workflow, update the documentation in the same
+commit. Prefer updating:
+
+- `docs/CONTENT_TYPES.md` for task templates and page-family ownership.
+- `docs/PROJECT_STATE.md` for current structure and high-level facts.
+- `docs/CODEX_CHANGELOG.md` for compact implementation memory.
+- `docs/OPEN_TASKS.md` for unresolved risks or external follow-ups.
+- `docs/TASK_BRIEF_TEMPLATE.md` for future large task intake.
+- `scripts/build/README.md` for command sequences and generator details.

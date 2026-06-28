@@ -4,6 +4,10 @@ Static site generators that produce the multilingual HTML files
 in this repository. All scripts are path-portable: they resolve
 `SITE_ROOT` from their own location (`scripts/build/` → `..`).
 
+For compact project state and repeatable page-family ownership, read
+`docs/PROJECT_STATE.md` and `docs/CONTENT_TYPES.md` before changing generators.
+This file remains the source of truth for build command order.
+
 Run them with `python3 scripts/build/<name>.py` from the repo
 root (works from any cwd because paths are absolute).
 

@@ -4,9 +4,32 @@ This file is read by AI coding agents (Codex, Cursor, Cline,
 Claude Code etc.) before doing work. Read it fully on every
 session start.
 
-For project facts (URLs, IDs, what is deployed where) read
-`HANDOFF.md`. For commit history read `CHANGELOG.md`. For build
-scripts read `scripts/build/README.md`.
+For current project facts (URLs, page families, what is deployed
+where) read `docs/PROJECT_STATE.md`. For repeatable page-family
+workflows read `docs/CONTENT_TYPES.md`. For compact task memory
+after context compaction read `docs/CODEX_CHANGELOG.md` and
+`docs/OPEN_TASKS.md`. For compact future task intake use
+`docs/TASK_BRIEF_TEMPLATE.md`. For build scripts read
+`scripts/build/README.md`. `HANDOFF.md` and `CHANGELOG.md` are
+historical top-level references and may lag behind the active docs.
+
+## Context compaction recovery
+
+Chat history is not the source of truth for this project. If an
+agent resumes after context compaction, it must rebuild context
+from repository files in this order:
+
+1. `AGENTS.md`
+2. `docs/PROJECT_STATE.md`
+3. `docs/CONTENT_TYPES.md`
+4. `docs/OPEN_TASKS.md`
+5. `docs/TASK_BRIEF_TEMPLATE.md` when shaping a new large task
+6. `scripts/build/README.md`
+7. relevant source data and generator files
+8. `git status --short`
+
+Do not rely on memory of previous chat turns when the repository
+contains a stronger current source.
 
 ## Scalability and handoff rule
 
@@ -21,9 +44,20 @@ scripts read `scripts/build/README.md`.
   reusable build scripts, or documented shared utilities.
 - When a change creates or modifies a repeatable pattern, update
   the relevant documentation (`AGENTS.md`, `README.md`,
+  `docs/PROJECT_STATE.md`, `docs/CONTENT_TYPES.md`,
+  `docs/CODEX_CHANGELOG.md`, `docs/OPEN_TASKS.md`,
   `scripts/build/README.md`, or an adjacent source comment) so a
   developer can quickly find where the data lives, which generator
   owns it, and which verification commands protect it.
+- Keep stable rules in `AGENTS.md`; keep temporary follow-ups,
+  external-account risks and unresolved items in `docs/OPEN_TASKS.md`.
+  Do not let `AGENTS.md` become a task backlog.
+- After each meaningful implementation, add a short entry to
+  `docs/CODEX_CHANGELOG.md` with the commit, what changed, what
+  was verified and any handoff notes.
+- For large content tasks, prefer a short task brief plus attached
+  files. Do not duplicate long 4-language copy in chat when the
+  source file can be read from disk.
 - Stability comes first. Design changes must be implemented in a
   way that future generated pages inherit safely, and verification
   must check that previous page families still render and link

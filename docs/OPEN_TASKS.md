@@ -1,0 +1,74 @@
+# Open Tasks, Risks And Watchlist
+
+This file keeps temporary context out of `AGENTS.md`. Update it when a task is
+resolved or a new follow-up appears.
+
+Last updated: 2026-06-28
+
+## Active Implementation Tasks
+
+No active implementation task is pending at the time of this update.
+
+## Standing Watchlist
+
+### Google Rich Results UI
+
+- Status: External browser/account check.
+- Context: Local/source JSON-LD validation is usually available, but the actual
+  Google Rich Results Test UI is external and can be rate-limited or require
+  manual browser work.
+- Rule: Do not claim the Google UI passed unless it was actually run. Report
+  local/schema/source validation separately.
+
+### Google Search Console
+
+- Status: External account.
+- Context: Manual indexing requests and coverage reports require user account
+  access.
+- Rule: Provide exact URLs and instructions when account access is not available.
+
+### Cloudflare
+
+- Status: External account.
+- Context: DNS, cache purge, Workers and Worker secrets live in Cloudflare.
+- Rule: Do not expose secrets. For review-worker checks, verify the public
+  Worker endpoint and document any account-only actions.
+
+### Google Places API Key Rotation
+
+- Status: Operational watch item.
+- Context: Reviews use the Cloudflare Worker secret, not a client-side key.
+- Rule: Rotate through Google Cloud + Cloudflare Worker secret when requested,
+  then verify the Worker and site review widget.
+
+### Project Pages
+
+- Status: Less standardized than brand/service/blog/news families.
+- Context: Project pages are still mostly static HTML with inline
+  `window.ICM_I18N_PAGE` blocks.
+- Recommendation: If project-page volume grows, consider a generic project
+  generator before adding many more hand-authored project pages.
+
+### CMS
+
+- Status: Not implemented.
+- Context: All content publishing is currently developer-driven through the
+  repository and generators.
+- Recommendation: Add a CMS only if non-developers need to publish frequently.
+
+### Advanced Lead Form
+
+- Status: Future enhancement.
+- Context: Current lead path is WhatsApp + FormSubmit.
+- Possible future fields: brand, model, year, urgency, preferred date, photo
+  upload, anti-spam and thank-you URL.
+
+## Documentation Update Checklist
+
+When any item above changes:
+
+1. Move resolved items out of this file or mark them resolved with date.
+2. Add a short entry to `docs/CODEX_CHANGELOG.md` if code/site changed.
+3. Update `docs/PROJECT_STATE.md` if the site structure changed.
+4. Update `docs/CONTENT_TYPES.md` if the implementation pattern changed.
+
