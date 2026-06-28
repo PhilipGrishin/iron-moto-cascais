@@ -9,8 +9,8 @@ Production domain: https://ironcustommotors.com/
 
 - Static HTML, CSS, and vanilla JavaScript served by GitHub Pages.
 - Four pre-rendered languages: English at `/`, Russian at `/ru/`, Ukrainian at `/uk/`, Portuguese at `/pt/`.
-- 175 HTML files in the repository: 172 sitemap URLs, `404.html`, and 2 legacy noindex redirect stubs.
-- 172 sitemap URLs: 43 indexable path patterns times 4 languages.
+- 179 HTML files in the repository: 176 sitemap URLs, `404.html`, and 2 legacy noindex redirect stubs.
+- 176 sitemap URLs: 44 indexable path patterns times 4 languages.
 - JSON-LD, canonical, Open Graph, Twitter metadata, and hreflang are generated per language.
 - Reviews are proxied through a Cloudflare Worker and embedded into home-page JSON-LD from `assets/reviews-snapshot.json`.
 - Lead form posts to FormSubmit and also opens a WhatsApp fallback path.
@@ -68,6 +68,7 @@ Read these files before relying on older chat history or the legacy
 /suzuki-service/               Suzuki service landing
 /honda-service/                Honda service landing
 /royal-enfield-service/        Royal Enfield service landing
+/triumph-service/              Triumph service landing
 /projects/                     Custom projects portfolio hub
 /projects/<slug>/              Individual project pages
 /pricing/                      Price list with PDF downloads

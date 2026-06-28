@@ -14,6 +14,15 @@ Format:
 - Notes: ...
 ```
 
+## 2026-06-28 - Triumph brand service page
+
+- Commit: this commit
+- Changed: Added Triumph brand service pages in 4 languages with hero photo,
+  reciprocal brand links, navigation/footer/service hub integration and sitemap.
+- Verified: Local brand rebuild, SEO validation and Triumph-specific brand
+  validation before deployment.
+- Notes: Triumph follows the shared `brand_pages_data.py` intake workflow.
+
 ## 2026-06-28 - Repository cache cleanup
 
 - Commit: `ee4cbe5`

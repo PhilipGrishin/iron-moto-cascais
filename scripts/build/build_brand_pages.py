@@ -24,7 +24,7 @@ from hero_images import hero_background_css, optimized_hero_url
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260628a"
+CACHE_BUST = "20260628b"
 
 SEO_I18N = {
     "en": {
@@ -115,6 +115,14 @@ def numbered_items(values, prefix, item_prefix, suffixes):
     items = []
     idx = 1
     while all(values.get(f"{prefix}.{item_prefix}{idx}{suffix}") for suffix in suffixes):
+        items.append(idx)
+        idx += 1
+    return items
+
+def numbered_text_blocks(values, prefix, item_prefix):
+    items = []
+    idx = 1
+    while values.get(f"{prefix}.{item_prefix}{idx}"):
         items.append(idx)
         idx += 1
     return items
@@ -644,6 +652,7 @@ def render(slug):
     issue_keys = numbered_items(en, pre, "i", ("t", "d"))
     model_keys = numbered_items(en, pre, "m", ("t", "d"))
     tool_keys = numbered_items(en, pre, "t", ("t", "d"))
+    intro_keys = numbered_text_blocks(en, pre, "introP")
 
     services_html = "\n".join(
         f'<article class="brand-srv"><div class="num">{i:02d}</div><div><h3 data-i18n="{pre}.s{i}t">{en[f"{pre}.s{i}t"]}</h3><p data-i18n="{pre}.s{i}d">{en[f"{pre}.s{i}d"]}</p></div></article>'
@@ -660,6 +669,10 @@ def render(slug):
     tools_html = "\n".join(
         f'<div class="tool-card"><h3 data-i18n="{pre}.t{i}t">{en[f"{pre}.t{i}t"]}</h3><p data-i18n="{pre}.t{i}d">{en[f"{pre}.t{i}d"]}</p></div>'
         for i in tool_keys
+    )
+    intro_html = "\n".join(
+        f'<p data-i18n="{pre}.introP{i}">{en[f"{pre}.introP{i}"]}</p>'
+        for i in intro_keys
     )
     faq_keys = []
     faq_idx = 1
@@ -691,9 +704,7 @@ def render(slug):
 <div class="container">
 <div class="heading"><span class="h-eyebrow" data-i18n="{pre}.introEyebrow">{en[f"{pre}.introEyebrow"]}</span><div><h2 data-i18n="{pre}.introTitle">{en[f"{pre}.introTitle"]}</h2></div></div>
 <div>
-<p data-i18n="{pre}.introP1">{en[f"{pre}.introP1"]}</p>
-<p data-i18n="{pre}.introP2">{en[f"{pre}.introP2"]}</p>
-<p data-i18n="{pre}.introP3">{en[f"{pre}.introP3"]}</p>
+{intro_html}
 </div>
 </div>
 </section>

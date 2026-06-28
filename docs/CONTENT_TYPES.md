@@ -16,7 +16,7 @@ scalable.
 
 ## New Brand Service Page
 
-Examples: Suzuki, Honda, Royal Enfield.
+Examples: Suzuki, Honda, Royal Enfield, Triumph.
 
 Source of truth:
 
@@ -373,4 +373,3 @@ python3 scripts/build/build_reviews_schema.py
 python3 scripts/build/validate_seo.py
 git diff --check
 ```
-

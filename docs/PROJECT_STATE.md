@@ -36,10 +36,10 @@ goal is SEO, local search, AI-citation readiness and high-quality service leads.
   - Russian at `/ru/`
   - Ukrainian at `/uk/`
   - Portuguese at `/pt/`
-- Current sitemap: 43 indexable path patterns x 4 languages = 172 URLs.
-- Current repo HTML count: 175 files, including `404.html` and 2 legacy noindex
+- Current sitemap: 44 indexable path patterns x 4 languages = 176 URLs.
+- Current repo HTML count: 179 files, including `404.html` and 2 legacy noindex
   redirect stubs.
-- Current cache-bust convention: `?v=20260628a`.
+- Current cache-bust convention: `?v=20260628b`.
 - Production deploy is triggered by pushing `main`.
 - Cloudflare fronts the domain and may cache recently deployed HTML/assets.
 
@@ -111,10 +111,11 @@ Current brand order is defined in `scripts/build/brand_pages_data.py`:
 4. `/suzuki-service/`
 5. `/honda-service/`
 6. `/royal-enfield-service/`
+7. `/triumph-service/`
 
 The brand service pages are independent workshop pages. Do not describe Iron
 Custom Motors as an authorized motorcycle-brand dealer for BMW, Harley-Davidson,
-Ducati, Suzuki, Honda or Royal Enfield unless the owner provides explicit
+Ducati, Suzuki, Honda, Royal Enfield or Triumph unless the owner provides explicit
 approved partner wording.
 
 ### Authorized Dealer
@@ -192,7 +193,8 @@ Current news articles are registered in `scripts/build/news_data.py`:
 Recent high-impact changes:
 
 - Added the Authorized Dealer hub in 4 languages.
-- Added and standardized brand pages for Suzuki, Honda and Royal Enfield.
+- Added and standardized brand pages for Suzuki, Honda, Royal Enfield and
+  Triumph.
 - Humanized Harley-Davidson, BMW Motorrad and Ducati pages.
 - Rebuilt Pre-Purchase Inspection as a flagship service.
 - Added Motorcycle Tyre Service and related blog content.
