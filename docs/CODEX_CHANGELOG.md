@@ -14,6 +14,17 @@ Format:
 - Notes: ...
 ```
 
+## 2026-06-28 - Repository cache cleanup
+
+- Commit: `ee4cbe5`
+- Changed: Removed tracked Python bytecode files from `scripts/build/__pycache__`.
+  The existing `.gitignore` already ignores `__pycache__/` and `*.pyc`, so
+  regenerated cache files stay local and out of Git.
+- Verified: Only `.pyc` deletions were staged; local ignored-file dry run was
+  clean after cleanup.
+- Notes: Do not commit Python cache files. Build scripts should remain source
+  files plus documented generated HTML/assets only.
+
 ## 2026-06-28 - Project memory workflow
 
 - Commit: `b92c695`

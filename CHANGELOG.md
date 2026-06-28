@@ -6,6 +6,7 @@ on `main`. Dates are commit dates.
 ## 2026-06
 
 ### 2026-06-28
+- `ee4cbe5` Remove tracked Python cache files
 - `b92c695` Document project memory workflow
 - `62e6053` Add authorized dealer hub
 
