@@ -252,6 +252,11 @@ contains a stronger current source.
 6. Make sure `.github/workflows/pages.yml` includes the new
    root-level slug; `validate_brand_pages.py` checks this before
    deploy.
+7. Keep the homepage `#brands` strip in sync with `BRAND_ORDER`.
+   Every registered brand that has a service page must be an active
+   link there on EN/RU/UK/PT homepages. `validate_brand_pages.py`
+   checks this so new brand pages do not ship with a plain-text brand
+   name in the homepage strip.
 
 ### Add a news article
 

@@ -223,6 +223,11 @@ consume it automatically:
 - `optimize_hero_images.py` for AVIF/WebP/JPEG hero variants.
 - `validate_brand_pages.py` for final brand-specific QA.
 
+Also keep the homepage `#brands` strip synchronized with `BRAND_ORDER`.
+Any registered brand with a live service page must be an active link in that
+strip on EN/RU/UK/PT. `validate_brand_pages.py` checks this now, so a new brand
+cannot silently remain plain text on the homepage after publication.
+
 The GitHub Pages workflow is intentionally explicit. `validate_brand_pages.py`
 checks that the new root-level brand folder is copied into the deploy artifact,
 so a page cannot silently work locally but 404 on production.

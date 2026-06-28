@@ -201,6 +201,30 @@ def check_workflow(slug: str) -> list[str]:
     return [f"{slug} is not copied into the GitHub Pages artifact"]
 
 
+def check_home_brand_strip() -> list[str]:
+    issues: list[str] = []
+    home_files = {
+        "en": SITE_ROOT / "index.html",
+        "ru": SITE_ROOT / "ru" / "index.html",
+        "uk": SITE_ROOT / "uk" / "index.html",
+        "pt": SITE_ROOT / "pt" / "index.html",
+    }
+    for lang, html_path in home_files.items():
+        if not html_path.exists():
+            issues.append(f"{lang}: missing homepage {html_path.relative_to(SITE_ROOT)}")
+            continue
+        soup = BeautifulSoup(html_path.read_text(encoding="utf-8"), HTML_PARSER)
+        brand_strip = soup.find("section", id="brands")
+        if brand_strip is None:
+            issues.append(f"{lang}: missing homepage brand strip")
+            continue
+        for slug in BRAND_ORDER:
+            href = expected_path(slug, lang)
+            if brand_strip.find("a", href=href) is None:
+                issues.append(f"{lang}: homepage brand strip missing active link to {href}")
+    return issues
+
+
 def check_generated_page(slug: str, lang: str, sitemap: set[str]) -> list[str]:
     issues: list[str] = []
     html_path = expected_file(slug, lang)
@@ -286,6 +310,7 @@ def main() -> int:
     slugs = args.slugs or list(BRAND_ORDER)
     sitemap = sitemap_urls()
     all_issues: list[str] = []
+    all_issues.extend(check_home_brand_strip())
     for slug in slugs:
         if slug not in BRAND_ORDER and slug not in BRAND_CONFIG:
             all_issues.append(f"{slug}: unknown brand slug")
