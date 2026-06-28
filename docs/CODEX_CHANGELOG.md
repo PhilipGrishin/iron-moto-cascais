@@ -14,6 +14,19 @@ Format:
 - Notes: ...
 ```
 
+## 2026-06-28 - Project memory workflow
+
+- Commit: `b92c695`
+- Changed: Added repository-level context recovery documentation:
+  `PROJECT_STATE`, `CONTENT_TYPES`, `CODEX_CHANGELOG`, `OPEN_TASKS` and
+  `TASK_BRIEF_TEMPLATE`; updated `AGENTS.md`, `README.md`, `HANDOFF.md`,
+  `CHANGELOG.md` and `scripts/build/README.md` to point future sessions to the
+  active memory system.
+- Verified: `git diff --check`; GitHub Pages deploy success; production home
+  page returned 200 after deploy.
+- Notes: After context compaction, read `AGENTS.md` first, then the active
+  `docs/` files before relying on chat history.
+
 ## 2026-06-28 - Authorized Dealer hub
 
 - Commit: `62e6053`
@@ -127,4 +140,3 @@ Format:
 - Verified: Subsequent Honda and Royal Enfield pages used the pattern.
 - Notes: Keep expanding `brand_pages_data.py`; avoid brand-specific one-off
   generators.
-

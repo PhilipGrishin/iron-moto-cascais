@@ -6,6 +6,7 @@ on `main`. Dates are commit dates.
 ## 2026-06
 
 ### 2026-06-28
+- `b92c695` Document project memory workflow
 - `62e6053` Add authorized dealer hub
 
 ### 2026-06-27
