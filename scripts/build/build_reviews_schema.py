@@ -172,8 +172,8 @@ def build_review_items(curated_reviews):
                 "worstRating": 1,
             },
             "author": {"@type": "Person", "name": review["author"]},
-            "reviewBody": review["text"][:1200],
-            "datePublished": review["publishedAt"][:10],
+            "reviewBody": review["text"],
+            "datePublished": review["publishedAt"],
             "url": review["url"],
             "publisher": {"@type": "Organization", "name": "Google"},
         }

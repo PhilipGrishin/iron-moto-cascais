@@ -14,6 +14,18 @@ Format:
 - Notes: ...
 ```
 
+## 2026-06-29 - Full curated review schema parity
+
+- Commit: this commit
+- Changed: Updated `build_reviews_schema.py` so curated JSON-LD `review[]`
+  uses the full review text and original `publishedAt` value from
+  `assets/reviews-curated.json`, matching the expandable visible cards.
+- Verified: Rebuilt reviews from the live Worker total 15; SEO validation;
+  focused EN/PT/RU/UK homepage checks confirmed 6 visible cards, 6 matching
+  schema reviews, aggregate total 15 and read-more controls.
+- Notes: This keeps the curated showcase and markup in exact parity while the
+  aggregate rating/count remain sourced from the live Google snapshot.
+
 ## 2026-06-29 - Six curated homepage reviews
 
 - Commit: this commit
