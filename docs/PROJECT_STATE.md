@@ -39,7 +39,7 @@ goal is SEO, local search, AI-citation readiness and high-quality service leads.
 - Current sitemap: 44 indexable path patterns x 4 languages = 176 URLs.
 - Current repo HTML count: 179 files, including `404.html` and 2 legacy noindex
   redirect stubs.
-- Current cache-bust convention: `?v=20260628b`.
+- Current cache-bust convention: `?v=20260629a`.
 - Production deploy is triggered by pushing `main`.
 - Cloudflare fronts the domain and may cache recently deployed HTML/assets.
 
@@ -200,7 +200,8 @@ Recent high-impact changes:
 - Added Motorcycle Tyre Service and related blog content.
 - Added top-navigation dropdowns for Services, Brands, Projects and About.
 - Improved Cyrillic typography for Russian and Ukrainian pages.
-- Sorted Google reviews newest-first on the client side.
+- Split Google reviews into live rating/count from the Worker snapshot and
+  editorial visible cards from `assets/reviews-curated.json`.
 - Added YouTube social link and blog/video schema workflows.
 - Documented and centralized scalable page-family patterns.
 
@@ -212,6 +213,9 @@ For compact commit memory, see `docs/CODEX_CHANGELOG.md`.
 - CDN/DNS: Cloudflare.
 - Reviews Worker: `https://icm-reviews.vg-ab6.workers.dev/`.
 - Google Places API key is stored only as a Cloudflare Worker secret.
+- Reviews refresh automation:
+  `.github/workflows/reviews-refresh.yml` runs `build_reviews_schema.py`
+  weekly and can be dispatched manually.
 - GA4: `G-D15BLYEKBN`.
 - Meta Pixel: `1708697916976439`.
 - Form backend: FormSubmit to `Ironcustom.office@gmail.com`.

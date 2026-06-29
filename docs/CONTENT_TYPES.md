@@ -358,13 +358,44 @@ Runtime source:
 Static snapshot:
 
 - `assets/reviews-snapshot.json`
+- `assets/reviews-curated.json`
 - `scripts/build/build_reviews_schema.py`
 
 Rules:
 
 - Do not expose Google Places API keys in client HTML/JS.
 - The Worker owns Google Places calls.
+- `assets/reviews-snapshot.json` stores the live Worker response and is the
+  source for static rating/count fallback and `AggregateRating`.
+- `assets/reviews-curated.json` is the editorial source for visible review
+  cards and JSON-LD `review[]` items. Cards and `review[]` must match 1:1.
 - Build-time review schema refresh requires network access.
+- `.github/workflows/reviews-refresh.yml` runs the refresh weekly and can be
+  dispatched manually.
+
+Curated file structure:
+
+```json
+{
+  "displayCount": 6,
+  "preferPageLanguage": false,
+  "reviews": [
+    {
+      "author": "Reviewer name",
+      "rating": 5,
+      "text": "Full review text.",
+      "lang": "en",
+      "publishedAt": "2026-05-31T15:11:38Z",
+      "url": "https://www.google.com/maps/...",
+      "avatar": ""
+    }
+  ]
+}
+```
+
+Use exact Google review text and dates when adding records. If `avatar` is
+empty, the site falls back to initials. `displayCount` controls how many cards
+are rendered, capped by available curated records.
 
 Verification:
 

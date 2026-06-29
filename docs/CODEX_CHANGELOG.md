@@ -14,6 +14,20 @@ Format:
 - Notes: ...
 ```
 
+## 2026-06-29 - Curated reviews refresh pipeline
+
+- Commit: this commit
+- Changed: Split reviews into live Worker rating/count and editorial curated
+  visible cards from `assets/reviews-curated.json`; added read-more support for
+  long reviews and weekly GitHub Actions refresh for static HTML/JSON-LD.
+- Verified: Worker returned rating 5 and total 15; `build_reviews_schema.py`
+  patched all 4 home pages; `node --check assets/main.js`; Python compile check;
+  curated JSON parse check; focused home-page review/schema check; SEO validation;
+  `git diff --check`.
+- Notes: The initial curated file contains only confirmed local Google review
+  records. Add more exact Google review records to reach the requested
+  `displayCount` when available.
+
 ## 2026-06-28 - About page entity rework
 
 - Commit: this commit

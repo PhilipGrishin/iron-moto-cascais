@@ -797,11 +797,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
     window.dataLayer = window.dataLayer || [];
   });
 
-  /* === GOOGLE REVIEWS — fetch from Cloudflare Worker === */
-  /* Set this to your deployed Worker URL. Falls back to static reviews if fetch fails. */
+  /* === GOOGLE REVIEWS — live rating/count + editorial curated cards === */
   const REVIEWS_ENDPOINT = (window.ICM_REVIEWS_ENDPOINT) || 'https://icm-reviews.vg-ab6.workers.dev/';
-  const REVIEWS_LS_KEY = 'icm-reviews-cache-v1';
+  const REVIEWS_CURATED_URL = '/assets/reviews-curated.json';
+  const REVIEWS_LS_KEY = 'icm-reviews-cache-v2';
   const REVIEWS_LS_TTL = 12 * 60 * 60 * 1000; // 12h browser-side cache
+  const REVIEWS_TEXT_LIMIT = 380;
+  const REVIEW_COPY = {
+    en: { more: 'Read more', less: 'Show less', source: 'Google review' },
+    pt: { more: 'Ler mais', less: 'Mostrar menos', source: 'Avaliação Google' },
+    ru: { more: 'Читать полностью', less: 'Свернуть', source: 'Отзыв Google' },
+    uk: { more: 'Читати повністю', less: 'Згорнути', source: 'Відгук Google' },
+  };
 
   function getCachedReviews(){
     try{
@@ -840,79 +847,153 @@ document.addEventListener('DOMContentLoaded', ()=>{
     return s.slice(0, n).replace(/\s+\S*$/,'') + '…';
   }
 
-  function reviewTimestamp(review){
-    const time = Date.parse(review?.publishedAt || review?.publishTime || '');
-    return Number.isFinite(time) ? time : 0;
+  function currentReviewLang(){
+    const lang = (document.documentElement.lang || 'en').toLowerCase();
+    if(lang.startsWith('pt')) return 'pt';
+    if(lang.startsWith('ru')) return 'ru';
+    if(lang.startsWith('uk')) return 'uk';
+    return 'en';
   }
 
-  function sortReviewsNewestFirst(reviews){
-    return [...reviews].sort((a,b)=>{
-      const byDate = reviewTimestamp(b) - reviewTimestamp(a);
-      if(byDate !== 0) return byDate;
-      const byRating = (b.rating||0) - (a.rating||0);
-      if(byRating !== 0) return byRating;
-      return String(b.text||'').length - String(a.text||'').length;
-    });
+  function currentReviewCopy(){
+    return REVIEW_COPY[currentReviewLang()] || REVIEW_COPY.en;
   }
 
-  function renderReviews(data){
-    if(!data || !data.reviews || !data.reviews.length) return false;
+  function formatReviewDate(iso){
+    const copy = currentReviewCopy();
+    const date = new Date(iso || '');
+    if(Number.isNaN(date.getTime())) return copy.source;
+    const locale = {en:'en-GB', pt:'pt-PT', ru:'ru-RU', uk:'uk-UA'}[currentReviewLang()] || 'en-GB';
+    return new Intl.DateTimeFormat(locale, {year:'numeric', month:'short', day:'numeric'}).format(date);
+  }
 
-    // Summary block
+  function renderReviewsSummary(data){
+    if(!data || typeof data.rating !== 'number') return false;
     const summary = document.getElementById('reviewsSummary');
-    if(summary && typeof data.rating === 'number'){
-      document.getElementById('rsRating').textContent = data.rating.toFixed(1);
-      document.getElementById('rsStars').innerHTML = starsSvg(Math.round(data.rating), 5);
-      document.getElementById('rsTotal').textContent = data.total || data.reviews.length;
+    if(summary){
+      const ratingNode = document.getElementById('rsRating');
+      const starsNode = document.getElementById('rsStars');
+      const totalNode = document.getElementById('rsTotal');
+      if(ratingNode) ratingNode.textContent = data.rating.toFixed(1);
+      if(starsNode) starsNode.innerHTML = starsSvg(Math.round(data.rating), 5);
+      if(totalNode && data.total) totalNode.textContent = data.total;
       summary.removeAttribute('hidden');
     }
+    const foot = document.getElementById('reviewsFoot');
+    if(foot) foot.removeAttribute('hidden');
+    return true;
+  }
 
-    // Reviews row — render up to 3 newest reviews returned by Google
+  function normalizeCuratedReview(record){
+    const author = String(record?.author || '').trim();
+    const text = String(record?.text || '').trim();
+    const publishedAt = String(record?.publishedAt || '').trim();
+    const url = String(record?.url || '').trim();
+    if(!author || !text || !publishedAt || !url) return null;
+    return {
+      author,
+      text,
+      publishedAt,
+      url,
+      rating: Math.max(1, Math.min(5, Number(record.rating || 5))),
+      lang: String(record.lang || 'en').toLowerCase(),
+      avatar: String(record.avatar || '').trim(),
+    };
+  }
+
+  function selectedCuratedReviews(curated){
+    const displayCount = Math.max(1, Math.min(9, Number(curated?.displayCount || 6)));
+    let reviews = Array.isArray(curated?.reviews) ? curated.reviews.map(normalizeCuratedReview).filter(Boolean) : [];
+    if(curated?.preferPageLanguage){
+      const pageLang = currentReviewLang();
+      reviews = reviews
+        .map((review, index) => ({review, index}))
+        .sort((a, b) => Number(a.review.lang !== pageLang) - Number(b.review.lang !== pageLang) || a.index - b.index)
+        .map(item => item.review);
+    }
+    return reviews.slice(0, displayCount);
+  }
+
+  function reviewAvatarHtml(review){
+    if(review.avatar){
+      return `<img class="avatar" src="${escapeHtml(review.avatar)}" alt="${escapeHtml(review.author)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML='<div class=&quot;avatar&quot;>${initials(review.author)}</div>'" />`;
+    }
+    return `<div class="avatar">${initials(review.author)}</div>`;
+  }
+
+  function renderCuratedReviews(curated){
     const row = document.getElementById('reviewsRow');
-    if(row){
-      const sorted = sortReviewsNewestFirst(data.reviews);
-      const picks = sorted.slice(0, 3);
-      row.innerHTML = picks.map(r => `
+    if(!row) return false;
+    const picks = selectedCuratedReviews(curated);
+    if(!picks.length) return false;
+    const copy = currentReviewCopy();
+    row.innerHTML = picks.map(r => {
+      const shortText = truncate(r.text, REVIEWS_TEXT_LIMIT);
+      const isTruncated = shortText !== r.text;
+      const toggle = isTruncated
+        ? `<button class="review-toggle" type="button" data-review-toggle data-more="${escapeHtml(copy.more)}" data-less="${escapeHtml(copy.less)}">${escapeHtml(copy.more)}</button>`
+        : '';
+      return `
         <article class="review">
           <div class="stars">${starsSvg(Math.round(r.rating||5), 5)}</div>
-          <p>&ldquo;${escapeHtml(truncate(r.text, 380))}&rdquo;</p>
+          <p class="review-text" data-full-text="${escapeHtml(r.text)}" data-short-text="${escapeHtml(shortText)}">&ldquo;${escapeHtml(shortText)}&rdquo;</p>
+          ${toggle}
           <div class="author">
-            ${r.avatar ? `<img class="avatar" src="${escapeHtml(r.avatar)}" alt="${escapeHtml(r.author)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML='<div class=&quot;avatar&quot;>${initials(r.author)}</div>'" />` : `<div class="avatar">${initials(r.author)}</div>`}
+            ${reviewAvatarHtml(r)}
             <div class="author-info">
               <span class="name">${escapeHtml(r.author)}</span>
-              <span class="role">${escapeHtml(r.when || 'Google review')}</span>
+              <span class="role">${escapeHtml(copy.source)} · ${escapeHtml(formatReviewDate(r.publishedAt))}</span>
             </div>
           </div>
         </article>
-      `).join('');
-      // Mark as already revealed since reveal observer already handled this row before
-      row.classList.add('in');
-    }
-
-    // Footer CTA
+      `;
+    }).join('');
+    row.classList.add('in');
     const foot = document.getElementById('reviewsFoot');
     if(foot) foot.removeAttribute('hidden');
-
     return true;
+  }
+
+  async function loadCuratedReviews(){
+    try{
+      const resp = await fetch(REVIEWS_CURATED_URL, { cache: 'no-store' });
+      if(!resp.ok) return false;
+      return renderCuratedReviews(await resp.json());
+    }catch(e){
+      return false;
+    }
   }
 
   async function loadReviews(){
     // Try local cache first — instant render
     const cached = getCachedReviews();
-    if(cached){ renderReviews(cached); }
+    if(cached){ renderReviewsSummary(cached); }
+    loadCuratedReviews();
 
     try{
       const resp = await fetch(REVIEWS_ENDPOINT, { cache: 'no-store' });
       if(!resp.ok) return;
       const data = await resp.json();
-      if(data && data.reviews && data.reviews.length){
+      if(data && typeof data.rating === 'number' && data.total){
         setCachedReviews(data);
-        renderReviews(data);
+        renderReviewsSummary(data);
       }
     }catch(e){
       // fail silently — keep static fallback / cached version
     }
   }
+  document.addEventListener('click', e => {
+    const button = e.target.closest('[data-review-toggle]');
+    if(!button) return;
+    const review = button.closest('.review');
+    const textNode = review?.querySelector('.review-text');
+    if(!textNode) return;
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    const nextText = expanded ? textNode.dataset.shortText : textNode.dataset.fullText;
+    textNode.innerHTML = `&ldquo;${escapeHtml(nextText || '')}&rdquo;`;
+    button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    button.textContent = expanded ? (button.dataset.more || 'Read more') : (button.dataset.less || 'Show less');
+  });
   // Lazy-load: fetch only when user scrolls near reviews section
   const reviewsSection = document.getElementById('reviews');
   if(reviewsSection){

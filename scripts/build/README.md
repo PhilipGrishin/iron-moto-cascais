@@ -56,7 +56,7 @@ python3 -m pip install -r requirements.txt
 | `add_image_dims.py` | Adds `width`/`height` attributes to every `<img>` based on the real image file |
 | `apply_seo_meta.py` | Applies shared SEO meta invariants, including `max-image-preview:large`, to every HTML file |
 | `build_sitemap.py` | Regenerates `sitemap.xml` with all 4 languages |
-| `build_reviews_schema.py` | Pulls fresh Google reviews via the Cloudflare Worker, injects `AggregateRating` + `Review` JSON-LD into the home pages, and refreshes the static reviews HTML fallback |
+| `build_reviews_schema.py` | Pulls live Google rating/count via the Cloudflare Worker, reads curated visible reviews from `assets/reviews-curated.json`, injects `AggregateRating` + matching `Review` JSON-LD into the home pages, and refreshes the static reviews HTML fallback |
 | `extract_i18n.js` | Reads `assets/main.js` and writes `scripts/build/i18n.json` (consumed by `build_i18n.py`) |
 | `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD, localized internal links, SEO robots meta and local assets |
 | `validate_brand_pages.py` | Validates brand page registry, 4 language outputs, schema, sitemap, optimized hero assets, deploy workflow and reciprocal brand links |
@@ -108,7 +108,8 @@ python3 scripts/build/validate_seo.py
 ```
 
 Run `build_reviews_schema.py` separately only when a fresh Google
-reviews snapshot is needed, because it calls the Cloudflare Worker.
+rating/count snapshot is needed, because it calls the Cloudflare Worker.
+Visible review cards are controlled by `assets/reviews-curated.json`.
 
 ### After editing translations in `assets/main.js`
 
@@ -294,7 +295,7 @@ python3 scripts/build/build_sitemap.py
 python3 scripts/build/validate_seo.py
 ```
 
-### After regenerating Google reviews snapshot
+### After editing curated reviews or regenerating Google reviews snapshot
 
 ```
 python3 scripts/build/build_reviews_schema.py
@@ -302,6 +303,16 @@ python3 scripts/build/build_reviews_schema.py
 #   https://icm-reviews.vg-ab6.workers.dev/
 # It must be run on a machine with outbound network access.
 ```
+
+The script writes the Worker response to `assets/reviews-snapshot.json`, reads
+visible cards from `assets/reviews-curated.json`, and injects both the static
+HTML fallback and the LocalBusiness `AggregateRating`/`Review` JSON-LD on the
+four home pages. The `Review` JSON-LD items must match the visible curated cards
+1:1. The aggregate `reviewCount` remains the real Google total, not the number
+of curated cards.
+
+A scheduled refresh is defined in `.github/workflows/reviews-refresh.yml`. It
+runs every Monday at 06:17 UTC and also supports manual `workflow_dispatch`.
 
 ## Cache-bust convention
 

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Fetch fresh Google reviews from the Cloudflare Worker and inject them as
-JSON-LD AggregateRating + Review schema into the LocalBusiness graph
-on every home page (en/ru/uk/pt). This makes the reviews visible to Google
-and AI engines without JS execution — and enables review stars in SERPs.
+Refresh the Google reviews snapshot and inject review schema/static fallback
+HTML into the four home pages.
 
-Run locally:  python3 build_reviews_schema.py
-(Sandbox in Cowork has no outbound network, so this MUST be run on the
-local machine where push happens.)
+The live Google Places total/rating comes from the Cloudflare Worker. The
+visible review cards and JSON-LD review[] items come from the editorial
+curated file so marked-up reviews always match visible content.
+
+Run locally: python3 scripts/build/build_reviews_schema.py
 
 Idempotent: re-running with no changes leaves files identical.
 """
@@ -23,12 +23,28 @@ from bs4 import BeautifulSoup
 SITE_ROOT = Path(__file__).resolve().parents[2]
 
 WORKER_URL = "https://icm-reviews.vg-ab6.workers.dev/"
-N_REVIEWS_IN_SCHEMA = 8       # how many reviews to include in JSON-LD
+CURATED_PATH = SITE_ROOT / "assets" / "reviews-curated.json"
+SNAPSHOT_PATH = SITE_ROOT / "assets" / "reviews-snapshot.json"
+DEFAULT_DISPLAY_COUNT = 6
+MAX_CURATED_REVIEWS = 9
 MIN_REVIEW_RATING = 4         # surface only 4★+ reviews
 MIN_TEXT_LEN = 20             # skip 1-2 word reviews
 BUSINESS_ID = "https://ironcustommotors.com/#business"
 ORG_NAME = "Iron Custom Motors"
 STAR_PATH = "M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"
+TEXT_LIMIT = 380
+PAGES = [
+    (SITE_ROOT / "index.html", "en"),
+    (SITE_ROOT / "ru" / "index.html", "ru"),
+    (SITE_ROOT / "uk" / "index.html", "uk"),
+    (SITE_ROOT / "pt" / "index.html", "pt"),
+]
+REVIEW_COPY = {
+    "en": {"more": "Read more", "less": "Show less", "source": "Google review"},
+    "pt": {"more": "Ler mais", "less": "Mostrar menos", "source": "Avaliação Google"},
+    "ru": {"more": "Читать полностью", "less": "Свернуть", "source": "Отзыв Google"},
+    "uk": {"more": "Читати повністю", "less": "Згорнути", "source": "Відгук Google"},
+}
 
 
 def fetch_reviews():
@@ -49,60 +65,6 @@ def build_aggregate_rating(data):
         "bestRating": 5,
         "worstRating": 1,
     }
-
-
-def _extract_text(v):
-    """Handle both shapes: plain string OR Google Places {text, languageCode}."""
-    if not v:
-        return ""
-    if isinstance(v, str):
-        return v
-    if isinstance(v, dict):
-        return v.get("text") or ""
-    return ""
-
-
-def _extract_author(v):
-    if not v:
-        return ""
-    if isinstance(v, str):
-        return v
-    if isinstance(v, dict):
-        return v.get("displayName") or v.get("name") or ""
-    return ""
-
-
-def build_review_items(data):
-    """Filter and convert reviews → Review schema items."""
-    items = []
-    for r in _sort_reviews_newest_first(data.get("reviews", [])):
-        rating = r.get("rating")
-        if not rating or rating < MIN_REVIEW_RATING:
-            continue
-        # Prefer original text (author's language) over machine-translated text.
-        body = _extract_text(r.get("originalText")) or _extract_text(r.get("text"))
-        body = body.strip()
-        if len(body) < MIN_TEXT_LEN:
-            continue
-        author = _extract_author(r.get("authorAttribution")) or r.get("author") or "Google user"
-        author = (author or "").strip() or "Google user"
-        published = r.get("publishTime") or r.get("publishedAt") or ""
-        items.append({
-            "@type": "Review",
-            "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": rating,
-                "bestRating": 5,
-                "worstRating": 1,
-            },
-            "author": {"@type": "Person", "name": author},
-            "reviewBody": body[:1200],   # truncate if super long
-            "datePublished": published[:10] if published else None,
-            "publisher": {"@type": "Organization", "name": "Google"},
-        })
-        if len(items) >= N_REVIEWS_IN_SCHEMA:
-            break
-    return items
 
 
 def _stars_svg(rating):
@@ -128,56 +90,138 @@ def _truncate(text, limit):
     return f"{trimmed}..."
 
 
-def _review_timestamp(review):
-    value = review.get("publishTime") or review.get("publishedAt") or ""
-    return value or ""
+def _date_label(published_at):
+    value = (published_at or "").strip()
+    return value[:10] if len(value) >= 10 else "Google review"
 
 
-def _sort_reviews_newest_first(reviews):
-    return sorted(
-        reviews,
-        key=lambda r: (
-            _review_timestamp(r),
-            r.get("rating") or 0,
-            len(_extract_text(r.get("originalText")) or _extract_text(r.get("text"))),
-        ),
-        reverse=True,
-    )
+def _normalize_review(record, index):
+    author = str(record.get("author") or "").strip()
+    text = re.sub(r"\s+", " ", str(record.get("text") or "").strip())
+    published_at = str(record.get("publishedAt") or "").strip()
+    url = str(record.get("url") or "").strip()
+
+    if not author:
+        raise ValueError(f"Curated review #{index} is missing author")
+    if not text:
+        raise ValueError(f"Curated review #{index} is missing text")
+    if len(text) < MIN_TEXT_LEN:
+        raise ValueError(f"Curated review #{index} text is shorter than {MIN_TEXT_LEN} chars")
+    if not published_at:
+        raise ValueError(f"Curated review #{index} is missing publishedAt")
+    if not url:
+        raise ValueError(f"Curated review #{index} is missing url")
+
+    rating = int(record.get("rating") or 5)
+    if rating < MIN_REVIEW_RATING or rating > 5:
+        raise ValueError(f"Curated review #{index} rating must be between {MIN_REVIEW_RATING} and 5")
+
+    return {
+        "author": author,
+        "rating": rating,
+        "text": text,
+        "lang": str(record.get("lang") or "en").strip().lower() or "en",
+        "publishedAt": published_at,
+        "url": url,
+        "avatar": str(record.get("avatar") or "").strip(),
+    }
 
 
-def _static_review_cards(data):
-    reviews = []
-    for review in _sort_reviews_newest_first(data.get("reviews", [])):
-        text = (_extract_text(review.get("originalText")) or _extract_text(review.get("text"))).strip()
-        if len(text) < MIN_TEXT_LEN:
-            continue
-        reviews.append({
-            "author": _extract_author(review.get("authorAttribution")) or review.get("author") or "Google user",
-            "rating": review.get("rating") or 5,
-            "text": text,
-            "when": review.get("when") or "Google review",
-            "publishedAt": review.get("publishTime") or review.get("publishedAt") or "",
-        })
+def load_curated_reviews():
+    if not CURATED_PATH.exists():
+        raise FileNotFoundError(f"Missing curated reviews file: {CURATED_PATH}")
+    data = json.loads(CURATED_PATH.read_text(encoding="utf-8"))
+    display_count = int(data.get("displayCount") or DEFAULT_DISPLAY_COUNT)
+    display_count = max(1, min(display_count, MAX_CURATED_REVIEWS))
+    reviews = [
+        _normalize_review(record, index)
+        for index, record in enumerate(data.get("reviews", []), start=1)
+    ]
+    if not reviews:
+        raise ValueError("Curated reviews file has no usable reviews")
+    return {
+        "displayCount": display_count,
+        "preferPageLanguage": bool(data.get("preferPageLanguage")),
+        "reviews": reviews,
+    }
 
+
+def _selected_curated_reviews(curated, page_lang):
+    reviews = list(curated["reviews"])
+    if curated.get("preferPageLanguage"):
+        reviews = [
+            review
+            for _, review in sorted(
+                enumerate(reviews),
+                key=lambda pair: (pair[1].get("lang") != page_lang, pair[0]),
+            )
+        ]
+    return reviews[:curated["displayCount"]]
+
+
+def build_review_items(curated_reviews):
+    """Convert visible curated reviews to JSON-LD Review items."""
+    items = []
+    for review in curated_reviews:
+        item = {
+            "@type": "Review",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": review["rating"],
+                "bestRating": 5,
+                "worstRating": 1,
+            },
+            "author": {"@type": "Person", "name": review["author"]},
+            "reviewBody": review["text"][:1200],
+            "datePublished": review["publishedAt"][:10],
+            "url": review["url"],
+            "publisher": {"@type": "Organization", "name": "Google"},
+        }
+        items.append(item)
+    return items
+
+
+def _static_review_cards(curated_reviews, page_lang):
+    copy = REVIEW_COPY.get(page_lang, REVIEW_COPY["en"])
     cards = []
-    for review in reviews[:3]:
+    for review in curated_reviews:
         author = (review["author"] or "Google user").strip()
-        text = _truncate(review["text"], 380)
-        role = f"Google review · {review['when']}" if review.get("when") else "Google review"
+        short_text = _truncate(review["text"], TEXT_LIMIT)
+        is_truncated = short_text != review["text"]
+        role = f"{copy['source']} · {_date_label(review.get('publishedAt'))}"
+        avatar_html = (
+            f'<img class="avatar" src="{escape(review["avatar"], quote=True)}" '
+            f'alt="{escape(author, quote=True)}" loading="lazy" referrerpolicy="no-referrer"/>'
+            if review.get("avatar")
+            else f'<div class="avatar">{escape(_initials(author))}</div>'
+        )
+        toggle = (
+            '<button class="review-toggle" type="button" data-review-toggle '
+            f'data-more="{escape(copy["more"], quote=True)}" '
+            f'data-less="{escape(copy["less"], quote=True)}">{escape(copy["more"])}</button>'
+            if is_truncated
+            else ""
+        )
         cards.append(f'''<article class="review">
 <div class="stars">{_stars_svg(review["rating"])}</div>
-<p>&ldquo;{escape(text)}&rdquo;</p>
-<div class="author"><div class="avatar">{escape(_initials(author))}</div><div class="author-info"><span class="name">{escape(author)}</span><span class="role">{escape(role)}</span></div></div>
+<p class="review-text" data-full-text="{escape(review["text"], quote=True)}" data-short-text="{escape(short_text, quote=True)}">&ldquo;{escape(short_text)}&rdquo;</p>
+{toggle}
+<div class="author">{avatar_html}<div class="author-info"><span class="name">{escape(author)}</span><span class="role">{escape(role)}</span></div></div>
 </article>''')
     return "\n".join(cards)
 
 
-def inject_static_review_fallback(html: str, data: dict) -> tuple[str, bool]:
+def inject_static_review_fallback(
+    html: str,
+    data: dict,
+    curated_reviews: list[dict],
+    page_lang: str,
+) -> tuple[str, bool]:
     """Patch the no-network HTML fallback so raw HTML and no-JS views do not
        show placeholder review data."""
     rating = data.get("rating")
     total = data.get("total")
-    cards = _static_review_cards(data)
+    cards = _static_review_cards(curated_reviews, page_lang)
     if not rating or not total or not cards:
         return html, False
 
@@ -279,44 +323,46 @@ def main():
         print("Worker response missing rating/total — aborting.", file=sys.stderr)
         sys.exit(1)
 
-    data["reviews"] = _sort_reviews_newest_first(data.get("reviews", []))
+    try:
+        curated = load_curated_reviews()
+    except Exception as e:
+        print(f"ERROR loading curated reviews: {e}", file=sys.stderr)
+        sys.exit(1)
 
     agg = build_aggregate_rating(data)
-    reviews = build_review_items(data)
-    print(f"  using {len(reviews)} reviews for schema (≥{MIN_REVIEW_RATING}★, ≥{MIN_TEXT_LEN} chars)")
+    print(
+        f"  curated source: {CURATED_PATH.relative_to(SITE_ROOT)} "
+        f"({len(curated['reviews'])} records, displayCount={curated['displayCount']})"
+    )
 
     # Also persist the reviews JSON as a snapshot the JS widget can fall back to
-    snapshot_path = SITE_ROOT / "assets" / "reviews-snapshot.json"
-    snapshot_path.parent.mkdir(exist_ok=True)
-    snapshot_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"  snapshot → {snapshot_path.relative_to(SITE_ROOT)}")
+    SNAPSHOT_PATH.parent.mkdir(exist_ok=True)
+    SNAPSHOT_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"  snapshot → {SNAPSHOT_PATH.relative_to(SITE_ROOT)}")
 
-    # Inject into home pages of all 4 languages
-    pages = [
-        SITE_ROOT / "index.html",
-        SITE_ROOT / "ru" / "index.html",
-        SITE_ROOT / "uk" / "index.html",
-        SITE_ROOT / "pt" / "index.html",
-    ]
     patched = 0
-    for p in pages:
+    last_review_count = 0
+    for p, page_lang in PAGES:
         if not p.exists():
             print(f"  SKIP missing: {p}")
             continue
+        page_reviews = _selected_curated_reviews(curated, page_lang)
+        reviews = build_review_items(page_reviews)
+        last_review_count = len(reviews)
         html = p.read_text(encoding="utf-8")
         new_html, ok = inject_into_business_graph(html, agg, reviews)
-        new_html, fallback_ok = inject_static_review_fallback(new_html, data)
+        new_html, fallback_ok = inject_static_review_fallback(new_html, data, page_reviews, page_lang)
         if (ok or fallback_ok) and new_html != html:
             p.write_text(new_html, encoding="utf-8")
             patched += 1
-            print(f"  patched: {p.relative_to(SITE_ROOT)}")
+            print(f"  patched: {p.relative_to(SITE_ROOT)} ({len(reviews)} curated reviews)")
         elif ok:
             print(f"  unchanged: {p.relative_to(SITE_ROOT)}")
         else:
             print(f"  no LocalBusiness graph found in {p.relative_to(SITE_ROOT)} — SKIP")
 
     print(f"\nDone. Aggregate {agg['ratingValue']}★ from {agg['reviewCount']} reviews, "
-          f"{len(reviews)} Review items injected into {patched} home pages.")
+          f"{last_review_count} curated Review items injected into {patched} home pages.")
 
 
 if __name__ == "__main__":

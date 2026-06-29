@@ -1,0 +1,52 @@
+{
+  "_comment": "Editorial source for visible homepage review cards and JSON-LD review[] items. Rating and total review count stay sourced from the Google Places Worker snapshot, not from this file.",
+  "displayCount": 6,
+  "preferPageLanguage": false,
+  "reviews": [
+    {
+      "author": "Александр Рыбалко",
+      "rating": 5,
+      "text": "I was very happy to meet highly qualified specialists! The service and approach simply exceeded all my expectations. I didn't think that my problem would be solved so easily, since this was not the first service I contacted, and everyone refused, but these guys just did it without any extra words in the shortest possible time. I am very glad that I met these guys on the road, huge thanks to Yaroslav and his team for the perfect service and warm welcome!",
+      "lang": "en",
+      "publishedAt": "2026-05-31T15:11:38.214307844Z",
+      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2s1TUxYTnlSR0pGTkVaTWF6UlRObE53WjE5emQxRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8",
+      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjXSHb2P7t98M4Vn5C4OV3-bNcA3NNqQPCsWaqGn9AJTj-tXbw=s128-c0x00000000-cc-rp-mo-ba3"
+    },
+    {
+      "author": "Aleksandr Nevedrov",
+      "rating": 5,
+      "text": "Visited for workshop Opening date. Legend of customizing just opened the brand new workshop & already packed with nice bikes",
+      "lang": "en",
+      "publishedAt": "2026-05-03T05:05:37.722363365Z",
+      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2taaGVIQnpRbk5HUTNOM1VFOXlaREJRTjFNM2NVRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocI26mc5ktBYvtpyCGmYwmhztqDvfoNlXsvQyD8EWgTeBtsgEg=s128-c0x00000000-cc-rp-mo-ba2"
+    },
+    {
+      "author": "Марія Легкун",
+      "rating": 5,
+      "text": "Super friendly founders and stuff, great service, totally recommend!",
+      "lang": "en",
+      "publishedAt": "2026-05-02T16:21:50.889876458Z",
+      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2pCRVRrRTRNRmRCZUZObFNrSklTamxWYlU0eFRIYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8",
+      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjX08JjwyC0szSsBh0uqQMjy-874C01D3pgLDm9Be5rM_ejxKK68=s128-c0x00000000-cc-rp-mo-ba2"
+    },
+    {
+      "author": "Ksenia Moroz",
+      "rating": 5,
+      "text": "Iron custom motors from Ukraine in Lisbon! Fix your ride & fuel your soul!",
+      "lang": "en",
+      "publishedAt": "2026-05-02T16:20:03.757513107Z",
+      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2tVNE5YbDBYM0YzUmxsTGJFWmllVUZpUWpJemNsRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8",
+      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjUXwBmNVbYyqjSws2VKVRQYihsuXZ5lFB5Oex6X5MPW0muyFrz8=s128-c0x00000000-cc-rp-mo-ba2"
+    },
+    {
+      "author": "Пилип Гришин",
+      "rating": 5,
+      "text": "Excellent place with a great atmosphere. You can immediately feel that people here truly love motorcycles, understand the technical side, and approach their work not formally, but with real experience and attention to detail. It is a very приятное space with strong energy, a professional approach, and the feeling that you are among like-minded people. I wish Iron Custom Motors strong growth, great customers, and a big future in Portugal.",
+      "lang": "en",
+      "publishedAt": "2026-04-17T15:55:54.285736515Z",
+      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xjd1l6QnVUbXBhU1RKeUxYY3lWbEl4WlZwNlEyYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8",
+      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjX0ezSFSEpuJET9o9MCoAaj0ZyQ8rpIFeYrlSXcAET0JfVrmo5a=s128-c0x00000000-cc-rp-mo"
+    }
+  ]
+}

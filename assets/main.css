@@ -520,6 +520,9 @@ section{padding:var(--gap) 0;position:relative}
 .review .stars{display:flex;gap:3px;color:var(--accent)}
 .review .stars svg{width:18px;height:18px;fill:currentColor}
 .review p{font-size:15px;color:var(--text);font-style:italic;line-height:1.55;flex:1}
+.review .review-text{margin:0}
+.review .review-toggle{align-self:flex-start;margin-top:-8px;border:0;background:transparent;color:var(--accent);font-family:var(--font-ui);font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:11px;cursor:pointer;padding:0}
+.review .review-toggle:hover,.review .review-toggle:focus-visible{color:var(--accent-2);outline:none}
 .review .author{display:flex;align-items:center;gap:12px}
 .review .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-dim));display:flex;align-items:center;justify-content:center;font-family:var(--font-ui);font-weight:700;color:#fff;font-size:14px}
 .review .author-info{display:flex;flex-direction:column;gap:2px}

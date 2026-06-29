@@ -76,7 +76,7 @@ contains a stronger current source.
 - After any change to `assets/main.css` or `assets/main.js`,
   bump the cache-bust query (`?v=...`) on every HTML file. The
   convention is `?v=YYYYMMDD<letter>`. The latest value at the
-  time of writing is `20260628b`.
+  time of writing is `20260629a`.
 - When the project owner asks Codex to do implementation work,
   treat the request as an end-to-end delivery by default: make
   the change, run the relevant verification, commit, push, and
@@ -280,7 +280,7 @@ contains a stronger current source.
    - `build_sitemap.py`
 8. Bump cache-bust.
 
-### Update Google reviews snapshot
+### Update Google reviews snapshot and curated cards
 
 This must be run on a machine with outbound network access.
 
@@ -289,9 +289,19 @@ python3 scripts/build/build_reviews_schema.py
 ```
 
 The script fetches `https://icm-reviews.vg-ab6.workers.dev/`,
-writes `assets/reviews-snapshot.json`, and injects
-`AggregateRating` plus 8 `Review` items into the LocalBusiness
-JSON-LD on the four home pages.
+writes the live rating/count to `assets/reviews-snapshot.json`,
+reads editorial cards from `assets/reviews-curated.json`, and
+injects static home-page review cards plus LocalBusiness
+`AggregateRating`/`Review` JSON-LD on the four home pages.
+
+`AggregateRating.ratingValue` and `reviewCount` must come from the
+Worker/snapshot total. Visible cards and JSON-LD `review[]` items
+must come from the curated file and match 1:1. Do not set
+`reviewCount` to the number of curated cards.
+
+The scheduled automation lives in
+`.github/workflows/reviews-refresh.yml` and runs weekly on Monday at
+06:17 UTC, with `workflow_dispatch` for manual refreshes.
 
 ## What this site does NOT have (do not assume)
 
