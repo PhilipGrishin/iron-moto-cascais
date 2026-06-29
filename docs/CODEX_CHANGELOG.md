@@ -14,6 +14,21 @@ Format:
 - Notes: ...
 ```
 
+## 2026-06-29 - Six curated homepage reviews
+
+- Commit: this commit
+- Changed: Replaced `assets/reviews-curated.json` with the six owner-approved
+  Google reviews in the requested order and regenerated static homepage review
+  cards plus matching LocalBusiness `review[]` JSON-LD on EN/PT/RU/UK.
+- Verified: Curated JSON parse check; `build_reviews_schema.py` fetched live
+  Worker rating 5 and total 15; local acceptance check confirmed 6 visible
+  cards, matching schema reviews, aggregate total 15 and read-more controls on
+  all 4 home pages; SEO validation passed.
+- Notes: Eugene, Graeme, Yurii and Dmytro use the owner-provided seed dates and
+  share URLs with initials avatars because the Worker top-5 response did not
+  include them. Александр Рыбалко and Марія Легкун use exact Worker
+  `publishedAt`, Google review URLs and avatars.
+
 ## 2026-06-29 - Curated reviews refresh pipeline
 
 - Commit: this commit
