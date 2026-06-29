@@ -119,7 +119,15 @@ BRAND_BG = {slug: config["hero"] for slug, config in BRAND_CONFIG.items()}
 BRAND_PREFIX = {slug: config["prefix"] for slug, config in BRAND_CONFIG.items()}
 BRAND_NAME = {slug: config["name"] for slug, config in BRAND_CONFIG.items()}
 BRAND_NAV_KEYS = {slug: config["nav_key"] for slug, config in BRAND_CONFIG.items()}
-BRAND_RELATED_LINKS = {slug: config["related_links"] for slug, config in BRAND_CONFIG.items()}
+COMMON_BRAND_RELATED_LINKS = (
+    ("seo.relatedService", "/motorcycle-service/", "Service and repair"),
+    ("seo.relatedUpgrades", "/upgrades-tuning/", "Upgrades and tuning"),
+    ("seo.relatedParts", "/parts/", "Parts and consumables"),
+    ("seo.relatedCustom", "/custom/", "Custom and special projects"),
+    ("seo.relatedTyres", "/motorcycle-tyre-service/", "Tyre service"),
+    ("seo.relatedPricing", "/pricing/", "Pricing"),
+)
+BRAND_RELATED_LINKS = {slug: COMMON_BRAND_RELATED_LINKS for slug in BRAND_CONFIG}
 
 # ============================================================
 # Per-brand head meta (title + description) per language

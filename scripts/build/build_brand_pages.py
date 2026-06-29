@@ -39,8 +39,14 @@ SEO_I18N = {
         "seo.area3d": "Diagnostics, parts sourcing, installation, upgrades and follow-up happen under one workshop standard.",
         "seo.relatedEyebrow": "Related workshop paths",
         "seo.relatedTitle": "Continue through the <em>same service system.</em>",
-        "seo.relatedLead": "These pages connect the most common next steps: service, parts, upgrades, pricing, brand-specific help and the rider lounge.",
+        "seo.relatedLead": "Six common next steps from every brand page: service, upgrades, parts, custom work, tyre service and pricing.",
         "seo.relatedText": "Open the related page for details, process, pricing context and booking options.",
+        "seo.relatedService": "Service and repair",
+        "seo.relatedUpgrades": "Upgrades and tuning",
+        "seo.relatedParts": "Parts and consumables",
+        "seo.relatedCustom": "Custom and special projects",
+        "seo.relatedTyres": "Tyre service",
+        "seo.relatedPricing": "Pricing",
         "seo.otherBrandsTitle": "Other brands we service.",
         "seo.otherBrandsLead": "Compare the same workshop process across our brand-specific service pages.",
         "seo.otherBrandText": "Open the brand page for model-specific service details, diagnostics, parts and booking context.",
@@ -57,8 +63,14 @@ SEO_I18N = {
         "seo.area3d": "Диагностика, подбор запчастей, установка, апгрейды и сопровождение идут по одному стандарту мастерской.",
         "seo.relatedEyebrow": "Связанные направления",
         "seo.relatedTitle": "Двигайтесь дальше в <em>той же сервисной системе.</em>",
-        "seo.relatedLead": "Эти страницы связывают самые частые следующие шаги: сервис, запчасти, апгрейды, цены, брендовые страницы и rider lounge.",
+        "seo.relatedLead": "Шесть общих следующих шагов с любой брендовой страницы: сервис, апгрейды, запчасти, кастом, шиномонтаж и цены.",
         "seo.relatedText": "Откройте связанную страницу, чтобы увидеть детали, процесс, контекст цены и варианты записи.",
+        "seo.relatedService": "Сервис и ремонт",
+        "seo.relatedUpgrades": "Апгрейды и тюнинг",
+        "seo.relatedParts": "Запчасти и расходники",
+        "seo.relatedCustom": "Кастом и спецпроекты",
+        "seo.relatedTyres": "Шиномонтаж",
+        "seo.relatedPricing": "Цены",
         "seo.otherBrandsTitle": "Другие марки, которые обслуживаем.",
         "seo.otherBrandsLead": "Сравните тот же процесс мастерской на брендовых страницах сервиса.",
         "seo.otherBrandText": "Откройте страницу бренда, чтобы увидеть сервисные детали по моделям, диагностике, запчастям и записи.",
@@ -75,8 +87,14 @@ SEO_I18N = {
         "seo.area3d": "Діагностика, підбір запчастин, встановлення, апґрейди і супровід ідуть за одним стандартом майстерні.",
         "seo.relatedEyebrow": "Пов'язані напрямки",
         "seo.relatedTitle": "Рухайтесь далі у <em>тій самій системі сервісу.</em>",
-        "seo.relatedLead": "Ці сторінки пов'язують найчастіші наступні кроки: сервіс, запчастини, апґрейди, ціни, брендові сторінки і rider lounge.",
+        "seo.relatedLead": "Шість спільних наступних кроків з будь-якої брендової сторінки: сервіс, апгрейди, запчастини, кастом, шиномонтаж і ціни.",
         "seo.relatedText": "Відкрийте пов'язану сторінку, щоб побачити деталі, процес, контекст ціни і варіанти запису.",
+        "seo.relatedService": "Сервіс і ремонт",
+        "seo.relatedUpgrades": "Апгрейди та тюнінг",
+        "seo.relatedParts": "Запчастини та витратники",
+        "seo.relatedCustom": "Кастом і спецпроєкти",
+        "seo.relatedTyres": "Шиномонтаж",
+        "seo.relatedPricing": "Ціни",
         "seo.otherBrandsTitle": "Інші марки, які обслуговуємо.",
         "seo.otherBrandsLead": "Порівняйте той самий процес майстерні на брендових сторінках сервісу.",
         "seo.otherBrandText": "Відкрийте сторінку бренду, щоб побачити сервісні деталі за моделями, діагностикою, запчастинами й записом.",
@@ -93,8 +111,14 @@ SEO_I18N = {
         "seo.area3d": "Diagnóstico, sourcing de peças, instalação, upgrades e acompanhamento seguem o mesmo padrão de oficina.",
         "seo.relatedEyebrow": "Caminhos relacionados",
         "seo.relatedTitle": "Continue no <em>mesmo sistema de serviço.</em>",
-        "seo.relatedLead": "Estas páginas ligam os próximos passos mais comuns: serviço, peças, upgrades, preços, ajuda por marca e rider lounge.",
+        "seo.relatedLead": "Seis próximos passos comuns em todas as páginas de marca: serviço, upgrades, peças, custom, pneus e preços.",
         "seo.relatedText": "Abra a página relacionada para detalhes, processo, contexto de preço e opções de marcação.",
+        "seo.relatedService": "Serviço e reparação",
+        "seo.relatedUpgrades": "Upgrades e tuning",
+        "seo.relatedParts": "Peças e consumíveis",
+        "seo.relatedCustom": "Custom e projetos especiais",
+        "seo.relatedTyres": "Pneus de mota",
+        "seo.relatedPricing": "Preços",
         "seo.otherBrandsTitle": "Outras marcas que servimos.",
         "seo.otherBrandsLead": "Compare o mesmo processo de oficina nas nossas páginas de serviço por marca.",
         "seo.otherBrandText": "Abra a página da marca para detalhes de serviço por modelo, diagnóstico, peças e marcação.",
@@ -106,7 +130,7 @@ def page_i18n_for(slug):
     for lang, values in PAGE_I18N[slug].items():
         merged = {**values, **SEO_I18N[lang]}
         for key, value in values.items():
-            if key.startswith("seo."):
+            if key.startswith("seo.") and not key.startswith(("seo.related", "seo.otherBrands")):
                 merged[key] = value
         pages[lang] = merged
     return pages
@@ -591,10 +615,6 @@ def render_related_sections(slug, en):
 </a>'''
         for key, href, label in BRAND_RELATED_LINKS[slug]
     )
-    other_brands = "\n".join(
-        f'''<a class="brand-pill" data-i18n="{BRAND_NAV_KEYS[other_slug]}" href="/{other_slug}/">{BRAND_NAME[other_slug]}</a>'''
-        for other_slug in [brand_slug for brand_slug in BRAND_ORDER if brand_slug != slug]
-    )
 
     return f'''<section class="sub-section" data-enhancement="money-related">
 <div class="container">
@@ -608,13 +628,6 @@ def render_related_sections(slug, en):
 <div class="reveal-stagger">
 <div class="related-card-grid">
 {related}
-</div>
-<div class="related-subhead">
-<h3 data-i18n="seo.otherBrandsTitle">{en["seo.otherBrandsTitle"]}</h3>
-<p data-i18n="seo.otherBrandsLead">{en["seo.otherBrandsLead"]}</p>
-</div>
-<div class="brand-pill-grid">
-{other_brands}
 </div>
 </div>
 </div>

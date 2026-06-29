@@ -473,7 +473,6 @@ def render_standard_section(section: dict[str, str], lang: str, index: int) -> s
 <section class="expat-section" id="section-{index:02d}">
 <div class="container expat-section-grid">
 <div class="expat-section-head">
-<span class="h-eyebrow">{index:02d}</span>
 <h2>{html.escape(section["title"], quote=False)}</h2>
 </div>
 <div class="expat-copy">
