@@ -326,7 +326,7 @@ def check_internal_links(soup, lang: str) -> list[str]:
     issues = []
     for a in soup.find_all("a", href=True):
         href = a["href"]
-        if href in LANG_HOME_HREFS and a.get("hreflang") in LANG_HREFLANGS:
+        if a.get("hreflang") in LANG_HREFLANGS:
             continue
         if href.startswith(("http://", "https://", "mailto:", "tel:", "#", "javascript:")):
             continue

@@ -70,6 +70,8 @@ def is_language_switch_link(anchor) -> bool:
     """Keep explicit language switcher links pointing to their target locale."""
     href = anchor.get("href")
     hreflang = anchor.get("hreflang")
+    if hreflang in LANG_HREFLANGS:
+        return True
     return href in LANG_HOME_HREFS and hreflang in LANG_HREFLANGS
 
 

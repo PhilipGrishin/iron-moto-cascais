@@ -13,7 +13,7 @@ Footer "Services" column:
   Custom & special projects   → /custom/
   Pre-purchase inspection     → /pre-purchase-inspection/
   Authorized Dealer           → /authorized-dealer/
-  English-speaking workshop   → /english-speaking-motorcycle-workshop/
+  For expats                  → /english-speaking-motorcycle-workshop/
   Pricing                     → /pricing/
 
 Footer "Company" column:
@@ -143,7 +143,7 @@ FOOTER_SERVICES_LINKS = [
     ("nav.tyreServ",      "/motorcycle-tyre-service/", "Tyre fitting &amp; wheel balancing"),
     ("nav.preInsp",       "/pre-purchase-inspection/", "Pre-purchase inspection"),
     ("nav.authorizedDealer", "/authorized-dealer/",     "Authorized Dealer"),
-    ("nav.expatWorkshop", "/english-speaking-motorcycle-workshop/", "English-speaking workshop"),
+    ("nav.expatWorkshop", "/english-speaking-motorcycle-workshop/", "For expats"),
     *BRAND_NAV_LINKS,
     ("nav.pricing",       "/pricing/",                 "Pricing"),
 ]
