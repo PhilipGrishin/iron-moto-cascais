@@ -22,6 +22,7 @@ DEFAULT_HERO_SOURCES = [
     "photos/lounge.jpg",
     "photos/team.jpg",
     "photos/exterior.jpg",
+    "photos/services/english-speaking-motorcycle-workshop-main.jpg",
     "photos/projects/inspirium-hero-2400.jpg",
     "photos/news/news-opening-01-1600.jpg",
     "photos/news/news-lmff2026-01-1600.jpg",

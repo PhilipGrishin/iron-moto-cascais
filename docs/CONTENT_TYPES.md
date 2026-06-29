@@ -115,6 +115,9 @@ Source of truth varies by page:
 - Pre-purchase inspection:
   `scripts/build/content/pre_purchase_inspection_copy_4lang.md` and
   `scripts/build/build_pre_purchase_inspection.py`
+- English-speaking expat hub:
+  `scripts/build/content/expat_hub_copy_4lang.md` and
+  `scripts/build/build_expat_hub.py`
 
 Required registrations:
 
@@ -148,6 +151,59 @@ git diff --check
 ```
 
 Run only the relevant subset when the task is narrow.
+
+## English-Speaking Expat Hub
+
+Purpose:
+
+- A light hub and funnel for English-speaking riders, expats and newcomers.
+- Routes down to existing money pages instead of duplicating
+  `/motorcycle-service/`.
+- Footer Services column plus contextual inbound links only. Do not add this
+  page to the header or Services dropdown.
+
+Source of truth:
+
+- `scripts/build/content/expat_hub_copy_4lang.md`
+- `scripts/build/build_expat_hub.py`
+- Hero source:
+  `photos/services/english-speaking-motorcycle-workshop-main.jpg`
+
+Required registrations:
+
+- Footer label in `assets/main.js` as `nav.expatWorkshop`.
+- Footer-only link in `scripts/build/nav_patch.py` `FOOTER_SERVICES_LINKS`.
+- New path in `scripts/build/localize_internal_links.py`,
+  `scripts/build/build_sitemap.py`, `scripts/build/validate_seo.py` and
+  `.github/workflows/pages.yml`.
+- Contextual inbound links from home, About, Motorcycle Service and
+  Pre-purchase Inspection.
+
+Schema:
+
+- `CollectionPage` referencing the canonical `https://ironcustommotors.com/#business`
+  by `@id`.
+- `FAQPage` with exactly the six visible FAQ items per language.
+- `BreadcrumbList`: Home -> English-speaking workshop.
+
+Verification:
+
+```bash
+python3 scripts/build/optimize_hero_images.py photos/services/english-speaking-motorcycle-workshop-main.jpg
+node scripts/build/extract_i18n.js
+python3 scripts/build/build_new_pages.py
+python3 scripts/build/build_pre_purchase_inspection.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/enhance_money_pages.py
+python3 scripts/build/build_i18n.py
+python3 scripts/build/build_expat_hub.py
+python3 scripts/build/localize_internal_links.py
+python3 scripts/build/add_image_dims.py
+python3 scripts/build/apply_seo_meta.py
+python3 scripts/build/build_sitemap.py
+python3 scripts/build/validate_seo.py
+git diff --check
+```
 
 ## Authorized Dealer Hub
 

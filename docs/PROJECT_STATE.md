@@ -1,6 +1,6 @@
 # Iron Custom Motors Website - Project State
 
-Last updated: 2026-06-28  
+Last updated: 2026-06-29
 Production: https://ironcustommotors.com/  
 Repository: https://github.com/dreamcarua/iron-moto-cascais
 
@@ -36,10 +36,10 @@ goal is SEO, local search, AI-citation readiness and high-quality service leads.
   - Russian at `/ru/`
   - Ukrainian at `/uk/`
   - Portuguese at `/pt/`
-- Current sitemap: 44 indexable path patterns x 4 languages = 176 URLs.
-- Current repo HTML count: 179 files, including `404.html` and 2 legacy noindex
+- Current sitemap: 45 indexable path patterns x 4 languages = 180 URLs.
+- Current repo HTML count: 183 files, including `404.html` and 2 legacy noindex
   redirect stubs.
-- Current cache-bust convention: `?v=20260629a`.
+- Current cache-bust convention: `?v=20260629b`.
 - Production deploy is triggered by pushing `main`.
 - Cloudflare fronts the domain and may cache recently deployed HTML/assets.
 
@@ -88,6 +88,7 @@ this file for current state unless `HANDOFF.md` has been explicitly refreshed.
 - `/pricing/`
 - `/parts/`
 - `/authorized-dealer/`
+- `/english-speaking-motorcycle-workshop/`
 - `/blog/`
 - `/news/`
 - `/privacy/`, `/cookies/`, `/terms/`
@@ -100,6 +101,19 @@ this file for current state unless `HANDOFF.md` has been explicitly refreshed.
 - `/custom/`
 - `/pre-purchase-inspection/`
 - `/motorcycle-tyre-service/`
+
+### Light Funnel Hubs
+
+- `/english-speaking-motorcycle-workshop/` targets English-speaking expats and
+  newcomers, then routes down to the existing service, tyre, pre-purchase,
+  brand, custom, pricing and contact pages. It is intentionally footer-only and
+  contextual-link-only, not a top-navigation item.
+
+Source:
+
+- Copy: `scripts/build/content/expat_hub_copy_4lang.md`
+- Generator: `scripts/build/build_expat_hub.py`
+- Hero source: `/photos/services/english-speaking-motorcycle-workshop-main.jpg`
 
 ### Brand Service Pages
 
@@ -178,6 +192,7 @@ Current news articles are registered in `scripts/build/news_data.py`:
 - `scripts/build/build_blog.py` - blog hub and articles.
 - `scripts/build/build_news.py` - news hub and articles.
 - `scripts/build/build_pre_purchase_inspection.py` - flagship inspection page.
+- `scripts/build/build_expat_hub.py` - English-speaking expat funnel hub.
 - `scripts/build/build_tyre_service.py` - tyre service page.
 - `scripts/build/build_pricing.py` - pricing pages.
 - `scripts/build/nav_patch.py` - canonical nav and footer on English pages.
@@ -195,6 +210,8 @@ Recent high-impact changes:
 - Added the Authorized Dealer hub in 4 languages.
 - Added and standardized brand pages for Suzuki, Honda, Royal Enfield and
   Triumph.
+- Added the English-speaking expat funnel hub in 4 languages with footer-only
+  navigation and contextual inbound links.
 - Humanized Harley-Davidson, BMW Motorrad and Ducati pages.
 - Rebuilt Pre-Purchase Inspection as a flagship service.
 - Added Motorcycle Tyre Service and related blog content.

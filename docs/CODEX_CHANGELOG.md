@@ -26,6 +26,21 @@ Format:
 - Notes: This keeps the curated showcase and markup in exact parity while the
   aggregate rating/count remain sourced from the live Google snapshot.
 
+## 2026-06-29 - English-speaking expat hub
+
+- Commit: this commit
+- Changed: Added `/english-speaking-motorcycle-workshop/` in EN/RU/UK/PT from
+  `expat_hub_copy_4lang.md`, with optimized hero variants, footer-only service
+  link, contextual inbound links from home/About/Motorcycle Service/Pre-purchase
+  Inspection, sitemap entries and CollectionPage/FAQPage/BreadcrumbList schema.
+- Verified: Optimized hero images; regenerated affected pages and localization;
+  SEO validation for 180 sitemap URLs; focused acceptance check for copy parity,
+  canonical/hreflang/noindex, footer-only navigation, inbound/funnel links,
+  schema counts and hero AVIF/WebP/eager dimensions.
+- Notes: The page is intentionally not in the top navigation or Services
+  dropdown; keep future edits through `build_expat_hub.py` and the Markdown
+  source file.
+
 ## 2026-06-29 - Six curated homepage reviews
 
 - Commit: this commit

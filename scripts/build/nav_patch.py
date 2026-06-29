@@ -13,6 +13,7 @@ Footer "Services" column:
   Custom & special projects   → /custom/
   Pre-purchase inspection     → /pre-purchase-inspection/
   Authorized Dealer           → /authorized-dealer/
+  English-speaking workshop   → /english-speaking-motorcycle-workshop/
   Pricing                     → /pricing/
 
 Footer "Company" column:
@@ -42,6 +43,7 @@ EN_PAGES = [
     "upgrades-tuning/index.html",
     "custom/index.html",
     "pre-purchase-inspection/index.html",
+    "english-speaking-motorcycle-workshop/index.html",
     "authorized-dealer/index.html",
     "pricing/index.html",
     "services/index.html",
@@ -141,6 +143,7 @@ FOOTER_SERVICES_LINKS = [
     ("nav.tyreServ",      "/motorcycle-tyre-service/", "Tyre fitting &amp; wheel balancing"),
     ("nav.preInsp",       "/pre-purchase-inspection/", "Pre-purchase inspection"),
     ("nav.authorizedDealer", "/authorized-dealer/",     "Authorized Dealer"),
+    ("nav.expatWorkshop", "/english-speaking-motorcycle-workshop/", "English-speaking workshop"),
     *BRAND_NAV_LINKS,
     ("nav.pricing",       "/pricing/",                 "Pricing"),
 ]

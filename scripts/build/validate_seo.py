@@ -50,6 +50,7 @@ LOCALIZED_PATHS = {
     "/upgrades-tuning/",
     "/custom/",
     "/authorized-dealer/",
+    "/english-speaking-motorcycle-workshop/",
     "/pre-purchase-inspection/",
     "/pricing/",
     "/services/",
