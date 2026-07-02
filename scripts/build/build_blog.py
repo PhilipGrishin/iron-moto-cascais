@@ -24,6 +24,8 @@ from build_news import (
     SHARED_STYLES,
     SITE_ROOT,
     CACHE_BUST,
+    schema_author,
+    schema_datetime,
 )
 from hero_images import hero_background_css, hero_preload_links, optimized_hero_url
 
@@ -291,7 +293,7 @@ def render_hub():
                 "@type": "BlogPosting",
                 "headline": data["body"]["en"]["h1Crumb"],
                 "url": f"{DOMAIN}/blog/{slug}/",
-                "datePublished": data["publishedISO"],
+                "datePublished": schema_datetime(data["publishedISO"]),
             }
             for slug, data in posts_sorted
         ]
@@ -450,9 +452,9 @@ def render_article(slug, article):
         "headline": en_body["h1Crumb"],
         "description": en_meta["description"],
         "image": images,
-        "datePublished": article["publishedISO"],
-        "dateModified": article["modifiedISO"],
-        "author": {"@id": f"{DOMAIN}/#business"},
+        "datePublished": schema_datetime(article["publishedISO"]),
+        "dateModified": schema_datetime(article["modifiedISO"]),
+        "author": schema_author(),
         "publisher": {"@id": f"{DOMAIN}/#business"},
         "mainEntityOfPage": {"@type": "WebPage", "@id": page_url},
         "url": page_url,

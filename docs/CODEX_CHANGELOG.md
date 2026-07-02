@@ -14,6 +14,20 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-02 - Article schema recommended-field cleanup
+
+- Commit: this commit
+- Changed: Updated BlogPosting/NewsArticle schema generation so article dates
+  are emitted as full ISO-8601 datetimes with Europe/Lisbon offsets and authors
+  keep the canonical business `@id` plus `url`; set the Bear 650 blog article
+  publish/modified datetimes.
+- Verified: Rebuilt blog/news pages and localized variants; SEO validation for
+  184 sitemap URLs; focused Bear 650 JSON-LD checks across EN/PT/RU/UK;
+  article schema datetime/author-url check across local blog/news files;
+  Python compile check; `git diff --check`.
+- Notes: Keep future blog/news article entries on the same datetime + author
+  pattern to avoid Google Rich Results recommended-field warnings.
+
 ## 2026-07-02 - Project gallery award label parity
 
 - Commit: this commit

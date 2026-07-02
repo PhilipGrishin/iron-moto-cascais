@@ -25,6 +25,26 @@ DOMAIN = "https://ironcustommotors.com"
 CACHE_BUST = "20260702a"
 LANGS = ["en", "ru", "uk", "pt"]
 OG_LOCALE = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
+BUSINESS_ID = f"{DOMAIN}/#business"
+AUTHOR_URL = f"{DOMAIN}/about/"
+
+
+def schema_datetime(value):
+    """Return Article/BlogPosting dates as full ISO-8601 with Europe/Lisbon offset."""
+    value = str(value).strip()
+    if "T" in value:
+        if len(value) >= 5 and value[-5] in ("+", "-") and value[-3] != ":":
+            return f"{value[:-2]}:{value[-2:]}"
+        return value
+    # Default legacy date-only entries to a stable Lisbon local publication time.
+    month = int(value[5:7])
+    offset = "+01:00" if 4 <= month <= 10 else "+00:00"
+    return f"{value}T10:00:00{offset}"
+
+
+def schema_author():
+    """Keep author tied to the canonical business entity while exposing author.url."""
+    return {"@id": BUSINESS_ID, "url": AUTHOR_URL}
 
 NEWS_RELATED_I18N = {
     "en": {
@@ -410,13 +430,13 @@ def render_hub():
             "@type": "Blog",
             "name": en_head["title"],
             "url": f"{DOMAIN}/news/",
-            "publisher": {"@id": f"{DOMAIN}/#business"},
+            "publisher": {"@id": BUSINESS_ID},
             "isPartOf": {"@id": f"{DOMAIN}/#website"},
             "blogPost": [
                 {"@type": "BlogPosting",
                  "headline": data["body"]["en"]["h1Crumb"],
                  "url": f"{DOMAIN}/news/{slug}/",
-                 "datePublished": data["publishedISO"]}
+                 "datePublished": schema_datetime(data["publishedISO"])}
                 for slug, data in articles_sorted
             ],
         },
@@ -502,11 +522,10 @@ def render_article(slug, article):
             "headline": en_body["h1Crumb"],
             "description": en_meta["description"],
             "image": images,
-            "datePublished": article["publishedISO"],
-            "dateModified": article["publishedISO"],
-            "author": {"@type": "Organization", "name": "Iron Custom Motors",
-                       "url": f"{DOMAIN}/about/"},
-            "publisher": {"@id": f"{DOMAIN}/#business"},
+            "datePublished": schema_datetime(article["publishedISO"]),
+            "dateModified": schema_datetime(article.get("modifiedISO", article["publishedISO"])),
+            "author": schema_author(),
+            "publisher": {"@id": BUSINESS_ID},
             "mainEntityOfPage": {"@type": "WebPage", "@id": page_url},
             "url": page_url,
             "inLanguage": "en",

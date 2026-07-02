@@ -262,8 +262,8 @@ def _load_bear650_post():
             "faqs": item["faqs"],
         }
     return {
-        "publishedISO": "2026-06-29",
-        "modifiedISO": "2026-07-02",
+        "publishedISO": "2026-06-29T10:00:00+01:00",
+        "modifiedISO": "2026-07-02T11:24:27+01:00",
         "heroImage": "/photos/blog/blog-royal-enfield-bear-650-fork-oil-case-study-hero-1600.jpg",
         "heroImageDims": (1536, 1024),
         "imageBase": "/photos/blog/blog-royal-enfield-bear-650-fork-oil-case-study",

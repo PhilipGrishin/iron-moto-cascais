@@ -279,6 +279,9 @@ Schema:
 - `BlogPosting`
 - `BreadcrumbList`
 - Optional `VideoObject` when article embeds a video.
+- `datePublished` and `dateModified` must be full ISO-8601 datetimes with a
+  Europe/Lisbon timezone offset, not date-only strings.
+- `author` must keep the canonical business `@id` and include `url`.
 
 Verification:
 
@@ -316,6 +319,9 @@ Schema:
 
 - `NewsArticle`
 - `BreadcrumbList`
+- `datePublished` and `dateModified` must be full ISO-8601 datetimes with a
+  Europe/Lisbon timezone offset, not date-only strings.
+- `author` must keep the canonical business `@id` and include `url`.
 
 Verification:
 
