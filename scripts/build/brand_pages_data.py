@@ -2367,7 +2367,9 @@ PAGE_I18N["royal-enfield-service"] = {'en': {'ren.breadHome': 'Home',
                        '2023. We bring that standard to a Classic 350 as readily as to a competition build. And '
                        'because Royal Enfield is one of the most popular custom base bikes in the world — bobbers, '
                        'scramblers, café racers — there is no shop better placed to turn yours into something '
-                       'personal. See our <a href="/custom/">custom & special projects</a>.<br/><br/>Independent means '
+                       'personal. See our <a href="/custom/">custom & special projects</a>. From our workshop: read '
+                       'the <a href="/blog/royal-enfield-bear-650-fork-oil-case-study/">Bear 650 fork-oil case '
+                       'study</a>.<br/><br/>Independent means '
                        'no dealer mark-up, the freedom to fit OEM or quality aftermarket parts as the job actually '
                        'requires, and straight talk. Written estimate before the work, written report after.',
         'ren.toolsTitle': 'Royal Enfield diagnostics and tools.',
@@ -2525,7 +2527,9 @@ PAGE_I18N["royal-enfield-service"] = {'en': {'ren.breadHome': 'Home',
                        '2023. Aplicamos esse padrão tanto a uma Classic 350 como a um projeto de competição. E como a '
                        'Royal Enfield é uma das bases custom mais populares do mundo — bobbers, scramblers, café '
                        'racers — não há melhor sítio para tornar a sua única. Veja <a href="/pt/custom/">custom e '
-                       'projetos especiais</a>.<br/><br/>Independente significa sem margem de concessionário, '
+                       'projetos especiais</a>. Da nossa oficina: leia o <a '
+                       'href="/pt/blog/royal-enfield-bear-650-fork-oil-case-study/">caso Bear 650 sobre óleo de '
+                       'forquilha</a>.<br/><br/>Independente significa sem margem de concessionário, '
                        'liberdade para montar peças OEM ou de qualidade aftermarket conforme o trabalho exige, e '
                        'conversa franca. Orçamento por escrito antes, relatório por escrito depois.',
         'ren.toolsTitle': 'Diagnóstico e ferramentas Royal Enfield.',
@@ -2685,7 +2689,9 @@ PAGE_I18N["royal-enfield-service"] = {'en': {'ren.breadHome': 'Home',
                        'применяем и к Classic 350, и к гоночному проекту. А поскольку Royal Enfield — одна из самых '
                        'популярных в мире баз для кастома (бобберы, скрэмблеры, кафе-рейсеры), лучше места, чтобы '
                        'сделать ваш по-настоящему своим, не найти. Смотрите <a href="/ru/custom/">кастом и '
-                       'спецпроекты</a>.<br/><br/>Независимость — это без наценки дилера, со свободой ставить OEM или '
+                       'спецпроекты</a>. Из нашей мастерской: читайте <a '
+                       'href="/ru/blog/royal-enfield-bear-650-fork-oil-case-study/">разбор Bear 650 по маслу в '
+                       'вилке</a>.<br/><br/>Независимость — это без наценки дилера, со свободой ставить OEM или '
                        'качественный афтермаркет по делу, и с честным разговором. Смета письменно до работы, отчёт '
                        'письменно после.',
         'ren.toolsTitle': 'Диагностика и инструмент Royal Enfield.',
@@ -2842,7 +2848,9 @@ PAGE_I18N["royal-enfield-service"] = {'en': {'ren.breadHome': 'Home',
                        'самий рівень ми застосовуємо і до Classic 350, і до гоночного проєкту. А оскільки Royal '
                        'Enfield — одна з найпопулярніших у світі баз для кастому (боббери, скремблери, кафе-рейсери), '
                        'кращого місця, щоб зробити ваш по-справжньому своїм, не знайти. Дивіться <a '
-                       'href="/uk/custom/">кастом і спецпроєкти</a>.<br/><br/>Незалежність — це без націнки дилера, зі '
+                       'href="/uk/custom/">кастом і спецпроєкти</a>. З нашої майстерні: читайте <a '
+                       'href="/uk/blog/royal-enfield-bear-650-fork-oil-case-study/">розбір Bear 650 про масло у '
+                       'вилці</a>.<br/><br/>Незалежність — це без націнки дилера, зі '
                        'свободою ставити OEM або якісний афтермаркет по суті, і з чесною розмовою. Кошторис письмово '
                        'до роботи, звіт письмово після.',
         'ren.toolsTitle': 'Діагностика та інструмент Royal Enfield.',

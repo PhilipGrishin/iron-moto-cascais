@@ -45,6 +45,7 @@ LOCALIZED_PATHS = {
     "/blog/motorcycle-brake-pad-replacement-cascais/",
     "/blog/front-fork-service-motorcycle-cascais/",
     "/blog/motorcycle-tyre-fitting-specialist-cascais/",
+    "/blog/royal-enfield-bear-650-fork-oil-case-study/",
     "/news/",
     "/news/ericeira-kustom-fest-2026/",
     "/news/opens-new-workshop-in-cascais/",

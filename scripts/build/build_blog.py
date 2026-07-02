@@ -25,7 +25,7 @@ from build_news import (
     SITE_ROOT,
     CACHE_BUST,
 )
-from hero_images import hero_background_css
+from hero_images import hero_background_css, hero_preload_links, optimized_hero_url
 
 
 BLOG_CSS = """.subpage.blog-hub{padding:126px 0 58px}
@@ -56,6 +56,8 @@ BLOG_CSS = """.subpage.blog-hub{padding:126px 0 58px}
 ARTICLE_CSS = """.subpage.blog-article{padding:0;position:relative;overflow:hidden;isolation:isolate;background:#0a0a0a;min-height:92vh;display:flex;align-items:flex-end}
 .blog-article::before,.blog-article::after{display:none}
 .blog-article .bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;filter:saturate(.88) contrast(1.08) brightness(.55)}
+.blog-article .hero-media{position:absolute;inset:0;z-index:0;display:block;overflow:hidden}
+.blog-article .hero-media img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.88) contrast(1.08) brightness(.55)}
 .blog-article .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(10,10,10,.92) 0%,rgba(10,10,10,.7) 42%,rgba(10,10,10,.18) 74%),linear-gradient(180deg,rgba(10,10,10,.30) 0%,rgba(10,10,10,.42) 48%,rgba(10,10,10,.96) 100%);pointer-events:none}
 .blog-article .container{position:relative;z-index:2;padding-top:140px;padding-bottom:64px;width:100%;min-width:0}
 .blog-article .date{font-family:var(--font-ui);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
@@ -80,7 +82,11 @@ ARTICLE_CSS = """.subpage.blog-article{padding:0;position:relative;overflow:hidd
 .blog-list{display:grid;gap:12px;margin:0;padding:0;list-style:none}
 .blog-list li{position:relative;padding-left:28px;font-family:var(--font-ui);font-size:clamp(16px,1.2vw,18px);line-height:1.6;color:var(--text)}
 .blog-list li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:9px;border:2px solid var(--accent);border-radius:50%}
+.blog-list.blog-ordered-list{counter-reset:blog-step}
+.blog-list.blog-ordered-list li{counter-increment:blog-step;padding-left:34px}
+.blog-list.blog-ordered-list li::before{content:counter(blog-step);top:.18em;width:22px;height:22px;border:1px solid rgba(255,87,34,.65);border-radius:50%;display:grid;place-items:center;font-family:var(--font-ui);font-weight:800;font-size:11px;line-height:1;color:var(--accent)}
 .blog-media{margin:34px 0;padding:18px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface)}
+.blog-media picture{display:block}
 .blog-media img{display:block;width:100%;height:auto;border-radius:calc(var(--radius-lg) - 4px)}
 .blog-media figcaption{padding:14px 2px 0;font-family:var(--font-ui);font-size:13px;color:var(--text-mute);font-style:italic}
 .blog-article-body .blog-video{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,360px);gap:28px;align-items:center;padding:34px 36px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface)}
@@ -122,7 +128,52 @@ def article_image(article, num, size=1600):
     return f"{article['imageBase']}-{num:02d}-{size}.jpg"
 
 
-def head(slug_for_url, lang, head_meta, json_ld_blocks, og_image=None, og_type="website"):
+def article_hero_image(article):
+    return article.get("heroImage") or article_image(article, article["imageHero"])
+
+
+def article_hero_dims(article):
+    return article.get("heroImageDims") or article["imageDims"][article["imageHero"]]
+
+
+def optimized_srcset(source_url, ext):
+    return ", ".join(
+        f"{optimized_hero_url(source_url, width, ext)} {width}w"
+        for width in (768, 1280, 1920)
+    )
+
+
+def render_picture(source_url, alt, alt_key, dims, *, sizes, loading="lazy", fetchpriority=None, class_name=None):
+    width, height = dims
+    loading_attr = "" if loading is None else f' loading="{loading}"'
+    fetch_attr = "" if fetchpriority is None else f' fetchpriority="{fetchpriority}"'
+    class_attr = "" if class_name is None else f' class="{class_name}"'
+    return f'''<picture{class_attr}>
+<source sizes="{sizes}" srcset="{optimized_srcset(source_url, "avif")}" type="image/avif"/>
+<source sizes="{sizes}" srcset="{optimized_srcset(source_url, "webp")}" type="image/webp"/>
+<img alt="{a(alt)}" data-i18n-alt="{alt_key}" decoding="async"{fetch_attr} height="{height}" sizes="{sizes}" src="{optimized_hero_url(source_url, 1280, "jpg")}" srcset="{optimized_srcset(source_url, "jpg")}" width="{width}"{loading_attr}/>
+</picture>'''
+
+
+def render_media_figure(article, image_num, alt, alt_key, caption=None, caption_key=None):
+    image_path = article_image(article, image_num)
+    image_html = render_picture(
+        image_path,
+        alt,
+        alt_key,
+        article["imageDims"][image_num],
+        sizes="(max-width: 860px) 100vw, 820px",
+    )
+    caption_html = ""
+    if caption:
+        caption_attr = f' data-i18n="{caption_key}"' if caption_key else ""
+        caption_html = f'\n<figcaption{caption_attr}>{h(caption)}</figcaption>'
+    return f'''<figure class="blog-media">
+{image_html}{caption_html}
+</figure>'''
+
+
+def head(slug_for_url, lang, head_meta, json_ld_blocks, og_image=None, og_type="website", preload_html=""):
     canonical = f"{DOMAIN}/{slug_for_url}/"
     og_img = og_image or f"{DOMAIN}/photos/og.jpg"
     hreflang_html = "".join(
@@ -165,6 +216,7 @@ def head(slug_for_url, lang, head_meta, json_ld_blocks, og_image=None, og_type="
 <link href="/photos/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/photos/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="/photos/site.webmanifest" rel="manifest"/>
+{preload_html}
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
@@ -208,7 +260,7 @@ def render_hub():
         for slug, data in posts_sorted:
             meta = data["meta"]["en"]
             body = data["body"]["en"]
-            hero_img = article_image(data, data["imageHero"])
+            hero_img = article_hero_image(data)
             posts_html += f'''
 <a class="blog-card" href="/blog/{slug}/">
 <div class="img" style="{hero_background_css(hero_img, 768)}"></div>
@@ -335,12 +387,14 @@ def render_article(slug, article):
     en_body = article["body"]["en"]
     pre = article_prefix(slug)
     page_url = f"{DOMAIN}/blog/{slug}/"
-    hero_img_path = article_image(article, article["imageHero"])
+    hero_img_path = article_hero_image(article)
     hero_img_url = f"{DOMAIN}{hero_img_path}"
-    images = [
+    images = [hero_img_url]
+    images.extend(
         f"{DOMAIN}{article_image(article, num)}"
         for num in range(1, article["imageCount"] + 1)
-    ]
+    )
+    images = list(dict.fromkeys(images))
 
     inline_i18n = {lang: {} for lang in LANGS}
     for lang in LANGS:
@@ -349,18 +403,34 @@ def render_article(slug, article):
             "eyebrow", "publishedLabel", "breadHome", "breadBlog", "introTitle",
             "videoEyebrow", "videoTitle", "videoText", "videoLink", "faqTitle",
             "ctaEyebrow", "ctaTitle", "btnWA", "btnBack", "imageAlt",
-            "imageCaption", "h1", "h1Crumb", "lede", "ctaText",
+            "imageCaption", "h1", "h1Crumb", "lede", "ctaText", "heroAlt",
         ]:
-            inline_i18n[lang][f"{pre}.{key}"] = body[key]
-        inline_i18n[lang][f"{pre}.intro.title"] = body["intro"]["title"]
-        for idx, paragraph in enumerate(body["intro"]["paragraphs"], start=1):
-            inline_i18n[lang][f"{pre}.intro.p{idx}"] = paragraph
-        for idx, section in enumerate(body["sections"], start=1):
+            if key in body:
+                inline_i18n[lang][f"{pre}.{key}"] = body[key]
+        if "intro" in body:
+            inline_i18n[lang][f"{pre}.intro.title"] = body["intro"]["title"]
+            for idx, paragraph in enumerate(body["intro"]["paragraphs"], start=1):
+                inline_i18n[lang][f"{pre}.intro.p{idx}"] = paragraph
+        for idx, section in enumerate(body.get("sections", []), start=1):
             inline_i18n[lang][f"{pre}.section{idx}.title"] = section["title"]
             for p_idx, paragraph in enumerate(section.get("paragraphs", []), start=1):
                 inline_i18n[lang][f"{pre}.section{idx}.p{p_idx}"] = paragraph
             for b_idx, bullet in enumerate(section.get("bullets", []), start=1):
                 inline_i18n[lang][f"{pre}.section{idx}.b{b_idx}"] = bullet
+        for s_idx, section in enumerate(body.get("contentSections", []), start=1):
+            if section.get("title"):
+                inline_i18n[lang][f"{pre}.content{s_idx}.title"] = section["title"]
+            for b_idx, block in enumerate(section.get("blocks", []), start=1):
+                block_key = f"{pre}.content{s_idx}.block{b_idx}"
+                if block["type"] == "image":
+                    inline_i18n[lang][f"{block_key}.alt"] = block["alt"]
+                    if block.get("caption"):
+                        inline_i18n[lang][f"{block_key}.caption"] = block["caption"]
+                elif block["type"] in ("ul", "ol"):
+                    for item_idx, item in enumerate(block["items"], start=1):
+                        inline_i18n[lang][f"{block_key}.item{item_idx}"] = item
+                else:
+                    inline_i18n[lang][f"{block_key}.text"] = block["text"]
         for idx, faq in enumerate(body["faqs"], start=1):
             inline_i18n[lang][f"{pre}.faq{idx}.q"] = faq["q"]
             inline_i18n[lang][f"{pre}.faq{idx}.a"] = faq["a"]
@@ -374,40 +444,39 @@ def render_article(slug, article):
         for faq in en_body["faqs"]
     ]
 
-    video_schema = {
-        "@type": "VideoObject",
-        "name": en_body["videoTitle"],
-        "description": en_body["videoText"],
-        "thumbnailUrl": hero_img_url,
-        "embedUrl": article["youtubeEmbed"],
-        "url": article["youtubeUrl"],
+    blog_posting_schema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": en_body["h1Crumb"],
+        "description": en_meta["description"],
+        "image": images,
+        "datePublished": article["publishedISO"],
+        "dateModified": article["modifiedISO"],
+        "author": {"@id": f"{DOMAIN}/#business"},
+        "publisher": {"@id": f"{DOMAIN}/#business"},
+        "mainEntityOfPage": {"@type": "WebPage", "@id": page_url},
+        "url": page_url,
         "inLanguage": "en",
+        "articleSection": "Workshop guides",
     }
-    if article.get("youtubeUploadDate"):
-        video_schema["uploadDate"] = article["youtubeUploadDate"]
+    if article.get("keywords", {}).get("en"):
+        blog_posting_schema["keywords"] = ", ".join(article["keywords"]["en"])
+    if article.get("youtubeEmbed") and article.get("youtubeUrl"):
+        video_schema = {
+            "@type": "VideoObject",
+            "name": en_body["videoTitle"],
+            "description": en_body["videoText"],
+            "thumbnailUrl": hero_img_url,
+            "embedUrl": article["youtubeEmbed"],
+            "url": article["youtubeUrl"],
+            "inLanguage": "en",
+        }
+        if article.get("youtubeUploadDate"):
+            video_schema["uploadDate"] = article["youtubeUploadDate"]
+        blog_posting_schema["video"] = video_schema
 
     json_ld_blocks = [
-        {
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": en_body["h1Crumb"],
-            "description": en_meta["description"],
-            "image": images,
-            "datePublished": article["publishedISO"],
-            "dateModified": article["modifiedISO"],
-            "author": {
-                "@type": "Organization",
-                "name": "Iron Custom Motors",
-                "url": f"{DOMAIN}/about/",
-            },
-            "publisher": {"@id": f"{DOMAIN}/#business"},
-            "mainEntityOfPage": {"@type": "WebPage", "@id": page_url},
-            "url": page_url,
-            "inLanguage": "en",
-            "articleSection": "Workshop guides",
-            "keywords": ", ".join(article["keywords"]["en"]),
-            "video": video_schema,
-        },
+        blog_posting_schema,
         {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -431,70 +500,101 @@ def render_article(slug, article):
         json_ld_blocks,
         og_image=hero_img_url,
         og_type="article",
+        preload_html=hero_preload_links(hero_img_path),
     ).replace(
         "window.ICM_I18N_PAGE = {};",
         f"window.ICM_I18N_PAGE = {json.dumps(inline_i18n, ensure_ascii=False)};",
     )
 
-    intro_paragraphs = "\n".join(
-        f'<p data-i18n="{pre}.intro.p{idx}">{trusted_html(paragraph)}</p>'
-        for idx, paragraph in enumerate(en_body["intro"]["paragraphs"], start=1)
-    )
-
-    section_parts = []
-    for idx, section in enumerate(en_body["sections"], start=1):
-        paragraph_html = "\n".join(
-            f'<p data-i18n="{pre}.section{idx}.p{p_idx}">{trusted_html(paragraph)}</p>'
-            for p_idx, paragraph in enumerate(section.get("paragraphs", []), start=1)
-        )
-        if "bullets" in section:
-            bullets = "\n".join(
-                f'<li data-i18n="{pre}.section{idx}.b{b_idx}">{trusted_html(bullet)}</li>'
-                for b_idx, bullet in enumerate(section["bullets"], start=1)
+    def render_content_block(s_idx, b_idx, block):
+        block_key = f"{pre}.content{s_idx}.block{b_idx}"
+        if block["type"] == "p":
+            return f'<p data-i18n="{block_key}.text">{trusted_html(block["text"])}</p>'
+        if block["type"] in ("ul", "ol"):
+            items = "\n".join(
+                f'<li data-i18n="{block_key}.item{item_idx}">{trusted_html(item)}</li>'
+                for item_idx, item in enumerate(block["items"], start=1)
             )
-            list_html = f'<ul class="blog-list">\n{bullets}\n</ul>'
-            section_body = "\n".join(part for part in [paragraph_html, list_html] if part)
-        else:
-            section_body = paragraph_html
-        section_parts.append(f'''<section>
+            tag = "ol" if block["type"] == "ol" else "ul"
+            class_name = "blog-list blog-ordered-list" if block["type"] == "ol" else "blog-list"
+            return f'<{tag} class="{class_name}">\n{items}\n</{tag}>'
+        if block["type"] == "image":
+            return render_media_figure(
+                article,
+                block["image"],
+                block["alt"],
+                f"{block_key}.alt",
+                caption=block.get("caption"),
+                caption_key=f"{block_key}.caption",
+            )
+        raise ValueError(f"Unsupported blog content block type: {block['type']}")
+
+    def render_content_sections(indexed_sections=None):
+        if indexed_sections is None:
+            indexed_sections = list(enumerate(en_body["contentSections"], start=1))
+        section_parts = []
+        for s_idx, section in indexed_sections:
+            title = section.get("title")
+            class_name = section.get("className", "")
+            class_attr = f' class="{a(class_name)}"' if class_name else ""
+            title_html = ""
+            if title:
+                title_html = f'<h2 data-i18n="{pre}.content{s_idx}.title">{h(title)}</h2>\n'
+            block_html = "\n".join(
+                render_content_block(s_idx, b_idx, block)
+                for b_idx, block in enumerate(section.get("blocks", []), start=1)
+            )
+            section_parts.append(f'''<section{class_attr}>
+{title_html}{block_html}
+</section>''')
+        return "\n\n".join(section_parts)
+
+    if "contentSections" in en_body:
+        indexed_content_sections = list(enumerate(en_body["contentSections"], start=1))
+        article_cta_html = ""
+        if indexed_content_sections and indexed_content_sections[-1][1].get("className") == "blog-cta-box":
+            article_cta_html = render_content_sections([indexed_content_sections[-1]])
+            indexed_content_sections = indexed_content_sections[:-1]
+        article_body_main = render_content_sections(indexed_content_sections)
+    else:
+        intro_paragraphs = "\n".join(
+            f'<p data-i18n="{pre}.intro.p{idx}">{trusted_html(paragraph)}</p>'
+            for idx, paragraph in enumerate(en_body["intro"]["paragraphs"], start=1)
+        )
+
+        section_parts = []
+        for idx, section in enumerate(en_body["sections"], start=1):
+            paragraph_html = "\n".join(
+                f'<p data-i18n="{pre}.section{idx}.p{p_idx}">{trusted_html(paragraph)}</p>'
+                for p_idx, paragraph in enumerate(section.get("paragraphs", []), start=1)
+            )
+            if "bullets" in section:
+                bullets = "\n".join(
+                    f'<li data-i18n="{pre}.section{idx}.b{b_idx}">{trusted_html(bullet)}</li>'
+                    for b_idx, bullet in enumerate(section["bullets"], start=1)
+                )
+                list_html = f'<ul class="blog-list">\n{bullets}\n</ul>'
+                section_body = "\n".join(part for part in [paragraph_html, list_html] if part)
+            else:
+                section_body = paragraph_html
+            section_parts.append(f'''<section>
 <h2 data-i18n="{pre}.section{idx}.title">{h(section["title"])}</h2>
 {section_body}
 </section>''')
-    sections_html = "\n\n".join(section_parts)
+        sections_html = "\n\n".join(section_parts)
 
-    faq_html = "\n".join(
-        f'''<details class="blog-faq-item">
-<summary class="q" data-i18n="{pre}.faq{idx}.q">{h(faq["q"])}</summary>
-<div class="a"><p data-i18n="{pre}.faq{idx}.a">{h(faq["a"])}</p></div>
-</details>'''
-        for idx, faq in enumerate(en_body["faqs"], start=1)
-    )
+        media_html = render_media_figure(
+            article,
+            article["imageHero"],
+            en_body["imageAlt"],
+            f"{pre}.imageAlt",
+            caption=en_body.get("imageCaption"),
+            caption_key=f"{pre}.imageCaption",
+        )
 
-    body = f'''<main>
-<article>
-<section class="subpage blog-article">
-<div aria-hidden="true" class="bg" style="{hero_background_css(hero_img_path)}"></div>
-<div aria-hidden="true" class="scrim"></div>
-<div class="container">
-<div class="crumb"><a data-i18n="{pre}.breadHome" href="/">Home</a><span class="sep">→</span><a data-i18n="{pre}.breadBlog" href="/blog/">Blog</a><span class="sep">→</span><span data-i18n="{pre}.h1Crumb">{h(en_body["h1Crumb"])}</span></div>
-<div class="date" data-i18n="{pre}.eyebrow">{h(en_body["eyebrow"])}</div>
-<h1 data-i18n="{pre}.h1">{en_body["h1"]}</h1>
-<p class="lede" data-i18n="{pre}.lede">{h(en_body["lede"])}</p>
-</div>
-</section>
-
-<section class="blog-article-body">
-<div class="container">
-<section class="blog-article-lead">
-<h2 data-i18n="{pre}.intro.title">{h(en_body["intro"]["title"])}</h2>
-{intro_paragraphs}
-</section>
-
-<figure class="blog-media">
-<img alt="{a(en_body["imageAlt"])}" data-i18n-alt="{pre}.imageAlt" loading="lazy" src="{article_image(article, article["imageHero"])}" width="{article["imageDims"][article["imageHero"]][0]}" height="{article["imageDims"][article["imageHero"]][1]}"/>
-<figcaption data-i18n="{pre}.imageCaption">{h(en_body["imageCaption"])}</figcaption>
-</figure>
-
+        video_html = ""
+        if article.get("youtubeEmbed") and article.get("youtubeUrl"):
+            video_html = f'''
 <section class="blog-video">
 <div class="video-copy">
 <span class="video-eyebrow" data-i18n="{pre}.videoEyebrow">{h(en_body["videoEyebrow"])}</span>
@@ -505,9 +605,55 @@ def render_article(slug, article):
 <div class="video-frame">
 <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="{article["youtubeEmbed"]}" title="{a(en_body["videoTitle"])}" data-i18n-title="{pre}.videoTitle"></iframe>
 </div>
+</section>'''
+
+        article_cta_html = f'''<section class="blog-cta-box">
+<span class="h-eyebrow" data-i18n="{pre}.ctaEyebrow">{h(en_body["ctaEyebrow"])}</span>
+<h2 data-i18n="{pre}.ctaTitle">{h(en_body["ctaTitle"])}</h2>
+<p data-i18n="{pre}.ctaText">{trusted_html(en_body["ctaText"])}</p>
+<div class="btns">
+<a class="btn btn-primary" data-wa="" href="https://wa.me/351917961230" rel="noopener" target="_blank"><span data-i18n="{pre}.btnWA">{h(en_body["btnWA"])}</span>{ARROW_SVG}</a>
+<a class="btn btn-ghost" data-i18n="{pre}.btnBack" href="/blog/">{h(en_body["btnBack"])}</a>
+</div>
+</section>'''
+
+        article_body_main = f'''<section class="blog-article-lead">
+<h2 data-i18n="{pre}.intro.title">{h(en_body["intro"]["title"])}</h2>
+{intro_paragraphs}
 </section>
 
-{sections_html}
+{media_html}
+
+{video_html}
+
+{sections_html}'''
+
+    faq_html = "\n".join(
+        f'''<details class="blog-faq-item">
+<summary class="q" data-i18n="{pre}.faq{idx}.q">{h(faq["q"])}</summary>
+<div class="a"><p data-i18n="{pre}.faq{idx}.a">{h(faq["a"])}</p></div>
+</details>'''
+        for idx, faq in enumerate(en_body["faqs"], start=1)
+    )
+    hero_alt_text = en_body.get("heroAlt", en_body.get("imageAlt", en_body["h1Crumb"]))
+    hero_alt_key = f"{pre}.heroAlt" if "heroAlt" in en_body else f"{pre}.imageAlt"
+
+    body = f'''<main>
+<article>
+<section class="subpage blog-article">
+{render_picture(hero_img_path, hero_alt_text, hero_alt_key, article_hero_dims(article), sizes="100vw", loading=None, fetchpriority="high", class_name="hero-media")}
+<div aria-hidden="true" class="scrim"></div>
+<div class="container">
+<div class="crumb"><a data-i18n="{pre}.breadHome" href="/">Home</a><span class="sep">→</span><a data-i18n="{pre}.breadBlog" href="/blog/">Blog</a><span class="sep">→</span><span data-i18n="{pre}.h1Crumb">{h(en_body["h1Crumb"])}</span></div>
+<div class="date" data-i18n="{pre}.eyebrow">{h(en_body["eyebrow"])}</div>
+<h1 data-i18n="{pre}.h1">{en_body["h1"]}</h1>
+<p class="lede" data-i18n="{pre}.lede">{trusted_html(en_body["lede"])}</p>
+</div>
+</section>
+
+<section class="blog-article-body">
+<div class="container">
+{article_body_main}
 
 <section>
 <h2 data-i18n="{pre}.faqTitle">{h(en_body["faqTitle"])}</h2>
@@ -516,15 +662,7 @@ def render_article(slug, article):
 </div>
 </section>
 
-<section class="blog-cta-box">
-<span class="h-eyebrow" data-i18n="{pre}.ctaEyebrow">{h(en_body["ctaEyebrow"])}</span>
-<h2 data-i18n="{pre}.ctaTitle">{h(en_body["ctaTitle"])}</h2>
-<p data-i18n="{pre}.ctaText">{trusted_html(en_body["ctaText"])}</p>
-<div class="btns">
-<a class="btn btn-primary" data-wa="" href="https://wa.me/351917961230" rel="noopener" target="_blank"><span data-i18n="{pre}.btnWA">{h(en_body["btnWA"])}</span>{ARROW_SVG}</a>
-<a class="btn btn-ghost" data-i18n="{pre}.btnBack" href="/blog/">{h(en_body["btnBack"])}</a>
-</div>
-</section>
+{article_cta_html}
 </div>
 </section>
 </article>

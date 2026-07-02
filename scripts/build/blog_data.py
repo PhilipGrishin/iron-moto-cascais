@@ -5,6 +5,10 @@ Each future post should have full multilingual content (en, ru, uk, pt).
 Post slug will be keyed in BLOG_POSTS.
 """
 
+import html
+import re
+from pathlib import Path
+
 # ============================================================
 # Hub /blog/ — title + description + heading per language
 # ============================================================
@@ -27,6 +31,249 @@ BLOG_HUB_META = {
         "description": "Blog prático de motos da Iron Custom Motors em Cascais: notas de oficina, manutenção, diagnóstico, peças, upgrades e conselhos para comprar motos usadas.",
     },
 }
+
+_BEAR650_SLUG = "royal-enfield-bear-650-fork-oil-case-study"
+_BEAR650_SOURCE = Path(__file__).resolve().parent / "content" / "bear650_fork_blog_4lang.md"
+_BEAR650_LANGS = (
+    ("en", "ENGLISH"),
+    ("pt", "PORTUGUÊS"),
+    ("ru", "РУССКИЙ"),
+    ("uk", "УКРАЇНСЬКА"),
+)
+_BEAR650_LABELS = {
+    "en": {
+        "eyebrow": "Workshop case study · 29 June 2026",
+        "publishedLabel": "Published 29 June 2026",
+        "breadHome": "Home",
+        "breadBlog": "Blog",
+        "faqTitle": "FAQ",
+    },
+    "pt": {
+        "eyebrow": "Caso de oficina · 29 de junho de 2026",
+        "publishedLabel": "Publicado 29 de junho de 2026",
+        "breadHome": "Início",
+        "breadBlog": "Blog",
+        "faqTitle": "FAQ",
+    },
+    "ru": {
+        "eyebrow": "Кейс из мастерской · 29 июня 2026",
+        "publishedLabel": "Опубликовано 29 июня 2026",
+        "breadHome": "Главная",
+        "breadBlog": "Блог",
+        "faqTitle": "FAQ",
+    },
+    "uk": {
+        "eyebrow": "Кейс із майстерні · 29 червня 2026",
+        "publishedLabel": "Опубліковано 29 червня 2026",
+        "breadHome": "Головна",
+        "breadBlog": "Блог",
+        "faqTitle": "FAQ",
+    },
+}
+
+
+def _inline_markdown(value):
+    tokens = []
+
+    def stash(rendered):
+        tokens.append(rendered)
+        return f"@@ICM_TOKEN_{len(tokens) - 1}@@"
+
+    def link_repl(match):
+        label, href = match.group(1), match.group(2)
+        return stash(f'<a href="{html.escape(href, quote=True)}">{html.escape(label, quote=False)}</a>')
+
+    value = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", link_repl, value)
+    value = re.sub(
+        r"\*\*(.+?)\*\*",
+        lambda match: stash(f"<strong>{_inline_markdown(match.group(1))}</strong>"),
+        value,
+    )
+    value = re.sub(
+        r"(?<!\*)\*(.+?)\*(?!\*)",
+        lambda match: stash(f"<em>{_inline_markdown(match.group(1))}</em>"),
+        value,
+    )
+    value = html.escape(value, quote=False)
+
+    def restore(match):
+        return tokens[int(match.group(1))]
+
+    return re.sub(r"@@ICM_TOKEN_(\d+)@@", restore, value)
+
+
+def _split_bear650_sections(source):
+    found = []
+    for code, heading in _BEAR650_LANGS:
+        match = re.search(rf"^## {re.escape(heading)}\s*$", source, re.MULTILINE)
+        if not match:
+            raise ValueError(f"Missing Bear 650 language heading: {heading}")
+        found.append((code, match.start()))
+    found.sort(key=lambda item: item[1])
+    sections = {}
+    for idx, (code, start) in enumerate(found):
+        end = found[idx + 1][1] if idx + 1 < len(found) else len(source)
+        sections[code] = source[start:end].strip()
+    return sections
+
+
+def _flush_bear650_paragraph(blocks, buffer):
+    if buffer:
+        text = " ".join(line.strip() for line in buffer).strip()
+        blocks.append({"type": "p", "text": _inline_markdown(text)})
+        buffer.clear()
+
+
+def _flush_bear650_list(blocks, items, list_type):
+    if items:
+        blocks.append({"type": "ol" if list_type == "ol" else "ul", "items": [_inline_markdown(item) for item in items]})
+        items.clear()
+    return None
+
+
+def _parse_bear650_blocks(lines):
+    blocks = []
+    paragraph = []
+    list_items = []
+    list_type = None
+    for line in lines:
+        stripped = line.strip()
+        if stripped == "---":
+            continue
+        if not stripped:
+            _flush_bear650_paragraph(blocks, paragraph)
+            list_type = _flush_bear650_list(blocks, list_items, list_type)
+            continue
+        image_match = re.match(r"`\[IMAGE (\d+)\]` ALT:\s*(.+)", stripped)
+        if image_match:
+            _flush_bear650_paragraph(blocks, paragraph)
+            list_type = _flush_bear650_list(blocks, list_items, list_type)
+            blocks.append({"type": "image", "image": int(image_match.group(1)), "alt": image_match.group(2).strip()})
+            continue
+        bullet_match = re.match(r"-\s+(.+)", stripped)
+        ordered_match = re.match(r"\d+\.\s+(.+)", stripped)
+        if bullet_match or ordered_match:
+            _flush_bear650_paragraph(blocks, paragraph)
+            current_type = "ol" if ordered_match else "ul"
+            if list_type and list_type != current_type:
+                list_type = _flush_bear650_list(blocks, list_items, list_type)
+            list_type = current_type
+            list_items.append((ordered_match or bullet_match).group(1).strip())
+            continue
+        list_type = _flush_bear650_list(blocks, list_items, list_type)
+        paragraph.append(stripped)
+    _flush_bear650_paragraph(blocks, paragraph)
+    _flush_bear650_list(blocks, list_items, list_type)
+    return blocks
+
+
+def _parse_bear650_language(raw):
+    lines = raw.splitlines()
+    meta = {}
+    h1 = None
+    body_lines = []
+    in_body = False
+    for line in lines[1:]:
+        if line.startswith("**SEO title:**"):
+            meta["title"] = line.split("**SEO title:**", 1)[1].strip()
+        elif line.startswith("**Meta:**"):
+            meta["description"] = line.split("**Meta:**", 1)[1].strip()
+        elif line.startswith("**Slug:**"):
+            meta["slug"] = line.split("**Slug:**", 1)[1].strip()
+        elif line.startswith("# "):
+            h1 = line[2:].strip()
+            in_body = True
+        elif in_body:
+            body_lines.append(line)
+    if not (meta.get("title") and meta.get("description") and h1):
+        raise ValueError("Incomplete Bear 650 blog source metadata")
+
+    body = "\n".join(body_lines).strip()
+    before_faq, after_faq = body.split("\n## FAQ\n", 1)
+    faq_text, cta_text = after_faq.split("\n## ", 1)
+    cta_title, cta_rest = cta_text.split("\n", 1)
+
+    faq_items = []
+    for paragraph in [part.strip() for part in faq_text.strip().split("\n\n") if part.strip()]:
+        match = re.match(r"\*\*(.*?)\*\*\s*(.*)", paragraph, re.S)
+        if not match:
+            raise ValueError(f"Cannot parse Bear 650 FAQ item: {paragraph[:80]}")
+        faq_items.append({"q": match.group(1).strip(), "a": _inline_markdown(match.group(2).strip())})
+    if len(faq_items) != 6:
+        raise ValueError(f"Expected 6 Bear 650 FAQ items, got {len(faq_items)}")
+
+    content_sections = []
+    chunks = re.split(r"\n(?=## )", before_faq.strip())
+    preamble_blocks = _parse_bear650_blocks(chunks[0].splitlines())
+    preamble_paragraphs = [block for block in preamble_blocks if block["type"] == "p"]
+    if not preamble_paragraphs:
+        raise ValueError("Bear 650 source has no lead paragraph")
+    lede = preamble_paragraphs[0]["text"]
+    remaining_preamble = preamble_blocks[1:]
+    if remaining_preamble:
+        content_sections.append({"blocks": remaining_preamble})
+
+    for chunk in chunks[1:]:
+        chunk_lines = chunk.splitlines()
+        title = chunk_lines[0][3:].strip()
+        content_sections.append({"title": title, "blocks": _parse_bear650_blocks(chunk_lines[1:])})
+
+    cta_blocks = _parse_bear650_blocks([line for line in cta_rest.splitlines() if line.strip() != "---"])
+    content_sections.append({"title": cta_title.strip(), "blocks": cta_blocks, "className": "blog-cta-box"})
+
+    hero_alt = ""
+    for section in content_sections:
+        for block in section.get("blocks", []):
+            if block.get("type") == "image" and block.get("image") == 1:
+                hero_alt = block["alt"]
+                break
+        if hero_alt:
+            break
+
+    return {
+        "meta": meta,
+        "h1": h1,
+        "lede": lede,
+        "heroAlt": hero_alt,
+        "contentSections": content_sections,
+        "faqs": faq_items,
+    }
+
+
+def _load_bear650_post():
+    source = _BEAR650_SOURCE.read_text(encoding="utf-8")
+    parsed = {code: _parse_bear650_language(raw) for code, raw in _split_bear650_sections(source).items()}
+    post_meta = {}
+    post_body = {}
+    for code in ("en", "ru", "uk", "pt"):
+        item = parsed[code]
+        post_meta[code] = {
+            "title": item["meta"]["title"],
+            "description": item["meta"]["description"],
+            "excerpt": item["meta"]["description"],
+        }
+        post_body[code] = {
+            **_BEAR650_LABELS[code],
+            "h1": item["h1"],
+            "h1Crumb": item["h1"],
+            "lede": item["lede"],
+            "heroAlt": item["heroAlt"],
+            "contentSections": item["contentSections"],
+            "faqs": item["faqs"],
+        }
+    return {
+        "publishedISO": "2026-06-29",
+        "modifiedISO": "2026-07-02",
+        "heroImage": "/photos/blog/blog-royal-enfield-bear-650-fork-oil-case-study-hero-1600.jpg",
+        "heroImageDims": (1536, 1024),
+        "imageBase": "/photos/blog/blog-royal-enfield-bear-650-fork-oil-case-study",
+        "imageHero": 1,
+        "imageCount": 2,
+        "imageDims": {1: (1600, 1200), 2: (1600, 1200)},
+        "sourceLocalizedSlugs": {code: _BEAR650_SLUG for code in ("en", "ru", "pt", "uk")},
+        "meta": post_meta,
+        "body": post_body,
+    }
 
 BLOG_HUB_BODY = {
     "en": {
@@ -3851,3 +4098,5 @@ BLOG_POSTS["motorcycle-tyre-fitting-specialist-cascais"] = {
         "uk": ["мотошиномонтаж", "балансування мотоциклетних коліс", "шиномонтаж Cascais", "широкі мото шини", "Iron Custom Motors шиномонтаж"],
     },
 }
+
+BLOG_POSTS[_BEAR650_SLUG] = _load_bear650_post()

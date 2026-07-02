@@ -73,6 +73,7 @@ EN_PAGES = [
     "blog/motorcycle-brake-pad-replacement-cascais/index.html",
     "blog/front-fork-service-motorcycle-cascais/index.html",
     "blog/motorcycle-tyre-fitting-specialist-cascais/index.html",
+    "blog/royal-enfield-bear-650-fork-oil-case-study/index.html",
     "news/index.html",
     "news/ericeira-kustom-fest-2026/index.html",
     "news/opens-new-workshop-in-cascais/index.html",
