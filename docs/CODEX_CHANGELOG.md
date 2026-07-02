@@ -14,6 +14,19 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-02 - Stable sitemap lastmod dates
+
+- Commit: this commit
+- Changed: Updated `build_sitemap.py` so sitemap `lastmod` values use real
+  per-page content dates with timezone instead of the deploy/build date.
+  Blog/news URLs use explicit article publish/modified dates; other pages use
+  semantic Git history for the served HTML with a filesystem mtime fallback.
+  Documented the rule in project instructions and build docs.
+- Verified: Pending final local rebuild, byte-stability check, SEO validation,
+  deploy and production sitemap check.
+- Notes: Keep sitemap dates and structured-data dates tied to real content
+  changes, never deployment time.
+
 ## 2026-07-02 - Article schema recommended-field cleanup
 
 - Commit: this commit

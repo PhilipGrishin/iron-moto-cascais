@@ -151,6 +151,12 @@ contains a stronger current source.
   `scripts/build/build_sitemap.py` PAGES list AND get hreflang
   alternates on every language variant. New page paths also go
   into `scripts/build/localize_internal_links.py` LOCALIZED_PATHS.
+- Sitemap `<lastmod>` must reflect each page's real last-content-change
+  date from Git history of that page's source/served HTML, per language,
+  in ISO-8601 with timezone. Never stamp all URLs with the build/deploy
+  time. An unchanged page must keep the same `lastmod` across deploys.
+- Structured-data `datePublished` and `dateModified` must use real
+  content dates with timezone, not deploy time.
 
 ## Conventions
 

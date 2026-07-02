@@ -1,13 +1,40 @@
 #!/usr/bin/env python3
-"""Generate sitemap.xml with all language versions and xhtml:link alternates."""
+"""Generate sitemap.xml with all language versions and xhtml:link alternates.
 
-from datetime import date
+Sitemap lastmod values must be stable content dates, not build dates. Blog and
+news articles use their registered publish/modified dates. Other pages use the
+last Git commit whose served HTML changed semantically, ignoring shared chrome
+and generated boilerplate that should not trigger crawler recrawl priority.
+"""
+
+from __future__ import annotations
+
+from datetime import datetime, time
+import re
+import subprocess
 from pathlib import Path
+from functools import lru_cache
+from xml.sax.saxutils import escape as xml_escape
+
+from bs4 import BeautifulSoup, FeatureNotFound, NavigableString
+
+try:
+    from zoneinfo import ZoneInfo
+except ImportError:  # pragma: no cover - Python < 3.9 fallback
+    ZoneInfo = None
 
 from brand_pages_data import BRAND_ORDER
+from blog_data import BLOG_POSTS
+from news_data import NEWS_ARTICLES
 
 DOMAIN = "https://ironcustommotors.com"
 SITE_ROOT = Path(__file__).resolve().parents[2]
+LISBON_TZ = ZoneInfo("Europe/Lisbon") if ZoneInfo else None
+try:
+    BeautifulSoup("", "lxml")
+    HTML_PARSER = "lxml"
+except FeatureNotFound:
+    HTML_PARSER = "html.parser"
 
 # (path, changefreq, priority)
 PAGES = [
@@ -55,7 +82,6 @@ PAGES = [
 
 LANGS = ["en", "ru", "uk", "pt"]
 HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
-TODAY = date.today().isoformat()
 CUSTOM_LOCALIZED_PATHS = {
     "motorcycle-tyre-service/": {
         "en": "motorcycle-tyre-service/",
@@ -66,6 +92,61 @@ CUSTOM_LOCALIZED_PATHS = {
 }
 
 
+def run_git(args):
+    try:
+        result = subprocess.run(
+            ["git", *args],
+            cwd=SITE_ROOT,
+            check=True,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return ""
+    return result.stdout
+
+
+def normalize_iso(value):
+    value = str(value).strip()
+    if "T" in value:
+        if len(value) >= 5 and value[-5] in ("+", "-") and value[-3] != ":":
+            return f"{value[:-2]}:{value[-2:]}"
+        return value
+
+    if LISBON_TZ:
+        dt = datetime.combine(datetime.fromisoformat(value).date(), time(10, 0), tzinfo=LISBON_TZ)
+        return dt.isoformat(timespec="seconds")
+
+    month = int(value[5:7])
+    offset = "+01:00" if 4 <= month <= 10 else "+00:00"
+    return f"{value}T10:00:00{offset}"
+
+
+def article_lastmod(article):
+    return normalize_iso(article.get("modifiedISO") or article["publishedISO"])
+
+
+EXPLICIT_LASTMOD = {
+    **{
+        f"blog/{slug}/": article_lastmod(article)
+        for slug, article in BLOG_POSTS.items()
+    },
+    **{
+        f"news/{slug}/": article_lastmod(article)
+        for slug, article in NEWS_ARTICLES.items()
+    },
+}
+EXPLICIT_LASTMOD["blog/"] = max(
+    article_lastmod(article)
+    for article in BLOG_POSTS.values()
+)
+EXPLICIT_LASTMOD["news/"] = max(
+    article_lastmod(article)
+    for article in NEWS_ARTICLES.values()
+)
+
+
 def url_for(lang, path):
     if path in CUSTOM_LOCALIZED_PATHS:
         return f"{DOMAIN}/{CUSTOM_LOCALIZED_PATHS[path][lang]}"
@@ -74,17 +155,121 @@ def url_for(lang, path):
     return f"{DOMAIN}/{lang}/{path}"
 
 
+def relative_url_path(lang, path):
+    if path in CUSTOM_LOCALIZED_PATHS:
+        return CUSTOM_LOCALIZED_PATHS[path][lang]
+    if lang == "en":
+        return path
+    return f"{lang}/{path}"
+
+
+def html_file_for(lang, path):
+    url_path = relative_url_path(lang, path).strip("/")
+    if not url_path:
+        return SITE_ROOT / "index.html"
+    return SITE_ROOT / url_path / "index.html"
+
+
+def clean_text(value):
+    return re.sub(r"\s+", " ", str(value)).strip()
+
+
+def stable_attr_value(value):
+    if isinstance(value, list):
+        return " ".join(str(item) for item in value)
+    return str(value)
+
+
+def semantic_html(html):
+    soup = BeautifulSoup(html, HTML_PARSER)
+    title = clean_text(soup.title.get_text(" ", strip=True)) if soup.title else ""
+    description = ""
+    for meta in soup.find_all("meta"):
+        if str(meta.get("name", "")).lower() == "description":
+            description = clean_text(meta.get("content", ""))
+            break
+
+    target = soup.find("main") or soup
+    for node in target.find_all(["script", "style"]):
+        node.decompose()
+
+    pieces = [f"title:{title}", f"description:{description}"]
+    tracked_attrs = ("href", "src", "srcset", "alt", "title", "aria-label", "id")
+    for node in target.descendants:
+        if isinstance(node, NavigableString):
+            text = clean_text(node)
+            if text:
+                pieces.append(f"text:{text}")
+            continue
+        if not getattr(node, "name", None):
+            continue
+        attrs = [
+            f"{attr}={stable_attr_value(node[attr])}"
+            for attr in tracked_attrs
+            if node.has_attr(attr)
+        ]
+        pieces.append(f"tag:{node.name}:{'|'.join(attrs)}")
+    return "\n".join(pieces)
+
+
+def git_file_at(commit, rel_path):
+    return run_git(["show", f"{commit}:{rel_path}"])
+
+
+def fs_lastmod(path):
+    dt = datetime.fromtimestamp(path.stat().st_mtime).astimezone()
+    return dt.isoformat(timespec="seconds")
+
+
+@lru_cache(maxsize=None)
+def semantic_git_lastmod(rel_path):
+    file_path = SITE_ROOT / rel_path
+    if not file_path.exists():
+        raise FileNotFoundError(f"Cannot determine sitemap lastmod; missing page file: {rel_path}")
+
+    current = semantic_html(file_path.read_text(encoding="utf-8"))
+    log = run_git(["log", "--follow", "--format=%H%x00%cI", "--", rel_path])
+    if not log.strip():
+        return fs_lastmod(file_path)
+
+    candidate = None
+    for line in log.splitlines():
+        if "\x00" not in line:
+            continue
+        commit, commit_date = line.split("\x00", 1)
+        historical = git_file_at(commit, rel_path)
+        if not historical:
+            continue
+        if semantic_html(historical) == current:
+            candidate = normalize_iso(commit_date)
+            continue
+        if candidate:
+            break
+
+    return candidate or fs_lastmod(file_path)
+
+
+def lastmod_for(lang, path):
+    if path in EXPLICIT_LASTMOD:
+        return EXPLICIT_LASTMOD[path]
+    html_file = html_file_for(lang, path)
+    rel_path = html_file.relative_to(SITE_ROOT).as_posix()
+    return semantic_git_lastmod(rel_path)
+
+
 def build_url_entry(lang, path, changefreq, priority):
     primary = url_for(lang, path)
     parts = [f"  <url>"]
-    parts.append(f"    <loc>{primary}</loc>")
-    parts.append(f"    <lastmod>{TODAY}</lastmod>")
+    parts.append(f"    <loc>{xml_escape(primary)}</loc>")
+    parts.append(f"    <lastmod>{lastmod_for(lang, path)}</lastmod>")
     parts.append(f"    <changefreq>{changefreq}</changefreq>")
     parts.append(f"    <priority>{priority}</priority>")
     # Alternates pointing to all language versions, including self
     for alt in LANGS:
-        parts.append(f'    <xhtml:link rel="alternate" hreflang="{HREFLANG_CODES[alt]}" href="{url_for(alt, path)}"/>')
-    parts.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{url_for("en", path)}"/>')
+        parts.append(
+            f'    <xhtml:link rel="alternate" hreflang="{HREFLANG_CODES[alt]}" href="{xml_escape(url_for(alt, path))}"/>'
+        )
+    parts.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{xml_escape(url_for("en", path))}"/>')
     parts.append(f"  </url>")
     return "\n".join(parts)
 

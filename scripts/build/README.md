@@ -62,6 +62,22 @@ python3 -m pip install -r requirements.txt
 | `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD, localized internal links, SEO robots meta and local assets |
 | `validate_brand_pages.py` | Validates brand page registry, 4 language outputs, schema, sitemap, optimized hero assets, deploy workflow and reciprocal brand links |
 
+## Sitemap And Structured-Data Dates
+
+Sitemap `<lastmod>` must reflect each page's real last-content-change date
+from Git history of that page's source/served HTML, per language, in ISO-8601
+with timezone. Never stamp all URLs with the build/deploy time. An unchanged
+page must keep the same `lastmod` across deploys.
+
+`build_sitemap.py` uses explicit publish/modified dates for blog and news
+articles. Other pages use the last Git commit where the served HTML changed
+semantically, ignoring serialization-only churn from shared build tools. If Git
+cannot provide a reliable date, the generator falls back to the file's real
+filesystem modification time, never the current build time.
+
+Structured-data `datePublished` and `dateModified` follow the same principle:
+use real content dates with timezone, not deploy time.
+
 ### Data
 
 | File | Used by |

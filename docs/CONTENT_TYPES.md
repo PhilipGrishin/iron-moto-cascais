@@ -12,6 +12,12 @@ scalable.
 - Use absolute asset paths (`/photos/...`, `/assets/...`).
 - Keep localized internal links inside the current language subtree.
 - If `assets/main.css` or `assets/main.js` changes, bump cache-bust everywhere.
+- Sitemap `<lastmod>` must reflect each page's real last-content-change date
+  from Git history of that page's source/served HTML, per language, in
+  ISO-8601 with timezone. Never stamp all URLs with the build/deploy time.
+  An unchanged page must keep the same `lastmod` across deploys.
+- Structured-data `datePublished` and `dateModified` must use real content
+  dates with timezone, not deploy time.
 - After push, verify the exact production URLs changed by the task.
 
 ## New Brand Service Page
