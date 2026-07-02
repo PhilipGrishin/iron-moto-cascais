@@ -230,6 +230,15 @@ def apply_translations(soup, lang: str) -> dict:
         if key in full_dict:
             el["title"] = full_dict[key]
 
+    for attr, prefix in (
+        ("data-i18n-proj-label", "proj.label"),
+        ("data-i18n-proj-tag", "proj.tag"),
+    ):
+        for el in soup.find_all(attrs={attr: True}):
+            key = f"{prefix}.{el[attr]}"
+            if key in full_dict:
+                replace_element_html(el, full_dict[key])
+
     return full_dict
 
 

@@ -118,7 +118,7 @@ UI = {
 def detect_cache_bust() -> str:
     text = (SITE_ROOT / "index.html").read_text(encoding="utf-8")
     match = re.search(r"/assets/main\.css\?v=([a-zA-Z0-9]+)", text)
-    return match.group(1) if match else "20260629c"
+    return match.group(1) if match else "20260702a"
 
 
 CACHE_BUST = detect_cache_bust()

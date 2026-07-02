@@ -1,6 +1,6 @@
 # Iron Custom Motors Website - Project State
 
-Last updated: 2026-06-29
+Last updated: 2026-07-02
 Production: https://ironcustommotors.com/  
 Repository: https://github.com/dreamcarua/iron-moto-cascais
 
@@ -39,7 +39,7 @@ goal is SEO, local search, AI-citation readiness and high-quality service leads.
 - Current sitemap: 45 indexable path patterns x 4 languages = 180 URLs.
 - Current repo HTML count: 183 files, including `404.html` and 2 legacy noindex
   redirect stubs.
-- Current cache-bust convention: `?v=20260629c`.
+- Current cache-bust convention: `?v=20260702a`.
 - Production deploy is triggered by pushing `main`.
 - Cloudflare fronts the domain and may cache recently deployed HTML/assets.
 

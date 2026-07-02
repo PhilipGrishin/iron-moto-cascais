@@ -405,6 +405,16 @@ function applyLang(lang){
     const k = el.getAttribute('data-i18n-alt');
     if(dict[k] !== undefined){ el.setAttribute('alt', String(dict[k])); }
   });
+  document.querySelectorAll('[data-i18n-proj-label]').forEach(el=>{
+    const slug = el.getAttribute('data-i18n-proj-label');
+    const k = 'proj.label.' + slug;
+    if(dict[k] !== undefined){ el.textContent = String(dict[k]); }
+  });
+  document.querySelectorAll('[data-i18n-proj-tag]').forEach(el=>{
+    const slug = el.getAttribute('data-i18n-proj-tag');
+    const k = 'proj.tag.' + slug;
+    if(dict[k] !== undefined){ el.textContent = String(dict[k]); }
+  });
   const cur = document.getElementById('langCurrent');
   if(cur) cur.textContent = lang.toUpperCase();
   document.querySelectorAll('.lang-menu button, .mobile-langs button').forEach(b=>{

@@ -416,38 +416,39 @@ PAGE_I18N["projects"] = {
     },
 }
 
-# Project tiles for /projects/ gallery (image + label per language)
+# Project tiles for /projects/ gallery (image + label per language).
+# Tags mirror the homepage `projects.pN.label` values in assets/main.js.
 PROJECT_TILES = [
     {"slug": "inspirium",     "img": "/photos/projects/inspirium-800.jpg",     "year": "2024",
      "label": {"en": "Inspirium",     "ru": "Inspirium",     "uk": "Inspirium",     "pt": "Inspirium"},
-     "tag":   {"en": "BMW Motorrad Champ. 2023", "ru": "Чемпион BMW Motorrad 2023", "uk": "Чемпіон BMW Motorrad 2023", "pt": "Campeão BMW Motorrad 2023"}},
+     "tag":   {"en": "World Speed Record · Bonneville 2017", "ru": "Мировой рекорд · Bonneville 2017", "uk": "Світовий рекорд · Bonneville 2017", "pt": "Recorde Mundial · Bonneville 2017"}},
     {"slug": "beckman",       "img": "/photos/projects/beckman-800.jpg",       "year": "2022",
      "label": {"en": "Beckman",       "ru": "Beckman",       "uk": "Beckman",       "pt": "Beckman"},
-     "tag":   {"en": "Custom build",  "ru": "Кастом-сборка", "uk": "Кастом-збірка", "pt": "Build custom"}},
+     "tag":   {"en": "AMD World Champion · 2016", "ru": "Чемпион мира AMD · 2016", "uk": "Чемпіон світу AMD · 2016", "pt": "Campeão Mundial AMD · 2016"}},
     {"slug": "unbreakable",   "img": "/photos/projects/unbreakable-800.jpg",   "year": "2021",
      "label": {"en": "Unbreakable",   "ru": "Unbreakable",   "uk": "Unbreakable",   "pt": "Unbreakable"},
-     "tag":   {"en": "Custom build",  "ru": "Кастом-сборка", "uk": "Кастом-збірка", "pt": "Build custom"}},
+     "tag":   {"en": "BMW Motorrad Customizing Champion", "ru": "Победитель BMW Motorrad Customizing", "uk": "Переможець BMW Motorrad Customizing", "pt": "Vencedor BMW Motorrad Customizing"}},
     {"slug": "quanta-r",      "img": "/photos/projects/quanta-r-800.jpg",      "year": "2020",
      "label": {"en": "Quanta-R",      "ru": "Quanta-R",      "uk": "Quanta-R",      "pt": "Quanta-R"},
-     "tag":   {"en": "Custom build",  "ru": "Кастом-сборка", "uk": "Кастом-збірка", "pt": "Build custom"}},
+     "tag":   {"en": "Geneva · Goodwood Concept", "ru": "Концепт Geneva · Goodwood", "uk": "Концепт Geneva · Goodwood", "pt": "Conceito Geneva · Goodwood"}},
     {"slug": "burly",         "img": "/photos/projects/burly-800.jpg",         "year": "2019",
      "label": {"en": "Burly",         "ru": "Burly",         "uk": "Burly",         "pt": "Burly"},
-     "tag":   {"en": "Custom build",  "ru": "Кастом-сборка", "uk": "Кастом-збірка", "pt": "Build custom"}},
+     "tag":   {"en": "BMW R 18 Custom Dragster", "ru": "BMW R 18 кастом-драгстер", "uk": "BMW R 18 кастом-драгстер", "pt": "Custom Dragster BMW R 18"}},
     {"slug": "sturmvogel",    "img": "/photos/projects/sturmvogel-800.jpg",    "year": "2018",
      "label": {"en": "Sturmvogel",    "ru": "Sturmvogel",    "uk": "Sturmvogel",    "pt": "Sturmvogel"},
      "tag":   {"en": "Café Racer podium · Ericeira 2026", "ru": "Café Racer · 2-е место Ericeira 2026", "uk": "Café Racer · 2-ге місце Ericeira 2026", "pt": "Café Racer · 2.º lugar Ericeira 2026"}},
     {"slug": "geometric",     "img": "/photos/projects/geometric-800.jpg",     "year": "2017",
      "label": {"en": "Geometric",     "ru": "Geometric",     "uk": "Geometric",     "pt": "Geometric"},
-     "tag":   {"en": "Bonneville record", "ru": "Рекорд Bonneville", "uk": "Рекорд Bonneville", "pt": "Recorde Bonneville"}},
+     "tag":   {"en": "Retro-Futurist · AMD 2018", "ru": "Ретро-футуризм · AMD 2018", "uk": "Ретро-футуризм · AMD 2018", "pt": "Retro-Futurista · AMD 2018"}},
     {"slug": "joker",         "img": "/photos/projects/joker-800.jpg",         "year": "2016",
      "label": {"en": "Joker",         "ru": "Joker",         "uk": "Joker",         "pt": "Joker"},
-     "tag":   {"en": "Custom build",  "ru": "Кастом-сборка", "uk": "Кастом-збірка", "pt": "Build custom"}},
+     "tag":   {"en": "Custom Harley-Davidson Dyna", "ru": "Кастом Harley-Davidson Dyna", "uk": "Кастом Harley-Davidson Dyna", "pt": "Custom Harley-Davidson Dyna"}},
     {"slug": "hellboy",       "img": "/photos/projects/hellboy-800.jpg",       "year": "2015",
      "label": {"en": "Hell Boy",      "ru": "Hell Boy",      "uk": "Hell Boy",      "pt": "Hell Boy"},
      "tag":   {"en": "Best Paint winner · Ericeira 2026", "ru": "Best Paint · победитель Ericeira 2026", "uk": "Best Paint · переможець Ericeira 2026", "pt": "Vencedor Best Paint · Ericeira 2026"}},
     {"slug": "true-religion", "img": "/photos/projects/true-religion-800.jpg", "year": "2014",
      "label": {"en": "True Religion", "ru": "True Religion", "uk": "True Religion", "pt": "True Religion"},
-     "tag":   {"en": "Custom build",  "ru": "Кастом-сборка", "uk": "Кастом-збірка", "pt": "Build custom"}},
+     "tag":   {"en": "American Custom · Harley spirit", "ru": "Американский кастом · Дух Harley", "uk": "Американський кастом · Дух Harley", "pt": "Custom Americano · Espírito Harley"}},
 ]
 
 # =========================================================================

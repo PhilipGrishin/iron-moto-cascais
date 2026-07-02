@@ -14,6 +14,19 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-02 - Project gallery award label parity
+
+- Commit: this commit
+- Changed: Updated `/projects/` gallery tile tags to mirror the homepage
+  `projects.pN.label` award/category labels for all 10 projects in EN/RU/UK/PT;
+  added build-time and runtime support for `data-i18n-proj-label` and
+  `data-i18n-proj-tag`; bumped asset cache-bust to `20260702a`.
+- Verified: Focused source/HTML parity check confirmed all 10 project tags on
+  EN/RU/UK/PT `/projects/` match homepage labels; `node --check assets/main.js`;
+  Python compile checks; SEO validation for 180 sitemap URLs; `git diff --check`.
+- Notes: Keep future `/projects/` tile tags aligned with homepage
+  `assets/main.js` labels unless the owner approves a different source of truth.
+
 ## 2026-06-29 - Full curated review schema parity
 
 - Commit: this commit
