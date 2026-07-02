@@ -22,8 +22,10 @@ Format:
   Blog/news URLs use explicit article publish/modified dates; other pages use
   semantic Git history for the served HTML with a filesystem mtime fallback.
   Documented the rule in project instructions and build docs.
-- Verified: Pending final local rebuild, byte-stability check, SEO validation,
-  deploy and production sitemap check.
+- Verified: Rebuilt sitemap twice with an identical SHA-256 hash; SEO
+  validation passed for 184 sitemap URLs; production `sitemap.xml` returned
+  200, matched the local hash, and exposed 19 unique timezone-qualified
+  `lastmod` values.
 - Notes: Keep sitemap dates and structured-data dates tied to real content
   changes, never deployment time.
 
