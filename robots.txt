@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /cdn-cgi/
 
 # Block large binary backups if any survive
 Disallow: /*.zip$
