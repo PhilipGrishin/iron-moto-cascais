@@ -26,6 +26,7 @@ LOCALIZED_PATHS = {
     "/upgrades-tuning/",
     "/custom/",
     "/authorized-dealer/",
+    "/authorized-dealer/c-way/",
     "/english-speaking-motorcycle-workshop/",
     "/pre-purchase-inspection/",
     "/pricing/",

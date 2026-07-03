@@ -230,6 +230,10 @@ Current URLs:
 - `/ru/authorized-dealer/`
 - `/uk/authorized-dealer/`
 - `/pt/authorized-dealer/`
+- `/authorized-dealer/c-way/`
+- `/ru/authorized-dealer/c-way/`
+- `/uk/authorized-dealer/c-way/`
+- `/pt/authorized-dealer/c-way/`
 
 Schema:
 
@@ -260,6 +264,10 @@ git diff --check
 
 Future partner subpages should follow `/authorized-dealer/<brand>/` with
 localized prefixes for PT/RU/UK. Keep cards in `AUTHORIZED_DEALER_BRANDS`.
+The C-Way subpage is generated directly by `build_authorized_dealer.py` from
+`CWAY_DEALER_I18N` and must stay focused on C-Way Honda Gold Wing luggage
+systems and the three approved product positions. Do not add
+trailer/mototrailer content without a new explicit owner task.
 
 ## Blog Article
 

@@ -36,8 +36,8 @@ goal is SEO, local search, AI-citation readiness and high-quality service leads.
   - Russian at `/ru/`
   - Ukrainian at `/uk/`
   - Portuguese at `/pt/`
-- Current sitemap: 46 indexable path patterns x 4 languages = 184 URLs.
-- Current repo HTML count: 187 files, including `404.html` and 2 legacy noindex
+- Current sitemap: 47 indexable path patterns x 4 languages = 188 URLs.
+- Current repo HTML count: 191 files, including `404.html` and 2 legacy noindex
   redirect stubs.
 - Current cache-bust convention: `?v=20260702a`.
 - `sitemap.xml` `lastmod` values are per-page real content dates with timezone,
@@ -91,6 +91,7 @@ this file for current state unless `HANDOFF.md` has been explicitly refreshed.
 - `/pricing/`
 - `/parts/`
 - `/authorized-dealer/`
+- `/authorized-dealer/c-way/`
 - `/english-speaking-motorcycle-workshop/`
 - `/blog/`
 - `/news/`
@@ -147,6 +148,14 @@ Current hub source:
 - Generator: `scripts/build/build_authorized_dealer.py`
 - Future partner cards: `AUTHORIZED_DEALER_BRANDS`
 - Hero source: `/photos/authorized-dealer-main-1600.jpg`
+
+Current partner subpages:
+
+- `/authorized-dealer/c-way/` in EN/RU/UK/PT. It is an official C-Way luggage
+  systems page for Honda Gold Wing with exactly three product positions:
+  C-Way Canoe 2.0 Kit, C-Way Canoe 2.0 Aluminum Kit and C-Way Canoe all parts.
+  Do not add trailer/mototrailer content to this page unless the owner gives a
+  new explicit task.
 
 ### Projects
 

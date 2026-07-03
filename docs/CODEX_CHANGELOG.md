@@ -14,6 +14,20 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-03 - C-Way dealer partner page
+
+- Commit: this commit
+- Changed: Added the C-Way official dealer subpage in EN/RU/UK/PT under
+  `/authorized-dealer/c-way/`, registered the C-Way card on the Authorized
+  Dealer hub, added optimized local C-Way imagery, native self-hosted video
+  embeds, Service/VideoObject/FAQPage/BreadcrumbList schema and sitemap entries.
+- Verified: Python compile check; Authorized Dealer rebuild; localization;
+  SEO validation for 188 sitemap URLs; focused C-Way checks confirmed 3 product
+  positions, 2 native videos, complete hreflang/self-canonical/noindex state,
+  image dimensions/lazy loading and no trailer/mototrailer wording.
+- Notes: C-Way scope is Honda Gold Wing luggage systems only unless the owner
+  gives a new explicit task.
+
 ## 2026-07-02 - Stable sitemap lastmod dates
 
 - Commit: this commit

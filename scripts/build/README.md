@@ -40,7 +40,7 @@ python3 -m pip install -r requirements.txt
 | Script | Output |
 |---|---|
 | `build_new_pages.py` | `services/`, `projects/`, `about/`, `community/`, `contact/`, `faq/` |
-| `build_authorized_dealer.py` | `authorized-dealer/` hub for official parts/accessories dealer partners |
+| `build_authorized_dealer.py` | `authorized-dealer/` hub and direct partner subpages such as `authorized-dealer/c-way/` |
 | `build_brand_pages.py` | Registered brand service pages from `brand_pages_data.py` |
 | `build_legal_pages.py` | `privacy/`, `cookies/`, `terms/` |
 | `build_news.py` | `news/` hub + each `news/<slug>/` article |
@@ -181,7 +181,11 @@ Future dealer-brand cards should be appended to
 `AUTHORIZED_DEALER_BRANDS` in `authorized_dealer_data.py`. Use
 English-rooted URLs such as `/authorized-dealer/<brand>/`; the
 localized pages will receive `/pt/`, `/ru/` and `/uk/` prefixes
-through the normal localization pipeline.
+through the normal localization pipeline. The current C-Way partner subpage is
+generated directly by `build_authorized_dealer.py` from `CWAY_DEALER_I18N` and
+must remain limited to the approved Honda Gold Wing luggage-system scope and
+three product positions; do not add trailer/mototrailer content without a new
+explicit owner task.
 
 ### After editing pre-purchase inspection copy
 

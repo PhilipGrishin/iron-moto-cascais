@@ -46,6 +46,7 @@ PAGES = [
     ("pre-purchase-inspection/", "monthly", "0.95"),
     ("english-speaking-motorcycle-workshop/", "monthly", "0.9"),
     ("authorized-dealer/", "weekly", "0.9"),
+    ("authorized-dealer/c-way/", "monthly", "0.88"),
     ("pricing/", "monthly", "0.9"),
     ("services/", "weekly", "0.95"),
     ("projects/", "monthly", "0.85"),
