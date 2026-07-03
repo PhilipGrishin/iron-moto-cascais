@@ -22,7 +22,7 @@ from news_data import (
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260702a"
+CACHE_BUST = "20260703a"
 LANGS = ["en", "ru", "uk", "pt"]
 OG_LOCALE = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
 BUSINESS_ID = f"{DOMAIN}/#business"
@@ -291,7 +291,7 @@ ARTICLE_CSS = """.subpage.news-article{padding:0;position:relative;overflow:hidd
 .news-article .lede{font-family:var(--font-ui);font-size:clamp(17px,1.5vw,21px);color:var(--text);max-width:64ch;line-height:1.5}
 .article-body{padding:56px 0;background:#0a0a0a;border-top:1px solid var(--border)}
 .article-body .container{max-width:780px}
-.article-body section{padding:0;margin-bottom:36px}
+.article-body section{padding:0;margin-bottom:22px}
 .article-body section:last-child{margin-bottom:0}
 .article-body h2{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(22px,2.1vw,28px);color:#fff;line-height:1.05;margin-bottom:24px}
 .article-body p{font-family:var(--font-ui);font-weight:400;font-size:clamp(16px,1.3vw,19px);line-height:1.65;color:var(--text);margin-bottom:18px}

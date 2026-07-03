@@ -39,7 +39,7 @@ goal is SEO, local search, AI-citation readiness and high-quality service leads.
 - Current sitemap: 47 indexable path patterns x 4 languages = 188 URLs.
 - Current repo HTML count: 191 files, including `404.html` and 2 legacy noindex
   redirect stubs.
-- Current cache-bust convention: `?v=20260702a`.
+- Current cache-bust convention: `?v=20260703a`.
 - `sitemap.xml` `lastmod` values are per-page real content dates with timezone,
   not deploy timestamps. Blog/news use their explicit article dates; other
   pages use semantic Git history for the served HTML.

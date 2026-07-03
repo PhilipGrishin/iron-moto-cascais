@@ -76,7 +76,7 @@ contains a stronger current source.
 - After any change to `assets/main.css` or `assets/main.js`,
   bump the cache-bust query (`?v=...`) on every HTML file. The
   convention is `?v=YYYYMMDD<letter>`. The latest value at the
-  time of writing is `20260702a`.
+  time of writing is `20260703a`.
 - When the project owner asks Codex to do implementation work,
   treat the request as an end-to-end delivery by default: make
   the change, run the relevant verification, commit, push, and

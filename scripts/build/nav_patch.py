@@ -78,6 +78,7 @@ EN_PAGES = [
     "news/ericeira-kustom-fest-2026/index.html",
     "news/opens-new-workshop-in-cascais/index.html",
     "news/lisbon-motorcycle-film-fest-2026-beckman/index.html",
+    "authorized-dealer/c-way/index.html",
 ]
 
 
@@ -129,9 +130,15 @@ ABOUT_NAV_LINKS = [
     ("nav.faq",       "/faq/",       "FAQ"),
 ]
 
+AUTHORIZED_DEALER_NAV_LINKS = [
+    ("nav.authorizedDealerHub", "/authorized-dealer/", "Dealer hub"),
+    ("nav.dealerCway", "/authorized-dealer/c-way/", "C-Way"),
+]
+
 DROPDOWN_NAV_LINKS = {
     "nav.services": SERVICE_NAV_LINKS,
     "nav.brands": BRAND_NAV_LINKS,
+    "nav.authorizedDealer": AUTHORIZED_DEALER_NAV_LINKS,
     "nav.projects": PROJECT_NAV_LINKS,
     "nav.about": ABOUT_NAV_LINKS,
 }

@@ -211,20 +211,26 @@ def render_brand_cards(lang: str) -> str:
     for brand in AUTHORIZED_DEALER_BRANDS:
         name = brand["name"][lang]
         url = localized_brand_url(brand["url"], lang)
-        logo = brand.get("logo")
-        if logo:
-            width = brand.get("logo_width", "")
-            height = brand.get("logo_height", "")
-            dim_attrs = f' width="{width}" height="{height}"' if width and height else ""
-            logo_html = f'<img alt="" loading="lazy" src="{escape(logo)}"{dim_attrs}/>'
+        description = brand.get("description", {}).get(lang, "")
+        image = brand.get("image")
+        if image:
+            media_html = image_picture(
+                image,
+                f"{name} official dealer page",
+                "dealer-brand-media",
+                sizes="(max-width: 760px) 100vw, 46vw",
+            )
         else:
-            logo_html = f'<span>{escape(name[:2].upper())}</span>'
+            media_html = f'<span class="dealer-brand-media dealer-brand-media-placeholder">{escape(name[:2].upper())}</span>'
         cards.append(
             f"""
 <a class="dealer-brand-card" href="{escape(url)}">
-  <span class="dealer-brand-logo">{logo_html}</span>
-  <span class="dealer-brand-name">{escape(name)}</span>
-  <span class="dealer-brand-arrow" aria-hidden="true">→</span>
+  {media_html}
+  <span class="dealer-brand-content">
+    <span class="dealer-brand-name">{escape(name)}</span>
+    <span class="dealer-brand-desc">{escape(description)}</span>
+    <span class="dealer-brand-arrow" aria-hidden="true">{ARROW_SVG}</span>
+  </span>
 </a>
 """.strip()
         )
@@ -243,6 +249,7 @@ def json_ld_blocks(lang: str) -> list[dict]:
     t = AUTHORIZED_DEALER_I18N[lang]
     meta = AUTHORIZED_DEALER_HEAD[lang]
     url = localized_url(lang)
+    home_url = f"{DOMAIN}/" if lang == "en" else f"{DOMAIN}/{lang}/"
     brand_items = [
         {
             "@type": "ListItem",
@@ -289,7 +296,7 @@ def json_ld_blocks(lang: str) -> list[dict]:
             "@type": "BreadcrumbList",
             "@id": f"{url}#breadcrumbs",
             "itemListElement": [
-                {"@type": "ListItem", "position": 1, "name": t["ad.breadHome"], "item": f"{DOMAIN}/"},
+                {"@type": "ListItem", "position": 1, "name": t["ad.breadHome"], "item": home_url},
                 {"@type": "ListItem", "position": 2, "name": t["ad.breadCurrent"], "item": url},
             ],
         },
@@ -353,7 +360,7 @@ def cway_schema_blocks(lang: str) -> list[dict]:
             "@type": "VideoObject",
             "@id": f"{url}#main-video",
             "name": t["videoTitle"],
-            "description": t["videoCaption"],
+            "description": t["videoTitle"],
             "thumbnailUrl": video_main["poster"],
             "contentUrl": video_main["content_url"],
             "uploadDate": video_main["upload_date"],
@@ -463,30 +470,30 @@ def cway_head(lang: str) -> str:
 .cway-hero-media img{{width:100%;height:100%;object-fit:cover;object-position:center;display:block}}
 .cway-hero::after{{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,5,5,.92) 0%,rgba(5,5,5,.68) 46%,rgba(5,5,5,.24) 100%),linear-gradient(180deg,rgba(5,5,5,.22) 0%,rgba(5,5,5,.88) 100%)}}
 .cway-hero .container{{position:relative;z-index:2}}
-.cway-hero-logo{{width:160px;height:auto;margin:0 0 20px;display:block}}
-.cway-hero h1{{max-width:15ch}}
+.cway-hero h1{{max-width:min(760px,76vw);font-size:clamp(34px,4.2vw,60px);line-height:.92}}
 .cway-hero .lead{{max-width:62ch;font-size:clamp(17px,1.35vw,22px)}}
-.cway-section{{padding:92px 0;border-top:1px solid rgba(255,255,255,.08);background:#070707}}
+.cway-section{{padding:clamp(34px,4vw,48px) 0;border-top:1px solid rgba(255,255,255,.08);background:#070707}}
 .cway-section.alt{{background:#0d0d10}}
-.cway-heading{{display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,88px);align-items:end;margin-bottom:34px}}
-.cway-heading h2{{margin:0;color:#fff;font-family:var(--font-display);font-size:clamp(42px,5.4vw,92px);line-height:.9;text-transform:uppercase}}
-.cway-heading .lead{{margin:0;color:var(--text-dim);font-size:clamp(17px,1.3vw,21px);line-height:1.65}}
-.cway-copy{{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,86px);align-items:start}}
+.cway-heading{{display:grid;grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr);gap:clamp(18px,3vw,44px);align-items:end;margin-bottom:24px}}
+.cway-heading h2{{margin:0;color:#fff;font-family:var(--font-display);font-size:clamp(24px,3.2vw,50px);line-height:.98;text-transform:uppercase}}
+.cway-heading .lead{{margin:0;color:var(--text-dim);font-size:clamp(16px,1.15vw,19px);line-height:1.58}}
+.cway-copy{{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(22px,3.6vw,52px);align-items:start}}
 .cway-copy p{{margin:0 0 18px;color:var(--text-dim);font-size:clamp(17px,1.25vw,21px);line-height:1.68}}
-.cway-video-wrap{{display:grid;gap:14px}}
+.cway-video-title{{margin:0 0 14px;color:#fff;font-family:var(--font-display);font-size:clamp(18px,1.6vw,24px);font-weight:800;line-height:1;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.cway-video-wrap{{display:grid;gap:10px}}
 .cway-video{{width:100%;aspect-ratio:16/9;border:1px solid rgba(255,255,255,.16);border-radius:8px;background:#000;display:block}}
 .cway-caption{{margin:0;color:var(--text-muted);font-size:15px}}
 .cway-why-grid{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
-.cway-why-card{{border:1px solid var(--border);background:linear-gradient(135deg,rgba(255,87,34,.09),rgba(18,18,24,.94));border-radius:8px;padding:24px;min-height:218px}}
-.cway-why-card .num{{font-family:var(--font-display);font-size:38px;font-weight:900;color:var(--accent);line-height:1}}
-.cway-why-card h3{{margin:18px 0 10px;color:#fff;font-family:var(--font-display);font-size:clamp(22px,1.65vw,30px);line-height:1;text-transform:uppercase}}
+.cway-why-card{{border:1px solid var(--border);background:linear-gradient(135deg,rgba(255,87,34,.09),rgba(18,18,24,.94));border-radius:8px;padding:20px;min-height:170px}}
+.cway-why-card .num{{font-family:var(--font-display);font-size:30px;font-weight:900;color:var(--accent);line-height:1}}
+.cway-why-card h3{{margin:14px 0 10px;color:#fff;font-family:var(--font-display);font-size:clamp(20px,1.4vw,25px);line-height:1;text-transform:uppercase}}
 .cway-why-card p{{margin:0;color:var(--text-dim);line-height:1.55}}
 .cway-products{{display:grid;gap:18px}}
 .cway-product{{display:grid;grid-template-columns:minmax(260px,.76fr) minmax(0,1fr);gap:28px;border:1px solid var(--border);background:#111116;border-radius:8px;padding:18px;align-items:center}}
 .cway-product picture{{display:block;background:#fff;border-radius:6px;overflow:hidden}}
 .cway-product img{{display:block;width:100%;height:auto;object-fit:contain}}
 .cway-product-body{{padding:8px 8px 8px 0}}
-.cway-product h3{{margin:0 0 14px;color:#fff;font-family:var(--font-display);font-size:clamp(30px,3vw,56px);line-height:.95;text-transform:uppercase}}
+.cway-product h3{{margin:0 0 14px;color:#fff;font-family:var(--font-display);font-size:clamp(24px,2.2vw,38px);line-height:1;text-transform:uppercase}}
 .cway-product p{{margin:0 0 16px;color:var(--text-dim);font-size:clamp(16px,1.2vw,20px);line-height:1.6}}
 .cway-order{{display:inline-flex;margin:0 0 18px;color:var(--accent);font-family:var(--font-ui);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}}
 .cway-shop{{color:#fff;text-decoration:none;font-family:var(--font-ui);font-weight:800;text-transform:uppercase}}
@@ -494,26 +501,23 @@ def cway_head(lang: str) -> str:
 .cway-studio-scroll{{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,360px);gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:10px}}
 .cway-studio-scroll picture{{scroll-snap-align:start;background:#fff;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}}
 .cway-studio-scroll img{{display:block;width:100%;height:auto}}
-.cway-install-grid{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
-.cway-install-grid picture{{border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#111}}
-.cway-install-grid img{{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}}
 .cway-world picture{{display:block;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}}
 .cway-world img{{display:block;width:100%;height:auto}}
 .cway-review{{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:28px;align-items:center}}
-.cway-quote{{border-left:3px solid var(--accent);padding-left:24px;color:#fff;font-size:clamp(20px,2vw,32px);line-height:1.35}}
+.cway-quote{{border-left:3px solid var(--accent);padding-left:24px;color:#fff;font-size:clamp(18px,1.45vw,24px);line-height:1.42}}
 .cway-quote cite{{display:block;margin-top:18px;color:var(--accent);font-family:var(--font-ui);font-size:14px;font-style:normal;font-weight:800;text-transform:uppercase;letter-spacing:.08em}}
 .cway-compat{{max-width:980px}}
-.cway-compat p{{font-size:clamp(20px,2vw,32px);line-height:1.35;color:#fff;margin:0}}
+.cway-compat p{{font-size:clamp(17px,1.25vw,21px);line-height:1.58;color:#fff;margin:0}}
 .cway-faq-list{{display:grid;gap:12px;max-width:980px;margin:0 auto}}
 .cway-faq-list details{{border:1px solid var(--border);border-radius:8px;background:var(--surface);padding:0 22px}}
 .cway-faq-list summary{{cursor:pointer;list-style:none;padding:22px 0;font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:#fff;font-size:clamp(18px,1.4vw,24px)}}
 .cway-faq-list summary::-webkit-details-marker{{display:none}}
 .cway-faq-list p{{margin:0 0 22px;color:var(--text-dim);line-height:1.6}}
-.cway-cta-links{{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}}
-.cway-cta-links a{{color:#fff;border:1px solid var(--border);border-radius:999px;padding:10px 14px;text-decoration:none;font-family:var(--font-ui);font-size:13px;font-weight:800;text-transform:uppercase}}
+.cway-cta-links{{display:flex;flex-wrap:nowrap;gap:10px;margin-top:18px;overflow-x:auto;white-space:nowrap;scrollbar-width:thin}}
+.cway-cta-links a{{flex:0 0 auto;color:#fff;border:1px solid var(--border);border-radius:999px;padding:9px 12px;text-decoration:none;font-family:var(--font-ui);font-size:12px;font-weight:800;text-transform:uppercase}}
 .cway-cta-links a:hover{{border-color:var(--accent);color:var(--accent)}}
-@media (max-width:1100px){{.cway-why-grid{{grid-template-columns:repeat(2,minmax(0,1fr))}}.cway-install-grid{{grid-template-columns:repeat(2,minmax(0,1fr))}}}}
-@media (max-width:820px){{.cway-hero{{min-height:auto;padding:124px 0 62px}}.cway-heading,.cway-copy,.cway-product,.cway-review{{grid-template-columns:1fr}}.cway-product-body{{padding:0}}.cway-install-grid{{grid-template-columns:1fr}}.cway-why-grid{{grid-template-columns:1fr}}}}
+@media (max-width:1100px){{.cway-why-grid{{grid-template-columns:repeat(2,minmax(0,1fr))}}}}
+@media (max-width:820px){{.cway-hero{{min-height:auto;padding:124px 0 62px}}.cway-hero h1{{max-width:calc(100vw - 40px);font-size:clamp(30px,8vw,40px)}}.cway-heading,.cway-copy,.cway-product,.cway-review{{grid-template-columns:1fr}}.cway-product-body{{padding:0}}.cway-why-grid{{grid-template-columns:1fr}}}}
 </style>
 {json_ld_html}
 <script>window.ICM_I18N_PAGE = {cway_payload()};</script>
@@ -580,18 +584,23 @@ def head(lang: str = "en") -> str:
 .dealer-why-card .num{{font-family:var(--font-display);font-weight:800;font-size:42px;color:var(--accent);line-height:1}}
 .dealer-why-card h3{{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(22px,1.8vw,30px);line-height:1;color:#fff;margin:0}}
 .dealer-why-card p{{margin:0;color:var(--text-dim);font-size:16px;line-height:1.55}}
-.dealer-brands-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}}
-.dealer-brand-empty,.dealer-brand-card{{border:1px solid var(--border);background:linear-gradient(135deg,rgba(255,87,34,.09),rgba(18,18,24,.96));border-radius:22px;padding:24px;min-height:180px}}
+.dealer-brands-grid{{display:grid;gap:18px}}
+.dealer-brand-empty,.dealer-brand-card{{border:1px solid var(--border);background:linear-gradient(135deg,rgba(255,87,34,.09),rgba(18,18,24,.96));border-radius:8px;min-height:180px}}
 .dealer-brand-empty{{grid-column:1/-1;display:grid;place-items:center;text-align:center;gap:10px;border-style:dashed}}
 .dealer-brand-empty-mark{{width:48px;height:48px;border-radius:16px;border:1px solid rgba(255,87,34,.45);color:var(--accent);display:grid;place-items:center;font-family:var(--font-display);font-size:34px;line-height:1}}
 .dealer-brand-empty h3{{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(22px,2vw,32px);line-height:1;margin:0;color:#fff}}
 .dealer-brand-empty p{{max-width:52ch;margin:0;color:var(--text-dim)}}
-.dealer-brand-card{{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;color:#fff;transition:transform .25s ease,border-color .25s ease,background .25s ease}}
-.dealer-brand-card:hover{{transform:translateY(-2px);border-color:rgba(255,87,34,.75);background:linear-gradient(135deg,rgba(255,87,34,.16),rgba(18,18,24,.96))}}
-.dealer-brand-logo{{width:58px;height:58px;border-radius:16px;border:1px solid var(--border);display:grid;place-items:center;background:#0b0b0d;font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--accent)}}
-.dealer-brand-logo img{{max-width:78%;max-height:78%;object-fit:contain}}
-.dealer-brand-name{{font-family:var(--font-display);font-size:clamp(22px,1.8vw,30px);font-weight:800;text-transform:uppercase;line-height:1}}
-.dealer-brand-arrow{{color:var(--accent);font-family:var(--font-display);font-size:26px}}
+.dealer-brand-empty{{padding:24px}}
+.dealer-brand-card{{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(0,1.18fr);align-items:stretch;gap:0;padding:0;overflow:hidden;color:#fff;background:#111116;transition:transform .25s ease,border-color .25s ease,background .25s ease}}
+.dealer-brand-card:hover{{transform:translateY(-2px);border-color:rgba(255,87,34,.75);background:#15151b}}
+.dealer-brand-media{{display:block;min-height:260px;background:#0b0b0d;overflow:hidden}}
+.dealer-brand-media img{{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:3/2}}
+.dealer-brand-media-placeholder{{display:grid;place-items:center;font-family:var(--font-display);font-size:42px;font-weight:800;color:var(--accent)}}
+.dealer-brand-content{{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:28px;min-width:0}}
+.dealer-brand-name{{font-family:var(--font-display);font-size:clamp(24px,2.2vw,38px);font-weight:800;text-transform:uppercase;line-height:1;color:#fff}}
+.dealer-brand-desc{{color:var(--text-dim);font-size:clamp(16px,1.15vw,19px);line-height:1.58;max-width:68ch}}
+.dealer-brand-arrow{{color:var(--accent);width:42px;height:42px;border:1px solid rgba(255,87,34,.42);border-radius:50%;display:grid;place-items:center;margin-top:4px}}
+.dealer-brand-arrow svg{{width:17px;height:17px}}
 .authorized-faq-list{{display:grid;gap:12px;max-width:980px;margin:0 auto}}
 .authorized-faq-list details{{border:1px solid var(--border);border-radius:18px;background:var(--surface);padding:0 22px}}
 .authorized-faq-list summary{{cursor:pointer;list-style:none;padding:22px 0;font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:#fff;font-size:clamp(18px,1.4vw,24px)}}
@@ -599,7 +608,7 @@ def head(lang: str = "en") -> str:
 .authorized-faq-list p{{margin:0 0 22px;color:var(--text-dim);line-height:1.6}}
 .authorized-cta .lead a,.authorized-cta-copy a{{color:var(--accent);text-decoration:underline;text-underline-offset:4px}}
 @media (max-width:1180px){{.dealer-why-grid{{grid-template-columns:repeat(2,minmax(0,1fr))}}}}
-@media (max-width:760px){{.authorized-hero{{min-height:auto;padding-top:130px;padding-bottom:70px}}.dealer-why-grid{{grid-template-columns:1fr}}.dealer-why-card{{min-height:auto}}}}
+@media (max-width:760px){{.authorized-hero{{min-height:auto;padding-top:130px;padding-bottom:70px}}.dealer-why-grid{{grid-template-columns:1fr}}.dealer-why-card{{min-height:auto}}.dealer-brand-card{{grid-template-columns:1fr}}.dealer-brand-media{{min-height:220px}}.dealer-brand-content{{padding:22px}}}}
 </style>
 {json_ld_html}
 <script>window.ICM_I18N_PAGE = {lang_payload()};</script>
@@ -652,15 +661,6 @@ def cway_studio_alt(lang: str, kind: str) -> str:
     return f"C-Way {label} для Honda Gold Wing"
 
 
-def cway_install_alt(lang: str) -> str:
-    return {
-        "en": "C-Way luggage system installed on a Honda Gold Wing",
-        "pt": "Sistema de malas C-Way instalado numa Honda Gold Wing",
-        "ru": "Багажная система C-Way, установленная на Honda Gold Wing",
-        "uk": "Багажна система C-Way, встановлена на Honda Gold Wing",
-    }[lang]
-
-
 def render_cway_products(lang: str) -> str:
     t = CWAY_DEALER_I18N[lang]
     cards = []
@@ -687,14 +687,6 @@ def render_cway_studio_gallery(lang: str) -> str:
     return "\n".join(
         image_picture(item, cway_studio_alt(lang, item["kind"]), sizes="360px")
         for item in CWAY_MEDIA["studio_gallery"]
-    )
-
-
-def render_cway_install_gallery(lang: str) -> str:
-    alt = cway_install_alt(lang)
-    return "\n".join(
-        image_picture(item, alt, sizes="(max-width: 820px) 100vw, 33vw")
-        for item in CWAY_MEDIA["install_gallery"]
     )
 
 
@@ -743,7 +735,6 @@ def render_cway_page(lang: str) -> str:
   <section class="cway-hero">
     {hero_picture(t["heroAlt"])}
     <div class="container">
-      <img alt="C-Way" class="cway-hero-logo" decoding="async" height="{CWAY_MEDIA["logo"]["height"]}" src="{asset_url(CWAY_MEDIA["logo"]["base"], "webp")}" width="{CWAY_MEDIA["logo"]["width"]}"/>
       <nav aria-label="Breadcrumb" class="crumb">
         <a href="/">{escape(t["breadHome"])}</a>
         <span class="sep">→</span>
@@ -773,18 +764,11 @@ def render_cway_page(lang: str) -> str:
 
   <section class="cway-section alt" id="cway-main-video">
     <div class="container">
-      <div class="cway-heading">
-        <div>
-          <p class="eyebrow">{escape(t["videoEyebrow"])}</p>
-          <h2>{escape(t["videoTitle"])}</h2>
-        </div>
-        <p class="lead">{escape(t["videoCaption"])}</p>
-      </div>
+      <h2 class="cway-video-title">{escape(t["videoTitle"])}</h2>
       <div class="cway-video-wrap">
         <video class="cway-video" controls playsinline poster="{escape(video_main["poster"])}" preload="none">
           <source src="{escape(video_main["content_url"])}" type="video/mp4"/>
         </video>
-        <p class="cway-caption">{escape(t["videoCaption"])}</p>
       </div>
     </div>
   </section>
@@ -823,18 +807,6 @@ def render_cway_page(lang: str) -> str:
         </div>
       </div>
       <div class="cway-studio-scroll">{render_cway_studio_gallery(lang)}</div>
-    </div>
-  </section>
-
-  <section class="cway-section alt" id="install-gallery">
-    <div class="container">
-      <div class="cway-heading">
-        <div>
-          <p class="eyebrow">{escape(t["installEyebrow"])}</p>
-          <h2>{escape(t["installTitle"])}</h2>
-        </div>
-      </div>
-      <div class="cway-install-grid">{render_cway_install_gallery(lang)}</div>
     </div>
   </section>
 
@@ -954,20 +926,6 @@ def render_page(lang: str = "en") -> str:
     </div>
   </section>
 
-  <section class="sub-section dealer-why">
-    <div class="container">
-      <div class="heading">
-        <div>
-          <p class="eyebrow" data-i18n="ad.whyEyebrow">{escape(t["ad.whyEyebrow"])}</p>
-          <h2 data-i18n="ad.whyTitle">{escape(t["ad.whyTitle"])}</h2>
-        </div>
-      </div>
-      <div class="dealer-why-grid">
-        {why_cards}
-      </div>
-    </div>
-  </section>
-
   <section class="sub-section dealer-brands">
     <div class="container">
       <div class="heading">
@@ -979,6 +937,20 @@ def render_page(lang: str = "en") -> str:
       </div>
       <div class="dealer-brands-grid">
         {render_brand_cards(lang)}
+      </div>
+    </div>
+  </section>
+
+  <section class="sub-section dealer-why">
+    <div class="container">
+      <div class="heading">
+        <div>
+          <p class="eyebrow" data-i18n="ad.whyEyebrow">{escape(t["ad.whyEyebrow"])}</p>
+          <h2 data-i18n="ad.whyTitle">{escape(t["ad.whyTitle"])}</h2>
+        </div>
+      </div>
+      <div class="dealer-why-grid">
+        {why_cards}
       </div>
     </div>
   </section>
@@ -1011,15 +983,17 @@ def render_page(lang: str = "en") -> str:
 </main>
 {footer_html()}
 {end_html()}"""
-    return apply_standard_nav_footer(raw)
+    raw = apply_standard_nav_footer(raw)
+    return apply_static_translations(raw, lang, AUTHORIZED_DEALER_I18N[lang])
 
 
 def main() -> None:
-    out_dir = SITE_ROOT / PAGE_ID
-    out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / "index.html"
-    out_path.write_text(render_page("en"), encoding="utf-8")
-    print(f"Wrote {out_path.relative_to(SITE_ROOT)}")
+    hub_path = PAGE_PATH.strip("/")
+    for lang in LANGS:
+        out_path = local_output_path(hub_path, lang)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(render_page(lang), encoding="utf-8")
+        print(f"Wrote {out_path.relative_to(SITE_ROOT)}")
 
     cway_path = CWAY_PAGE_PATH.strip("/")
     for lang in LANGS:

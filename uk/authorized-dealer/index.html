@@ -32,7 +32,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="/assets/main.css?v=20260702a" rel="stylesheet"/>
+<link href="/assets/main.css?v=20260703a" rel="stylesheet"/>
 <style>
 .subpage{padding:160px 0 100px;background:#0a0a0a;position:relative;overflow:hidden;isolation:isolate}
 .subpage::before{content:"";position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,87,34,.20),transparent 60%);pointer-events:none;z-index:1}
@@ -71,18 +71,23 @@
 .dealer-why-card .num{font-family:var(--font-display);font-weight:800;font-size:42px;color:var(--accent);line-height:1}
 .dealer-why-card h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(22px,1.8vw,30px);line-height:1;color:#fff;margin:0}
 .dealer-why-card p{margin:0;color:var(--text-dim);font-size:16px;line-height:1.55}
-.dealer-brands-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.dealer-brand-empty,.dealer-brand-card{border:1px solid var(--border);background:linear-gradient(135deg,rgba(255,87,34,.09),rgba(18,18,24,.96));border-radius:22px;padding:24px;min-height:180px}
+.dealer-brands-grid{display:grid;gap:18px}
+.dealer-brand-empty,.dealer-brand-card{border:1px solid var(--border);background:linear-gradient(135deg,rgba(255,87,34,.09),rgba(18,18,24,.96));border-radius:8px;min-height:180px}
 .dealer-brand-empty{grid-column:1/-1;display:grid;place-items:center;text-align:center;gap:10px;border-style:dashed}
 .dealer-brand-empty-mark{width:48px;height:48px;border-radius:16px;border:1px solid rgba(255,87,34,.45);color:var(--accent);display:grid;place-items:center;font-family:var(--font-display);font-size:34px;line-height:1}
 .dealer-brand-empty h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(22px,2vw,32px);line-height:1;margin:0;color:#fff}
 .dealer-brand-empty p{max-width:52ch;margin:0;color:var(--text-dim)}
-.dealer-brand-card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;color:#fff;transition:transform .25s ease,border-color .25s ease,background .25s ease}
-.dealer-brand-card:hover{transform:translateY(-2px);border-color:rgba(255,87,34,.75);background:linear-gradient(135deg,rgba(255,87,34,.16),rgba(18,18,24,.96))}
-.dealer-brand-logo{width:58px;height:58px;border-radius:16px;border:1px solid var(--border);display:grid;place-items:center;background:#0b0b0d;font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--accent)}
-.dealer-brand-logo img{max-width:78%;max-height:78%;object-fit:contain}
-.dealer-brand-name{font-family:var(--font-display);font-size:clamp(22px,1.8vw,30px);font-weight:800;text-transform:uppercase;line-height:1}
-.dealer-brand-arrow{color:var(--accent);font-family:var(--font-display);font-size:26px}
+.dealer-brand-empty{padding:24px}
+.dealer-brand-card{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(0,1.18fr);align-items:stretch;gap:0;padding:0;overflow:hidden;color:#fff;background:#111116;transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.dealer-brand-card:hover{transform:translateY(-2px);border-color:rgba(255,87,34,.75);background:#15151b}
+.dealer-brand-media{display:block;min-height:260px;background:#0b0b0d;overflow:hidden}
+.dealer-brand-media img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:3/2}
+.dealer-brand-media-placeholder{display:grid;place-items:center;font-family:var(--font-display);font-size:42px;font-weight:800;color:var(--accent)}
+.dealer-brand-content{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:28px;min-width:0}
+.dealer-brand-name{font-family:var(--font-display);font-size:clamp(24px,2.2vw,38px);font-weight:800;text-transform:uppercase;line-height:1;color:#fff}
+.dealer-brand-desc{color:var(--text-dim);font-size:clamp(16px,1.15vw,19px);line-height:1.58;max-width:68ch}
+.dealer-brand-arrow{color:var(--accent);width:42px;height:42px;border:1px solid rgba(255,87,34,.42);border-radius:50%;display:grid;place-items:center;margin-top:4px}
+.dealer-brand-arrow svg{width:17px;height:17px}
 .authorized-faq-list{display:grid;gap:12px;max-width:980px;margin:0 auto}
 .authorized-faq-list details{border:1px solid var(--border);border-radius:18px;background:var(--surface);padding:0 22px}
 .authorized-faq-list summary{cursor:pointer;list-style:none;padding:22px 0;font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:#fff;font-size:clamp(18px,1.4vw,24px)}
@@ -90,13 +95,14 @@
 .authorized-faq-list p{margin:0 0 22px;color:var(--text-dim);line-height:1.6}
 .authorized-cta .lead a,.authorized-cta-copy a{color:var(--accent);text-decoration:underline;text-underline-offset:4px}
 @media (max-width:1180px){.dealer-why-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:760px){.authorized-hero{min-height:auto;padding-top:130px;padding-bottom:70px}.dealer-why-grid{grid-template-columns:1fr}.dealer-why-card{min-height:auto}}
+@media (max-width:760px){.authorized-hero{min-height:auto;padding-top:130px;padding-bottom:70px}.dealer-why-grid{grid-template-columns:1fr}.dealer-why-card{min-height:auto}.dealer-brand-card{grid-template-columns:1fr}.dealer-brand-media{min-height:220px}.dealer-brand-content{padding:22px}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","@id":"https://ironcustommotors.com/uk/authorized-dealer/#collection","url":"https://ironcustommotors.com/uk/authorized-dealer/","name":"Офіційний дилер у Кашкайші та Великому Лісабоні","description":"Iron Custom Motors — тепер офіційний дилер провідних брендів мотозапчастин у Кашкайші. Замовляйте оригінал із гарантією виробника та професійним встановленням.","inLanguage":"uk","isPartOf":{"@id":"https://ironcustommotors.com/#website"},"provider":{"@id":"https://ironcustommotors.com/#business"},"publisher":{"@id":"https://ironcustommotors.com/#business"},"areaServed":["Cascais","Estoril","Oeiras","Sintra","Lisbon","Greater Lisbon"],"mainEntity":{"@type":"ItemList","name":"Brands we represent","itemListElement":[{"@type":"ListItem","position":1,"name":"C-Way","url":"https://ironcustommotors.com/uk/authorized-dealer/c-way/"}]}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://ironcustommotors.com/uk/authorized-dealer/#faq","mainEntity":[{"@type":"Question","name":"Чи оригінальні запчастини?","acceptedAnswer":{"@type":"Answer","text":"Так. Як офіційний дилер ми постачаємо лише оригінальні запчастини від виробника — без підробок і «сірого» ринку."}},{"@type":"Question","name":"Чи зберігається гарантія виробника, якщо купити і встановити у вас?","acceptedAnswer":{"@type":"Answer","text":"Так. Купівля в офіційного дилера зберігає повну офіційну гарантію виробника, а професійне встановлення підтримує її чинною."}},{"@type":"Question","name":"Чи встановлюєте ви запчастини, і чи є гарантія на встановлення?","acceptedAnswer":{"@type":"Answer","text":"Так. Ми встановлюємо запчастини у нашій майстерні в Кашкайші й надаємо власну гарантію на роботи."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","@id":"https://ironcustommotors.com/uk/authorized-dealer/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Головна","item":"https://ironcustommotors.com/uk/"},{"@type":"ListItem","position":2,"name":"Офіційний дилер","item":"https://ironcustommotors.com/uk/authorized-dealer/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "@id": "https://ironcustommotors.com/uk/authorized-dealer/#collection", "url": "https://ironcustommotors.com/uk/authorized-dealer/", "name": "Офіційний дилер — оригінальні мотозапчастини | Кашкайш", "description": "Iron Custom Motors — тепер офіційний дилер провідних брендів мотозапчастин у Кашкайші. Замовляйте оригінал із гарантією виробника та професійним встановленням.", "inLanguage": "uk", "isPartOf": {"@id": "https://ironcustommotors.com/#website"}, "provider": {"@id": "https://ironcustommotors.com/#business"}, "publisher": {"@id": "https://ironcustommotors.com/#business"}, "areaServed": ["Cascais", "Estoril", "Oeiras", "Sintra", "Lisbon", "Greater Lisbon"], "mainEntity": {"@type": "ItemList", "name": "Бренди, які ми представляємо", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "C-Way", "url": "https://ironcustommotors.com/uk/authorized-dealer/c-way/"}]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://ironcustommotors.com/uk/authorized-dealer/#faq", "mainEntity": [{"@type": "Question", "name": "Чи оригінальні запчастини?", "acceptedAnswer": {"@type": "Answer", "text": "Так. Як офіційний дилер ми постачаємо лише оригінальні запчастини від виробника — без підробок і «сірого» ринку."}}, {"@type": "Question", "name": "Чи зберігається гарантія виробника, якщо купити і встановити у вас?", "acceptedAnswer": {"@type": "Answer", "text": "Так. Купівля в офіційного дилера зберігає повну офіційну гарантію виробника, а професійне встановлення підтримує її чинною."}}, {"@type": "Question", "name": "Чи встановлюєте ви запчастини, і чи є гарантія на встановлення?", "acceptedAnswer": {"@type": "Answer", "text": "Так. Ми встановлюємо запчастини у нашій майстерні в Кашкайші й надаємо власну гарантію на роботи."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "@id": "https://ironcustommotors.com/uk/authorized-dealer/#breadcrumbs", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://ironcustommotors.com/uk/"}, {"@type": "ListItem", "position": 2, "name": "Офіційний дилер", "item": "https://ironcustommotors.com/uk/authorized-dealer/"}]}</script>
 <script>window.ICM_I18N_PAGE = {"en": {"ad.nav": "Authorized Dealer", "ad.breadHome": "Home", "ad.breadCurrent": "Authorized Dealer", "ad.eyebrow": "Authorized Dealer · Greater Lisbon", "ad.h1": "Authorized Dealer in Cascais & Greater Lisbon", "ad.heroAlt": "Iron Custom Motors authorized dealer counter with genuine motorcycle parts in Cascais", "ad.intro": "Iron Custom Motors is now an authorized dealer and official representative of leading aftermarket motorcycle parts and accessories brands. You can order every product from these brands directly through us — always genuine, always with the official manufacturer warranty. We also handle professional fitment in our São Domingos de Rana workshop and back the installation with our own workmanship guarantee.", "ad.whyEyebrow": "Official supply", "ad.whyTitle": "Why buy from an authorized dealer", "ad.w1Title": "Genuine parts only.", "ad.w1Text": "No counterfeits, no grey-market imports — original products, sourced through official channels.", "ad.w2Title": "Manufacturer warranty preserved.", "ad.w2Text": "Every purchase carries the full official warranty, intact.", "ad.w3Title": "Professional installation.", "ad.w3Text": "Fitment by experienced technicians, done right the first time.", "ad.w4Title": "Warranty on our work.", "ad.w4Text": "We stand behind the installation with our own workmanship guarantee.", "ad.brandsEyebrow": "Authorized brands", "ad.brandsTitle": "Brands we represent", "ad.brandsIntro": "Below you'll find the brands we are authorized to supply. Browse them to see what we offer — and check back, as new official partners are being added.", "ad.brandsEmptyTitle": "Brand cards are coming soon.", "ad.brandsEmptyText": "Authorized dealer brand pages will appear here as soon as each official partner page is published.", "ad.faqEyebrow": "FAQ", "ad.faqTitle": "Authorized dealer questions", "ad.q1": "Are the parts genuine and original?", "ad.a1": "Yes. As an authorized dealer we supply only genuine, manufacturer-sourced parts — never counterfeits or grey-market goods.", "ad.q2": "Do I keep the manufacturer warranty if I buy and install here?", "ad.a2": "Yes. Buying from an authorized dealer preserves the full official manufacturer warranty, and professional fitment keeps it valid.", "ad.q3": "Do you install the parts, and is the installation guaranteed?", "ad.a3": "Yes. We fit the parts in our Cascais workshop and back the work with our own installation (workmanship) warranty.", "ad.ctaEyebrow": "Order genuine parts", "ad.ctaTitle": "Order through the official channel.", "ad.ctaText": "Order or ask via WhatsApp: <strong>+351 917 961 230</strong> (<a href=\"https://wa.me/351917961230\">wa.me/351917961230</a>), Tue–Sat 10:00–18:00. Serving Cascais, Estoril, Oeiras, Sintra, Lisbon and Greater Lisbon, in English, Portuguese, Russian and Ukrainian.<br/>Explore <a href=\"/parts/\">parts</a>, <a href=\"/upgrades-tuning/\">upgrades & tuning</a>, <a href=\"/motorcycle-service/\">motorcycle service</a> or <a href=\"/contact/\">contact us</a>.", "ad.btnWhatsapp": "WhatsApp us", "ad.btnContact": "Contact us"}, "pt": {"ad.nav": "Revendedor Oficial", "ad.breadHome": "Início", "ad.breadCurrent": "Revendedor Oficial", "ad.eyebrow": "Revendedor Oficial · Grande Lisboa", "ad.h1": "Revendedor Oficial em Cascais e na Grande Lisboa", "ad.heroAlt": "Balcão de revendedor oficial da Iron Custom Motors com peças moto genuínas em Cascais", "ad.intro": "A Iron Custom Motors é agora revendedora oficial e representante autorizada das principais marcas de peças e acessórios para mota. Pode encomendar todos os produtos destas marcas diretamente connosco — sempre genuínos e sempre com a garantia oficial do fabricante. Tratamos também da montagem profissional na nossa oficina em São Domingos de Rana, com garantia própria sobre a instalação.", "ad.whyEyebrow": "Fornecimento oficial", "ad.whyTitle": "Porquê comprar a um revendedor oficial", "ad.w1Title": "Apenas peças genuínas.", "ad.w1Text": "Sem falsificações nem importações do mercado paralelo — produtos originais, por canais oficiais.", "ad.w2Title": "Garantia do fabricante preservada.", "ad.w2Text": "Cada compra mantém a garantia oficial completa, intacta.", "ad.w3Title": "Montagem profissional.", "ad.w3Text": "Instalação por técnicos experientes, bem feita à primeira.", "ad.w4Title": "Garantia sobre o nosso trabalho.", "ad.w4Text": "Respondemos pela instalação com garantia própria de mão de obra.", "ad.brandsEyebrow": "Marcas oficiais", "ad.brandsTitle": "Marcas que representamos", "ad.brandsIntro": "Abaixo encontra as marcas que estamos autorizados a fornecer. Explore-as para ver o que oferecemos — e volte em breve, pois novos parceiros oficiais estão a ser adicionados.", "ad.brandsEmptyTitle": "As fichas das marcas chegam em breve.", "ad.brandsEmptyText": "As páginas de marcas de revendedor oficial aparecerão aqui assim que cada parceiro oficial for publicado.", "ad.faqEyebrow": "FAQ", "ad.faqTitle": "Perguntas sobre revendedor oficial", "ad.q1": "As peças são genuínas e originais?", "ad.a1": "Sim. Como revendedor oficial fornecemos apenas peças genuínas, vindas do fabricante — nunca falsificações nem produtos do mercado paralelo.", "ad.q2": "Mantenho a garantia do fabricante se comprar e montar aqui?", "ad.a2": "Sim. Comprar a um revendedor oficial preserva a garantia oficial completa do fabricante, e a montagem profissional mantém-na válida.", "ad.q3": "Fazem a montagem das peças, e a instalação tem garantia?", "ad.a3": "Sim. Montamos as peças na nossa oficina em Cascais e respondemos pelo trabalho com garantia própria de instalação (mão de obra).", "ad.ctaEyebrow": "Encomende peças genuínas", "ad.ctaTitle": "Encomende pelo canal oficial.", "ad.ctaText": "Encomende ou pergunte por WhatsApp: <strong>+351 917 961 230</strong> (<a href=\"https://wa.me/351917961230\">wa.me/351917961230</a>), terça a sábado 10:00–18:00. Servimos Cascais, Estoril, Oeiras, Sintra, Lisboa e Grande Lisboa, em inglês, português, russo e ucraniano.<br/>Explore <a href=\"/pt/parts/\">peças</a>, <a href=\"/pt/upgrades-tuning/\">upgrades e tuning</a>, <a href=\"/pt/motorcycle-service/\">serviço de motas</a> ou <a href=\"/pt/contact/\">contacte-nos</a>.", "ad.btnWhatsapp": "WhatsApp", "ad.btnContact": "Contactar"}, "ru": {"ad.nav": "Официальный дилер", "ad.breadHome": "Главная", "ad.breadCurrent": "Официальный дилер", "ad.eyebrow": "Официальный дилер · Большой Лиссабон", "ad.h1": "Официальный дилер в Кашкайше и Большом Лиссабоне", "ad.heroAlt": "Стойка официального дилера Iron Custom Motors с оригинальными мотозапчастями в Кашкайше", "ad.intro": "Iron Custom Motors теперь официальный дилер и представитель ведущих брендов мотозапчастей и аксессуаров. Все товары этих брендов можно заказать напрямую у нас — всегда оригинал и всегда с официальной гарантией производителя. Мы также выполняем профессиональную установку в нашей мастерской в Сан-Домингуш-де-Рана и даём собственную гарантию на работы.", "ad.whyEyebrow": "Официальная поставка", "ad.whyTitle": "Почему выгодно покупать у официального дилера", "ad.w1Title": "Только оригинальные запчасти.", "ad.w1Text": "Никаких подделок и «серого» импорта — оригинал по официальным каналам.", "ad.w2Title": "Гарантия производителя сохраняется.", "ad.w2Text": "Каждая покупка идёт с полной официальной гарантией.", "ad.w3Title": "Профессиональная установка.", "ad.w3Text": "Монтаж опытными специалистами — правильно с первого раза.", "ad.w4Title": "Гарантия на наши работы.", "ad.w4Text": "Мы отвечаем за установку собственной гарантией на работу.", "ad.brandsEyebrow": "Официальные бренды", "ad.brandsTitle": "Бренды, которые мы представляем", "ad.brandsIntro": "Ниже — бренды, которые мы уполномочены поставлять. Посмотрите, что мы предлагаем, и загляните позже: список официальных партнёров пополняется.", "ad.brandsEmptyTitle": "Карточки брендов скоро появятся.", "ad.brandsEmptyText": "Страницы брендов официального дилера появятся здесь после публикации каждого официального партнёра.", "ad.faqEyebrow": "FAQ", "ad.faqTitle": "Вопросы про официального дилера", "ad.q1": "Запчасти оригинальные?", "ad.a1": "Да. Как официальный дилер мы поставляем только оригинальные запчасти от производителя — без подделок и «серого» рынка.", "ad.q2": "Сохраняется ли гарантия производителя при покупке и установке у вас?", "ad.a2": "Да. Покупка у официального дилера сохраняет полную официальную гарантию производителя, а профессиональная установка поддерживает её действительной.", "ad.q3": "Вы устанавливаете запчасти, и есть ли гарантия на установку?", "ad.a3": "Да. Мы устанавливаем запчасти в нашей мастерской в Кашкайше и даём собственную гарантию на работы.", "ad.ctaEyebrow": "Заказ оригинальных деталей", "ad.ctaTitle": "Заказывайте через официальный канал.", "ad.ctaText": "Заказать или спросить в WhatsApp: <strong>+351 917 961 230</strong> (<a href=\"https://wa.me/351917961230\">wa.me/351917961230</a>), вт–сб 10:00–18:00. Работаем в Кашкайше, Эшториле, Оэйраше, Синтре, Лиссабоне и Большом Лиссабоне на английском, португальском, русском и украинском.<br/>Смотрите <a href=\"/ru/parts/\">запчасти</a>, <a href=\"/ru/upgrades-tuning/\">апгрейды и тюнинг</a>, <a href=\"/ru/motorcycle-service/\">обслуживание мотоциклов</a> или <a href=\"/ru/contact/\">свяжитесь с нами</a>.", "ad.btnWhatsapp": "WhatsApp", "ad.btnContact": "Связаться"}, "uk": {"ad.nav": "Офіційний дилер", "ad.breadHome": "Головна", "ad.breadCurrent": "Офіційний дилер", "ad.eyebrow": "Офіційний дилер · Великий Лісабон", "ad.h1": "Офіційний дилер у Кашкайші та Великому Лісабоні", "ad.heroAlt": "Стійка офіційного дилера Iron Custom Motors з оригінальними мотозапчастинами в Кашкайші", "ad.intro": "Iron Custom Motors тепер офіційний дилер і представник провідних брендів мотозапчастин та аксесуарів. Усі товари цих брендів можна замовити безпосередньо в нас — завжди оригінал і завжди з офіційною гарантією виробника. Ми також виконуємо професійне встановлення у нашій майстерні в Сан-Домінгуш-де-Рана й надаємо власну гарантію на роботи.", "ad.whyEyebrow": "Офіційне постачання", "ad.whyTitle": "Чому варто купувати в офіційного дилера", "ad.w1Title": "Лише оригінальні запчастини.", "ad.w1Text": "Жодних підробок чи «сірого» імпорту — оригінал офіційними каналами.", "ad.w2Title": "Гарантія виробника зберігається.", "ad.w2Text": "Кожна покупка має повну офіційну гарантію.", "ad.w3Title": "Професійне встановлення.", "ad.w3Text": "Монтаж досвідченими майстрами — правильно з першого разу.", "ad.w4Title": "Гарантія на наші роботи.", "ad.w4Text": "Ми відповідаємо за встановлення власною гарантією на роботу.", "ad.brandsEyebrow": "Офіційні бренди", "ad.brandsTitle": "Бренди, які ми представляємо", "ad.brandsIntro": "Нижче — бренди, які ми уповноважені постачати. Перегляньте, що ми пропонуємо, і завітайте згодом: перелік офіційних партнерів поповнюється.", "ad.brandsEmptyTitle": "Картки брендів скоро з'являться.", "ad.brandsEmptyText": "Сторінки брендів офіційного дилера з'являться тут після публікації кожного офіційного партнера.", "ad.faqEyebrow": "FAQ", "ad.faqTitle": "Питання про офіційного дилера", "ad.q1": "Чи оригінальні запчастини?", "ad.a1": "Так. Як офіційний дилер ми постачаємо лише оригінальні запчастини від виробника — без підробок і «сірого» ринку.", "ad.q2": "Чи зберігається гарантія виробника, якщо купити і встановити у вас?", "ad.a2": "Так. Купівля в офіційного дилера зберігає повну офіційну гарантію виробника, а професійне встановлення підтримує її чинною.", "ad.q3": "Чи встановлюєте ви запчастини, і чи є гарантія на встановлення?", "ad.a3": "Так. Ми встановлюємо запчастини у нашій майстерні в Кашкайші й надаємо власну гарантію на роботи.", "ad.ctaEyebrow": "Замовлення оригінальних деталей", "ad.ctaTitle": "Замовляйте через офіційний канал.", "ad.ctaText": "Замовити або запитати у WhatsApp: <strong>+351 917 961 230</strong> (<a href=\"https://wa.me/351917961230\">wa.me/351917961230</a>), вт–сб 10:00–18:00. Працюємо в Кашкайші, Ешторілі, Оейраші, Сінтрі, Лісабоні та Великому Лісабоні англійською, португальською, російською та українською.<br/>Перегляньте <a href=\"/uk/parts/\">запчастини</a>, <a href=\"/uk/upgrades-tuning/\">апгрейди та тюнінг</a>, <a href=\"/uk/motorcycle-service/\">обслуговування мотоциклів</a> або <a href=\"/uk/contact/\">зв'яжіться з нами</a>.", "ad.btnWhatsapp": "WhatsApp", "ad.btnContact": "Зв'язатися"}};</script>
-<link href="https://ironcustommotors.com/authorized-dealer/" hreflang="en" rel="alternate"/><link href="https://ironcustommotors.com/ru/authorized-dealer/" hreflang="ru" rel="alternate"/><link href="https://ironcustommotors.com/uk/authorized-dealer/" hreflang="uk" rel="alternate"/><link href="https://ironcustommotors.com/pt/authorized-dealer/" hreflang="pt-PT" rel="alternate"/><link href="https://ironcustommotors.com/authorized-dealer/" hreflang="x-default" rel="alternate"/></head>
+<link href="https://ironcustommotors.com/authorized-dealer/" hreflang="en" rel="alternate"/><link href="https://ironcustommotors.com/ru/authorized-dealer/" hreflang="ru" rel="alternate"/><link href="https://ironcustommotors.com/uk/authorized-dealer/" hreflang="uk" rel="alternate"/><link href="https://ironcustommotors.com/pt/authorized-dealer/" hreflang="pt-PT" rel="alternate"/><link href="https://ironcustommotors.com/authorized-dealer/" hreflang="x-default" rel="alternate"/>
+</head>
 <body>
 <div aria-label="Cookie consent" class="cookie-banner" id="cookieBanner" role="dialog">
 <p data-i18n="cookie.text">Ми використовуємо cookies, щоб розуміти відвідуваність і покращувати сайт. Без сторонньої реклами.</p>
@@ -143,7 +149,13 @@
 <a data-i18n="nav.brandTriumph" href="/uk/triumph-service/">Triumph</a>
 </div>
 </div>
-<a data-i18n="nav.authorizedDealer" href="/uk/authorized-dealer/">Офіційний дилер</a>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.authorizedDealer" href="/uk/authorized-dealer/">Офіційний дилер</a>
+<div aria-label="Authorized Dealer" class="nav-dropdown-menu">
+<a data-i18n="nav.authorizedDealerHub" href="/uk/authorized-dealer/">Dealer hub</a>
+<a data-i18n="nav.dealerCway" href="/uk/authorized-dealer/c-way/">C-Way</a>
+</div>
+</div>
 <div class="nav-dropdown">
 <a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.projects" href="/uk/projects/">Проєкти</a>
 <div aria-label="Projects" class="nav-dropdown-menu">
@@ -216,7 +228,13 @@
 <a data-i18n="nav.brandTriumph" href="/uk/triumph-service/">Triumph</a>
 </div>
 </details>
-<a data-i18n="nav.authorizedDealer" href="/uk/authorized-dealer/">Офіційний дилер</a>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.authorizedDealer">Офіційний дилер</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.authorizedDealerHub" href="/uk/authorized-dealer/">Dealer hub</a>
+<a data-i18n="nav.dealerCway" href="/uk/authorized-dealer/c-way/">C-Way</a>
+</div>
+</details>
 <details class="mobile-nav-group">
 <summary class="mobile-nav-summary"><span data-i18n="nav.projects">Проєкти</span></summary>
 <div class="mobile-subnav">
@@ -276,6 +294,31 @@
 </div>
 </div>
 </section>
+<section class="sub-section dealer-brands">
+<div class="container">
+<div class="heading">
+<div>
+<p class="eyebrow" data-i18n="ad.brandsEyebrow">Офіційні бренди</p>
+<h2 data-i18n="ad.brandsTitle">Бренди, які ми представляємо</h2>
+</div>
+<p class="lead" data-i18n="ad.brandsIntro">Нижче — бренди, які ми уповноважені постачати. Перегляньте, що ми пропонуємо, і завітайте згодом: перелік офіційних партнерів поповнюється.</p>
+</div>
+<div class="dealer-brands-grid">
+<a class="dealer-brand-card" href="/uk/authorized-dealer/c-way/">
+<picture class="dealer-brand-media">
+<source srcset="/assets/img/c-way/cway-goldwing-luggage-dealer-portugal-hero-768.avif" type="image/avif"/>
+<source srcset="/assets/img/c-way/cway-goldwing-luggage-dealer-portugal-hero-768.webp" type="image/webp"/>
+<img alt="C-Way official dealer page" decoding="async" height="512" loading="lazy" sizes="(max-width: 760px) 100vw, 46vw" src="/assets/img/c-way/cway-goldwing-luggage-dealer-portugal-hero-768.webp" width="768"/>
+</picture>
+<span class="dealer-brand-content">
+<span class="dealer-brand-name">C-Way</span>
+<span class="dealer-brand-desc">Офіційний дилер C-Way у Португалії: багажні системи Honda Gold Wing, оригінальні продукти Canoe, гарантія виробника та професійне встановлення у Кашкайші.</span>
+<span aria-hidden="true" class="dealer-brand-arrow"><svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</span>
+</a>
+</div>
+</div>
+</section>
 <section class="sub-section dealer-why">
 <div class="container">
 <div class="heading">
@@ -305,24 +348,6 @@
 <h3 data-i18n="ad.w4Title">Гарантія на наші роботи.</h3>
 <p data-i18n="ad.w4Text">Ми відповідаємо за встановлення власною гарантією на роботу.</p>
 </article>
-</div>
-</div>
-</section>
-<section class="sub-section dealer-brands">
-<div class="container">
-<div class="heading">
-<div>
-<p class="eyebrow" data-i18n="ad.brandsEyebrow">Офіційні бренди</p>
-<h2 data-i18n="ad.brandsTitle">Бренди, які ми представляємо</h2>
-</div>
-<p class="lead" data-i18n="ad.brandsIntro">Нижче — бренди, які ми уповноважені постачати. Перегляньте, що ми пропонуємо, і завітайте згодом: перелік офіційних партнерів поповнюється.</p>
-</div>
-<div class="dealer-brands-grid">
-<a class="dealer-brand-card" href="/uk/authorized-dealer/c-way/">
-<span class="dealer-brand-logo"><img alt="" height="36" loading="lazy" src="/assets/img/c-way/c-way-logo-flame-130.webp" width="160"/></span>
-<span class="dealer-brand-name">C-Way</span>
-<span aria-hidden="true" class="dealer-brand-arrow">→</span>
-</a>
 </div>
 </div>
 </section>
@@ -460,6 +485,6 @@
 </div>
 </div>
 </div>
-<script defer="" src="/assets/main.js?v=20260702a"></script>
+<script defer="" src="/assets/main.js?v=20260703a"></script>
 </body>
 </html>

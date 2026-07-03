@@ -147,7 +147,7 @@ UI = {
 def detect_cache_bust() -> str:
     text = (SITE_ROOT / "index.html").read_text(encoding="utf-8")
     match = re.search(r"/assets/main\.css\?v=([a-zA-Z0-9]+)", text)
-    return match.group(1) if match else "20260622b"
+    return match.group(1) if match else "20260703a"
 
 
 CACHE_BUST = detect_cache_bust()
@@ -718,7 +718,7 @@ PAGE_CSS = """.ppi-hero{position:relative;isolation:isolate;overflow:hidden;min-
 .ppi-hero h1{max-width:min(930px,76vw,calc(100vw - 40px));margin:18px 0 24px;font-family:var(--font-display);font-size:clamp(30px,4vw,58px);font-weight:900;line-height:.9;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
 .ppi-hero .lead{max-width:min(920px,76vw,calc(100vw - 40px));font-size:clamp(18px,1.35vw,23px);line-height:1.62;color:var(--text)}
 .ppi-hero .lead p{margin:0 0 16px}
-.ppi-section{padding:clamp(58px,7vw,96px) 0;background:#080808;border-top:1px solid var(--border)}
+.ppi-section{padding:clamp(34px,4vw,52px) 0;background:#080808;border-top:1px solid var(--border)}
 .ppi-heading{display:grid;grid-template-columns:minmax(180px,.62fr) minmax(0,1.38fr);gap:36px;align-items:end;margin-bottom:34px}
 .ppi-heading.compact{display:block;max-width:780px}
 .ppi-heading h2{max-width:min(860px,76vw,calc(100vw - 40px));margin:0;font-family:var(--font-display);font-size:clamp(26px,3.5vw,50px);font-weight:900;line-height:.94;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
@@ -746,7 +746,7 @@ PAGE_CSS = """.ppi-hero{position:relative;isolation:isolate;overflow:hidden;min-
 .ppi-process-row p{font-size:16px;line-height:1.62;color:var(--text-dim)}
 .ppi-price-card{border:1px solid var(--border);border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(255,87,34,.11),rgba(255,255,255,.035));padding:clamp(26px,4vw,42px);max-width:980px}
 .ppi-price-card p{font-size:clamp(18px,1.4vw,23px);line-height:1.65;color:var(--text);margin:0 0 18px}
-.ppi-cta{padding:clamp(54px,6vw,82px) 0;background:#101010;border-top:1px solid var(--border);text-align:center}
+.ppi-cta{padding:clamp(32px,4vw,48px) 0;background:#101010;border-top:1px solid var(--border);text-align:center}
 .ppi-cta .container{max-width:980px}
 .ppi-cta-copy{font-size:clamp(19px,1.6vw,25px);line-height:1.6;color:#fff}
 .ppi-cta-copy p{margin:16px 0 0}
@@ -760,7 +760,7 @@ PAGE_CSS = """.ppi-hero{position:relative;isolation:isolate;overflow:hidden;min-
 .ppi-faq-list .answer{padding:0 24px 24px;color:var(--text-dim);font-size:16px;line-height:1.65}
 .ppi-faq-list .answer p{margin:0}
 @media (max-width:980px){.ppi-heading{grid-template-columns:1fr}.ppi-check-grid{grid-template-columns:1fr}.ppi-process-list{max-width:none}}
-@media (max-width:640px){.ppi-hero{min-height:auto;padding:124px 0 62px}.ppi-hero h1{max-width:calc(100vw - 40px);font-size:clamp(28px,8vw,34px);line-height:.94}.ppi-hero .lead,.ppi-copy p,.ppi-feature-card p{max-width:calc(100vw - 40px);overflow-wrap:break-word}.ppi-section{padding:48px 0}.ppi-heading{gap:16px;margin-bottom:24px}.ppi-heading h2{font-size:clamp(26px,9vw,34px)}.ppi-actions{display:grid;grid-template-columns:1fr;max-width:calc(100vw - 40px)}.ppi-actions .btn{width:100%;justify-content:center;text-align:center;line-height:1.15;padding-left:18px;padding-right:18px}.ppi-hours{justify-content:center;border-radius:14px}.ppi-feature-card{padding:24px 20px}.ppi-process-row{grid-template-columns:48px 1fr;gap:16px;padding:18px}.ppi-process-row .num{font-size:25px}.ppi-check-card{padding:22px 18px}}
+@media (max-width:640px){.ppi-hero{min-height:auto;padding:124px 0 62px}.ppi-hero h1{max-width:calc(100vw - 40px);font-size:clamp(28px,8vw,34px);line-height:.94}.ppi-hero .lead,.ppi-copy p,.ppi-feature-card p{max-width:calc(100vw - 40px);overflow-wrap:break-word}.ppi-section{padding:32px 0}.ppi-heading{gap:16px;margin-bottom:24px}.ppi-heading h2{font-size:clamp(26px,9vw,34px)}.ppi-actions{display:grid;grid-template-columns:1fr;max-width:calc(100vw - 40px)}.ppi-actions .btn{width:100%;justify-content:center;text-align:center;line-height:1.15;padding-left:18px;padding-right:18px}.ppi-hours{justify-content:center;border-radius:14px}.ppi-feature-card{padding:24px 20px}.ppi-process-row{grid-template-columns:48px 1fr;gap:16px;padding:18px}.ppi-process-row .num{font-size:25px}.ppi-check-card{padding:22px 18px}}
 """
 
 

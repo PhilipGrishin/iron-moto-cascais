@@ -118,7 +118,7 @@ UI = {
 def detect_cache_bust() -> str:
     text = (SITE_ROOT / "index.html").read_text(encoding="utf-8")
     match = re.search(r"/assets/main\.css\?v=([a-zA-Z0-9]+)", text)
-    return match.group(1) if match else "20260702a"
+    return match.group(1) if match else "20260703a"
 
 
 CACHE_BUST = detect_cache_bust()
@@ -689,7 +689,7 @@ PAGE_CSS = """.expat-hero{position:relative;min-height:82vh;display:flex;align-i
 .expat-hero h1{max-width:min(1040px,80vw,calc(100vw - 40px));margin:18px 0 24px;font-family:var(--font-display);font-size:clamp(34px,4.8vw,72px);font-weight:900;line-height:.88;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
 .expat-hero-lead{max-width:min(900px,76vw,calc(100vw - 40px));font-size:clamp(18px,1.35vw,23px);line-height:1.62;color:var(--text)}
 .expat-hero-lead p{margin:0 0 16px}
-.expat-section{padding:clamp(58px,7vw,96px) 0;background:#080808;border-top:1px solid var(--border)}
+.expat-section{padding:clamp(34px,4vw,52px) 0;background:#080808;border-top:1px solid var(--border)}
 .expat-section:nth-of-type(odd){background:#0b0b0d}
 .expat-section-grid{display:grid;grid-template-columns:minmax(190px,.62fr) minmax(0,1.38fr);gap:clamp(28px,5vw,62px);align-items:start}
 .expat-section-head{position:sticky;top:105px}
@@ -708,7 +708,7 @@ PAGE_CSS = """.expat-hero{position:relative;min-height:82vh;display:flex;align-i
 .expat-faq-item summary::-webkit-details-marker{display:none}
 .expat-faq-item .answer{padding:0 22px 20px;color:var(--text-dim);font-size:clamp(15px,1.08vw,18px);line-height:1.65}
 .expat-faq-item .answer p{margin:0}
-.expat-cta{padding:clamp(68px,8vw,112px) 0;background:#0e0e12;border-top:1px solid var(--border);text-align:center}
+.expat-cta{padding:clamp(36px,5vw,58px) 0;background:#0e0e12;border-top:1px solid var(--border);text-align:center}
 .expat-cta .container{max-width:900px}
 .expat-cta h2{margin:14px auto 24px;font-family:var(--font-display);font-size:clamp(28px,4vw,58px);font-weight:900;line-height:.92;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
 .expat-cta-copy{margin:0 auto;font-size:clamp(17px,1.25vw,21px);line-height:1.68;color:var(--text);text-align:left}

@@ -193,9 +193,17 @@ AUTHORIZED_DEALER_BRANDS = [
     {
         "slug": "c-way",
         "name": {"en": "C-Way", "pt": "C-Way", "ru": "C-Way", "uk": "C-Way"},
-        "logo": "/assets/img/c-way/c-way-logo-flame-130.webp",
-        "logo_width": 160,
-        "logo_height": 36,
+        "image": {
+            "base": "cway-goldwing-luggage-dealer-portugal-hero-768",
+            "width": 768,
+            "height": 512,
+        },
+        "description": {
+            "en": "Official C-Way dealer in Portugal for Honda Gold Wing luggage systems, genuine Canoe products, manufacturer warranty and professional installation in Cascais.",
+            "pt": "Revendedor oficial C-Way em Portugal para sistemas de bagagem Honda Gold Wing, produtos Canoe genuínos, garantia do fabricante e instalação profissional em Cascais.",
+            "ru": "Официальный дилер C-Way в Португалии: багажные системы Honda Gold Wing, оригинальные продукты Canoe, гарантия производителя и профессиональная установка в Кашкайше.",
+            "uk": "Офіційний дилер C-Way у Португалії: багажні системи Honda Gold Wing, оригінальні продукти Canoe, гарантія виробника та професійне встановлення у Кашкайші.",
+        },
         "url": "/authorized-dealer/c-way/",
     },
 ]
@@ -222,7 +230,6 @@ CWAY_DEALER_HEAD = {
 }
 
 CWAY_MEDIA = {
-    "logo": {"base": "c-way-logo-flame-130", "width": 160, "height": 36},
     "hero": {
         "base": "cway-goldwing-luggage-dealer-portugal-hero",
         "widths": [768, 1280, 1536],
@@ -264,14 +271,6 @@ CWAY_MEDIA = {
         {"base": "cway-canoe-studio-09", "kind": "bracket", "width": 1200, "height": 1200},
         {"base": "cway-canoe-studio-10", "kind": "rack", "width": 1200, "height": 1200},
     ],
-    "install_gallery": [
-        {"base": "cway-goldwing-install-01", "width": 1280, "height": 864},
-        {"base": "cway-goldwing-install-02", "width": 907, "height": 676},
-        {"base": "cway-goldwing-install-03", "width": 960, "height": 1280},
-        {"base": "cway-goldwing-install-04", "width": 960, "height": 1280},
-        {"base": "cway-goldwing-install-05", "width": 870, "height": 1280},
-        {"base": "cway-goldwing-install-06", "width": 960, "height": 1280},
-    ],
     "worldwide": {"base": "cway-goldwing-installs-worldwide", "width": 1280, "height": 1280},
     "videos": {
         "main": {
@@ -308,7 +307,6 @@ CWAY_DEALER_I18N = {
         ],
         "videoEyebrow": "Video",
         "videoTitle": "See the C-Way Canoe system before choosing a configuration",
-        "videoCaption": "Native self-hosted video from Iron Custom Motors media storage.",
         "whyEyebrow": "Authorized dealer",
         "whyTitle": "Why buy from an authorized dealer",
         "why": [
@@ -341,8 +339,6 @@ CWAY_DEALER_I18N = {
         },
         "studioEyebrow": "Studio gallery",
         "studioTitle": "C-Way racks, hitch parts, luggage boxes and units",
-        "installEyebrow": "Real installs",
-        "installTitle": "Installed on Honda Gold Wing motorcycles",
         "worldEyebrow": "Worldwide proof",
         "worldTitle": "C-Way on Honda Gold Wing motorcycles around the world",
         "worldAlt": "C-Way luggage systems on Honda Gold Wing motorcycles around the world",
@@ -389,7 +385,6 @@ CWAY_DEALER_I18N = {
         ],
         "videoEyebrow": "Vídeo",
         "videoTitle": "Veja o sistema C-Way Canoe antes de escolher a configuração",
-        "videoCaption": "Vídeo nativo alojado no armazenamento media da Iron Custom Motors.",
         "whyEyebrow": "Revendedor autorizado",
         "whyTitle": "Porquê comprar a um revendedor autorizado",
         "why": [
@@ -422,8 +417,6 @@ CWAY_DEALER_I18N = {
         },
         "studioEyebrow": "Galeria de estúdio",
         "studioTitle": "Racks, peças de engate, caixas e unidades C-Way",
-        "installEyebrow": "Instalações reais",
-        "installTitle": "Instalado em motos Honda Gold Wing",
         "worldEyebrow": "Prova mundial",
         "worldTitle": "C-Way em Honda Gold Wing pelo mundo",
         "worldAlt": "Sistemas de malas C-Way em motos Honda Gold Wing pelo mundo",
@@ -470,7 +463,6 @@ CWAY_DEALER_I18N = {
         ],
         "videoEyebrow": "Видео",
         "videoTitle": "Посмотрите систему C-Way Canoe перед выбором конфигурации",
-        "videoCaption": "Нативное self-hosted видео из медиа-хранилища Iron Custom Motors.",
         "whyEyebrow": "Авторизованный дилер",
         "whyTitle": "Почему стоит покупать у авторизованного дилера",
         "why": [
@@ -503,8 +495,6 @@ CWAY_DEALER_I18N = {
         },
         "studioEyebrow": "Студийная галерея",
         "studioTitle": "Рамы, сцепки, кофры и узлы C-Way",
-        "installEyebrow": "Реальные установки",
-        "installTitle": "Установлено на мотоциклы Honda Gold Wing",
         "worldEyebrow": "По всему миру",
         "worldTitle": "C-Way на Honda Gold Wing по всему миру",
         "worldAlt": "Багажные системы C-Way на мотоциклах Honda Gold Wing по всему миру",
@@ -551,7 +541,6 @@ CWAY_DEALER_I18N = {
         ],
         "videoEyebrow": "Відео",
         "videoTitle": "Подивіться систему C-Way Canoe перед вибором конфігурації",
-        "videoCaption": "Нативне self-hosted відео з медіасховища Iron Custom Motors.",
         "whyEyebrow": "Авторизований дилер",
         "whyTitle": "Чому варто купувати в авторизованого дилера",
         "why": [
@@ -584,8 +573,6 @@ CWAY_DEALER_I18N = {
         },
         "studioEyebrow": "Студійна галерея",
         "studioTitle": "Рами, зчіпки, кофри та вузли C-Way",
-        "installEyebrow": "Реальні встановлення",
-        "installTitle": "Встановлено на мотоцикли Honda Gold Wing",
         "worldEyebrow": "По всьому світу",
         "worldTitle": "C-Way на Honda Gold Wing по всьому світу",
         "worldAlt": "Багажні системи C-Way на мотоциклах Honda Gold Wing по всьому світу",

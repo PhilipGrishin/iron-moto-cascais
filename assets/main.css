@@ -23,7 +23,7 @@
   --radius-lg:22px;
   --max:1320px;
   --pad-x:clamp(20px,4vw,60px);
-  --gap:clamp(44px,6vw,96px);
+  --gap:clamp(22px,3vw,48px);
   --ease:cubic-bezier(.2,.7,.2,1);
   --t-fast:.25s;
   --t-mid:.5s;
@@ -181,7 +181,7 @@ html[lang="uk"] .sub-intro p{
 /* Layout helpers */
 .container{max-width:var(--max);margin:0 auto;padding:0 var(--pad-x);position:relative}
 section{padding:var(--gap) 0;position:relative}
-.section-head{margin-bottom:clamp(30px,4vw,56px)}
+.section-head{margin-bottom:clamp(16px,2vw,28px)}
 .section-head .h-eyebrow{margin-bottom:18px;display:inline-block}
 .section-head h2{margin-bottom:18px}
 .divider-line{height:1px;background:linear-gradient(90deg,transparent,var(--border-strong) 25%,var(--border-strong) 75%,transparent)}
