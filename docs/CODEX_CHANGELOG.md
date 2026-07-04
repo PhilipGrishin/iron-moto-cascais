@@ -14,6 +14,23 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-04 - C-Way stock status and offer schema
+
+- Commit: this commit
+- Changed: Updated the C-Way dealer subpage in EN/RU/UK/PT so the three
+  approved positions show an in-stock status with price-on-request copy,
+  changed the OfferCatalog `itemOffered` entities from `Product` to `Service`,
+  removed product-only schema fields, set Offer availability to `InStock`,
+  updated the Portuguese Honda Gold Wing backlink anchor and refreshed sitemap
+  `lastmod` values for C-Way and Honda service URLs.
+- Verified: Python compile check for touched generators/data; Authorized
+  Dealer rebuild; localized link/SEO pipeline; `validate_seo.py` for 188
+  sitemap URLs; focused HTML/JSON-LD checks for all four C-Way pages and Honda
+  anchors; `git diff --check`.
+- Notes: C-Way page schema must not emit Product/ProductGroup while prices are
+  "on request"; keep the three approved luggage-system positions as services
+  in structured data.
+
 ## 2026-07-03 - C-Way dealer partner page
 
 - Commit: this commit

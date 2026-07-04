@@ -322,14 +322,13 @@ def cway_schema_blocks(lang: str) -> list[dict]:
                 "name": product["name"],
                 "description": product["text"],
                 "url": product_media["url"],
-                "availability": "https://schema.org/PreOrder",
+                "availability": "https://schema.org/InStock",
                 "seller": {"@id": f"{DOMAIN}/#business"},
                 "itemOffered": {
-                    "@type": "Product",
+                    "@type": "Service",
                     "name": product["name"],
-                    "brand": {"@type": "Brand", "name": "C-Way"},
-                    "category": "Honda Gold Wing luggage system",
-                    "image": f"{DOMAIN}{asset_url(product_media['base'], 'webp')}",
+                    "url": product_media["url"],
+                    "description": product["text"],
                 },
             }
         )
@@ -496,7 +495,9 @@ html[lang="ru"] .cway-video-title,html[lang="uk"] .cway-video-title{{font-size:c
 .cway-product-body{{padding:8px 8px 8px 0}}
 .cway-product h3{{margin:0 0 14px;color:#fff;font-family:var(--font-display);font-size:clamp(24px,2.2vw,38px);line-height:1;text-transform:uppercase}}
 .cway-product p{{margin:0 0 16px;color:var(--text-dim);font-size:clamp(16px,1.2vw,20px);line-height:1.6}}
-.cway-order{{display:inline-flex;margin:0 0 18px;color:var(--accent);font-family:var(--font-ui);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}}
+.cway-order{{display:inline-flex;gap:0;margin:0 0 18px;font-family:var(--font-ui);font-size:13px;font-weight:800;letter-spacing:.04em}}
+.cway-stock{{color:#48d67a}}
+.cway-price-request{{color:var(--text-dim)}}
 .cway-shop{{color:#fff;text-decoration:none;font-family:var(--font-ui);font-weight:800;text-transform:uppercase}}
 .cway-shop:hover{{color:var(--accent)}}
 .cway-studio-scroll{{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,360px);gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:10px}}
@@ -675,7 +676,7 @@ def render_cway_products(lang: str) -> str:
   <div class="cway-product-body">
     <h3>{escape(product["name"])}</h3>
     <p>{escape(product["text"])}</p>
-    <span class="cway-order">{escape(t["orderLabel"])}</span><br/>
+    <span class="cway-order"><span class="cway-stock">{escape(t["stockLabel"])}</span><span class="cway-price-request"> · {escape(t["priceRequestLabel"])}</span></span><br/>
     <a class="cway-shop" href="{escape(media["url"])}" rel="noopener" target="_blank">{escape(t["shopLabel"])} {ARROW_SVG}</a>
   </div>
 </article>

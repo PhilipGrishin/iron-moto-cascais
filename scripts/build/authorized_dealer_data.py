@@ -317,8 +317,9 @@ CWAY_DEALER_I18N = {
         ],
         "productsEyebrow": "Three positions",
         "productsTitle": "C-Way products we supply for Honda Gold Wing",
-        "productsIntro": "No per-SKU card maze. Choose the line, configuration and fitment with us; every configuration is made to order.",
-        "orderLabel": "Made to order · price on request",
+        "productsIntro": "No per-SKU card maze. Choose the line, configuration and fitment with us; we confirm the exact setup and timing before installation.",
+        "stockLabel": "In stock",
+        "priceRequestLabel": "Price on request",
         "shopLabel": "Open C-Way product page",
         "products": {
             "steel": {
@@ -395,8 +396,9 @@ CWAY_DEALER_I18N = {
         ],
         "productsEyebrow": "Três posições",
         "productsTitle": "Produtos C-Way que fornecemos para Honda Gold Wing",
-        "productsIntro": "Sem labirinto de cartões por SKU. Escolha connosco a linha, a configuração e a montagem; todas as configurações são feitas por encomenda.",
-        "orderLabel": "Por encomenda · preço sob consulta",
+        "productsIntro": "Sem labirinto de cartões por SKU. Escolha connosco a linha, a configuração e a montagem; confirmamos a configuração exata e o prazo antes da instalação.",
+        "stockLabel": "Em stock",
+        "priceRequestLabel": "Preço sob consulta",
         "shopLabel": "Abrir página do produto C-Way",
         "products": {
             "steel": {
@@ -473,8 +475,9 @@ CWAY_DEALER_I18N = {
         ],
         "productsEyebrow": "Три позиции",
         "productsTitle": "Продукты C-Way, которые мы поставляем для Honda Gold Wing",
-        "productsIntro": "Без лабиринта SKU-карточек. Мы поможем выбрать линейку, конфигурацию и установку; все конфигурации изготавливаются под заказ.",
-        "orderLabel": "Под заказ · цена по запросу",
+        "productsIntro": "Без лабиринта SKU-карточек. Мы поможем выбрать линейку, конфигурацию и установку; точную комплектацию и сроки подтверждаем до монтажа.",
+        "stockLabel": "В наличии",
+        "priceRequestLabel": "Цена по запросу",
         "shopLabel": "Открыть страницу товара C-Way",
         "products": {
             "steel": {
@@ -551,8 +554,9 @@ CWAY_DEALER_I18N = {
         ],
         "productsEyebrow": "Три позиції",
         "productsTitle": "Продукти C-Way, які ми постачаємо для Honda Gold Wing",
-        "productsIntro": "Без лабіринту SKU-карток. Ми допоможемо вибрати лінійку, конфігурацію та встановлення; усі конфігурації виготовляються на замовлення.",
-        "orderLabel": "На замовлення · ціна за запитом",
+        "productsIntro": "Без лабіринту SKU-карток. Ми допоможемо вибрати лінійку, конфігурацію та встановлення; точну комплектацію і строки підтверджуємо до монтажу.",
+        "stockLabel": "В наявності",
+        "priceRequestLabel": "Ціна за запитом",
         "shopLabel": "Відкрити сторінку товару C-Way",
         "products": {
             "steel": {

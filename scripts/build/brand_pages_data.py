@@ -2052,7 +2052,7 @@ PAGE_I18N["honda-service"] = {
         "hon.m5t": "Rebel",
         "hon.m5d": "CMX500 e CMX1100 Rebel — incluindo a Rebel 1100 DCT.",
         "hon.m6t": "Gold Wing",
-        "hon.m6d": "GL1800 Gold Wing — serviço completo de viagem, DCT, suspensão e eletrónica. Para malas de viagem, veja os nossos <a href=\"/pt/authorized-dealer/c-way/\">sistemas de malas C-Way para Honda Gold Wing</a>.",
+        "hon.m6d": "GL1800 Gold Wing — serviço completo de viagem, DCT, suspensão e eletrónica. Para malas de viagem, veja os nossos <a href=\"/pt/authorized-dealer/c-way/\">sistemas de bagagem C-Way para a Honda Gold Wing</a>.",
         "hon.m7t": "VFR & CB1100",
         "hon.m7d": "VFR800 e VFR1200 V4; a CB1100 clássica moderna arrefecida a ar.",
         "hon.m8t": "CRF dual-sport & enduro",
