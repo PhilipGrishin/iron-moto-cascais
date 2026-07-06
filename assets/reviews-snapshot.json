@@ -1,7 +1,7 @@
 {
   "name": "Iron Custom Motors",
   "rating": 5,
-  "total": 15,
+  "total": 16,
   "reviews": [
     {
       "author": "Александр Рыбалко",
@@ -10,7 +10,7 @@
       "rating": 5,
       "text": "I was very happy to meet highly qualified specialists! The service and approach simply exceeded all my expectations. I didn't think that my problem would be solved so easily, since this was not the first service I contacted, and everyone refused, but these guys just did it without any extra words in the shortest possible time. I am very glad that I met these guys on the road, huge thanks to Yaroslav and his team for the perfect service and warm welcome!",
       "lang": "en",
-      "when": "3 weeks ago",
+      "when": "a month ago",
       "publishedAt": "2026-05-31T15:11:38.214307844Z",
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2s1TUxYTnlSR0pGTkVaTWF6UlRObE53WjE5emQxRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     },
@@ -21,9 +21,20 @@
       "rating": 5,
       "text": "Super friendly founders and stuff, great service, totally recommend!",
       "lang": "en",
-      "when": "a month ago",
+      "when": "2 months ago",
       "publishedAt": "2026-05-02T16:21:50.889876458Z",
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2pCRVRrRTRNRmRCZUZObFNrSklTamxWYlU0eFRIYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
+    },
+    {
+      "author": "Dmytro Zhuk",
+      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjWTUE-W9CUf-Gwrk32qrPvnTYekpW5a0n-fE7BjwyygHGa65F3I=s128-c0x00000000-cc-rp-mo",
+      "profileUrl": "https://www.google.com/maps/contrib/112096958323850462289/reviews",
+      "rating": 5,
+      "text": "I brought my Honda Rebel 500 for the regular service to this place. Everything was done quick, with high quality and service overall was perfect. I am totally happy. Good job, guys, keep it going!\n\nP.S. Coffee was fantastic by the way.",
+      "lang": "en",
+      "when": "2 weeks ago",
+      "publishedAt": "2026-06-20T13:53:30.884935723Z",
+      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2tOYVlrSjZSMU5WU2tGMk4xTnhlbWRmTFZaVk9WRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     },
     {
       "author": "Aleksandr Nevedrov",
@@ -32,7 +43,7 @@
       "rating": 5,
       "text": "Visited for workshop Opening date. Legend of customizing just opened the brand new workshop & already packed with nice bikes",
       "lang": "en",
-      "when": "a month ago",
+      "when": "2 months ago",
       "publishedAt": "2026-05-03T05:05:37.722363365Z",
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2taaGVIQnpRbk5HUTNOM1VFOXlaREJRTjFNM2NVRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     },
@@ -43,21 +54,10 @@
       "rating": 5,
       "text": "Iron custom motors from Ukraine in Lisbon! Fix your ride & fuel your soul!",
       "lang": "en",
-      "when": "a month ago",
+      "when": "2 months ago",
       "publishedAt": "2026-05-02T16:20:03.757513107Z",
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2tVNE5YbDBYM0YzUmxsTGJFWmllVUZpUWpJemNsRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
-    },
-    {
-      "author": "Пилип Гришин",
-      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjX0ezSFSEpuJET9o9MCoAaj0ZyQ8rpIFeYrlSXcAET0JfVrmo5a=s128-c0x00000000-cc-rp-mo",
-      "profileUrl": "https://www.google.com/maps/contrib/110296485819969069182/reviews",
-      "rating": 5,
-      "text": "Excellent place with a great atmosphere. You can immediately feel that people here truly love motorcycles, understand the technical side, and approach their work not formally, but with real experience and attention to detail. It is a very приятное space with strong energy, a professional approach, and the feeling that you are among like-minded people. I wish Iron Custom Motors strong growth, great customers, and a big future in Portugal.",
-      "lang": "en",
-      "when": "2 months ago",
-      "publishedAt": "2026-04-17T15:55:54.285736515Z",
-      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xjd1l6QnVUbXBhU1RKeUxYY3lWbEl4WlZwNlEyYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     }
   ],
-  "fetchedAt": "2026-06-28T14:12:22.086Z"
+  "fetchedAt": "2026-07-06T11:06:10.784Z"
 }
