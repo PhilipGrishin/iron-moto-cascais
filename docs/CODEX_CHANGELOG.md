@@ -14,6 +14,18 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-10 - Homepage featured projects
+
+- Commit: this commit
+- Changed: Promoted Beckman to the full-width featured position on all four
+  homepages, using `beckman-06-800`; moved Inspirium into the standard project
+  grid and changed the Unbreakable card image to `unbreakable-04-800`.
+- Verified: Focused EN/RU/UK/PT card-order, link and image checks; unchanged
+  head metadata and JSON-LD; `validate_seo.py` for 188 sitemap URLs; desktop
+  browser layout check; `git diff --check`.
+- Notes: Homepage project order and media are maintained directly in the four
+  homepage HTML files; project copy remains in the existing I18N keys.
+
 ## 2026-07-04 - C-Way stock status and offer schema
 
 - Commit: this commit
