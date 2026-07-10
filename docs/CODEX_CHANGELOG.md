@@ -14,6 +14,21 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-10 - Reviews refresh deploy recovery
+
+- Commit: this commit
+- Changed: Merged the scheduled Google reviews snapshot commit with the local
+  homepage featured-project changes, deployed the combined `main`, and updated
+  the GitHub Pages workflow so a successful `Refresh Google Reviews Snapshot`
+  run also triggers a Pages deployment from the latest `main`.
+- Verified: Local SEO validation for 188 sitemap URLs; focused EN/RU/UK/PT
+  homepage checks for `reviewCount: 16`, Beckman-first project order and image
+  sources; GitHub Pages run `29086000042`; production homepage and sitemap with
+  `Last-Modified: Fri, 10 Jul 2026 10:20:34 GMT`.
+- Notes: The scheduled review workflow had pushed commit `1d05bb0`, but the
+  normal Pages deploy had not run afterward because the refresh used the
+  GitHub Actions bot token.
+
 ## 2026-07-10 - Homepage featured projects
 
 - Commit: this commit
