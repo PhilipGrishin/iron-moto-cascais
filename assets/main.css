@@ -425,11 +425,16 @@ section{padding:var(--gap) 0;position:relative}
 .projects{position:relative}
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .project{position:relative;border-radius:var(--radius-lg);overflow:hidden;background:var(--surface);border:1px solid var(--border);aspect-ratio:4/3}
-.project.hero{grid-column:1 / -1;aspect-ratio:21/9;margin-bottom:6px}
+.project.hero{grid-column:1 / -1;aspect-ratio:auto;min-height:0;padding:0;margin-bottom:6px;background:#000;isolation:auto}
 .project.tile{aspect-ratio:4/3}
 .project img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease),filter .6s var(--ease);filter:saturate(.85) contrast(1.05)}
 .project:hover img{transform:scale(1.08);filter:saturate(1.05) contrast(1.1)}
 .project::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(10,10,10,.85) 100%);transition:opacity var(--t-fast) var(--ease)}
+.project.hero img{height:auto;object-fit:contain;transition:none;filter:none}
+.project.hero:hover img{transform:none;filter:none}
+.project.hero::before{display:none}
+.project.hero::after{display:none}
+.project.hero .meta{display:none}
 .project .meta{position:absolute;left:26px;bottom:24px;right:26px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
 .project .meta-text .label{display:inline-block;font-family:var(--font-ui);text-transform:uppercase;letter-spacing:.22em;font-size:10px;color:var(--accent);margin-bottom:8px;padding:4px 10px;background:rgba(255,87,34,.12);border:1px solid rgba(255,87,34,.3);border-radius:999px}
 .project .meta-text h3{font-size:clamp(20px,1.8vw,28px);color:#fff}
@@ -655,7 +660,7 @@ html[lang="uk"] .mobile-drawer .nav-mobile .mobile-subnav a{font-family:var(--fo
   .service{min-height:auto;padding:28px 24px}
   .projects-grid{grid-template-columns:1fr;gap:14px}
   .project.tile{grid-column:span 1;aspect-ratio:4/3}
-  .project.hero{grid-column:span 1;aspect-ratio:21/9}
+  .project.hero{grid-column:span 1;aspect-ratio:auto}
   .reviews-row{grid-template-columns:1fr}
   .process-track{grid-template-columns:1fr 1fr;gap:30px}
   .footer-grid{grid-template-columns:1fr;gap:30px}

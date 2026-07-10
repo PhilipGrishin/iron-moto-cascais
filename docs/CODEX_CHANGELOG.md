@@ -14,6 +14,19 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-10 - Homepage project hero image
+
+- Commit: this commit
+- Changed: Removed the inherited hero-section layout, overlay, filter and hover
+  zoom from the full-width homepage project card so the Beckman image renders
+  as a plain full image link; bumped the site asset cache-bust to
+  `20260710a`.
+- Verified: Local SEO validation for 188 sitemap URLs; focused EN/RU/UK/PT
+  homepage hero-link check; desktop and mobile browser checks confirmed
+  `object-fit: contain`, no transform/filter, no pseudo-overlay, no hidden
+  hero padding/min-height, and the link still points to the Beckman project.
+- Notes: Other project tiles keep their existing overlay and hover treatment.
+
 ## 2026-07-10 - Reviews refresh deploy recovery
 
 - Commit: this commit
