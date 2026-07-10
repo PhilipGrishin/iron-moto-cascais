@@ -36,10 +36,10 @@ goal is SEO, local search, AI-citation readiness and high-quality service leads.
   - Russian at `/ru/`
   - Ukrainian at `/uk/`
   - Portuguese at `/pt/`
-- Current sitemap: 47 indexable path patterns x 4 languages = 188 URLs.
-- Current repo HTML count: 191 files, including `404.html` and 2 legacy noindex
+- Current sitemap: 48 indexable path patterns x 4 languages = 192 URLs.
+- Current repo HTML count: 195 files, including `404.html` and 2 legacy noindex
   redirect stubs.
-- Current cache-bust convention: `?v=20260703a`.
+- Current cache-bust convention: `?v=20260710b`.
 - `sitemap.xml` `lastmod` values are per-page real content dates with timezone,
   not deploy timestamps. Blog/news use their explicit article dates; other
   pages use semantic Git history for the served HTML.

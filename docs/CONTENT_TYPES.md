@@ -274,6 +274,7 @@ trailer/mototrailer content without a new explicit owner task.
 Source of truth:
 
 - `scripts/build/blog_data.py`
+- Long-form multilingual Markdown sources under `scripts/build/content/`
 - Images under `photos/blog/`
 
 Generator:
@@ -292,7 +293,8 @@ Schema:
 
 - `BlogPosting`
 - `BreadcrumbList`
-- Optional `VideoObject` when article embeds a video.
+- Optional `VideoObject` when article embeds a video. Native self-hosted video
+  slots use `nativeVideo` data and render as `<video>` without a YouTube iframe.
 - `datePublished` and `dateModified` must be full ISO-8601 datetimes with a
   Europe/Lisbon timezone offset, not date-only strings.
 - `author` must keep the canonical business `@id` and include `url`.

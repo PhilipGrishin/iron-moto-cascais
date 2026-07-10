@@ -319,7 +319,9 @@ python3 scripts/build/validate_seo.py
 ```
 # 1. Drop processed JPEG photos into photos/blog/ named
 #    blog-<slug>-NN-1600.jpg and blog-<slug>-NN-800.jpg
-# 2. Add the post content to blog_data.py (BLOG_POSTS dict)
+# 2. Add the post content to blog_data.py (BLOG_POSTS dict), or add a reviewed
+#    4-language Markdown source under scripts/build/content/ and load it from
+#    blog_data.py for long-form articles
 # 3. Add the slug to build_i18n.py MAIN_PAGES
 # 4. Add it to build_sitemap.py PAGES
 # 5. Add it to localize_internal_links.py LOCALIZED_PATHS

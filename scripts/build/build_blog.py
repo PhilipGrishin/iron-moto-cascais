@@ -97,6 +97,8 @@ ARTICLE_CSS = """.subpage.blog-article{padding:0;position:relative;overflow:hidd
 .blog-video .video-frame{position:relative;aspect-ratio:9/16;overflow:hidden;border-radius:var(--radius);border:1px solid var(--border);background:#111}
 .blog-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .blog-video a{color:var(--accent);font-family:var(--font-ui);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
+.blog-native-video{width:min(100%,420px);aspect-ratio:9/16;margin:28px auto 0;overflow:hidden;border-radius:var(--radius);border:1px solid var(--border);background:#000}
+.blog-native-video video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
 .blog-faq{display:grid;gap:12px}
 .blog-faq-item{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);overflow:hidden}
 .blog-faq-item summary{cursor:pointer;padding:18px 20px;font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(19px,2vw,25px);line-height:1.1;color:#fff}
@@ -390,7 +392,8 @@ def render_article(slug, article):
     pre = article_prefix(slug)
     page_url = f"{DOMAIN}/blog/{slug}/"
     hero_img_path = article_hero_image(article)
-    hero_img_url = f"{DOMAIN}{hero_img_path}"
+    hero_schema_path = article.get("schemaImage", hero_img_path)
+    hero_img_url = f"{DOMAIN}{hero_schema_path}"
     images = [hero_img_url]
     images.extend(
         f"{DOMAIN}{article_image(article, num)}"
@@ -431,6 +434,8 @@ def render_article(slug, article):
                 elif block["type"] in ("ul", "ol"):
                     for item_idx, item in enumerate(block["items"], start=1):
                         inline_i18n[lang][f"{block_key}.item{item_idx}"] = item
+                elif block["type"] == "video":
+                    continue
                 else:
                     inline_i18n[lang][f"{block_key}.text"] = block["text"]
         for idx, faq in enumerate(body["faqs"], start=1):
@@ -463,7 +468,19 @@ def render_article(slug, article):
     }
     if article.get("keywords", {}).get("en"):
         blog_posting_schema["keywords"] = ", ".join(article["keywords"]["en"])
-    if article.get("youtubeEmbed") and article.get("youtubeUrl"):
+    if article.get("nativeVideo"):
+        native_video = article["nativeVideo"]
+        blog_posting_schema["video"] = {
+            "@type": "VideoObject",
+            "name": en_body["videoTitle"],
+            "description": en_body["videoText"],
+            "thumbnailUrl": native_video["poster"],
+            "contentUrl": native_video["contentUrl"],
+            "uploadDate": schema_datetime(native_video["uploadDate"]),
+            "duration": native_video["duration"],
+            "inLanguage": "en",
+        }
+    elif article.get("youtubeEmbed") and article.get("youtubeUrl"):
         video_schema = {
             "@type": "VideoObject",
             "name": en_body["videoTitle"],
@@ -529,6 +546,15 @@ def render_article(slug, article):
                 caption=block.get("caption"),
                 caption_key=f"{block_key}.caption",
             )
+        if block["type"] == "video":
+            if not article.get("nativeVideo"):
+                raise ValueError(f"Article {slug} has a video slot without nativeVideo data")
+            video = article["nativeVideo"]
+            return f'''<div class="blog-native-video">
+<video controls height="{video["height"]}" playsinline poster="{a(video["poster"])}" preload="none" title="{a(en_body["videoTitle"])}" data-i18n-title="{pre}.videoTitle" width="{video["width"]}">
+<source src="{a(video["contentUrl"])}" type="video/mp4"/>
+</video>
+</div>'''
         raise ValueError(f"Unsupported blog content block type: {block['type']}")
 
     def render_content_sections(indexed_sections=None):

@@ -71,6 +71,45 @@ _BEAR650_LABELS = {
     },
 }
 
+_HARLEY_SERVICE_SLUG = "harley-davidson-full-service-done-right"
+_HARLEY_SERVICE_SOURCE = Path(__file__).resolve().parent / "content" / "harley_service_blog_4lang.md"
+_HARLEY_SERVICE_LANGS = (
+    ("en", "ENGLISH"),
+    ("pt", "PORTUGUÊS (pt-PT)"),
+    ("ru", "РУССКИЙ"),
+    ("uk", "УКРАЇНСЬКА"),
+)
+_HARLEY_SERVICE_LABELS = {
+    "en": {
+        "eyebrow": "Published 10 July 2026",
+        "publishedLabel": "Published 10 July 2026",
+        "breadHome": "Home",
+        "breadBlog": "Blog",
+        "faqTitle": "FAQ",
+    },
+    "pt": {
+        "eyebrow": "Publicado em 10 de julho de 2026",
+        "publishedLabel": "Publicado em 10 de julho de 2026",
+        "breadHome": "Início",
+        "breadBlog": "Blog",
+        "faqTitle": "FAQ",
+    },
+    "ru": {
+        "eyebrow": "Опубликовано 10 июля 2026",
+        "publishedLabel": "Опубликовано 10 июля 2026",
+        "breadHome": "Главная",
+        "breadBlog": "Блог",
+        "faqTitle": "FAQ",
+    },
+    "uk": {
+        "eyebrow": "Опубліковано 10 липня 2026",
+        "publishedLabel": "Опубліковано 10 липня 2026",
+        "breadHome": "Головна",
+        "breadBlog": "Блог",
+        "faqTitle": "FAQ",
+    },
+}
+
 
 def _inline_markdown(value):
     tokens = []
@@ -102,12 +141,12 @@ def _inline_markdown(value):
     return re.sub(r"@@ICM_TOKEN_(\d+)@@", restore, value)
 
 
-def _split_bear650_sections(source):
+def _split_localized_sections(source, languages, source_name):
     found = []
-    for code, heading in _BEAR650_LANGS:
+    for code, heading in languages:
         match = re.search(rf"^## {re.escape(heading)}\s*$", source, re.MULTILINE)
         if not match:
-            raise ValueError(f"Missing Bear 650 language heading: {heading}")
+            raise ValueError(f"Missing {source_name} language heading: {heading}")
         found.append((code, match.start()))
     found.sort(key=lambda item: item[1])
     sections = {}
@@ -117,21 +156,21 @@ def _split_bear650_sections(source):
     return sections
 
 
-def _flush_bear650_paragraph(blocks, buffer):
+def _flush_markdown_paragraph(blocks, buffer):
     if buffer:
         text = " ".join(line.strip() for line in buffer).strip()
         blocks.append({"type": "p", "text": _inline_markdown(text)})
         buffer.clear()
 
 
-def _flush_bear650_list(blocks, items, list_type):
+def _flush_markdown_list(blocks, items, list_type):
     if items:
         blocks.append({"type": "ol" if list_type == "ol" else "ul", "items": [_inline_markdown(item) for item in items]})
         items.clear()
     return None
 
 
-def _parse_bear650_blocks(lines):
+def _parse_markdown_blocks(lines):
     blocks = []
     paragraph = []
     list_items = []
@@ -141,29 +180,34 @@ def _parse_bear650_blocks(lines):
         if stripped == "---":
             continue
         if not stripped:
-            _flush_bear650_paragraph(blocks, paragraph)
-            list_type = _flush_bear650_list(blocks, list_items, list_type)
+            _flush_markdown_paragraph(blocks, paragraph)
+            list_type = _flush_markdown_list(blocks, list_items, list_type)
             continue
         image_match = re.match(r"`\[IMAGE (\d+)\]` ALT:\s*(.+)", stripped)
         if image_match:
-            _flush_bear650_paragraph(blocks, paragraph)
-            list_type = _flush_bear650_list(blocks, list_items, list_type)
+            _flush_markdown_paragraph(blocks, paragraph)
+            list_type = _flush_markdown_list(blocks, list_items, list_type)
             blocks.append({"type": "image", "image": int(image_match.group(1)), "alt": image_match.group(2).strip()})
+            continue
+        if re.fullmatch(r"\[VIDEO:.*\]", stripped):
+            _flush_markdown_paragraph(blocks, paragraph)
+            list_type = _flush_markdown_list(blocks, list_items, list_type)
+            blocks.append({"type": "video"})
             continue
         bullet_match = re.match(r"-\s+(.+)", stripped)
         ordered_match = re.match(r"\d+\.\s+(.+)", stripped)
         if bullet_match or ordered_match:
-            _flush_bear650_paragraph(blocks, paragraph)
+            _flush_markdown_paragraph(blocks, paragraph)
             current_type = "ol" if ordered_match else "ul"
             if list_type and list_type != current_type:
-                list_type = _flush_bear650_list(blocks, list_items, list_type)
+                list_type = _flush_markdown_list(blocks, list_items, list_type)
             list_type = current_type
             list_items.append((ordered_match or bullet_match).group(1).strip())
             continue
-        list_type = _flush_bear650_list(blocks, list_items, list_type)
+        list_type = _flush_markdown_list(blocks, list_items, list_type)
         paragraph.append(stripped)
-    _flush_bear650_paragraph(blocks, paragraph)
-    _flush_bear650_list(blocks, list_items, list_type)
+    _flush_markdown_paragraph(blocks, paragraph)
+    _flush_markdown_list(blocks, list_items, list_type)
     return blocks
 
 
@@ -204,7 +248,7 @@ def _parse_bear650_language(raw):
 
     content_sections = []
     chunks = re.split(r"\n(?=## )", before_faq.strip())
-    preamble_blocks = _parse_bear650_blocks(chunks[0].splitlines())
+    preamble_blocks = _parse_markdown_blocks(chunks[0].splitlines())
     preamble_paragraphs = [block for block in preamble_blocks if block["type"] == "p"]
     if not preamble_paragraphs:
         raise ValueError("Bear 650 source has no lead paragraph")
@@ -216,9 +260,9 @@ def _parse_bear650_language(raw):
     for chunk in chunks[1:]:
         chunk_lines = chunk.splitlines()
         title = chunk_lines[0][3:].strip()
-        content_sections.append({"title": title, "blocks": _parse_bear650_blocks(chunk_lines[1:])})
+        content_sections.append({"title": title, "blocks": _parse_markdown_blocks(chunk_lines[1:])})
 
-    cta_blocks = _parse_bear650_blocks([line for line in cta_rest.splitlines() if line.strip() != "---"])
+    cta_blocks = _parse_markdown_blocks([line for line in cta_rest.splitlines() if line.strip() != "---"])
     content_sections.append({"title": cta_title.strip(), "blocks": cta_blocks, "className": "blog-cta-box"})
 
     hero_alt = ""
@@ -242,7 +286,10 @@ def _parse_bear650_language(raw):
 
 def _load_bear650_post():
     source = _BEAR650_SOURCE.read_text(encoding="utf-8")
-    parsed = {code: _parse_bear650_language(raw) for code, raw in _split_bear650_sections(source).items()}
+    parsed = {
+        code: _parse_bear650_language(raw)
+        for code, raw in _split_localized_sections(source, _BEAR650_LANGS, "Bear 650").items()
+    }
     post_meta = {}
     post_body = {}
     for code in ("en", "ru", "uk", "pt"):
@@ -271,6 +318,152 @@ def _load_bear650_post():
         "imageCount": 2,
         "imageDims": {1: (1600, 1200), 2: (1600, 1200)},
         "sourceLocalizedSlugs": {code: _BEAR650_SLUG for code in ("en", "ru", "pt", "uk")},
+        "meta": post_meta,
+        "body": post_body,
+    }
+
+
+def _parse_harley_service_language(raw):
+    lines = raw.splitlines()
+    meta = {}
+    h1 = None
+    body_lines = []
+    in_body = False
+    for line in lines[1:]:
+        if line.startswith("**SEO Title:**"):
+            meta["title"] = line.split("**SEO Title:**", 1)[1].strip()
+        elif line.startswith("**Meta description:**"):
+            meta["description"] = line.split("**Meta description:**", 1)[1].strip()
+        elif line.startswith("**URL slug:**"):
+            meta["slug"] = line.split("**URL slug:**", 1)[1].strip()
+        elif line.startswith("# "):
+            h1 = line[2:].strip()
+            in_body = True
+        elif in_body:
+            body_lines.append(line)
+    if not (meta.get("title") and meta.get("description") and meta.get("slug") and h1):
+        raise ValueError("Incomplete Harley service blog source metadata")
+
+    body = "\n".join(body_lines).strip()
+    before_faq, faq_tail = body.split("\n## FAQ\n", 1)
+    hero_match = re.search(r"^\[IMAGE:.*\|\s*ALT:\s*(.+)\]\s*$", faq_tail, re.MULTILINE)
+    if not hero_match:
+        raise ValueError("Missing Harley service hero image slot")
+    hero_alt = hero_match.group(1).strip()
+    faq_and_cta = faq_tail[:hero_match.start()].strip()
+
+    faq_items = []
+    cta_parts = []
+    for paragraph in [part.strip() for part in faq_and_cta.split("\n\n") if part.strip()]:
+        match = re.match(r"\*\*(.*?)\*\*\s*(.*)", paragraph, re.S)
+        if not match:
+            raise ValueError(f"Cannot parse Harley service FAQ or CTA block: {paragraph[:80]}")
+        title, text = match.group(1).strip(), match.group(2).strip()
+        if title.endswith("?"):
+            faq_items.append({"q": title, "a": _inline_markdown(text)})
+        else:
+            cta_parts.append(paragraph)
+    if len(faq_items) != 6:
+        raise ValueError(f"Expected 6 Harley service FAQ items, got {len(faq_items)}")
+    if len(cta_parts) != 1:
+        raise ValueError(f"Expected 1 Harley service CTA block, got {len(cta_parts)}")
+
+    content_sections = []
+    chunks = re.split(r"\n(?=## )", before_faq.strip())
+    preamble_blocks = _parse_markdown_blocks(chunks[0].splitlines())
+    preamble_paragraphs = [block for block in preamble_blocks if block["type"] == "p"]
+    if not preamble_paragraphs:
+        raise ValueError("Harley service source has no lead paragraph")
+    lede = preamble_paragraphs[0]["text"]
+    if preamble_blocks[1:]:
+        content_sections.append({"blocks": preamble_blocks[1:], "className": "blog-article-lead"})
+
+    video_title = ""
+    video_text = ""
+    for chunk in chunks[1:]:
+        chunk_lines = chunk.splitlines()
+        title = chunk_lines[0][3:].strip()
+        blocks = _parse_markdown_blocks(chunk_lines[1:])
+        section = {"title": title, "blocks": blocks}
+        if any(block["type"] == "video" for block in blocks):
+            section["className"] = "blog-video-section"
+            video_title = title
+            video_text = next((block["text"] for block in blocks if block["type"] == "p"), "")
+        content_sections.append(section)
+
+    content_sections.append({
+        "blocks": [{"type": "p", "text": _inline_markdown(cta_parts[0])}],
+        "className": "blog-cta-box",
+    })
+    if not (video_title and video_text):
+        raise ValueError("Missing Harley service video section copy")
+
+    return {
+        "meta": meta,
+        "h1": h1,
+        "lede": lede,
+        "heroAlt": hero_alt,
+        "contentSections": content_sections,
+        "faqs": faq_items,
+        "videoTitle": video_title,
+        "videoText": video_text,
+    }
+
+
+def _load_harley_service_post():
+    source = _HARLEY_SERVICE_SOURCE.read_text(encoding="utf-8")
+    parsed = {
+        code: _parse_harley_service_language(raw)
+        for code, raw in _split_localized_sections(
+            source, _HARLEY_SERVICE_LANGS, "Harley service"
+        ).items()
+    }
+    post_meta = {}
+    post_body = {}
+    for code in ("en", "ru", "uk", "pt"):
+        item = parsed[code]
+        expected_slug = f"/{'' if code == 'en' else code + '/'}blog/{_HARLEY_SERVICE_SLUG}/"
+        if item["meta"]["slug"] != expected_slug:
+            raise ValueError(
+                f"Unexpected Harley service slug for {code}: {item['meta']['slug']}"
+            )
+        post_meta[code] = {
+            "title": item["meta"]["title"],
+            "description": item["meta"]["description"],
+            "excerpt": item["meta"]["description"],
+        }
+        post_body[code] = {
+            **_HARLEY_SERVICE_LABELS[code],
+            "h1": item["h1"],
+            "h1Crumb": item["h1"],
+            "lede": item["lede"],
+            "heroAlt": item["heroAlt"],
+            "contentSections": item["contentSections"],
+            "faqs": item["faqs"],
+            "videoTitle": item["videoTitle"],
+            "videoText": item["videoText"],
+        }
+    return {
+        "publishedISO": "2026-07-10T12:00:00+01:00",
+        "modifiedISO": "2026-07-10T12:00:00+01:00",
+        "heroImage": "/photos/blog/blog-harley-davidson-full-service-done-right-hero.png",
+        "heroImageDims": (1672, 941),
+        "schemaImage": "/photos/optimized/blog-blog-harley-davidson-full-service-done-right-hero-1920.webp",
+        "imageBase": "/photos/blog/blog-harley-davidson-full-service-done-right",
+        "imageHero": 0,
+        "imageCount": 0,
+        "imageDims": {},
+        "nativeVideo": {
+            "contentUrl": "https://media.ironcustommotors.com/harley-service-asmr.mp4",
+            "poster": "https://media.ironcustommotors.com/harley-service-asmr-poster.jpg",
+            "uploadDate": "2026-07-10T12:00:00+01:00",
+            "duration": "PT1M24S",
+            "width": 1080,
+            "height": 1920,
+        },
+        "sourceLocalizedSlugs": {
+            code: _HARLEY_SERVICE_SLUG for code in ("en", "ru", "pt", "uk")
+        },
         "meta": post_meta,
         "body": post_body,
     }
@@ -4100,3 +4293,4 @@ BLOG_POSTS["motorcycle-tyre-fitting-specialist-cascais"] = {
 }
 
 BLOG_POSTS[_BEAR650_SLUG] = _load_bear650_post()
+BLOG_POSTS[_HARLEY_SERVICE_SLUG] = _load_harley_service_post()

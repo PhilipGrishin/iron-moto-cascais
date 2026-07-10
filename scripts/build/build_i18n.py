@@ -77,6 +77,7 @@ MAIN_PAGES = [
     ("blog/front-fork-service-motorcycle-cascais/index.html", "blog/front-fork-service-motorcycle-cascais"),
     ("blog/motorcycle-tyre-fitting-specialist-cascais/index.html", "blog/motorcycle-tyre-fitting-specialist-cascais"),
     ("blog/royal-enfield-bear-650-fork-oil-case-study/index.html", "blog/royal-enfield-bear-650-fork-oil-case-study"),
+    ("blog/harley-davidson-full-service-done-right/index.html", "blog/harley-davidson-full-service-done-right"),
     ("news/index.html", "news"),
     ("news/ericeira-kustom-fest-2026/index.html", "news/ericeira-kustom-fest-2026"),
     ("news/opens-new-workshop-in-cascais/index.html", "news/opens-new-workshop-in-cascais"),
@@ -295,8 +296,8 @@ def page_jsonld_context(soup, canonical_url: str, lang: str) -> dict:
     title = clean_text(soup.title.get_text(" ", strip=True)) if soup.title else ""
     description_el = soup.head.find("meta", attrs={"name": "description"}) if soup.head else None
     h1 = soup.find("h1")
-    video_title = soup.select_one(".blog-video h2")
-    video_description = soup.select_one(".blog-video p")
+    video_title = soup.select_one(".blog-video h2, .blog-video-section h2")
+    video_description = soup.select_one(".blog-video p, .blog-video-section p")
     return {
         "canonical_url": canonical_url,
         "lang": lang,

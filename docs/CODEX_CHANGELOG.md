@@ -14,6 +14,21 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-10 - Harley-Davidson full-service cornerstone article
+
+- Commit: this commit
+- Changed: Added the Harley-Davidson full-service cornerstone blog article in
+  EN/PT/RU/UK from the reviewed Markdown source, responsive local AVIF/WebP/JPEG
+  hero media, a portrait native R2 video, localized blog hub cards, reciprocal
+  hreflang/canonical links, BlogPosting/VideoObject/FAQPage/BreadcrumbList
+  schema and four sitemap URLs.
+- Verified: Exact source-file parity; Python compile; SEO validation for 192
+  sitemap URLs; focused four-language content, metadata, link, media, JSON-LD
+  and blog-card checks; desktop/mobile browser checks including Cyrillic; R2
+  responses; downloaded MP4 metadata confirmed AVC 1080x1920, AAC and 83.637 s.
+- Notes: The optional separate YouTube mirror was not uploaded. The website
+  intentionally embeds only the self-hosted R2 video and no YouTube iframe.
+
 ## 2026-07-10 - Homepage project hero captions
 
 - Commit: this commit
