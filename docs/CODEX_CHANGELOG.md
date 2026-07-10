@@ -14,6 +14,18 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-10 - Harley service backlink and schema entities
+
+- Commit: this commit
+- Changed: Added one localized contextual link from each Harley-Davidson
+  service page to the matching full-service article; expanded the article
+  author and publisher references with names and an ImageObject publisher
+  logo; updated the affected service and article sitemap timestamps.
+- Verified: Python compile; focused EN/PT/RU/UK backlink, JSON-LD and sitemap
+  checks; full SEO validation; production and Rich Results Test after deploy.
+- Notes: The backlink lives in the scheduled-maintenance section and appears
+  exactly once per localized service page.
+
 ## 2026-07-10 - Harley-Davidson full-service cornerstone article
 
 - Commit: this commit

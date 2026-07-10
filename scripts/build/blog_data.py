@@ -445,10 +445,16 @@ def _load_harley_service_post():
         }
     return {
         "publishedISO": "2026-07-10T12:00:00+01:00",
-        "modifiedISO": "2026-07-10T12:00:00+01:00",
+        "modifiedISO": "2026-07-10T17:20:00+01:00",
         "heroImage": "/photos/blog/blog-harley-davidson-full-service-done-right-hero.png",
         "heroImageDims": (1672, 941),
         "schemaImage": "/photos/optimized/blog-blog-harley-davidson-full-service-done-right-hero-1920.webp",
+        "schemaEntityName": "Iron Custom Motors",
+        "publisherLogo": {
+            "url": "https://ironcustommotors.com/photos/icon-512.png",
+            "width": 512,
+            "height": 512,
+        },
         "imageBase": "/photos/blog/blog-harley-davidson-full-service-done-right",
         "imageHero": 0,
         "imageCount": 0,

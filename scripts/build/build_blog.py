@@ -451,6 +451,22 @@ def render_article(slug, article):
         for faq in en_body["faqs"]
     ]
 
+    article_author = schema_author()
+    article_publisher = {"@id": f"{DOMAIN}/#business"}
+    if article.get("schemaEntityName"):
+        article_author.update({
+            "@type": "Organization",
+            "name": article["schemaEntityName"],
+        })
+        article_publisher.update({
+            "@type": "Organization",
+            "name": article["schemaEntityName"],
+        })
+    if article.get("publisherLogo"):
+        article_publisher["logo"] = {
+            "@type": "ImageObject",
+            **article["publisherLogo"],
+        }
     blog_posting_schema = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
@@ -459,8 +475,8 @@ def render_article(slug, article):
         "image": images,
         "datePublished": schema_datetime(article["publishedISO"]),
         "dateModified": schema_datetime(article["modifiedISO"]),
-        "author": schema_author(),
-        "publisher": {"@id": f"{DOMAIN}/#business"},
+        "author": article_author,
+        "publisher": article_publisher,
         "mainEntityOfPage": {"@type": "WebPage", "@id": page_url},
         "url": page_url,
         "inLanguage": "en",
