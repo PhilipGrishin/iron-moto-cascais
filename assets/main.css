@@ -433,8 +433,6 @@ section{padding:var(--gap) 0;position:relative}
 .project.hero img{height:auto;object-fit:contain;transition:none;filter:none}
 .project.hero:hover img{transform:none;filter:none}
 .project.hero::before{display:none}
-.project.hero::after{display:none}
-.project.hero .meta{display:none}
 .project .meta{position:absolute;left:26px;bottom:24px;right:26px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
 .project .meta-text .label{display:inline-block;font-family:var(--font-ui);text-transform:uppercase;letter-spacing:.22em;font-size:10px;color:var(--accent);margin-bottom:8px;padding:4px 10px;background:rgba(255,87,34,.12);border:1px solid rgba(255,87,34,.3);border-radius:999px}
 .project .meta-text h3{font-size:clamp(20px,1.8vw,28px);color:#fff}

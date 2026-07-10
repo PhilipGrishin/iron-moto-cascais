@@ -14,6 +14,19 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-10 - Homepage project hero captions
+
+- Commit: this commit
+- Changed: Restored the standard project caption layer on the full-width
+  Beckman homepage card while keeping the image uncropped and without hover
+  zoom; bumped the asset cache-bust to `20260710b`.
+- Verified: Local SEO validation for 188 sitemap URLs; focused EN/RU/UK/PT
+  homepage checks for Beckman labels, title, description, link and cache-bust;
+  desktop and mobile browser checks confirmed visible meta/arrow, active
+  gradient caption layer, `object-fit: contain` and no image transform.
+- Notes: The Beckman card keeps the same label, title, description and arrow
+  affordance as the other project cards.
+
 ## 2026-07-10 - Homepage project hero image
 
 - Commit: this commit
