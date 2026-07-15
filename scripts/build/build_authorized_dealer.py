@@ -313,6 +313,17 @@ def cway_business_reference(*, with_logo: bool = False) -> dict:
         "@type": "LocalBusiness",
         "@id": f"{DOMAIN}/#business",
         "name": "Iron Custom Motors",
+        "image": f"{DOMAIN}/photos/og.jpg",
+        "telephone": "+351917961230",
+        "priceRange": "€€",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "R. António José da Silva 100 B",
+            "addressLocality": "São Domingos de Rana",
+            "addressRegion": "Lisbon",
+            "postalCode": "2785-253",
+            "addressCountry": "PT",
+        },
     }
     if with_logo:
         reference["logo"] = {
@@ -362,6 +373,7 @@ def cway_schema_blocks(lang: str) -> list[dict]:
                     "price": price,
                     "priceCurrency": "EUR",
                     "availability": "https://schema.org/InStock",
+                    "validFrom": "2026-07-15",
                     "priceValidUntil": CWAY_PRICE_VALID_UNTIL,
                     "priceSpecification": {
                         "@type": "UnitPriceSpecification",

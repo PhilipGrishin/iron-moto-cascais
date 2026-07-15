@@ -23,7 +23,10 @@ Format:
   matching Product/Offer entities without manufacturer links.
 - Verified: Python compile; focused four-language content, media, canonical,
   hreflang and JSON-LD parity checks; full SEO validation; desktop/mobile
-  browser checks; production and Rich Results Test after deploy.
+  browser checks; production and Rich Results Test after deploy. Google found
+  17 valid rich-result items with no critical errors; optional Product review
+  and Merchant shipping/return fields remain unset because no approved source
+  data was supplied.
 - Notes: C-Way product assets and numeric prices live in `CWAY_MEDIA`; visible
   copy lives in `CWAY_DEALER_I18N` and is rendered by the shared dealer build.
 
