@@ -184,8 +184,10 @@ localized pages will receive `/pt/`, `/ru/` and `/uk/` prefixes
 through the normal localization pipeline. The current C-Way partner subpage is
 generated directly by `build_authorized_dealer.py` from `CWAY_DEALER_I18N` and
 must remain limited to the approved Honda Gold Wing luggage-system scope and
-three product positions; do not add trailer/mototrailer content without a new
-explicit owner task.
+six priced Steel/Aluminium product configurations. Product media and numeric
+prices live in `CWAY_MEDIA`; translated names and descriptions live in
+`CWAY_DEALER_I18N`. Keep visible prices and Product/Offer schema in parity, and
+do not add trailer/mototrailer content without a new explicit owner task.
 
 ### After editing pre-purchase inspection copy
 

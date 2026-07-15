@@ -1,6 +1,6 @@
 # Iron Custom Motors Website - Project State
 
-Last updated: 2026-07-02
+Last updated: 2026-07-15
 Production: https://ironcustommotors.com/  
 Repository: https://github.com/dreamcarua/iron-moto-cascais
 
@@ -152,8 +152,9 @@ Current hub source:
 Current partner subpages:
 
 - `/authorized-dealer/c-way/` in EN/RU/UK/PT. It is an official C-Way luggage
-  systems page for Honda Gold Wing with exactly three product positions:
-  C-Way Canoe 2.0 Kit, C-Way Canoe 2.0 Aluminum Kit and C-Way Canoe all parts.
+  systems page for Honda Gold Wing 2018–2026 with six priced Canoe 2.0
+  configurations grouped into Steel and Aluminium. Product media is local
+  AVIF/WebP, and each visible position has matching Product/Offer JSON-LD.
   Do not add trailer/mototrailer content to this page unless the owner gives a
   new explicit task.
 

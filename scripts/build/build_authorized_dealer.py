@@ -24,6 +24,7 @@ from authorized_dealer_data import (
     CWAY_DEALER_I18N,
     CWAY_MEDIA,
     CWAY_PAGE_PATH,
+    CWAY_PRICE_VALID_UNTIL,
 )
 from build_new_pages import ARROW_SVG, CACHE_BUST, SHARED_STYLES, end_html, footer_html, header_html
 from hero_images import hero_background_css, hero_preload_links, optimized_hero_url
@@ -307,35 +308,75 @@ def cway_faq_items(lang: str) -> list[dict[str, str]]:
     return CWAY_DEALER_I18N[lang]["faq"]
 
 
+def cway_business_reference(*, with_logo: bool = False) -> dict:
+    reference = {
+        "@type": "LocalBusiness",
+        "@id": f"{DOMAIN}/#business",
+        "name": "Iron Custom Motors",
+    }
+    if with_logo:
+        reference["logo"] = {
+            "@type": "ImageObject",
+            "url": f"{DOMAIN}/photos/icon-512.png",
+            "width": 512,
+            "height": 512,
+        }
+    return reference
+
+
+def cway_product_id(lang: str, key: str) -> str:
+    return f"{cway_url(lang)}#product-{key.replace('_', '-')}"
+
+
 def cway_schema_blocks(lang: str) -> list[dict]:
     t = CWAY_DEALER_I18N[lang]
     meta = CWAY_DEALER_HEAD[lang]
     url = cway_url(lang)
-    products = []
-    for idx, product_media in enumerate(CWAY_MEDIA["products"], start=1):
+    product_blocks = []
+    catalog_items = []
+    for product_media in CWAY_MEDIA["products"]:
         key = product_media["key"]
         product = t["products"][key]
-        products.append(
+        product_id = cway_product_id(lang, key)
+        price = product_media["price"]
+        catalog_items.append(
             {
-                "@type": "Offer",
-                "position": idx,
+                "@type": "Product",
+                "@id": product_id,
                 "name": product["name"],
+            }
+        )
+        product_blocks.append(
+            {
+                "@context": "https://schema.org",
+                "@type": "Product",
+                "@id": product_id,
+                "url": product_id,
+                "name": product["name"],
+                "image": f"{DOMAIN}{asset_url(product_media['base'])}",
                 "description": product["text"],
-                "url": product_media["url"],
-                "availability": "https://schema.org/InStock",
-                "seller": {"@id": f"{DOMAIN}/#business"},
-                "itemOffered": {
-                    "@type": "Service",
-                    "name": product["name"],
-                    "url": product_media["url"],
-                    "description": product["text"],
+                "brand": {"@type": "Brand", "name": "C-Way"},
+                "offers": {
+                    "@type": "Offer",
+                    "url": product_id,
+                    "price": price,
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock",
+                    "priceValidUntil": CWAY_PRICE_VALID_UNTIL,
+                    "priceSpecification": {
+                        "@type": "UnitPriceSpecification",
+                        "price": price,
+                        "priceCurrency": "EUR",
+                        "valueAddedTaxIncluded": False,
+                    },
+                    "seller": cway_business_reference(),
                 },
             }
         )
 
     video_main = CWAY_MEDIA["videos"]["main"]
     video_review = CWAY_MEDIA["videos"]["review"]
-    return [
+    blocks = [
         {
             "@context": "https://schema.org",
             "@type": "Service",
@@ -345,15 +386,16 @@ def cway_schema_blocks(lang: str) -> list[dict]:
             "description": meta["description"],
             "serviceType": "Honda Gold Wing luggage system supply and installation",
             "brand": {"@type": "Brand", "name": "C-Way"},
-            "provider": {"@id": f"{DOMAIN}/#business"},
+            "provider": cway_business_reference(),
             "areaServed": ["Portugal", "Cascais", "Lisbon", "Greater Lisbon"],
             "mainEntityOfPage": {"@id": url},
             "hasOfferCatalog": {
                 "@type": "OfferCatalog",
                 "name": t["productsTitle"],
-                "itemListElement": products,
+                "itemListElement": catalog_items,
             },
         },
+        *product_blocks,
         {
             "@context": "https://schema.org",
             "@type": "VideoObject",
@@ -365,7 +407,7 @@ def cway_schema_blocks(lang: str) -> list[dict]:
             "uploadDate": video_main["upload_date"],
             "duration": video_main["duration"],
             "inLanguage": HREFLANG_CODES[lang],
-            "publisher": {"@id": f"{DOMAIN}/#business"},
+            "publisher": cway_business_reference(with_logo=True),
         },
         {
             "@context": "https://schema.org",
@@ -378,7 +420,7 @@ def cway_schema_blocks(lang: str) -> list[dict]:
             "uploadDate": video_review["upload_date"],
             "duration": video_review["duration"],
             "inLanguage": HREFLANG_CODES[lang],
-            "publisher": {"@id": f"{DOMAIN}/#business"},
+            "publisher": cway_business_reference(with_logo=True),
         },
         {
             "@context": "https://schema.org",
@@ -404,6 +446,7 @@ def cway_schema_blocks(lang: str) -> list[dict]:
             ],
         },
     ]
+    return blocks
 
 
 def cway_hreflang_html() -> str:
@@ -488,21 +531,26 @@ html[lang="ru"] .cway-video-title,html[lang="uk"] .cway-video-title{{font-size:c
 .cway-why-card .num{{font-family:var(--font-display);font-size:30px;font-weight:900;color:var(--accent);line-height:1}}
 .cway-why-card h3{{margin:14px 0 10px;color:#fff;font-family:var(--font-display);font-size:clamp(20px,1.4vw,25px);line-height:1;text-transform:uppercase}}
 .cway-why-card p{{margin:0;color:var(--text-dim);line-height:1.55}}
-.cway-products{{display:grid;gap:18px}}
-.cway-product{{display:grid;grid-template-columns:minmax(260px,.76fr) minmax(0,1fr);gap:28px;border:1px solid var(--border);background:#111116;border-radius:8px;padding:18px;align-items:center}}
-.cway-product picture{{display:block;background:#fff;border-radius:6px;overflow:hidden}}
-.cway-product img{{display:block;width:100%;height:auto;object-fit:contain}}
-.cway-product-body{{padding:8px 8px 8px 0}}
-.cway-product h3{{margin:0 0 14px;color:#fff;font-family:var(--font-display);font-size:clamp(24px,2.2vw,38px);line-height:1;text-transform:uppercase}}
-.cway-product p{{margin:0 0 16px;color:var(--text-dim);font-size:clamp(16px,1.2vw,20px);line-height:1.6}}
-.cway-order{{display:inline-flex;gap:0;margin:0 0 18px;font-family:var(--font-ui);font-size:13px;font-weight:800;letter-spacing:.04em}}
-.cway-stock{{color:#48d67a}}
-.cway-price-request{{color:var(--text-dim)}}
-.cway-shop{{color:#fff;text-decoration:none;font-family:var(--font-ui);font-weight:800;text-transform:uppercase}}
-.cway-shop:hover{{color:var(--accent)}}
+.cway-price-note{{margin:0 0 24px;color:var(--text-muted);font-family:var(--font-ui);font-size:13px;font-weight:700;text-transform:uppercase}}
+.cway-product-groups{{display:grid;gap:34px}}
+.cway-product-group{{display:grid;gap:14px}}
+.cway-product-group-head{{display:flex;align-items:center;gap:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.14)}}
+.cway-product-group-head h3{{margin:0;color:#fff;font-family:var(--font-display);font-size:clamp(24px,2.3vw,36px);font-weight:800;line-height:1;text-transform:uppercase}}
+.cway-products{{display:grid;gap:12px}}
+.cway-product{{display:grid;grid-template-columns:220px minmax(0,1fr);gap:22px;border:1px solid var(--border);background:#111116;border-radius:8px;padding:12px;align-items:center}}
+.cway-product picture{{display:block;width:100%;aspect-ratio:1;background:#fff;border-radius:6px;overflow:hidden}}
+.cway-product img{{display:block;width:100%;height:100%;object-fit:contain}}
+.cway-product-body{{display:flex;min-width:0;min-height:100%;flex-direction:column;justify-content:center;padding:8px 12px 8px 0}}
+.cway-product h4{{margin:0 0 10px;color:#fff;font-family:var(--font-display);font-size:clamp(22px,1.8vw,31px);font-weight:800;line-height:1.08;text-transform:uppercase}}
+.cway-product p{{margin:0 0 18px;color:var(--text-dim);font-size:clamp(15px,1.05vw,18px);line-height:1.55}}
+.cway-product-meta{{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:auto}}
+.cway-price{{color:#fff;font-family:var(--font-display);font-size:clamp(24px,2vw,32px);font-weight:800;line-height:1}}
+.cway-stock{{display:inline-flex;align-items:center;gap:7px;color:#48d67a;font-family:var(--font-ui);font-size:13px;font-weight:800}}
+.cway-stock::before{{content:"";width:8px;height:8px;border-radius:50%;background:#48d67a;box-shadow:0 0 0 4px rgba(72,214,122,.12)}}
 .cway-studio-scroll{{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,360px);gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:10px}}
 .cway-studio-scroll picture{{scroll-snap-align:start;background:#fff;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}}
 .cway-studio-scroll img{{display:block;width:100%;height:auto}}
+.cway-studio-note{{margin:0 0 18px;color:var(--text-dim);font-size:clamp(16px,1.1vw,18px);line-height:1.55}}
 .cway-world picture{{display:block;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}}
 .cway-world img{{display:block;width:100%;height:auto}}
 .cway-review{{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:28px;align-items:center}}
@@ -510,6 +558,7 @@ html[lang="ru"] .cway-video-title,html[lang="uk"] .cway-video-title{{font-size:c
 .cway-quote cite{{display:block;margin-top:18px;color:var(--accent);font-family:var(--font-ui);font-size:14px;font-style:normal;font-weight:800;text-transform:uppercase;letter-spacing:.08em}}
 .cway-compat{{max-width:980px}}
 .cway-compat p{{font-size:clamp(17px,1.25vw,21px);line-height:1.58;color:#fff;margin:0}}
+.cway-compat .cway-install{{margin-top:12px;color:var(--accent);font-weight:700}}
 .cway-faq-list{{display:grid;gap:12px;max-width:980px;margin:0 auto}}
 .cway-faq-list details{{border:1px solid var(--border);border-radius:8px;background:var(--surface);padding:0 22px}}
 .cway-faq-list summary{{cursor:pointer;list-style:none;padding:22px 0;font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:#fff;font-size:clamp(18px,1.4vw,24px)}}
@@ -519,7 +568,8 @@ html[lang="ru"] .cway-video-title,html[lang="uk"] .cway-video-title{{font-size:c
 .cway-cta-links a{{flex:0 0 auto;color:#fff;border:1px solid var(--border);border-radius:999px;padding:9px 12px;text-decoration:none;font-family:var(--font-ui);font-size:12px;font-weight:800;text-transform:uppercase}}
 .cway-cta-links a:hover{{border-color:var(--accent);color:var(--accent)}}
 @media (max-width:1100px){{.cway-why-grid{{grid-template-columns:repeat(2,minmax(0,1fr))}}}}
-@media (max-width:820px){{.cway-hero{{min-height:auto;padding:124px 0 62px}}.cway-hero h1{{max-width:calc(100vw - 40px);font-size:clamp(30px,8vw,40px)}}.cway-heading,.cway-copy,.cway-product,.cway-review{{grid-template-columns:1fr}}.cway-product-body{{padding:0}}.cway-why-grid{{grid-template-columns:1fr}}}}
+@media (max-width:820px){{.cway-hero{{min-height:auto;padding:124px 0 62px}}.cway-hero h1{{max-width:calc(100vw - 40px);font-size:clamp(30px,8vw,40px)}}.cway-heading,.cway-copy,.cway-review{{grid-template-columns:1fr}}.cway-why-grid{{grid-template-columns:1fr}}}}
+@media (max-width:640px){{.cway-product{{grid-template-columns:1fr;gap:16px;padding:10px}}.cway-product-body{{padding:2px 4px 6px}}.cway-product-group-head{{justify-content:space-between}}.cway-product h4{{font-size:24px}}}}
 </style>
 {json_ld_html}
 <script>window.ICM_I18N_PAGE = {cway_payload()};</script>
@@ -663,26 +713,52 @@ def cway_studio_alt(lang: str, kind: str) -> str:
     return f"C-Way {label} для Honda Gold Wing"
 
 
+def cway_product_alt(lang: str, name: str) -> str:
+    if lang == "en":
+        return f"{name} for Honda Gold Wing"
+    if lang == "pt":
+        return f"{name} para Honda Gold Wing"
+    return f"{name} для Honda Gold Wing"
+
+
+def cway_display_price(price: float) -> str:
+    return f"{price:.2f}".replace(".", ",") + " €"
+
+
 def render_cway_products(lang: str) -> str:
     t = CWAY_DEALER_I18N[lang]
-    cards = []
-    for media in CWAY_MEDIA["products"]:
-        key = media["key"]
-        product = t["products"][key]
-        cards.append(
-            f"""
-<article class="cway-product">
-  {image_picture(media, product["alt"], "cway-product-media", sizes="(max-width: 820px) 100vw, 42vw")}
+    groups = []
+    for group in ("steel", "aluminium"):
+        cards = []
+        for media in (item for item in CWAY_MEDIA["products"] if item["group"] == group):
+            key = media["key"]
+            product = t["products"][key]
+            cards.append(
+                f"""
+<article class="cway-product" id="product-{key.replace('_', '-')}">
+  {image_picture(media, cway_product_alt(lang, product["name"]), "cway-product-media", sizes="(max-width: 640px) calc(100vw - 60px), 220px")}
   <div class="cway-product-body">
-    <h3>{escape(product["name"])}</h3>
+    <h4>{escape(product["name"])}</h4>
     <p>{escape(product["text"])}</p>
-    <span class="cway-order"><span class="cway-stock">{escape(t["stockLabel"])}</span><span class="cway-price-request"> · {escape(t["priceRequestLabel"])}</span></span><br/>
-    <a class="cway-shop" href="{escape(media["url"])}" rel="noopener" target="_blank">{escape(t["shopLabel"])} {ARROW_SVG}</a>
+    <div class="cway-product-meta">
+      <span class="cway-price">{escape(cway_display_price(media["price"]))}</span>
+      <span class="cway-stock">{escape(t["stockLabel"])}</span>
+    </div>
   </div>
 </article>
 """.strip()
+            )
+        groups.append(
+            f"""
+<section class="cway-product-group" aria-labelledby="cway-group-{group}">
+  <div class="cway-product-group-head">
+    <h3 id="cway-group-{group}">{escape(t["groupLabels"][group])}</h3>
+  </div>
+  <div class="cway-products">{"".join(cards)}</div>
+</section>
+""".strip()
         )
-    return "\n".join(cards)
+    return f'<div class="cway-product-groups">{"".join(groups)}</div>'
 
 
 def render_cway_studio_gallery(lang: str) -> str:
@@ -796,7 +872,8 @@ def render_cway_page(lang: str) -> str:
         </div>
         <p class="lead">{escape(t["productsIntro"])}</p>
       </div>
-      <div class="cway-products">{render_cway_products(lang)}</div>
+      <p class="cway-price-note">{escape(t["priceNote"])}</p>
+      {render_cway_products(lang)}
     </div>
   </section>
 
@@ -808,6 +885,7 @@ def render_cway_page(lang: str) -> str:
           <h2>{escape(t["studioTitle"])}</h2>
         </div>
       </div>
+      <p class="cway-studio-note">{escape(t["studioNote"])}</p>
       <div class="cway-studio-scroll">{render_cway_studio_gallery(lang)}</div>
     </div>
   </section>
@@ -844,6 +922,7 @@ def render_cway_page(lang: str) -> str:
       <p class="eyebrow">{escape(t["compatEyebrow"])}</p>
       <h2>{escape(t["compatTitle"])}</h2>
       <p>{escape(t["compatText"])}</p>
+      <p class="cway-install">{escape(t["installText"])}</p>
     </div>
   </section>
 

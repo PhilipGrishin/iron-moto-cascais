@@ -14,6 +14,19 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-15 - C-Way priced product catalog
+
+- Commit: this commit
+- Changed: Replaced the three price-on-request C-Way positions with six priced
+  Steel/Aluminium Canoe 2.0 configurations in EN/PT/RU/UK; added local lazy
+  AVIF/WebP product media, in-stock states, gallery and fitment notes, and six
+  matching Product/Offer entities without manufacturer links.
+- Verified: Python compile; focused four-language content, media, canonical,
+  hreflang and JSON-LD parity checks; full SEO validation; desktop/mobile
+  browser checks; production and Rich Results Test after deploy.
+- Notes: C-Way product assets and numeric prices live in `CWAY_MEDIA`; visible
+  copy lives in `CWAY_DEALER_I18N` and is rendered by the shared dealer build.
+
 ## 2026-07-10 - Harley service backlink and schema entities
 
 - Commit: this commit

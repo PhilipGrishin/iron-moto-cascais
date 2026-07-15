@@ -266,7 +266,9 @@ Future partner subpages should follow `/authorized-dealer/<brand>/` with
 localized prefixes for PT/RU/UK. Keep cards in `AUTHORIZED_DEALER_BRANDS`.
 The C-Way subpage is generated directly by `build_authorized_dealer.py` from
 `CWAY_DEALER_I18N` and must stay focused on C-Way Honda Gold Wing luggage
-systems and the three approved product positions. Do not add
+systems. The current catalog has six priced Steel/Aluminium configurations,
+with media and numeric prices registered in `CWAY_MEDIA`; visible product data
+and Product/Offer schema must remain in parity. Do not add
 trailer/mototrailer content without a new explicit owner task.
 
 ## Blog Article
