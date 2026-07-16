@@ -350,13 +350,7 @@ def cway_schema_blocks(lang: str) -> list[dict]:
         product = t["products"][key]
         product_id = cway_product_id(lang, key)
         price = product_media["price"]
-        catalog_items.append(
-            {
-                "@type": "Product",
-                "@id": product_id,
-                "name": product["name"],
-            }
-        )
+        catalog_items.append({"@id": product_id})
         product_blocks.append(
             {
                 "@context": "https://schema.org",

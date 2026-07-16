@@ -14,6 +14,17 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-16 - C-Way Product graph deduplication
+
+- Commit: this commit
+- Changed: Replaced the six partial Product nodes inside the C-Way Service
+  OfferCatalog with `@id` references to the six complete priced Product nodes
+  on all four language variants; updated their sitemap timestamps.
+- Verified: Exactly six Product nodes per page, each with a complete Offer;
+  Python compile, full SEO validation, production and Rich Results Test.
+- Notes: C-Way catalog relationships must reference the canonical priced
+  Product `@id` values and must not redeclare partial Product objects.
+
 ## 2026-07-15 - C-Way priced product catalog
 
 - Commit: this commit
