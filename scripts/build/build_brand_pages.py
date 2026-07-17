@@ -47,7 +47,7 @@ SEO_I18N = {
         "seo.relatedCustom": "Custom and special projects",
         "seo.relatedTyres": "Tyre service",
         "seo.relatedPricing": "Pricing",
-        "seo.otherBrandsTitle": "Other brands we service.",
+        "seo.otherBrandsTitle": "Other brands we service",
         "seo.otherBrandsLead": "Compare the same workshop process across our brand-specific service pages.",
         "seo.otherBrandText": "Open the brand page for model-specific service details, diagnostics, parts and booking context.",
     },
@@ -71,7 +71,7 @@ SEO_I18N = {
         "seo.relatedCustom": "Кастом и спецпроекты",
         "seo.relatedTyres": "Шиномонтаж",
         "seo.relatedPricing": "Цены",
-        "seo.otherBrandsTitle": "Другие марки, которые обслуживаем.",
+        "seo.otherBrandsTitle": "Другие бренды, которые мы обслуживаем",
         "seo.otherBrandsLead": "Сравните тот же процесс мастерской на брендовых страницах сервиса.",
         "seo.otherBrandText": "Откройте страницу бренда, чтобы увидеть сервисные детали по моделям, диагностике, запчастям и записи.",
     },
@@ -95,7 +95,7 @@ SEO_I18N = {
         "seo.relatedCustom": "Кастом і спецпроєкти",
         "seo.relatedTyres": "Шиномонтаж",
         "seo.relatedPricing": "Ціни",
-        "seo.otherBrandsTitle": "Інші марки, які обслуговуємо.",
+        "seo.otherBrandsTitle": "Інші бренди, які ми обслуговуємо",
         "seo.otherBrandsLead": "Порівняйте той самий процес майстерні на брендових сторінках сервісу.",
         "seo.otherBrandText": "Відкрийте сторінку бренду, щоб побачити сервісні деталі за моделями, діагностикою, запчастинами й записом.",
     },
@@ -119,16 +119,60 @@ SEO_I18N = {
         "seo.relatedCustom": "Custom e projetos especiais",
         "seo.relatedTyres": "Pneus de mota",
         "seo.relatedPricing": "Preços",
-        "seo.otherBrandsTitle": "Outras marcas que servimos.",
+        "seo.otherBrandsTitle": "Outras marcas que reparamos",
         "seo.otherBrandsLead": "Compare o mesmo processo de oficina nas nossas páginas de serviço por marca.",
         "seo.otherBrandText": "Abra a página da marca para detalhes de serviço por modelo, diagnóstico, peças e marcação.",
     },
 }
 
+BRAND_SERVICE_LABELS = {
+    "en": {
+        "harley-service": "Harley-Davidson service",
+        "bmw-service": "BMW Motorrad service",
+        "ducati-service": "Ducati service",
+        "suzuki-service": "Suzuki service",
+        "honda-service": "Honda service",
+        "royal-enfield-service": "Royal Enfield service",
+        "triumph-service": "Triumph service",
+    },
+    "pt": {
+        "harley-service": "serviço Harley-Davidson",
+        "bmw-service": "serviço BMW",
+        "ducati-service": "serviço Ducati",
+        "suzuki-service": "serviço Suzuki",
+        "honda-service": "serviço Honda",
+        "royal-enfield-service": "serviço Royal Enfield",
+        "triumph-service": "serviço Triumph",
+    },
+    "ru": {
+        "harley-service": "сервис Harley-Davidson",
+        "bmw-service": "сервис BMW",
+        "ducati-service": "сервис Ducati",
+        "suzuki-service": "сервис Suzuki",
+        "honda-service": "сервис Honda",
+        "royal-enfield-service": "сервис Royal Enfield",
+        "triumph-service": "сервис Triumph",
+    },
+    "uk": {
+        "harley-service": "сервіс Harley-Davidson",
+        "bmw-service": "сервіс BMW",
+        "ducati-service": "сервіс Ducati",
+        "suzuki-service": "сервіс Suzuki",
+        "honda-service": "сервіс Honda",
+        "royal-enfield-service": "сервіс Royal Enfield",
+        "triumph-service": "сервіс Triumph",
+    },
+}
+
+
 def page_i18n_for(slug):
     pages = {}
     for lang, values in PAGE_I18N[slug].items():
         merged = {**values, **SEO_I18N[lang]}
+        merged.update({
+            f"seo.brand.{brand_slug}": label
+            for brand_slug, label in BRAND_SERVICE_LABELS[lang].items()
+        })
         for key, value in values.items():
             if key.startswith("seo.") and not key.startswith(("seo.related", "seo.otherBrands")):
                 merged[key] = value
@@ -234,7 +278,7 @@ BRAND_CSS = """.subpage.brand{padding:140px 0 90px}
 .related-subhead h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(20px,2vw,30px);line-height:1;color:#fff;margin-bottom:8px}
 .related-subhead p{font-size:14px;color:var(--text-dim);max-width:62ch}
 .brand-pill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.brand-pill{display:flex;min-height:58px;align-items:center;justify-content:space-between;gap:14px;padding:15px 16px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.035);font-family:var(--font-ui);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:#fff;text-decoration:none;transition:transform .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease),color .25s var(--ease)}
+.brand-pill{display:flex;min-height:58px;align-items:center;justify-content:space-between;gap:14px;padding:15px 16px;border:1px solid var(--border);border-radius:8px;background:rgba(255,255,255,.035);font-family:var(--font-ui);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:#fff;text-decoration:none;transition:transform .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease),color .25s var(--ease)}
 .brand-pill::after{content:"→";color:var(--accent);font-size:16px;line-height:1}
 .brand-pill:hover,.brand-pill:focus-visible{transform:translateY(-3px);border-color:var(--accent);background:rgba(255,87,34,.08);color:var(--accent);outline:none}
 .hero-alt-img{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;clip-path:inset(50%)!important;white-space:nowrap!important}
@@ -615,6 +659,11 @@ def render_related_sections(slug, en):
 </a>'''
         for key, href, label in BRAND_RELATED_LINKS[slug]
     )
+    other_brands = "\n".join(
+        f'''<a class="brand-pill" data-i18n="seo.brand.{other_slug}" href="/{other_slug}/">{en[f"seo.brand.{other_slug}"]}</a>'''
+        for other_slug in BRAND_ORDER
+        if other_slug != slug
+    )
 
     return f'''<section class="sub-section" data-enhancement="money-related">
 <div class="container">
@@ -628,6 +677,12 @@ def render_related_sections(slug, en):
 <div class="reveal-stagger">
 <div class="related-card-grid">
 {related}
+</div>
+<div class="related-subhead">
+<h3 data-i18n="seo.otherBrandsTitle">{en["seo.otherBrandsTitle"]}</h3>
+</div>
+<div class="brand-pill-grid">
+{other_brands}
 </div>
 </div>
 </div>

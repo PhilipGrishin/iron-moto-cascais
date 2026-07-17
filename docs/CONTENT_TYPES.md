@@ -93,6 +93,9 @@ Rules:
 
 - Preserve section order and page structure unless explicitly requested.
 - Update visible FAQ text and FAQPage JSON-LD together via source data.
+- Keep the shared `money-related` section linked to every other registered
+  brand service page in the same language; `validate_brand_pages.py` enforces
+  the complete reciprocal link set.
 - Keep model names, prices, contact details and technical terms exactly as
   approved by the owner-provided copy.
 

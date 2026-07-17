@@ -14,6 +14,17 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-17 - Reciprocal brand service links
+
+- Commit: this commit
+- Changed: Added a compact localized other-brand service link grid to all 28
+  brand service pages through the shared renderer.
+- Verified: Complete six-link same-language sets, brand validation, SEO and
+  schema checks, responsive browser checks and production deployment.
+- Notes: Future registered brands inherit anchor translations and reciprocal
+  links from the shared generator. Sitemap builds preserve committed dates for
+  semantically unchanged URLs while dating genuine working-tree changes.
+
 ## 2026-07-17 - Portuguese oficina SEO alignment
 
 - Commit: this commit

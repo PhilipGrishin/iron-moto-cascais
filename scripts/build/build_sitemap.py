@@ -14,6 +14,7 @@ import re
 import subprocess
 from pathlib import Path
 from functools import lru_cache
+import xml.etree.ElementTree as ET
 from xml.sax.saxutils import escape as xml_escape
 
 from bs4 import BeautifulSoup, FeatureNotFound, NavigableString
@@ -35,6 +36,7 @@ try:
     HTML_PARSER = "lxml"
 except FeatureNotFound:
     HTML_PARSER = "html.parser"
+COMMITTED_LASTMOD_BY_URL = {}
 
 # (path, changefreq, priority)
 PAGES = [
@@ -230,6 +232,10 @@ def semantic_git_lastmod(rel_path):
         raise FileNotFoundError(f"Cannot determine sitemap lastmod; missing page file: {rel_path}")
 
     current = semantic_html(file_path.read_text(encoding="utf-8"))
+    head_html = git_file_at("HEAD", rel_path)
+    if head_html and semantic_html(head_html) != current:
+        return fs_lastmod(file_path)
+
     log = run_git(["log", "--follow", "--format=%H%x00%cI", "--", rel_path])
     if not log.strip():
         return fs_lastmod(file_path)
@@ -252,11 +258,30 @@ def semantic_git_lastmod(rel_path):
 
 
 def lastmod_for(lang, path):
-    if path in EXPLICIT_LASTMOD:
-        return EXPLICIT_LASTMOD[path]
     html_file = html_file_for(lang, path)
     rel_path = html_file.relative_to(SITE_ROOT).as_posix()
+    head_html = git_file_at("HEAD", rel_path)
+    if head_html:
+        current = semantic_html(html_file.read_text(encoding="utf-8"))
+        if semantic_html(head_html) == current:
+            committed = COMMITTED_LASTMOD_BY_URL.get(url_for(lang, path))
+            if committed:
+                return committed
+    if path in EXPLICIT_LASTMOD:
+        return EXPLICIT_LASTMOD[path]
     return semantic_git_lastmod(rel_path)
+
+
+def committed_sitemap_lastmods():
+    xml_text = run_git(["show", "HEAD:sitemap.xml"])
+    if not xml_text:
+        return {}
+    root = ET.fromstring(xml_text)
+    namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+    return {
+        node.find("sm:loc", namespace).text: node.find("sm:lastmod", namespace).text
+        for node in root.findall("sm:url", namespace)
+    }
 
 
 def build_url_entry(lang, path, changefreq, priority):
@@ -277,6 +302,8 @@ def build_url_entry(lang, path, changefreq, priority):
 
 
 def main():
+    global COMMITTED_LASTMOD_BY_URL
+    COMMITTED_LASTMOD_BY_URL = committed_sitemap_lastmods()
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
