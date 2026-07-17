@@ -1211,7 +1211,7 @@ def render_faq():
 @media (max-width:760px){.faq-item .a{padding-left:26px}}"""
 
     # Build FAQ items HTML (EN). For other langs, fill via ICM_I18N_PAGE keys.
-    # We add fq.q1..q10 and fq.a1..a10 keys to PAGE_I18N for each language.
+    # Add the available fq.qN / fq.aN keys for each language.
     for lang in ["en", "ru", "uk", "pt"]:
         lang_faqs = FAQ_QA[lang]
         for i, qa in enumerate(lang_faqs, start=1):

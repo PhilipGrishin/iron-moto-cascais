@@ -18,6 +18,9 @@ scalable.
   An unchanged page must keep the same `lastmod` across deploys.
 - Structured-data `datePublished` and `dateModified` must use real content
   dates with timezone, not deploy time.
+- Language-specific FAQ counts are supported through `fq.qN` / `fq.aN` page
+  translations. `build_i18n.py` expands the visible FAQ list before rebuilding
+  `FAQPage`, so visible questions and schema remain identical per language.
 - After push, verify the exact production URLs changed by the task.
 
 ## New Brand Service Page

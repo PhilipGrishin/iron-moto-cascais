@@ -14,6 +14,17 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-17 - Portuguese oficina SEO alignment
+
+- Commit: this commit
+- Changed: Added natural `oficina de motos` targeting to the PT homepage and
+  motorcycle-service page, plus one PT-only conversational workshop FAQ with
+  matching visible content and `FAQPage` schema.
+- Verified: PT metadata, first-paragraph copy, FAQ/schema parity, unchanged
+  EN/RU/UK rendered pages, brand-page workshop wording and focused SEO checks.
+- Notes: Language-specific FAQ counts are expanded by `build_i18n.py`; the
+  seven PT brand pages already contained natural `oficina` references.
+
 ## 2026-07-16 - C-Way Product graph deduplication
 
 - Commit: this commit

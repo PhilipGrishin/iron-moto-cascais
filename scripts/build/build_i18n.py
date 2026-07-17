@@ -202,6 +202,45 @@ def extract_inline_i18n(soup, lang: str) -> dict:
     return {}
 
 
+def sync_variable_faq_items(soup, translations: dict):
+    """Add localized FAQ rows when a language has more questions than English."""
+    faq_list = soup.select_one(".faq-list")
+    if faq_list is None:
+        return
+
+    templates = faq_list.find_all("details", class_="faq-item", recursive=False)
+    if not templates:
+        return
+
+    existing_indexes = set()
+    for item in templates:
+        question = item.find(class_="q")
+        match = re.fullmatch(r"fq\.q(\d+)", question.get("data-i18n", "")) if question else None
+        if match:
+            existing_indexes.add(int(match.group(1)))
+
+    desired_indexes = []
+    for key in translations:
+        match = re.fullmatch(r"fq\.q(\d+)", key)
+        if match and f"fq.a{match.group(1)}" in translations:
+            desired_indexes.append(int(match.group(1)))
+
+    for index in sorted(desired_indexes):
+        if index in existing_indexes:
+            continue
+        item = deepcopy(templates[-1])
+        number = item.find(class_="num")
+        question = item.find(class_="q")
+        answer = item.find(class_="a")
+        if number:
+            number.string = f"{index:02d}"
+        if question:
+            question["data-i18n"] = f"fq.q{index}"
+        if answer:
+            answer["data-i18n"] = f"fq.a{index}"
+        faq_list.append(item)
+
+
 def translation_dict_for_soup(soup, lang: str) -> dict:
     page_dict = I18N.get(lang, {})
     extra_dict = extract_inline_i18n(soup, lang)
@@ -443,6 +482,7 @@ def localize_page(en_html: str, lang: str, page_id: str, *, project_name=None) -
 
     # 3. Translate elements with data-i18n / data-i18n-html
     extra_dict = extract_inline_i18n(soup, lang)
+    sync_variable_faq_items(soup, extra_dict)
     apply_translations(soup, lang)
 
     # 4. Update title / description / OG / Twitter / canonical

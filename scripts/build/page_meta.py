@@ -28,8 +28,8 @@ PAGE_META = {
             "twitter_description": "Інженерія світового рівня. Преміальний мотосервіс у Кашкайші.",
         },
         "pt": {
-            "title": "Iron Custom Motors | Serviço Premium de Motos em Cascais (Lisboa)",
-            "description": "Serviço premium de motos em Cascais, Grande Lisboa. Diagnóstico, manutenção, reparação, peças originais e tuning, consumíveis, upgrades e projetos custom. Atendimento em inglês, russo, ucraniano e português.",
+            "title": "Oficina de Motos Premium em Cascais (Lisboa) | Iron Custom Motors",
+            "description": "Oficina de motos premium em Cascais, Grande Lisboa. Diagnóstico, manutenção, reparação, peças originais e tuning, consumíveis, upgrades e projetos custom. Atendimento em inglês, russo, ucraniano e português.",
             "og_description": "Serviço premium de motos, peças, upgrades e expertise custom em Cascais. Cultura de engenharia campeã mundial.",
             "twitter_description": "Engenharia campeã mundial. Serviço premium de motos em Cascais.",
         },
@@ -49,8 +49,8 @@ PAGE_META = {
             "description": "Преміальний мотосервіс у Кашкайші — діагностика, планове ТО, гальма, підвіска, електрика та загальний ремонт мотоциклів.",
         },
         "pt": {
-            "title": "Serviço e Reparação de Motos em Cascais | Iron Custom Motors",
-            "description": "Serviço premium de motos em Cascais — diagnóstico, manutenção, travões, suspensão, sistema elétrico e reparação geral.",
+            "title": "Oficina de Motos em Cascais — Serviço e Reparação | ICM",
+            "description": "Oficina de motos em Cascais — diagnóstico, manutenção, travões, suspensão, sistema elétrico e reparação geral.",
         },
     },
     # --------- Parts ---------

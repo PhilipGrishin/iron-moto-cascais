@@ -954,7 +954,7 @@ PAGE_I18N["contact"] = {
 # =========================================================================
 # /faq/ — extended FAQ
 # =========================================================================
-# 10 Q/A pairs per language. Stored as list of dicts: {q, a}.
+# Q/A pairs per language. Stored as list of dicts: {q, a}.
 FAQ_QA = {
     "en": [
         {"q": "Which motorcycle brands do you service?",
@@ -1032,7 +1032,7 @@ FAQ_QA = {
         {"q": "Fazem inspeção pré-compra?",
          "a": "Sim — é um dos serviços mais pedidos por quem compra usado. Verificamos mecânica, elétrica, quadro e pontos fracos conhecidos do modelo. Relatório escrito com fotos em 24h. 150€ fixo, independente da marca."},
         {"q": "Que línguas falam?",
-         "a": "Inglês, russo, ucraniano e português — na oficina e via WhatsApp. O site também está traduzido nas quatro línguas."},
+         "a": "Inglês, russo, ucraniano e português — presencialmente e via WhatsApp. O site também está traduzido nas quatro línguas."},
         {"q": "Onde fica a oficina?",
          "a": "R. António José da Silva 100 B, São Domingos de Rana, Cascais — cerca de 20 minutos do centro de Lisboa. Tem estacionamento e uma sala de cliente confortável."},
         {"q": "Conseguem peças originais?",
@@ -1043,6 +1043,8 @@ FAQ_QA = {
          "a": "Em Cascais e centro de Lisboa podemos geralmente organizar recolha ou transporte por reboque. Pergunte por WhatsApp e damos orçamento."},
         {"q": "Como faço a marcação?",
          "a": "O WhatsApp é o mais rápido. Envie modelo, ano e descrição breve do que precisa. Voltamos com o slot mais próximo e orçamento escrito antes do trabalho começar."},
+        {"q": "Procuram uma oficina de motas perto de Cascais?",
+         "a": "Sim. Somos uma oficina independente em São Domingos de Rana, Cascais, com atendimento em português, inglês, russo e ucraniano. Envie-nos uma mensagem no WhatsApp."},
     ],
 }
 
@@ -1104,7 +1106,7 @@ PAGE_I18N["faq"] = {
         "fq.btnWA": "WhatsApp",
         "fq.btnSend": "Enviar pedido",
         "fq.listEyebrow": "Respostas",
-        "fq.listTitle": "Dez perguntas <em>mais frequentes.</em>",
+        "fq.listTitle": "Perguntas <em>mais frequentes.</em>",
         "fq.listLead": "Se a sua pergunta não está abaixo, envie por WhatsApp — respondemos e adicionamos aqui.",
         "fq.ctaEyebrow": "Ainda dúvidas?",
         "fq.ctaTitle": "Fale connosco directamente.",
