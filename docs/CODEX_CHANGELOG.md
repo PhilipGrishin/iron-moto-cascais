@@ -14,6 +14,15 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-20 - Cross-project confirmation gate
+
+- Commit: this commit
+- Changed: Added a mandatory owner-confirmation gate before inspecting,
+  modifying, deploying, or otherwise acting on a task outside `ICM_Website`.
+- Verified: Instruction scope review and clean Git diff validation.
+- Notes: Non-site tasks must identify the intended project and receive explicit
+  owner confirmation before any action is taken.
+
 ## 2026-07-20 - Bear 650 VideoObject naming
 
 - Commit: this commit

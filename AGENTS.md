@@ -65,6 +65,11 @@ contains a stronger current source.
 
 ## How to operate in this repo
 
+- Project-boundary confirmation is mandatory. If the owner submits a task in
+  this chat that does not directly concern `ICM_Website` or its deployment,
+  do not inspect, modify, deploy, or otherwise act on another project. First
+  ask the owner whether the task should be executed and which project it
+  belongs to, and proceed only after explicit confirmation.
 - The repo is a static site (HTML, CSS, JS). There is no
   framework, no build step on the server side, no test suite.
   GitHub Pages serves files in `main` branch root as-is.
