@@ -338,20 +338,25 @@ def page_jsonld_context(soup, canonical_url: str, lang: str) -> dict:
     h1 = soup.find("h1")
     video_title = soup.select_one(".blog-video h2, .blog-video-section h2")
     video_description = soup.select_one(".blog-video p, .blog-video-section p")
+    video_schema_name = ""
     video_schema_description = ""
     video_element = soup.select_one(".blog-video video, .blog-video-section video")
     if video_element:
         title_key = video_element.get("data-i18n-title", "")
         if title_key.endswith(".videoTitle"):
-            description_key = f"{title_key[:-len('.videoTitle')]}.videoSchemaDescription"
-            video_schema_description = translation_dict_for_soup(soup, lang).get(description_key, "")
+            key_prefix = title_key[:-len(".videoTitle")]
+            translations = translation_dict_for_soup(soup, lang)
+            video_schema_name = translations.get(f"{key_prefix}.videoSchemaName", "")
+            video_schema_description = translations.get(f"{key_prefix}.videoSchemaDescription", "")
     return {
         "canonical_url": canonical_url,
         "lang": lang,
         "title": title,
         "description": description_el.get("content", "") if description_el else "",
         "h1": clean_text(h1.get_text(" ", strip=True)) if h1 else "",
-        "video_title": clean_text(video_title.get_text(" ", strip=True)) if video_title else "",
+        "video_title": video_schema_name or (
+            clean_text(video_title.get_text(" ", strip=True)) if video_title else ""
+        ),
         "video_description": video_schema_description or (
             clean_text(video_description.get_text(" ", strip=True)) if video_description else ""
         ),

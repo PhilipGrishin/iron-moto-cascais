@@ -125,6 +125,7 @@ _BEAR650_BUILD_LABELS = {
         "breadHome": "Home",
         "breadBlog": "Blog",
         "faqTitle": "FAQ",
+        "videoSchemaName": "Royal Enfield Bear 650 scrambler build — full aftermarket works at Iron Custom Motors",
         "videoSchemaDescription": "A complete Royal Enfield Bear 650 scrambler build covering protection, luggage, ergonomics, exhaust, brakes and suspension.",
     },
     "pt": {
@@ -133,6 +134,7 @@ _BEAR650_BUILD_LABELS = {
         "breadHome": "Início",
         "breadBlog": "Blog",
         "faqTitle": "Perguntas frequentes",
+        "videoSchemaName": "Preparação scrambler da Royal Enfield Bear 650 — aftermarket completo na Iron Custom Motors",
         "videoSchemaDescription": "Uma preparação scrambler completa da Royal Enfield Bear 650, com proteção, malas, ergonomia, escape, travões e suspensão.",
     },
     "ru": {
@@ -141,6 +143,7 @@ _BEAR650_BUILD_LABELS = {
         "breadHome": "Главная",
         "breadBlog": "Блог",
         "faqTitle": "FAQ",
+        "videoSchemaName": "Скрамблер-билд Royal Enfield Bear 650 — полный афтермаркет в Iron Custom Motors",
         "videoSchemaDescription": "Полный скрамблер-билд Royal Enfield Bear 650: защита, багаж, эргономика, выхлоп, тормоза и подвеска.",
     },
     "uk": {
@@ -149,6 +152,7 @@ _BEAR650_BUILD_LABELS = {
         "breadHome": "Головна",
         "breadBlog": "Блог",
         "faqTitle": "FAQ",
+        "videoSchemaName": "Скрамблер-білд Royal Enfield Bear 650 — повний афтермаркет у Iron Custom Motors",
         "videoSchemaDescription": "Повний скрамблер-білд Royal Enfield Bear 650: захист, багаж, ергономіка, вихлоп, гальма та підвіска.",
     },
 }
@@ -643,7 +647,7 @@ def _load_bear650_build_post():
         }
     return {
         "publishedISO": "2026-07-19T12:00:00+01:00",
-        "modifiedISO": "2026-07-20T08:29:09+01:00",
+        "modifiedISO": "2026-07-20T09:00:53+01:00",
         "heroImage": "/photos/blog/blog-royal-enfield-bear-650-scrambler-build-hero.png",
         "heroImageDims": (1672, 941),
         "schemaImage": "/photos/optimized/blog-blog-royal-enfield-bear-650-scrambler-build-hero-1920.webp",

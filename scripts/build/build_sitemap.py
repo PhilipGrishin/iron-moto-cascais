@@ -259,6 +259,8 @@ def semantic_git_lastmod(rel_path):
 
 
 def lastmod_for(lang, path):
+    if path in EXPLICIT_LASTMOD and path not in {"blog/", "news/"}:
+        return EXPLICIT_LASTMOD[path]
     html_file = html_file_for(lang, path)
     rel_path = html_file.relative_to(SITE_ROOT).as_posix()
     head_html = git_file_at("HEAD", rel_path)

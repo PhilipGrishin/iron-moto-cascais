@@ -14,6 +14,15 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-20 - Bear 650 VideoObject naming
+
+- Commit: this commit
+- Changed: Added localized schema-only VideoObject names for the Bear 650
+  scrambler build article while preserving the visible video-section headings.
+- Verified: Four-language schema-name and description checks; focused article
+  SEO validation; sitemap lastmod checks; production Rich Results Test.
+- Notes: No visible article copy or other structured-data entities changed.
+
 ## 2026-07-20 - Bear 650 scrambler build article
 
 - Commit: this commit

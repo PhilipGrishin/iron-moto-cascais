@@ -409,7 +409,7 @@ def render_article(slug, article):
             "videoEyebrow", "videoTitle", "videoText", "videoLink", "faqTitle",
             "ctaEyebrow", "ctaTitle", "btnWA", "btnBack", "imageAlt",
             "imageCaption", "h1", "h1Crumb", "lede", "ctaText", "heroAlt",
-            "videoSchemaDescription",
+            "videoSchemaName", "videoSchemaDescription",
         ]:
             if key in body:
                 inline_i18n[lang][f"{pre}.{key}"] = body[key]
@@ -489,7 +489,7 @@ def render_article(slug, article):
         native_video = article["nativeVideo"]
         blog_posting_schema["video"] = {
             "@type": "VideoObject",
-            "name": en_body["videoTitle"],
+            "name": en_body.get("videoSchemaName", en_body["videoTitle"]),
             "description": en_body.get("videoSchemaDescription", en_body["videoText"]),
             "thumbnailUrl": native_video["poster"],
             "contentUrl": native_video["contentUrl"],
