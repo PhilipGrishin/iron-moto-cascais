@@ -2369,7 +2369,8 @@ PAGE_I18N["royal-enfield-service"] = {'en': {'ren.breadHome': 'Home',
                        'scramblers, café racers — there is no shop better placed to turn yours into something '
                        'personal. See our <a href="/custom/">custom & special projects</a>. From our workshop: read '
                        'the <a href="/blog/royal-enfield-bear-650-fork-oil-case-study/">Bear 650 fork-oil case '
-                       'study</a>.<br/><br/>Independent means '
+                       'study</a> and <a href="/blog/royal-enfield-bear-650-scrambler-build/">our complete Royal '
+                       'Enfield Bear 650 scrambler build</a>.<br/><br/>Independent means '
                        'no dealer mark-up, the freedom to fit OEM or quality aftermarket parts as the job actually '
                        'requires, and straight talk. Written estimate before the work, written report after.',
         'ren.toolsTitle': 'Royal Enfield diagnostics and tools.',
@@ -2529,7 +2530,8 @@ PAGE_I18N["royal-enfield-service"] = {'en': {'ren.breadHome': 'Home',
                        'racers — não há melhor sítio para tornar a sua única. Veja <a href="/pt/custom/">custom e '
                        'projetos especiais</a>. Da nossa oficina: leia o <a '
                        'href="/pt/blog/royal-enfield-bear-650-fork-oil-case-study/">caso Bear 650 sobre óleo de '
-                       'forquilha</a>.<br/><br/>Independente significa sem margem de concessionário, '
+                       'forquilha</a> e a <a href="/pt/blog/royal-enfield-bear-650-scrambler-build/">nossa preparação '
+                       'scrambler completa da Royal Enfield Bear 650</a>.<br/><br/>Independente significa sem margem de concessionário, '
                        'liberdade para montar peças OEM ou de qualidade aftermarket conforme o trabalho exige, e '
                        'conversa franca. Orçamento por escrito antes, relatório por escrito depois.',
         'ren.toolsTitle': 'Diagnóstico e ferramentas Royal Enfield.',
@@ -2691,7 +2693,8 @@ PAGE_I18N["royal-enfield-service"] = {'en': {'ren.breadHome': 'Home',
                        'сделать ваш по-настоящему своим, не найти. Смотрите <a href="/ru/custom/">кастом и '
                        'спецпроекты</a>. Из нашей мастерской: читайте <a '
                        'href="/ru/blog/royal-enfield-bear-650-fork-oil-case-study/">разбор Bear 650 по маслу в '
-                       'вилке</a>.<br/><br/>Независимость — это без наценки дилера, со свободой ставить OEM или '
+                       'вилке</a> и <a href="/ru/blog/royal-enfield-bear-650-scrambler-build/">наш полный '
+                       'скрамблер-билд Royal Enfield Bear 650</a>.<br/><br/>Независимость — это без наценки дилера, со свободой ставить OEM или '
                        'качественный афтермаркет по делу, и с честным разговором. Смета письменно до работы, отчёт '
                        'письменно после.',
         'ren.toolsTitle': 'Диагностика и инструмент Royal Enfield.',
@@ -2850,7 +2853,8 @@ PAGE_I18N["royal-enfield-service"] = {'en': {'ren.breadHome': 'Home',
                        'кращого місця, щоб зробити ваш по-справжньому своїм, не знайти. Дивіться <a '
                        'href="/uk/custom/">кастом і спецпроєкти</a>. З нашої майстерні: читайте <a '
                        'href="/uk/blog/royal-enfield-bear-650-fork-oil-case-study/">розбір Bear 650 про масло у '
-                       'вилці</a>.<br/><br/>Незалежність — це без націнки дилера, зі '
+                       'вилці</a> та <a href="/uk/blog/royal-enfield-bear-650-scrambler-build/">наш повний '
+                       'скрамблер-білд Royal Enfield Bear 650</a>.<br/><br/>Незалежність — це без націнки дилера, зі '
                        'свободою ставити OEM або якісний афтермаркет по суті, і з чесною розмовою. Кошторис письмово '
                        'до роботи, звіт письмово після.',
         'ren.toolsTitle': 'Діагностика та інструмент Royal Enfield.',

@@ -78,6 +78,7 @@ MAIN_PAGES = [
     ("blog/motorcycle-tyre-fitting-specialist-cascais/index.html", "blog/motorcycle-tyre-fitting-specialist-cascais"),
     ("blog/royal-enfield-bear-650-fork-oil-case-study/index.html", "blog/royal-enfield-bear-650-fork-oil-case-study"),
     ("blog/harley-davidson-full-service-done-right/index.html", "blog/harley-davidson-full-service-done-right"),
+    ("blog/royal-enfield-bear-650-scrambler-build/index.html", "blog/royal-enfield-bear-650-scrambler-build"),
     ("news/index.html", "news"),
     ("news/ericeira-kustom-fest-2026/index.html", "news/ericeira-kustom-fest-2026"),
     ("news/opens-new-workshop-in-cascais/index.html", "news/opens-new-workshop-in-cascais"),
@@ -337,6 +338,13 @@ def page_jsonld_context(soup, canonical_url: str, lang: str) -> dict:
     h1 = soup.find("h1")
     video_title = soup.select_one(".blog-video h2, .blog-video-section h2")
     video_description = soup.select_one(".blog-video p, .blog-video-section p")
+    video_schema_description = ""
+    video_element = soup.select_one(".blog-video video, .blog-video-section video")
+    if video_element:
+        title_key = video_element.get("data-i18n-title", "")
+        if title_key.endswith(".videoTitle"):
+            description_key = f"{title_key[:-len('.videoTitle')]}.videoSchemaDescription"
+            video_schema_description = translation_dict_for_soup(soup, lang).get(description_key, "")
     return {
         "canonical_url": canonical_url,
         "lang": lang,
@@ -344,7 +352,9 @@ def page_jsonld_context(soup, canonical_url: str, lang: str) -> dict:
         "description": description_el.get("content", "") if description_el else "",
         "h1": clean_text(h1.get_text(" ", strip=True)) if h1 else "",
         "video_title": clean_text(video_title.get_text(" ", strip=True)) if video_title else "",
-        "video_description": clean_text(video_description.get_text(" ", strip=True)) if video_description else "",
+        "video_description": video_schema_description or (
+            clean_text(video_description.get_text(" ", strip=True)) if video_description else ""
+        ),
         "breadcrumbs": extract_breadcrumb_names(soup),
         "faq_entities": extract_faq_entities(soup),
     }

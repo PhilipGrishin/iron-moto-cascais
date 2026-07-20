@@ -14,6 +14,22 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-20 - Bear 650 scrambler build article
+
+- Commit: this commit
+- Changed: Added the complete Royal Enfield Bear 650 scrambler build article in
+  EN/PT/RU/UK from the reviewed Markdown source, responsive local hero media,
+  a native landscape R2 video, localized blog cards, reciprocal Royal Enfield
+  links, complete BlogPosting/VideoObject/FAQPage/BreadcrumbList schema and four
+  sitemap URLs.
+- Verified: Exact source-file parity; Python compile; 196-URL SEO validation;
+  brand-page validation; focused four-language content, media, link, hreflang,
+  canonical, FAQ/schema and sitemap checks; desktop/mobile browser checks; live
+  MP4 playback at 1920x1080 with a measured duration of 403.285 seconds.
+- Notes: The supplied R2 `poster.png` path returned 404. The available
+  `bear650-scrambler-build-cover.png` asset is byte-identical to the approved
+  cover and is used as the native video poster and VideoObject thumbnail.
+
 ## 2026-07-17 - Reciprocal brand service links
 
 - Commit: this commit

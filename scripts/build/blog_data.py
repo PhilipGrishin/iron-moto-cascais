@@ -110,6 +110,49 @@ _HARLEY_SERVICE_LABELS = {
     },
 }
 
+_BEAR650_BUILD_SLUG = "royal-enfield-bear-650-scrambler-build"
+_BEAR650_BUILD_SOURCE = Path(__file__).resolve().parent / "content" / "bear650_scrambler_build_blog_4lang.md"
+_BEAR650_BUILD_LANGS = (
+    ("en", "ENGLISH"),
+    ("pt", "PORTUGUÊS (pt-PT)"),
+    ("ru", "РУССКИЙ"),
+    ("uk", "УКРАЇНСЬКА"),
+)
+_BEAR650_BUILD_LABELS = {
+    "en": {
+        "eyebrow": "Published 19 July 2026",
+        "publishedLabel": "Published 19 July 2026",
+        "breadHome": "Home",
+        "breadBlog": "Blog",
+        "faqTitle": "FAQ",
+        "videoSchemaDescription": "A complete Royal Enfield Bear 650 scrambler build covering protection, luggage, ergonomics, exhaust, brakes and suspension.",
+    },
+    "pt": {
+        "eyebrow": "Publicado em 19 de julho de 2026",
+        "publishedLabel": "Publicado em 19 de julho de 2026",
+        "breadHome": "Início",
+        "breadBlog": "Blog",
+        "faqTitle": "Perguntas frequentes",
+        "videoSchemaDescription": "Uma preparação scrambler completa da Royal Enfield Bear 650, com proteção, malas, ergonomia, escape, travões e suspensão.",
+    },
+    "ru": {
+        "eyebrow": "Опубликовано 19 июля 2026",
+        "publishedLabel": "Опубликовано 19 июля 2026",
+        "breadHome": "Главная",
+        "breadBlog": "Блог",
+        "faqTitle": "FAQ",
+        "videoSchemaDescription": "Полный скрамблер-билд Royal Enfield Bear 650: защита, багаж, эргономика, выхлоп, тормоза и подвеска.",
+    },
+    "uk": {
+        "eyebrow": "Опубліковано 19 липня 2026",
+        "publishedLabel": "Опубліковано 19 липня 2026",
+        "breadHome": "Головна",
+        "breadBlog": "Блог",
+        "faqTitle": "FAQ",
+        "videoSchemaDescription": "Повний скрамблер-білд Royal Enfield Bear 650: захист, багаж, ергономіка, вихлоп, гальма та підвіска.",
+    },
+}
+
 
 def _inline_markdown(value):
     tokens = []
@@ -310,7 +353,7 @@ def _load_bear650_post():
         }
     return {
         "publishedISO": "2026-06-29T10:00:00+01:00",
-        "modifiedISO": "2026-07-02T11:24:27+01:00",
+        "modifiedISO": "2026-07-20T08:29:09+01:00",
         "heroImage": "/photos/blog/blog-royal-enfield-bear-650-fork-oil-case-study-hero-1600.jpg",
         "heroImageDims": (1536, 1024),
         "imageBase": "/photos/blog/blog-royal-enfield-bear-650-fork-oil-case-study",
@@ -469,6 +512,161 @@ def _load_harley_service_post():
         },
         "sourceLocalizedSlugs": {
             code: _HARLEY_SERVICE_SLUG for code in ("en", "ru", "pt", "uk")
+        },
+        "meta": post_meta,
+        "body": post_body,
+    }
+
+
+def _parse_bear650_build_language(raw):
+    lines = raw.splitlines()
+    meta = {}
+    h1 = None
+    body_lines = []
+    in_body = False
+    for line in lines[1:]:
+        if line.startswith("**SEO Title:**"):
+            meta["title"] = line.split("**SEO Title:**", 1)[1].strip()
+        elif line.startswith("**Meta Description:**"):
+            meta["description"] = line.split("**Meta Description:**", 1)[1].strip()
+        elif line.startswith("**URL:**"):
+            meta["slug"] = line.split("**URL:**", 1)[1].strip()
+        elif line.startswith("# "):
+            h1 = line[2:].strip()
+            in_body = True
+        elif in_body:
+            body_lines.append(line)
+    if not (meta.get("title") and meta.get("description") and meta.get("slug") and h1):
+        raise ValueError("Incomplete Bear 650 scrambler build metadata")
+
+    body = "\n".join(body_lines).strip()
+    faq_match = re.search(r"\n## (?:FAQ|Perguntas frequentes)\n", body)
+    if not faq_match:
+        raise ValueError("Missing Bear 650 scrambler build FAQ section")
+    before_faq = body[:faq_match.start()].strip()
+    faq_text = body[faq_match.end():].strip()
+
+    hero_match = re.search(
+        r'^\[IMAGE:.*?\|\s*ALT:\s*(?:"([^"]+)"|(.+?))\]\s*$',
+        before_faq,
+        re.MULTILINE,
+    )
+    if not hero_match:
+        raise ValueError("Missing Bear 650 scrambler build hero image slot")
+    hero_alt = (hero_match.group(1) or hero_match.group(2)).strip()
+    before_faq = f"{before_faq[:hero_match.start()]}\n{before_faq[hero_match.end():]}".strip()
+
+    faq_items = []
+    for paragraph in [
+        part.strip()
+        for part in faq_text.split("\n\n")
+        if part.strip() and part.strip() != "---"
+    ]:
+        match = re.match(r"\*\*(.*?)\*\*\s*(.*)", paragraph, re.S)
+        if not match:
+            raise ValueError(f"Cannot parse Bear 650 scrambler build FAQ item: {paragraph[:80]}")
+        faq_items.append({"q": match.group(1).strip(), "a": _inline_markdown(match.group(2).strip())})
+    if len(faq_items) != 6:
+        raise ValueError(f"Expected 6 Bear 650 scrambler build FAQ items, got {len(faq_items)}")
+
+    chunks = re.split(r"\n(?=## )", before_faq)
+    preamble_blocks = _parse_markdown_blocks(chunks[0].splitlines())
+    preamble_paragraphs = [block for block in preamble_blocks if block["type"] == "p"]
+    if not preamble_paragraphs:
+        raise ValueError("Bear 650 scrambler build source has no lead paragraph")
+    lede = preamble_paragraphs[0]["text"]
+    content_sections = []
+    if preamble_blocks[1:]:
+        content_sections.append({"blocks": preamble_blocks[1:], "className": "blog-article-lead"})
+
+    video_title = ""
+    video_text = ""
+    for chunk in chunks[1:]:
+        chunk_lines = chunk.splitlines()
+        title = chunk_lines[0][3:].strip()
+        blocks = _parse_markdown_blocks(chunk_lines[1:])
+        section = {"title": title, "blocks": blocks}
+        if any(block["type"] == "video" for block in blocks):
+            section["className"] = "blog-video-section"
+            video_title = title
+            video_text = next((block["text"] for block in blocks if block["type"] == "p"), "")
+        content_sections.append(section)
+    if content_sections:
+        content_sections[-1]["className"] = "blog-cta-box"
+    if not (video_title and video_text):
+        raise ValueError("Missing Bear 650 scrambler build video section copy")
+
+    return {
+        "meta": meta,
+        "h1": h1,
+        "lede": lede,
+        "heroAlt": hero_alt,
+        "contentSections": content_sections,
+        "faqs": faq_items,
+        "videoTitle": video_title,
+        "videoText": video_text,
+    }
+
+
+def _load_bear650_build_post():
+    source = _BEAR650_BUILD_SOURCE.read_text(encoding="utf-8")
+    parsed = {
+        code: _parse_bear650_build_language(raw)
+        for code, raw in _split_localized_sections(
+            source, _BEAR650_BUILD_LANGS, "Bear 650 scrambler build"
+        ).items()
+    }
+    post_meta = {}
+    post_body = {}
+    for code in ("en", "ru", "uk", "pt"):
+        item = parsed[code]
+        expected_slug = f"/{'' if code == 'en' else code + '/'}blog/{_BEAR650_BUILD_SLUG}/"
+        if item["meta"]["slug"] != expected_slug:
+            raise ValueError(
+                f"Unexpected Bear 650 scrambler build slug for {code}: {item['meta']['slug']}"
+            )
+        post_meta[code] = {
+            "title": item["meta"]["title"],
+            "description": item["meta"]["description"],
+            "excerpt": item["meta"]["description"],
+        }
+        post_body[code] = {
+            **_BEAR650_BUILD_LABELS[code],
+            "h1": item["h1"],
+            "h1Crumb": item["h1"],
+            "lede": item["lede"],
+            "heroAlt": item["heroAlt"],
+            "contentSections": item["contentSections"],
+            "faqs": item["faqs"],
+            "videoTitle": item["videoTitle"],
+            "videoText": item["videoText"],
+        }
+    return {
+        "publishedISO": "2026-07-19T12:00:00+01:00",
+        "modifiedISO": "2026-07-20T08:29:09+01:00",
+        "heroImage": "/photos/blog/blog-royal-enfield-bear-650-scrambler-build-hero.png",
+        "heroImageDims": (1672, 941),
+        "schemaImage": "/photos/optimized/blog-blog-royal-enfield-bear-650-scrambler-build-hero-1920.webp",
+        "schemaEntityName": "Iron Custom Motors",
+        "publisherLogo": {
+            "url": "https://ironcustommotors.com/photos/icon-512.png",
+            "width": 512,
+            "height": 512,
+        },
+        "imageBase": "/photos/blog/blog-royal-enfield-bear-650-scrambler-build",
+        "imageHero": 0,
+        "imageCount": 0,
+        "imageDims": {},
+        "nativeVideo": {
+            "contentUrl": "https://media.ironcustommotors.com/bear650-scrambler-build.mp4",
+            "poster": "https://media.ironcustommotors.com/bear650-scrambler-build-cover.png",
+            "uploadDate": "2026-07-19T12:00:00+01:00",
+            "duration": "PT6M43S",
+            "width": 1920,
+            "height": 1080,
+        },
+        "sourceLocalizedSlugs": {
+            code: _BEAR650_BUILD_SLUG for code in ("en", "ru", "pt", "uk")
         },
         "meta": post_meta,
         "body": post_body,
@@ -4300,3 +4498,4 @@ BLOG_POSTS["motorcycle-tyre-fitting-specialist-cascais"] = {
 
 BLOG_POSTS[_BEAR650_SLUG] = _load_bear650_post()
 BLOG_POSTS[_HARLEY_SERVICE_SLUG] = _load_harley_service_post()
+BLOG_POSTS[_BEAR650_BUILD_SLUG] = _load_bear650_build_post()

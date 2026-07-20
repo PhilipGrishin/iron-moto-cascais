@@ -409,6 +409,7 @@ def render_article(slug, article):
             "videoEyebrow", "videoTitle", "videoText", "videoLink", "faqTitle",
             "ctaEyebrow", "ctaTitle", "btnWA", "btnBack", "imageAlt",
             "imageCaption", "h1", "h1Crumb", "lede", "ctaText", "heroAlt",
+            "videoSchemaDescription",
         ]:
             if key in body:
                 inline_i18n[lang][f"{pre}.{key}"] = body[key]
@@ -489,7 +490,7 @@ def render_article(slug, article):
         blog_posting_schema["video"] = {
             "@type": "VideoObject",
             "name": en_body["videoTitle"],
-            "description": en_body["videoText"],
+            "description": en_body.get("videoSchemaDescription", en_body["videoText"]),
             "thumbnailUrl": native_video["poster"],
             "contentUrl": native_video["contentUrl"],
             "uploadDate": schema_datetime(native_video["uploadDate"]),
@@ -566,7 +567,10 @@ def render_article(slug, article):
             if not article.get("nativeVideo"):
                 raise ValueError(f"Article {slug} has a video slot without nativeVideo data")
             video = article["nativeVideo"]
-            return f'''<div class="blog-native-video">
+            layout_style = ""
+            if video["width"] > video["height"]:
+                layout_style = f' style="aspect-ratio:{video["width"]}/{video["height"]};width:100%"'
+            return f'''<div class="blog-native-video"{layout_style}>
 <video controls height="{video["height"]}" playsinline poster="{a(video["poster"])}" preload="none" title="{a(en_body["videoTitle"])}" data-i18n-title="{pre}.videoTitle" width="{video["width"]}">
 <source src="{a(video["contentUrl"])}" type="video/mp4"/>
 </video>

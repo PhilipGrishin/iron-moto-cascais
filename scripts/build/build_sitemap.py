@@ -68,6 +68,7 @@ PAGES = [
     ("blog/motorcycle-tyre-fitting-specialist-cascais/", "monthly", "0.82"),
     ("blog/royal-enfield-bear-650-fork-oil-case-study/", "monthly", "0.82"),
     ("blog/harley-davidson-full-service-done-right/", "monthly", "0.9"),
+    ("blog/royal-enfield-bear-650-scrambler-build/", "monthly", "0.9"),
     ("news/", "weekly", "0.9"),
     ("news/ericeira-kustom-fest-2026/", "yearly", "0.9"),
     ("news/opens-new-workshop-in-cascais/", "yearly", "0.8"),

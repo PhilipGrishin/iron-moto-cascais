@@ -36,8 +36,8 @@ goal is SEO, local search, AI-citation readiness and high-quality service leads.
   - Russian at `/ru/`
   - Ukrainian at `/uk/`
   - Portuguese at `/pt/`
-- Current sitemap: 48 indexable path patterns x 4 languages = 192 URLs.
-- Current repo HTML count: 195 files, including `404.html` and 2 legacy noindex
+- Current sitemap: 49 indexable path patterns x 4 languages = 196 URLs.
+- Current repo HTML count: 199 files, including `404.html` and 2 legacy noindex
   redirect stubs.
 - Current cache-bust convention: `?v=20260710b`.
 - `sitemap.xml` `lastmod` values are per-page real content dates with timezone,
@@ -187,6 +187,8 @@ Current blog posts are registered in `scripts/build/blog_data.py`:
 - `/blog/front-fork-service-motorcycle-cascais/`
 - `/blog/motorcycle-tyre-fitting-specialist-cascais/`
 - `/blog/royal-enfield-bear-650-fork-oil-case-study/`
+- `/blog/harley-davidson-full-service-done-right/`
+- `/blog/royal-enfield-bear-650-scrambler-build/`
 
 ### News Articles
 

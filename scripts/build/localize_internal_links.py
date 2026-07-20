@@ -48,6 +48,7 @@ LOCALIZED_PATHS = {
     "/blog/motorcycle-tyre-fitting-specialist-cascais/",
     "/blog/royal-enfield-bear-650-fork-oil-case-study/",
     "/blog/harley-davidson-full-service-done-right/",
+    "/blog/royal-enfield-bear-650-scrambler-build/",
     "/news/",
     "/news/ericeira-kustom-fest-2026/",
     "/news/opens-new-workshop-in-cascais/",

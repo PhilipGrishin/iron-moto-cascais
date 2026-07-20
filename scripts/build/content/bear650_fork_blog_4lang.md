@@ -31,7 +31,7 @@
 
 # We Found the Wrong Fork Oil in a Brand-New Royal Enfield Bear 650
 
-A 2025 Royal Enfield Bear 650 came into the workshop with around 6,000 km on the clock. It was booked in for a round of upgrades and a full service — nothing dramatic. We swapped the handlebar for a taller, wider bar to open up the riding position, and fitted a set of YSS twin shocks at the rear (the aluminium MR01018_RZ362-TRL-MO, built for the Bear 650). The Bear, for the curious, takes its name from the 1960 Big Bear Run desert race in California, won by Eddie "Fast Eddie" Mulder on a Royal Enfield carrying number 249.
+A 2025 Royal Enfield Bear 650 came into the workshop with around 6,000 km on the clock. It was booked in for a round of upgrades and a full service — nothing dramatic. We swapped the handlebar for a taller, wider bar to open up the riding position, and fitted a set of YSS twin shocks at the rear (the aluminium MR01018_RZ362-TRL-MO, built for the Bear 650). This fork job was one part of [our complete Royal Enfield Bear 650 scrambler build](/blog/royal-enfield-bear-650-scrambler-build/). The Bear, for the curious, takes its name from the 1960 Big Bear Run desert race in California, won by Eddie "Fast Eddie" Mulder on a Royal Enfield carrying number 249.
 
 But while we were working on it, the front end kept drawing our attention. So we opened the fork. What we found inside is the reason we're writing this.
 
@@ -123,7 +123,7 @@ WhatsApp **+351 917 961 230** · [Book a service](/contact/) · [Royal Enfield s
 
 # Encontrámos óleo de forquilha errado numa Royal Enfield Bear 650 nova
 
-Entrou-nos na oficina uma Royal Enfield Bear 650 de 2025, com cerca de 6.000 km. Vinha para um conjunto de upgrades e uma revisão completa — nada de dramático. Trocámos o guiador por um mais alto e mais largo, para abrir a posição de condução, e montámos um par de amortecedores YSS atrás (os de alumínio MR01018_RZ362-TRL-MO, feitos para a Bear 650). Já agora, para quem tem curiosidade: a Bear vai buscar o nome à corrida do deserto Big Bear Run de 1960, na Califórnia, ganha por Eddie "Fast Eddie" Mulder numa Royal Enfield com o número 249.
+Entrou-nos na oficina uma Royal Enfield Bear 650 de 2025, com cerca de 6.000 km. Vinha para um conjunto de upgrades e uma revisão completa — nada de dramático. Trocámos o guiador por um mais alto e mais largo, para abrir a posição de condução, e montámos um par de amortecedores YSS atrás (os de alumínio MR01018_RZ362-TRL-MO, feitos para a Bear 650). Este trabalho na forquilha fez parte da [nossa preparação scrambler completa da Royal Enfield Bear 650](/pt/blog/royal-enfield-bear-650-scrambler-build/). Já agora, para quem tem curiosidade: a Bear vai buscar o nome à corrida do deserto Big Bear Run de 1960, na Califórnia, ganha por Eddie "Fast Eddie" Mulder numa Royal Enfield com o número 249.
 
 Mas, enquanto trabalhávamos nela, o trem da frente não nos largava. Por isso abrimos a forquilha. O que encontrámos lá dentro é a razão deste artigo.
 
@@ -215,7 +215,7 @@ WhatsApp **+351 917 961 230** · [Marcar revisão](/pt/contact/) · [Serviço Ro
 
 # В новом Royal Enfield Bear 650 мы нашли неправильно залитое масло в вилке
 
-К нам в мастерскую приехал Royal Enfield Bear 650 2025 года, пробег около 6 000 км. Записан был на пакет апгрейдов и полное ТО — ничего экстраординарного. Поменяли руль на более высокий и широкий, чтобы раскрыть посадку, и поставили сзади пару амортизаторов YSS (алюминиевые MR01018_RZ362-TRL-MO, как раз под Bear 650). Кстати, для любопытных: имя Bear пошло от пустынной гонки Big Bear Run 1960 года в Калифорнии, которую выиграл Эдди «Fast Eddie» Малдер на Royal Enfield под номером 249.
+К нам в мастерскую приехал Royal Enfield Bear 650 2025 года, пробег около 6 000 км. Записан был на пакет апгрейдов и полное ТО — ничего экстраординарного. Поменяли руль на более высокий и широкий, чтобы раскрыть посадку, и поставили сзади пару амортизаторов YSS (алюминиевые MR01018_RZ362-TRL-MO, как раз под Bear 650). Работа с вилкой была частью [нашего полного скрамблер-билда Royal Enfield Bear 650](/ru/blog/royal-enfield-bear-650-scrambler-build/). Кстати, для любопытных: имя Bear пошло от пустынной гонки Big Bear Run 1960 года в Калифорнии, которую выиграл Эдди «Fast Eddie» Малдер на Royal Enfield под номером 249.
 
 Но пока мы возились с мотоциклом, передок не давал о себе забыть. Поэтому мы вскрыли вилку. То, что мы нашли внутри, и есть повод для этой статьи.
 
@@ -307,7 +307,7 @@ WhatsApp **+351 917 961 230** · [Записаться на сервис](/ru/co
 
 # У новому Royal Enfield Bear 650 ми знайшли неправильно залите масло у вилці
 
-До нас у майстерню приїхав Royal Enfield Bear 650 2025 року, пробіг близько 6 000 км. Записаний був на пакет апгрейдів і повне ТО — нічого надзвичайного. Поміняли кермо на вище і ширше, щоб розкрити посадку, і поставили ззаду пару амортизаторів YSS (алюмінієві MR01018_RZ362-TRL-MO, саме під Bear 650). До речі, для цікавих: назва Bear пішла від пустельних перегонів Big Bear Run 1960 року в Каліфорнії, які виграв Едді «Fast Eddie» Малдер на Royal Enfield під номером 249.
+До нас у майстерню приїхав Royal Enfield Bear 650 2025 року, пробіг близько 6 000 км. Записаний був на пакет апгрейдів і повне ТО — нічого надзвичайного. Поміняли кермо на вище і ширше, щоб розкрити посадку, і поставили ззаду пару амортизаторів YSS (алюмінієві MR01018_RZ362-TRL-MO, саме під Bear 650). Робота з вилкою була частиною [нашого повного скрамблер-білда Royal Enfield Bear 650](/uk/blog/royal-enfield-bear-650-scrambler-build/). До речі, для цікавих: назва Bear пішла від пустельних перегонів Big Bear Run 1960 року в Каліфорнії, які виграв Едді «Fast Eddie» Малдер на Royal Enfield під номером 249.
 
 Але поки ми поралися з мотоциклом, передок не давав про себе забути. Тож ми розібрали вилку. Те, що знайшли всередині, і є приводом для цієї статті.
 

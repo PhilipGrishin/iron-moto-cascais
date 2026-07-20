@@ -305,7 +305,11 @@ Schema:
   slots use `nativeVideo` data and render as `<video>` without a YouTube iframe.
 - `datePublished` and `dateModified` must be full ISO-8601 datetimes with a
   Europe/Lisbon timezone offset, not date-only strings.
-- `author` must keep the canonical business `@id` and include `url`.
+- `author` must keep the canonical business `@id` and include `name` and `url`.
+- `publisher` must keep the canonical business `@id`, include `name`, and expose
+  the approved logo as an `ImageObject`.
+- Native video dimensions and `duration` must be measured from the published
+  media file. The rendered container must follow the real aspect ratio.
 
 Verification:
 
