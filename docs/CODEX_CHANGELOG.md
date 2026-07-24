@@ -14,6 +14,17 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-24 - BMW Motorrad hero refresh
+
+- Commit: this commit
+- Changed: Replaced the BMW Motorrad service hero photograph and regenerated
+  its existing responsive AVIF, WebP and JPEG variants under the same stable
+  SEO-friendly filenames.
+- Verified: Image decoding and dimensions; BMW brand-page validation; full SEO
+  validation; desktop and mobile browser checks; production asset checks.
+- Notes: Hero paths, localized ALT text, metadata, page copy, schema and layout
+  remain unchanged.
+
 ## 2026-07-20 - Cross-project confirmation gate
 
 - Commit: this commit
