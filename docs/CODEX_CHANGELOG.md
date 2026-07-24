@@ -14,6 +14,17 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-24 - Unbreakable photo refresh
+
+- Commit: this commit
+- Changed: Replaced the Unbreakable hero under its existing stable image paths
+  and added 12 new responsive gallery photographs to all four language pages.
+- Verified: Image decoding and dimensions; 20-item gallery parity across
+  EN/PT/RU/UK; full SEO validation; desktop and mobile browser checks;
+  production page and asset checks.
+- Notes: The original eight gallery images remain in place. Project name, URL,
+  localized copy, metadata, schema and layout remain unchanged.
+
 ## 2026-07-24 - BMW Motorrad hero refresh
 
 - Commit: this commit
