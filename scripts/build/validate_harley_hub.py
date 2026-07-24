@@ -79,6 +79,19 @@ def main() -> int:
             soup = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")
             source = copy[config["key"]][lang]
 
+            page_styles = "\n".join(
+                style.get_text() for style in soup.find_all("style")
+            )
+            required_style_tokens = {
+                "hero image darkening": "brightness(.5)",
+                "approved H1 scale": "font-size:clamp(30px,4vw,52px)",
+                "approved H2 scale": "font-size:clamp(24px,3.2vw,44px)",
+                "compact section spacing": "padding:clamp(34px,4vw,48px) 0",
+            }
+            for description, token in required_style_tokens.items():
+                if token not in page_styles:
+                    errors.append(f"{label}: missing {description}")
+
             if not soup.title or soup.title.get_text(strip=True) != source["title"]:
                 errors.append(f"{label}: title differs from source")
             meta = soup.find("meta", attrs={"name": "description"})
@@ -320,6 +333,15 @@ def main() -> int:
         scope = soup.select_one(selector)
         if not scope or not scope.find("a", href=href):
             errors.append(f"{path.relative_to(SITE_ROOT)}: missing {description}")
+        if description == "homepage Harley block":
+            scroll_fix = soup.select_one("style#home-hero-scroll-fix")
+            if (
+                not scroll_fix
+                or "#heroTitle{transform:none!important}" not in scroll_fix.get_text()
+            ):
+                errors.append(
+                    f"{path.relative_to(SITE_ROOT)}: missing homepage hero scroll fix"
+                )
 
     sitemap = ET.parse(SITE_ROOT / "sitemap.xml")
     sitemap_urls = {

@@ -257,6 +257,15 @@ Custom portfolio:
 - Reuse project assets; do not create a separate image source for the same
   project cover.
 
+Visual system:
+
+- Keep Harley Hub pages on the established site scale: H1 up to `52px`, H2 up
+  to `44px`, body copy up to `17px`, and section padding up to `48px`.
+- Hero images use the same dark image filter and overlay treatment as brand
+  service pages. Do not weaken the contrast behind hero copy.
+- `validate_harley_hub.py` protects these typography, spacing and hero
+  darkening tokens across all 12 generated pages.
+
 Schema:
 
 - Hub: `CollectionPage`/`WebPage` + `FAQPage` + `BreadcrumbList`.

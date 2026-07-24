@@ -14,6 +14,19 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-24 - Homepage hero and Harley visual alignment
+
+- Commit: this commit
+- Changed: Stopped the homepage hero heading from moving independently during
+  scroll on EN/PT/RU/UK, and aligned the 12 Harley Hub pages with the approved
+  site hero darkening, typography scale and compact vertical rhythm.
+- Verified: Harley Hub, SEO and Harley brand validators; desktop and mobile
+  browser checks; 24px homepage title/subtitle gap before and after scroll;
+  responsive overflow checks on all 12 Harley URLs; clean browser console.
+- Notes: `validate_harley_hub.py` now protects the approved H1/H2 limits,
+  section spacing and hero darkening so regeneration cannot silently restore
+  the oversized presentation.
+
 ## 2026-07-24 - Harley Hub phase 1
 
 - Commit: this commit
