@@ -167,11 +167,43 @@ def main() -> int:
                 ),
                 [],
             )
+            business = next(
+                (
+                    entity
+                    for entity in graph
+                    if "LocalBusiness" in (
+                        entity.get("@type", [])
+                        if isinstance(entity.get("@type"), list)
+                        else [entity.get("@type")]
+                    )
+                ),
+                None,
+            )
+            required_business_fields = {
+                "@id",
+                "name",
+                "logo",
+                "image",
+                "telephone",
+                "priceRange",
+                "address",
+            }
+            if not business:
+                errors.append(f"{label}: missing LocalBusiness entity")
+            else:
+                missing_business_fields = required_business_fields - set(business)
+                if missing_business_fields:
+                    errors.append(
+                        f"{label}: LocalBusiness missing RRT fields "
+                        f"{sorted(missing_business_fields)}"
+                    )
             for entity in graph:
                 if entity.get("@type") == "Service":
                     provider = entity.get("provider", {})
                     if provider.get("@id") and not provider.get("name"):
                         errors.append(f"{label}: Service provider @id has no name")
+                    if business and provider.get("@id") != business.get("@id"):
+                        errors.append(f"{label}: Service provider does not reference LocalBusiness")
             visible_faq = soup.select(".harley-faq details")
             faq_schema = next(
                 (

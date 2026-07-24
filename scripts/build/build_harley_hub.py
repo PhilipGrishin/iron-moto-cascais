@@ -508,11 +508,28 @@ def schema_graph(config: dict, page: dict, lang: str) -> dict:
     canonical = canonical_url(config["slug"], lang)
     page_id = canonical + "#webpage"
     localized_home = home_url(lang)
+    business_id = DOMAIN + "/#business"
     business = {
         "@type": ["LocalBusiness", "MotorcycleRepair"],
-        "@id": localized_home + "#business",
+        "@id": business_id,
         "name": "Iron Custom Motors",
         "url": localized_home,
+        "logo": DOMAIN + "/photos/icon-512.png",
+        "image": DOMAIN + "/photos/og.jpg",
+        "telephone": "+351917961230",
+        "priceRange": "€€",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "R. António José da Silva 100 B",
+            "addressLocality": "São Domingos de Rana",
+            "addressRegion": "Lisbon",
+            "postalCode": "2785-253",
+            "addressCountry": "PT",
+        },
+    }
+    business_reference = {
+        "@id": business_id,
+        "name": "Iron Custom Motors",
     }
     webpage_type = ["CollectionPage", "WebPage"] if config["key"] == "hub" else "WebPage"
     webpage = {
@@ -523,13 +540,13 @@ def schema_graph(config: dict, page: dict, lang: str) -> dict:
         "description": page["description"],
         "inLanguage": HREFLANG_CODES[lang],
         "isPartOf": {
-            "@id": localized_home + "#website",
+            "@id": DOMAIN + "/#website",
             "name": "Iron Custom Motors",
         },
-        "about": business,
+        "about": business_reference,
     }
 
-    graph = [webpage]
+    graph = [business, webpage]
     if config["schema_type"] == "Service":
         service_name = (
             UI[lang]["serviceTypeTuning"]
@@ -543,7 +560,7 @@ def schema_graph(config: dict, page: dict, lang: str) -> dict:
             "serviceType": service_name,
             "description": page["description"],
             "url": canonical,
-            "provider": business,
+            "provider": business_reference,
             "areaServed": {
                 "@type": "Place",
                 "name": "Cascais and Greater Lisbon",
