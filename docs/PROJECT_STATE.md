@@ -1,6 +1,6 @@
 # Iron Custom Motors Website - Project State
 
-Last updated: 2026-07-15
+Last updated: 2026-07-24
 Production: https://ironcustommotors.com/  
 Repository: https://github.com/dreamcarua/iron-moto-cascais
 
@@ -36,10 +36,10 @@ goal is SEO, local search, AI-citation readiness and high-quality service leads.
   - Russian at `/ru/`
   - Ukrainian at `/uk/`
   - Portuguese at `/pt/`
-- Current sitemap: 49 indexable path patterns x 4 languages = 196 URLs.
-- Current repo HTML count: 199 files, including `404.html` and 2 legacy noindex
+- Current sitemap: 52 indexable path patterns x 4 languages = 208 URLs.
+- Current repo HTML count: 211 files, including `404.html` and 2 legacy noindex
   redirect stubs.
-- Current cache-bust convention: `?v=20260710b`.
+- Current cache-bust convention: `?v=20260724a`.
 - `sitemap.xml` `lastmod` values are per-page real content dates with timezone,
   not deploy timestamps. Blog/news use their explicit article dates; other
   pages use semantic Git history for the served HTML.
@@ -92,6 +92,9 @@ this file for current state unless `HANDOFF.md` has been explicitly refreshed.
 - `/parts/`
 - `/authorized-dealer/`
 - `/authorized-dealer/c-way/`
+- `/harley/`
+- `/harley-tuning/`
+- `/harley-custom/`
 - `/english-speaking-motorcycle-workshop/`
 - `/blog/`
 - `/news/`
@@ -118,6 +121,26 @@ Source:
 - Copy: `scripts/build/content/expat_hub_copy_4lang.md`
 - Generator: `scripts/build/build_expat_hub.py`
 - Hero source: `/photos/services/english-speaking-motorcycle-workshop-main.jpg`
+
+### Harley Hub
+
+The Harley-specific content family routes riders between the existing
+independent `/harley-service/` page and two focused service spokes:
+
+- `/harley/` - collection hub and tagged Harley blog feed
+- `/harley-tuning/` - stage, exhaust, suspension and braking work
+- `/harley-custom/` - custom-build service and four-project portfolio
+
+Source:
+
+- Copy: `scripts/build/content/harley_hub_phase1_4lang.md`
+- Supplemental data: `scripts/build/harley_hub_data.py`
+- Generator: `scripts/build/build_harley_hub.py`
+- Validator: `scripts/build/validate_harley_hub.py`
+- Hero sources: `photos/harley/`
+
+The workshop feed is generated from blog posts whose `topics` include
+`harley`. Keep those tags accurate when adding future Harley articles.
 
 ### Brand Service Pages
 
@@ -209,6 +232,8 @@ Current news articles are registered in `scripts/build/news_data.py`:
 - `scripts/build/build_news.py` - news hub and articles.
 - `scripts/build/build_pre_purchase_inspection.py` - flagship inspection page.
 - `scripts/build/build_expat_hub.py` - English-speaking expat funnel hub.
+- `scripts/build/build_harley_hub.py` - Harley collection, tuning and custom
+  pages.
 - `scripts/build/build_tyre_service.py` - tyre service page.
 - `scripts/build/build_pricing.py` - pricing pages.
 - `scripts/build/nav_patch.py` - canonical nav and footer on English pages.
@@ -218,6 +243,8 @@ Current news articles are registered in `scripts/build/news_data.py`:
 - `scripts/build/build_sitemap.py` - sitemap and hreflang alternates.
 - `scripts/build/validate_seo.py` - broad SEO and asset validation.
 - `scripts/build/validate_brand_pages.py` - brand-page QA.
+- `scripts/build/validate_harley_hub.py` - Harley family content, schema,
+  integrations and portfolio QA.
 
 ## Recent Project Context
 
@@ -236,6 +263,8 @@ Recent high-impact changes:
 - Split Google reviews into live rating/count from the Worker snapshot and
   editorial visible cards from `assets/reviews-curated.json`.
 - Added YouTube social link and blog/video schema workflows.
+- Added the multilingual Harley Hub family, global dropdown, workshop feed and
+  custom portfolio.
 - Documented and centralized scalable page-family patterns.
 
 For compact commit memory, see `docs/CODEX_CHANGELOG.md`.

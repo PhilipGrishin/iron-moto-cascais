@@ -217,6 +217,73 @@ python3 scripts/build/validate_seo.py
 git diff --check
 ```
 
+## Harley Hub
+
+Purpose:
+
+- Route Harley-Davidson riders between service, tuning, custom work and parts.
+- Keep the existing independent `/harley-service/` page as a focused service
+  spoke rather than duplicating its copy.
+- Surface future Harley blog posts automatically through topic metadata.
+
+Source of truth:
+
+- Exact four-language copy:
+  `scripts/build/content/harley_hub_phase1_4lang.md`
+- Supplemental page, UI and portfolio data:
+  `scripts/build/harley_hub_data.py`
+- Generator: `scripts/build/build_harley_hub.py`
+- Validator: `scripts/build/validate_harley_hub.py`
+- Hero source images: `photos/harley/`
+
+Current URLs:
+
+- `/harley/`
+- `/harley-tuning/`
+- `/harley-custom/`
+- Matching `/pt/`, `/ru/` and `/uk/` variants.
+
+Dynamic blog feed:
+
+- Add `topics: ("harley",)` to a `BLOG_POSTS` entry in
+  `scripts/build/blog_data.py`.
+- `build_harley_hub.py` reads the blog registry and renders matching cards in
+  descending publication order.
+
+Custom portfolio:
+
+- Portfolio order, existing project image paths and localized fact-based
+  summaries live in `harley_hub_data.py`.
+- Reuse project assets; do not create a separate image source for the same
+  project cover.
+
+Schema:
+
+- Hub: `CollectionPage`/`WebPage` + `FAQPage` + `BreadcrumbList`.
+- Tuning/custom: `WebPage` + `Service` + `FAQPage` + `BreadcrumbList`.
+- Do not add `Product` or `Offer` until approved numeric pricing exists.
+
+Verification:
+
+```bash
+node scripts/build/extract_i18n.js
+python3 scripts/build/optimize_hero_images.py photos/harley/harley-hub-hero.jpg
+python3 scripts/build/optimize_hero_images.py photos/harley/harley-tuning-hero.jpg
+python3 scripts/build/optimize_hero_images.py photos/harley/harley-custom-hero.jpg
+python3 scripts/build/build_brand_pages.py
+python3 scripts/build/build_blog.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/build_i18n.py
+python3 scripts/build/build_harley_hub.py
+python3 scripts/build/localize_internal_links.py
+python3 scripts/build/apply_seo_meta.py
+python3 scripts/build/build_sitemap.py
+python3 scripts/build/validate_harley_hub.py
+python3 scripts/build/validate_seo.py
+python3 scripts/build/validate_brand_pages.py harley-service
+git diff --check
+```
+
 ## Authorized Dealer Hub
 
 Purpose:

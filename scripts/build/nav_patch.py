@@ -4,7 +4,8 @@ Patch navigation (header + mobile drawer + footer) on every EN page of the
 ICM site so that all anchor-based nav links are replaced with proper URLs.
 
 New nav (everywhere):
-  Services dropdown / Brands dropdown / Authorized Dealer / Projects dropdown / About dropdown / Pricing / Contact
+  Services dropdown / Brands dropdown / Harley Hub dropdown / Authorized Dealer /
+  Projects dropdown / About dropdown / Pricing / Contact
 
 Footer "Services" column:
   Motorcycle service & repair → /motorcycle-service/
@@ -42,6 +43,9 @@ EN_PAGES = [
     "parts/index.html",
     "upgrades-tuning/index.html",
     "custom/index.html",
+    "harley/index.html",
+    "harley-tuning/index.html",
+    "harley-custom/index.html",
     "pre-purchase-inspection/index.html",
     "english-speaking-motorcycle-workshop/index.html",
     "authorized-dealer/index.html",
@@ -88,6 +92,7 @@ EN_PAGES = [
 PRIMARY_NAV_LINKS = [
     ("nav.services", "/services/",  "Services"),
     ("nav.brands",   "/#brands",    "Brands"),
+    ("nav.harleyHub", "/harley/",   "Harley Hub"),
     ("nav.authorizedDealer", "/authorized-dealer/", "Authorized Dealer"),
     ("nav.projects", "/projects/",  "Projects"),
     ("nav.about",    "/about/",     "About"),
@@ -108,6 +113,13 @@ SERVICE_NAV_LINKS = [
 BRAND_NAV_LINKS = [
     (BRAND_NAV_KEYS[slug], f"/{slug}/", BRAND_NAME[slug])
     for slug in BRAND_ORDER
+]
+
+HARLEY_NAV_LINKS = [
+    ("nav.harleyHub", "/harley/", "Harley Hub"),
+    ("nav.harleyService", "/harley-service/", "Service"),
+    ("nav.harleyTuning", "/harley-tuning/", "Tuning"),
+    ("nav.harleyCustom", "/harley-custom/", "Custom"),
 ]
 
 PROJECT_NAV_LINKS = [
@@ -140,6 +152,7 @@ AUTHORIZED_DEALER_NAV_LINKS = [
 DROPDOWN_NAV_LINKS = {
     "nav.services": SERVICE_NAV_LINKS,
     "nav.brands": BRAND_NAV_LINKS,
+    "nav.harleyHub": HARLEY_NAV_LINKS,
     "nav.authorizedDealer": AUTHORIZED_DEALER_NAV_LINKS,
     "nav.projects": PROJECT_NAV_LINKS,
     "nav.about": ABOUT_NAV_LINKS,
@@ -160,6 +173,7 @@ FOOTER_SERVICES_LINKS = [
 
 FOOTER_COMPANY_LINKS = [
     ("nav.about",    "/about/",     "About"),
+    ("nav.harleyHub", "/harley/",   "Harley Hub"),
     ("nav.projects", "/projects/",  "Projects"),
     ("nav.blog",     "/blog/",      "Blog"),
     ("nav.news",     "/news/",      "News"),

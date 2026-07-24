@@ -47,6 +47,7 @@ python3 -m pip install -r requirements.txt
 | `build_blog.py` | `blog/` hub + `blog/<slug>/` articles |
 | `build_pre_purchase_inspection.py` | `pre-purchase-inspection/` in all 4 languages |
 | `build_expat_hub.py` | `english-speaking-motorcycle-workshop/` in all 4 languages |
+| `build_harley_hub.py` | `harley/`, `harley-tuning/` and `harley-custom/` in all 4 languages |
 | `build_pricing.py` | `pricing/` in all 4 languages |
 | `build_pricing_pdfs.py` | `pricing/files/*.pdf` downloadable price lists in all 4 languages |
 | `enhance_money_pages.py` | Adds reusable local SEO + related-page blocks to service and brand pages |
@@ -61,6 +62,7 @@ python3 -m pip install -r requirements.txt
 | `extract_i18n.js` | Reads `assets/main.js` and writes `scripts/build/i18n.json` (consumed by `build_i18n.py`) |
 | `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD, localized internal links, SEO robots meta and local assets |
 | `validate_brand_pages.py` | Validates brand page registry, 4 language outputs, schema, sitemap, optimized hero assets, deploy workflow and reciprocal brand links |
+| `validate_harley_hub.py` | Validates the 12 Harley pages, exact source copy, LCP media, schema, same-language links, feed, portfolio and existing-page integrations |
 
 ## Sitemap And Structured-Data Dates
 
@@ -91,6 +93,8 @@ use real content dates with timezone, not deploy time.
 | `blog_data.py` | `build_blog.py` (blog hub and posts, 4 languages) |
 | `content/pre_purchase_inspection_copy_4lang.md` | `build_pre_purchase_inspection.py` (4-language flagship service copy) |
 | `content/expat_hub_copy_4lang.md` | `build_expat_hub.py` (4-language English-speaking expat hub copy) |
+| `content/harley_hub_phase1_4lang.md` | `build_harley_hub.py` (exact 4-language copy for the Harley hub, tuning and custom pages) |
+| `harley_hub_data.py` | `build_harley_hub.py` (page media, localized UI and project portfolio data) |
 | `pricing_data.py` | `build_pricing.py` and `build_pricing_pdfs.py` (LABELS + SECTIONS, 4 languages) |
 | `i18n.json` | A snapshot of the runtime `I18N` object that lives inside `assets/main.js`. Regenerate with `node scripts/build/extract_i18n.js` after editing translations in `main.js`. |
 
@@ -119,11 +123,13 @@ python3 scripts/build/enhance_project_pages.py
 python3 scripts/build/build_i18n.py
 python3 scripts/build/build_pre_purchase_inspection.py
 python3 scripts/build/build_expat_hub.py
+python3 scripts/build/build_harley_hub.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/add_image_dims.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/validate_seo.py
+python3 scripts/build/validate_harley_hub.py
 ```
 
 Run `build_reviews_schema.py` separately only when a fresh Google
@@ -229,6 +235,30 @@ python3 scripts/build/add_image_dims.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/validate_seo.py
+# bump cache-bust if assets/main.css or assets/main.js changed
+```
+
+### After editing the Harley Hub family
+
+The source Markdown owns the approved four-language page copy. Portfolio
+summaries and blog-topic behavior live in the adjacent Python data modules.
+
+```
+# 1. Update scripts/build/content/harley_hub_phase1_4lang.md.
+# 2. Update scripts/build/harley_hub_data.py only for supplemental UI,
+#    media or portfolio data.
+node scripts/build/extract_i18n.js
+python3 scripts/build/build_brand_pages.py
+python3 scripts/build/build_blog.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/build_i18n.py
+python3 scripts/build/build_harley_hub.py
+python3 scripts/build/localize_internal_links.py
+python3 scripts/build/apply_seo_meta.py
+python3 scripts/build/build_sitemap.py
+python3 scripts/build/validate_harley_hub.py
+python3 scripts/build/validate_seo.py
+python3 scripts/build/validate_brand_pages.py harley-service
 # bump cache-bust if assets/main.css or assets/main.js changed
 ```
 

@@ -74,7 +74,7 @@ We filmed the whole thing — no music, no talking over it, just the real proces
 
 ## Why riders bring their Harley to Iron Custom Motors
 
-Riders come to us because we are an independent Harley specialist in Cascais and Greater Lisbon who treats the bike the way the manufacturer intended: the correct fluids for each system, the proper tools for each job, and a transparent account of everything done. We work in English, Portuguese, Russian and Ukrainian, so nothing gets lost between rider and workshop. No invented promises — just careful, methodical work and a bike that leaves running the way it should. Explore [parts](/parts/) and [upgrades and tuning](/upgrades-tuning/), or [get in touch](/contact/).
+Riders come to us because we are an independent Harley specialist in Cascais and Greater Lisbon who treats the bike the way the manufacturer intended: the correct fluids for each system, the proper tools for each job, and a transparent account of everything done. We work in English, Portuguese, Russian and Ukrainian, so nothing gets lost between rider and workshop. No invented promises — just careful, methodical work and a bike that leaves running the way it should. Explore [parts](/parts/) and [upgrades and tuning](/upgrades-tuning/), or [get in touch](/contact/). See [all our Harley service, tuning and custom work](/harley/) in the Harley Hub.
 
 ## FAQ
 
@@ -152,7 +152,7 @@ Filmámos tudo — sem música, sem narração por cima, só o processo real do 
 
 ## Porque é que os motards trazem a Harley à Iron Custom Motors
 
-Vêm ter connosco porque somos uma oficina Harley independente em Cascais e na Grande Lisboa que trata a mota como o fabricante pretendia: os fluidos corretos para cada sistema, as ferramentas próprias para cada trabalho, e uma explicação transparente de tudo o que foi feito. Trabalhamos em português, inglês, russo e ucraniano, para que nada se perca entre o motard e a oficina. Sem promessas inventadas — só trabalho cuidado e metódico e uma mota que sai a funcionar como deve ser. Veja as [peças](/pt/parts/) e os [upgrades e afinação](/pt/upgrades-tuning/), ou [fale connosco](/pt/contact/).
+Vêm ter connosco porque somos uma oficina Harley independente em Cascais e na Grande Lisboa que trata a mota como o fabricante pretendia: os fluidos corretos para cada sistema, as ferramentas próprias para cada trabalho, e uma explicação transparente de tudo o que foi feito. Trabalhamos em português, inglês, russo e ucraniano, para que nada se perca entre o motard e a oficina. Sem promessas inventadas — só trabalho cuidado e metódico e uma mota que sai a funcionar como deve ser. Veja as [peças](/pt/parts/) e os [upgrades e afinação](/pt/upgrades-tuning/), ou [fale connosco](/pt/contact/). Conheça [todo o nosso serviço, tuning e trabalho custom Harley](/pt/harley/) no Harley Hub.
 
 ## FAQ
 
@@ -230,7 +230,7 @@ Harley — не безликий агрегат, и обслуживать ег�
 
 ## Почему владельцы везут Harley в Iron Custom Motors
 
-К нам едут потому, что мы — независимая мастерская по Harley в Кашкайше и Большом Лиссабоне, которая обслуживает мотоцикл так, как задумал производитель: верные жидкости под каждую систему, свой инструмент под каждую работу и прозрачный отчёт обо всём, что сделано. Мы работаем на русском, португальском, английском и украинском, чтобы между владельцем и мастерской ничего не терялось. Никаких выдуманных обещаний — только аккуратная, методичная работа и мотоцикл, который уезжает исправным. Загляните в [запчасти](/ru/parts/) и [апгрейды и тюнинг](/ru/upgrades-tuning/) или [свяжитесь с нами](/ru/contact/).
+К нам едут потому, что мы — независимая мастерская по Harley в Кашкайше и Большом Лиссабоне, которая обслуживает мотоцикл так, как задумал производитель: верные жидкости под каждую систему, свой инструмент под каждую работу и прозрачный отчёт обо всём, что сделано. Мы работаем на русском, португальском, английском и украинском, чтобы между владельцем и мастерской ничего не терялось. Никаких выдуманных обещаний — только аккуратная, методичная работа и мотоцикл, который уезжает исправным. Загляните в [запчасти](/ru/parts/) и [апгрейды и тюнинг](/ru/upgrades-tuning/) или [свяжитесь с нами](/ru/contact/). Все направления собраны в разделе [сервис, тюнинг и кастом Harley](/ru/harley/).
 
 ## FAQ
 
@@ -308,7 +308,7 @@ Harley — не безлика машина, і обслуговувати йо�
 
 ## Чому власники везуть Harley до Iron Custom Motors
 
-До нас їдуть тому, що ми — незалежна майстерня з Harley у Кашкайші та Великому Лісабоні, яка обслуговує мотоцикл так, як задумав виробник: правильні рідини під кожну систему, свій інструмент під кожну роботу й прозорий звіт про все, що зроблено. Ми працюємо українською, португальською, англійською та російською, щоб між власником і майстернею нічого не губилося. Жодних вигаданих обіцянок — лише акуратна, методична робота й мотоцикл, який виїжджає справним. Загляньте в [запчастини](/uk/parts/) та [апгрейди й тюнінг](/uk/upgrades-tuning/) або [зв'яжіться з нами](/uk/contact/).
+До нас їдуть тому, що ми — незалежна майстерня з Harley у Кашкайші та Великому Лісабоні, яка обслуговує мотоцикл так, як задумав виробник: правильні рідини під кожну систему, свій інструмент під кожну роботу й прозорий звіт про все, що зроблено. Ми працюємо українською, португальською, англійською та російською, щоб між власником і майстернею нічого не губилося. Жодних вигаданих обіцянок — лише акуратна, методична робота й мотоцикл, який виїжджає справним. Загляньте в [запчастини](/uk/parts/) та [апгрейди й тюнінг](/uk/upgrades-tuning/) або [зв'яжіться з нами](/uk/contact/). Усі напрямки зібрані в розділі [сервіс, тюнінг і кастом Harley](/uk/harley/).
 
 ## FAQ
 

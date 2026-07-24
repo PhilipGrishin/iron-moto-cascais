@@ -492,7 +492,8 @@ def _load_harley_service_post():
         }
     return {
         "publishedISO": "2026-07-10T12:00:00+01:00",
-        "modifiedISO": "2026-07-10T17:20:00+01:00",
+        "modifiedISO": "2026-07-24T20:58:26+01:00",
+        "topics": ("harley",),
         "heroImage": "/photos/blog/blog-harley-davidson-full-service-done-right-hero.png",
         "heroImageDims": (1672, 941),
         "schemaImage": "/photos/optimized/blog-blog-harley-davidson-full-service-done-right-hero-1920.webp",

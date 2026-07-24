@@ -24,7 +24,7 @@ from hero_images import hero_background_css, optimized_hero_url
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260710b"
+CACHE_BUST = "20260724a"
 
 SEO_I18N = {
     "en": {
@@ -50,6 +50,10 @@ SEO_I18N = {
         "seo.otherBrandsTitle": "Other brands we service",
         "seo.otherBrandsLead": "Compare the same workshop process across our brand-specific service pages.",
         "seo.otherBrandText": "Open the brand page for model-specific service details, diagnostics, parts and booking context.",
+        "seo.harleyExploreTitle": "Explore more Harley",
+        "seo.harleyHub": "Harley Hub",
+        "seo.harleyTuning": "Harley tuning",
+        "seo.harleyCustom": "Harley custom",
     },
     "ru": {
         "seo.localEyebrow": "Локальная зона сервиса",
@@ -74,6 +78,10 @@ SEO_I18N = {
         "seo.otherBrandsTitle": "Другие бренды, которые мы обслуживаем",
         "seo.otherBrandsLead": "Сравните тот же процесс мастерской на брендовых страницах сервиса.",
         "seo.otherBrandText": "Откройте страницу бренда, чтобы увидеть сервисные детали по моделям, диагностике, запчастям и записи.",
+        "seo.harleyExploreTitle": "Больше о Harley",
+        "seo.harleyHub": "Harley Hub",
+        "seo.harleyTuning": "Тюнинг Harley",
+        "seo.harleyCustom": "Кастом Harley",
     },
     "uk": {
         "seo.localEyebrow": "Локальна зона сервісу",
@@ -98,6 +106,10 @@ SEO_I18N = {
         "seo.otherBrandsTitle": "Інші бренди, які ми обслуговуємо",
         "seo.otherBrandsLead": "Порівняйте той самий процес майстерні на брендових сторінках сервісу.",
         "seo.otherBrandText": "Відкрийте сторінку бренду, щоб побачити сервісні деталі за моделями, діагностикою, запчастинами й записом.",
+        "seo.harleyExploreTitle": "Більше про Harley",
+        "seo.harleyHub": "Harley Hub",
+        "seo.harleyTuning": "Тюнінг Harley",
+        "seo.harleyCustom": "Кастом Harley",
     },
     "pt": {
         "seo.localEyebrow": "Área local de serviço",
@@ -122,6 +134,10 @@ SEO_I18N = {
         "seo.otherBrandsTitle": "Outras marcas que reparamos",
         "seo.otherBrandsLead": "Compare o mesmo processo de oficina nas nossas páginas de serviço por marca.",
         "seo.otherBrandText": "Abra a página da marca para detalhes de serviço por modelo, diagnóstico, peças e marcação.",
+        "seo.harleyExploreTitle": "Explore mais sobre Harley",
+        "seo.harleyHub": "Harley Hub",
+        "seo.harleyTuning": "Tuning Harley",
+        "seo.harleyCustom": "Customização Harley",
     },
 }
 
@@ -706,6 +722,30 @@ def render_related_sections(slug, en):
 </section>'''
 
 
+def render_harley_explore(slug, en):
+    if slug != "harley-service":
+        return ""
+    links = (
+        ("seo.harleyHub", "/harley/"),
+        ("seo.harleyTuning", "/harley-tuning/"),
+        ("seo.harleyCustom", "/harley-custom/"),
+    )
+    items = "\n".join(
+        f'<a class="brand-pill" data-i18n="{key}" href="{href}">{en[key]}</a>'
+        for key, href in links
+    )
+    return f'''<section class="sub-section">
+<div class="container">
+<div class="related-subhead" style="margin-top:0;padding-top:0;border-top:0">
+<h3 data-i18n="seo.harleyExploreTitle">{en["seo.harleyExploreTitle"]}</h3>
+</div>
+<div class="brand-pill-grid">
+{items}
+</div>
+</div>
+</section>'''
+
+
 def render(slug):
     pre = BRAND_PREFIX[slug]
     en = page_i18n_for(slug)["en"]
@@ -831,6 +871,7 @@ def render(slug):
 </div>
 </section>
 
+{render_harley_explore(slug, en)}
 {render_related_sections(slug, en)}
 
 <section class="cta-back">

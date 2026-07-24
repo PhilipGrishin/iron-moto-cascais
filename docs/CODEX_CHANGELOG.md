@@ -14,6 +14,20 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-24 - Harley Hub phase 1
+
+- Commit: this commit
+- Changed: Added the Harley Hub, Harley tuning and Harley custom page family in
+  EN/PT/RU/UK from the approved Markdown source, three responsive LCP heroes, a
+  tagged Harley blog feed, four-project custom portfolio, global dropdown,
+  homepage/footer entry points and localized spoke backlinks.
+- Verified: Exact source-copy checks; 12-page Harley validation; 208-URL SEO
+  validation; Harley brand-page validation; JSON-LD, hreflang, canonical,
+  sitemap and local-asset checks; desktop and mobile browser checks.
+- Notes: Future Harley posts appear in the hub feed when their `BLOG_POSTS`
+  entry includes the `harley` topic. The existing `/harley-service/` copy
+  remains owned by the brand-page generator.
+
 ## 2026-07-24 - Sturmvogel photo refresh
 
 - Commit: this commit
