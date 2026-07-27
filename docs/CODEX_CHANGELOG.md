@@ -14,6 +14,19 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-27 - Homepage project selection
+
+- Commit: this commit
+- Changed: Reduced the homepage project section on EN/PT/RU/UK to the featured
+  Beckman project plus six standard cards in two desktop rows, and added a
+  localized all-projects CTA.
+- Verified: Four-language card order and link checks; 208-URL SEO validation;
+  desktop and mobile browser layout checks; responsive overflow and console
+  checks.
+- Notes: Joker, Hell Boy and True Religion remain available in the complete
+  projects catalogue and on their individual pages. Homepage project selection
+  continues to be maintained directly in the four homepage files.
+
 ## 2026-07-24 - Homepage hero and Harley visual alignment
 
 - Commit: this commit
