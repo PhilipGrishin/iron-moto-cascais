@@ -446,23 +446,35 @@ Current state:
 
 - Project pages are mostly authored as static HTML with inline
   `window.ICM_I18N_PAGE` blocks.
-- There is no fully generic project-page generator yet.
+- New project pages can use the shared data-driven flow in
+  `scripts/build/project_pages_data.py` and
+  `scripts/build/build_project_pages.py`.
+- Approved long-form copy for data-driven pages lives in
+  `content/projects/<slug>_4lang.md`; responsive media and localized gallery
+  ALT text are registered in `PROJECT_CONFIGS`.
 
 When editing:
 
 - Preserve existing localized copy.
 - Keep project pages in `/projects/<slug>/` and localized prefixes.
+- Import new hero and gallery media with `import_project_images.py`.
+- Register new slugs in the projects listing, global navigation, sitemap,
+  localized-link registry and SEO validator.
 - Run `enhance_project_pages.py` if shared project enhancement blocks need
-  regeneration.
+  regeneration on legacy static project pages.
 
 Verification:
 
 ```bash
-python3 scripts/build/enhance_project_pages.py
+python3 scripts/build/build_project_pages.py
+python3 scripts/build/build_new_pages.py
+python3 scripts/build/nav_patch.py
 python3 scripts/build/build_i18n.py
+python3 scripts/build/nav_patch.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/validate_project_pages.py <slug>
 python3 scripts/build/validate_seo.py
 git diff --check
 ```

@@ -45,6 +45,7 @@ python3 -m pip install -r requirements.txt
 | `build_legal_pages.py` | `privacy/`, `cookies/`, `terms/` |
 | `build_news.py` | `news/` hub + each `news/<slug>/` article |
 | `build_blog.py` | `blog/` hub + `blog/<slug>/` articles |
+| `build_project_pages.py` | Data-driven `projects/<slug>/` detail pages registered in `project_pages_data.py` |
 | `build_pre_purchase_inspection.py` | `pre-purchase-inspection/` in all 4 languages |
 | `build_expat_hub.py` | `english-speaking-motorcycle-workshop/` in all 4 languages |
 | `build_harley_hub.py` | `harley/`, `harley-tuning/` and `harley-custom/` in all 4 languages |
@@ -63,6 +64,7 @@ python3 -m pip install -r requirements.txt
 | `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD, localized internal links, SEO robots meta and local assets |
 | `validate_brand_pages.py` | Validates brand page registry, 4 language outputs, schema, sitemap, optimized hero assets, deploy workflow and reciprocal brand links |
 | `validate_harley_hub.py` | Validates the 12 Harley pages, exact source copy, LCP media, schema, same-language links, feed, portfolio and existing-page integrations |
+| `validate_project_pages.py` | Validates one data-driven project page family across all 4 languages |
 
 ## Sitemap And Structured-Data Dates
 
@@ -91,6 +93,8 @@ use real content dates with timezone, not deploy time.
 | `legal_pages_data.py` | `build_legal_pages.py` (Privacy / Cookies / Terms) |
 | `news_data.py` | `build_news.py` (one entry per article slug, 4 languages) |
 | `blog_data.py` | `build_blog.py` (blog hub and posts, 4 languages) |
+| `project_pages_data.py` | `build_project_pages.py` (project-page registry, reviewed Markdown parsing, media and localized UI data) |
+| `content/projects/<slug>_4lang.md` | `project_pages_data.py` (approved 4-language project copy) |
 | `content/pre_purchase_inspection_copy_4lang.md` | `build_pre_purchase_inspection.py` (4-language flagship service copy) |
 | `content/expat_hub_copy_4lang.md` | `build_expat_hub.py` (4-language English-speaking expat hub copy) |
 | `content/harley_hub_phase1_4lang.md` | `build_harley_hub.py` (exact 4-language copy for the Harley hub, tuning and custom pages) |
@@ -366,6 +370,28 @@ python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/validate_seo.py
 # bump cache-bust if assets/main.css or assets/main.js changed
+```
+
+### After adding a data-driven project page
+
+```
+# 1. Save the approved 4-language Markdown at:
+#    content/projects/<slug>_4lang.md
+# 2. Add the project to PROJECT_CONFIGS in project_pages_data.py
+# 3. Import the hero and gallery photographs:
+python3 scripts/build/import_project_images.py <slug> "/absolute/path/to/source/photos"
+# 4. Register the page in page_meta.py, new_pages_data.py, nav_patch.py,
+#    build_sitemap.py, localize_internal_links.py and validate_seo.py
+python3 scripts/build/build_project_pages.py
+python3 scripts/build/build_new_pages.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/build_i18n.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/localize_internal_links.py
+python3 scripts/build/apply_seo_meta.py
+python3 scripts/build/build_sitemap.py
+python3 scripts/build/validate_project_pages.py <slug>
+python3 scripts/build/validate_seo.py
 ```
 
 ### After editing pricing data

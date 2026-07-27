@@ -86,6 +86,7 @@ for slug in [
     "joker",
     "hellboy",
     "true-religion",
+    "fighter",
 ]:
     LOCALIZED_PATHS.add(f"/projects/{slug}/")
 

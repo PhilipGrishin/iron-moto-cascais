@@ -14,6 +14,18 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-27 - Fighter project page
+
+- Commit: this commit
+- Changed: Added the Fighter project page in EN/PT/RU/UK from the approved
+  Markdown source, responsive AVIF/WebP hero and 11-image gallery, project
+  listing cards, global Projects menu links, structured data and sitemap URLs.
+- Verified: Exact four-language source-copy checks; project-family and 212-URL
+  SEO validation; schema, hreflang, canonical, localized-link and media checks;
+  desktop and mobile browser layout checks.
+- Notes: Fighter is the first page on the reusable data-driven project-page
+  flow. It is intentionally absent from Harley Hub and Harley Custom content.
+
 ## 2026-07-27 - Homepage project selection
 
 - Commit: this commit

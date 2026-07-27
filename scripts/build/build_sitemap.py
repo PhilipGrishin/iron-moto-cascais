@@ -27,6 +27,7 @@ except ImportError:  # pragma: no cover - Python < 3.9 fallback
 from brand_pages_data import BRAND_ORDER
 from blog_data import BLOG_POSTS
 from news_data import NEWS_ARTICLES
+from project_pages_data import PROJECT_CONFIGS
 
 DOMAIN = "https://ironcustommotors.com"
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -86,6 +87,7 @@ PAGES = [
     ("projects/joker/", "yearly", "0.7"),
     ("projects/hellboy/", "yearly", "0.7"),
     ("projects/true-religion/", "yearly", "0.7"),
+    ("projects/fighter/", "yearly", "0.7"),
 ]
 
 LANGS = ["en", "ru", "uk", "pt"]
@@ -144,6 +146,10 @@ EXPLICIT_LASTMOD = {
         f"news/{slug}/": article_lastmod(article)
         for slug, article in NEWS_ARTICLES.items()
     },
+    **{
+        f"projects/{slug}/": normalize_iso(project["published_iso"])
+        for slug, project in PROJECT_CONFIGS.items()
+    },
 }
 EXPLICIT_LASTMOD["blog/"] = max(
     article_lastmod(article)
@@ -152,6 +158,10 @@ EXPLICIT_LASTMOD["blog/"] = max(
 EXPLICIT_LASTMOD["news/"] = max(
     article_lastmod(article)
     for article in NEWS_ARTICLES.values()
+)
+EXPLICIT_LASTMOD["projects/"] = max(
+    normalize_iso(project["published_iso"])
+    for project in PROJECT_CONFIGS.values()
 )
 
 

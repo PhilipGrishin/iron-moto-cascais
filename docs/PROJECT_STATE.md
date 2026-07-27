@@ -36,8 +36,8 @@ goal is SEO, local search, AI-citation readiness and high-quality service leads.
   - Russian at `/ru/`
   - Ukrainian at `/uk/`
   - Portuguese at `/pt/`
-- Current sitemap: 52 indexable path patterns x 4 languages = 208 URLs.
-- Current repo HTML count: 211 files, including `404.html` and 2 legacy noindex
+- Current sitemap: 53 indexable path patterns x 4 languages = 212 URLs.
+- Current repo HTML count: 215 files, including `404.html` and 2 legacy noindex
   redirect stubs.
 - Current cache-bust convention: `?v=20260724a`.
 - `sitemap.xml` `lastmod` values are per-page real content dates with timezone,
@@ -195,6 +195,11 @@ Current project pages:
 - `/projects/joker/`
 - `/projects/hellboy/`
 - `/projects/true-religion/`
+- `/projects/fighter/`
+
+New project pages can use the shared data-driven flow in
+`scripts/build/project_pages_data.py` and `scripts/build/build_project_pages.py`.
+Legacy project pages remain static HTML with inline localized copy.
 
 Legacy redirect stubs:
 

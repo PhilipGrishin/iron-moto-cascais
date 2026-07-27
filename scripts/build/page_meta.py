@@ -177,6 +177,14 @@ try:
 except ImportError:
     pass
 
+# --------- Data-driven project pages ---------
+try:
+    from project_pages_data import PROJECT_PAGE_META as _PROJECT_PAGE_META
+    for _slug, _langs in _PROJECT_PAGE_META.items():
+        PAGE_META[_slug] = _langs
+except ImportError:
+    pass
+
 # --------- Project pages ---------
 # The badge translation comes from inline ICM_I18N_PAGE on each page (e.g. proj.inspirium.badge).
 # We just need title pattern: "<Name> — <badge> | Iron Custom Motors"
@@ -185,7 +193,7 @@ except ImportError:
 PROJECT_NAMES = [
     "inspirium", "beckman", "unbreakable",
     "quanta-r", "burly", "sturmvogel",
-    "geometric", "joker", "hellboy", "true-religion",
+    "geometric", "joker", "hellboy", "true-religion", "fighter",
 ]
 
 OG_LOCALES = {

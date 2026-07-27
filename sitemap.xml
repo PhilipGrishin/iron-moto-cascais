@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/ru/</loc>
-    <lastmod>2026-07-27T13:11:18+01:00</lastmod>
+    <lastmod>2026-07-27T16:33:34+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/"/>
@@ -25,7 +25,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/uk/</loc>
-    <lastmod>2026-07-27T13:12:59+01:00</lastmod>
+    <lastmod>2026-07-27T16:33:35+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/"/>
@@ -36,7 +36,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/pt/</loc>
-    <lastmod>2026-07-27T13:11:18+01:00</lastmod>
+    <lastmod>2026-07-27T16:33:36+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/"/>
@@ -619,7 +619,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/projects/</loc>
-    <lastmod>2026-07-02T08:25:25+01:00</lastmod>
+    <lastmod>2026-07-27T12:00:00+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/projects/"/>
@@ -630,7 +630,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/ru/projects/</loc>
-    <lastmod>2026-07-02T08:25:25+01:00</lastmod>
+    <lastmod>2026-07-27T12:00:00+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/projects/"/>
@@ -641,7 +641,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/uk/projects/</loc>
-    <lastmod>2026-07-02T08:25:25+01:00</lastmod>
+    <lastmod>2026-07-27T12:00:00+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/projects/"/>
@@ -652,7 +652,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/pt/projects/</loc>
-    <lastmod>2026-07-02T08:25:25+01:00</lastmod>
+    <lastmod>2026-07-27T12:00:00+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/projects/"/>
@@ -2288,5 +2288,49 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://ironcustommotors.com/uk/projects/true-religion/"/>
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://ironcustommotors.com/pt/projects/true-religion/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ironcustommotors.com/projects/true-religion/"/>
+  </url>
+  <url>
+    <loc>https://ironcustommotors.com/projects/fighter/</loc>
+    <lastmod>2026-07-27T12:00:00+01:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ironcustommotors.com/ru/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://ironcustommotors.com/uk/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://ironcustommotors.com/pt/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ironcustommotors.com/projects/fighter/"/>
+  </url>
+  <url>
+    <loc>https://ironcustommotors.com/ru/projects/fighter/</loc>
+    <lastmod>2026-07-27T12:00:00+01:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ironcustommotors.com/ru/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://ironcustommotors.com/uk/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://ironcustommotors.com/pt/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ironcustommotors.com/projects/fighter/"/>
+  </url>
+  <url>
+    <loc>https://ironcustommotors.com/uk/projects/fighter/</loc>
+    <lastmod>2026-07-27T12:00:00+01:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ironcustommotors.com/ru/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://ironcustommotors.com/uk/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://ironcustommotors.com/pt/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ironcustommotors.com/projects/fighter/"/>
+  </url>
+  <url>
+    <loc>https://ironcustommotors.com/pt/projects/fighter/</loc>
+    <lastmod>2026-07-27T12:00:00+01:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ironcustommotors.com/ru/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://ironcustommotors.com/uk/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://ironcustommotors.com/pt/projects/fighter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ironcustommotors.com/projects/fighter/"/>
   </url>
 </urlset>

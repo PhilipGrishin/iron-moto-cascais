@@ -59,7 +59,7 @@ LOCALIZED_PATHS = {
 }
 for proj in ["inspirium", "beckman", "unbreakable", "quanta-r",
              "burly", "sturmvogel", "geometric", "joker",
-             "hellboy", "true-religion"]:
+             "hellboy", "true-religion", "fighter"]:
     LOCALIZED_PATHS.add(f"/projects/{proj}/")
 
 LANG_HOME_HREFS = {"/", "/ru/", "/uk/", "/pt/"}

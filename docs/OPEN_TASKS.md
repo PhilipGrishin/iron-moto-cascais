@@ -41,14 +41,6 @@ No active implementation task is pending at the time of this update.
 - Rule: Rotate through Google Cloud + Cloudflare Worker secret when requested,
   then verify the Worker and site review widget.
 
-### Project Pages
-
-- Status: Less standardized than brand/service/blog/news families.
-- Context: Project pages are still mostly static HTML with inline
-  `window.ICM_I18N_PAGE` blocks.
-- Recommendation: If project-page volume grows, consider a generic project
-  generator before adding many more hand-authored project pages.
-
 ### CMS
 
 - Status: Not implemented.
@@ -71,4 +63,3 @@ When any item above changes:
 2. Add a short entry to `docs/CODEX_CHANGELOG.md` if code/site changed.
 3. Update `docs/PROJECT_STATE.md` if the site structure changed.
 4. Update `docs/CONTENT_TYPES.md` if the implementation pattern changed.
-

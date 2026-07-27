@@ -543,6 +543,7 @@ def render_projects():
 .award p{font-size:14px;color:var(--text-dim)}
 .prj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
 .prj-tile{position:relative;display:block;aspect-ratio:4/3;border-radius:var(--radius-lg);overflow:hidden;background:#111;text-decoration:none}
+.prj-tile picture{display:block;width:100%;height:100%}
 .prj-tile img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
 .prj-tile:hover img{transform:scale(1.04)}
 .prj-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.82) 100%);pointer-events:none}
@@ -556,8 +557,15 @@ def render_projects():
     # Build project tiles HTML
     tiles_html = ""
     for p in PROJECT_TILES:
+        image = f'''<img alt="{p["label"]["en"]}" loading="lazy" src="{p["img"]}" width="{p.get("img_width", 800)}" height="{p.get("img_height", 600)}"/>'''
+        if p.get("img_avif"):
+            image = f'''<picture>
+<source srcset="{p["img_avif"]}" type="image/avif"/>
+<source srcset="{p["img"]}" type="image/webp"/>
+{image}
+</picture>'''
         tiles_html += f'''<a class="prj-tile" href="/projects/{p["slug"]}/">
-<img alt="{p["label"]["en"]}" loading="lazy" src="{p["img"]}" width="800" height="600"/>
+{image}
 <div class="meta">
 <div class="y">{p["year"]}</div>
 <div class="n" data-i18n-proj-label="{p["slug"]}">{p["label"]["en"]}</div>

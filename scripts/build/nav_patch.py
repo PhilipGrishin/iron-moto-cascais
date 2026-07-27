@@ -24,7 +24,8 @@ Footer "Company" column:
   FAQ      → /faq/
   Contact  → /contact/
 
-Run AFTER build_new_pages.py and BEFORE build_i18n.py.
+Run after build_new_pages.py, then again after build_i18n.py so localized
+project menus stay synchronized with the English source.
 """
 
 import re
@@ -70,6 +71,7 @@ EN_PAGES = [
     "projects/joker/index.html",
     "projects/hellboy/index.html",
     "projects/true-religion/index.html",
+    "projects/fighter/index.html",
     # Brand & news pages added 2026-05
     *[f"{slug}/index.html" for slug in BRAND_ORDER],
     "blog/index.html",
@@ -134,6 +136,7 @@ PROJECT_NAV_LINKS = [
     (None,              "/projects/joker/",           "Joker"),
     (None,              "/projects/hellboy/",         "Hell Boy"),
     (None,              "/projects/true-religion/",   "True Religion"),
+    (None,              "/projects/fighter/",         "Fighter"),
 ]
 
 ABOUT_NAV_LINKS = [
@@ -311,6 +314,78 @@ def patch_file(path: Path):
     return False
 
 
+def localized_href(href: str, lang: str) -> str:
+    if href == "/":
+        return f"/{lang}/"
+    return f"/{lang}{href}"
+
+
+def unlocalize_href(href: str, lang: str) -> str:
+    prefix = f"/{lang}"
+    if href == f"{prefix}/":
+        return "/"
+    if href.startswith(f"{prefix}/"):
+        return href[len(prefix):]
+    return href
+
+
+def patch_localized_project_links(path: Path, lang: str):
+    """Replace localized project menus with one canonical, local link set."""
+    html = path.read_text(encoding="utf-8")
+    soup = BeautifulSoup(html, "html.parser")
+    changed = False
+
+    desktop_menus = []
+    for dropdown in soup.select(".nav-dropdown"):
+        trigger = dropdown.select_one('.nav-dropdown-trigger[data-i18n="nav.projects"]')
+        menu = dropdown.select_one(".nav-dropdown-menu")
+        if trigger and menu:
+            desktop_menus.append(menu)
+
+    mobile_menus = []
+    for group in soup.select(".mobile-nav-group"):
+        summary = group.select_one('.mobile-nav-summary [data-i18n="nav.projects"]')
+        menu = group.select_one(".mobile-subnav")
+        if summary and menu:
+            mobile_menus.append(menu)
+
+    for menu in [*desktop_menus, *mobile_menus]:
+        existing_labels = {}
+        for anchor in menu.find_all("a", href=True):
+            route = unlocalize_href(anchor["href"], lang)
+            existing_labels.setdefault(route, anchor.get_text(strip=True))
+
+        rendered = []
+        for key, href, label in PROJECT_NAV_LINKS:
+            target = localized_href(href, lang)
+            anchor = soup.new_tag("a", href=target)
+            if key:
+                anchor["data-i18n"] = key
+            anchor.string = existing_labels.get(href, label)
+            rendered.append(anchor)
+
+        current = [
+            (anchor.get("href"), anchor.get("data-i18n"), anchor.get_text(strip=True))
+            for anchor in menu.find_all("a", href=True)
+        ]
+        expected = [
+            (anchor.get("href"), anchor.get("data-i18n"), anchor.get_text(strip=True))
+            for anchor in rendered
+        ]
+        has_line_breaks = any("\n" in str(child) for child in menu.contents)
+        if current != expected or not has_line_breaks:
+            menu.clear()
+            for anchor in rendered:
+                menu.append("\n")
+                menu.append(anchor)
+            menu.append("\n")
+            changed = True
+
+    if changed:
+        path.write_text(str(soup), encoding="utf-8")
+    return changed
+
+
 def main():
     changed = 0
     for rel in EN_PAGES:
@@ -323,7 +398,21 @@ def main():
             print(f"  patched: {rel}")
         else:
             print(f"  no change: {rel}")
-    print(f"\nDone. {changed}/{len(EN_PAGES)} files updated.")
+
+    localized_changed = 0
+    localized_total = 0
+    for lang in ("ru", "uk", "pt"):
+        lang_root = SITE_ROOT / lang
+        for path in sorted(lang_root.rglob("index.html")):
+            localized_total += 1
+            if patch_localized_project_links(path, lang):
+                localized_changed += 1
+                print(f"  patched localized projects menu: {path.relative_to(SITE_ROOT)}")
+
+    print(
+        f"\nDone. {changed}/{len(EN_PAGES)} EN files and "
+        f"{localized_changed}/{localized_total} localized files updated."
+    )
 
 
 if __name__ == "__main__":
