@@ -14,6 +14,18 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-29 - AI discovery link labels
+
+- Commit: this commit
+- Changed: Replaced marketing-heading anchors in generated `llms.txt` with
+  stable page names sourced from navigation I18N and page-family registries;
+  shortened news anchors to event names and reused the homepage meta
+  description as the business introduction.
+- Verified: Generator idempotency, exact sitemap-path coverage, missing-link
+  rejection, focused validators, scope checks and `git diff --check`.
+- Notes: The generator now fails when a sitemap path has no maintained source
+  for its English page name instead of falling back to a published H1.
+
 ## 2026-07-29 - Generated AI discovery index
 
 - Commit: this commit

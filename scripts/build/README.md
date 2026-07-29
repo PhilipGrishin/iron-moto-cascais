@@ -113,13 +113,17 @@ use real content dates with timezone, not deploy time.
 - project slugs from `new_pages_data.py` `PROJECT_TILES`;
 - dedicated service brands from `BRAND_ORDER` and `BRAND_CONFIG`;
 - legal page slugs from `LEGAL_PAGES`;
+- canonical navigation routes from `nav_patch.py` and their English I18N
+  labels from `assets/main.js`;
+- the English expat-hub breadcrumb from `build_expat_hub.py`;
 - canonical business facts from `docs/BUSINESS_FACTS.md`;
-- the published English page title, H1 and meta description for each entry.
+- the published English meta description for each entry.
 
 The generator verifies that registered content paths are present in `PAGES`,
 that every dedicated brand appears in the homepage brand strip, and that every
-English page is assigned to one readable section. `validate_seo.py` then checks
-that the internal page links in `llms.txt` cover every English URL in
+English page has a maintained short-name source and is assigned to one readable
+section. It does not fall back to marketing H1 text. `validate_seo.py` then
+checks that the internal page links in `llms.txt` cover every English URL in
 `sitemap.xml`.
 
 Do not edit `llms.txt` by hand. Update its source registry, page metadata or

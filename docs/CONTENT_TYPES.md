@@ -552,8 +552,11 @@ Canonical sources:
 - `scripts/build/new_pages_data.py` `PROJECT_TILES`
 - `scripts/build/brand_pages_data.py` `BRAND_ORDER` and `BRAND_CONFIG`
 - `scripts/build/legal_pages_data.py` `LEGAL_PAGES`
+- `scripts/build/nav_patch.py` canonical navigation routes
+- `assets/main.js` English navigation I18N labels
+- `scripts/build/build_expat_hub.py` English expat-hub breadcrumb
 - `docs/BUSINESS_FACTS.md`
-- published English H1 and meta descriptions
+- published English meta descriptions
 
 Generator:
 
@@ -569,6 +572,9 @@ Rules:
 - Keep page descriptions in their existing page-family metadata source. The
   generator reads the published meta description instead of maintaining a
   second copy.
+- Keep short page names in their existing navigation or page-family registry.
+  The generator fails when an English sitemap path has no maintained name
+  source; it must not fall back to a marketing H1.
 - `validate_seo.py` enforces sitemap coverage after generation.
 
 Verification:

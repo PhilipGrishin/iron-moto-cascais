@@ -2,8 +2,6 @@
 
 > Premium motorcycle service in Cascais. Diagnostics, maintenance, repair, spare parts, consumables, upgrades, tuning, and custom motorcycle projects. Service in English, Russian, Ukrainian, Portuguese.
 
-Iron Custom Motors is a premium motorcycle workshop serving Cascais and Greater Lisbon. It provides maintenance and repair, parts sourcing, upgrades, inspections and custom engineering.
-
 ## Business facts
 
 - Trading name: Iron Custom Motors
@@ -37,60 +35,60 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 
 ## Services
 
-- [Premium motorcycle service in Cascais.](https://ironcustommotors.com/motorcycle-service/): Premium motorcycle service in Cascais — diagnostics, maintenance, brakes, suspension, electrical and general repair.
-- [Parts, consumables & components for your motorcycle.](https://ironcustommotors.com/parts/): Spare parts, service consumables, accessories and tuning components for motorcycles. Sourced through major international catalogs. Cascais.
-- [Upgrades & tuning for your way of riding.](https://ironcustommotors.com/upgrades-tuning/): Performance, suspension, brakes, exhaust, lighting, touring and luggage upgrades. Selected for how you actually ride. Cascais.
-- [When the bike has to be more.](https://ironcustommotors.com/custom/): Custom motorcycle consultations, bespoke builds and individual engineering by the team behind AMD World Championship and Bonneville record motorcycles.
-- [Motorcycle Pre-Purchase Inspection in Cascais & Lisbon](https://ironcustommotors.com/pre-purchase-inspection/): Independent motorcycle pre-purchase inspection in Cascais & Lisbon. Compression test, videoscope cylinder check, written report. English-speaking. From €150.
-- [All motorcycle services under one roof.](https://ironcustommotors.com/services/): All motorcycle services in one workshop: maintenance & repair, parts & consumables, upgrades & tuning, pre-purchase inspection and custom builds. Cascais, Greater Lisbon.
-- [Motorcycle Tyre Fitting & Wheel Balancing in Cascais](https://ironcustommotors.com/motorcycle-tyre-service/): Motorcycle-specific tyre fitting and wheel balancing in São Domingos de Rana, Cascais. Wheels up to 30" and 400 mm, spoked, vintage, Harley, custom. Book today.
+- [Motorcycle service & repair](https://ironcustommotors.com/motorcycle-service/): Premium motorcycle service in Cascais — diagnostics, maintenance, brakes, suspension, electrical and general repair.
+- [Parts & consumables](https://ironcustommotors.com/parts/): Spare parts, service consumables, accessories and tuning components for motorcycles. Sourced through major international catalogs. Cascais.
+- [Upgrades & tuning](https://ironcustommotors.com/upgrades-tuning/): Performance, suspension, brakes, exhaust, lighting, touring and luggage upgrades. Selected for how you actually ride. Cascais.
+- [Custom & special projects](https://ironcustommotors.com/custom/): Custom motorcycle consultations, bespoke builds and individual engineering by the team behind AMD World Championship and Bonneville record motorcycles.
+- [Pre-purchase inspection](https://ironcustommotors.com/pre-purchase-inspection/): Independent motorcycle pre-purchase inspection in Cascais & Lisbon. Compression test, videoscope cylinder check, written report. English-speaking. From €150.
+- [Services](https://ironcustommotors.com/services/): All motorcycle services in one workshop: maintenance & repair, parts & consumables, upgrades & tuning, pre-purchase inspection and custom builds. Cascais, Greater Lisbon.
+- [Tyre fitting & wheel balancing](https://ironcustommotors.com/motorcycle-tyre-service/): Motorcycle-specific tyre fitting and wheel balancing in São Domingos de Rana, Cascais. Wheels up to 30" and 400 mm, spoked, vintage, Harley, custom. Book today.
 
 ## Brand service pages
 
-- [Harley-Davidson service in Cascais.](https://ironcustommotors.com/harley-service/): Independent Harley-Davidson specialist in Cascais. Sportster, Softail, Touring, Pan America. Stage I/II/IV upgrades, dyno tuning, custom. AMD World Championship project pedigree.
-- [BMW Motorrad service in Cascais.](https://ironcustommotors.com/bmw-service/): Independent BMW Motorrad workshop in Cascais. Diagnostics, scheduled service, valve clearance, final drive, ABS and tuning for R, K, S, F, G-series. BMW Customizing Champions 2023.
-- [Ducati service in Cascais.](https://ironcustommotors.com/ducati-service/): Independent Ducati workshop in Cascais. Desmodromic service, Panigale, Multistrada, Monster, Scrambler, Streetfighter. Transparent pricing, real specialist tooling, dyno-tuned exhausts.
-- [Suzuki service in Cascais.](https://ironcustommotors.com/suzuki-service/): Independent Suzuki workshop in Cascais. SDS diagnostics, scheduled service, valve clearance, charging and suspension for GSX-R, GSX-S, V-Strom, SV650, Hayabusa.
-- [Honda motorcycle service in Cascais.](https://ironcustommotors.com/honda-service/): Independent Honda motorcycle workshop in Cascais. MCS diagnostics, scheduled service, DCT service, valve clearance, tuning for Africa Twin, CB, CBR, Gold Wing.
-- [Royal Enfield service in Cascais.](https://ironcustommotors.com/royal-enfield-service/): Independent Royal Enfield workshop in Cascais. Service, valve/tappet clearance, EFI/ECU diagnostics, oil-leak fixes, custom builds and Bullet restoration for 350, 450, 650 and classics.
-- [Triumph service in Cascais.](https://ironcustommotors.com/triumph-service/): Independent Triumph workshop in Cascais. Diagnostics, scheduled service, valve clearance, throttle balance and tuning for Bonneville, Street Triple, Tiger, Trident, Rocket 3.
+- [Harley-Davidson service](https://ironcustommotors.com/harley-service/): Independent Harley-Davidson specialist in Cascais. Sportster, Softail, Touring, Pan America. Stage I/II/IV upgrades, dyno tuning, custom. AMD World Championship project pedigree.
+- [BMW Motorrad service](https://ironcustommotors.com/bmw-service/): Independent BMW Motorrad workshop in Cascais. Diagnostics, scheduled service, valve clearance, final drive, ABS and tuning for R, K, S, F, G-series. BMW Customizing Champions 2023.
+- [Ducati service](https://ironcustommotors.com/ducati-service/): Independent Ducati workshop in Cascais. Desmodromic service, Panigale, Multistrada, Monster, Scrambler, Streetfighter. Transparent pricing, real specialist tooling, dyno-tuned exhausts.
+- [Suzuki service](https://ironcustommotors.com/suzuki-service/): Independent Suzuki workshop in Cascais. SDS diagnostics, scheduled service, valve clearance, charging and suspension for GSX-R, GSX-S, V-Strom, SV650, Hayabusa.
+- [Honda service](https://ironcustommotors.com/honda-service/): Independent Honda motorcycle workshop in Cascais. MCS diagnostics, scheduled service, DCT service, valve clearance, tuning for Africa Twin, CB, CBR, Gold Wing.
+- [Royal Enfield service](https://ironcustommotors.com/royal-enfield-service/): Independent Royal Enfield workshop in Cascais. Service, valve/tappet clearance, EFI/ECU diagnostics, oil-leak fixes, custom builds and Bullet restoration for 350, 450, 650 and classics.
+- [Triumph service](https://ironcustommotors.com/triumph-service/): Independent Triumph workshop in Cascais. Diagnostics, scheduled service, valve clearance, throttle balance and tuning for Bonneville, Street Triple, Tiger, Trident, Rocket 3.
 
 ## Harley-Davidson hub
 
-- [Harley-Davidson at Iron Custom Motors](https://ironcustommotors.com/harley/): Independent Harley-Davidson specialist in Cascais, near Lisbon. Dealer-level diagnostics, Stage 1–4 tuning, custom builds and parts. EN, PT, RU, UK spoken.
-- [Harley-Davidson tuning & stage upgrades](https://ironcustommotors.com/harley-tuning/): Harley-Davidson tuning in Portugal: Stage 1–4 upgrades, exhausts, suspension. Independent specialist workshop in Cascais, near Lisbon. Iron Custom Motors.
-- [Custom Harley-Davidson builds](https://ironcustommotors.com/harley-custom/): Custom Harley-Davidson builds in Cascais, Lisbon — from bars and paint to ground-up projects. Championship-winning workshop. See the bikes, then decide.
+- [Harley Hub](https://ironcustommotors.com/harley/): Independent Harley-Davidson specialist in Cascais, near Lisbon. Dealer-level diagnostics, Stage 1–4 tuning, custom builds and parts. EN, PT, RU, UK spoken.
+- [Harley-Davidson tuning](https://ironcustommotors.com/harley-tuning/): Harley-Davidson tuning in Portugal: Stage 1–4 upgrades, exhausts, suspension. Independent specialist workshop in Cascais, near Lisbon. Iron Custom Motors.
+- [Harley-Davidson custom](https://ironcustommotors.com/harley-custom/): Custom Harley-Davidson builds in Cascais, Lisbon — from bars and paint to ground-up projects. Championship-winning workshop. See the bikes, then decide.
 
 ## Authorized dealer
 
-- [Authorized Dealer in Cascais & Greater Lisbon](https://ironcustommotors.com/authorized-dealer/): Iron Custom Motors is now an authorized dealer of leading motorcycle parts brands in Cascais. Order genuine parts with official warranty plus expert fitment.
-- [C-Way Honda Gold Wing Luggage Systems — Official Dealer in Portugal](https://ironcustommotors.com/authorized-dealer/c-way/): Iron Custom Motors — exclusive official C-Way dealer in Portugal. Genuine Honda Gold Wing luggage systems, racks and accessories, manufacturer warranty, pro installation in Cascais.
+- [Authorized Dealer](https://ironcustommotors.com/authorized-dealer/): Iron Custom Motors is now an authorized dealer of leading motorcycle parts brands in Cascais. Order genuine parts with official warranty plus expert fitment.
+- [C-Way authorized dealer](https://ironcustommotors.com/authorized-dealer/c-way/): Iron Custom Motors — exclusive official C-Way dealer in Portugal. Genuine Honda Gold Wing luggage systems, racks and accessories, manufacturer warranty, pro installation in Cascais.
 
 ## Workshop blog
 
-- [Workshop notes for real riders.](https://ironcustommotors.com/blog/): Practical motorcycle blog from Iron Custom Motors in Cascais: workshop notes, maintenance guidance, diagnostics, parts, upgrades and used-bike advice.
-- [RevTech 110 Oil Service: Engine, Gearbox & Final Drive.](https://ironcustommotors.com/blog/revtech-110-oil-service-engine-gearbox-drive/): Why oil service matters on RevTech 110 and similar V-twin engines: engine, gearbox and drive lubrication explained by Iron Custom Motors.
-- [Motorcycle Brake Pad Replacement: What Riders Should Know.](https://ironcustommotors.com/blog/motorcycle-brake-pad-replacement-cascais/): Brake pads are more than a wear part. Learn how pad condition affects braking feel, safety, discs, ABS and riding confidence.
-- [Front Fork Service: Control Starts at the Front.](https://ironcustommotors.com/blog/front-fork-service-motorcycle-cascais/): Why front fork service matters: seals, bushings, clean parts, correct fork oil viscosity and precise oil level for safer handling.
-- [Motorcycle Tyre Fitting: Why It Needs a Specialist.](https://ironcustommotors.com/blog/motorcycle-tyre-fitting-specialist-cascais/): Motorcycle tyre fitting is not car tyre fitting. Learn why correct mounting, balancing and inspection matter for grip, stability and safety.
+- [Blog](https://ironcustommotors.com/blog/): Practical motorcycle blog from Iron Custom Motors in Cascais: workshop notes, maintenance guidance, diagnostics, parts, upgrades and used-bike advice.
+- [RevTech 110 Oil Service: Engine, Gearbox & Final Drive](https://ironcustommotors.com/blog/revtech-110-oil-service-engine-gearbox-drive/): Why oil service matters on RevTech 110 and similar V-twin engines: engine, gearbox and drive lubrication explained by Iron Custom Motors.
+- [Motorcycle Brake Pad Replacement: What Riders Should Know](https://ironcustommotors.com/blog/motorcycle-brake-pad-replacement-cascais/): Brake pads are more than a wear part. Learn how pad condition affects braking feel, safety, discs, ABS and riding confidence.
+- [Front Fork Service: Control Starts at the Front](https://ironcustommotors.com/blog/front-fork-service-motorcycle-cascais/): Why front fork service matters: seals, bushings, clean parts, correct fork oil viscosity and precise oil level for safer handling.
+- [Motorcycle Tyre Fitting: Why It Needs a Specialist](https://ironcustommotors.com/blog/motorcycle-tyre-fitting-specialist-cascais/): Motorcycle tyre fitting is not car tyre fitting. Learn why correct mounting, balancing and inspection matter for grip, stability and safety.
 - [We Found the Wrong Fork Oil in a Brand-New Royal Enfield Bear 650](https://ironcustommotors.com/blog/royal-enfield-bear-650-fork-oil-case-study/): We opened the Showa fork on a new Royal Enfield Bear 650 and found one leg badly underfilled with dark, worn oil. Here's what we learned.
 - [A Harley-Davidson Full Service, Done Right](https://ironcustommotors.com/blog/harley-davidson-full-service-done-right/): How a proper Harley-Davidson full service is done — three oils, oil filter, brake fluid flush and air-filter care — at Iron Custom Motors in Cascais, Lisbon.
 - [Royal Enfield Bear 650: a complete scrambler build](https://ironcustommotors.com/blog/royal-enfield-bear-650-scrambler-build/): A stock Royal Enfield Bear 650 turned into a full scrambler at Iron Custom Motors, Cascais (Lisbon): protection, luggage, exhaust, brakes and suspension.
 
 ## News
 
-- [Latest from the workshop.](https://ironcustommotors.com/news/): Latest news from Iron Custom Motors workshop in Cascais — openings, events, custom builds, community rides and announcements from our motorcycle workshop in Greater Lisbon.
-- [Iron Custom Motors at Ericeira Kustom Fest 2026: two award-winning bikes at our first major custom show in Portugal.](https://ironcustommotors.com/news/ericeira-kustom-fest-2026/): Iron Custom Motors took part in Ericeira Kustom Fest 2026 — our first major custom competition in Portugal — and won 1st place for Hell Boy and 2nd place for Sturmvogel.
-- [Iron Custom Motors opens a new workshop in Cascais.](https://ironcustommotors.com/news/opens-new-workshop-in-cascais/): Iron Custom Motors opens a new motorcycle workshop in Cascais, Greater Lisbon. Premium service, tuning, custom projects, parts, a rider lounge and a growing motorcycle community in Portugal.
-- [Iron Custom Motors at Lisbon Motorcycle Film Fest 2026: Beckman at the center of the celebration.](https://ironcustommotors.com/news/lisbon-motorcycle-film-fest-2026-beckman/): On 23 May 2026, Iron Custom Motors joins Lisbon Motorcycle Film Fest with Beckman — the world champion cafe racer that defined our international custom motorcycle history.
+- [News](https://ironcustommotors.com/news/): Latest news from Iron Custom Motors workshop in Cascais — openings, events, custom builds, community rides and announcements from our motorcycle workshop in Greater Lisbon.
+- [Ericeira Kustom Fest 2026](https://ironcustommotors.com/news/ericeira-kustom-fest-2026/): Iron Custom Motors took part in Ericeira Kustom Fest 2026 — our first major custom competition in Portugal — and won 1st place for Hell Boy and 2nd place for Sturmvogel.
+- [New workshop](https://ironcustommotors.com/news/opens-new-workshop-in-cascais/): Iron Custom Motors opens a new motorcycle workshop in Cascais, Greater Lisbon. Premium service, tuning, custom projects, parts, a rider lounge and a growing motorcycle community in Portugal.
+- [Lisbon Motorcycle Film Fest 2026](https://ironcustommotors.com/news/lisbon-motorcycle-film-fest-2026-beckman/): On 23 May 2026, Iron Custom Motors joins Lisbon Motorcycle Film Fest with Beckman — the world champion cafe racer that defined our international custom motorcycle history.
 
 ## Custom projects portfolio
 
-- [Custom motorcycles we built.](https://ironcustommotors.com/projects/): Portfolio of Iron Custom Motors custom builds: AMD World Championship winners, BMW Motorrad 2023 Champion, Bonneville record holders and bespoke projects.
+- [Projects](https://ironcustommotors.com/projects/): Portfolio of Iron Custom Motors custom builds: AMD World Championship winners, BMW Motorrad 2023 Champion, Bonneville record holders and bespoke projects.
 - [Inspirium](https://ironcustommotors.com/projects/inspirium/): ICM Inspirium — world speed record motorcycle by Iron Custom Motors at Bonneville Speed Week, class 350APS-VG, vintage 1953 IZH-49 base.
 - [Beckman](https://ironcustommotors.com/projects/beckman/): ICM Beckman — world champion café racer by Iron Custom Motors, AMD World Championship 2016 winner with hand-built three-cylinder engine.
 - [Unbreakable](https://ironcustommotors.com/projects/unbreakable/): ICM Unbreakable — BMW Motorrad Customizing Championship winner by Iron Custom Motors. Exhibited at BMW Motorrad Welt.
-- [Quanta R](https://ironcustommotors.com/projects/quanta-r/): ICM Quanta R — concept project by Iron Custom Motors for Geneva Motor Show and Goodwood. AWD, 2.5L turbo, up to 600 hp, handmade aluminum body.
+- [Quanta-R](https://ironcustommotors.com/projects/quanta-r/): ICM Quanta R — concept project by Iron Custom Motors for Geneva Motor Show and Goodwood. AWD, 2.5L turbo, up to 600 hp, handmade aluminum body.
 - [Burly](https://ironcustommotors.com/projects/burly/): ICM Burly — BMW R 18 custom dragster by Iron Custom Motors. Foundation for a full line of custom parts and kits for the R 18.
 - [Sturmvogel](https://ironcustommotors.com/projects/sturmvogel/): ICM Sturmvogel — 2nd place Café Racer at Ericeira Kustom Fest 2026, a dieselpunk custom motorcycle by Iron Custom Motors with AMD and Italian Championship history.
 - [Geometric](https://ironcustommotors.com/projects/geometric/): ICM Geometric — retro-futurist custom by Iron Custom Motors. AMD World Championship 2018, world's first spoked hubless front wheel.
@@ -101,13 +99,13 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 
 ## Hubs and information
 
-- [Premium motorcycle service in Cascais](https://ironcustommotors.com/): Premium motorcycle service in Cascais. Diagnostics, maintenance, repair, spare parts, consumables, upgrades, tuning, and custom motorcycle projects. Service in English, Russian, Ukrainian, Portuguese.
-- [English-Speaking Motorcycle Workshop in Cascais & Greater Lisbon](https://ironcustommotors.com/english-speaking-motorcycle-workshop/): Just moved to Portugal? Iron Custom Motors is an English-speaking motorcycle workshop in Cascais & Greater Lisbon. Written estimates, transparent, independent. Tue–Sat.
-- [Where engineering meets service](https://ironcustommotors.com/pricing/): 2025 price list for motorcycle service in Cascais — diagnostics, scheduled maintenance, brakes, valves, tyres, accessories and tuning. Transparent pricing, written estimates, taxes included.
-- [A workshop with a backstory.](https://ironcustommotors.com/about/): An award-winning custom motorcycle workshop, now in Cascais. World titles, a Bonneville record, BMW Motorrad recognition — and everyday service for Greater Lisbon riders.
-- [More than a service. A place for riders, stories and motorcycle culture.](https://ironcustommotors.com/community/): Iron Custom Motors rider lounge and motorcycle community in Cascais: championship bikes, trophies, coffee, meetups and motorcycle culture in Greater Lisbon.
-- [Get in touch.](https://ironcustommotors.com/contact/): Iron Custom Motors workshop in Cascais: address, opening hours, phone, WhatsApp, email and contact form. We answer in English, Russian, Ukrainian and Portuguese.
-- [Frequently asked questions.](https://ironcustommotors.com/faq/): Frequently asked questions about Iron Custom Motors in Cascais: which brands we service, how long it takes, how pricing works, languages we speak, pre-purchase inspection process.
+- [Iron Custom Motors](https://ironcustommotors.com/): Premium motorcycle service in Cascais. Diagnostics, maintenance, repair, spare parts, consumables, upgrades, tuning, and custom motorcycle projects. Service in English, Russian, Ukrainian, Portuguese.
+- [English-speaking workshop](https://ironcustommotors.com/english-speaking-motorcycle-workshop/): Just moved to Portugal? Iron Custom Motors is an English-speaking motorcycle workshop in Cascais & Greater Lisbon. Written estimates, transparent, independent. Tue–Sat.
+- [Pricing](https://ironcustommotors.com/pricing/): 2025 price list for motorcycle service in Cascais — diagnostics, scheduled maintenance, brakes, valves, tyres, accessories and tuning. Transparent pricing, written estimates, taxes included.
+- [About](https://ironcustommotors.com/about/): An award-winning custom motorcycle workshop, now in Cascais. World titles, a Bonneville record, BMW Motorrad recognition — and everyday service for Greater Lisbon riders.
+- [Community](https://ironcustommotors.com/community/): Iron Custom Motors rider lounge and motorcycle community in Cascais: championship bikes, trophies, coffee, meetups and motorcycle culture in Greater Lisbon.
+- [Contact](https://ironcustommotors.com/contact/): Iron Custom Motors workshop in Cascais: address, opening hours, phone, WhatsApp, email and contact form. We answer in English, Russian, Ukrainian and Portuguese.
+- [FAQ](https://ironcustommotors.com/faq/): Frequently asked questions about Iron Custom Motors in Cascais: which brands we service, how long it takes, how pricing works, languages we speak, pre-purchase inspection process.
 
 ## Legal
 

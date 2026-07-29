@@ -13,9 +13,20 @@ from bs4 import BeautifulSoup, FeatureNotFound
 
 from blog_data import BLOG_POSTS
 from brand_pages_data import BRAND_CONFIG, BRAND_ORDER
+from build_expat_hub import PATHS as EXPAT_HUB_PATHS
+from build_expat_hub import UI as EXPAT_HUB_UI
 from build_sitemap import DOMAIN, LANGS, PAGES
 from legal_pages_data import LEGAL_PAGES
 from new_pages_data import PROJECT_TILES
+from nav_patch import (
+    ABOUT_NAV_LINKS,
+    AUTHORIZED_DEALER_NAV_LINKS,
+    FOOTER_COMPANY_LINKS,
+    FOOTER_SERVICES_LINKS,
+    HARLEY_NAV_LINKS,
+    PRIMARY_NAV_LINKS,
+    SERVICE_NAV_LINKS,
+)
 from news_data import NEWS_ARTICLES
 
 try:
@@ -27,6 +38,7 @@ except ImportError:  # pragma: no cover - Python < 3.9 fallback
 SITE_ROOT = Path(__file__).resolve().parents[2]
 FACTS_PATH = SITE_ROOT / "docs" / "BUSINESS_FACTS.md"
 OUTPUT_PATH = SITE_ROOT / "llms.txt"
+I18N_SOURCE_PATH = SITE_ROOT / "assets" / "main.js"
 
 try:
     BeautifulSoup("", "lxml")
@@ -37,6 +49,207 @@ except FeatureNotFound:
 
 def clean_text(value: str) -> str:
     return re.sub(r"\s+", " ", value or "").strip()
+
+
+def clean_label(value: str) -> str:
+    soup = BeautifulSoup(value or "", HTML_PARSER)
+    return clean_text(soup.get_text(" ", strip=True)).rstrip(" .")
+
+
+def extract_js_object(source: str, marker: str) -> str:
+    match = re.search(marker, source)
+    if not match:
+        raise ValueError(f"JavaScript object marker not found: {marker}")
+    start = source.find("{", match.start())
+    depth = 0
+    quote = None
+    escaped = False
+    for index in range(start, len(source)):
+        char = source[index]
+        if quote:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == quote:
+                quote = None
+            continue
+        if char in {'"', "'", "`"}:
+            quote = char
+        elif char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+            if depth == 0:
+                return source[start : index + 1]
+    raise ValueError(f"Unclosed JavaScript object for marker: {marker}")
+
+
+def load_english_i18n() -> dict[str, str]:
+    source = I18N_SOURCE_PATH.read_text(encoding="utf-8")
+    english_object = extract_js_object(source, r"\ben\s*:\s*\{")
+    entries = {}
+    pair_pattern = re.compile(
+        r'"((?:\\.|[^"\\])*)"\s*:\s*"((?:\\.|[^"\\])*)"'
+    )
+    for match in pair_pattern.finditer(english_object):
+        key = json.loads(f'"{match.group(1)}"')
+        value = json.loads(f'"{match.group(2)}"')
+        if key in entries:
+            raise ValueError(f"Duplicate English I18N key in {I18N_SOURCE_PATH}: {key}")
+        entries[key] = clean_label(value)
+    if not entries:
+        raise ValueError(f"English I18N entries missing in {I18N_SOURCE_PATH}")
+    return entries
+
+
+def page_path_from_href(href: str) -> str | None:
+    path = href.partition("#")[0]
+    if not path or path == "/" or not path.startswith("/"):
+        return None
+    return f"{path.strip('/')}/"
+
+
+def navigation_page_labels() -> dict[str, tuple[str, str]]:
+    i18n = load_english_i18n()
+    labels = {}
+    link_groups = (
+        PRIMARY_NAV_LINKS,
+        SERVICE_NAV_LINKS,
+        HARLEY_NAV_LINKS,
+        AUTHORIZED_DEALER_NAV_LINKS,
+        ABOUT_NAV_LINKS,
+        FOOTER_SERVICES_LINKS,
+        FOOTER_COMPANY_LINKS,
+    )
+    for links in link_groups:
+        for key, href, _fallback_label in links:
+            page_path = page_path_from_href(href)
+            if page_path is None or key is None or page_path in labels:
+                continue
+            if key not in i18n:
+                raise ValueError(f"English I18N label missing for navigation key: {key}")
+            labels[page_path] = (
+                i18n[key],
+                f"assets/main.js I18N[{key}] via nav_patch.py",
+            )
+
+    harley_service_href = next(
+        href for key, href, _label in HARLEY_NAV_LINKS
+        if key == "nav.harleyService"
+    )
+    harley_service_slug = page_path_from_href(harley_service_href).rstrip("/")
+    harley_brand_name = BRAND_CONFIG[harley_service_slug]["name"]
+    for key, href, _fallback_label in HARLEY_NAV_LINKS:
+        page_path = page_path_from_href(href)
+        if key in {"nav.harleyTuning", "nav.harleyCustom"}:
+            labels[page_path] = (
+                f"{harley_brand_name} {i18n[key].lower()}",
+                (
+                    f"brand_pages_data.BRAND_CONFIG[{harley_service_slug}] "
+                    f"+ assets/main.js I18N[{key}]"
+                ),
+            )
+
+    authorized_parent_key, authorized_parent_href, _label = next(
+        item for item in PRIMARY_NAV_LINKS
+        if item[0] == "nav.authorizedDealer"
+    )
+    authorized_parent_path = page_path_from_href(authorized_parent_href)
+    for key, href, _fallback_label in AUTHORIZED_DEALER_NAV_LINKS:
+        page_path = page_path_from_href(href)
+        if page_path != authorized_parent_path:
+            labels[page_path] = (
+                f"{i18n[key]} {i18n[authorized_parent_key].lower()}",
+                (
+                    f"assets/main.js I18N[{key}] + "
+                    f"I18N[{authorized_parent_key}] via nav_patch.py"
+                ),
+            )
+    return labels
+
+
+def news_page_label(article: dict, trading_name: str) -> tuple[str, str]:
+    body = article["body"]["en"]
+    breadcrumb = clean_label(body["h1Crumb"])
+    event_prefix = re.compile(
+        rf"^{re.escape(trading_name)}\s+at\s+",
+        flags=re.IGNORECASE,
+    )
+    if event_prefix.match(breadcrumb):
+        return (
+            event_prefix.sub("", breadcrumb),
+            "news_data.NEWS_ARTICLES body.en.h1Crumb",
+        )
+
+    heading = clean_label(body["h1"])
+    heading = re.sub(
+        rf"^{re.escape(trading_name)}\s+",
+        "",
+        heading,
+        flags=re.IGNORECASE,
+    )
+    heading = re.sub(r"\s+in\s+Cascais$", "", heading, flags=re.IGNORECASE)
+    heading = re.sub(r"^opens?\s+(?:a|an)\s+", "", heading, flags=re.IGNORECASE)
+    if heading:
+        heading = heading[0].upper() + heading[1:]
+    return heading, "news_data.NEWS_ARTICLES body.en.h1"
+
+
+def page_labels(
+    page_paths: set[str],
+    facts: dict,
+) -> dict[str, tuple[str, str]]:
+    labels = navigation_page_labels()
+    labels[""] = (
+        facts["tradingName"],
+        "docs/BUSINESS_FACTS.md tradingName",
+    )
+    expat_path = f"{EXPAT_HUB_PATHS['en'].strip('/')}/"
+    labels[expat_path] = (
+        clean_label(EXPAT_HUB_UI["en"]["crumb"]),
+        "build_expat_hub.UI[en].crumb",
+    )
+
+    for slug in BRAND_ORDER:
+        labels[f"{slug}/"] = (
+            f"{BRAND_CONFIG[slug]['name']} service",
+            f"brand_pages_data.BRAND_CONFIG[{slug}].name + page family",
+        )
+    for item in PROJECT_TILES:
+        labels[f"projects/{item['slug']}/"] = (
+            clean_label(item["label"]["en"]),
+            f"new_pages_data.PROJECT_TILES[{item['slug']}].label.en",
+        )
+    for slug, post in BLOG_POSTS.items():
+        labels[f"blog/{slug}/"] = (
+            clean_label(post["body"]["en"]["h1Crumb"]),
+            f"blog_data.BLOG_POSTS[{slug}].body.en.h1Crumb",
+        )
+    for slug, article in NEWS_ARTICLES.items():
+        labels[f"news/{slug}/"] = news_page_label(
+            article,
+            facts["tradingName"],
+        )
+    for slug, (_head, body) in LEGAL_PAGES.items():
+        labels[f"{slug}/"] = (
+            clean_label(body["en"]["h1"]),
+            f"legal_pages_data.LEGAL_PAGES[{slug}].body.en.h1",
+        )
+
+    missing = sorted(page_paths - labels.keys())
+    if missing:
+        raise ValueError(
+            "No maintained page-name source for llms.txt path(s): "
+            + ", ".join(f"/{path}" for path in missing)
+        )
+    empty = sorted(path for path in page_paths if not labels[path][0])
+    if empty:
+        raise ValueError(
+            "Maintained page-name source is empty for llms.txt path(s): "
+            + ", ".join(f"/{path}" for path in empty)
+        )
+    return labels
 
 
 def load_business_facts() -> dict:
@@ -87,7 +300,11 @@ def schema_contains_type(value, schema_type: str) -> bool:
     return any(schema_contains_type(item, schema_type) for item in value.values())
 
 
-def page_record(page_path: str) -> dict:
+def page_record(
+    page_path: str,
+    label: str,
+    label_source: str,
+) -> dict:
     html_path = html_path_for(page_path)
     if not html_path.exists():
         raise FileNotFoundError(f"Published English page missing: {html_path}")
@@ -95,13 +312,6 @@ def page_record(page_path: str) -> dict:
     description_tag = soup.find("meta", attrs={"name": "description"})
     if description_tag is None or not description_tag.get("content", "").strip():
         raise ValueError(f"Meta description missing: {html_path}")
-    h1 = soup.find("h1")
-    title = soup.find("title")
-    label = clean_text(
-        h1.get_text(" ", strip=True)
-        if h1 is not None
-        else title.get_text(" ", strip=True) if title is not None else page_path
-    )
     schemas = []
     for script in soup.find_all("script", attrs={"type": "application/ld+json"}):
         raw = script.string or script.get_text()
@@ -111,6 +321,7 @@ def page_record(page_path: str) -> dict:
         "path": page_path,
         "url": f"{DOMAIN}/{page_path}",
         "label": label,
+        "label_source": label_source,
         "description": clean_text(description_tag["content"]),
         "is_service": schema_contains_type(schemas, "Service"),
     }
@@ -224,7 +435,11 @@ def render_llms() -> str:
 
     registries = registered_paths()
     assert_registry_alignment(page_path_set, registries)
-    records = [page_record(page_path) for page_path in paths]
+    labels = page_labels(page_path_set, facts)
+    records = [
+        page_record(page_path, *labels[page_path])
+        for page_path in paths
+    ]
     groups = group_records(records, registries)
     if sum(len(group) for group in groups.values()) != len(records):
         raise ValueError("Not every sitemap page was assigned to an llms.txt group")
@@ -255,12 +470,6 @@ def render_llms() -> str:
         f"# {facts['tradingName']}",
         "",
         f"> {records[0]['description']}",
-        "",
-        (
-            f"{facts['tradingName']} is a premium motorcycle workshop serving "
-            "Cascais and Greater Lisbon. It provides maintenance and repair, "
-            "parts sourcing, upgrades, inspections and custom engineering."
-        ),
         "",
         "## Business facts",
         "",
