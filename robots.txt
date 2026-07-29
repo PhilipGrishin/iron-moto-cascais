@@ -6,3 +6,4 @@ Disallow: /cdn-cgi/
 Disallow: /*.zip$
 
 Sitemap: https://ironcustommotors.com/sitemap.xml
+LLMs-Txt: https://ironcustommotors.com/llms.txt

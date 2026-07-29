@@ -59,6 +59,7 @@ python3 -m pip install -r requirements.txt
 | `add_image_dims.py` | Adds `width`/`height` attributes to every `<img>` based on the real image file |
 | `apply_seo_meta.py` | Applies shared SEO meta invariants, including `max-image-preview:large`, to every HTML file |
 | `build_sitemap.py` | Regenerates `sitemap.xml` with all 4 languages |
+| `build_llms.py` | Regenerates `llms.txt` from the sitemap page registry, content registries, published meta descriptions and canonical business facts |
 | `build_reviews_schema.py` | Pulls live Google rating/count via the Cloudflare Worker, reads curated visible reviews from `assets/reviews-curated.json`, injects `AggregateRating` + matching `Review` JSON-LD into the home pages, and refreshes the static reviews HTML fallback |
 | `extract_i18n.js` | Reads `assets/main.js` and writes `scripts/build/i18n.json` (consumed by `build_i18n.py`) |
 | `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD, localized internal links, SEO robots meta and local assets |
@@ -101,6 +102,34 @@ use real content dates with timezone, not deploy time.
 | `harley_hub_data.py` | `build_harley_hub.py` (page media, localized UI and project portfolio data) |
 | `pricing_data.py` | `build_pricing.py` and `build_pricing_pdfs.py` (LABELS + SECTIONS, 4 languages) |
 | `i18n.json` | A snapshot of the runtime `I18N` object that lives inside `assets/main.js`. Regenerate with `node scripts/build/extract_i18n.js` after editing translations in `main.js`. |
+| `../../docs/BUSINESS_FACTS.md` | `build_llms.py` (canonical business identity, NAP, hours, origin, profiles, service languages and published key prices) |
+
+## AI Discovery Index
+
+`build_llms.py` must run immediately after `build_sitemap.py`. It reads:
+
+- English page paths from `build_sitemap.py` `PAGES`;
+- blog and news slugs from `BLOG_POSTS` and `NEWS_ARTICLES`;
+- project slugs from `new_pages_data.py` `PROJECT_TILES`;
+- dedicated service brands from `BRAND_ORDER` and `BRAND_CONFIG`;
+- legal page slugs from `LEGAL_PAGES`;
+- canonical business facts from `docs/BUSINESS_FACTS.md`;
+- the published English page title, H1 and meta description for each entry.
+
+The generator verifies that registered content paths are present in `PAGES`,
+that every dedicated brand appears in the homepage brand strip, and that every
+English page is assigned to one readable section. `validate_seo.py` then checks
+that the internal page links in `llms.txt` cover every English URL in
+`sitemap.xml`.
+
+Do not edit `llms.txt` by hand. Update its source registry, page metadata or
+`docs/BUSINESS_FACTS.md`, rebuild the sitemap when required, and regenerate:
+
+```bash
+python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
+python3 scripts/build/validate_seo.py
+```
 
 ## Typical sequences
 
@@ -132,6 +161,7 @@ python3 scripts/build/localize_internal_links.py
 python3 scripts/build/add_image_dims.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 python3 scripts/build/validate_harley_hub.py
 ```
@@ -161,6 +191,7 @@ python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 # bump cache-bust
 ```
@@ -183,6 +214,7 @@ python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 # bump cache-bust if assets/main.css or assets/main.js changed
 ```
@@ -213,6 +245,7 @@ python3 scripts/build/localize_internal_links.py
 python3 scripts/build/add_image_dims.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 # bump cache-bust if assets/main.css or assets/main.js changed
 ```
@@ -238,6 +271,7 @@ python3 scripts/build/localize_internal_links.py
 python3 scripts/build/add_image_dims.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 # bump cache-bust if assets/main.css or assets/main.js changed
 ```
@@ -260,6 +294,7 @@ python3 scripts/build/build_harley_hub.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_harley_hub.py
 python3 scripts/build/validate_seo.py
 python3 scripts/build/validate_brand_pages.py harley-service
@@ -283,6 +318,7 @@ python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 python3 scripts/build/validate_brand_pages.py <new-brand-slug>
 # bump cache-bust
@@ -346,6 +382,7 @@ python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 # bump cache-bust
 ```
@@ -368,6 +405,7 @@ python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 # bump cache-bust if assets/main.css or assets/main.js changed
 ```
@@ -390,6 +428,7 @@ python3 scripts/build/nav_patch.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_project_pages.py <slug>
 python3 scripts/build/validate_seo.py
 ```
@@ -400,6 +439,7 @@ python3 scripts/build/validate_seo.py
 python3 scripts/build/build_pricing.py
 python3 scripts/build/build_pricing_pdfs.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 ```
 

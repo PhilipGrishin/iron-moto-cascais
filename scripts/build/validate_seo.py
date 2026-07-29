@@ -179,6 +179,47 @@ def sitemap_urls() -> list[str]:
     return [loc.text.strip() for loc in tree.findall(".//sm:loc", ns) if loc.text]
 
 
+def normalize_site_url(url: str) -> str | None:
+    parsed = urlparse(url)
+    if parsed.scheme not in {"http", "https"} or parsed.netloc not in OWN_HOSTS:
+        return None
+    path = parsed.path or "/"
+    if path != "/" and not path.endswith("/"):
+        path = f"{path}/"
+    return f"{DOMAIN}{path}"
+
+
+def llms_internal_urls() -> set[str]:
+    llms_path = SITE_ROOT / "llms.txt"
+    if not llms_path.exists():
+        return set()
+    targets = re.findall(
+        r"\]\((https?://[^)\s]+)\)",
+        llms_path.read_text(encoding="utf-8"),
+    )
+    return {
+        normalized
+        for target in targets
+        if (normalized := normalize_site_url(target)) is not None
+    }
+
+
+def check_llms_sitemap_coverage(urls: list[str]) -> list[str]:
+    english_urls = {
+        normalized
+        for url in urls
+        if not re.match(r"^/(ru|uk|pt)(/|$)", urlparse(url).path)
+        if (normalized := normalize_site_url(url)) is not None
+    }
+    missing = sorted(english_urls - llms_internal_urls())
+    if not missing:
+        return []
+    return [
+        "llms.txt is missing "
+        f"{len(missing)} English sitemap URL(s): {', '.join(missing)}"
+    ]
+
+
 def file_for_url(url: str) -> tuple[Path, str, str]:
     parsed = urlparse(url)
     path = parsed.path
@@ -404,6 +445,7 @@ def main() -> int:
     issues = []
     for url in urls:
         issues.extend(validate_page(url))
+    issues.extend(check_llms_sitemap_coverage(urls))
     if issues:
         print(f"SEO validation failed: {len(issues)} issue(s)")
         for issue in issues:

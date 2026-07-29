@@ -14,6 +14,19 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-29 - Generated AI discovery index
+
+- Commit: this commit
+- Changed: Added canonical business facts, generated `llms.txt` from maintained
+  site registries and published metadata, declared it in `robots.txt`, and
+  added complete sitemap coverage enforcement to SEO validation.
+- Verified: Generator idempotency, business-fact and registry consistency,
+  AI-index coverage, all focused validators, scope checks and
+  `git diff --check`.
+- Notes: `docs/BUSINESS_FACTS.md` is the canonical documentation source for
+  NAP, identity, opening hours, origin, profiles, service languages and
+  published key prices.
+
 ## 2026-07-29 - Repository documentation alignment
 
 - Commit: this commit

@@ -52,13 +52,15 @@ Use sources in this order:
 
 1. `AGENTS.md` - operating rules and non-negotiables.
 2. `docs/PROJECT_STATE.md` - current compact project state.
-3. `docs/CONTENT_TYPES.md` - page-family source maps and task templates.
-4. `docs/OPEN_TASKS.md` - temporary risks and unresolved follow-ups.
-5. `docs/TASK_BRIEF_TEMPLATE.md` - compact intake format for large tasks.
-6. `scripts/build/README.md` - build and verification command order.
-7. `docs/CODEX_CHANGELOG.md` - compact implementation memory.
-8. Actual source data and generators under `scripts/build/`.
-9. Generated HTML only as output or for verification.
+3. `docs/BUSINESS_FACTS.md` - canonical NAP, hours, founder, origin,
+   service languages, profiles and published key prices.
+4. `docs/CONTENT_TYPES.md` - page-family source maps and task templates.
+5. `docs/OPEN_TASKS.md` - temporary risks and unresolved follow-ups.
+6. `docs/TASK_BRIEF_TEMPLATE.md` - compact intake format for large tasks.
+7. `scripts/build/README.md` - build and verification command order.
+8. `docs/CODEX_CHANGELOG.md` - compact implementation memory.
+9. Actual source data and generators under `scripts/build/`.
+10. Generated HTML only as output or for verification.
 
 `HANDOFF.md` is historical and may contain stale counts from 2026-06-17. Use
 this file for current state unless `HANDOFF.md` has been explicitly refreshed.

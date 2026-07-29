@@ -74,6 +74,7 @@ python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 python3 scripts/build/validate_brand_pages.py <brand-slug>
 git diff --check
@@ -110,6 +111,7 @@ python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 python3 scripts/build/validate_brand_pages.py <brand-slug>
 git diff --check
@@ -158,6 +160,7 @@ python3 scripts/build/localize_internal_links.py
 python3 scripts/build/add_image_dims.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 git diff --check
 ```
@@ -213,6 +216,7 @@ python3 scripts/build/localize_internal_links.py
 python3 scripts/build/add_image_dims.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 git diff --check
 ```
@@ -287,6 +291,7 @@ python3 scripts/build/build_harley_hub.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_harley_hub.py
 python3 scripts/build/validate_seo.py
 python3 scripts/build/validate_brand_pages.py harley-service
@@ -340,6 +345,7 @@ python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 git diff --check
 ```
@@ -396,6 +402,7 @@ python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 git diff --check
 ```
@@ -436,6 +443,7 @@ python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 git diff --check
 ```
@@ -474,6 +482,7 @@ python3 scripts/build/nav_patch.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_project_pages.py <slug>
 python3 scripts/build/validate_seo.py
 git diff --check
@@ -496,6 +505,7 @@ Verification:
 python3 scripts/build/build_pricing.py
 python3 scripts/build/build_pricing_pdfs.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 git diff --check
 ```
@@ -523,6 +533,49 @@ python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
+python3 scripts/build/validate_seo.py
+git diff --check
+```
+
+## AI Discovery Index
+
+Output:
+
+- `llms.txt`
+
+Canonical sources:
+
+- `scripts/build/build_sitemap.py` `PAGES`
+- `scripts/build/blog_data.py` `BLOG_POSTS`
+- `scripts/build/news_data.py` `NEWS_ARTICLES`
+- `scripts/build/new_pages_data.py` `PROJECT_TILES`
+- `scripts/build/brand_pages_data.py` `BRAND_ORDER` and `BRAND_CONFIG`
+- `scripts/build/legal_pages_data.py` `LEGAL_PAGES`
+- `docs/BUSINESS_FACTS.md`
+- published English H1 and meta descriptions
+
+Generator:
+
+- `scripts/build/build_llms.py`
+
+Rules:
+
+- Run the generator immediately after `build_sitemap.py`.
+- Do not hand-edit `llms.txt`.
+- Every English sitemap URL must appear as an internal page link.
+- Keep business facts in `docs/BUSINESS_FACTS.md`; other documentation should
+  link there rather than duplicate those values.
+- Keep page descriptions in their existing page-family metadata source. The
+  generator reads the published meta description instead of maintaining a
+  second copy.
+- `validate_seo.py` enforces sitemap coverage after generation.
+
+Verification:
+
+```bash
+python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 git diff --check
 ```

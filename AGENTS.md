@@ -10,7 +10,9 @@ workflows read `docs/CONTENT_TYPES.md`. For compact task memory
 after context compaction read `docs/CODEX_CHANGELOG.md` and
 `docs/OPEN_TASKS.md`. For compact future task intake use
 `docs/TASK_BRIEF_TEMPLATE.md`. For build scripts read
-`scripts/build/README.md`. `HANDOFF.md` and `CHANGELOG.md` are
+`scripts/build/README.md`. For canonical NAP, hours, founder,
+service-language, profile and published key-price facts read
+`docs/BUSINESS_FACTS.md`. `HANDOFF.md` and `CHANGELOG.md` are
 historical top-level references and may lag behind the active docs.
 
 ## Context compaction recovery
@@ -21,12 +23,14 @@ from repository files in this order:
 
 1. `AGENTS.md`
 2. `docs/PROJECT_STATE.md`
-3. `docs/CONTENT_TYPES.md`
-4. `docs/OPEN_TASKS.md`
-5. `docs/TASK_BRIEF_TEMPLATE.md` when shaping a new large task
-6. `scripts/build/README.md`
-7. relevant source data and generator files
-8. `git status --short`
+3. `docs/BUSINESS_FACTS.md` when business identity, contact, hours,
+   origin, service languages, profiles or published key prices are relevant
+4. `docs/CONTENT_TYPES.md`
+5. `docs/OPEN_TASKS.md`
+6. `docs/TASK_BRIEF_TEMPLATE.md` when shaping a new large task
+7. `scripts/build/README.md`
+8. relevant source data and generator files
+9. `git status --short`
 
 Do not rely on memory of previous chat turns when the repository
 contains a stronger current source.
