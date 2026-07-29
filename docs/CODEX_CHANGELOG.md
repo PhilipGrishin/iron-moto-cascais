@@ -14,6 +14,18 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-29 - Repository documentation alignment
+
+- Commit: this commit
+- Changed: Removed the obsolete reviews script and legacy scripts README;
+  aligned top-level agent documentation with the maintained project state,
+  page-family ownership, review workflow and delivery rules.
+- Verified: Documentation path searches, focused validators, broad SEO
+  validation, scope checks and `git diff --check`.
+- Notes: Current site quantities and the active cache-bust value belong only
+  in `docs/PROJECT_STATE.md`; canonical workflows belong in
+  `docs/CONTENT_TYPES.md` and `scripts/build/README.md`.
+
 ## 2026-07-27 - Fighter project page
 
 - Commit: this commit

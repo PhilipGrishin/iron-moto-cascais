@@ -413,11 +413,16 @@ python3 scripts/build/build_reviews_schema.py
 ```
 
 The script writes the Worker response to `assets/reviews-snapshot.json`, reads
-visible cards from `assets/reviews-curated.json`, and injects both the static
-HTML fallback and the LocalBusiness `AggregateRating`/`Review` JSON-LD on the
-four home pages. The `Review` JSON-LD items must match the visible curated cards
-1:1. The aggregate `reviewCount` remains the real Google total, not the number
-of curated cards.
+visible cards from `assets/reviews-curated.json` according to its
+`displayCount`, and injects both the static HTML fallback and the LocalBusiness
+`AggregateRating`/`Review` JSON-LD on the supported home pages. The `Review`
+JSON-LD items must match the visible curated cards 1:1. The aggregate
+`reviewCount` remains the real Google total, not the number of curated cards.
+
+The expected repository changes are the supported home-page HTML files and
+`assets/reviews-snapshot.json`. The script is idempotent: an unchanged Worker
+response and curated file should leave those outputs unchanged. It limits its
+HTML edits to the static reviews fallback and the LocalBusiness graph.
 
 A scheduled refresh is defined in `.github/workflows/reviews-refresh.yml`. It
 runs every Monday at 06:17 UTC and also supports manual `workflow_dispatch`.
@@ -426,20 +431,9 @@ runs every Monday at 06:17 UTC and also supports manual `workflow_dispatch`.
 
 CSS and JS file references in every HTML page include a query
 string of the form `?v=YYYYMMDDx`. When `assets/main.css` or
-`assets/main.js` changes, bump this value across every HTML file
-with a one-liner, e.g.:
-
-```
-python3 -c "
-from pathlib import Path
-OLD, NEW = '20260602b', '20260525a'
-for f in Path('.').rglob('*.html'):
-    if '.git' in f.parts: continue
-    t = f.read_text(encoding='utf-8')
-    if OLD in t: f.write_text(t.replace(OLD, NEW), encoding='utf-8')
-print('done')
-"
-```
+`assets/main.js` changes, read the current value from
+`docs/PROJECT_STATE.md`, choose the next date-letter value, and replace it
+across every HTML file.
 
 Build scripts that produce HTML carry their own `CACHE_BUST` constant
 at the top — keep it in sync when bumping.
