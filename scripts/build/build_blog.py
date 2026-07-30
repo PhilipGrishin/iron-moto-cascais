@@ -28,6 +28,7 @@ from build_news import (
     schema_datetime,
 )
 from hero_images import hero_background_css, hero_preload_links, optimized_hero_url
+from site_chrome import patch_navigation_footer
 
 
 BLOG_CSS = """.subpage.blog-hub{padding:126px 0 58px}
@@ -379,6 +380,7 @@ def render_hub():
         + MODAL_HTML
         + f'\n<script defer="" src="/assets/main.js?v={CACHE_BUST}"></script>\n</body>\n</html>'
     )
+    html = patch_navigation_footer(html, "en")
 
     out = SITE_ROOT / "blog" / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -725,6 +727,7 @@ def render_article(slug, article):
         + MODAL_HTML
         + f'\n<script defer="" src="/assets/main.js?v={CACHE_BUST}"></script>\n</body>\n</html>'
     )
+    html = patch_navigation_footer(html, "en")
 
     out = SITE_ROOT / "blog" / slug / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)

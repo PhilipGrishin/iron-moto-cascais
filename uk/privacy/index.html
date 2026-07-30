@@ -73,7 +73,7 @@
 <nav aria-label="Primary" class="nav">
 <div class="nav-dropdown">
 <a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.services" href="/uk/services/">Послуги</a>
-<div aria-label="Services" class="nav-dropdown-menu">
+<div aria-label="Послуги" class="nav-dropdown-menu">
 <a data-i18n="nav.allServices" href="/uk/services/">Усі послуги</a>
 <a data-i18n="services.s1.title" href="/uk/motorcycle-service/">Сервіс і ремонт</a>
 <a data-i18n="services.s2.title" href="/uk/parts/">Запчастини та витратники</a>
@@ -85,7 +85,7 @@
 </div>
 <div class="nav-dropdown">
 <a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.brands" href="/uk/#brands">Бренди</a>
-<div aria-label="Brands" class="nav-dropdown-menu">
+<div aria-label="Бренди" class="nav-dropdown-menu">
 <a data-i18n="nav.brandHarley" href="/uk/harley-service/">Harley-Davidson</a>
 <a data-i18n="nav.brandBmw" href="/uk/bmw-service/">BMW Motorrad</a>
 <a data-i18n="nav.brandDucati" href="/uk/ducati-service/">Ducati</a>
@@ -95,10 +95,25 @@
 <a data-i18n="nav.brandTriumph" href="/uk/triumph-service/">Triumph</a>
 </div>
 </div>
-<a data-i18n="nav.authorizedDealer" href="/uk/authorized-dealer/">Офіційний дилер</a>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.harleyHub" href="/uk/harley/">Harley Hub</a>
+<div aria-label="Harley Hub" class="nav-dropdown-menu">
+<a data-i18n="nav.harleyHub" href="/uk/harley/">Harley Hub</a>
+<a data-i18n="nav.harleyService" href="/uk/harley-service/">Сервіс</a>
+<a data-i18n="nav.harleyTuning" href="/uk/harley-tuning/">Тюнінг</a>
+<a data-i18n="nav.harleyCustom" href="/uk/harley-custom/">Кастом</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.authorizedDealer" href="/uk/authorized-dealer/">Офіційний дилер</a>
+<div aria-label="Офіційний дилер" class="nav-dropdown-menu">
+<a data-i18n="nav.authorizedDealerHub" href="/uk/authorized-dealer/">Дилерський хаб</a>
+<a data-i18n="nav.dealerCway" href="/uk/authorized-dealer/c-way/">C-Way</a>
+</div>
+</div>
 <div class="nav-dropdown">
 <a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.projects" href="/uk/projects/">Проєкти</a>
-<div aria-label="Projects" class="nav-dropdown-menu">
+<div aria-label="Проєкти" class="nav-dropdown-menu">
 <a data-i18n="nav.allProjects" href="/uk/projects/">Усі проєкти</a>
 <a href="/uk/projects/inspirium/">Inspirium</a>
 <a href="/uk/projects/beckman/">Beckman</a>
@@ -110,11 +125,12 @@
 <a href="/uk/projects/joker/">Joker</a>
 <a href="/uk/projects/hellboy/">Hell Boy</a>
 <a href="/uk/projects/true-religion/">True Religion</a>
-<a href="/uk/projects/fighter/">Fighter</a></div>
+<a href="/uk/projects/fighter/">Fighter</a>
+</div>
 </div>
 <div class="nav-dropdown">
 <a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.about" href="/uk/about/">Про нас</a>
-<div aria-label="About" class="nav-dropdown-menu">
+<div aria-label="Про нас" class="nav-dropdown-menu">
 <a data-i18n="nav.aboutUs" href="/uk/about/">Про нас</a>
 <a data-i18n="nav.blog" href="/uk/blog/">Блог</a>
 <a data-i18n="nav.news" href="/uk/news/">Новини</a>
@@ -134,7 +150,7 @@
 <div class="lang-menu" id="langMenu" role="menu">
 <button data-lang="en">EN · English</button>
 <button data-lang="ru">RU · Русский</button>
-<button aria-current="true" data-lang="uk">UK · Українська</button>
+<button data-lang="uk" aria-current="true">UK · Українська</button>
 <button data-lang="pt">PT · Português</button>
 </div>
 </div>
@@ -168,7 +184,22 @@
 <a data-i18n="nav.brandTriumph" href="/uk/triumph-service/">Triumph</a>
 </div>
 </details>
-<a data-i18n="nav.authorizedDealer" href="/uk/authorized-dealer/">Офіційний дилер</a>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.harleyHub">Harley Hub</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.harleyHub" href="/uk/harley/">Harley Hub</a>
+<a data-i18n="nav.harleyService" href="/uk/harley-service/">Сервіс</a>
+<a data-i18n="nav.harleyTuning" href="/uk/harley-tuning/">Тюнінг</a>
+<a data-i18n="nav.harleyCustom" href="/uk/harley-custom/">Кастом</a>
+</div>
+</details>
+<details class="mobile-nav-group">
+<summary class="mobile-nav-summary"><span data-i18n="nav.authorizedDealer">Офіційний дилер</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.authorizedDealerHub" href="/uk/authorized-dealer/">Дилерський хаб</a>
+<a data-i18n="nav.dealerCway" href="/uk/authorized-dealer/c-way/">C-Way</a>
+</div>
+</details>
 <details class="mobile-nav-group">
 <summary class="mobile-nav-summary"><span data-i18n="nav.projects">Проєкти</span></summary>
 <div class="mobile-subnav">
@@ -183,7 +214,8 @@
 <a href="/uk/projects/joker/">Joker</a>
 <a href="/uk/projects/hellboy/">Hell Boy</a>
 <a href="/uk/projects/true-religion/">True Religion</a>
-<a href="/uk/projects/fighter/">Fighter</a></div>
+<a href="/uk/projects/fighter/">Fighter</a>
+</div>
 </details>
 <details class="mobile-nav-group">
 <summary class="mobile-nav-summary"><span data-i18n="nav.about">Про нас</span></summary>
@@ -204,7 +236,7 @@
 <div class="mobile-langs">
 <button data-lang="en">EN</button>
 <button data-lang="ru">RU</button>
-<button aria-current="true" data-lang="uk">UK</button>
+<button data-lang="uk" aria-current="true">UK</button>
 <button data-lang="pt">PT</button>
 </div>
 </div>
@@ -272,6 +304,7 @@
 <h5 data-i18n="footer.col2">Компанія</h5>
 <ul>
 <li><a data-i18n="nav.about" href="/uk/about/">Про нас</a></li>
+<li><a data-i18n="nav.harleyHub" href="/uk/harley/">Harley Hub</a></li>
 <li><a data-i18n="nav.projects" href="/uk/projects/">Проєкти</a></li>
 <li><a data-i18n="nav.blog" href="/uk/blog/">Блог</a></li>
 <li><a data-i18n="nav.news" href="/uk/news/">Новини</a></li>

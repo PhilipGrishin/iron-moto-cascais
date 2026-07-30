@@ -14,6 +14,19 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-30 - Shared site navigation and footer
+
+- Commit: this commit
+- Changed: Centralized desktop navigation, mobile navigation and footer
+  rendering in `site_chrome.py`; connected standalone and page-family
+  generators; made `nav_patch.py` sitemap-wide; and added same-language chrome
+  parity and navigation-locality checks to `validate_seo.py`.
+- Verified: Exact non-chrome byte preservation, sitemap and `llms.txt`
+  immutability, generator inheritance, idempotency, focused validators,
+  production-style desktop/mobile navigation checks and `git diff --check`.
+- Notes: New sitemap pages inherit the same-language homepage menu and footer
+  automatically, with brands sourced from `BRAND_ORDER` and `BRAND_CONFIG`.
+
 ## 2026-07-29 - AI discovery link labels
 
 - Commit: this commit

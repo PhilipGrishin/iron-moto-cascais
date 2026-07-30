@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup, FeatureNotFound
 
 from legal_pages_data import LEGAL_PAGES, PRIVACY_HEAD, COOKIES_HEAD, TERMS_HEAD, LAST_UPDATED
 from seo_meta import upsert_robots_image_preview
+from site_chrome import apply_navigation_footer
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
@@ -238,26 +239,8 @@ def build_page(slug, lang):
             for child in children:
                 el.append(child)
 
-    # 12. Internal-link localization for non-EN langs (e.g. /services/ → /ru/services/)
-    if lang != "en":
-        LOCALIZED_PATHS = {"/","/motorcycle-service/","/parts/","/upgrades-tuning/","/custom/",
-                          "/pre-purchase-inspection/","/pricing/","/services/","/projects/",
-                          "/about/","/community/","/contact/","/faq/","/privacy/","/cookies/","/terms/"}
-        for proj in ["inspirium","beckman","unbreakable","quanta-r","burly","sturmvogel",
-                    "geometric","joker","hellboy","true-religion"]:
-            LOCALIZED_PATHS.add(f"/projects/{proj}/")
-        for a in chrome.find_all("a", href=True):
-            h = a["href"]
-            if h.startswith(("http://","https://","mailto:","tel:","whatsapp:","#")): continue
-            if h.startswith(("/photos/","/assets/","/pricing/files/","/worker/")): continue
-            if re.match(r"^/(ru|uk|pt)/", h): continue
-            base = re.split(r"[?#]", h, 1)[0]
-            if base in LOCALIZED_PATHS:
-                suffix = h[len(base):]
-                if base == "/":
-                    a["href"] = f"/{lang}/{suffix}"
-                else:
-                    a["href"] = f"/{lang}{base}{suffix}"
+    # 12. Apply canonical navigation/footer and localized chrome links.
+    apply_navigation_footer(chrome, lang)
 
     # 13. Write
     out = SITE_ROOT / slug / "index.html" if lang == "en" else SITE_ROOT / lang / slug / "index.html"

@@ -1,6 +1,6 @@
 # Iron Custom Motors Website - Project State
 
-Last updated: 2026-07-29
+Last updated: 2026-07-30
 Production: https://ironcustommotors.com/  
 Repository: https://github.com/dreamcarua/iron-moto-cascais
 
@@ -243,7 +243,10 @@ Current news articles are registered in `scripts/build/news_data.py`:
   pages.
 - `scripts/build/build_tyre_service.py` - tyre service page.
 - `scripts/build/build_pricing.py` - pricing pages.
-- `scripts/build/nav_patch.py` - canonical nav and footer on English pages.
+- `scripts/build/site_chrome.py` - canonical shared navigation and footer
+  renderer used by page generators.
+- `scripts/build/nav_patch.py` - sitemap-wide shared navigation and footer
+  applier.
 - `scripts/build/build_i18n.py` - localized copies and JSON-LD localization.
 - `scripts/build/localize_internal_links.py` - localized internal link rewrites.
 - `scripts/build/apply_seo_meta.py` - shared SEO meta invariants.

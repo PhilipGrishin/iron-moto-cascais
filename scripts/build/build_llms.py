@@ -18,7 +18,7 @@ from build_expat_hub import UI as EXPAT_HUB_UI
 from build_sitemap import DOMAIN, LANGS, PAGES
 from legal_pages_data import LEGAL_PAGES
 from new_pages_data import PROJECT_TILES
-from nav_patch import (
+from site_chrome import (
     ABOUT_NAV_LINKS,
     AUTHORIZED_DEALER_NAV_LINKS,
     FOOTER_COMPANY_LINKS,

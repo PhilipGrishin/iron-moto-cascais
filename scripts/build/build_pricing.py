@@ -15,6 +15,7 @@ from hero_images import hero_background_css
 from localize_internal_links import rewrite_href
 from pricing_data import LABELS, SECTIONS, LANGS
 from seo_meta import upsert_robots_image_preview
+from site_chrome import apply_navigation_footer
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 TEMPLATE = SITE_ROOT / "motorcycle-service" / "index.html"
@@ -566,6 +567,7 @@ def build_page(lang: str) -> str:
 
     apply_i18n(soup, lang)
     set_language_state(soup, lang)
+    apply_navigation_footer(soup, lang)
 
     return str(soup)
 

@@ -7,24 +7,14 @@ import html
 import json
 import re
 from pathlib import Path
-from urllib.parse import urlsplit, urlunsplit
 
-from bs4 import BeautifulSoup
-
-from brand_pages_data import BRAND_ORDER
 from hero_images import hero_background_css, hero_preload_links, optimized_hero_url
-from nav_patch import (
-    DROPDOWN_NAV_LINKS,
-    FOOTER_COMPANY_LINKS,
-    FOOTER_SERVICES_LINKS,
-    PRIMARY_NAV_LINKS,
-)
+from site_chrome import chrome_fragments, localized_href
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
 DOMAIN = "https://ironcustommotors.com"
 COPY_FILE = BUILD_DIR / "content" / "pre_purchase_inspection_copy_4lang.md"
-I18N_FILE = BUILD_DIR / "i18n.json"
 
 LANGS = ("en", "ru", "uk", "pt")
 HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
@@ -35,57 +25,6 @@ PATHS = {
     "pt": "/pt/pre-purchase-inspection/",
 }
 HERO_IMAGE = "photos/services/pre-purchase-inspection-main.jpg"
-
-COMMON_LOCALIZED_PATHS = {
-    "/",
-    "/motorcycle-service/",
-    "/parts/",
-    "/upgrades-tuning/",
-    "/custom/",
-    "/harley/",
-    "/harley-tuning/",
-    "/harley-custom/",
-    "/pre-purchase-inspection/",
-    "/pricing/",
-    "/services/",
-    "/projects/",
-    "/about/",
-    "/community/",
-    "/contact/",
-    "/faq/",
-    "/privacy/",
-    "/cookies/",
-    "/terms/",
-    *[f"/{slug}/" for slug in BRAND_ORDER],
-    "/blog/",
-    "/news/",
-}
-TYRE_PATH_BY_REST = {
-    "/motorcycle-tyre-service/": {
-        "en": "/motorcycle-tyre-service/",
-        "ru": "/ru/shinomontazh-mototsiklov/",
-        "uk": "/uk/shynomontazh-mototsykliv/",
-        "pt": "/pt/montagem-de-pneus-mota/",
-    },
-    "/shinomontazh-mototsiklov/": {
-        "en": "/motorcycle-tyre-service/",
-        "ru": "/ru/shinomontazh-mototsiklov/",
-        "uk": "/uk/shynomontazh-mototsykliv/",
-        "pt": "/pt/montagem-de-pneus-mota/",
-    },
-    "/shynomontazh-mototsykliv/": {
-        "en": "/motorcycle-tyre-service/",
-        "ru": "/ru/shinomontazh-mototsiklov/",
-        "uk": "/uk/shynomontazh-mototsykliv/",
-        "pt": "/pt/montagem-de-pneus-mota/",
-    },
-    "/montagem-de-pneus-mota/": {
-        "en": "/motorcycle-tyre-service/",
-        "ru": "/ru/shinomontazh-mototsiklov/",
-        "uk": "/uk/shynomontazh-mototsykliv/",
-        "pt": "/pt/montagem-de-pneus-mota/",
-    },
-}
 
 UI = {
     "en": {
@@ -154,153 +93,10 @@ def detect_cache_bust() -> str:
 
 
 CACHE_BUST = detect_cache_bust()
-GLOBAL_I18N = json.loads(I18N_FILE.read_text(encoding="utf-8"))
 
 
 def canonical_url(lang: str) -> str:
     return DOMAIN + PATHS[lang]
-
-
-def localized_path_for(base_path: str, lang: str) -> str:
-    if base_path in TYRE_PATH_BY_REST:
-        return TYRE_PATH_BY_REST[base_path][lang]
-    if re.match(r"^/(ru|uk|pt)(/|$)", base_path):
-        return base_path
-    if lang == "en":
-        return base_path
-    if base_path == "/":
-        return f"/{lang}/"
-    if (
-        base_path in COMMON_LOCALIZED_PATHS
-        or base_path.startswith("/projects/")
-        or base_path.startswith("/blog/")
-        or base_path.startswith("/news/")
-    ):
-        return f"/{lang}{base_path}"
-    return base_path
-
-
-def localized_href(href: str, lang: str) -> str:
-    if not href or href.startswith(("mailto:", "tel:", "#", "javascript:")):
-        return href
-    if href.startswith(("http://", "https://")):
-        parsed = urlsplit(href)
-        if parsed.netloc not in ("ironcustommotors.com", "www.ironcustommotors.com"):
-            return href
-        localized = localized_path_for(parsed.path or "/", lang)
-        return urlunsplit((parsed.scheme, parsed.netloc, localized, parsed.query, parsed.fragment))
-    if href.startswith(("/assets/", "/photos/", "/worker/", "/pricing/files/")):
-        return href
-    parsed = urlsplit(href)
-    localized = localized_path_for(parsed.path or "/", lang)
-    return urlunsplit(("", "", localized, parsed.query, parsed.fragment))
-
-
-def label_for(key: str | None, lang: str, fallback: str) -> str:
-    if not key:
-        return fallback
-    return GLOBAL_I18N.get(lang, {}).get(key) or GLOBAL_I18N["en"].get(key) or fallback
-
-
-def render_nav_link(key: str | None, href: str, fallback: str, lang: str) -> str:
-    label = html.escape(label_for(key, lang, fallback), quote=False)
-    i18n = f' data-i18n="{key}"' if key else ""
-    return f'<a{i18n} href="{localized_href(href, lang)}">{label}</a>'
-
-
-def render_dropdown(key: str, href: str, fallback: str, links: list[tuple[str | None, str, str]], lang: str) -> str:
-    label = html.escape(label_for(key, lang, fallback), quote=False)
-    items = "\n".join(render_nav_link(item_key, item_href, item_fallback, lang) for item_key, item_href, item_fallback in links)
-    return (
-        '<div class="nav-dropdown">\n'
-        f'<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="{key}" href="{localized_href(href, lang)}">{label}</a>\n'
-        f'<div aria-label="{label}" class="nav-dropdown-menu">\n{items}\n</div>\n'
-        "</div>"
-    )
-
-
-def render_primary_nav(lang: str) -> str:
-    parts = []
-    for key, href, fallback in PRIMARY_NAV_LINKS:
-        links = DROPDOWN_NAV_LINKS.get(key)
-        parts.append(render_dropdown(key, href, fallback, links, lang) if links else render_nav_link(key, href, fallback, lang))
-    return f'<nav aria-label="Primary" class="nav">\n' + "\n".join(parts) + "\n</nav>"
-
-
-def render_mobile_nav(lang: str) -> str:
-    parts = []
-    for key, href, fallback in PRIMARY_NAV_LINKS:
-        links = DROPDOWN_NAV_LINKS.get(key)
-        if links:
-            items = "\n".join(render_nav_link(item_key, item_href, item_fallback, lang) for item_key, item_href, item_fallback in links)
-            parts.append(
-                '<details class="mobile-nav-group">\n'
-                f'<summary class="mobile-nav-summary"><span data-i18n="{key}">{html.escape(label_for(key, lang, fallback), quote=False)}</span></summary>\n'
-                f'<div class="mobile-subnav">\n{items}\n</div>\n'
-                "</details>"
-            )
-        else:
-            parts.append(render_nav_link(key, href, fallback, lang))
-    return f'<nav class="nav-mobile">\n' + "\n".join(parts) + "\n</nav>"
-
-
-def render_footer_links(items: list[tuple[str, str, str]], lang: str) -> str:
-    return "<ul>\n" + "\n".join(f"<li>{render_nav_link(key, href, fallback, lang)}</li>" for key, href, fallback in items) + "\n</ul>"
-
-
-def apply_i18n(soup: BeautifulSoup, lang: str) -> None:
-    dictionary = GLOBAL_I18N.get(lang, GLOBAL_I18N["en"])
-    for element in soup.select("[data-i18n], [data-i18n-html]"):
-        key = element.get("data-i18n") or element.get("data-i18n-html")
-        if key in dictionary:
-            element.clear()
-            fragment = BeautifulSoup(dictionary[key], "html.parser")
-            for child in list(fragment.contents):
-                element.append(child)
-
-
-def rewrite_chrome_links(soup: BeautifulSoup, lang: str) -> None:
-    for anchor in soup.find_all("a", href=True):
-        anchor["href"] = localized_href(anchor["href"], lang)
-    for button in soup.select("button[data-lang]"):
-        if button.get("data-lang") == lang:
-            button["aria-current"] = "true"
-        elif button.has_attr("aria-current"):
-            del button["aria-current"]
-
-
-def chrome_fragments(lang: str) -> tuple[str, str]:
-    soup = BeautifulSoup((SITE_ROOT / "index.html").read_text(encoding="utf-8"), "html.parser")
-
-    primary = soup.find("nav", attrs={"aria-label": "Primary"})
-    if primary:
-        primary.replace_with(BeautifulSoup(render_primary_nav(lang), "html.parser").nav)
-    mobile = soup.find("nav", class_="nav-mobile")
-    if mobile:
-        mobile.replace_with(BeautifulSoup(render_mobile_nav(lang), "html.parser").nav)
-
-    for col in soup.find_all("div", class_="footer-col"):
-        h5 = col.find("h5")
-        if not h5:
-            continue
-        if h5.get("data-i18n") == "footer.col1":
-            ul = col.find("ul")
-            if ul:
-                ul.replace_with(BeautifulSoup(render_footer_links(FOOTER_SERVICES_LINKS, lang), "html.parser").ul)
-        elif h5.get("data-i18n") == "footer.col2":
-            ul = col.find("ul")
-            if ul:
-                ul.replace_with(BeautifulSoup(render_footer_links(FOOTER_COMPANY_LINKS, lang), "html.parser").ul)
-
-    apply_i18n(soup, lang)
-    rewrite_chrome_links(soup, lang)
-
-    before_selectors = ["#loader", "#cookieBanner", "#stickyCta", ".fab-wa", "header.site-header", "#mobileDrawer"]
-    after_selectors = ["footer.site-footer", "#contactModal"]
-    before = "\n".join(str(soup.select_one(selector)) for selector in before_selectors if soup.select_one(selector))
-    after = "\n".join(str(soup.select_one(selector)) for selector in after_selectors if soup.select_one(selector))
-    after += f'\n<script defer="" src="/assets/main.js?v={CACHE_BUST}"></script>'
-    return before, after
 
 
 def split_language_blocks(markdown: str) -> dict[str, str]:
@@ -679,7 +475,7 @@ def head_html(content: dict, lang: str) -> str:
 
 
 def render_page(content: dict, lang: str) -> str:
-    before, after = chrome_fragments(lang)
+    before, after = chrome_fragments(lang, CACHE_BUST)
     hero_body, hero_buttons = extract_link_buttons(content["hero"], lang)
     cta_body, cta_buttons = extract_link_buttons(content["cta"]["body"], lang)
     sections = "".join(render_section(section, lang) for section in content["sections"])

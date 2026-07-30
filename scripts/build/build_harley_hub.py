@@ -11,7 +11,6 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 
 from blog_data import BLOG_POSTS
-from build_pre_purchase_inspection import chrome_fragments
 from harley_hub_data import (
     HREFLANG_CODES,
     LANGUAGE_HEADINGS,
@@ -21,6 +20,7 @@ from harley_hub_data import (
     UI,
 )
 from hero_images import hero_preload_links, optimized_hero_url
+from site_chrome import chrome_fragments
 
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -755,7 +755,7 @@ def render_section(
 
 
 def render_page(config: dict, page: dict, lang: str) -> str:
-    before, after = chrome_fragments(lang)
+    before, after = chrome_fragments(lang, detect_cache_bust())
     hero = render_picture(
         config["hero"],
         config["hero_dims"],

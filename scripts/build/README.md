@@ -54,7 +54,8 @@ python3 -m pip install -r requirements.txt
 | `enhance_money_pages.py` | Adds reusable local SEO + related-page blocks to service and brand pages |
 | `enhance_project_pages.py` | Adds reusable highlights + related-page blocks to project detail pages |
 | `build_i18n.py` | `/ru/`, `/uk/`, `/pt/` copies of the EN main pages |
-| `nav_patch.py` | Rewrites primary nav and footer on every EN page |
+| `site_chrome.py` | Renders the shared desktop navigation, mobile navigation and footer for every generator |
+| `nav_patch.py` | Applies the shared navigation and footer to every sitemap page |
 | `localize_internal_links.py` | Rewrites internal links in `/ru/`, `/uk/`, `/pt/` pages so they point inside the same language subtree |
 | `add_image_dims.py` | Adds `width`/`height` attributes to every `<img>` based on the real image file |
 | `apply_seo_meta.py` | Applies shared SEO meta invariants, including `max-image-preview:large`, to every HTML file |
@@ -113,7 +114,7 @@ use real content dates with timezone, not deploy time.
 - project slugs from `new_pages_data.py` `PROJECT_TILES`;
 - dedicated service brands from `BRAND_ORDER` and `BRAND_CONFIG`;
 - legal page slugs from `LEGAL_PAGES`;
-- canonical navigation routes from `nav_patch.py` and their English I18N
+- canonical navigation routes from `site_chrome.py` and their English I18N
   labels from `assets/main.js`;
 - the English expat-hub breadcrumb from `build_expat_hub.py`;
 - canonical business facts from `docs/BUSINESS_FACTS.md`;
@@ -342,7 +343,7 @@ The single source of truth for a new brand is `BRAND_CONFIG` in
 consume it automatically:
 
 - `build_brand_pages.py` for page rendering and reciprocal brand links.
-- `nav_patch.py` for the Brands dropdown, mobile menu and footer.
+- `site_chrome.py` for the Brands dropdown, mobile menu and footer.
 - `build_new_pages.py` for the services hub brand list.
 - `build_i18n.py`, `localize_internal_links.py`, `build_sitemap.py` and `validate_seo.py`.
 - `optimize_hero_images.py` for AVIF/WebP/JPEG hero variants.
@@ -402,7 +403,6 @@ python3 scripts/build/validate_seo.py
 # 3. Add the slug to build_i18n.py MAIN_PAGES
 # 4. Add it to build_sitemap.py PAGES
 # 5. Add it to localize_internal_links.py LOCALIZED_PATHS
-# 6. Add it to nav_patch.py EN_PAGES if the post has standard nav/footer
 python3 scripts/build/build_blog.py
 python3 scripts/build/nav_patch.py
 python3 scripts/build/build_i18n.py
@@ -422,7 +422,7 @@ python3 scripts/build/validate_seo.py
 # 2. Add the project to PROJECT_CONFIGS in project_pages_data.py
 # 3. Import the hero and gallery photographs:
 python3 scripts/build/import_project_images.py <slug> "/absolute/path/to/source/photos"
-# 4. Register the page in page_meta.py, new_pages_data.py, nav_patch.py,
+# 4. Register the page in page_meta.py, new_pages_data.py,
 #    build_sitemap.py, localize_internal_links.py and validate_seo.py
 python3 scripts/build/build_project_pages.py
 python3 scripts/build/build_new_pages.py
@@ -512,10 +512,9 @@ page before release.
   Keep that marker intact.
 - `add_image_dims.py` reads pixel sizes via Pillow. Images must be
   present at the resolved paths (root-relative).
-- `nav_patch.py` rewrites the canonical primary nav and footer
-  columns on every English page. The `PRIMARY_NAV_LINKS`,
-  `FOOTER_SERVICES_LINKS`, `FOOTER_COMPANY_LINKS` lists at the top
-  of the script define the source of truth.
+- `site_chrome.py` renders the canonical primary nav, mobile nav and footer
+  columns. `nav_patch.py` applies that shared chrome to every page registered
+  in the sitemap.
 - `localize_internal_links.py` skips asset paths (`/photos/`,
   `/assets/`, `/pricing/files/`, `/worker/`). The `LOCALIZED_PATHS`
   set at the top defines which page paths have localized

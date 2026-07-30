@@ -37,6 +37,7 @@ Generator and helpers:
 
 - `scripts/build/build_brand_pages.py`
 - `scripts/build/build_new_pages.py`
+- `scripts/build/site_chrome.py`
 - `scripts/build/nav_patch.py`
 - `scripts/build/enhance_money_pages.py`
 - `scripts/build/build_i18n.py`
@@ -138,9 +139,12 @@ Required registrations:
 - `scripts/build/build_i18n.py` `MAIN_PAGES`
 - `scripts/build/build_sitemap.py` `PAGES`
 - `scripts/build/localize_internal_links.py` `LOCALIZED_PATHS`
-- `scripts/build/nav_patch.py` `EN_PAGES` where standard nav/footer applies
 - `scripts/build/page_meta.py`
 - `.github/workflows/pages.yml` if a new root-level folder is created
+
+Navigation and footer are inherited automatically from
+`scripts/build/site_chrome.py`; `nav_patch.py` applies the shared chrome to
+every page registered in the sitemap.
 
 Schema:
 
@@ -187,7 +191,8 @@ Source of truth:
 Required registrations:
 
 - Footer label in `assets/main.js` as `nav.expatWorkshop`.
-- Footer-only link in `scripts/build/nav_patch.py` `FOOTER_SERVICES_LINKS`.
+- Footer-only link in `scripts/build/site_chrome.py`
+  `FOOTER_SERVICES_LINKS`.
 - New path in `scripts/build/localize_internal_links.py`,
   `scripts/build/build_sitemap.py`, `scripts/build/validate_seo.py` and
   `.github/workflows/pages.yml`.
@@ -377,7 +382,6 @@ Required registrations:
 - `build_i18n.py` `MAIN_PAGES`
 - `build_sitemap.py` `PAGES`
 - `localize_internal_links.py` `LOCALIZED_PATHS`
-- `nav_patch.py` `EN_PAGES` when standard nav/footer applies
 
 Schema:
 
@@ -424,7 +428,6 @@ Required registrations:
 - `build_i18n.py` `MAIN_PAGES`
 - `build_sitemap.py` `PAGES`
 - `localize_internal_links.py` `LOCALIZED_PATHS`
-- `nav_patch.py` `EN_PAGES`
 
 Schema:
 
@@ -515,7 +518,7 @@ git diff --check
 Source of truth:
 
 - Desktop/mobile labels: `assets/main.js`
-- English nav/footer structure: `scripts/build/nav_patch.py`
+- Shared desktop/mobile/footer structure: `scripts/build/site_chrome.py`
 - Brand dropdown: generated from `BRAND_ORDER`
 
 Rules:
@@ -552,7 +555,7 @@ Canonical sources:
 - `scripts/build/new_pages_data.py` `PROJECT_TILES`
 - `scripts/build/brand_pages_data.py` `BRAND_ORDER` and `BRAND_CONFIG`
 - `scripts/build/legal_pages_data.py` `LEGAL_PAGES`
-- `scripts/build/nav_patch.py` canonical navigation routes
+- `scripts/build/site_chrome.py` canonical navigation routes
 - `assets/main.js` English navigation I18N labels
 - `scripts/build/build_expat_hub.py` English expat-hub breadcrumb
 - `docs/BUSINESS_FACTS.md`

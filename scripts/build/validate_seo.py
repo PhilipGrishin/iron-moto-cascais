@@ -377,9 +377,119 @@ def check_internal_links(soup, lang: str) -> list[str]:
             continue
         if re.match(r"^/(ru|uk|pt)(/|$)", href):
             continue
-        base = re.split(r"[?#]", href, 1)[0]
+        base = re.split(r"[?#]", href, maxsplit=1)[0]
         if base in LOCALIZED_PATHS:
             issues.append(f"localized page links to EN path {href}")
+    return issues
+
+
+def nav_item_identity(anchor) -> str:
+    key = anchor.get("data-i18n")
+    if key:
+        return f"i18n:{key}"
+    return f"text:{clean_text(anchor.get_text(' ', strip=True))}"
+
+
+def footer_column(soup, key: str):
+    heading = soup.find(attrs={"data-i18n": key})
+    return heading.find_parent("div", class_="footer-col") if heading else None
+
+
+def navigation_signature(soup) -> dict[str, object]:
+    primary = soup.find("nav", attrs={"aria-label": "Primary"})
+    mobile = soup.find("nav", class_="nav-mobile")
+    footer_services = footer_column(soup, "footer.col1")
+    footer_company = footer_column(soup, "footer.col2")
+    return {
+        "desktop": tuple(
+            nav_item_identity(anchor)
+            for anchor in primary.find_all("a", href=True)
+        ) if primary else (),
+        "mobile": tuple(
+            nav_item_identity(anchor)
+            for anchor in mobile.find_all("a", href=True)
+        ) if mobile else (),
+        "mobile_groups": len(mobile.select(".mobile-nav-group")) if mobile else 0,
+        "footer_services": tuple(
+            nav_item_identity(anchor)
+            for anchor in footer_services.find_all("a", href=True)
+        ) if footer_services else (),
+        "footer_company": tuple(
+            nav_item_identity(anchor)
+            for anchor in footer_company.find_all("a", href=True)
+        ) if footer_company else (),
+    }
+
+
+def navigation_anchors(soup):
+    primary = soup.find("nav", attrs={"aria-label": "Primary"})
+    mobile = soup.find("nav", class_="nav-mobile")
+    footer_services = footer_column(soup, "footer.col1")
+    footer_company = footer_column(soup, "footer.col2")
+    for region in (primary, mobile, footer_services, footer_company):
+        if region:
+            yield from region.find_all("a", href=True)
+
+
+def check_navigation_link_locality(soup, lang: str) -> list[str]:
+    issues = []
+    for anchor in navigation_anchors(soup):
+        href = anchor["href"]
+        parsed = urlparse(href)
+        if (
+            parsed.scheme
+            or parsed.netloc
+            or not parsed.path.startswith("/")
+            or parsed.path.startswith(LOCALIZED_URL_SKIP_PATH_PREFIXES)
+        ):
+            continue
+        if lang == "en":
+            if re.match(r"^/(ru|uk|pt)(/|$)", parsed.path):
+                issues.append(f"English navigation points to localized URL {href}")
+            continue
+        if parsed.path == f"/{lang}/" or parsed.path.startswith(f"/{lang}/"):
+            continue
+        issues.append(f"navigation points outside /{lang}/: {href}")
+    return issues
+
+
+def check_navigation_parity(urls: list[str]) -> list[str]:
+    soups = {}
+    signatures = {}
+    for url in urls:
+        html_path, lang, canonical_path = file_for_url(url)
+        if not html_path.exists():
+            continue
+        soup = BeautifulSoup(html_path.read_text(encoding="utf-8"), HTML_PARSER)
+        soups[url] = soup
+        if canonical_path == "/":
+            signatures[lang] = navigation_signature(soup)
+
+    issues = []
+    for url, soup in soups.items():
+        _, lang, _ = file_for_url(url)
+        expected = signatures.get(lang)
+        actual = navigation_signature(soup)
+        if expected is None:
+            issues.append(f"{url}: missing {lang} home navigation baseline")
+            continue
+        mismatches = [
+            component
+            for component in (
+                "desktop",
+                "mobile",
+                "mobile_groups",
+                "footer_services",
+                "footer_company",
+            )
+            if actual[component] != expected[component]
+        ]
+        if mismatches:
+            issues.append(
+                f"{url}: navigation parity mismatch in {', '.join(mismatches)}"
+            )
+        for issue in check_navigation_link_locality(soup, lang):
+            issues.append(f"{url}: {issue}")
     return issues
 
 
@@ -446,6 +556,7 @@ def main() -> int:
     for url in urls:
         issues.extend(validate_page(url))
     issues.extend(check_llms_sitemap_coverage(urls))
+    issues.extend(check_navigation_parity(urls))
     if issues:
         print(f"SEO validation failed: {len(issues)} issue(s)")
         for issue in issues:

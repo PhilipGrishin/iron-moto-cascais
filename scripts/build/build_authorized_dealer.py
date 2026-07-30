@@ -28,7 +28,7 @@ from authorized_dealer_data import (
 )
 from build_new_pages import ARROW_SVG, CACHE_BUST, SHARED_STYLES, end_html, footer_html, header_html
 from hero_images import hero_background_css, hero_preload_links, optimized_hero_url
-from nav_patch import render_footer_company, render_footer_services, render_mobile_nav, render_primary_nav
+from site_chrome import patch_navigation_footer
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
@@ -118,43 +118,6 @@ def apply_static_translations(html: str, lang: str, page_dict: dict[str, str]) -
         key = el["data-i18n-title"]
         if key in dictionary:
             el["title"] = dictionary[key]
-    return str(soup)
-
-
-def apply_standard_nav_footer(html: str) -> str:
-    soup = BeautifulSoup(html, HTML_PARSER)
-
-    primary = soup.find("nav", attrs={"aria-label": "Primary"})
-    if primary:
-        replacement = BeautifulSoup(
-            f'<nav aria-label="Primary" class="nav">\n{render_primary_nav()}\n</nav>',
-            HTML_PARSER,
-        )
-        primary.replace_with(replacement.nav)
-
-    mobile = soup.find("nav", class_="nav-mobile")
-    if mobile:
-        replacement = BeautifulSoup(
-            f'<nav class="nav-mobile">\n{render_mobile_nav()}\n</nav>',
-            HTML_PARSER,
-        )
-        mobile.replace_with(replacement.nav)
-
-    for col in soup.find_all("div", class_="footer-col"):
-        h5 = col.find("h5")
-        if not h5:
-            continue
-        key = h5.get("data-i18n", "")
-        ul = col.find("ul")
-        if not ul:
-            continue
-        if key == "footer.col1":
-            replacement = BeautifulSoup(f"<ul>\n{render_footer_services()}\n</ul>", HTML_PARSER)
-            ul.replace_with(replacement.ul)
-        elif key == "footer.col2":
-            replacement = BeautifulSoup(f"<ul>\n{render_footer_company()}\n</ul>", HTML_PARSER)
-            ul.replace_with(replacement.ul)
-
     return str(soup)
 
 
@@ -960,7 +923,7 @@ def render_cway_page(lang: str) -> str:
 </main>
 {footer_html()}
 {end_html()}"""
-    raw = apply_standard_nav_footer(raw)
+    raw = patch_navigation_footer(raw, lang)
     return apply_static_translations(raw, lang, CWAY_DEALER_I18N[lang])
 
 
@@ -1070,7 +1033,7 @@ def render_page(lang: str = "en") -> str:
 </main>
 {footer_html()}
 {end_html()}"""
-    raw = apply_standard_nav_footer(raw)
+    raw = patch_navigation_footer(raw, lang)
     return apply_static_translations(raw, lang, AUTHORIZED_DEALER_I18N[lang])
 
 
