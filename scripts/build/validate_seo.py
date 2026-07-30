@@ -8,7 +8,7 @@ import re
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
 from bs4 import BeautifulSoup, FeatureNotFound
 
@@ -21,7 +21,6 @@ OWN_HOSTS = {"ironcustommotors.com", "www.ironcustommotors.com"}
 LANGS = ["en", "ru", "uk", "pt"]
 HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 TARGET_LANGS = ["ru", "uk", "pt"]
-LEGAL_PATHS = {"/privacy/", "/cookies/", "/terms/"}
 GOOGLE_SITE_VERIFICATION = "jEDdF1jlSckwwEuSXOJCd1jvUmrEG--kgn_xfhzF3eg"
 LOCALIZED_URL_SKIP_PATH_PREFIXES = (
     "/assets/",
@@ -173,6 +172,53 @@ def check_local_assets(soup, html_path: Path) -> list[str]:
     return issues
 
 
+def versioned_asset_refs(soup):
+    tags = [
+        (tag, "href")
+        for tag in soup.find_all("link", href=True)
+        if "stylesheet" in {str(item).lower() for item in tag.get("rel", [])}
+    ]
+    tags.extend((tag, "src") for tag in soup.find_all("script", src=True))
+
+    for tag, attr in tags:
+        ref = tag[attr]
+        parsed = urlparse(ref)
+        if parsed.scheme in {"http", "https"} and parsed.netloc not in OWN_HOSTS:
+            continue
+        if not parsed.path.startswith("/assets/") or not parsed.path.endswith((".css", ".js")):
+            continue
+        yield parsed.path, parse_qs(parsed.query, keep_blank_values=True).get("v", []), ref
+
+
+def check_asset_cache_bust_presence(soup) -> list[str]:
+    issues = []
+    for _, versions, ref in versioned_asset_refs(soup):
+        if len(versions) != 1 or not versions[0]:
+            issues.append(f"asset is missing one non-empty cache-bust value: {ref}")
+    return issues
+
+
+def check_asset_cache_bust_consistency(urls: list[str]) -> list[str]:
+    values_by_asset = {}
+    for url in urls:
+        html_path, _, _ = file_for_url(url)
+        if not html_path.exists():
+            continue
+        soup = BeautifulSoup(html_path.read_text(encoding="utf-8"), HTML_PARSER)
+        for asset_path, versions, _ in versioned_asset_refs(soup):
+            if len(versions) == 1 and versions[0]:
+                values_by_asset.setdefault(asset_path, set()).add(versions[0])
+
+    issues = []
+    for asset_path, values in sorted(values_by_asset.items()):
+        if len(values) > 1:
+            issues.append(
+                f"{asset_path}: multiple cache-bust values across sitemap pages: "
+                f"{', '.join(sorted(values))}"
+            )
+    return issues
+
+
 def sitemap_urls() -> list[str]:
     tree = ET.parse(SITE_ROOT / "sitemap.xml")
     ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
@@ -265,17 +311,23 @@ def jsonld_strings(value):
             yield from jsonld_strings(item)
 
 
-def schema_contains_type(value, schema_type: str) -> bool:
-    if isinstance(value, list):
-        return any(schema_contains_type(item, schema_type) for item in value)
-    if not isinstance(value, dict):
-        return False
-    current = value.get("@type")
-    if current == schema_type or (isinstance(current, list) and schema_type in current):
-        return True
-    if "@graph" in value:
-        return schema_contains_type(value["@graph"], schema_type)
-    return any(schema_contains_type(child, schema_type) for child in value.values())
+def schema_has_entity_type(blocks: list[object], schema_type: str) -> bool:
+    for block in blocks:
+        if not isinstance(block, dict):
+            continue
+        current = block.get("@type")
+        if current == schema_type or (isinstance(current, list) and schema_type in current):
+            return True
+        graph = block.get("@graph")
+        if not isinstance(graph, list):
+            continue
+        for node in graph:
+            if not isinstance(node, dict):
+                continue
+            current = node.get("@type")
+            if current == schema_type or (isinstance(current, list) and schema_type in current):
+                return True
+    return False
 
 
 def expected_url(lang: str, canonical_path: str) -> str:
@@ -539,14 +591,15 @@ def validate_page(url: str) -> list[str]:
     issues.extend(jsonld_errors)
     if not jsonld_blocks:
         issues.append("missing JSON-LD")
-    elif canonical_path not in LEGAL_PATHS and not schema_contains_type(jsonld_blocks, "BreadcrumbList"):
-        issues.append("missing BreadcrumbList JSON-LD")
+    elif not schema_has_entity_type(jsonld_blocks, "BreadcrumbList"):
+        issues.append("missing BreadcrumbList JSON-LD entity")
     issues.extend(check_jsonld_localized_urls(jsonld_blocks, lang))
     issues.extend(check_jsonld_assets(jsonld_blocks, html_path))
 
     issues.extend(check_i18n_html_prerender(soup, lang))
     issues.extend(check_internal_links(soup, lang))
     issues.extend(check_local_assets(soup, html_path))
+    issues.extend(check_asset_cache_bust_presence(soup))
     return [f"{url}: {issue}" for issue in issues]
 
 
@@ -557,6 +610,7 @@ def main() -> int:
         issues.extend(validate_page(url))
     issues.extend(check_llms_sitemap_coverage(urls))
     issues.extend(check_navigation_parity(urls))
+    issues.extend(check_asset_cache_bust_consistency(urls))
     if issues:
         print(f"SEO validation failed: {len(issues)} issue(s)")
         for issue in issues:

@@ -411,6 +411,26 @@ def build_jsonld(lang: str) -> dict:
     """Schema.org Service + Offer markup — what AI engines and Google use."""
     L = LABELS[lang]
     page_url = url_for(lang)
+    breadcrumb_id = f"{page_url}#breadcrumb"
+    home_name = {"en": "Home", "ru": "Главная", "uk": "Головна", "pt": "Início"}[lang]
+    breadcrumb = {
+        "@type": "BreadcrumbList",
+        "@id": breadcrumb_id,
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": home_name,
+                "item": url_for(lang, ""),
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": GLOBAL_I18N[lang]["nav.pricing"],
+                "item": page_url,
+            },
+        ],
+    }
 
     offers = []
     for section in SECTIONS:
@@ -451,13 +471,7 @@ def build_jsonld(lang: str) -> dict:
                 "inLanguage": lang,
                 "isPartOf": {"@id": f"{DOMAIN}/#website"},
                 "about": {"@id": f"{DOMAIN}/#business"},
-                "breadcrumb": {
-                    "@type": "BreadcrumbList",
-                    "itemListElement": [
-                        {"@type": "ListItem", "position": 1, "name": {"en":"Home","ru":"Главная","uk":"Головна","pt":"Início"}[lang], "item": f"{DOMAIN}/{lang+'/' if lang!='en' else ''}"},
-                        {"@type": "ListItem", "position": 2, "name": L["eyebrow"], "item": page_url},
-                    ],
-                },
+                "breadcrumb": {"@id": breadcrumb_id},
             },
             {
                 "@type": "OfferCatalog",
@@ -467,6 +481,7 @@ def build_jsonld(lang: str) -> dict:
                 "provider": {"@id": f"{DOMAIN}/#business"},
                 "itemListElement": offers,
             },
+            breadcrumb,
         ],
     }
 

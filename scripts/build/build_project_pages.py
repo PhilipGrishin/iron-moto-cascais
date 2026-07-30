@@ -15,6 +15,12 @@ from project_pages_data import PROJECT_CONFIGS, load_project
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
 TEMPLATE_PATH = SITE_ROOT / "projects/joker/index.html"
+CACHE_BUST = {
+    "/assets/main.css": "20260724a",
+    "/assets/main.js": "20260724a",
+    "/assets/projects.css": "20260710b",
+    "/assets/projects.js": "20260710b",
+}
 
 
 def upsert_meta(soup: BeautifulSoup, *, name: str | None = None, prop: str | None = None, content: str):
@@ -35,6 +41,22 @@ def upsert_link(soup: BeautifulSoup, rel: str, href: str):
         soup.head.append(tag)
     tag["href"] = href
     return tag
+
+
+def apply_cache_bust(soup: BeautifulSoup) -> None:
+    found = set()
+    for tag in soup.find_all(["link", "script"]):
+        attr = "href" if tag.name == "link" else "src"
+        ref = tag.get(attr, "")
+        path = ref.split("?", 1)[0]
+        if path not in CACHE_BUST:
+            continue
+        tag[attr] = f"{path}?v={CACHE_BUST[path]}"
+        found.add(path)
+
+    missing = set(CACHE_BUST) - found
+    if missing:
+        raise ValueError(f"Project template is missing cache-busted assets: {sorted(missing)}")
 
 
 def image_dimensions(path: str) -> tuple[int, int]:
@@ -226,6 +248,7 @@ def render_project(slug: str) -> Path:
         raise ValueError(f"Gallery source/alt count mismatch for {slug}")
 
     soup = BeautifulSoup(TEMPLATE_PATH.read_text(encoding="utf-8"), "html.parser")
+    apply_cache_bust(soup)
     en = project["content"]["en"]
     page_url = f"{DOMAIN}/projects/{slug}/"
     image_url = f"{DOMAIN}{project['hero_base']}-2400.webp"

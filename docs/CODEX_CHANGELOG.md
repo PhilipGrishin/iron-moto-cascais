@@ -14,6 +14,18 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-30 - Pricing breadcrumbs and cache validation
+
+- Commit: this commit
+- Changed: Added standalone localized `BreadcrumbList` entities to generated
+  pricing pages, centralized project-page asset versions in `CACHE_BUST`, and
+  enforced breadcrumb and cache-bust invariants in `validate_seo.py`.
+- Verified: Negative fixtures for all three new checks, full sitemap SEO
+  validation, family validators, exact non-schema HTML preservation, unchanged
+  cache-bust values and sitemap lastmod values, and `git diff --check`.
+- Notes: Pricing lastmod values remain unchanged because this is a technical
+  structured-data correction with no visible content change.
+
 ## 2026-07-30 - Shared site navigation and footer
 
 - Commit: this commit
