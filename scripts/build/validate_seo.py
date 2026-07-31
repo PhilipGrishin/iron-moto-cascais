@@ -14,6 +14,7 @@ from urllib.parse import parse_qs, urlparse
 from bs4 import BeautifulSoup, FeatureNotFound
 
 from brand_pages_data import BRAND_ORDER
+from hero_images import css_hero_preload_alignment
 from seo_meta import robots_has_large_image_preview
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -221,6 +222,14 @@ def check_lcp_image_delivery(soup) -> list[str]:
         if not image.has_attr("alt"):
             issues.append(f"img is missing alt: {image.get('src', '<no src>')}")
     return issues
+
+
+def check_css_hero_preload_alignment(soup) -> tuple[bool, list[str]]:
+    """Validate that responsive preloads match the CSS-rendered hero resource."""
+    hero, mismatches = css_hero_preload_alignment(soup, SITE_ROOT)
+    if hero is None:
+        return False, []
+    return True, [f"CSS hero preload mismatch: {item}" for item in mismatches]
 
 
 def check_asset_cache_bust_consistency(urls: list[str]) -> list[str]:
@@ -669,11 +678,40 @@ def validate_page(url: str) -> list[str]:
     issues.extend(check_local_assets(soup, html_path))
     issues.extend(check_asset_cache_bust_presence(soup))
     issues.extend(check_lcp_image_delivery(soup))
+    _, css_hero_issues = check_css_hero_preload_alignment(soup)
+    issues.extend(css_hero_issues)
     return [f"{url}: {issue}" for issue in issues]
+
+
+def validate_css_hero_preloads(urls: list[str]) -> tuple[int, list[str]]:
+    checked = 0
+    issues = []
+    for url in urls:
+        html_path, _, _ = file_for_url(url)
+        if not html_path.exists():
+            continue
+        soup = BeautifulSoup(html_path.read_text(encoding="utf-8"), HTML_PARSER)
+        is_css_hero, page_issues = check_css_hero_preload_alignment(soup)
+        if is_css_hero:
+            checked += 1
+        issues.extend(f"{url}: {issue}" for issue in page_issues)
+    return checked, issues
 
 
 def main() -> int:
     urls = sitemap_urls()
+    if "--check-css-hero-preloads" in sys.argv[1:]:
+        checked, issues = validate_css_hero_preloads(urls)
+        if issues:
+            print(
+                "CSS hero preload validation failed: "
+                f"{len(issues)} mismatch(es) across {checked} CSS hero page(s)"
+            )
+            for issue in issues:
+                print(f"  - {issue}")
+            return 1
+        print(f"CSS hero preload validation passed: {checked} CSS hero page(s)")
+        return 0
     issues = []
     for url in urls:
         issues.extend(validate_page(url))
