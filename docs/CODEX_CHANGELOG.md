@@ -14,6 +14,18 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-31 - Sitemap-wide hero image delivery
+
+- Commit: `3309b45b`
+- Changed: Added early LCP image discovery to every sitemap page, responsive
+  AVIF preloads for CSS heroes, and shared AVIF/WebP/JPEG `<picture>` delivery
+  for legacy project heroes without changing their visual treatment.
+- Verified: LCP coverage and image-attribute validation, semantic HTML
+  invariants, desktop/mobile visual parity, unchanged sitemap lastmod and
+  cache-bust values, focused validators, and `git diff --check`.
+- Notes: The legacy project source registry remains `PROJECT_TILES`; binary
+  hero optimization is explicit and remains outside the canonical full build.
+
 ## 2026-07-31 - Reproducible static-site builds
 
 - Commit: `fc25c4a4`
