@@ -14,6 +14,23 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-31 - Repository self-audit and documentation protocol
+
+- Commit: `d08a3297`
+- Changed: Established the repository-only documentation protocol, consolidated
+  current state and build ownership, reconciled active documentation with
+  source registries and generators, documented validator limits and external
+  risks, and added the durable repository audit.
+- Verified: Every maintained build script is present in the ownership
+  inventory; relative documentation links resolve; the complete documented
+  rebuild and broad verification both leave a clean clone unchanged; all
+  focused validators pass; sitemap bytes and ordered lastmod values are
+  unchanged; and `git diff --check` is clean.
+- Notes: The initial validator attempt with the unprepared system Python failed
+  because `beautifulsoup4` was absent. The successful runs used an isolated
+  environment installed from the root `requirements.txt`. Current open work
+  and access boundaries are in `docs/OPEN_TASKS.md`, not this history entry.
+
 ## 2026-07-31 - CSS hero preload alignment
 
 - Commit: `410809d1`

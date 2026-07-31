@@ -17,6 +17,9 @@ deployed public identifiers and cache-bust values. Operating rules live in
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
 - Production evidence: cache-bypass requests to the public domain.
+- Reproducibility evidence: the documented full rebuild and broad verification
+  at documentation commit `d08a3297` left a clean clone with empty
+  `git status --short`; verified 2026-07-31.
 
 ## Repository And Production
 
