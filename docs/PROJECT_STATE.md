@@ -16,9 +16,10 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: GitHub Pages workflow `30666948549`, cache-bypass
-  checks of all 44 project pages and 8 redirects, and Google Rich Results Test
-  result `jJofvvbCnFVaAOIxQqYMZQ` with four valid items and no warnings.
+- Production evidence: C8-FIX GitHub Pages workflow `30669918930` and
+  cache-bypass chrome/full-text checks of all 33 localized project pages,
+  plus the prior C8 schema result `jJofvvbCnFVaAOIxQqYMZQ` with four valid
+  items and no warnings.
 - Reproducibility evidence: the documented full rebuild and all four
   validator groups at C8-FIX implementation commit `52316a26` left a clean clone
   with empty `git status --short`; verified 2026-07-31. `sitemap.xml` retained

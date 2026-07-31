@@ -27,11 +27,16 @@ Format:
   projects; EN projects, all redirect stubs, the other 168 sitemap pages,
   sitemap bytes, lastmod values, assets and cache-bust values were unchanged.
   The complete documented rebuild left a clean clone of `52316a26` with empty
-  `git status --short`, and all four validator groups passed.
+  `git status --short`, and all four validator groups passed. GitHub Pages
+  workflow `30669918930` deployed documentation head `45890755`; cache-bypass
+  production checks found 33/33 full-page text matches against `affa9121`,
+  33/33 same-language chrome matches, 11/11 unchanged EN project texts and
+  8/8 byte-identical redirect stubs.
 - Notes: C8 removed project details from `build_i18n.py` but its replacement
   only patched navigation/link structure from the EN Joker template; it did
   not apply the shared translation dictionary to the remaining chrome text.
-  Production evidence is recorded after publication.
+  Cloudflare email protection rewrites the footer email in public responses;
+  production full-text comparison normalized only that documented CDN layer.
 
 ## 2026-07-31 - Project family generator migration
 

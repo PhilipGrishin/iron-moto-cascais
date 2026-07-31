@@ -99,5 +99,24 @@ SEO validation passed: 212 sitemap URL(s)
 
 ## Production Verification
 
-Pending publication. Record the GitHub Pages workflow, cache-bypass query and
-all 33 live chrome comparisons here after deployment.
+- GitHub Pages workflow
+  [`30669918930`](https://github.com/dreamcarua/iron-moto-cascais/actions/runs/30669918930)
+  deployed documentation head `45890755`, which contains implementation commit
+  `52316a26`.
+- Cache-bypass query
+  `?c8fix=45890755166f9224ee646e923cc3b6c3549cd12c` returned 33/33 localized
+  project chrome signatures identical to the live same-language homepages.
+- Complete normalized visible body text matched `affa9121` on 33/33 localized
+  project pages. EN project visible text matched `619d288d` on 11/11 pages;
+  all 8 redirect responses were byte-identical to `619d288d`.
+- Cloudflare email protection rewrites only the published footer email from
+  `Ironcustom.office@gmail.com` to its protected placeholder and injects its
+  decoding script. The production full-text comparison restored that one
+  documented CDN transformation before comparison; no other normalization or
+  exception was applied.
+- The live sitemap retained SHA-256
+  `4910de2803fdd535c37198cf27ed541c23e66be8bd53afe80466881261e54971`.
+- Browser checks on PT Beckman, RU Fighter and UK Inspirium confirmed localized
+  cookie text/buttons, sticky/header/mobile booking and WhatsApp CTAs, footer
+  tagline/group headings/hours/rights, correct `lang` and project H1. Browser
+  console error count: 0.
