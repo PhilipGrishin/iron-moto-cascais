@@ -29,9 +29,10 @@ and cache-bypassed HTTP requests where production behavior was relevant.
 `https://github.com/dreamcarua/iron-moto-cascais.git`. At audit start the local
 branch and `origin/main` had no divergence.
 
-**Confirmed:** temporary Git worktrees from the C6 reproducibility work remain
-under `/private/tmp`. They are snapshots of this repository and are not active
-development copies. Their cleanup is tracked in `docs/OPEN_TASKS.md`.
+**Resolved, 2026-07-31:** temporary Git worktrees from the C6 reproducibility
+work were found under `/private/tmp` during the audit. After explicit owner
+authorization, their state was checked against canonical commit `fc25c4a4`,
+then the obsolete worktrees were removed and the worktree registry was pruned.
 
 **Confirmed:** a scan of Git roots under the owner's `Documents`, `Desktop`,
 and `Downloads` directories found no second checkout using the website remote.
@@ -75,6 +76,21 @@ The durable documentation model is now explicit in the first section of
 No current process relies on `HANDOFF.md` or `CHANGELOG.md` as its sole source.
 They remain historical references.
 
+### Post-Audit Corrections
+
+- **Previous statement:** `nav_renderer.py`, `seo_metadata.py`, and
+  `business_facts.py` were named as current shared modules.
+  **Correction (2026-07-31):** those files do not exist. The current shared
+  implementation modules are `build_output.py`, `hero_images.py`,
+  `seo_meta.py`, and `site_chrome.py`; `build_llms.py` reads canonical business
+  facts directly from `docs/BUSINESS_FACTS.md`. Evidence: tracked source files,
+  imports, and the exhaustive inventory in `scripts/build/README.md`.
+- **Previous statement:** Node.js was described as required for the navigation
+  patch.
+  **Correction (2026-07-31):** `nav_patch.py` is a Python script. Node.js is
+  required for `extract_i18n.js` and JavaScript syntax checks. Evidence:
+  script source and the Environment section of `scripts/build/README.md`.
+
 ## Site Structure Audit
 
 **Confirmed:** the sitemap registry, localized-path registry, source data, and
@@ -108,8 +124,8 @@ The audit found these important ownership boundaries:
   full-build order.
 - Page-family generators own their generated HTML; source data must be edited
   instead of generated files.
-- `hero_images.py`, `nav_renderer.py`, `seo_metadata.py`, and
-  `business_facts.py` are shared modules rather than standalone build steps.
+- `build_output.py`, `hero_images.py`, `seo_meta.py`, and `site_chrome.py` are
+  shared modules rather than standalone build steps.
 - Media-conversion scripts are intentionally excluded from the routine full
   build because they require task-specific source assets.
 - Pricing PDF generation has content checks in `validate_seo.py`, but no
@@ -190,8 +206,8 @@ and is marked **Access required** in `OPEN_TASKS`.
 ## Environment Audit
 
 **Confirmed:** the documented build requires a Python runtime compatible with
-the syntax used by the scripts, Node.js for the navigation patch, and the
-Python packages in the root `requirements.txt`.
+the syntax used by the scripts, Node.js for `extract_i18n.js` and JavaScript
+syntax checks, and the Python packages in the root `requirements.txt`.
 
 **Confirmed:** the full build is currently macOS-specific because
 `build_pricing_pdfs.py` loads Arial from hardcoded `/System/Library/Fonts`

@@ -20,6 +20,7 @@ __pycache__/
 *.pyc
 
 # Env
+.venv/
 .env
 .env.local
 

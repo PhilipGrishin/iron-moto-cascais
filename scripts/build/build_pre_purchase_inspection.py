@@ -98,7 +98,7 @@ MODIFIED_ISO = "2026-07-31T14:23:59+01:00"
 LLMS_DESCRIPTION_EN = (
     "Independent motorcycle pre-purchase inspection in Cascais & Lisbon. "
     "Compression test, videoscope cylinder check, written report. "
-    "English-speaking. From €150."
+    "English-speaking. Fixed price: €150."
 )
 
 

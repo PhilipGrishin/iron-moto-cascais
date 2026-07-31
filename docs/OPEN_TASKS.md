@@ -61,18 +61,6 @@ measure representative page families under a stated profile.
   fonts or implement a deterministic cross-platform font lookup, then compare
   generated PDF content and layout before changing the canonical build claim.
 
-### Old temporary worktrees outside the primary checkout
-
-- Status: **confirmed**, cleanup decision required.
-- Evidence: `git worktree list`, 2026-07-31.
-- Paths: `/private/tmp/icm-c6-audit.SYgMIB`,
-  `/private/tmp/icm-c6-before.ISW2xQ`, and
-  `/private/tmp/icm-c6-fulltest.vfneog`.
-- Impact: they are detached historical C6 verification copies, not production
-  sources, but can confuse future repository discovery while they exist.
-- Next action: owner may authorize `git worktree remove`/`prune`; do not delete
-  them implicitly during documentation work.
-
 ## Discovery And CDN Risks
 
 ### Cloudflare may serve stale discovery files after deployment
@@ -99,15 +87,6 @@ measure representative page families under a stated profile.
 - Next action: use an explicit normal user agent for monitoring or review the
   Cloudflare rule with account access. Do not weaken edge protection without
   owner approval.
-
-### Pre-purchase description in `llms.txt`
-
-- Status: **confirmed**, deferred by the C6 scope boundary.
-- Context: the published inspection page and metadata state the fixed EUR 150
-  price, while the generated AI discovery description retains earlier
-  starting-price wording through `LLMS_DESCRIPTION_EN`.
-- Next action: update the maintained discovery source in an approved GEO task,
-  regenerate `llms.txt`, and preserve complete English sitemap coverage.
 
 ## External Services And Access
 
