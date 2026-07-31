@@ -101,3 +101,18 @@ The repository validator checks the Google Article required publisher/name/
 logo contract and reference resolution. External Rich Results Test and final
 production checks are recorded after publication; local validation must not be
 described as an external Google UI result.
+
+## Local Verification
+
+- Implementation commit: `ce25a7c2`.
+- The complete canonical generator sequence from `scripts/build/README.md`
+  completed in a clean clone of that commit and left empty
+  `git status --short`.
+- All four repository validator groups passed: SEO (212 URLs), brand pages
+  (7 sets), Harley Hub (12 pages), and project pages (all 11 slugs across all
+  four languages).
+- The rebuilt sitemap retained SHA-256
+  `4910de2803fdd535c37198cf27ed541c23e66be8bd53afe80466881261e54971`.
+- The implementation diff passed `git diff --check`; Python modules compiled
+  successfully with bytecode redirected outside the repository, and the
+  maintained JavaScript files passed `node --check`.

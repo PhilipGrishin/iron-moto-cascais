@@ -11,16 +11,17 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 - Status: **confirmed**.
 - Evidence date: 2026-07-31 (Europe/Lisbon).
-- Repository evidence: tracked files at commit `a2daec42` before the FINAL
-  documentation audit, plus a clean `main...origin/main` comparison.
+- Repository evidence: C8 implementation commit `ce25a7c2`, plus a clean
+  `main...origin/main` comparison before implementation.
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
 - Production evidence: cache-bypass requests to the public domain.
 - Reproducibility evidence: the documented full rebuild and all four
-  validators at C7-FIX2 implementation commit `c177b67a` left a clean clone
-  with empty `git status --short`; verified 2026-07-31. The earlier repository
-  audit baseline was documentation commit `d08a3297`.
+  validator groups at C8 implementation commit `ce25a7c2` left a clean clone
+  with empty `git status --short`; verified 2026-07-31. `sitemap.xml` retained
+  SHA-256 `4910de2803fdd535c37198cf27ed541c23e66be8bd53afe80466881261e54971`.
+  The earlier repository audit baseline was documentation commit `d08a3297`.
 
 ## Repository And Production
 

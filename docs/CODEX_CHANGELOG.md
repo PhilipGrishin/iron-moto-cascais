@@ -14,6 +14,26 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-31 - Project family generator migration
+
+- Commit: `ce25a7c2`
+- Changed: Migrated all 10 legacy project details into the shared four-language
+  project data/generator flow, unified all 11 project schemas as `Article`
+  graphs with complete referenced publisher data, removed inline project copy
+  payloads and the obsolete post-processor, and generated the two historical
+  aliases as same-language noindex redirects in all four languages.
+- Verified: All 44 visible-text, ordered main-structure and media comparisons
+  matched the pre-migration baseline; schema, responsive hero, priority,
+  cache-bust, redirect and sitemap invariants passed for all 11 projects; all
+  four repository validator groups passed; the other 168 sitemap HTML files,
+  site assets, sitemap bytes and all lastmod values remained unchanged; and
+  the documented full rebuild left a clean clone of `ce25a7c2` with empty
+  `git status --short`.
+- Notes: The six new localized alias stubs remain noindex and outside the
+  sitemap. Local validation proves the maintained Google Article publisher,
+  name and logo contract; external Rich Results Test and production evidence
+  are recorded only after publication.
+
 ## 2026-07-31 - Blog picture hero preload alignment
 
 - Commit: `c177b67a`
