@@ -17,8 +17,10 @@ HERO_PRELOAD_BREAKPOINTS = (
 )
 OPTIMIZED_AVIF_RE = re.compile(
     rf"{re.escape(HERO_OPTIMIZED_URL_PREFIX)}/(?P<slug>[a-z0-9-]+)-"
-    rf"(?:{'|'.join(str(width) for width in HERO_IMAGE_WIDTHS)})\.avif"
+    rf"(?P<width>{'|'.join(str(width) for width in HERO_IMAGE_WIDTHS)})\.avif"
 )
+CSS_RULE_RE = re.compile(r"(?P<selectors>[^{}]+)\{(?P<body>[^{}]*)\}")
+CSS_CLASS_RE = re.compile(r"\.([a-zA-Z0-9_-]+)")
 LEGACY_PROJECT_HERO_RE = re.compile(
     r"(?P<url>/photos/projects/(?P<project>[a-z0-9-]+)-800\.jpg)"
 )
@@ -112,16 +114,72 @@ def _append_preload_links(soup, slug: str) -> None:
 
 def _optimized_hero_slug(soup) -> Optional[str]:
     """Infer the rendered hero slug from the page's existing CSS delivery."""
-    for background in soup.select("main .bg[style]"):
+    background = soup.select_one("main section .bg") or soup.select_one("main .bg")
+    if background is None:
+        return None
+
+    if background.name == "picture":
+        source = background.find("source", srcset=True)
+        match = OPTIMIZED_AVIF_RE.search(source.get("srcset", "")) if source else None
+        if match:
+            return match.group("slug")
+
+    if background.has_attr("style"):
         match = OPTIMIZED_AVIF_RE.search(background.get("style", ""))
         if match:
             return match.group("slug")
+
+    own_classes = set(background.get("class", []))
+    context_classes = set(own_classes)
+    for parent in background.parents:
+        context_classes.update(parent.get("class", []))
+        if parent.name == "main":
+            break
+
+    candidates = []
     if soup.head:
         for style in soup.head.find_all("style"):
-            match = OPTIMIZED_AVIF_RE.search(style.get_text())
-            if match:
-                return match.group("slug")
-    return None
+            for rule in CSS_RULE_RE.finditer(style.get_text()):
+                match = OPTIMIZED_AVIF_RE.search(rule.group("body"))
+                if not match:
+                    continue
+                for selector in rule.group("selectors").split(","):
+                    selector_classes = set(CSS_CLASS_RE.findall(selector))
+                    if not own_classes.intersection(selector_classes):
+                        continue
+                    if not selector_classes.issubset(context_classes):
+                        continue
+                    score = (
+                        10 * len((selector_classes - own_classes) & context_classes)
+                        + len(selector_classes & own_classes)
+                    )
+                    candidates.append((score, match.group("slug")))
+    return max(candidates, default=(0, None), key=lambda item: item[0])[1]
+
+
+def _sync_responsive_preloads(soup, slug: str) -> bool:
+    """Keep shared responsive preloads aligned with the rendered hero."""
+    changed = False
+    expected_media = {media for _, media in HERO_PRELOAD_BREAKPOINTS}
+    links = []
+    for link in soup.head.find_all("link", href=True) if soup.head else []:
+        rel = {str(item).lower() for item in link.get("rel", [])}
+        match = OPTIMIZED_AVIF_RE.fullmatch(link.get("href", ""))
+        if (
+            "preload" in rel
+            and str(link.get("as", "")).lower() == "image"
+            and link.get("media") in expected_media
+            and match
+        ):
+            links.append((link, match))
+    if len(links) != len(HERO_PRELOAD_BREAKPOINTS):
+        return False
+    for link, match in links:
+        expected = f"{HERO_OPTIMIZED_URL_PREFIX}/{slug}-{match.group('width')}.avif"
+        if link.get("href") != expected:
+            link["href"] = expected
+            changed = True
+    return changed
 
 
 def _upgrade_legacy_project_hero(soup, site_root: Path) -> Optional[str]:
@@ -180,11 +238,14 @@ def _upgrade_legacy_project_hero(soup, site_root: Path) -> Optional[str]:
 
 def ensure_lcp_image_delivery(soup, site_root: Path) -> bool:
     """Apply the established LCP image pattern to an indexable page."""
-    if has_lcp_image_hint(soup):
-        return False
-
     legacy_project_slug = _upgrade_legacy_project_hero(soup, site_root)
     optimized_slug = legacy_project_slug or _optimized_hero_slug(soup)
+    changed = bool(legacy_project_slug)
+    if optimized_slug:
+        changed = _sync_responsive_preloads(soup, optimized_slug) or changed
+    if has_lcp_image_hint(soup):
+        return changed
+
     if optimized_slug:
         _append_preload_links(soup, optimized_slug)
         return True
