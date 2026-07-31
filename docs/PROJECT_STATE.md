@@ -45,6 +45,9 @@ goal is SEO, local search, AI-citation readiness and high-quality service leads.
   pages use semantic Git history for the served HTML.
 - Production deploy is triggered by pushing `main`.
 - Cloudflare fronts the domain and may cache recently deployed HTML/assets.
+- Every sitemap page exposes an early LCP image-discovery hint. Legacy static
+  project pages use responsive AVIF/WebP/JPEG `<picture>` delivery while
+  preserving their existing visual treatment.
 - The canonical full rebuild sequence is documented only in
   `scripts/build/README.md`; maintained generators preserve semantically
   unchanged output so a clean rebuild is reviewable and repeatable.
@@ -252,7 +255,8 @@ Current news articles are registered in `scripts/build/news_data.py`:
   applier.
 - `scripts/build/build_i18n.py` - localized copies and JSON-LD localization.
 - `scripts/build/localize_internal_links.py` - localized internal link rewrites.
-- `scripts/build/apply_seo_meta.py` - shared SEO meta invariants.
+- `scripts/build/apply_seo_meta.py` - shared SEO meta invariants and sitemap-wide
+  LCP image-delivery normalization.
 - `scripts/build/build_sitemap.py` - sitemap and hreflang alternates.
 - `scripts/build/validate_seo.py` - broad SEO and asset validation.
 - `scripts/build/validate_brand_pages.py` - brand-page QA.

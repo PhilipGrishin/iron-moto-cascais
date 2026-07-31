@@ -473,6 +473,12 @@ When editing:
   localized-link registry and SEO validator.
 - Run `enhance_project_pages.py` if shared project enhancement blocks need
   regeneration on legacy static project pages.
+- Legacy static project hero sources are registered in `PROJECT_TILES`.
+  `optimize_hero_images.py` creates their responsive AVIF/WebP/JPEG variants,
+  and `apply_seo_meta.py` normalizes their delivery through the shared
+  `<picture>` plus responsive preload renderer in `hero_images.py`.
+- Run the image optimizer explicitly when a legacy project cover changes.
+  Binary image optimization is intentionally outside the canonical full build.
 
 Verification:
 

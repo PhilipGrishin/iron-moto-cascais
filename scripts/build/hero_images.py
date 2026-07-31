@@ -5,10 +5,23 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
+from typing import Optional
 
 HERO_IMAGE_WIDTHS = (768, 1280, 1920)
 HERO_IMAGE_FORMATS = ("avif", "webp", "jpg")
 HERO_OPTIMIZED_URL_PREFIX = "/photos/optimized"
+HERO_PRELOAD_BREAKPOINTS = (
+    (768, "(max-width: 767px)"),
+    (1280, "(min-width: 768px) and (max-width: 1279px)"),
+    (1920, "(min-width: 1280px)"),
+)
+OPTIMIZED_AVIF_RE = re.compile(
+    rf"{re.escape(HERO_OPTIMIZED_URL_PREFIX)}/(?P<slug>[a-z0-9-]+)-"
+    rf"(?:{'|'.join(str(width) for width in HERO_IMAGE_WIDTHS)})\.avif"
+)
+LEGACY_PROJECT_HERO_RE = re.compile(
+    r"(?P<url>/photos/projects/(?P<project>[a-z0-9-]+)-800\.jpg)"
+)
 
 
 def hero_image_slug(source_url: str) -> str:
@@ -48,20 +61,147 @@ def hero_background_css(source_url: str, width: int = 1280) -> str:
 
 
 def hero_preload_links(source_url: str) -> str:
-    """Return AVIF preload links for the homepage hero breakpoints."""
+    """Return AVIF preload links for the standard hero breakpoints."""
+    return hero_preload_links_for_slug(hero_image_slug(source_url))
+
+
+def hero_preload_links_for_slug(slug: str) -> str:
+    """Return responsive AVIF preload links for an optimized hero slug."""
     return "\n".join(
-        [
-            (
-                f'<link rel="preload" as="image" href="{optimized_hero_url(source_url, 768, "avif")}" '
-                'type="image/avif" media="(max-width: 767px)" fetchpriority="high"/>'
-            ),
-            (
-                f'<link rel="preload" as="image" href="{optimized_hero_url(source_url, 1280, "avif")}" '
-                'type="image/avif" media="(min-width: 768px) and (max-width: 1279px)" fetchpriority="high"/>'
-            ),
-            (
-                f'<link rel="preload" as="image" href="{optimized_hero_url(source_url, 1920, "avif")}" '
-                'type="image/avif" media="(min-width: 1280px)" fetchpriority="high"/>'
-            ),
-        ]
+        f'<link rel="preload" as="image" href="{HERO_OPTIMIZED_URL_PREFIX}/{slug}-{width}.avif" '
+        f'type="image/avif" media="{media}" fetchpriority="high"/>'
+        for width, media in HERO_PRELOAD_BREAKPOINTS
     )
+
+
+def hero_srcset_for_slug(slug: str, ext: str) -> str:
+    """Return the standard responsive srcset for an optimized hero slug."""
+    if ext not in HERO_IMAGE_FORMATS:
+        raise ValueError(f"Unsupported hero image format: {ext}")
+    return ", ".join(
+        f"{HERO_OPTIMIZED_URL_PREFIX}/{slug}-{width}.{ext} {width}w"
+        for width in HERO_IMAGE_WIDTHS
+    )
+
+
+def has_lcp_image_hint(soup) -> bool:
+    """Return whether a document already declares its primary image early."""
+    for link in soup.head.find_all("link", href=True) if soup.head else []:
+        rel = {str(item).lower() for item in link.get("rel", [])}
+        if "preload" in rel and str(link.get("as", "")).lower() == "image":
+            return True
+    return soup.find("img", attrs={"fetchpriority": "high"}) is not None
+
+
+def _append_preload_links(soup, slug: str) -> None:
+    """Insert preload links before stylesheets so discovery happens early."""
+    anchor = soup.head.find("link", attrs={"rel": "stylesheet"})
+    for width, media in HERO_PRELOAD_BREAKPOINTS:
+        link = soup.new_tag("link")
+        link["rel"] = "preload"
+        link["as"] = "image"
+        link["href"] = f"{HERO_OPTIMIZED_URL_PREFIX}/{slug}-{width}.avif"
+        link["type"] = "image/avif"
+        link["media"] = media
+        link["fetchpriority"] = "high"
+        if anchor is not None:
+            anchor.insert_before(link)
+        else:
+            soup.head.append(link)
+
+
+def _optimized_hero_slug(soup) -> Optional[str]:
+    """Infer the rendered hero slug from the page's existing CSS delivery."""
+    for background in soup.select("main .bg[style]"):
+        match = OPTIMIZED_AVIF_RE.search(background.get("style", ""))
+        if match:
+            return match.group("slug")
+    if soup.head:
+        for style in soup.head.find_all("style"):
+            match = OPTIMIZED_AVIF_RE.search(style.get_text())
+            if match:
+                return match.group("slug")
+    return None
+
+
+def _upgrade_legacy_project_hero(soup, site_root: Path) -> Optional[str]:
+    """Replace a legacy project JPEG background with the shared picture pattern."""
+    background = soup.select_one("main section.subpage > .bg[style]")
+    if background is None:
+        return None
+    match = LEGACY_PROJECT_HERO_RE.search(background.get("style", ""))
+    if not match:
+        return None
+
+    slug = hero_image_slug(f"/photos/projects/{match.group('project')}.jpg")
+    fallback_url = f"{HERO_OPTIMIZED_URL_PREFIX}/{slug}-1920.jpg"
+    fallback_path = site_root / fallback_url.lstrip("/")
+    if not fallback_path.exists():
+        raise FileNotFoundError(
+            f"Missing optimized legacy project hero {fallback_url}; "
+            "run optimize_hero_images.py for its source image"
+        )
+
+    from PIL import Image
+
+    with Image.open(fallback_path) as image:
+        width, height = image.size
+
+    picture = soup.new_tag("picture")
+    picture["class"] = background.get("class", ["bg"])
+    picture["aria-hidden"] = "true"
+    for ext, mime in (("avif", "image/avif"), ("webp", "image/webp")):
+        source = soup.new_tag("source")
+        source["type"] = mime
+        source["sizes"] = "100vw"
+        source["srcset"] = hero_srcset_for_slug(slug, ext)
+        picture.append(source)
+    image = soup.new_tag("img")
+    image["alt"] = ""
+    image["decoding"] = "async"
+    image["fetchpriority"] = "high"
+    image["sizes"] = "100vw"
+    image["src"] = fallback_url
+    image["srcset"] = hero_srcset_for_slug(slug, "jpg")
+    image["width"] = str(width)
+    image["height"] = str(height)
+    picture.append(image)
+    background.replace_with(picture)
+
+    style = soup.new_tag("style")
+    style.string = (
+        ".subpage picture.bg{display:block}\n"
+        ".subpage picture.bg img{width:100%;height:100%;object-fit:cover;"
+        "object-position:center;display:block}"
+    )
+    soup.head.append(style)
+    return slug
+
+
+def ensure_lcp_image_delivery(soup, site_root: Path) -> bool:
+    """Apply the established LCP image pattern to an indexable page."""
+    if has_lcp_image_hint(soup):
+        return False
+
+    legacy_project_slug = _upgrade_legacy_project_hero(soup, site_root)
+    optimized_slug = legacy_project_slug or _optimized_hero_slug(soup)
+    if optimized_slug:
+        _append_preload_links(soup, optimized_slug)
+        return True
+
+    social_image = soup.head.find("meta", attrs={"property": "og:image"}) if soup.head else None
+    social_url = social_image.get("content", "") if social_image else ""
+    site_origin = "https://ironcustommotors.com"
+    if social_url.startswith(f"{site_origin}/"):
+        social_url = social_url[len(site_origin):]
+    if social_url.startswith("/photos/"):
+        link = soup.new_tag("link")
+        link["rel"] = "preload"
+        link["as"] = "image"
+        link["href"] = social_url
+        link["fetchpriority"] = "high"
+        anchor = soup.head.find("link", attrs={"rel": "stylesheet"})
+        anchor.insert_before(link) if anchor else soup.head.append(link)
+        return True
+
+    raise ValueError("Indexable page has no image source for its required LCP hint")

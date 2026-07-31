@@ -16,7 +16,7 @@ root (works from any cwd because paths are absolute).
 - Python 3.8+
 - `beautifulsoup4` (HTML parsing/rewriting)
 - `lxml` (recommended for stable HTML rewriting; scripts fall back to Python's built-in `html.parser`)
-- `Pillow` (only for `add_image_dims.py`)
+- `Pillow` (image dimensions and hero-image optimization)
 - `reportlab`, `pdfplumber`, `pypdf` (only for pricing PDF generation and PDF checks)
 - Node.js 14+ (only for `extract_i18n.js`)
 
@@ -59,15 +59,15 @@ python3 -m pip install -r requirements.txt
 | `nav_patch.py` | Applies the shared navigation and footer to every sitemap page |
 | `localize_internal_links.py` | Rewrites internal links in `/ru/`, `/uk/`, `/pt/` pages so they point inside the same language subtree |
 | `add_image_dims.py` | Adds `width`/`height` attributes to every `<img>` based on the real image file |
-| `apply_seo_meta.py` | Applies shared SEO meta invariants, including `max-image-preview:large`, to every HTML file |
+| `apply_seo_meta.py` | Applies shared SEO meta invariants and sitemap-wide early LCP image discovery to every indexable HTML file |
 | `build_sitemap.py` | Regenerates `sitemap.xml` with all 4 languages |
 | `build_llms.py` | Regenerates `llms.txt` from the sitemap page registry, content registries, published meta descriptions and canonical business facts |
 | `build_reviews_schema.py` | Pulls live Google rating/count via the Cloudflare Worker, reads curated visible reviews from `assets/reviews-curated.json`, injects `AggregateRating` + matching `Review` JSON-LD into the home pages, and refreshes the static reviews HTML fallback |
-| `optimize_hero_images.py` | Rebuilds requested AVIF/WebP/JPEG hero variants after a source hero changes |
+| `optimize_hero_images.py` | Rebuilds requested AVIF/WebP/JPEG hero variants after a source hero changes; its default source set includes legacy project covers registered in `PROJECT_TILES` |
 | `optimize_tyre_service_images.py` | Rebuilds tyre-service AVIF/WebP/JPEG variants when their source checksums change; `tyre_service_images_manifest.json` records those checksums |
 | `import_project_images.py` | Imports and optimizes a project's approved hero/gallery source images into `photos/projects/<slug>/` |
 | `extract_i18n.js` | Reads `assets/main.js` and writes `scripts/build/i18n.json` (consumed by `build_i18n.py`) |
-| `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD, localized internal links, SEO robots meta and local assets |
+| `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD, localized internal links, SEO robots meta, local assets and LCP image delivery hints |
 | `validate_brand_pages.py` | Validates brand page registry, 4 language outputs, schema, sitemap, optimized hero assets, deploy workflow and reciprocal brand links |
 | `validate_harley_hub.py` | Validates the 12 Harley pages, exact source copy, LCP media, schema, same-language links, feed, portfolio and existing-page integrations |
 | `validate_project_pages.py` | Validates one data-driven project page family across all 4 languages |
@@ -450,6 +450,14 @@ python3 scripts/build/validate_project_pages.py <slug>
 python3 scripts/build/validate_seo.py
 ```
 
+Legacy static project pages keep their authored content but receive the same
+responsive LCP delivery during `apply_seo_meta.py`: their source covers come
+from `new_pages_data.py` `PROJECT_TILES`, while `hero_images.py` replaces the
+old inline JPEG background with an AVIF/WebP/JPEG `<picture>` and responsive
+AVIF preloads. Run `optimize_hero_images.py` explicitly after changing one of
+those source covers; media optimization intentionally remains outside the
+canonical full rebuild because it rewrites binary assets.
+
 ### After editing pricing data
 
 ```
@@ -523,8 +531,8 @@ page before release.
 - `extract_i18n.js` is fragile to formatting of the `I18N` literal
   in `main.js`. It walks brace depth starting from `const I18N = {`.
   Keep that marker intact.
-- `add_image_dims.py` reads pixel sizes via Pillow. Images must be
-  present at the resolved paths (root-relative).
+- `add_image_dims.py` and the legacy project hero normalizer read pixel sizes
+  via Pillow. Images must be present at the resolved paths (root-relative).
 - `site_chrome.py` renders the canonical primary nav, mobile nav and footer
   columns. `nav_patch.py` applies that shared chrome to every page registered
   in the sitemap.

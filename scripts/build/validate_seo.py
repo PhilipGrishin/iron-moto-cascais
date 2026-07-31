@@ -199,6 +199,30 @@ def check_asset_cache_bust_presence(soup) -> list[str]:
     return issues
 
 
+def check_lcp_image_delivery(soup) -> list[str]:
+    """Validate the browser hints and image attributes used for LCP delivery."""
+    issues = []
+    image_preloads = [
+        link
+        for link in soup.find_all("link", href=True)
+        if "preload" in {str(item).lower() for item in link.get("rel", [])}
+        and str(link.get("as", "")).lower() == "image"
+    ]
+    priority_images = soup.find_all("img", attrs={"fetchpriority": "high"})
+
+    if not image_preloads and not priority_images:
+        issues.append("missing LCP image preload or img fetchpriority=high")
+    if len(priority_images) > 1:
+        issues.append(f"multiple img fetchpriority=high candidates: {len(priority_images)}")
+    for image in priority_images:
+        if image.get("loading") == "lazy":
+            issues.append("img fetchpriority=high must not use loading=lazy")
+    for image in soup.find_all("img"):
+        if not image.has_attr("alt"):
+            issues.append(f"img is missing alt: {image.get('src', '<no src>')}")
+    return issues
+
+
 def check_asset_cache_bust_consistency(urls: list[str]) -> list[str]:
     values_by_asset = {}
     for url in urls:
@@ -644,6 +668,7 @@ def validate_page(url: str) -> list[str]:
     issues.extend(check_internal_links(soup, lang))
     issues.extend(check_local_assets(soup, html_path))
     issues.extend(check_asset_cache_bust_presence(soup))
+    issues.extend(check_lcp_image_delivery(soup))
     return [f"{url}: {issue}" for issue in issues]
 
 

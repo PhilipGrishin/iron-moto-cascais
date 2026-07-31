@@ -172,6 +172,8 @@ def build_page(slug, lang):
     # 5. Drop the existing inline <style>, replace with legal CSS
     for st in head.find_all("style"):
         st.decompose()
+    for preload in head.find_all("link", attrs={"rel": "preload", "as": "image"}):
+        preload.decompose()
     style = chrome.new_tag("style")
     style.string = LEGAL_CSS
     head.append(style)

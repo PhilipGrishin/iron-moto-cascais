@@ -9,6 +9,7 @@ from pathlib import Path
 
 from brand_pages_data import BRAND_CONFIG
 from hero_images import HERO_IMAGE_FORMATS, HERO_IMAGE_WIDTHS, hero_image_slug
+from new_pages_data import PROJECT_TILES
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 OUTPUT_DIR = SITE_ROOT / "photos" / "optimized"
@@ -32,10 +33,17 @@ DEFAULT_HERO_SOURCES = [
     "photos/blog/blog-front-fork-service-motorcycle-cascais-01-1600.jpg",
     "photos/blog/blog-motorcycle-tyre-fitting-specialist-cascais-01-1600.jpg",
 ]
+LEGACY_PROJECT_HERO_SOURCES = [
+    project["img"].lstrip("/")[:-len("-800.jpg")] + ".jpg"
+    for project in PROJECT_TILES
+    if project["img"].startswith("/photos/projects/")
+    and project["img"].endswith("-800.jpg")
+]
 HERO_SOURCES = list(
     dict.fromkeys(
         [
             *DEFAULT_HERO_SOURCES,
+            *LEGACY_PROJECT_HERO_SOURCES,
             *[config["hero"].lstrip("/") for config in BRAND_CONFIG.values()],
         ]
     )
