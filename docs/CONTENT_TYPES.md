@@ -149,6 +149,10 @@ Stable rules:
 - Preserve the reviewed copy and maintained internal links.
 - Hero is the LCP resource: responsive local AVIF/WebP, explicit dimensions,
   eager/high-priority discovery and no lazy loading.
+- The article hero preload is one AVIF link with `imagesrcset` and
+  `imagesizes` matching the first AVIF `<source>`. Keep `fetchpriority="high"`
+  only on the hero `<img>` so preload and paint resolve through one candidate
+  selection contract.
 - Other article images are lazy unless their position requires otherwise.
 - Native video uses the supplied source/poster and matching `VideoObject`; do
   not substitute an iframe when self-hosted media is required.
@@ -166,9 +170,12 @@ Ownership:
 - `news_data.py` `NEWS_ARTICLES`.
 - `build_news.py` renders the hub and articles.
 
-Stable rules mirror Blog for responsive local media, real dates, localized
-links and schema-to-visible-content alignment. `NewsArticle` is used for event
-and workshop news. Event names used in machine indexes should be concise;
+News articles currently use the responsive CSS-background hero pattern, not
+the Blog `<picture>` pattern. Keep their preload and CSS candidates aligned
+through `hero_images.py` and `apply_seo_meta.py`. Other stable rules mirror
+Blog for responsive local media, real dates, localized links and
+schema-to-visible-content alignment. `NewsArticle` is used for event and
+workshop news. Event names used in machine indexes should be concise;
 marketing subtitles belong in descriptions.
 
 Commands: `scripts/build/README.md`, **News workflow**.

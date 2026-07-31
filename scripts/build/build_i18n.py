@@ -463,9 +463,21 @@ def absolutize_paths(soup):
                 el[attr] = "/" + stripped
 
 
-def remove_existing_hreflang(soup):
-    for el in soup.head.find_all("link", attrs={"rel": "alternate", "hreflang": True}):
-        el.decompose()
+def replace_hreflang_block(soup, tags):
+    """Replace hreflang links without moving their maintained head position."""
+    existing = soup.head.find_all(
+        "link",
+        attrs={"rel": "alternate", "hreflang": True},
+    )
+    if existing:
+        anchor = existing[0]
+        for tag in tags:
+            anchor.insert_before(tag)
+        for element in existing:
+            element.decompose()
+        return
+    for tag in tags:
+        soup.head.append(tag)
 
 
 def upsert_meta(soup, *, prop=None, name=None, content):
@@ -584,9 +596,7 @@ def localize_page(en_html: str, lang: str, page_id: str, *, project_name=None) -
     can_el["href"] = canonical_url
 
     # 5. Replace hreflang block
-    remove_existing_hreflang(soup)
-    for tag in make_hreflang_block(soup, page_id, project_name):
-        soup.head.append(tag)
+    replace_hreflang_block(soup, make_hreflang_block(soup, page_id, project_name))
 
     # 6. Localize JSON-LD URLs and visible text so structured data matches the page.
     localize_jsonld_blocks(soup, lang, canonical_url)
@@ -609,9 +619,7 @@ def update_en_page(en_html: str, page_id: str, project_name=None) -> str:
     """For English source page: sync visible copy, hreflang and JSON-LD."""
     soup = parse_html(en_html)
     apply_translations(soup, "en")
-    remove_existing_hreflang(soup)
-    for tag in make_hreflang_block(soup, page_id, project_name):
-        soup.head.append(tag)
+    replace_hreflang_block(soup, make_hreflang_block(soup, page_id, project_name))
     base_path = "" if page_id == "" else f"{page_id}/"
     if project_name:
         base_path = f"projects/{project_name}/"

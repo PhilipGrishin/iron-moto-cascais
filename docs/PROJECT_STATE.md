@@ -174,6 +174,11 @@ Legacy noindex redirects:
 - Every sitemap page has an early hero discovery hint.
 - CSS-background heroes use matching responsive preload/background candidates
   at the maintained viewport boundaries.
+- Blog article `<picture>` heroes use one AVIF preload whose `imagesrcset` and
+  `imagesizes` mirror the rendered AVIF source; the hero `<img>` is the only
+  `fetchpriority="high"` element on those pages.
+- News article heroes remain in the CSS-background family protected by the
+  responsive CSS hero contract; they are not `<picture>` heroes.
 - Legacy project heroes use responsive AVIF/WebP/JPEG `<picture>` delivery.
 - `llms.txt` is generated from the English page registry, maintained page-name
   sources, metadata and `docs/BUSINESS_FACTS.md`.

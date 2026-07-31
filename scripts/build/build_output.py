@@ -72,6 +72,35 @@ def _node_value(node) -> object | None:
         children = (_script_value(node),)
     elif node.name in {"style", "pre", "textarea"}:
         children = (("raw", node.get_text().strip()),)
+    elif node.name == "head":
+        ordered_children = []
+        independent_metadata = []
+        for child in node.children:
+            child_value = _node_value(child)
+            if child_value is None:
+                continue
+            is_hreflang = (
+                isinstance(child, Tag)
+                and child.name == "link"
+                and child.has_attr("hreflang")
+                and "alternate" in child.get("rel", [])
+            )
+            is_og_locale = (
+                isinstance(child, Tag)
+                and child.name == "meta"
+                and child.get("property") in {"og:locale", "og:locale:alternate"}
+            )
+            if is_hreflang or is_og_locale:
+                independent_metadata.append(child_value)
+            else:
+                ordered_children.append(child_value)
+        children = (
+            *ordered_children,
+            (
+                "order-independent-head-metadata",
+                tuple(sorted(independent_metadata, key=repr)),
+            ),
+        )
     else:
         children = tuple(
             child_value

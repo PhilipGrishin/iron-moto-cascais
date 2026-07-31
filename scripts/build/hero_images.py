@@ -39,6 +39,13 @@ LEGACY_PROJECT_HERO_RE = re.compile(
 RESPONSIVE_HERO_ATTR = "data-lcp-responsive-background"
 RESPONSIVE_HERO_STYLE_ATTR = "data-lcp-responsive-background-style"
 STANDARD_VIEWPORT_SAMPLES = (390, 900, 1440)
+PICTURE_HERO_VIEWPORT_SAMPLES = (
+    (390, 3),
+    (390, 2),
+    (768, 2),
+    (1280, 1),
+    (1440, 1),
+)
 
 
 def hero_image_slug(source_url: str) -> str:
@@ -112,6 +119,17 @@ def hero_preload_links_for_slug(slug: str) -> str:
     )
 
 
+def picture_hero_preload_link(source_url: str, sizes: str = "100vw") -> str:
+    """Return one AVIF preload that mirrors a responsive picture source."""
+    slug = hero_image_slug(source_url)
+    fallback = optimized_hero_url(source_url, 1280, "avif")
+    srcset = hero_srcset_for_slug(slug, "avif")
+    return (
+        f'<link rel="preload" as="image" href="{fallback}" type="image/avif" '
+        f'imagesrcset="{srcset}" imagesizes="{sizes}"/>'
+    )
+
+
 def hero_srcset_for_slug(slug: str, ext: str) -> str:
     """Return the standard responsive srcset for an optimized hero slug."""
     if ext not in HERO_IMAGE_FORMATS:
@@ -120,6 +138,108 @@ def hero_srcset_for_slug(slug: str, ext: str) -> str:
         f"{HERO_OPTIMIZED_URL_PREFIX}/{slug}-{width}.{ext} {width}w"
         for width in HERO_IMAGE_WIDTHS
     )
+
+
+def _srcset_width_candidates(value: str) -> list[tuple[str, int]]:
+    """Parse the width-descriptor subset used by maintained hero srcsets."""
+    candidates = []
+    for item in value.split(","):
+        match = re.fullmatch(r"\s*(\S+)\s+(\d+)w\s*", item)
+        if match:
+            candidates.append((match.group(1), int(match.group(2))))
+    return sorted(candidates, key=lambda candidate: candidate[1])
+
+
+def _srcset_candidate_for_viewport(
+    value: str,
+    sizes: str,
+    viewport: int,
+    device_pixel_ratio: int,
+) -> Optional[str]:
+    """Resolve the maintained 100vw hero pattern for a viewport and DPR."""
+    candidates = _srcset_width_candidates(value)
+    if not candidates or sizes.strip() != "100vw":
+        return None
+    required_width = viewport * device_pixel_ratio
+    for url, width in candidates:
+        if width >= required_width:
+            return url
+    return candidates[-1][0]
+
+
+def picture_hero_preload_alignment(soup):
+    """Compare a Blog picture hero with its responsive preload contract."""
+    picture = soup.select_one(".blog-article picture.hero-media")
+    if picture is None:
+        return None, []
+
+    issues = []
+    avif_source = picture.find("source", attrs={"type": "image/avif"})
+    hero_image = picture.find("img")
+    preloads = []
+    for link in soup.head.find_all("link") if soup.head else []:
+        rel = {str(item).lower() for item in link.get("rel", [])}
+        if "preload" in rel and str(link.get("as", "")).lower() == "image":
+            preloads.append(link)
+
+    if avif_source is None:
+        issues.append("missing AVIF picture source")
+        return picture, issues
+    if hero_image is None:
+        issues.append("missing picture img fallback")
+        return picture, issues
+    if len(preloads) != 1:
+        issues.append(f"expected one image preload, found {len(preloads)}")
+        return picture, issues
+
+    preload = preloads[0]
+    source_srcset = avif_source.get("srcset", "")
+    source_sizes = avif_source.get("sizes", "")
+    preload_srcset = preload.get("imagesrcset", "")
+    preload_sizes = preload.get("imagesizes", "")
+    if preload.get("type") != "image/avif":
+        issues.append(f"preload type {preload.get('type')!r} != 'image/avif'")
+    if preload.has_attr("media"):
+        issues.append("picture preload must not use a viewport-only media query")
+    if preload_srcset != source_srcset:
+        issues.append("preload imagesrcset does not match the AVIF source srcset")
+    if preload_sizes != source_sizes:
+        issues.append("preload imagesizes does not match the AVIF source sizes")
+    if hero_image.get("sizes", "") != source_sizes:
+        issues.append("img sizes does not match the AVIF source sizes")
+
+    candidate_urls = {url for url, _ in _srcset_width_candidates(preload_srcset)}
+    if preload.get("href") not in candidate_urls:
+        issues.append("preload href is not an imagesrcset candidate")
+
+    high_priority = soup.select('[fetchpriority="high"]')
+    if len(high_priority) > 1:
+        issues.append(f"expected at most one fetchpriority=high, found {len(high_priority)}")
+    if hero_image.get("fetchpriority") != "high":
+        issues.append("picture hero img must use fetchpriority=high")
+    if hero_image.get("loading") == "lazy":
+        issues.append("picture hero img must not use loading=lazy")
+
+    for viewport, device_pixel_ratio in PICTURE_HERO_VIEWPORT_SAMPLES:
+        preload_url = _srcset_candidate_for_viewport(
+            preload_srcset,
+            preload_sizes,
+            viewport,
+            device_pixel_ratio,
+        )
+        rendered_url = _srcset_candidate_for_viewport(
+            source_srcset,
+            source_sizes,
+            viewport,
+            device_pixel_ratio,
+        )
+        if preload_url != rendered_url or preload_url is None:
+            issues.append(
+                f"{viewport}px/DPR{device_pixel_ratio} preload "
+                f"{preload_url or '<unresolved>'} != picture "
+                f"{rendered_url or '<unresolved>'}"
+            )
+    return picture, issues
 
 
 def responsive_hero_background_style(slug: str) -> str:

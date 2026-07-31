@@ -3,13 +3,18 @@
 
 from __future__ import annotations
 
+import subprocess
 from pathlib import Path
 from typing import Set
 import xml.etree.ElementTree as ET
 
 from bs4 import BeautifulSoup, FeatureNotFound
 
-from build_output import write_html_if_changed
+from build_output import (
+    html_semantically_equal,
+    write_html_if_changed,
+    write_text_if_changed,
+)
 from hero_images import ensure_lcp_image_delivery
 from seo_meta import upsert_robots_image_preview
 
@@ -32,12 +37,33 @@ def sitemap_html_files() -> Set[Path]:
     return paths
 
 
+def committed_html(path: Path) -> str | None:
+    """Read the canonical tracked bytes when this checkout has a Git baseline."""
+    try:
+        relative_path = path.relative_to(SITE_ROOT).as_posix()
+    except ValueError:
+        return None
+    result = subprocess.run(
+        ["git", "show", f"HEAD:{relative_path}"],
+        cwd=SITE_ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    return result.stdout if result.returncode == 0 else None
+
+
 def apply_to_file(path: Path, *, indexable: bool) -> bool:
-    soup = BeautifulSoup(path.read_text(encoding="utf-8"), HTML_PARSER)
+    current = path.read_text(encoding="utf-8")
+    soup = BeautifulSoup(current, HTML_PARSER)
     changed = upsert_robots_image_preview(soup)
     if indexable:
         changed = ensure_lcp_image_delivery(soup, SITE_ROOT) or changed
-    return changed and write_html_if_changed(path, str(soup))
+    generated = str(soup) if changed else current
+    canonical = committed_html(path)
+    if canonical is not None and html_semantically_equal(canonical, generated):
+        return write_text_if_changed(path, canonical)
+    return write_html_if_changed(path, generated)
 
 
 def main() -> int:

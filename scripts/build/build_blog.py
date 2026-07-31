@@ -30,7 +30,16 @@ from build_news import (
     schema_author,
     schema_datetime,
 )
-from hero_images import hero_background_css, hero_preload_links, optimized_hero_url
+from hero_images import (
+    RESPONSIVE_HERO_ATTR,
+    RESPONSIVE_HERO_STYLE_ATTR,
+    hero_background_css,
+    hero_image_slug,
+    hero_preload_links,
+    optimized_hero_url,
+    picture_hero_preload_link,
+    responsive_hero_background_style,
+)
 from site_chrome import patch_navigation_footer
 
 
@@ -224,9 +233,9 @@ def head(slug_for_url, lang, head_meta, json_ld_blocks, og_image=None, og_type="
 <link href="/photos/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/photos/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="/photos/site.webmanifest" rel="manifest"/>
-{preload_html}
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+{preload_html}
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="/assets/main.css?v={CACHE_BUST}" rel="stylesheet"/>
 <style>
@@ -316,9 +325,22 @@ def render_hub():
         },
     ]
 
-    head_html = head("blog", "en", en_head, json_ld_blocks, og_image=f"{DOMAIN}/photos/lounge-1600.jpg").replace(
+    hub_hero = "/photos/lounge-1600.jpg"
+    head_html = head(
+        "blog",
+        "en",
+        en_head,
+        json_ld_blocks,
+        og_image=f"{DOMAIN}{hub_hero}",
+        preload_html=hero_preload_links(hub_hero),
+    ).replace(
         "window.ICM_I18N_PAGE = {};",
         f"window.ICM_I18N_PAGE = {json.dumps(inline_i18n, ensure_ascii=False)};",
+    )
+    responsive_style = responsive_hero_background_style(hero_image_slug(hub_hero))
+    head_html = head_html.replace(
+        "</head>",
+        f'<style {RESPONSIVE_HERO_STYLE_ATTR}="">{responsive_style}</style></head>',
     )
 
     topics_html = "\n".join(
@@ -332,7 +354,7 @@ def render_hub():
 
     body = f'''<main>
 <section class="subpage blog-hub">
-<div aria-hidden="true" class="bg"></div>
+<div aria-hidden="true" class="bg" {RESPONSIVE_HERO_ATTR}=""></div>
 <div class="container">
 <div class="crumb"><a data-i18n="blogHub.breadHome" href="/">Home</a><span class="sep">→</span><span data-i18n="blogHub.h1Crumb">Blog</span></div>
 <div class="h-eyebrow" data-i18n="blogHub.eyebrow" style="margin-bottom:18px">{en_body["eyebrow"]}</div>
@@ -546,7 +568,7 @@ def render_article(slug, article):
         json_ld_blocks,
         og_image=hero_img_url,
         og_type="article",
-        preload_html=hero_preload_links(hero_img_path),
+        preload_html=picture_hero_preload_link(hero_img_path, sizes="100vw"),
     ).replace(
         "window.ICM_I18N_PAGE = {};",
         f"window.ICM_I18N_PAGE = {json.dumps(inline_i18n, ensure_ascii=False)};",

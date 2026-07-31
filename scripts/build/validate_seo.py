@@ -14,7 +14,7 @@ from urllib.parse import parse_qs, urlparse
 from bs4 import BeautifulSoup, FeatureNotFound
 
 from brand_pages_data import BRAND_ORDER
-from hero_images import css_hero_preload_alignment
+from hero_images import css_hero_preload_alignment, picture_hero_preload_alignment
 from seo_meta import robots_has_large_image_preview
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -155,6 +155,11 @@ def check_local_assets(soup, html_path: Path) -> list[str]:
             issue = check_ref_exists(link["href"], html_path, "link[href]")
             if issue:
                 issues.append(issue)
+        if link.get("imagesrcset"):
+            for ref in srcset_refs(link["imagesrcset"]):
+                issue = check_ref_exists(ref, html_path, "link[imagesrcset]")
+                if issue:
+                    issues.append(issue)
 
     for meta in soup.find_all("meta"):
         key = str(meta.get("property") or meta.get("name") or "").lower()
@@ -230,6 +235,14 @@ def check_css_hero_preload_alignment(soup) -> tuple[bool, list[str]]:
     if hero is None:
         return False, []
     return True, [f"CSS hero preload mismatch: {item}" for item in mismatches]
+
+
+def check_picture_hero_preload_alignment(soup) -> tuple[bool, list[str]]:
+    """Validate that a Blog picture hero and its preload share one selection."""
+    hero, mismatches = picture_hero_preload_alignment(soup)
+    if hero is None:
+        return False, []
+    return True, [f"picture hero preload mismatch: {item}" for item in mismatches]
 
 
 def check_asset_cache_bust_consistency(urls: list[str]) -> list[str]:
@@ -680,6 +693,8 @@ def validate_page(url: str) -> list[str]:
     issues.extend(check_lcp_image_delivery(soup))
     _, css_hero_issues = check_css_hero_preload_alignment(soup)
     issues.extend(css_hero_issues)
+    _, picture_hero_issues = check_picture_hero_preload_alignment(soup)
+    issues.extend(picture_hero_issues)
     return [f"{url}: {issue}" for issue in issues]
 
 
@@ -698,6 +713,21 @@ def validate_css_hero_preloads(urls: list[str]) -> tuple[int, list[str]]:
     return checked, issues
 
 
+def validate_picture_hero_preloads(urls: list[str]) -> tuple[int, list[str]]:
+    checked = 0
+    issues = []
+    for url in urls:
+        html_path, _, _ = file_for_url(url)
+        if not html_path.exists():
+            continue
+        soup = BeautifulSoup(html_path.read_text(encoding="utf-8"), HTML_PARSER)
+        is_picture_hero, page_issues = check_picture_hero_preload_alignment(soup)
+        if is_picture_hero:
+            checked += 1
+        issues.extend(f"{url}: {issue}" for issue in page_issues)
+    return checked, issues
+
+
 def main() -> int:
     urls = sitemap_urls()
     if "--check-css-hero-preloads" in sys.argv[1:]:
@@ -711,6 +741,23 @@ def main() -> int:
                 print(f"  - {issue}")
             return 1
         print(f"CSS hero preload validation passed: {checked} CSS hero page(s)")
+        return 0
+    if "--check-picture-hero-preloads" in sys.argv[1:]:
+        checked, issues = validate_picture_hero_preloads(urls)
+        if issues:
+            print(
+                "Picture hero preload validation failed: "
+                f"{len(issues)} mismatch(es) across {checked} picture hero page(s)"
+            )
+            for issue in issues:
+                print(f"  - {issue}")
+            return 1
+        print(
+            "Picture hero preload validation passed: "
+            f"{checked} picture hero page(s); "
+            "390px/DPR3, 390px/DPR2, 768px/DPR2, "
+            "1280px/DPR1, 1440px/DPR1"
+        )
         return 0
     issues = []
     for url in urls:

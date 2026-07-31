@@ -11,22 +11,11 @@ No active implementation task is recorded after the FINAL documentation audit.
 
 ## Performance Follow-Up
 
-### Responsive `<picture>` hero downloads two candidates
-
-- Status: **data-backed**, open; explicitly outside C7-FIX.
-- Affected output: 28 blog article pages and 12 news article pages.
-- Method: local Chromium through Playwright, viewport 390 x 844 CSS pixels,
-  device pixel ratio 3, network 1.6 Mbps / 170 ms latency, CPU throttling 4x.
-  Evidence collected 2026-07-31.
-- Observation: the preload requests the 768px AVIF while `<picture>` `srcset`
-  selects the 1280px AVIF for the same hero. Both are transferred. In the
-  measured case the transfers were 26,494 bytes plus 50,467 bytes, while only
-  the latter candidate was rendered.
-- Impact: extra hero bytes and connection competition on constrained networks.
-  Laboratory LCP is noisy, so the transfer duplication is the stronger finding.
-- Next action: in a separately approved performance task, test preload
-  `imagesrcset`/`imagesizes` or align candidate choice with device pixels. Keep
-  visual output unchanged and measure before and after.
+The duplicate Blog `<picture>` hero candidate issue is resolved by C7-FIX2.
+The earlier affected-family statement incorrectly included 12 News articles;
+repository source and rendered output confirm that those articles already use
+the C7-FIX CSS-background contract. The correction and evidence are retained
+in `docs/reports/C7_FIX2_REPORT.md` rather than as active work here.
 
 ### C7 LCP measurement record
 

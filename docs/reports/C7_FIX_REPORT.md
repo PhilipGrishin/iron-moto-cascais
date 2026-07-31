@@ -4,16 +4,15 @@ Date: 2026-07-31
 
 Implementation commit: `410809d1`
 
-## Correction Recorded 2026-07-31
+## Corrections Recorded 2026-07-31
 
 The high-density `<picture>` note in the original report below was preliminary.
-The current follow-up measurement uses Chromium at 390 x 844 CSS pixels with
-device pixel ratio 3. It confirms duplicate candidates on the generated Blog
-and News article pages: the preload requests the 768px candidate while the
-rendered `<picture>` selects the 1280px candidate. The confirmed follow-up
-scope is the Blog and News article families; project detail pages are not part
-of that current finding. The evidence, affected-family inventory, transferred
-bytes and proposed follow-up are recorded in `docs/OPEN_TASKS.md`.
+A later correction incorrectly expanded the finding to generated Blog and News
+articles. C7-FIX2 source inspection and rendered-output enumeration confirmed
+that only the 28 Blog article variants use `picture.hero-media`; all 12 News
+article variants use `data-lcp-responsive-background` and were already covered
+by C7-FIX. The Blog-only correction and final evidence are in
+`docs/reports/C7_FIX2_REPORT.md`.
 
 The SEO/GEO table in the original report used `EN_PAGES` as terminology from
 the task brief. No such registry exists in the repository. The canonical

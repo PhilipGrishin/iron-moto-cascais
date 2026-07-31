@@ -225,7 +225,7 @@ before this task and are now recorded:
 
 | Knowledge | Durable location |
 | --- | --- |
-| High-density Blog/News article heroes can transfer both preload and selected `<picture>` candidates | `docs/OPEN_TASKS.md` |
+| High-density Blog article `<picture>` heroes previously transferred both preload and selected candidates; the old News inclusion was incorrect | `docs/reports/C7_FIX2_REPORT.md` |
 | C7/C7-FIX local LCP measurements, exact method, and the conclusion that structural validation did not guarantee performance | `docs/OPEN_TASKS.md` |
 | Cloudflare discovery-file verification must bypass edge cache | `docs/OPEN_TASKS.md` and `scripts/build/README.md` |
 | Default Python urllib requests can receive a production sitemap denial | `docs/OPEN_TASKS.md` |
