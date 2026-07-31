@@ -12,6 +12,10 @@ scalable.
 - Use absolute asset paths (`/photos/...`, `/assets/...`).
 - Keep localized internal links inside the current language subtree.
 - If `assets/main.css` or `assets/main.js` changes, bump cache-bust everywhere.
+- Keep CSS-background hero delivery responsive through `hero_images.py`.
+  Preload and rendered background must select the same optimized AVIF at the
+  768/1280/1920 viewport boundaries; do not add a fixed-size hero background
+  beside responsive preload hints.
 - Sitemap `<lastmod>` must reflect each page's real last-content-change date
   from Git history of that page's source/served HTML, per language, in
   ISO-8601 with timezone. Never stamp all URLs with the build/deploy time.
@@ -477,6 +481,9 @@ When editing:
   `optimize_hero_images.py` creates their responsive AVIF/WebP/JPEG variants,
   and `apply_seo_meta.py` normalizes their delivery through the shared
   `<picture>` plus responsive preload renderer in `hero_images.py`.
+- CSS-background page families are normalized separately by
+  `apply_seo_meta.py`; verify them with
+  `validate_seo.py --check-css-hero-preloads`.
 - Run the image optimizer explicitly when a legacy project cover changes.
   Binary image optimization is intentionally outside the canonical full build.
 

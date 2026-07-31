@@ -11,6 +11,19 @@ No active implementation task is pending at the time of this update.
 
 ## Pending Content Follow-up
 
+### High-DPR `<picture>` preload candidate selection
+
+- Status: Observed during C7-FIX; outside that block's CSS-background scope.
+- Context: At a 390px viewport with device pixel ratio 2, a blog article
+  preloads its 768px AVIF hero while responsive `srcset` selects the 1280px
+  AVIF of the same hero. The preload is the correct article hero, not a card
+  image, but both width candidates are observed as resources. Project detail
+  pages use the same `<picture>` family and were explicitly protected from
+  C7-FIX changes after their measured LCP improvement.
+- Next action: In a separate approved performance task, decide whether preload
+  `imagesrcset`/`imagesizes` should replace breakpoint-specific links for
+  `<picture>` heroes, then measure projects and articles before changing them.
+
 ### Pre-purchase description in `llms.txt`
 
 - Status: Deferred by the C6 scope boundary.

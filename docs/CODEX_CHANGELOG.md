@@ -14,6 +14,19 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-31 - CSS hero preload alignment
+
+- Commit: `410809d1`
+- Changed: Aligned CSS-background heroes with their responsive AVIF preloads at
+  the shared mobile, tablet and desktop breakpoints and added a sitemap-wide
+  validator for the rendered CSS resource.
+- Verified: Negative pre-fix fixture, all focused validators, mobile/tablet/
+  desktop browser resource checks, unchanged project pages, sitemap lastmod
+  and cache-bust values, plus a clean canonical full rebuild.
+- Notes: Blog and news hubs/articles with CSS heroes inherit this through
+  `apply_seo_meta.py`; `<picture>` high-DPR candidate selection remains a
+  separate documented follow-up.
+
 ## 2026-07-31 - Sitemap-wide hero image delivery
 
 - Commit: `dc093993`

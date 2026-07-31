@@ -59,7 +59,7 @@ python3 -m pip install -r requirements.txt
 | `nav_patch.py` | Applies the shared navigation and footer to every sitemap page |
 | `localize_internal_links.py` | Rewrites internal links in `/ru/`, `/uk/`, `/pt/` pages so they point inside the same language subtree |
 | `add_image_dims.py` | Adds `width`/`height` attributes to every `<img>` based on the real image file |
-| `apply_seo_meta.py` | Applies shared SEO meta invariants and sitemap-wide early LCP image discovery to every indexable HTML file |
+| `apply_seo_meta.py` | Applies shared SEO meta invariants, sitemap-wide early LCP image discovery and responsive preload/background alignment for CSS heroes |
 | `build_sitemap.py` | Regenerates `sitemap.xml` with all 4 languages |
 | `build_llms.py` | Regenerates `llms.txt` from the sitemap page registry, content registries, published meta descriptions and canonical business facts |
 | `build_reviews_schema.py` | Pulls live Google rating/count via the Cloudflare Worker, reads curated visible reviews from `assets/reviews-curated.json`, injects `AggregateRating` + matching `Review` JSON-LD into the home pages, and refreshes the static reviews HTML fallback |
@@ -67,7 +67,7 @@ python3 -m pip install -r requirements.txt
 | `optimize_tyre_service_images.py` | Rebuilds tyre-service AVIF/WebP/JPEG variants when their source checksums change; `tyre_service_images_manifest.json` records those checksums |
 | `import_project_images.py` | Imports and optimizes a project's approved hero/gallery source images into `photos/projects/<slug>/` |
 | `extract_i18n.js` | Reads `assets/main.js` and writes `scripts/build/i18n.json` (consumed by `build_i18n.py`) |
-| `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD, localized internal links, SEO robots meta, local assets and LCP image delivery hints |
+| `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD, localized internal links, SEO robots meta, local assets, LCP hints and CSS hero preload/background alignment (`--check-css-hero-preloads` for the focused check) |
 | `validate_brand_pages.py` | Validates brand page registry, 4 language outputs, schema, sitemap, optimized hero assets, deploy workflow and reciprocal brand links |
 | `validate_harley_hub.py` | Validates the 12 Harley pages, exact source copy, LCP media, schema, same-language links, feed, portfolio and existing-page integrations |
 | `validate_project_pages.py` | Validates one data-driven project page family across all 4 languages |

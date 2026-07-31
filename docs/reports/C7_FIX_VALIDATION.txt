@@ -1,0 +1,380 @@
+C7-FIX exact validator transcript
+Date: 2026-07-31
+
+===== BEFORE: validate_seo.py --check-css-hero-preloads =====
+Exit status: 1
+CSS hero preload validation failed: 168 mismatch(es) across 104 CSS hero page(s)
+  - https://ironcustommotors.com/pre-purchase-inspection/: CSS hero preload mismatch: 1px preload /photos/optimized/services-pre-purchase-inspection-main-768.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/pre-purchase-inspection/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-pre-purchase-inspection-main-1920.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/ru/pre-purchase-inspection/: CSS hero preload mismatch: 1px preload /photos/optimized/services-pre-purchase-inspection-main-768.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/ru/pre-purchase-inspection/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-pre-purchase-inspection-main-1920.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/uk/pre-purchase-inspection/: CSS hero preload mismatch: 1px preload /photos/optimized/services-pre-purchase-inspection-main-768.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/uk/pre-purchase-inspection/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-pre-purchase-inspection-main-1920.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/pt/pre-purchase-inspection/: CSS hero preload mismatch: 1px preload /photos/optimized/services-pre-purchase-inspection-main-768.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/pt/pre-purchase-inspection/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-pre-purchase-inspection-main-1920.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/authorized-dealer/: CSS hero preload mismatch: 1px preload /photos/optimized/authorized-dealer-main-768.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/authorized-dealer/: CSS hero preload mismatch: 768px preload /photos/optimized/authorized-dealer-main-1280.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/ru/authorized-dealer/: CSS hero preload mismatch: 1px preload /photos/optimized/authorized-dealer-main-768.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/ru/authorized-dealer/: CSS hero preload mismatch: 768px preload /photos/optimized/authorized-dealer-main-1280.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/uk/authorized-dealer/: CSS hero preload mismatch: 1px preload /photos/optimized/authorized-dealer-main-768.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/uk/authorized-dealer/: CSS hero preload mismatch: 768px preload /photos/optimized/authorized-dealer-main-1280.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/pt/authorized-dealer/: CSS hero preload mismatch: 1px preload /photos/optimized/authorized-dealer-main-768.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/pt/authorized-dealer/: CSS hero preload mismatch: 768px preload /photos/optimized/authorized-dealer-main-1280.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/pricing/: CSS hero preload mismatch: 768px preload /photos/optimized/parts-shelf-1280.avif != CSS /photos/optimized/parts-shelf-768.avif
+  - https://ironcustommotors.com/pricing/: CSS hero preload mismatch: 1280px preload /photos/optimized/parts-shelf-1920.avif != CSS /photos/optimized/parts-shelf-1280.avif
+  - https://ironcustommotors.com/ru/pricing/: CSS hero preload mismatch: 768px preload /photos/optimized/parts-shelf-1280.avif != CSS /photos/optimized/parts-shelf-768.avif
+  - https://ironcustommotors.com/ru/pricing/: CSS hero preload mismatch: 1280px preload /photos/optimized/parts-shelf-1920.avif != CSS /photos/optimized/parts-shelf-1280.avif
+  - https://ironcustommotors.com/uk/pricing/: CSS hero preload mismatch: 768px preload /photos/optimized/parts-shelf-1280.avif != CSS /photos/optimized/parts-shelf-768.avif
+  - https://ironcustommotors.com/uk/pricing/: CSS hero preload mismatch: 1280px preload /photos/optimized/parts-shelf-1920.avif != CSS /photos/optimized/parts-shelf-1280.avif
+  - https://ironcustommotors.com/pt/pricing/: CSS hero preload mismatch: 768px preload /photos/optimized/parts-shelf-1280.avif != CSS /photos/optimized/parts-shelf-768.avif
+  - https://ironcustommotors.com/pt/pricing/: CSS hero preload mismatch: 1280px preload /photos/optimized/parts-shelf-1920.avif != CSS /photos/optimized/parts-shelf-1280.avif
+  - https://ironcustommotors.com/services/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/services/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/ru/services/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/ru/services/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/uk/services/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/uk/services/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/pt/services/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/pt/services/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/projects/: CSS hero preload mismatch: 1px preload /photos/optimized/projects-inspirium-hero-768.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/projects/: CSS hero preload mismatch: 1280px preload /photos/optimized/projects-inspirium-hero-1920.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/ru/projects/: CSS hero preload mismatch: 1px preload /photos/optimized/projects-inspirium-hero-768.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/ru/projects/: CSS hero preload mismatch: 1280px preload /photos/optimized/projects-inspirium-hero-1920.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/uk/projects/: CSS hero preload mismatch: 1px preload /photos/optimized/projects-inspirium-hero-768.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/uk/projects/: CSS hero preload mismatch: 1280px preload /photos/optimized/projects-inspirium-hero-1920.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/pt/projects/: CSS hero preload mismatch: 1px preload /photos/optimized/projects-inspirium-hero-768.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/pt/projects/: CSS hero preload mismatch: 1280px preload /photos/optimized/projects-inspirium-hero-1920.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/community/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/community/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/ru/community/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/ru/community/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/uk/community/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/uk/community/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/pt/community/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/pt/community/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/contact/: CSS hero preload mismatch: 1px preload /photos/optimized/exterior-768.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/contact/: CSS hero preload mismatch: 1280px preload /photos/optimized/exterior-1920.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/ru/contact/: CSS hero preload mismatch: 1px preload /photos/optimized/exterior-768.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/ru/contact/: CSS hero preload mismatch: 1280px preload /photos/optimized/exterior-1920.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/uk/contact/: CSS hero preload mismatch: 1px preload /photos/optimized/exterior-768.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/uk/contact/: CSS hero preload mismatch: 1280px preload /photos/optimized/exterior-1920.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/pt/contact/: CSS hero preload mismatch: 1px preload /photos/optimized/exterior-768.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/pt/contact/: CSS hero preload mismatch: 1280px preload /photos/optimized/exterior-1920.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/faq/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/faq/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/ru/faq/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/ru/faq/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/uk/faq/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/uk/faq/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/pt/faq/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/pt/faq/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/harley-service/: CSS hero preload mismatch: 1px preload /photos/optimized/harley-service-main-768.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/harley-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/harley-service-main-1920.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/ru/harley-service/: CSS hero preload mismatch: 1px preload /photos/optimized/harley-service-main-768.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/ru/harley-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/harley-service-main-1920.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/uk/harley-service/: CSS hero preload mismatch: 1px preload /photos/optimized/harley-service-main-768.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/uk/harley-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/harley-service-main-1920.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/pt/harley-service/: CSS hero preload mismatch: 1px preload /photos/optimized/harley-service-main-768.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/pt/harley-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/harley-service-main-1920.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/bmw-service/: CSS hero preload mismatch: 1px preload /photos/optimized/bmw-service-main-768.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/bmw-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/bmw-service-main-1920.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/ru/bmw-service/: CSS hero preload mismatch: 1px preload /photos/optimized/bmw-service-main-768.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/ru/bmw-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/bmw-service-main-1920.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/uk/bmw-service/: CSS hero preload mismatch: 1px preload /photos/optimized/bmw-service-main-768.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/uk/bmw-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/bmw-service-main-1920.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/pt/bmw-service/: CSS hero preload mismatch: 1px preload /photos/optimized/bmw-service-main-768.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/pt/bmw-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/bmw-service-main-1920.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/ducati-service/: CSS hero preload mismatch: 1px preload /photos/optimized/ducati-service-main-768.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/ducati-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/ducati-service-main-1920.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/ru/ducati-service/: CSS hero preload mismatch: 1px preload /photos/optimized/ducati-service-main-768.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/ru/ducati-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/ducati-service-main-1920.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/uk/ducati-service/: CSS hero preload mismatch: 1px preload /photos/optimized/ducati-service-main-768.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/uk/ducati-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/ducati-service-main-1920.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/pt/ducati-service/: CSS hero preload mismatch: 1px preload /photos/optimized/ducati-service-main-768.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/pt/ducati-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/ducati-service-main-1920.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/suzuki-service/: CSS hero preload mismatch: 1px preload /photos/optimized/suzuki-service-main-768.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/suzuki-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/suzuki-service-main-1920.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/ru/suzuki-service/: CSS hero preload mismatch: 1px preload /photos/optimized/suzuki-service-main-768.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/ru/suzuki-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/suzuki-service-main-1920.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/uk/suzuki-service/: CSS hero preload mismatch: 1px preload /photos/optimized/suzuki-service-main-768.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/uk/suzuki-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/suzuki-service-main-1920.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/pt/suzuki-service/: CSS hero preload mismatch: 1px preload /photos/optimized/suzuki-service-main-768.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/pt/suzuki-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/suzuki-service-main-1920.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/honda-service/: CSS hero preload mismatch: 1px preload /photos/optimized/honda-service-main-768.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/honda-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/honda-service-main-1920.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/ru/honda-service/: CSS hero preload mismatch: 1px preload /photos/optimized/honda-service-main-768.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/ru/honda-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/honda-service-main-1920.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/uk/honda-service/: CSS hero preload mismatch: 1px preload /photos/optimized/honda-service-main-768.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/uk/honda-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/honda-service-main-1920.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/pt/honda-service/: CSS hero preload mismatch: 1px preload /photos/optimized/honda-service-main-768.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/pt/honda-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/honda-service-main-1920.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/royal-enfield-service/: CSS hero preload mismatch: 1px preload /photos/optimized/royal-enfield-service-main-768.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/royal-enfield-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/royal-enfield-service-main-1920.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/ru/royal-enfield-service/: CSS hero preload mismatch: 1px preload /photos/optimized/royal-enfield-service-main-768.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/ru/royal-enfield-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/royal-enfield-service-main-1920.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/uk/royal-enfield-service/: CSS hero preload mismatch: 1px preload /photos/optimized/royal-enfield-service-main-768.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/uk/royal-enfield-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/royal-enfield-service-main-1920.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/pt/royal-enfield-service/: CSS hero preload mismatch: 1px preload /photos/optimized/royal-enfield-service-main-768.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/pt/royal-enfield-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/royal-enfield-service-main-1920.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/triumph-service/: CSS hero preload mismatch: 1px preload /photos/optimized/triumph-service-main-768.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/triumph-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/triumph-service-main-1920.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/ru/triumph-service/: CSS hero preload mismatch: 1px preload /photos/optimized/triumph-service-main-768.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/ru/triumph-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/triumph-service-main-1920.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/uk/triumph-service/: CSS hero preload mismatch: 1px preload /photos/optimized/triumph-service-main-768.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/uk/triumph-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/triumph-service-main-1920.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/pt/triumph-service/: CSS hero preload mismatch: 1px preload /photos/optimized/triumph-service-main-768.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/pt/triumph-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/triumph-service-main-1920.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/motorcycle-tyre-service/: CSS hero preload mismatch: 1px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-768.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/motorcycle-tyre-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1920.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/ru/shinomontazh-mototsiklov/: CSS hero preload mismatch: 1px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-768.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/ru/shinomontazh-mototsiklov/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1920.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/uk/shynomontazh-mototsykliv/: CSS hero preload mismatch: 1px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-768.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/uk/shynomontazh-mototsykliv/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1920.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/pt/montagem-de-pneus-mota/: CSS hero preload mismatch: 1px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-768.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/pt/montagem-de-pneus-mota/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1920.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/blog/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/blog/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/ru/blog/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/ru/blog/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/uk/blog/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/uk/blog/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/pt/blog/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/pt/blog/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/news/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/news/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/ru/news/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/ru/news/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/uk/news/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/uk/news/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/pt/news/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/pt/news/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-768.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1920.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/ru/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-768.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/ru/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1920.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/uk/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-768.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/uk/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1920.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/pt/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-768.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/pt/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1920.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/ru/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/ru/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/uk/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/uk/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/pt/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/pt/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-lmff2026-01-768.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+  - https://ironcustommotors.com/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-lmff2026-01-1920.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+  - https://ironcustommotors.com/ru/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-lmff2026-01-768.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+  - https://ironcustommotors.com/ru/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-lmff2026-01-1920.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+  - https://ironcustommotors.com/uk/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-lmff2026-01-768.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+  - https://ironcustommotors.com/uk/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-lmff2026-01-1920.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+  - https://ironcustommotors.com/pt/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-lmff2026-01-768.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+  - https://ironcustommotors.com/pt/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-lmff2026-01-1920.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+
+===== BEFORE: validate_seo.py =====
+Exit status: 1
+SEO validation failed: 168 issue(s)
+  - https://ironcustommotors.com/pre-purchase-inspection/: CSS hero preload mismatch: 1px preload /photos/optimized/services-pre-purchase-inspection-main-768.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/pre-purchase-inspection/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-pre-purchase-inspection-main-1920.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/ru/pre-purchase-inspection/: CSS hero preload mismatch: 1px preload /photos/optimized/services-pre-purchase-inspection-main-768.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/ru/pre-purchase-inspection/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-pre-purchase-inspection-main-1920.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/uk/pre-purchase-inspection/: CSS hero preload mismatch: 1px preload /photos/optimized/services-pre-purchase-inspection-main-768.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/uk/pre-purchase-inspection/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-pre-purchase-inspection-main-1920.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/pt/pre-purchase-inspection/: CSS hero preload mismatch: 1px preload /photos/optimized/services-pre-purchase-inspection-main-768.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/pt/pre-purchase-inspection/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-pre-purchase-inspection-main-1920.avif != CSS /photos/optimized/services-pre-purchase-inspection-main-1280.avif
+  - https://ironcustommotors.com/authorized-dealer/: CSS hero preload mismatch: 1px preload /photos/optimized/authorized-dealer-main-768.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/authorized-dealer/: CSS hero preload mismatch: 768px preload /photos/optimized/authorized-dealer-main-1280.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/ru/authorized-dealer/: CSS hero preload mismatch: 1px preload /photos/optimized/authorized-dealer-main-768.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/ru/authorized-dealer/: CSS hero preload mismatch: 768px preload /photos/optimized/authorized-dealer-main-1280.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/uk/authorized-dealer/: CSS hero preload mismatch: 1px preload /photos/optimized/authorized-dealer-main-768.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/uk/authorized-dealer/: CSS hero preload mismatch: 768px preload /photos/optimized/authorized-dealer-main-1280.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/pt/authorized-dealer/: CSS hero preload mismatch: 1px preload /photos/optimized/authorized-dealer-main-768.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/pt/authorized-dealer/: CSS hero preload mismatch: 768px preload /photos/optimized/authorized-dealer-main-1280.avif != CSS /photos/optimized/authorized-dealer-main-1920.avif
+  - https://ironcustommotors.com/pricing/: CSS hero preload mismatch: 768px preload /photos/optimized/parts-shelf-1280.avif != CSS /photos/optimized/parts-shelf-768.avif
+  - https://ironcustommotors.com/pricing/: CSS hero preload mismatch: 1280px preload /photos/optimized/parts-shelf-1920.avif != CSS /photos/optimized/parts-shelf-1280.avif
+  - https://ironcustommotors.com/ru/pricing/: CSS hero preload mismatch: 768px preload /photos/optimized/parts-shelf-1280.avif != CSS /photos/optimized/parts-shelf-768.avif
+  - https://ironcustommotors.com/ru/pricing/: CSS hero preload mismatch: 1280px preload /photos/optimized/parts-shelf-1920.avif != CSS /photos/optimized/parts-shelf-1280.avif
+  - https://ironcustommotors.com/uk/pricing/: CSS hero preload mismatch: 768px preload /photos/optimized/parts-shelf-1280.avif != CSS /photos/optimized/parts-shelf-768.avif
+  - https://ironcustommotors.com/uk/pricing/: CSS hero preload mismatch: 1280px preload /photos/optimized/parts-shelf-1920.avif != CSS /photos/optimized/parts-shelf-1280.avif
+  - https://ironcustommotors.com/pt/pricing/: CSS hero preload mismatch: 768px preload /photos/optimized/parts-shelf-1280.avif != CSS /photos/optimized/parts-shelf-768.avif
+  - https://ironcustommotors.com/pt/pricing/: CSS hero preload mismatch: 1280px preload /photos/optimized/parts-shelf-1920.avif != CSS /photos/optimized/parts-shelf-1280.avif
+  - https://ironcustommotors.com/services/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/services/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/ru/services/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/ru/services/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/uk/services/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/uk/services/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/pt/services/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/pt/services/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/projects/: CSS hero preload mismatch: 1px preload /photos/optimized/projects-inspirium-hero-768.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/projects/: CSS hero preload mismatch: 1280px preload /photos/optimized/projects-inspirium-hero-1920.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/ru/projects/: CSS hero preload mismatch: 1px preload /photos/optimized/projects-inspirium-hero-768.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/ru/projects/: CSS hero preload mismatch: 1280px preload /photos/optimized/projects-inspirium-hero-1920.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/uk/projects/: CSS hero preload mismatch: 1px preload /photos/optimized/projects-inspirium-hero-768.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/uk/projects/: CSS hero preload mismatch: 1280px preload /photos/optimized/projects-inspirium-hero-1920.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/pt/projects/: CSS hero preload mismatch: 1px preload /photos/optimized/projects-inspirium-hero-768.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/pt/projects/: CSS hero preload mismatch: 1280px preload /photos/optimized/projects-inspirium-hero-1920.avif != CSS /photos/optimized/projects-inspirium-hero-1280.avif
+  - https://ironcustommotors.com/community/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/community/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/ru/community/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/ru/community/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/uk/community/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/uk/community/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/pt/community/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/pt/community/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/contact/: CSS hero preload mismatch: 1px preload /photos/optimized/exterior-768.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/contact/: CSS hero preload mismatch: 1280px preload /photos/optimized/exterior-1920.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/ru/contact/: CSS hero preload mismatch: 1px preload /photos/optimized/exterior-768.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/ru/contact/: CSS hero preload mismatch: 1280px preload /photos/optimized/exterior-1920.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/uk/contact/: CSS hero preload mismatch: 1px preload /photos/optimized/exterior-768.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/uk/contact/: CSS hero preload mismatch: 1280px preload /photos/optimized/exterior-1920.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/pt/contact/: CSS hero preload mismatch: 1px preload /photos/optimized/exterior-768.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/pt/contact/: CSS hero preload mismatch: 1280px preload /photos/optimized/exterior-1920.avif != CSS /photos/optimized/exterior-1280.avif
+  - https://ironcustommotors.com/faq/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/faq/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/ru/faq/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/ru/faq/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/uk/faq/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/uk/faq/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/pt/faq/: CSS hero preload mismatch: 1px preload /photos/optimized/service-action-768.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/pt/faq/: CSS hero preload mismatch: 1280px preload /photos/optimized/service-action-1920.avif != CSS /photos/optimized/service-action-1280.avif
+  - https://ironcustommotors.com/harley-service/: CSS hero preload mismatch: 1px preload /photos/optimized/harley-service-main-768.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/harley-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/harley-service-main-1920.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/ru/harley-service/: CSS hero preload mismatch: 1px preload /photos/optimized/harley-service-main-768.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/ru/harley-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/harley-service-main-1920.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/uk/harley-service/: CSS hero preload mismatch: 1px preload /photos/optimized/harley-service-main-768.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/uk/harley-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/harley-service-main-1920.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/pt/harley-service/: CSS hero preload mismatch: 1px preload /photos/optimized/harley-service-main-768.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/pt/harley-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/harley-service-main-1920.avif != CSS /photos/optimized/harley-service-main-1280.avif
+  - https://ironcustommotors.com/bmw-service/: CSS hero preload mismatch: 1px preload /photos/optimized/bmw-service-main-768.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/bmw-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/bmw-service-main-1920.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/ru/bmw-service/: CSS hero preload mismatch: 1px preload /photos/optimized/bmw-service-main-768.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/ru/bmw-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/bmw-service-main-1920.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/uk/bmw-service/: CSS hero preload mismatch: 1px preload /photos/optimized/bmw-service-main-768.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/uk/bmw-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/bmw-service-main-1920.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/pt/bmw-service/: CSS hero preload mismatch: 1px preload /photos/optimized/bmw-service-main-768.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/pt/bmw-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/bmw-service-main-1920.avif != CSS /photos/optimized/bmw-service-main-1280.avif
+  - https://ironcustommotors.com/ducati-service/: CSS hero preload mismatch: 1px preload /photos/optimized/ducati-service-main-768.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/ducati-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/ducati-service-main-1920.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/ru/ducati-service/: CSS hero preload mismatch: 1px preload /photos/optimized/ducati-service-main-768.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/ru/ducati-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/ducati-service-main-1920.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/uk/ducati-service/: CSS hero preload mismatch: 1px preload /photos/optimized/ducati-service-main-768.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/uk/ducati-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/ducati-service-main-1920.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/pt/ducati-service/: CSS hero preload mismatch: 1px preload /photos/optimized/ducati-service-main-768.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/pt/ducati-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/ducati-service-main-1920.avif != CSS /photos/optimized/ducati-service-main-1280.avif
+  - https://ironcustommotors.com/suzuki-service/: CSS hero preload mismatch: 1px preload /photos/optimized/suzuki-service-main-768.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/suzuki-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/suzuki-service-main-1920.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/ru/suzuki-service/: CSS hero preload mismatch: 1px preload /photos/optimized/suzuki-service-main-768.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/ru/suzuki-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/suzuki-service-main-1920.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/uk/suzuki-service/: CSS hero preload mismatch: 1px preload /photos/optimized/suzuki-service-main-768.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/uk/suzuki-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/suzuki-service-main-1920.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/pt/suzuki-service/: CSS hero preload mismatch: 1px preload /photos/optimized/suzuki-service-main-768.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/pt/suzuki-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/suzuki-service-main-1920.avif != CSS /photos/optimized/suzuki-service-main-1280.avif
+  - https://ironcustommotors.com/honda-service/: CSS hero preload mismatch: 1px preload /photos/optimized/honda-service-main-768.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/honda-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/honda-service-main-1920.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/ru/honda-service/: CSS hero preload mismatch: 1px preload /photos/optimized/honda-service-main-768.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/ru/honda-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/honda-service-main-1920.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/uk/honda-service/: CSS hero preload mismatch: 1px preload /photos/optimized/honda-service-main-768.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/uk/honda-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/honda-service-main-1920.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/pt/honda-service/: CSS hero preload mismatch: 1px preload /photos/optimized/honda-service-main-768.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/pt/honda-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/honda-service-main-1920.avif != CSS /photos/optimized/honda-service-main-1280.avif
+  - https://ironcustommotors.com/royal-enfield-service/: CSS hero preload mismatch: 1px preload /photos/optimized/royal-enfield-service-main-768.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/royal-enfield-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/royal-enfield-service-main-1920.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/ru/royal-enfield-service/: CSS hero preload mismatch: 1px preload /photos/optimized/royal-enfield-service-main-768.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/ru/royal-enfield-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/royal-enfield-service-main-1920.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/uk/royal-enfield-service/: CSS hero preload mismatch: 1px preload /photos/optimized/royal-enfield-service-main-768.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/uk/royal-enfield-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/royal-enfield-service-main-1920.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/pt/royal-enfield-service/: CSS hero preload mismatch: 1px preload /photos/optimized/royal-enfield-service-main-768.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/pt/royal-enfield-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/royal-enfield-service-main-1920.avif != CSS /photos/optimized/royal-enfield-service-main-1280.avif
+  - https://ironcustommotors.com/triumph-service/: CSS hero preload mismatch: 1px preload /photos/optimized/triumph-service-main-768.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/triumph-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/triumph-service-main-1920.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/ru/triumph-service/: CSS hero preload mismatch: 1px preload /photos/optimized/triumph-service-main-768.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/ru/triumph-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/triumph-service-main-1920.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/uk/triumph-service/: CSS hero preload mismatch: 1px preload /photos/optimized/triumph-service-main-768.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/uk/triumph-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/triumph-service-main-1920.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/pt/triumph-service/: CSS hero preload mismatch: 1px preload /photos/optimized/triumph-service-main-768.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/pt/triumph-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/triumph-service-main-1920.avif != CSS /photos/optimized/triumph-service-main-1280.avif
+  - https://ironcustommotors.com/motorcycle-tyre-service/: CSS hero preload mismatch: 1px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-768.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/motorcycle-tyre-service/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1920.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/ru/shinomontazh-mototsiklov/: CSS hero preload mismatch: 1px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-768.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/ru/shinomontazh-mototsiklov/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1920.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/uk/shynomontazh-mototsykliv/: CSS hero preload mismatch: 1px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-768.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/uk/shynomontazh-mototsykliv/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1920.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/pt/montagem-de-pneus-mota/: CSS hero preload mismatch: 1px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-768.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/pt/montagem-de-pneus-mota/: CSS hero preload mismatch: 1280px preload /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1920.avif != CSS /photos/optimized/services-motorcycle-tyre-service-workshop-cascais-1280.avif
+  - https://ironcustommotors.com/blog/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/blog/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/ru/blog/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/ru/blog/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/uk/blog/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/uk/blog/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/pt/blog/: CSS hero preload mismatch: 1px preload /photos/optimized/lounge-768.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/pt/blog/: CSS hero preload mismatch: 1280px preload /photos/optimized/lounge-1920.avif != CSS /photos/optimized/lounge-1280.avif
+  - https://ironcustommotors.com/news/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/news/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/ru/news/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/ru/news/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/uk/news/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/uk/news/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/pt/news/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/pt/news/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-768.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1920.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/ru/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-768.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/ru/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1920.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/uk/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-768.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/uk/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1920.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/pt/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-768.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/pt/news/ericeira-kustom-fest-2026/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1920.avif != CSS /photos/optimized/news-news-ericeira-kustom-fest-2026-01-1280.avif
+  - https://ironcustommotors.com/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/ru/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/ru/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/uk/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/uk/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/pt/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-opening-01-768.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/pt/news/opens-new-workshop-in-cascais/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-opening-01-1920.avif != CSS /photos/optimized/news-news-opening-01-1280.avif
+  - https://ironcustommotors.com/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-lmff2026-01-768.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+  - https://ironcustommotors.com/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-lmff2026-01-1920.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+  - https://ironcustommotors.com/ru/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-lmff2026-01-768.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+  - https://ironcustommotors.com/ru/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-lmff2026-01-1920.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+  - https://ironcustommotors.com/uk/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-lmff2026-01-768.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+  - https://ironcustommotors.com/uk/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-lmff2026-01-1920.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+  - https://ironcustommotors.com/pt/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1px preload /photos/optimized/news-news-lmff2026-01-768.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+  - https://ironcustommotors.com/pt/news/lisbon-motorcycle-film-fest-2026-beckman/: CSS hero preload mismatch: 1280px preload /photos/optimized/news-news-lmff2026-01-1920.avif != CSS /photos/optimized/news-news-lmff2026-01-1280.avif
+
+===== BEFORE: validate_brand_pages.py =====
+Exit status: 0
+Brand page validation passed: 7 brand page set(s).
+
+===== BEFORE: validate_harley_hub.py =====
+Exit status: 0
+Harley Hub validation passed: 12 pages and all required integrations
+
+===== BEFORE: validate_project_pages.py fighter =====
+Exit status: 0
+OK: fighter project page passed multilingual, media, schema and integration checks
+
+===== AFTER: validate_seo.py --check-css-hero-preloads =====
+Exit status: 0
+CSS hero preload validation passed: 104 CSS hero page(s)
+
+===== AFTER: validate_seo.py =====
+Exit status: 0
+SEO validation passed: 212 sitemap URL(s)
+
+===== AFTER: validate_brand_pages.py =====
+Exit status: 0
+Brand page validation passed: 7 brand page set(s).
+
+===== AFTER: validate_harley_hub.py =====
+Exit status: 0
+Harley Hub validation passed: 12 pages and all required integrations
+
+===== AFTER: validate_project_pages.py fighter =====
+Exit status: 0
+OK: fighter project page passed multilingual, media, schema and integration checks
+
+

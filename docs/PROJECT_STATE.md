@@ -47,7 +47,9 @@ goal is SEO, local search, AI-citation readiness and high-quality service leads.
 - Cloudflare fronts the domain and may cache recently deployed HTML/assets.
 - Every sitemap page exposes an early LCP image-discovery hint. Legacy static
   project pages use responsive AVIF/WebP/JPEG `<picture>` delivery while
-  preserving their existing visual treatment.
+  preserving their existing visual treatment. CSS-background heroes use the
+  same 768/1280/1920 viewport boundaries for preload and rendered background;
+  `validate_seo.py --check-css-hero-preloads` protects that alignment.
 - The canonical full rebuild sequence is documented only in
   `scripts/build/README.md`; maintained generators preserve semantically
   unchanged output so a clean rebuild is reviewable and repeatable.
