@@ -12,7 +12,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Status: **confirmed**.
 - Evidence date: 2026-07-31 (Europe/Lisbon).
 - Repository evidence: C8 implementation commits `ce25a7c2` and `f42fb5d0`,
-  plus a clean `main...origin/main` comparison after publication.
+  plus C8-FIX implementation commit `52316a26`.
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
@@ -20,7 +20,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
   checks of all 44 project pages and 8 redirects, and Google Rich Results Test
   result `jJofvvbCnFVaAOIxQqYMZQ` with four valid items and no warnings.
 - Reproducibility evidence: the documented full rebuild and all four
-  validator groups at C8 schema-complete commit `f42fb5d0` left a clean clone
+  validator groups at C8-FIX implementation commit `52316a26` left a clean clone
   with empty `git status --short`; verified 2026-07-31. `sitemap.xml` retained
   SHA-256 `4910de2803fdd535c37198cf27ed541c23e66be8bd53afe80466881261e54971`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
@@ -192,6 +192,10 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   AVIF/WebP sources with a JPEG fallback; Fighter retains its registered
   AVIF/WebP media set. Every project page has one responsive AVIF preload and
   exactly one `fetchpriority="high"` hero image.
+- Project detail chrome is pre-rendered from the same `GLOBAL_I18N` source as
+  the matching language homepage. Sitemap-wide validation compares cookie,
+  booking, WhatsApp, header/mobile and footer chrome strings against that
+  same-language baseline.
 - `llms.txt` is generated from the English page registry, maintained page-name
   sources, metadata and `docs/BUSINESS_FACTS.md`.
 - `robots.txt` advertises both `sitemap.xml` and `llms.txt`.

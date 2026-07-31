@@ -14,6 +14,25 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-31 - Project chrome localization regression fix
+
+- Commit: `52316a26`
+- Changed: Restored `GLOBAL_I18N` application in the direct project renderer
+  so all 33 PT/RU/UK project details pre-render the canonical localized cookie,
+  booking, WhatsApp, header/mobile and footer chrome. Added sitemap-wide chrome
+  text parity validation against each language homepage.
+- Verified: The new assertion failed against the `619d288d` output with exactly
+  33 localized project mismatches and passed after regeneration across all 212
+  sitemap URLs. Full rendered body text matched `affa9121` on 33/33 localized
+  projects; EN projects, all redirect stubs, the other 168 sitemap pages,
+  sitemap bytes, lastmod values, assets and cache-bust values were unchanged.
+  The complete documented rebuild left a clean clone of `52316a26` with empty
+  `git status --short`, and all four validator groups passed.
+- Notes: C8 removed project details from `build_i18n.py` but its replacement
+  only patched navigation/link structure from the EN Joker template; it did
+  not apply the shared translation dictionary to the remaining chrome text.
+  Production evidence is recorded after publication.
+
 ## 2026-07-31 - Project family generator migration
 
 - Commit: `f42fb5d0`

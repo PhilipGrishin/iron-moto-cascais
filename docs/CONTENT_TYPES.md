@@ -200,6 +200,10 @@ Stable rules:
 - New projects use the registered data-driven flow.
 - Generated project HTML must not contain `window.ICM_I18N_PAGE`; localized
   project copy belongs in the registered source data.
+- Because project details bypass `build_i18n.py`, `build_project_pages.py` must
+  apply `site_chrome.py` `GLOBAL_I18N` for the selected language before it
+  writes shared chrome. `validate_seo.py` compares translated chrome text on
+  every indexable page with the same-language homepage baseline.
 - Hero media is responsive and eager, with a responsive AVIF preload matching
   its `<picture>` source. Only the hero image uses
   `fetchpriority="high"`; gallery media remains dimensioned and lazy.
