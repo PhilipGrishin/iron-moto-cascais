@@ -5,16 +5,10 @@ this repository and applies to every coding agent.
 
 ## Source Of Truth
 
-Use repository sources in this order:
-
-1. `AGENTS.md` for operating rules and non-negotiables.
-2. `docs/PROJECT_STATE.md` for the current site inventory, supported languages,
-   active page families, and current cache-bust value.
-3. `docs/CONTENT_TYPES.md` for page-family ownership and repeatable workflows.
-4. `docs/OPEN_TASKS.md` for temporary risks and unresolved follow-ups.
-5. `scripts/build/README.md` for canonical generator and validator order.
-6. Source data and generators under `scripts/build/`.
-7. Generated HTML as output and verification evidence.
+Follow the `START HERE: Documentation Protocol` section in `AGENTS.md`. It is
+the canonical reading order and the ownership map for project facts, business
+facts, workflows, open risks, chronology and build commands. Do not reproduce
+that order here.
 
 Do not rely on external local files or paths that are not committed to this
 repository. When required business or content requirements are missing from
@@ -50,8 +44,8 @@ server-side application framework or CMS.
 ## Reviews
 
 Google rating and total review count come from the Cloudflare Worker response
-stored in `assets/reviews-snapshot.json`. The Worker uses a twenty-four-hour
-edge cache.
+stored in `assets/reviews-snapshot.json`. The cache policy is owned by
+`worker/reviews.js` and documented beside it in `worker/README.md`.
 
 Visible review cards are selected from `assets/reviews-curated.json` according
 to its `displayCount`. The generated JSON-LD `review[]` entries must match

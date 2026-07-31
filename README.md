@@ -22,7 +22,7 @@ Production domain: https://ironcustommotors.com/
 The active handoff and context-compaction memory lives in `docs/`:
 
 - `docs/PROJECT_STATE.md` — current project state, URLs, page families and recovery checklist.
-- `docs/CONTENT_TYPES.md` — repeatable page-family templates and verification commands.
+- `docs/CONTENT_TYPES.md` — repeatable page-family ownership and stable patterns.
 - `docs/CODEX_CHANGELOG.md` — compact implementation memory for recent Codex work.
 - `docs/OPEN_TASKS.md` — temporary risks, external-account checks and unresolved follow-ups.
 - `docs/TASK_BRIEF_TEMPLATE.md` — compact format for future large content tasks.
@@ -95,20 +95,11 @@ Legacy noindex redirect stubs:
 /projects/quanta/              Redirects to /projects/quanta-r/
 ```
 
-## Setup
+## Setup And Build
 
-```bash
-python3 -m pip install -r requirements.txt
-```
-
-If macOS reports an externally managed Python environment, use a virtual
-environment:
-
-```bash
-python3 -m venv .venv
-. .venv/bin/activate
-python3 -m pip install -r requirements.txt
-```
+Environment requirements, installation, canonical build order and validation
+commands live only in `scripts/build/README.md`. The current platform
+limitation of the full build is tracked in `docs/OPEN_TASKS.md`.
 
 ## Local Preview
 
@@ -125,7 +116,7 @@ commands live only in `scripts/build/README.md`. Do not copy that command list
 into another document; update the canonical build README instead.
 
 Reviews are refreshed automatically by `.github/workflows/reviews-refresh.yml`
-every Monday at 06:17 UTC and can also be run manually. The workflow calls
+and can also be run manually. The workflow calls
 `scripts/build/build_reviews_schema.py`, updates the static snapshot, home-page
 review cards and JSON-LD, commits the result, and lets the normal GitHub Pages
 deploy run.
@@ -142,19 +133,7 @@ scripts in sync.
 
 ## Verification Checklist
 
-Before publishing substantial work:
-
-```bash
-node --check assets/main.js
-node --check assets/projects.js
-node --check worker/reviews.js
-python3 -m py_compile scripts/build/*.py
-git diff --check
-```
-
-Run the canonical site validators listed in `scripts/build/README.md`.
-
-Also verify:
+Run the canonical commands in `scripts/build/README.md`. Also verify:
 
 - sitemap URL count matches indexable HTML pages
 - canonical and hreflang are correct for every language
@@ -166,16 +145,10 @@ Also verify:
 
 ## External Services
 
-- Domain: `ironcustommotors.com`
-- Hosting: GitHub Pages
-- DNS/CDN: Cloudflare
-- Reviews Worker: `https://icm-reviews.vg-ab6.workers.dev/`
-- Google Analytics 4: `G-D15BLYEKBN`
-- Meta Pixel: `1708697916976439`
-- Form backend: FormSubmit for `Ironcustom.office@gmail.com`
-
-Secrets are documented by variable name in `.env.example`. Do not commit real
-secret values.
+Current public service identifiers and ownership live in
+`docs/PROJECT_STATE.md`; operational risks and account requirements live in
+`docs/OPEN_TASKS.md`. Secret variable names are documented in `.env.example`.
+Do not commit real secret values.
 
 ## Deploy
 
@@ -188,13 +161,7 @@ git push
 GitHub Pages deploys from `main`. Cloudflare may keep cached HTML/assets for a
 short time after a push unless the cache is purged.
 
-## Scaling Priorities
+## Open Work
 
-The technical base is static, fast, and suitable for SEO content scaling. The
-next content/product expansions are:
-
-- More workshop blog articles for long-tail SEO and AI citations.
-- Dedicated diagnostics landing page.
-- Advanced lead form fields and anti-spam protection.
-- Thank-you or lead-success page if paid acquisition needs cleaner conversion attribution.
-- CMS or structured content pipeline only if non-developers must publish pages regularly.
+Current risks, deferred improvements and external-account actions live only in
+`docs/OPEN_TASKS.md`.

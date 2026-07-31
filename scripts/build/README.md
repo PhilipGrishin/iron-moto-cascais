@@ -1,156 +1,123 @@
-# Build scripts
+# Build And Validation Commands
 
-Static site generators that produce the multilingual HTML files
-in this repository. All scripts are path-portable: they resolve
-`SITE_ROOT` from their own location (`scripts/build/` → `..`).
+This is the only documentation file that owns build and validator commands.
+Page-family ownership lives in `docs/CONTENT_TYPES.md`; current inventories and
+cache-bust values live in `docs/PROJECT_STATE.md`.
 
-For compact project state and repeatable page-family ownership, read
-`docs/PROJECT_STATE.md` and `docs/CONTENT_TYPES.md` before changing generators.
-This file remains the source of truth for build command order.
+Run commands from the repository root. Scripts resolve `SITE_ROOT` from their
+location, but the pricing PDF generator also depends on macOS system fonts.
 
-Run them with `python3 scripts/build/<name>.py` from the repo
-root (works from any cwd because paths are absolute).
+## Environment
 
-## Requirements
+Requirements:
 
-- Python 3.8+
-- `beautifulsoup4` (HTML parsing/rewriting)
-- `lxml` (recommended for stable HTML rewriting; scripts fall back to Python's built-in `html.parser`)
-- `Pillow` (image dimensions and hero-image optimization)
-- `reportlab`, `pdfplumber`, `pypdf` (only for pricing PDF generation and PDF checks)
-- Node.js 14+ (only for `extract_i18n.js`)
+- Python 3.10 or newer. The source uses PEP 604 union syntax.
+- Node.js 14 or newer for `extract_i18n.js` and JavaScript syntax checks.
+- Python packages from `requirements.txt`.
+- macOS Arial files under `/System/Library/Fonts/Supplemental/` for
+  `build_pricing_pdfs.py` and therefore for the complete rebuild.
 
-```
-python3 -m pip install -r requirements.txt
-```
-
-If `pip3 install` fails with `externally-managed-environment`,
-use a virtual environment:
-
-```
+```bash
 python3 -m venv .venv
 . .venv/bin/activate
 python3 -m pip install -r requirements.txt
+test -f '/System/Library/Fonts/Supplemental/Arial.ttf'
+test -f '/System/Library/Fonts/Supplemental/Arial Bold.ttf'
+test -f '/System/Library/Fonts/Supplemental/Arial Italic.ttf'
 ```
 
-## Files
+If PDF output is intentionally outside the task, the HTML generators do not
+need those font files. Do not call an HTML-only run a “full rebuild.” The open
+cross-platform PDF risk is tracked in `docs/OPEN_TASKS.md`.
 
-### Generators (write HTML to repo)
+## Script Ownership Inventory
 
-| Script | Output |
+Every executable or importable source file at the top level of `scripts/build/`
+is listed below. “Broad SEO” means `validate_seo.py`; it does not imply exact
+copy or business-semantic validation.
+
+### Page And Artifact Generators
+
+| Script | Maintained input | Direct output | Focused protection |
+|---|---|---|---|
+| `build_new_pages.py` | `new_pages_data.py`, existing chrome | English general hub pages | broad SEO |
+| `build_authorized_dealer.py` | `authorized_dealer_data.py`, existing chrome | localized Authorized Dealer family | broad SEO; no dedicated validator |
+| `build_brand_pages.py` | `brand_pages_data.py` | English registered brand pages | `validate_brand_pages.py` |
+| `build_legal_pages.py` | `legal_pages_data.py`, service chrome | localized legal pages | broad SEO; no legal-copy validator |
+| `build_news.py` | `news_data.py` | English news hub/articles | broad SEO; no exact-news validator |
+| `build_blog.py` | `blog_data.py`, approved content files | English blog hub/articles | broad SEO; no exact-blog validator |
+| `build_project_pages.py` | `project_pages_data.py`, approved project Markdown | English data-driven project pages | `validate_project_pages.py` |
+| `build_pre_purchase_inspection.py` | approved inspection Markdown | localized inspection pages | broad SEO; no exact-copy validator |
+| `build_expat_hub.py` | approved expat Markdown | localized expat hub | broad SEO; no exact-copy validator |
+| `build_harley_hub.py` | approved Harley Markdown, `harley_hub_data.py` | localized Harley family | `validate_harley_hub.py` |
+| `build_pricing.py` | `pricing_data.py`, `i18n.json`, service chrome | localized pricing HTML | broad SEO; no price-parity validator |
+| `build_pricing_pdfs.py` | `pricing_data.py`, macOS Arial fonts | localized pricing PDFs | internal PDF assertions only |
+| `build_tyre_service.py` | approved tyre-service Markdown | localized tyre-service pages | broad SEO; no exact-copy validator |
+| `build_i18n.py` | English sources, `page_meta.py`, `i18n.json` | generic localized page variants | broad SEO and family validators |
+| `build_sitemap.py` | `PAGES`, language maps, article dates, Git history | `sitemap.xml` | broad SEO checks URL/file alignment, not date semantics |
+| `build_llms.py` | sitemap/content registries, metadata, I18N labels, `BUSINESS_FACTS.md` | `llms.txt` | internal generator assertions and broad SEO coverage |
+| `build_reviews_schema.py` | Reviews Worker, snapshot, curated reviews | snapshot and home review HTML/JSON-LD | broad SEO; no live-service validator |
+
+### Post-Processors And Media Tools
+
+| Script | Maintained input | Direct output | Focused protection |
+|---|---|---|---|
+| `nav_patch.py` | `site_chrome.py`, sitemap registry | navigation/footer on sitemap HTML | broad SEO chrome parity |
+| `enhance_money_pages.py` | configured commercial page map | related/local blocks in owned pages | broad SEO only |
+| `enhance_project_pages.py` | legacy project enhancement map | related/highlight blocks in project pages | broad SEO only |
+| `localize_internal_links.py` | `LOCALIZED_PATHS` | same-language links in localized HTML | broad SEO locality |
+| `add_image_dims.py` | local image files | width/height on HTML images | broad SEO asset checks |
+| `apply_seo_meta.py` | sitemap HTML, `seo_meta.py`, `hero_images.py` | robots/LCP/preload normalization | broad SEO and focused CSS-hero mode |
+| `extract_i18n.js` | `assets/main.js` `I18N` | `i18n.json` | consumers and broad SEO pre-render checks |
+| `optimize_hero_images.py` | a registered brand slug or local source image | responsive hero variants | family asset checks where implemented |
+| `optimize_tyre_service_images.py` | tyre media sources and checksum manifest | tyre responsive variants and manifest | source checksum/idempotence logic |
+| `import_project_images.py` | registered project config and source directory | responsive project hero/gallery media | project validator |
+
+Binary media tools are intentionally outside the full rebuild. Codec versions
+can change encoded bytes without a source change; run them only when approved
+source media changes and review the binary diff.
+
+### Data And Shared Modules
+
+| Module | Owner / consumers |
 |---|---|
-| `build_new_pages.py` | `services/`, `projects/`, `about/`, `community/`, `contact/`, `faq/` |
-| `build_authorized_dealer.py` | `authorized-dealer/` hub and direct partner subpages such as `authorized-dealer/c-way/` |
-| `build_brand_pages.py` | Registered brand service pages from `brand_pages_data.py` |
-| `build_legal_pages.py` | `privacy/`, `cookies/`, `terms/` |
-| `build_news.py` | `news/` hub + each `news/<slug>/` article |
-| `build_blog.py` | `blog/` hub + `blog/<slug>/` articles |
-| `build_project_pages.py` | Data-driven `projects/<slug>/` detail pages registered in `project_pages_data.py` |
-| `build_pre_purchase_inspection.py` | `pre-purchase-inspection/` in all 4 languages |
-| `build_expat_hub.py` | `english-speaking-motorcycle-workshop/` in all 4 languages |
-| `build_harley_hub.py` | `harley/`, `harley-tuning/` and `harley-custom/` in all 4 languages |
-| `build_pricing.py` | `pricing/` in all 4 languages |
-| `build_pricing_pdfs.py` | `pricing/files/*.pdf` downloadable price lists in all 4 languages |
-| `build_tyre_service.py` | `motorcycle-tyre-service/` in all 4 languages |
-| `enhance_money_pages.py` | Adds reusable local SEO + related-page blocks to service and brand pages |
-| `enhance_project_pages.py` | Adds reusable highlights + related-page blocks to project detail pages |
-| `build_i18n.py` | `/ru/`, `/uk/`, `/pt/` copies of the EN main pages |
-| `site_chrome.py` | Renders the shared desktop navigation, mobile navigation and footer for every generator |
-| `nav_patch.py` | Applies the shared navigation and footer to every sitemap page |
-| `localize_internal_links.py` | Rewrites internal links in `/ru/`, `/uk/`, `/pt/` pages so they point inside the same language subtree |
-| `add_image_dims.py` | Adds `width`/`height` attributes to every `<img>` based on the real image file |
-| `apply_seo_meta.py` | Applies shared SEO meta invariants, sitemap-wide early LCP image discovery and responsive preload/background alignment for CSS heroes |
-| `build_sitemap.py` | Regenerates `sitemap.xml` with all 4 languages |
-| `build_llms.py` | Regenerates `llms.txt` from the sitemap page registry, content registries, published meta descriptions and canonical business facts |
-| `build_reviews_schema.py` | Pulls live Google rating/count via the Cloudflare Worker, reads curated visible reviews from `assets/reviews-curated.json`, injects `AggregateRating` + matching `Review` JSON-LD into the home pages, and refreshes the static reviews HTML fallback |
-| `optimize_hero_images.py` | Rebuilds requested AVIF/WebP/JPEG hero variants after a source hero changes; its default source set includes legacy project covers registered in `PROJECT_TILES` |
-| `optimize_tyre_service_images.py` | Rebuilds tyre-service AVIF/WebP/JPEG variants when their source checksums change; `tyre_service_images_manifest.json` records those checksums |
-| `import_project_images.py` | Imports and optimizes a project's approved hero/gallery source images into `photos/projects/<slug>/` |
-| `extract_i18n.js` | Reads `assets/main.js` and writes `scripts/build/i18n.json` (consumed by `build_i18n.py`) |
-| `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD, localized internal links, SEO robots meta, local assets, LCP hints and CSS hero preload/background alignment (`--check-css-hero-preloads` for the focused check) |
-| `validate_brand_pages.py` | Validates brand page registry, 4 language outputs, schema, sitemap, optimized hero assets, deploy workflow and reciprocal brand links |
-| `validate_harley_hub.py` | Validates the 12 Harley pages, exact source copy, LCP media, schema, same-language links, feed, portfolio and existing-page integrations |
-| `validate_project_pages.py` | Validates one data-driven project page family across all 4 languages |
+| `authorized_dealer_data.py` | Authorized Dealer copy, hero and partner registry |
+| `blog_data.py` | blog registry, localized article content and media/schema inputs |
+| `brand_pages_data.py` | brand registry, metadata and localized page content |
+| `harley_hub_data.py` | Harley UI, media, feed and portfolio data |
+| `legal_pages_data.py` | legal copy and update label |
+| `new_pages_data.py` | general hubs and project listing registry |
+| `news_data.py` | news registry and localized article content |
+| `page_meta.py` | generic localized page metadata |
+| `pricing_data.py` | shared HTML/PDF pricing data |
+| `project_pages_data.py` | data-driven project registry and Markdown parser |
+| `build_output.py` | semantic/idempotent file writers |
+| `hero_images.py` | hero discovery, responsive rendering and alignment helpers |
+| `seo_meta.py` | shared SEO meta constants/helpers |
+| `site_chrome.py` | canonical desktop/mobile navigation and footer renderer |
 
-## Sitemap And Structured-Data Dates
+Content Markdown and JSON files under `scripts/build/content/` and
+`scripts/build/*.json` are data, not standalone executables. Their owning
+module is named above or in `docs/CONTENT_TYPES.md`.
 
-Sitemap `<lastmod>` must reflect each page's real last-content-change date
-from Git history of that page's source/served HTML, per language, in ISO-8601
-with timezone. Never stamp all URLs with the build/deploy time. An unchanged
-page must keep the same `lastmod` across deploys.
+### Validators
 
-`build_sitemap.py` uses explicit publish/modified dates for blog and news
-articles. Other pages use the last Git commit where the served HTML changed
-semantically, ignoring serialization-only churn from shared build tools. If Git
-cannot provide a reliable date, the generator falls back to the file's real
-filesystem modification time, never the current build time.
+| Script | What it protects | Important exclusions |
+|---|---|---|
+| `validate_seo.py` | sitemap files; title/meta; canonical/hreflang; JSON parsing and breadcrumbs; localized JSON-LD URLs; local assets; cache-bust presence/consistency; LCP discovery; CSS hero alignment; navigation/footer parity; localized links; English `llms.txt` coverage; changelog commit references | Rich Results UI; schema recommended fields; global visible FAQ parity; Product/Offer semantics; real lastmod meaning; visual rendering; external services; measured performance; `<picture>` duplicate candidate transfer |
+| `validate_brand_pages.py` | brand registry and assets; generated variants; schema type presence; sitemap/deploy wiring; homepage and reciprocal links; forbidden brand claims | exact visible copy; global RRT warnings; browser interaction/performance |
+| `validate_harley_hub.py` | exact maintained copy; visual tokens; hero media; schema families; language-local links; feed/portfolio and required integrations | live browser behavior; external RRT; performance benefit |
+| `validate_project_pages.py` | exact data-driven project copy; media; schema fields; listing/sitemap integration and Harley isolation | legacy project authored copy; browser rendering; external RRT |
 
-Structured-data `datePublished` and `dateModified` follow the same principle:
-use real content dates with timezone, not deploy time.
+Scripts or data families without a dedicated validator rely on broad SEO plus
+manual/source review. This is a known coverage boundary, not proof of failure.
 
-### Data
+## Full Safe Rebuild
 
-| File | Used by |
-|---|---|
-| `page_meta.py` | `build_i18n.py` (per-page title / description / OG / Twitter, per language) |
-| `new_pages_data.py` | `build_new_pages.py` (services / projects / about / contact / faq) |
-| `authorized_dealer_data.py` | `build_authorized_dealer.py` (Authorized Dealer hub copy, FAQ and future dealer-brand card registry) |
-| `brand_pages_data.py` | `build_brand_pages.py` and brand aggregators (brand registry, meta, hero image, related links, 4-language content) |
-| `legal_pages_data.py` | `build_legal_pages.py` (Privacy / Cookies / Terms) |
-| `news_data.py` | `build_news.py` (one entry per article slug, 4 languages) |
-| `blog_data.py` | `build_blog.py` (blog hub and posts, 4 languages) |
-| `project_pages_data.py` | `build_project_pages.py` (project-page registry, reviewed Markdown parsing, media and localized UI data) |
-| `scripts/build/content/projects/<slug>_4lang.md` | `project_pages_data.py` (approved 4-language project copy) |
-| `scripts/build/content/pre_purchase_inspection_copy_4lang.md` | `build_pre_purchase_inspection.py` (4-language flagship service copy) |
-| `scripts/build/content/expat_hub_copy_4lang.md` | `build_expat_hub.py` (4-language English-speaking expat hub copy) |
-| `scripts/build/content/harley_hub_phase1_4lang.md` | `build_harley_hub.py` (exact 4-language copy for the Harley hub, tuning and custom pages) |
-| `harley_hub_data.py` | `build_harley_hub.py` (page media, localized UI and project portfolio data) |
-| `pricing_data.py` | `build_pricing.py` and `build_pricing_pdfs.py` (LABELS + SECTIONS, 4 languages) |
-| `build_output.py` | Shared semantic, idempotent output writer used by generators and post-processors to avoid serialization-only diffs |
-| `tyre_service_images_manifest.json` | Source checksums used by `optimize_tyre_service_images.py` to avoid codec-version-only media rewrites |
-| `i18n.json` | A snapshot of the runtime `I18N` object that lives inside `assets/main.js`. Regenerate with `node scripts/build/extract_i18n.js` after editing translations in `main.js`. |
-| `../../docs/BUSINESS_FACTS.md` | `build_llms.py` (canonical business identity, NAP, hours, origin, profiles, service languages and published key prices) |
-
-## AI Discovery Index
-
-`build_llms.py` must run immediately after `build_sitemap.py`. It reads:
-
-- English page paths from `build_sitemap.py` `PAGES`;
-- blog and news slugs from `BLOG_POSTS` and `NEWS_ARTICLES`;
-- project slugs from `new_pages_data.py` `PROJECT_TILES`;
-- dedicated service brands from `BRAND_ORDER` and `BRAND_CONFIG`;
-- legal page slugs from `LEGAL_PAGES`;
-- canonical navigation routes from `site_chrome.py` and their English I18N
-  labels from `assets/main.js`;
-- the English expat-hub breadcrumb from `build_expat_hub.py`;
-- canonical business facts from `docs/BUSINESS_FACTS.md`;
-- the published English meta description for each entry.
-
-The generator verifies that registered content paths are present in `PAGES`,
-that every dedicated brand appears in the homepage brand strip, and that every
-English page has a maintained short-name source and is assigned to one readable
-section. It does not fall back to marketing H1 text. `validate_seo.py` then
-checks that the internal page links in `llms.txt` cover every English URL in
-`sitemap.xml`.
-
-Do not edit `llms.txt` by hand. Update its source registry, page metadata or
-`docs/BUSINESS_FACTS.md`, rebuild the sitemap when required, and regenerate:
+Use this on macOS after structural source changes or as the reproducibility
+gate. It excludes network-backed reviews and binary media optimization.
 
 ```bash
-python3 scripts/build/build_sitemap.py
-python3 scripts/build/build_llms.py
-python3 scripts/build/validate_seo.py
-```
-
-## Typical sequences
-
-### Full safe rebuild
-
-Use this sequence after structural content changes, or before a
-release when you want to verify the generated pages from source
-data:
-
-```
 node scripts/build/extract_i18n.js
 python3 scripts/build/build_new_pages.py
 python3 scripts/build/build_authorized_dealer.py
@@ -177,366 +144,282 @@ python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 python3 scripts/build/validate_brand_pages.py
 python3 scripts/build/validate_harley_hub.py
-python3 scripts/build/validate_project_pages.py fighter
+for slug in $(python3 -c "import sys; sys.path.insert(0, 'scripts/build'); from project_pages_data import PROJECT_CONFIGS; print(' '.join(sorted(PROJECT_CONFIGS)))"); do
+  python3 scripts/build/validate_project_pages.py "$slug"
+done
 ```
 
-Run `build_reviews_schema.py` separately only when a fresh Google
-rating/count snapshot is needed, because it calls the Cloudflare Worker.
-Visible review cards are controlled by `assets/reviews-curated.json`.
+Run `git status --short` afterward. A clean clone at the current commit must
+remain clean after this sequence. If it does not, inspect the generated diff;
+do not discard it blindly.
 
-Image import and optimization scripts are intentionally not part of the full
-safe rebuild. Run them only when their source media changes; generated image
-bytes can otherwise vary across codec versions even when pixels do not.
+## Broad Verification
 
-### After editing translations in `assets/main.js`
-
+```bash
+node --check assets/main.js
+node --check assets/projects.js
+node --check worker/reviews.js
+python3 -m py_compile scripts/build/*.py
+python3 scripts/build/validate_seo.py
+python3 scripts/build/validate_brand_pages.py
+python3 scripts/build/validate_harley_hub.py
+for slug in $(python3 -c "import sys; sys.path.insert(0, 'scripts/build'); from project_pages_data import PROJECT_CONFIGS; print(' '.join(sorted(PROJECT_CONFIGS)))"); do
+  python3 scripts/build/validate_project_pages.py "$slug"
+done
+git diff --check
 ```
-node   scripts/build/extract_i18n.js
+
+## Shared Chrome And Translation Workflow
+
+After changing `assets/main.js` I18N or shared chrome:
+
+```bash
+node scripts/build/extract_i18n.js
 python3 scripts/build/build_i18n.py
-python3 scripts/build/localize_internal_links.py
-python3 scripts/build/apply_seo_meta.py
-# bump cache-bust query in HTML
-```
-
-### After adding a new hub/landing page (services, etc.)
-
-```
-python3 scripts/build/build_new_pages.py
 python3 scripts/build/nav_patch.py
-python3 scripts/build/enhance_money_pages.py
-python3 scripts/build/enhance_project_pages.py
-python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
-# bump cache-bust
 ```
 
-### After adding or updating the Authorized Dealer hub
+If `assets/main.css` or `assets/main.js` changed, read the current main-asset
+stamp from `docs/PROJECT_STATE.md`, choose the next date-letter value, update
+the HTML references and every applicable generator constant, then run the broad
+validator. Different asset families may keep independent stamps.
 
-The Authorized Dealer hub is a top-level category for official
-parts/accessories dealer partners. Keep it separate from the
-independent motorcycle-brand service pages unless the owner
-provides explicit official partner copy.
+## General Hub And Service Workflow
 
-```
-# 1. Update scripts/build/authorized_dealer_data.py.
-# 2. If the hero image changed, replace photos/authorized-dealer-main-1600.jpg.
-python3 scripts/build/optimize_hero_images.py photos/authorized-dealer-main-1600.jpg
-python3 scripts/build/build_authorized_dealer.py
-python3 scripts/build/build_new_pages.py
-python3 scripts/build/nav_patch.py
-python3 scripts/build/build_i18n.py
-python3 scripts/build/localize_internal_links.py
-python3 scripts/build/apply_seo_meta.py
-python3 scripts/build/build_sitemap.py
-python3 scripts/build/build_llms.py
-python3 scripts/build/validate_seo.py
-# bump cache-bust if assets/main.css or assets/main.js changed
-```
+After changing a maintained general hub, inspection or tyre-service source:
 
-Future dealer-brand cards should be appended to
-`AUTHORIZED_DEALER_BRANDS` in `authorized_dealer_data.py`. Use
-English-rooted URLs such as `/authorized-dealer/<brand>/`; the
-localized pages will receive `/pt/`, `/ru/` and `/uk/` prefixes
-through the normal localization pipeline. The current C-Way partner subpage is
-generated directly by `build_authorized_dealer.py` from `CWAY_DEALER_I18N` and
-must remain limited to the approved Honda Gold Wing luggage-system scope and
-six priced Steel/Aluminium product configurations. Product media and numeric
-prices live in `CWAY_MEDIA`; translated names and descriptions live in
-`CWAY_DEALER_I18N`. Keep visible prices and Product/Offer schema in parity, and
-do not add trailer/mototrailer content without a new explicit owner task.
-
-### After editing pre-purchase inspection copy
-
-```
-# 1. Update scripts/build/content/pre_purchase_inspection_copy_4lang.md.
-# 2. If the hero image changed, replace photos/services/pre-purchase-inspection-main.jpg.
-python3 scripts/build/optimize_hero_images.py photos/services/pre-purchase-inspection-main.jpg
-python3 scripts/build/build_pre_purchase_inspection.py
-python3 scripts/build/nav_patch.py
-python3 scripts/build/build_i18n.py
-python3 scripts/build/build_pre_purchase_inspection.py
-python3 scripts/build/localize_internal_links.py
-python3 scripts/build/add_image_dims.py
-python3 scripts/build/apply_seo_meta.py
-python3 scripts/build/build_sitemap.py
-python3 scripts/build/build_llms.py
-python3 scripts/build/validate_seo.py
-# bump cache-bust if assets/main.css or assets/main.js changed
-```
-
-### After editing the English-speaking expat hub
-
-The expat hub is a light funnel page for
-`/english-speaking-motorcycle-workshop/`. It must remain footer-only and
-contextual-link-only; do not add it to the header or Services dropdown.
-
-```
-# 1. Update scripts/build/content/expat_hub_copy_4lang.md.
-# 2. If the hero image changed, replace photos/services/english-speaking-motorcycle-workshop-main.jpg.
-python3 scripts/build/optimize_hero_images.py photos/services/english-speaking-motorcycle-workshop-main.jpg
+```bash
 node scripts/build/extract_i18n.js
 python3 scripts/build/build_new_pages.py
 python3 scripts/build/build_pre_purchase_inspection.py
+python3 scripts/build/build_tyre_service.py
+python3 scripts/build/build_i18n.py
 python3 scripts/build/nav_patch.py
 python3 scripts/build/enhance_money_pages.py
-python3 scripts/build/build_i18n.py
-python3 scripts/build/build_expat_hub.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/add_image_dims.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
-# bump cache-bust if assets/main.css or assets/main.js changed
 ```
 
-### After editing the Harley Hub family
+Run only the owned generator(s) when a narrower task explicitly requires
+unchanged sibling output, but retain every downstream shared step.
 
-The source Markdown owns the approved four-language page copy. Portfolio
-summaries and blog-topic behavior live in the adjacent Python data modules.
+## Expat Hub Workflow
 
+```bash
+node scripts/build/extract_i18n.js
+python3 scripts/build/build_new_pages.py
+python3 scripts/build/build_pre_purchase_inspection.py
+python3 scripts/build/build_expat_hub.py
+python3 scripts/build/build_i18n.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/enhance_money_pages.py
+python3 scripts/build/localize_internal_links.py
+python3 scripts/build/add_image_dims.py
+python3 scripts/build/apply_seo_meta.py
+python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
+python3 scripts/build/validate_seo.py
 ```
-# 1. Update scripts/build/content/harley_hub_phase1_4lang.md.
-# 2. Update scripts/build/harley_hub_data.py only for supplemental UI,
-#    media or portfolio data.
+
+If the expat hero source changed, run this before the page sequence:
+
+```bash
+python3 scripts/build/optimize_hero_images.py photos/services/english-speaking-motorcycle-workshop-main.jpg
+```
+
+## Brand Page Workflow
+
+Set `SLUG` to an entry in `BRAND_CONFIG`. A new brand also requires approved
+localized source data, a nav label when needed, a deploy copy entry, and hero
+media.
+
+```bash
+SLUG=harley-service
+node scripts/build/extract_i18n.js
+python3 scripts/build/optimize_hero_images.py "$SLUG"
+python3 scripts/build/build_brand_pages.py
+python3 scripts/build/build_new_pages.py
+python3 scripts/build/build_i18n.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/enhance_money_pages.py
+python3 scripts/build/localize_internal_links.py
+python3 scripts/build/apply_seo_meta.py
+python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
+python3 scripts/build/validate_brand_pages.py "$SLUG"
+python3 scripts/build/validate_seo.py
+```
+
+Skip the optimizer when the hero source did not change.
+
+## Harley Hub Workflow
+
+```bash
 node scripts/build/extract_i18n.js
 python3 scripts/build/build_brand_pages.py
 python3 scripts/build/build_blog.py
-python3 scripts/build/nav_patch.py
-python3 scripts/build/build_i18n.py
 python3 scripts/build/build_harley_hub.py
+python3 scripts/build/build_i18n.py
+python3 scripts/build/nav_patch.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/build_llms.py
 python3 scripts/build/validate_harley_hub.py
-python3 scripts/build/validate_seo.py
 python3 scripts/build/validate_brand_pages.py harley-service
-# bump cache-bust if assets/main.css or assets/main.js changed
+python3 scripts/build/validate_seo.py
 ```
 
-### After adding a brand page
+If a Harley hero source changed, run the optimizer for that exact source path
+before the page sequence.
 
-```
-# 1. Add the brand to BRAND_CONFIG and BRAND_ORDER in brand_pages_data.py.
-# 2. Add BRAND_HEAD and PAGE_I18N content for all 4 languages.
-# 3. Add the nav label key to assets/main.js and regenerate i18n.json.
-# 4. Add the hero source photo to photos/ and run optimize_hero_images.py for that brand.
-node scripts/build/extract_i18n.js
-python3 scripts/build/optimize_hero_images.py <new-brand-slug>
-python3 scripts/build/build_brand_pages.py
+## Authorized Dealer Workflow
+
+```bash
+python3 scripts/build/build_authorized_dealer.py
 python3 scripts/build/build_new_pages.py
+python3 scripts/build/build_i18n.py
 python3 scripts/build/nav_patch.py
-python3 scripts/build/enhance_money_pages.py
-python3 scripts/build/build_i18n.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
-python3 scripts/build/validate_brand_pages.py <new-brand-slug>
-# bump cache-bust
 ```
 
-### Brand page intake format
+If the hub hero changed:
 
-Future brand pages should arrive in the same format used for Suzuki:
-
-- One Markdown file with 4 language blocks: English, Português, Русский, Українська.
-- For each language: slug, SEO title, meta description, hero ALT, breadcrumb/eyebrow, H1, intro, section copy, cards, FAQ, related links, local area and CTA.
-- One hero photo, named clearly enough to become `<brand>-service-main-1600.jpg`.
-- Confirmed facts only: service prices, model names, diagnostic tools, contacts and opening hours.
-
-The single source of truth for a new brand is `BRAND_CONFIG` in
-`brand_pages_data.py`. Once a brand is registered there, these build helpers
-consume it automatically:
-
-- `build_brand_pages.py` for page rendering and reciprocal brand links.
-- `site_chrome.py` for the Brands dropdown, mobile menu and footer.
-- `build_new_pages.py` for the services hub brand list.
-- `build_i18n.py`, `localize_internal_links.py`, `build_sitemap.py` and `validate_seo.py`.
-- `optimize_hero_images.py` for AVIF/WebP/JPEG hero variants.
-- `validate_brand_pages.py` for final brand-specific QA.
-
-Also keep the homepage `#brands` strip synchronized with `BRAND_ORDER`.
-Any registered brand with a live service page must be an active link in that
-strip on EN/RU/UK/PT. `validate_brand_pages.py` checks this now, so a new brand
-cannot silently remain plain text on the homepage after publication.
-
-The GitHub Pages workflow is intentionally explicit. `validate_brand_pages.py`
-checks that the new root-level brand folder is copied into the deploy artifact,
-so a page cannot silently work locally but 404 on production.
-
-### After adding a news article
-
-```
-# 1. Drop raw photos as JPEG into photos/news/NewsN/
-# 2. Process them: a small Pillow loop produces -800 and -1600 variants:
-python3 -c "
-from pathlib import Path
-from PIL import Image, ImageOps
-SRC = Path('photos/news/NewsN')
-OUT = Path('photos/news')
-for i,f in enumerate(sorted(SRC.iterdir()), 1):
-    im = ImageOps.exif_transpose(Image.open(f))
-    w,h = im.size
-    for size in (1600, 800):
-        if max(w,h) > size:
-            r = size/max(w,h); im2 = im.resize((round(w*r), round(h*r)), Image.LANCZOS)
-        else:
-            im2 = im
-        im2.convert('RGB').save(OUT/f'news-<slug>-{i:02d}-{size}.jpg', 'JPEG', quality=82, optimize=True, progressive=True)
-"
-# 3. Add a new entry to news_data.py (NEWS_ARTICLES dict)
-python3 scripts/build/build_news.py
-# 4. Add the new slug to build_i18n.py MAIN_PAGES
-# 5. Add it to build_sitemap.py PAGES
-# 6. Add it to localize_internal_links.py LOCALIZED_PATHS
-python3 scripts/build/build_i18n.py
-python3 scripts/build/localize_internal_links.py
-python3 scripts/build/apply_seo_meta.py
-python3 scripts/build/build_sitemap.py
-python3 scripts/build/build_llms.py
-python3 scripts/build/validate_seo.py
-# bump cache-bust
+```bash
+python3 scripts/build/optimize_hero_images.py photos/authorized-dealer-main-1600.jpg
 ```
 
-### After adding a blog post
+## Blog Workflow
 
-```
-# 1. Drop processed JPEG photos into photos/blog/ named
-#    blog-<slug>-NN-1600.jpg and blog-<slug>-NN-800.jpg
-# 2. Add the post content to blog_data.py (BLOG_POSTS dict), or add a reviewed
-#    4-language Markdown source under scripts/build/content/ and load it from
-#    blog_data.py for long-form articles
-# 3. Add the slug to build_i18n.py MAIN_PAGES
-# 4. Add it to build_sitemap.py PAGES
-# 5. Add it to localize_internal_links.py LOCALIZED_PATHS
+```bash
 python3 scripts/build/build_blog.py
-python3 scripts/build/nav_patch.py
 python3 scripts/build/build_i18n.py
+python3 scripts/build/nav_patch.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
-# bump cache-bust if assets/main.css or assets/main.js changed
 ```
 
-### After adding a data-driven project page
+New media must be processed and registered in `blog_data.py` before this
+sequence. Binary image preparation is an explicit source-media task.
 
+## News Workflow
+
+```bash
+python3 scripts/build/build_news.py
+python3 scripts/build/build_i18n.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/localize_internal_links.py
+python3 scripts/build/apply_seo_meta.py
+python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
+python3 scripts/build/validate_seo.py
 ```
-# 1. Save the approved 4-language Markdown at:
-#    scripts/build/content/projects/<slug>_4lang.md
-# 2. Add the project to PROJECT_CONFIGS in project_pages_data.py
-# 3. Import the hero and gallery photographs:
-python3 scripts/build/import_project_images.py <slug> "/absolute/path/to/source/photos"
-# 4. Register the page in page_meta.py, new_pages_data.py,
-#    build_sitemap.py, localize_internal_links.py and validate_seo.py
+
+New article media and `NEWS_ARTICLES` data must exist before this sequence.
+
+## Project Workflow
+
+For a project already registered in `PROJECT_CONFIGS`:
+
+```bash
+SLUG=fighter
 python3 scripts/build/build_project_pages.py
 python3 scripts/build/build_new_pages.py
-python3 scripts/build/nav_patch.py
 python3 scripts/build/build_i18n.py
 python3 scripts/build/nav_patch.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/build_llms.py
-python3 scripts/build/validate_project_pages.py <slug>
+python3 scripts/build/validate_project_pages.py "$SLUG"
 python3 scripts/build/validate_seo.py
 ```
 
-Legacy static project pages keep their authored content but receive the same
-responsive LCP delivery during `apply_seo_meta.py`: their source covers come
-from `new_pages_data.py` `PROJECT_TILES`, while `hero_images.py` replaces the
-old inline JPEG background with an AVIF/WebP/JPEG `<picture>` and responsive
-AVIF preloads. Run `optimize_hero_images.py` explicitly after changing one of
-those source covers; media optimization intentionally remains outside the
-canonical full rebuild because it rewrites binary assets.
+For new approved source photos, import media before rendering:
 
-### After editing pricing data
-
+```bash
+SLUG=fighter
+SOURCE_DIR='/absolute/path/to/approved/project/photos'
+python3 scripts/build/import_project_images.py "$SLUG" "$SOURCE_DIR"
 ```
+
+Legacy project hero optimization uses the explicit source path accepted by
+`optimize_hero_images.py`. Do not run all binary optimizers during an idle
+rebuild.
+
+## Pricing Workflow
+
+This workflow requires the macOS fonts listed under **Environment**.
+
+```bash
 python3 scripts/build/build_pricing.py
 python3 scripts/build/build_pricing_pdfs.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/localize_internal_links.py
+python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 ```
 
-### After editing curated reviews or regenerating Google reviews snapshot
+## Discovery Index Workflow
 
+Do not hand-edit `llms.txt`.
+
+```bash
+python3 scripts/build/build_sitemap.py
+python3 scripts/build/build_llms.py
+python3 scripts/build/validate_seo.py
 ```
+
+## Reviews Workflow
+
+This calls the public Reviews Worker and requires outbound network access.
+
+```bash
 python3 scripts/build/build_reviews_schema.py
-# This script reaches out to the Cloudflare Worker:
-#   https://icm-reviews.vg-ab6.workers.dev/
-# It must be run on a machine with outbound network access.
+python3 scripts/build/validate_seo.py
 ```
 
-The script writes the Worker response to `assets/reviews-snapshot.json`, reads
-visible cards from `assets/reviews-curated.json` according to its
-`displayCount`, and injects both the static HTML fallback and the LocalBusiness
-`AggregateRating`/`Review` JSON-LD on the supported home pages. The `Review`
-JSON-LD items must match the visible curated cards 1:1. The aggregate
-`reviewCount` remains the real Google total, not the number of curated cards.
+Expected source ownership:
 
-The expected repository changes are the supported home-page HTML files and
-`assets/reviews-snapshot.json`. The script is idempotent: an unchanged Worker
-response and curated file should leave those outputs unchanged. It limits its
-HTML edits to the static reviews fallback and the LocalBusiness graph.
+- aggregate rating/count: Worker response saved to
+  `assets/reviews-snapshot.json`;
+- visible cards and JSON-LD reviews: `assets/reviews-curated.json` according to
+  `displayCount`.
 
-A scheduled refresh is defined in `.github/workflows/reviews-refresh.yml`. It
-runs every Monday at 06:17 UTC and also supports manual `workflow_dispatch`.
+An unchanged Worker response and curated source should leave tracked output
+unchanged. The scheduled automation is defined in
+`.github/workflows/reviews-refresh.yml`.
 
-## Cache-bust convention
+## Focused CSS Hero Validation
 
-CSS and JS file references in every HTML page include a query
-string of the form `?v=YYYYMMDDx`. When `assets/main.css` or
-`assets/main.js` changes, read the current value from
-`docs/PROJECT_STATE.md`, choose the next date-letter value, and replace it
-across every HTML file.
+```bash
+python3 scripts/build/validate_seo.py --check-css-hero-preloads
+```
 
-Build scripts that produce HTML carry their own `CACHE_BUST` constant
-at the top — keep it in sync when bumping.
+## Dates And Cache-Bust
 
-## Typography system
+`build_sitemap.py` uses explicit article dates and semantic Git history. It
+must not stamp unchanged pages with build time. Structured-data publication
+and modification dates follow the same rule.
 
-`assets/main.css` owns the site font stack through CSS variables:
-
-- `--font-body` for long-form readable text.
-- `--font-ui` for nav, buttons, labels and compact card text.
-- `--font-display` for large uppercase headings.
-
-Generated inline CSS must use these variables instead of hard-coding
-Google font families. This keeps page families consistent when typography
-changes and prevents new generators from reintroducing page-specific font
-behavior.
-
-Russian and Ukrainian pages use language-scoped Cyrillic tuning in
-`assets/main.css`: `html[lang="ru"]` and `html[lang="uk"]` switch UI/display
-type to `Roboto Condensed` and slightly reduce heading sizes and tracking.
-When adding a new page family or generator, keep selectors compatible with
-these language-level overrides, then visual-check at least one RU and one UK
-page before release.
-
-## Notes
-
-- The HTML-rewriting Python scripts prefer `lxml`. If unavailable,
-  they fall back to Python's built-in `html.parser`; whitespace and
-  serialization can differ trivially.
-- `extract_i18n.js` is fragile to formatting of the `I18N` literal
-  in `main.js`. It walks brace depth starting from `const I18N = {`.
-  Keep that marker intact.
-- `add_image_dims.py` and the legacy project hero normalizer read pixel sizes
-  via Pillow. Images must be present at the resolved paths (root-relative).
-- `site_chrome.py` renders the canonical primary nav, mobile nav and footer
-  columns. `nav_patch.py` applies that shared chrome to every page registered
-  in the sitemap.
-- `localize_internal_links.py` skips asset paths (`/photos/`,
-  `/assets/`, `/pricing/files/`, `/worker/`). The `LOCALIZED_PATHS`
-  set at the top defines which page paths have localized
-  counterparts.
+Asset references use `?v=YYYYMMDDx`. Current values live only in
+`docs/PROJECT_STATE.md`. A changed asset requires a new value everywhere that
+asset is referenced; an unchanged asset retains its value.

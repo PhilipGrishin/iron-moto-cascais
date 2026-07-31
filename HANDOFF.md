@@ -5,15 +5,8 @@ bookmarks. It does not own the current site inventory or build workflow.
 
 ## Resume Here
 
-Read repository sources in this order:
-
-1. `AGENTS.md`
-2. `docs/PROJECT_STATE.md`
-3. `docs/CONTENT_TYPES.md`
-4. `docs/OPEN_TASKS.md`
-5. `scripts/build/README.md`
-6. Relevant source data and generators
-7. `git status --short`
+Start with the `START HERE: Documentation Protocol` in `AGENTS.md`. It owns
+the required reading order and the location of every durable project fact.
 
 `docs/PROJECT_STATE.md` is the only documentation source for current URL,
 HTML, page-family, language, project, article, brand, and cache-bust

@@ -1,40 +1,73 @@
 # Project instructions for AI agents
 
-This file is read by AI coding agents (Codex, Cursor, Cline,
-Claude Code etc.) before doing work. Read it fully on every
-session start.
+This file is read by AI coding agents (Codex, Cursor, Cline, Claude Code,
+and others) before work begins.
 
-For current project facts (URLs, page families, what is deployed
-where) read `docs/PROJECT_STATE.md`. For repeatable page-family
-workflows read `docs/CONTENT_TYPES.md`. For compact task memory
-after context compaction read `docs/CODEX_CHANGELOG.md` and
-`docs/OPEN_TASKS.md`. For compact future task intake use
-`docs/TASK_BRIEF_TEMPLATE.md`. For build scripts read
-`scripts/build/README.md`. For canonical NAP, hours, founder,
-service-language, profile and published key-price facts read
-`docs/BUSINESS_FACTS.md`. `docs/CODEX_CHANGELOG.md` is the canonical compact
-implementation journal. `HANDOFF.md` is a historical top-level reference and
-may lag behind the active docs.
+## START HERE: Documentation Protocol
 
-## Context compaction recovery
+The repository is the sole durable source of project truth. Nothing important
+may exist only in chat, an external local file, or one agent's memory. The
+acceptance question at every handoff is: **would a new session, with no chat
+history, know what is true, what is open, and how to continue safely?**
 
-Chat history is not the source of truth for this project. If an
-agent resumes after context compaction, it must rebuild context
-from repository files in this order:
+### Canonical Home For Each Kind Of Information
 
-1. `AGENTS.md`
-2. `docs/PROJECT_STATE.md`
-3. `docs/BUSINESS_FACTS.md` when business identity, contact, hours,
-   origin, service languages, profiles or published key prices are relevant
-4. `docs/CONTENT_TYPES.md`
-5. `docs/OPEN_TASKS.md`
-6. `docs/TASK_BRIEF_TEMPLATE.md` when shaping a new large task
-7. `scripts/build/README.md`
-8. relevant source data and generator files
-9. `git status --short`
+| Information | Canonical home |
+|---|---|
+| Current state, inventories, counts, deployed identifiers and cache-bust values | `docs/PROJECT_STATE.md` |
+| Canonical business identity, NAP, hours, founder, profiles and published key prices | `docs/BUSINESS_FACTS.md` |
+| Repeatable processes, page-family ownership and stable implementation patterns | `docs/CONTENT_TYPES.md` |
+| Active operating rules and non-negotiables | `AGENTS.md` |
+| Open risks, external dependencies, access requirements and unresolved work | `docs/OPEN_TASKS.md` |
+| Chronology of completed work | `docs/CODEX_CHANGELOG.md` |
+| Build and verification commands | `scripts/build/README.md` |
+| Large-task intake shape | `docs/TASK_BRIEF_TEMPLATE.md` |
 
-Do not rely on memory of previous chat turns when the repository
-contains a stronger current source.
+One fact gets one canonical home. Other documents link to that home instead of
+copying the fact. The changelog records history; it is not a rulebook. When a
+completed task establishes a reusable norm, promote that norm immediately to
+`AGENTS.md` or `docs/CONTENT_TYPES.md`.
+
+### Required Reading Order
+
+At every session start and after context compaction:
+
+1. Read `AGENTS.md` fully.
+2. Run `git status --short` and inspect the current branch and worktree before
+   editing.
+3. Read `docs/PROJECT_STATE.md`.
+4. Read `docs/BUSINESS_FACTS.md` when business identity, contact, hours,
+   origin, service languages, profiles or published prices are relevant.
+5. Read `docs/CONTENT_TYPES.md` for the affected page family.
+6. Read `docs/OPEN_TASKS.md`.
+7. Read `docs/TASK_BRIEF_TEMPLATE.md` when shaping a large task.
+8. Read `scripts/build/README.md` before running any build or validator.
+9. Read relevant source data and generators.
+10. Use `docs/CODEX_CHANGELOG.md` only for chronology and prior evidence.
+
+`CLAUDE.md`, `README.md` and `HANDOFF.md` are entry points, not competing
+sources of truth. Do not rely on chat memory when repository evidence exists.
+
+### Recording Standard
+
+- Record decisions immediately, including the reason and date.
+- Mark canceled work `CANCELED`; do not silently delete it.
+- Record scope limits, failed approaches and why they failed.
+- For deployed work, record the commit, what was verified, and what was not
+  verified.
+- Keep measured values beside their method and date. Never present an
+  unmeasured assumption as a result.
+- Label material claims as `confirmed`, `data-backed`, `assumption`, `unknown`,
+  or `access required`. Put the verification method beside the claim.
+- Correct false documentation explicitly. State what was wrong, the corrected
+  fact and its evidence; do not silently erase meaningful history.
+- Never overwrite an unread file. Read it, compare it with the intended change,
+  and merge deliberately.
+
+At the end of meaningful or long-running work, update
+`docs/PROJECT_STATE.md` when current state changed and `docs/OPEN_TASKS.md`
+when risks or follow-ups changed. Add implementation chronology to
+`docs/CODEX_CHANGELOG.md`. Run the documented verification before handoff.
 
 ## Scalability and handoff rule
 
@@ -78,11 +111,8 @@ contains a stronger current source.
 - The repo is a static site (HTML, CSS, JS). There is no
   framework, no build step on the server side, no test suite.
   GitHub Pages serves files in `main` branch root as-is.
-- Most editing tasks fall into one of three modes:
-  1. Direct file edits (typo, copy tweak, style fix).
-  2. Run a Python generator under `scripts/build/` to regenerate
-     a family of pages from a data file.
-  3. Both, in some order.
+- Editing work may be a direct source edit, a generated page-family update, or
+  a combination. Inspect ownership in `docs/CONTENT_TYPES.md` before choosing.
 - After any change to `assets/main.css` or `assets/main.js`,
   bump the cache-bust query (`?v=...`) on every HTML file. The
   convention is `?v=YYYYMMDD<letter>`. Read the current value from
@@ -100,6 +130,8 @@ contains a stronger current source.
   whenever possible, confirm the relevant pages/assets/schema are
   live, and report any external checks that cannot be performed
   without account access.
+- Do not commit Python bytecode, `__pycache__`, local virtual environments, or
+  build scratch files. Keep generated output reproducible from tracked sources.
 
 ## File-by-file routing
 
@@ -207,11 +239,9 @@ validation stage changes.
 
 ### Update Google reviews snapshot and curated cards
 
-This must be run on a machine with outbound network access.
-
-```
-python3 scripts/build/build_reviews_schema.py
-```
+This workflow requires outbound network access. Follow the canonical Reviews
+commands in `scripts/build/README.md` and the ownership rules in
+`docs/CONTENT_TYPES.md`.
 
 The script fetches `https://icm-reviews.vg-ab6.workers.dev/`,
 writes the live rating/count to `assets/reviews-snapshot.json`,
@@ -224,9 +254,8 @@ Worker/snapshot total. Visible cards and JSON-LD `review[]` items
 must come from the curated file and match 1:1. Do not set
 `reviewCount` to the number of curated cards.
 
-The scheduled automation lives in
-`.github/workflows/reviews-refresh.yml` and runs weekly on Monday at
-06:17 UTC, with `workflow_dispatch` for manual refreshes.
+The scheduled automation lives in `.github/workflows/reviews-refresh.yml`; its
+cron and manual trigger are defined only in that workflow.
 
 ## What this site does NOT have (do not assume)
 

@@ -55,7 +55,7 @@ Must update:
 - source data: scripts/build/brand_pages_data.py
 - generator: existing build_brand_pages.py only
 - nav/footer: Brands dropdown and footer via shared registry
-- sitemap: all 4 URLs
+- sitemap: every supported-language URL
 - localized links: same-language links
 - schema: Service + FAQPage + BreadcrumbList
 - reverse links: other brand pages
@@ -69,7 +69,7 @@ Verification:
 - local build: brand pipeline from docs/CONTENT_TYPES.md
 - validators: validate_seo.py and validate_brand_pages.py yamaha-service
 - deploy: GitHub Pages success
-- production URLs: all 4 return 200 and contain correct H1/schema
+- production URLs: every supported variant returns 200 and contains the correct H1/schema
 - external/manual checks: mention if Google Rich Results UI was not run
 ```
 
@@ -98,6 +98,5 @@ Do not change:
 
 Verification:
 - local build and brand validation
-- deploy and production checks for all 4 URLs
+- deploy and production checks for every supported-language URL
 ```
-

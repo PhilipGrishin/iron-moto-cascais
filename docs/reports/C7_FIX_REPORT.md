@@ -4,6 +4,22 @@ Date: 2026-07-31
 
 Implementation commit: `410809d1`
 
+## Correction Recorded 2026-07-31
+
+The high-density `<picture>` note in the original report below was preliminary.
+The current follow-up measurement uses Chromium at 390 x 844 CSS pixels with
+device pixel ratio 3. It confirms duplicate candidates on the generated Blog
+and News article pages: the preload requests the 768px candidate while the
+rendered `<picture>` selects the 1280px candidate. The confirmed follow-up
+scope is the Blog and News article families; project detail pages are not part
+of that current finding. The evidence, affected-family inventory, transferred
+bytes and proposed follow-up are recorded in `docs/OPEN_TASKS.md`.
+
+The SEO/GEO table in the original report used `EN_PAGES` as terminology from
+the task brief. No such registry exists in the repository. The canonical
+English sitemap registry is `PAGES` in `scripts/build/build_sitemap.py`; this
+correction is also recorded in `docs/PROJECT_STATE.md`.
+
 ## Decision
 
 The responsive-background option was implemented. CSS-background heroes now

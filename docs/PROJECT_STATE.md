@@ -1,199 +1,132 @@
-# Iron Custom Motors Website - Project State
+# Iron Custom Motors Website: Project State
 
 Last updated: 2026-07-31
-Production: https://ironcustommotors.com/  
-Repository: https://github.com/dreamcarua/iron-moto-cascais
 
-This file is the fast recovery map for Codex context compaction. Read it after
-`AGENTS.md` before doing site work. It preserves the current project context in
-the repository instead of relying on chat history.
+This is the only documentation file that owns current inventories, counts,
+deployed public identifiers and cache-bust values. Operating rules live in
+`AGENTS.md`; page ownership lives in `docs/CONTENT_TYPES.md`; commands live in
+`scripts/build/README.md`.
 
-## Context Recovery Checklist
+## Status And Evidence
 
-At the start of a new session or after context compaction:
+- Status: **confirmed**.
+- Evidence date: 2026-07-31 (Europe/Lisbon).
+- Repository evidence: tracked files at commit `a2daec42` before the FINAL
+  documentation audit, plus a clean `main...origin/main` comparison.
+- Inventory method: import the maintained Python registries, parse
+  `sitemap.xml`, and enumerate tracked `*.html` files.
+- Cache-bust method: scan asset references in every sitemap HTML file.
+- Production evidence: cache-bypass requests to the public domain.
 
-1. Read `AGENTS.md`.
-2. Read this file.
-3. Read `docs/CONTENT_TYPES.md` for the page family you are about to edit.
-4. Read `docs/OPEN_TASKS.md` for current risks and unresolved follow-ups.
-5. Read `docs/TASK_BRIEF_TEMPLATE.md` when shaping a new large task.
-6. Read `scripts/build/README.md` for the exact generator sequence.
-7. Run `git status --short` before editing.
-8. Inspect the relevant source data and generator before changing generated HTML.
+## Repository And Production
 
-## Business Purpose
+| Item | Current value |
+|---|---|
+| Production | `https://ironcustommotors.com/` |
+| Repository | `https://github.com/dreamcarua/iron-moto-cascais` |
+| Git remote | `https://github.com/dreamcarua/iron-moto-cascais.git` |
+| Production branch | `main` |
+| Hosting | GitHub Pages, checked-in static output |
+| DNS/CDN | Cloudflare |
+| Server-side framework | None |
+| CMS | None |
 
-The site is the production marketing and lead-generation website for Iron Custom
-Motors, a premium motorcycle workshop in Cascais / Greater Lisbon. The business
-goal is SEO, local search, AI-citation readiness and high-quality service leads.
+Pushing `main` triggers `.github/workflows/pages.yml`. GitHub does not run the
+site generators during deployment; the workflow packages checked-in output.
 
-## Current Technical State
+## Current Inventory
 
-- Static HTML/CSS/JavaScript site served from GitHub Pages.
-- No server-side application framework.
-- Four pre-rendered languages:
-  - English at `/`
-  - Russian at `/ru/`
-  - Ukrainian at `/uk/`
-  - Portuguese at `/pt/`
-- Current sitemap: 53 indexable path patterns x 4 languages = 212 URLs.
-- Current repo HTML count: 215 files, including `404.html` and 2 legacy noindex
-  redirect stubs.
-- Current cache-bust convention: `?v=20260724a`.
-- `sitemap.xml` `lastmod` values are per-page real content dates with timezone,
-  not deploy timestamps. Blog/news use their explicit article dates; other
-  pages use semantic Git history for the served HTML.
-- Production deploy is triggered by pushing `main`.
-- Cloudflare fronts the domain and may cache recently deployed HTML/assets.
-- Every sitemap page exposes an early LCP image-discovery hint. Legacy static
-  project pages use responsive AVIF/WebP/JPEG `<picture>` delivery while
-  preserving their existing visual treatment. CSS-background heroes use the
-  same 768/1280/1920 viewport boundaries for preload and rendered background;
-  `validate_seo.py --check-css-hero-preloads` protects that alignment.
-- The canonical full rebuild sequence is documented only in
-  `scripts/build/README.md`; maintained generators preserve semantically
-  unchanged output so a clean rebuild is reviewable and repeatable.
+| Inventory | Current value | Canonical evidence |
+|---|---:|---|
+| Supported languages | 4 | `build_sitemap.py` `LANGS` |
+| English path patterns | 53 | `build_sitemap.py` `PAGES` |
+| Indexable sitemap URLs | 212 | parsed `sitemap.xml` `<url>` entries |
+| Tracked HTML files | 215 | filesystem enumeration |
+| Indexable HTML files | 212 | sitemap-to-file resolution |
+| Non-indexed HTML files | 3 | `404.html` plus legacy redirect stubs |
+| Sitemap lastmod tags | 212 | parsed `sitemap.xml` |
+| Unique sitemap lastmod values | 49 | parsed `sitemap.xml` |
+| Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
+| Project detail pages | 11 | `PROJECT_TILES` |
+| Data-driven project definitions | 1 | `PROJECT_CONFIGS` |
+| Blog posts | 7 | `BLOG_POSTS` |
+| News articles | 3 | `NEWS_ARTICLES` |
+| Harley Hub English page patterns | 3 | `harley_hub_data.py` `PAGE_CONFIG` |
+| Generated general hub English pages | 6 | `build_new_pages.py` / `new_pages_data.py` |
+| Authorized Dealer English page patterns | 2 | `build_authorized_dealer.py` |
+| Legal English page patterns | 3 | `LEGAL_PAGES` |
 
-## Source Of Truth Order
+Language roots:
 
-Use sources in this order:
+- English: `/`
+- Portuguese: `/pt/`
+- Russian: `/ru/`
+- Ukrainian: `/uk/`
 
-1. `AGENTS.md` - operating rules and non-negotiables.
-2. `docs/PROJECT_STATE.md` - current compact project state.
-3. `docs/BUSINESS_FACTS.md` - canonical NAP, hours, founder, origin,
-   service languages, profiles and published key prices.
-4. `docs/CONTENT_TYPES.md` - page-family source maps and task templates.
-5. `docs/OPEN_TASKS.md` - temporary risks and unresolved follow-ups.
-6. `docs/TASK_BRIEF_TEMPLATE.md` - compact intake format for large tasks.
-7. `scripts/build/README.md` - build and verification command order.
-8. `docs/CODEX_CHANGELOG.md` - compact implementation memory.
-9. Actual source data and generators under `scripts/build/`.
-10. Generated HTML only as output or for verification.
+The tyre-service family intentionally uses localized slugs. Read them from
+`build_sitemap.py` `LANG_PATHS`; do not infer them from the English slug.
 
-`HANDOFF.md` is historical and may contain stale counts from 2026-06-17. Use
-this file for current state unless `HANDOFF.md` has been explicitly refreshed.
+Registry alignment on the evidence date:
 
-## Language And URL Rules
+| Registry | Entries | Relationship |
+|---|---:|---|
+| `build_sitemap.py` `PAGES` | 53 | canonical English indexable paths |
+| `localize_internal_links.py` `LOCALIZED_PATHS` | 53 | matches `PAGES` after normalization |
+| `build_i18n.py` `MAIN_PAGES` | 31 | English sources localized by the generic i18n flow |
+| `build_i18n.py` `PROJECT_PAGES` | 11 | project detail sources localized by the generic i18n flow |
 
-- Every public page must exist in all 4 languages.
-- Default English URLs are root-level paths.
-- Localized paths generally mirror English with `/ru/`, `/uk/`, `/pt/`.
-- Custom localized slugs currently exist for tyre service:
-  - EN `/motorcycle-tyre-service/`
-  - PT `/pt/montagem-de-pneus-mota/`
-  - RU `/ru/shinomontazh-mototsiklov/`
-  - UK `/uk/shynomontazh-mototsykliv/`
-- Internal localized pages must link within their own language subtree.
-- Run `scripts/build/localize_internal_links.py` after generating localized
-  pages.
+There is no active `EN_PAGES` registry. The canonical English page registry is
+`build_sitemap.py` `PAGES`.
+
+## Current Cache-Bust Values
+
+| Assets | Value | Scope |
+|---|---|---|
+| `assets/main.css`, `assets/main.js` | `20260724a` | every sitemap page |
+| `assets/projects.css`, `assets/projects.js` | `20260710b` | project detail pages |
+
+Different asset families may legally use different values. Each individual
+asset must use one value site-wide. Change a value only when that asset changes.
 
 ## Current Page Families
 
-### Top-Level And Hub Pages
+### General And Commercial Pages
 
-- `/` home
-- `/services/`
-- `/projects/`
-- `/about/`
-- `/community/`
-- `/contact/`
-- `/faq/`
-- `/pricing/`
-- `/parts/`
-- `/authorized-dealer/`
-- `/authorized-dealer/c-way/`
-- `/harley/`
-- `/harley-tuning/`
-- `/harley-custom/`
-- `/english-speaking-motorcycle-workshop/`
-- `/blog/`
-- `/news/`
-- `/privacy/`, `/cookies/`, `/terms/`
+`/`, `/services/`, `/motorcycle-service/`, `/parts/`,
+`/upgrades-tuning/`, `/custom/`, `/pre-purchase-inspection/`,
+`/motorcycle-tyre-service/`, `/pricing/`, `/projects/`, `/about/`,
+`/community/`, `/contact/`, `/faq/`,
+`/english-speaking-motorcycle-workshop/`, `/authorized-dealer/`,
+`/blog/`, `/news/`, `/privacy/`, `/cookies/`, and `/terms/`.
 
-### Service Pages
-
-- `/motorcycle-service/`
-- `/parts/`
-- `/upgrades-tuning/`
-- `/custom/`
-- `/pre-purchase-inspection/`
-- `/motorcycle-tyre-service/`
-
-### Light Funnel Hubs
-
-- `/english-speaking-motorcycle-workshop/` targets English-speaking expats and
-  newcomers, then routes down to the existing service, tyre, pre-purchase,
-  brand, custom, pricing and contact pages. It is intentionally footer-only and
-  contextual-link-only, not a top-navigation item.
-
-Source:
-
-- Copy: `scripts/build/content/expat_hub_copy_4lang.md`
-- Generator: `scripts/build/build_expat_hub.py`
-- Hero source: `/photos/services/english-speaking-motorcycle-workshop-main.jpg`
+The expat workshop page is intentionally footer-only and contextual-link-only;
+it is not a top-navigation item.
 
 ### Harley Hub
 
-The Harley-specific content family routes riders between the existing
-independent `/harley-service/` page and two focused service spokes:
+- `/harley/`
+- `/harley-tuning/`
+- `/harley-custom/`
 
-- `/harley/` - collection hub and tagged Harley blog feed
-- `/harley-tuning/` - stage, exhaust, suspension and braking work
-- `/harley-custom/` - custom-build service and four-project portfolio
-
-Source:
-
-- Copy: `scripts/build/content/harley_hub_phase1_4lang.md`
-- Supplemental data: `scripts/build/harley_hub_data.py`
-- Generator: `scripts/build/build_harley_hub.py`
-- Validator: `scripts/build/validate_harley_hub.py`
-- Hero sources: `photos/harley/`
-
-The workshop feed is generated from blog posts whose `topics` include
-`harley`. Keep those tags accurate when adding future Harley articles.
+The existing `/harley-service/` page is the independent service spoke. Blog
+feed membership comes from `BLOG_POSTS[*].topics`.
 
 ### Brand Service Pages
 
-Current brand order is defined in `scripts/build/brand_pages_data.py`:
-
-1. `/harley-service/`
-2. `/bmw-service/`
-3. `/ducati-service/`
-4. `/suzuki-service/`
-5. `/honda-service/`
-6. `/royal-enfield-service/`
-7. `/triumph-service/`
-
-The brand service pages are independent workshop pages. Do not describe Iron
-Custom Motors as an authorized motorcycle-brand dealer for BMW, Harley-Davidson,
-Ducati, Suzuki, Honda, Royal Enfield or Triumph unless the owner provides explicit
-approved partner wording.
+The current ordered inventory is the brands registered in `BRAND_ORDER`.
+These are independent workshop pages, not authorized motorcycle-brand dealer
+pages.
 
 ### Authorized Dealer
 
-`/authorized-dealer/` is a separate top-level category for official
-parts/accessories dealer partners. It is not the same as the independent
-motorcycle-brand service pages.
+- `/authorized-dealer/`
+- `/authorized-dealer/c-way/`
 
-Current hub source:
-
-- Data: `scripts/build/authorized_dealer_data.py`
-- Generator: `scripts/build/build_authorized_dealer.py`
-- Future partner cards: `AUTHORIZED_DEALER_BRANDS`
-- Hero source: `/photos/authorized-dealer-main-1600.jpg`
-
-Current partner subpages:
-
-- `/authorized-dealer/c-way/` in EN/RU/UK/PT. It is an official C-Way luggage
-  systems page for Honda Gold Wing 2018–2026 with six priced Canoe 2.0
-  configurations grouped into Steel and Aluminium. Product media is local
-  AVIF/WebP, and each visible position has matching Product/Offer JSON-LD.
-  Do not add trailer/mototrailer content to this page unless the owner gives a
-  new explicit task.
+This is a separate official parts/accessories channel. The C-Way page currently
+contains 6 visible priced configurations and 6 matching `Product`/`Offer`
+entities, with no partial duplicate products.
 
 ### Projects
-
-Current project pages:
 
 - `/projects/inspirium/`
 - `/projects/beckman/`
@@ -207,18 +140,15 @@ Current project pages:
 - `/projects/true-religion/`
 - `/projects/fighter/`
 
-New project pages can use the shared data-driven flow in
-`scripts/build/project_pages_data.py` and `scripts/build/build_project_pages.py`.
-Legacy project pages remain static HTML with inline localized copy.
+`Fighter` is data-driven. The other current project pages retain legacy static
+copy while shared post-processors maintain common behavior.
 
-Legacy redirect stubs:
+Legacy noindex redirects:
 
 - `/projects/nezlamniy/` -> `/projects/unbreakable/`
 - `/projects/quanta/` -> `/projects/quanta-r/`
 
-### Blog Posts
-
-Current blog posts are registered in `scripts/build/blog_data.py`:
+### Blog
 
 - `/blog/revtech-110-oil-service-engine-gearbox-drive/`
 - `/blog/motorcycle-brake-pad-replacement-cascais/`
@@ -228,109 +158,73 @@ Current blog posts are registered in `scripts/build/blog_data.py`:
 - `/blog/harley-davidson-full-service-done-right/`
 - `/blog/royal-enfield-bear-650-scrambler-build/`
 
-### News Articles
-
-Current news articles are registered in `scripts/build/news_data.py`:
+### News
 
 - `/news/ericeira-kustom-fest-2026/`
 - `/news/opens-new-workshop-in-cascais/`
 - `/news/lisbon-motorcycle-film-fest-2026-beckman/`
 
-## Core Build Files
+## Current Delivery And Discovery State
 
-- `assets/main.css` - site-wide design, typography, responsive behavior.
-- `assets/main.js` - runtime behavior and shared `I18N` object.
-- `scripts/build/build_new_pages.py` - hub pages.
-- `scripts/build/build_brand_pages.py` - brand service pages.
-- `scripts/build/build_authorized_dealer.py` - Authorized Dealer hub.
-- `scripts/build/build_blog.py` - blog hub and articles.
-- `scripts/build/build_news.py` - news hub and articles.
-- `scripts/build/build_pre_purchase_inspection.py` - flagship inspection page.
-- `scripts/build/build_expat_hub.py` - English-speaking expat funnel hub.
-- `scripts/build/build_harley_hub.py` - Harley collection, tuning and custom
-  pages.
-- `scripts/build/build_tyre_service.py` - tyre service page.
-- `scripts/build/build_pricing.py` - pricing pages.
-- `scripts/build/site_chrome.py` - canonical shared navigation and footer
-  renderer used by page generators.
-- `scripts/build/nav_patch.py` - sitemap-wide shared navigation and footer
-  applier.
-- `scripts/build/build_i18n.py` - localized copies and JSON-LD localization.
-- `scripts/build/localize_internal_links.py` - localized internal link rewrites.
-- `scripts/build/apply_seo_meta.py` - shared SEO meta invariants and sitemap-wide
-  LCP image-delivery normalization.
-- `scripts/build/build_sitemap.py` - sitemap and hreflang alternates.
-- `scripts/build/validate_seo.py` - broad SEO and asset validation.
-- `scripts/build/validate_brand_pages.py` - brand-page QA.
-- `scripts/build/validate_harley_hub.py` - Harley family content, schema,
-  integrations and portfolio QA.
+- Every sitemap page has canonical, mutual hreflang and Schema.org JSON-LD with
+  at least `BreadcrumbList`.
+- Every sitemap page has an early hero discovery hint.
+- CSS-background heroes use matching responsive preload/background candidates
+  at the maintained viewport boundaries.
+- Legacy project heroes use responsive AVIF/WebP/JPEG `<picture>` delivery.
+- `llms.txt` is generated from the English page registry, maintained page-name
+  sources, metadata and `docs/BUSINESS_FACTS.md`.
+- `robots.txt` advertises both `sitemap.xml` and `llms.txt`.
+- `sitemap.xml` uses stable, per-page content dates rather than deployment time.
 
-## Recent Project Context
+Open performance caveats and external verification limits are in
+`docs/OPEN_TASKS.md`.
 
-Recent high-impact changes:
+## External Services And Public Identifiers
 
-- Added the Authorized Dealer hub in 4 languages.
-- Added and standardized brand pages for Suzuki, Honda, Royal Enfield and
-  Triumph.
-- Added the English-speaking expat funnel hub in 4 languages with footer-only
-  navigation and contextual inbound links.
-- Humanized Harley-Davidson, BMW Motorrad and Ducati pages.
-- Rebuilt Pre-Purchase Inspection as a flagship service.
-- Added Motorcycle Tyre Service and related blog content.
-- Added top-navigation dropdowns for Services, Brands, Projects and About.
-- Improved Cyrillic typography for Russian and Ukrainian pages.
-- Split Google reviews into live rating/count from the Worker snapshot and
-  editorial visible cards from `assets/reviews-curated.json`.
-- Added YouTube social link and blog/video schema workflows.
-- Added the multilingual Harley Hub family, global dropdown, workshop feed and
-  custom portfolio.
-- Documented and centralized scalable page-family patterns.
+| Service | Current public identifier or endpoint |
+|---|---|
+| Reviews Worker | `https://icm-reviews.vg-ab6.workers.dev/` |
+| Google Analytics | `G-D15BLYEKBN` |
+| Meta Pixel | `1708697916976439` |
+| FormSubmit inbox | `Ironcustom.office@gmail.com` |
 
-For compact commit memory, see `docs/CODEX_CHANGELOG.md`.
+The Google Places API key is a Cloudflare Worker secret and must never appear
+in client files or documentation. Account-only risks and verification limits
+live in `docs/OPEN_TASKS.md`; variable names live in `.env.example`.
 
-## External Services
+## Current Build Ownership
 
-- Hosting: GitHub Pages.
-- CDN/DNS: Cloudflare.
-- Reviews Worker: `https://icm-reviews.vg-ab6.workers.dev/`.
-- Google Places API key is stored only as a Cloudflare Worker secret.
-- Reviews refresh automation:
-  `.github/workflows/reviews-refresh.yml` runs `build_reviews_schema.py`
-  weekly and can be dispatched manually.
-- GA4: `G-D15BLYEKBN`.
-- Meta Pixel: `1708697916976439`.
-- Form backend: FormSubmit to `Ironcustom.office@gmail.com`.
-- Google Search Console requires account access for live manual inspection.
+The exhaustive script/input/output/validator inventory and every executable
+command sequence live in `scripts/build/README.md`. Page-family ownership and
+stable implementation rules live in `docs/CONTENT_TYPES.md`.
 
-Never expose secrets in chat, docs, commits or logs.
+The full documented rebuild currently requires macOS because
+`build_pricing_pdfs.py` uses macOS system Arial paths. This is an open
+portability risk, not a cross-platform guarantee.
 
-## Verification Standard
+## Corrections Recorded By The FINAL Audit
 
-After implementation:
+- **Previous statement:** `HANDOFF.md` contained stale counts and should be
+  treated as a current-state conflict.
+  **Correction (2026-07-31):** C1 already converted `HANDOFF.md` into a thin
+  historical entry point with no competing inventory. Evidence: file review.
+- **Previous statement:** all build scripts were path-portable and Python 3.8+
+  was sufficient.
+  **Correction (2026-07-31):** source syntax requires Python 3.10+, and the PDF
+  generator has macOS-only font paths. Evidence: source inspection and a clean
+  environment build audit.
+- **Previous statement:** one cache-bust value described the whole site.
+  **Correction (2026-07-31):** main and project asset families have independent
+  values, recorded above. Evidence: sitemap HTML asset scan.
+- **Previous terminology:** `EN_PAGES` was treated as a current registry in a
+  prior task report.
+  **Correction (2026-07-31):** no such registry exists; `PAGES` is canonical.
 
-1. Run the relevant generator pipeline from `scripts/build/README.md`.
-2. Run focused validators (`validate_seo.py`, `validate_brand_pages.py`, schema
-   checks, `git diff --check`).
-3. Commit and push unless the owner explicitly says not to.
-4. Wait for GitHub Pages deploy.
-5. Verify production URLs with `curl -I` and focused HTML/source checks.
-6. Report what was verified and what could not be externally verified.
+## Recovery Answer
 
-For docs-only changes, at minimum run:
-
-```bash
-git diff --check
-git status --short
-```
-
-## Documentation Maintenance Rule
-
-When a task changes a repeatable workflow, update the documentation in the same
-commit. Prefer updating:
-
-- `docs/CONTENT_TYPES.md` for task templates and page-family ownership.
-- `docs/PROJECT_STATE.md` for current structure and high-level facts.
-- `docs/CODEX_CHANGELOG.md` for compact implementation memory.
-- `docs/OPEN_TASKS.md` for unresolved risks or external follow-ups.
-- `docs/TASK_BRIEF_TEMPLATE.md` for future large task intake.
-- `scripts/build/README.md` for command sequences and generator details.
+For a new session: this repository is the production static marketing site for
+Iron Custom Motors. Its current inventory is above. There is no active
+implementation task recorded; unresolved performance, portability, CDN and
+external-account work is in `docs/OPEN_TASKS.md`. Read the affected family in
+`docs/CONTENT_TYPES.md`, then use only `scripts/build/README.md` for commands.
