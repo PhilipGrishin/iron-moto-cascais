@@ -95,6 +95,21 @@ inputs, not a substitute for a new throttled LCP measurement.
 
 ## Verification
 
-Final command output, clean-clone evidence, commit identifiers and production
-checks are recorded in `docs/CODEX_CHANGELOG.md` and the task handoff after
-publication.
+Implementation commit: `c177b67a`.
+
+The complete Full Safe Rebuild from `scripts/build/README.md` was run in a
+clean clone of that commit with `PYTHONDONTWRITEBYTECODE=1`. It ended with an
+empty `git status --short` and the unchanged sitemap SHA-256
+`4910de2803fdd535c37198cf27ed541c23e66be8bd53afe80466881261e54971`.
+
+The four canonical validators returned:
+
+```text
+SEO validation passed: 212 sitemap URL(s)
+Brand page validation passed: 7 brand page set(s).
+Harley Hub validation passed: 12 pages and all required integrations
+OK: fighter project page passed multilingual, media, schema and integration checks
+```
+
+Production checks after publication and any external measurement boundary are
+recorded in the task handoff.

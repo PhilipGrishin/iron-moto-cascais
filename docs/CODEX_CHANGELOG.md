@@ -14,6 +14,28 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-31 - Blog picture hero preload alignment
+
+- Commit: `c177b67a`
+- Changed: Replaced the three viewport-media Blog article preloads with one
+  responsive `imagesrcset`/`imagesizes` preload across all 28 language
+  variants, added exact candidate-selection validation, corrected the
+  repository's stale News scope description, and protected canonical output
+  bytes during the full generator sequence.
+- Verified: The focused picture validator passed all 28 Blog variants at
+  390px/DPR3, 390px/DPR2, 768px/DPR2, 1280px/DPR1 and 1440px/DPR1; the CSS
+  hero validator still passed 104 pages; all four repository validators
+  passed; exactly 28 Blog HTML files changed; News, projects, other HTML,
+  CSS, JS, cache-bust values, sitemap bytes and all lastmod values remained
+  unchanged; and the Full Safe Rebuild left a clean clone of `c177b67a` with
+  empty `git status --short`.
+- Notes: Source inspection proved that the 12 News article variants use the
+  already-aligned C7-FIX CSS-background contract, not `<picture>`, so they
+  were not edited. The historical 390px/DPR3 trace predicts a 26,494-byte
+  transfer reduction from the aligned selection inputs. The available browser
+  did not expose the required DPR/network/CPU controls, so no new comparable
+  three-run LCP median is claimed.
+
 ## 2026-07-31 - Repository cleanup and discovery price alignment
 
 - Commit: `da6240ec`
