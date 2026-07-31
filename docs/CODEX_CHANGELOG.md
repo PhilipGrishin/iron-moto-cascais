@@ -14,6 +14,24 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-31 - Repository cleanup and discovery price alignment
+
+- Commit: `da6240ec`
+- Changed: Corrected the FINAL repository audit's obsolete module names and
+  Node.js ownership statement, changed the pre-purchase discovery description
+  from a starting price to the approved fixed EUR 150 price, ignored the
+  documented local `.venv`, and removed the resolved worktree and discovery
+  follow-ups from the active backlog.
+- Verified: The complete Full Safe Rebuild and Broad Verification passed; all
+  four focused validators passed; `sitemap.xml` remained byte-identical;
+  `llms.txt` regeneration was idempotent; and the expected five-file
+  implementation diff passed `git diff --check`.
+- Notes: After confirming no unique uncommitted work, cleanup removed three
+  obsolete registered worktrees and 175 project-prefixed temporary C5-C7/FINAL
+  artifacts (21,117,872 KiB measured before deletion). The prepared local
+  `.venv` remains intentionally available and Git-ignored. The separate
+  high-density Blog/News hero download task remains open.
+
 ## 2026-07-31 - Repository self-audit and documentation protocol
 
 - Commit: `d08a3297`
