@@ -65,14 +65,15 @@ removal of translation attributes/inline payloads and HTML serialization.
 ## Schema And Delivery Contract
 
 - Every project emits the same type set: `Article`, `WebPage`, `ImageObject`,
-  `LocalBusiness`, `BreadcrumbList` and `ListItem`.
+  `LocalBusiness`, `PostalAddress`, `BreadcrumbList` and `ListItem`.
 - `CreativeWork`, year-only `dateCreated` and inline `Organization` stubs are
   absent.
 - `datePublished` is the real first Git publication timestamp for migrated
   pages; `dateModified` preserves the already-published per-language sitemap
   content timestamp. All values are full ISO-8601 with timezone.
 - Article author and publisher are `@id` references to the complete
-  `LocalBusiness` entity, which includes `name`, `url` and a dimensioned logo.
+  `LocalBusiness` entity, which includes `name`, `url`, `image`, `telephone`,
+  `priceRange`, postal address and a dimensioned logo.
 - Each page has one responsive AVIF preload matching the hero source, exactly
   one high-priority hero image and no high-priority lazy image.
 - The migrated hero AVIF/WebP/JPEG sets and every gallery descriptor are

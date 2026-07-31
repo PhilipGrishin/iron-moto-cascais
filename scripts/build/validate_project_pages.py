@@ -35,6 +35,7 @@ EXPECTED_SCHEMA_TYPES = {
     "ImageObject",
     "ListItem",
     "LocalBusiness",
+    "PostalAddress",
     "WebPage",
 }
 
@@ -215,8 +216,24 @@ def validate_schema(
         issues.append(f"{label}: referenced LocalBusiness entity missing")
     else:
         logo = business.get("logo")
-        if business.get("name") != "Iron Custom Motors" or not business.get("url"):
-            issues.append(f"{label}: referenced publisher name/url incomplete")
+        expected_business = {
+            "name": "Iron Custom Motors",
+            "url": f"{DOMAIN}/" if lang == "en" else f"{DOMAIN}/{lang}/",
+            "image": f"{DOMAIN}/photos/og.jpg",
+            "telephone": "+351917961230",
+            "priceRange": "€€",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "R. António José da Silva 100 B",
+                "addressLocality": "São Domingos de Rana",
+                "addressRegion": "Lisbon",
+                "postalCode": "2785-253",
+                "addressCountry": "PT",
+            },
+        }
+        for field, expected in expected_business.items():
+            if business.get(field) != expected:
+                issues.append(f"{label}: referenced publisher {field} mismatch")
         if not isinstance(logo, dict) or not logo.get("url") or not logo.get("width") or not logo.get("height"):
             issues.append(f"{label}: referenced publisher logo incomplete")
     if webpage is None:

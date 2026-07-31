@@ -333,6 +333,17 @@ def schema_graph(project: dict, lang: str, meta: dict, main, hero: dict) -> dict
             "@id": f"{DOMAIN}/#business",
             "name": "Iron Custom Motors",
             "url": f"{DOMAIN}/{prefix}",
+            "image": f"{DOMAIN}/photos/og.jpg",
+            "telephone": "+351917961230",
+            "priceRange": "€€",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "R. António José da Silva 100 B",
+                "addressLocality": "São Domingos de Rana",
+                "addressRegion": "Lisbon",
+                "postalCode": "2785-253",
+                "addressCountry": "PT",
+            },
             "logo": {
                 "@type": "ImageObject",
                 "url": f"{DOMAIN}/photos/icon-512.png",
