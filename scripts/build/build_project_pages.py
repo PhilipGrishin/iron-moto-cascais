@@ -9,7 +9,9 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 from PIL import Image
 
+from build_output import write_html_if_changed
 from project_pages_data import PROJECT_CONFIGS, load_project
+from site_chrome import patch_navigation_footer
 
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -265,6 +267,29 @@ def render_project(slug: str) -> Path:
     upsert_meta(soup, name="twitter:image", content=image_url)
     upsert_link(soup, "canonical", page_url)
 
+    alternates = {
+        alternate.get("hreflang"): alternate
+        for alternate in soup.head.find_all(
+            "link", attrs={"rel": "alternate", "hreflang": True}
+        )
+    }
+    for lang, hreflang in (("en", "en"), ("pt", "pt-PT"), ("ru", "ru"), ("uk", "uk")):
+        alternate = alternates.get(hreflang)
+        if alternate is None:
+            alternate = soup.new_tag("link")
+            alternate["rel"] = "alternate"
+            alternate["hreflang"] = hreflang
+            soup.head.append(alternate)
+        prefix = "" if lang == "en" else f"/{lang}"
+        alternate["href"] = f"{DOMAIN}{prefix}/projects/{slug}/"
+    alternate = alternates.get("x-default")
+    if alternate is None:
+        alternate = soup.new_tag("link")
+        alternate["rel"] = "alternate"
+        alternate["hreflang"] = "x-default"
+        soup.head.append(alternate)
+    alternate["href"] = page_url
+
     for preload in soup.head.find_all("link", attrs={"rel": "preload", "as": "image"}):
         preload.decompose()
     preload = soup.new_tag("link")
@@ -303,6 +328,10 @@ def render_project(slug: str) -> Path:
         script["type"] = "application/ld+json"
         script.string = json.dumps(block, ensure_ascii=False, separators=(",", ":"))
         soup.head.append(script)
+    for alternate in soup.head.find_all(
+        "link", attrs={"rel": "alternate", "hreflang": True}
+    ):
+        soup.head.append(alternate.extract())
 
     i18n_script = None
     for script in soup.find_all("script"):
@@ -320,7 +349,14 @@ def render_project(slug: str) -> Path:
 
     output = SITE_ROOT / "projects" / slug / "index.html"
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(str(soup), encoding="utf-8")
+    generated = patch_navigation_footer(str(soup), "en")
+    write_html_if_changed(
+        output,
+        generated,
+        preserve_body_shell=True,
+        merge_page_i18n=True,
+        preserve_downstream_head=True,
+    )
     print(f"wrote {output.relative_to(SITE_ROOT)}")
     return output
 

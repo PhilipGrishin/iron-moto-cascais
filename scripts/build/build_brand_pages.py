@@ -10,6 +10,9 @@ Same skeleton for every brand:
 import json
 from pathlib import Path
 
+from bs4 import BeautifulSoup
+
+from build_output import write_html_if_changed
 from brand_pages_data import (
     BRAND_BG,
     BRAND_HEAD,
@@ -311,11 +314,14 @@ def head(slug, lang):
 
     page_url = canonical
 
+    service_name = BeautifulSoup(
+        page_i18n_for(slug)["en"][f"{pre}.h1"], "html.parser"
+    ).get_text(" ", strip=True)
     json_ld_blocks = [
         {
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": f"{brand_name} service",
+            "name": service_name,
             "serviceType": f"{brand_name} motorcycle service and repair",
             "provider": {"@id": f"{DOMAIN}/#business"},
             "brand": {"@type": "Brand", "name": brand_name},
@@ -350,7 +356,10 @@ def head(slug, lang):
             break
         faq_main_entity.append({
             "@type": "Question", "name": q,
-            "acceptedAnswer": {"@type": "Answer", "text": a},
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": BeautifulSoup(a, "html.parser").get_text(" ", strip=True),
+            },
         })
         i += 1
     if faq_main_entity:
@@ -359,6 +368,7 @@ def head(slug, lang):
             "@type": "FAQPage",
             "url": page_url,
             "mainEntity": faq_main_entity,
+            "name": meta["title"],
         })
 
     json_ld_html = "".join(
@@ -650,7 +660,7 @@ def render(slug):
 
     out = SITE_ROOT / slug / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
+    write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
     return out
 
 

@@ -15,6 +15,7 @@ import json
 import re
 from pathlib import Path
 
+from build_output import write_html_if_changed
 from brand_pages_data import BRAND_NAME, BRAND_NAV_KEYS, BRAND_ORDER
 from hero_images import hero_background_css, optimized_hero_url
 from new_pages_data import PAGE_HEAD_META, PAGE_I18N, PROJECT_TILES, FAQ_QA
@@ -209,7 +210,7 @@ def render_services():
         {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "name": "Motorcycle Services in Cascais",
+            "name": "All motorcycle services under one roof.",
             "url": page_url,
             "isPartOf": {"@id": f"{DOMAIN}/#website"},
             "about": {"@id": f"{DOMAIN}/#business"},
@@ -346,7 +347,7 @@ def render_services():
     html = head(page_id, "en", extra_styles=extra_css, json_ld_blocks=json_ld) + "\n<body>\n" + header_html() + body + footer_html() + end_html()
     out = SITE_ROOT / page_id / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
+    write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
     return out
 
 
@@ -372,7 +373,7 @@ def render_projects():
         {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "name": "Custom Motorcycle Projects Portfolio",
+            "name": "Custom motorcycles we built.",
             "url": page_url,
             "isPartOf": {"@id": f"{DOMAIN}/#website"},
             "mainEntity": {
@@ -494,7 +495,7 @@ def render_projects():
     html = head(page_id, "en", extra_styles=extra_css, json_ld_blocks=json_ld) + "\n<body>\n" + header_html() + body + footer_html() + end_html()
     out = SITE_ROOT / page_id / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
+    write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
     return out
 
 
@@ -724,7 +725,7 @@ def render_about():
     html = head(page_id, "en", extra_styles=extra_css, json_ld_blocks=json_ld) + "\n<body>\n" + header_html() + body + footer_html() + end_html()
     out = SITE_ROOT / page_id / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
+    write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
     return out
 
 
@@ -742,7 +743,7 @@ def render_community():
             "@context": "https://schema.org",
             "@type": "WebPage",
             "@id": page_url,
-            "name": "Motorcycle Community & Rider Lounge in Cascais",
+            "name": "More than a service. A place for riders, stories and motorcycle culture.",
             "description": PAGE_HEAD_META[page_id]["en"]["description"],
             "url": page_url,
             "isPartOf": {"@id": f"{DOMAIN}/#website"},
@@ -877,7 +878,7 @@ def render_community():
     html = head(page_id, "en", extra_styles=extra_css, json_ld_blocks=json_ld) + "\n<body>\n" + header_html() + body + footer_html() + end_html()
     out = SITE_ROOT / page_id / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
+    write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
     return out
 
 
@@ -894,7 +895,7 @@ def render_contact():
         {
             "@context": "https://schema.org",
             "@type": "ContactPage",
-            "name": "Contact Iron Custom Motors",
+            "name": "Get in touch.",
             "url": page_url,
             "isPartOf": {"@id": f"{DOMAIN}/#website"},
             "mainEntity": {"@id": f"{DOMAIN}/#business"},
@@ -1023,7 +1024,7 @@ def render_contact():
     html = head(page_id, "en", extra_styles=extra_css, json_ld_blocks=json_ld) + "\n<body>\n" + header_html() + body + footer_html() + end_html()
     out = SITE_ROOT / page_id / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
+    write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
     return out
 
 
@@ -1132,7 +1133,7 @@ def render_faq():
     html = head(page_id, "en", extra_styles=extra_css, json_ld_blocks=json_ld) + "\n<body>\n" + header_html() + body + footer_html() + end_html()
     out = SITE_ROOT / page_id / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
+    write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
     return out
 
 

@@ -12,6 +12,7 @@ from copy import deepcopy
 from bs4 import BeautifulSoup, FeatureNotFound
 
 from hero_images import hero_background_css
+from build_output import write_html_if_changed
 from localize_internal_links import rewrite_href
 from pricing_data import LABELS, SECTIONS, LANGS
 from seo_meta import upsert_robots_image_preview
@@ -105,7 +106,7 @@ def build_pricing_main(lang: str) -> str:
     <h1>{L["h1"]}</h1>
     <p class="lead">{L["lead"]}</p>
     <div class="subpage-cta">
-      <a href="#contact" class="btn btn-primary" data-cta="book">{L["book_service"]}
+      <a href="/contact/" class="btn btn-primary" data-cta="book">{L["book_service"]}
         <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <a href="{L["pdf_filename"]}" class="btn btn-ghost pdf-dl" target="_blank" rel="noopener" data-cta="pdf">
@@ -584,7 +585,18 @@ def build_page(lang: str) -> str:
     set_language_state(soup, lang)
     apply_navigation_footer(soup, lang)
 
-    return str(soup)
+    rendered = str(soup)
+    rendered = rendered.replace(
+        "<!DOCTYPE html>\n<html",
+        "<!DOCTYPE html>\n\n<html",
+        1,
+    )
+    rendered = rendered.replace(
+        "</style>\n\n<script>window.ICM_I18N_PAGE",
+        "</style>\n<script>window.ICM_I18N_PAGE",
+        1,
+    )
+    return rendered
 
 
 def main():
@@ -595,8 +607,15 @@ def main():
         else:
             out = SITE_ROOT / lang / "pricing" / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(html_out, encoding="utf-8")
-        print(f"wrote {out.relative_to(SITE_ROOT)}  ({len(html_out):,} bytes)")
+        changed = write_html_if_changed(
+            out,
+            html_out,
+            preserve_body_shell=True,
+            preserve_page_i18n=True,
+            preserve_downstream_head=True,
+        )
+        action = "wrote" if changed else "unchanged"
+        print(f"{action} {out.relative_to(SITE_ROOT)}  ({len(html_out):,} bytes)")
 
 
 if __name__ == "__main__":

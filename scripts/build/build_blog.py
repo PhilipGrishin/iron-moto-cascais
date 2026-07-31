@@ -12,6 +12,9 @@ import json
 from html import escape
 from pathlib import Path
 
+from bs4 import BeautifulSoup
+
+from build_output import write_html_if_changed
 from blog_data import BLOG_HUB_BODY, BLOG_HUB_META, BLOG_POSTS
 from build_news import (
     ARROW_SVG,
@@ -384,7 +387,7 @@ def render_hub():
 
     out = SITE_ROOT / "blog" / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
+    write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
     return out
 
 
@@ -470,17 +473,22 @@ def render_article(slug, article):
             "@type": "ImageObject",
             **article["publisherLogo"],
         }
+    schema_headline = BeautifulSoup(en_body["h1"], "html.parser").get_text(" ", strip=True)
     blog_posting_schema = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": en_body["h1Crumb"],
+        "headline": schema_headline,
         "description": en_meta["description"],
         "image": images,
         "datePublished": schema_datetime(article["publishedISO"]),
         "dateModified": schema_datetime(article["modifiedISO"]),
         "author": article_author,
         "publisher": article_publisher,
-        "mainEntityOfPage": {"@type": "WebPage", "@id": page_url},
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": page_url,
+            "name": schema_headline,
+        },
         "url": page_url,
         "inLanguage": "en",
         "articleSection": "Workshop guides",
@@ -731,7 +739,7 @@ def render_article(slug, article):
 
     out = SITE_ROOT / "blog" / slug / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
+    write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
     return out
 
 

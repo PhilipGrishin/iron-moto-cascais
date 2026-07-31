@@ -51,6 +51,7 @@ python3 -m pip install -r requirements.txt
 | `build_harley_hub.py` | `harley/`, `harley-tuning/` and `harley-custom/` in all 4 languages |
 | `build_pricing.py` | `pricing/` in all 4 languages |
 | `build_pricing_pdfs.py` | `pricing/files/*.pdf` downloadable price lists in all 4 languages |
+| `build_tyre_service.py` | `motorcycle-tyre-service/` in all 4 languages |
 | `enhance_money_pages.py` | Adds reusable local SEO + related-page blocks to service and brand pages |
 | `enhance_project_pages.py` | Adds reusable highlights + related-page blocks to project detail pages |
 | `build_i18n.py` | `/ru/`, `/uk/`, `/pt/` copies of the EN main pages |
@@ -62,6 +63,9 @@ python3 -m pip install -r requirements.txt
 | `build_sitemap.py` | Regenerates `sitemap.xml` with all 4 languages |
 | `build_llms.py` | Regenerates `llms.txt` from the sitemap page registry, content registries, published meta descriptions and canonical business facts |
 | `build_reviews_schema.py` | Pulls live Google rating/count via the Cloudflare Worker, reads curated visible reviews from `assets/reviews-curated.json`, injects `AggregateRating` + matching `Review` JSON-LD into the home pages, and refreshes the static reviews HTML fallback |
+| `optimize_hero_images.py` | Rebuilds requested AVIF/WebP/JPEG hero variants after a source hero changes |
+| `optimize_tyre_service_images.py` | Rebuilds tyre-service AVIF/WebP/JPEG variants when their source checksums change; `tyre_service_images_manifest.json` records those checksums |
+| `import_project_images.py` | Imports and optimizes a project's approved hero/gallery source images into `photos/projects/<slug>/` |
 | `extract_i18n.js` | Reads `assets/main.js` and writes `scripts/build/i18n.json` (consumed by `build_i18n.py`) |
 | `validate_seo.py` | Validates sitemap files, title/meta/canonical/hreflang, JSON-LD, localized internal links, SEO robots meta and local assets |
 | `validate_brand_pages.py` | Validates brand page registry, 4 language outputs, schema, sitemap, optimized hero assets, deploy workflow and reciprocal brand links |
@@ -96,12 +100,14 @@ use real content dates with timezone, not deploy time.
 | `news_data.py` | `build_news.py` (one entry per article slug, 4 languages) |
 | `blog_data.py` | `build_blog.py` (blog hub and posts, 4 languages) |
 | `project_pages_data.py` | `build_project_pages.py` (project-page registry, reviewed Markdown parsing, media and localized UI data) |
-| `content/projects/<slug>_4lang.md` | `project_pages_data.py` (approved 4-language project copy) |
-| `content/pre_purchase_inspection_copy_4lang.md` | `build_pre_purchase_inspection.py` (4-language flagship service copy) |
-| `content/expat_hub_copy_4lang.md` | `build_expat_hub.py` (4-language English-speaking expat hub copy) |
-| `content/harley_hub_phase1_4lang.md` | `build_harley_hub.py` (exact 4-language copy for the Harley hub, tuning and custom pages) |
+| `scripts/build/content/projects/<slug>_4lang.md` | `project_pages_data.py` (approved 4-language project copy) |
+| `scripts/build/content/pre_purchase_inspection_copy_4lang.md` | `build_pre_purchase_inspection.py` (4-language flagship service copy) |
+| `scripts/build/content/expat_hub_copy_4lang.md` | `build_expat_hub.py` (4-language English-speaking expat hub copy) |
+| `scripts/build/content/harley_hub_phase1_4lang.md` | `build_harley_hub.py` (exact 4-language copy for the Harley hub, tuning and custom pages) |
 | `harley_hub_data.py` | `build_harley_hub.py` (page media, localized UI and project portfolio data) |
 | `pricing_data.py` | `build_pricing.py` and `build_pricing_pdfs.py` (LABELS + SECTIONS, 4 languages) |
+| `build_output.py` | Shared semantic, idempotent output writer used by generators and post-processors to avoid serialization-only diffs |
+| `tyre_service_images_manifest.json` | Source checksums used by `optimize_tyre_service_images.py` to avoid codec-version-only media rewrites |
 | `i18n.json` | A snapshot of the runtime `I18N` object that lives inside `assets/main.js`. Regenerate with `node scripts/build/extract_i18n.js` after editing translations in `main.js`. |
 | `../../docs/BUSINESS_FACTS.md` | `build_llms.py` (canonical business identity, NAP, hours, origin, profiles, service languages and published key prices) |
 
@@ -152,28 +158,35 @@ python3 scripts/build/build_brand_pages.py
 python3 scripts/build/build_legal_pages.py
 python3 scripts/build/build_news.py
 python3 scripts/build/build_blog.py
-python3 scripts/build/build_pre_purchase_inspection.py
-python3 scripts/build/build_pricing.py
-python3 scripts/build/build_pricing_pdfs.py
-python3 scripts/build/nav_patch.py
-python3 scripts/build/enhance_money_pages.py
-python3 scripts/build/enhance_project_pages.py
-python3 scripts/build/build_i18n.py
+python3 scripts/build/build_project_pages.py
 python3 scripts/build/build_pre_purchase_inspection.py
 python3 scripts/build/build_expat_hub.py
 python3 scripts/build/build_harley_hub.py
+python3 scripts/build/build_pricing.py
+python3 scripts/build/build_pricing_pdfs.py
+python3 scripts/build/build_tyre_service.py
+python3 scripts/build/build_i18n.py
+python3 scripts/build/nav_patch.py
+python3 scripts/build/enhance_money_pages.py
+python3 scripts/build/enhance_project_pages.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/add_image_dims.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
+python3 scripts/build/validate_brand_pages.py
 python3 scripts/build/validate_harley_hub.py
+python3 scripts/build/validate_project_pages.py fighter
 ```
 
 Run `build_reviews_schema.py` separately only when a fresh Google
 rating/count snapshot is needed, because it calls the Cloudflare Worker.
 Visible review cards are controlled by `assets/reviews-curated.json`.
+
+Image import and optimization scripts are intentionally not part of the full
+safe rebuild. Run them only when their source media changes; generated image
+bytes can otherwise vary across codec versions even when pixels do not.
 
 ### After editing translations in `assets/main.js`
 
@@ -418,7 +431,7 @@ python3 scripts/build/validate_seo.py
 
 ```
 # 1. Save the approved 4-language Markdown at:
-#    content/projects/<slug>_4lang.md
+#    scripts/build/content/projects/<slug>_4lang.md
 # 2. Add the project to PROJECT_CONFIGS in project_pages_data.py
 # 3. Import the hero and gallery photographs:
 python3 scripts/build/import_project_images.py <slug> "/absolute/path/to/source/photos"

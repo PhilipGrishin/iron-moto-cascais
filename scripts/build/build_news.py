@@ -14,7 +14,10 @@ Author for every article: Iron Custom Motors (per project policy).
 import json
 from pathlib import Path
 
+from bs4 import BeautifulSoup
+
 from hero_images import hero_background_css
+from build_output import write_html_if_changed
 from news_data import (
     NEWS_HUB_META, NEWS_HUB_BODY,
     NEWS_ARTICLES,
@@ -51,6 +54,10 @@ def schema_datetime(value):
 def schema_author():
     """Keep author tied to the canonical business entity while exposing author.url."""
     return {"@id": BUSINESS_ID, "url": AUTHOR_URL}
+
+
+def plain_html(value):
+    return BeautifulSoup(value, "html.parser").get_text(" ", strip=True)
 
 NEWS_RELATED_I18N = {
     "en": {
@@ -98,6 +105,73 @@ FOOTER_HTML = render_site_footer("en")
 
 
 MODAL_HTML = render_contact_modal("en")
+
+
+SHARED_STYLES = """.subpage{padding:160px 0 100px;background:#0a0a0a;position:relative;overflow:hidden;isolation:isolate}
+.subpage::before{content:"";position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,87,34,.20),transparent 60%);pointer-events:none;z-index:1}
+.subpage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,.6) 50%,rgba(10,10,10,.96) 100%);z-index:0;pointer-events:none}
+.subpage .container{position:relative;z-index:1}
+.crumb{display:flex;align-items:center;gap:10px;font-family:var(--font-ui);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-mute);margin-bottom:24px;flex-wrap:wrap}
+.crumb a{color:var(--text-dim)}
+.crumb a:hover{color:var(--accent)}
+.crumb .sep{color:var(--accent)}
+.subpage h1{font-family:var(--font-display);font-weight:800;line-height:.92;letter-spacing:-.01em;text-transform:uppercase;font-size:clamp(30px,4vw,52px);color:#fff;max-width:22ch;margin-bottom:24px}
+.subpage h1 .accent{color:var(--accent)}
+.subpage .lead{max-width:62ch;color:var(--text-dim)}
+.subpage-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.cta-back{padding:var(--gap) 0;background:#0a0a0a;text-align:center;border-top:1px solid var(--border)}
+.cta-back .container{max-width:760px}
+.cta-back h2{margin-bottom:18px;font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.2vw,42px);line-height:.95;color:#fff}
+.cta-back .lead{margin:0 auto 30px;max-width:54ch}
+.cta-back .btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+@media (max-width:760px){.subpage{padding-top:130px}}"""
+
+HUB_CSS = """.subpage.news-hub{padding:140px 0 70px}
+.news-hub .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.5);""" + hero_background_css('/photos/news/news-opening-01-1600.jpg') + """}
+.news-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-top:30px}
+.news-card{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:border-color .25s var(--ease),transform .25s var(--ease)}
+.news-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.news-card .img{aspect-ratio:16/10;background-size:cover;background-position:center;background-color:#111}
+.news-card .body{padding:34px 30px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.news-card .date{font-family:var(--font-ui);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.news-card h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(22px,2.2vw,32px);line-height:1.05;color:#fff}
+.news-card p{font-size:15px;color:var(--text-dim);max-width:50ch}
+.news-card .more{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-ui);font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-top:auto}
+.news-empty{padding:60px 0;text-align:center;color:var(--text-dim);font-size:16px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+@media (max-width:760px){.news-card{grid-template-columns:1fr}.news-card .img{aspect-ratio:16/9}}"""
+
+ARTICLE_CSS = """.subpage.news-article{padding:0;position:relative;overflow:hidden;isolation:isolate;background:#0a0a0a;min-height:90vh;display:flex;align-items:flex-end}
+.news-article::before,.news-article::after{display:none}
+.news-article .bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05) brightness(.45)}
+.news-article .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.6) 40%,rgba(10,10,10,.95) 100%);pointer-events:none}
+.news-article .container{position:relative;z-index:2;padding-top:140px;padding-bottom:60px}
+.news-article .date{font-family:var(--font-ui);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.news-article h1{font-family:var(--font-display);font-weight:800;line-height:.92;letter-spacing:-.01em;text-transform:uppercase;font-size:clamp(30px,4vw,52px);color:#fff;max-width:22ch;margin-bottom:24px}
+.news-article h1 .accent{color:var(--accent)}
+.news-article .lede{font-family:var(--font-ui);font-size:clamp(17px,1.5vw,21px);color:var(--text);max-width:64ch;line-height:1.5}
+.article-body{padding:56px 0;background:#0a0a0a;border-top:1px solid var(--border)}
+.article-body .container{max-width:780px}
+.article-body section{padding:0;margin-bottom:22px}
+.article-body section:last-child{margin-bottom:0}
+.article-body h2{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(22px,2.1vw,28px);color:#fff;line-height:1.05;margin-bottom:24px}
+.article-body p{font-family:var(--font-ui);font-weight:400;font-size:clamp(16px,1.3vw,19px);line-height:1.65;color:var(--text);margin-bottom:18px}
+.article-body p:last-child{margin-bottom:0}
+.article-fig{margin:34px 0;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);background:#0a0a0a}
+.article-fig img{width:100%;height:auto;display:block}
+.article-fig figcaption{padding:14px 20px;font-family:var(--font-ui);font-size:13px;color:var(--text-mute);font-style:italic;border-top:1px solid var(--border);background:#0c0c10}
+.article-author{margin-top:44px;padding-top:24px;border-top:1px solid var(--border);display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-mute)}
+.article-author .pill{padding:6px 14px;border:1px solid var(--accent);border-radius:30px;color:var(--accent);font-weight:600}
+.news-related{padding:var(--gap) 0;background:#0a0a0a;border-top:1px solid var(--border)}
+.news-related .heading{margin-bottom:34px;display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:end;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.news-related .heading h2{margin:0;font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.2vw,44px);line-height:.95;color:#fff}
+.news-related .heading h2 em{color:var(--accent);font-style:italic}
+.news-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.news-related-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px 24px;display:flex;flex-direction:column;gap:12px;min-height:190px}
+.news-related-card h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:24px;color:#fff}
+.news-related-card p{font-size:15px;color:var(--text-dim);line-height:1.55}
+.news-related-card a{margin-top:auto;color:var(--accent);font-family:var(--font-ui);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
+@media (max-width:900px){.news-related .heading{grid-template-columns:1fr;gap:24px}.news-related-grid{grid-template-columns:1fr}}
+@media (max-width:760px){.news-article .container{padding-top:110px}.article-fig{margin:36px -20px;border-left:none;border-right:none;border-radius:0}}"""
 
 
 def head(slug_for_url, lang, head_meta, body_data, json_ld_blocks, og_image=None):
@@ -283,7 +357,7 @@ def render_hub():
 
     out = SITE_ROOT / "news" / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
+    write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
     return out
 
 
@@ -302,18 +376,23 @@ def render_article(slug, article):
 
     # JSON-LD: NewsArticle + BreadcrumbList
     images = [f"{DOMAIN}{article['imageBase']}-{i:02d}-1600.jpg" for i in range(1, n_img+1)]
+    schema_headline = plain_html(en_body["h1"])
     json_ld_blocks = [
         {
             "@context": "https://schema.org",
             "@type": "NewsArticle",
-            "headline": en_body["h1Crumb"],
+            "headline": schema_headline,
             "description": en_meta["description"],
             "image": images,
             "datePublished": schema_datetime(article["publishedISO"]),
             "dateModified": schema_datetime(article.get("modifiedISO", article["publishedISO"])),
             "author": schema_author(),
             "publisher": {"@id": BUSINESS_ID},
-            "mainEntityOfPage": {"@type": "WebPage", "@id": page_url},
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": page_url,
+                "name": schema_headline,
+            },
             "url": page_url,
             "inLanguage": "en",
             "articleSection": "Workshop news",
@@ -479,7 +558,7 @@ def render_article(slug, article):
 
     out = SITE_ROOT / "news" / slug / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
+    write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
     return out
 
 

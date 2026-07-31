@@ -8,6 +8,7 @@ import json
 import re
 from pathlib import Path
 
+from build_output import write_html_if_changed
 from hero_images import hero_background_css, hero_preload_links, optimized_hero_url
 from site_chrome import chrome_fragments, localized_href
 
@@ -662,7 +663,13 @@ def write_page(lang: str, content: dict) -> Path:
     relative = PATHS[lang].strip("/")
     out = SITE_ROOT / relative / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(render_page(content, lang), encoding="utf-8")
+    write_html_if_changed(
+        out,
+        render_page(content, lang),
+        preserve_body_shell=True,
+        merge_page_i18n=True,
+        preserve_downstream_head=True,
+    )
     return out
 
 

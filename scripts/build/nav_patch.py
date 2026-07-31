@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+from build_output import write_html_if_changed
 from build_sitemap import LANGS, PAGES, html_file_for
 from site_chrome import patch_navigation_footer
 
@@ -10,10 +11,7 @@ from site_chrome import patch_navigation_footer
 def patch_file(path, lang: str) -> bool:
     original = path.read_text(encoding="utf-8")
     rendered = patch_navigation_footer(original, lang)
-    if rendered == original:
-        return False
-    path.write_text(rendered, encoding="utf-8")
-    return True
+    return write_html_if_changed(path, rendered)
 
 
 def main() -> int:

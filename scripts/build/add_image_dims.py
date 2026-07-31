@@ -7,6 +7,8 @@ from pathlib import Path
 from PIL import Image
 from bs4 import BeautifulSoup, FeatureNotFound
 
+from build_output import write_html_if_changed
+
 SITE_ROOT = Path(__file__).resolve().parents[2]
 
 # Prefer lxml for stable serialization, but keep the script runnable
@@ -63,7 +65,7 @@ def process(html_path: Path):
         img["height"] = str(h)
         changed += 1
     if changed:
-        html_path.write_text(str(soup), encoding="utf-8")
+        write_html_if_changed(html_path, str(soup))
     return changed
 
 

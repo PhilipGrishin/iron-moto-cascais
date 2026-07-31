@@ -16,7 +16,9 @@ from copy import deepcopy
 
 from bs4 import BeautifulSoup, FeatureNotFound, NavigableString
 
+from build_output import write_html_if_changed
 from brand_pages_data import BRAND_ORDER
+from localize_internal_links import is_language_switch_link, rewrite_href
 from page_meta import PAGE_META, PROJECT_NAMES, OG_LOCALES
 from seo_meta import upsert_robots_image_preview
 
@@ -132,8 +134,8 @@ def parse_html(markup: str) -> BeautifulSoup:
 
 def replace_element_html(el, html_fragment: str):
     """Replace element contents with a translated HTML fragment."""
-    fragment_soup = parse_html(html_fragment)
-    container = fragment_soup.body or fragment_soup
+    fragment_soup = BeautifulSoup(html_fragment, "html.parser")
+    container = fragment_soup
     el.clear()
     for child in list(container.children):
         el.append(child)
@@ -319,6 +321,8 @@ def extract_faq_entities(soup) -> list[dict]:
         })
 
     for details in soup.find_all("details"):
+        if "mobile-nav-group" in details.get("class", []):
+            continue
         add_pair(
             details.find(class_="q") or details.find("summary"),
             details.find(class_="a") or details.find("p"),
@@ -594,6 +598,10 @@ def localize_page(en_html: str, lang: str, page_id: str, *, project_name=None) -
     # (kept on home page only — handled via upsert above)
     upsert_robots_image_preview(soup)
 
+    for anchor in soup.find_all("a", href=True):
+        if not is_language_switch_link(anchor):
+            anchor["href"] = rewrite_href(anchor["href"], lang)
+
     return str(soup)
 
 
@@ -626,7 +634,7 @@ def update_en_page(en_html: str, page_id: str, project_name=None) -> str:
 
 def write_localized(out_path: Path, content: str):
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(content, encoding="utf-8")
+    write_html_if_changed(out_path, content, preserve_body_shell=True)
 
 
 # --------- Main run ---------
@@ -667,7 +675,7 @@ def main():
     # Write everything
     for path, content in output_pairs:
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(content, encoding="utf-8")
+        write_html_if_changed(path, content, preserve_body_shell=True)
         rel = path.relative_to(SITE_ROOT)
         print(f"wrote {rel}  ({len(content):,} bytes)")
 

@@ -6,7 +6,6 @@ from __future__ import annotations
 import json
 import re
 from collections import OrderedDict
-from datetime import datetime
 from pathlib import Path
 
 from bs4 import BeautifulSoup, FeatureNotFound
@@ -15,6 +14,7 @@ from blog_data import BLOG_POSTS
 from brand_pages_data import BRAND_CONFIG, BRAND_ORDER
 from build_expat_hub import PATHS as EXPAT_HUB_PATHS
 from build_expat_hub import UI as EXPAT_HUB_UI
+from build_pre_purchase_inspection import LLMS_DESCRIPTION_EN
 from build_sitemap import DOMAIN, LANGS, PAGES
 from legal_pages_data import LEGAL_PAGES
 from new_pages_data import PROJECT_TILES
@@ -28,12 +28,6 @@ from site_chrome import (
     SERVICE_NAV_LINKS,
 )
 from news_data import NEWS_ARTICLES
-
-try:
-    from zoneinfo import ZoneInfo
-except ImportError:  # pragma: no cover - Python < 3.9 fallback
-    ZoneInfo = None
-
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 FACTS_PATH = SITE_ROOT / "docs" / "BUSINESS_FACTS.md"
@@ -317,12 +311,15 @@ def page_record(
         raw = script.string or script.get_text()
         if raw.strip():
             schemas.append(json.loads(raw))
+    description = clean_text(description_tag["content"])
+    if page_path == "pre-purchase-inspection/":
+        description = LLMS_DESCRIPTION_EN
     return {
         "path": page_path,
         "url": f"{DOMAIN}/{page_path}",
         "label": label,
         "label_source": label_source,
-        "description": clean_text(description_tag["content"]),
+        "description": description,
         "is_service": schema_contains_type(schemas, "Service"),
     }
 
@@ -426,6 +423,21 @@ def markdown_entry(record: dict) -> str:
     return f"- [{label}]({record['url']}): {record['description']}"
 
 
+def existing_generated_date() -> str:
+    """Keep idle builds stable; the publication date changes with llms.txt itself."""
+    if OUTPUT_PATH.exists():
+        match = re.search(
+            r"generated from repository data on (\d{4}-\d{2}-\d{2})\.",
+            OUTPUT_PATH.read_text(encoding="utf-8"),
+        )
+        if match:
+            return match.group(1)
+    raise ValueError(
+        "llms.txt publication date is missing; set it in the tracked output "
+        "when publishing a content update"
+    )
+
+
 def render_llms() -> str:
     facts = load_business_facts()
     paths = [page_path for page_path, _changefreq, _priority in PAGES]
@@ -461,10 +473,7 @@ def render_llms() -> str:
     brands = homepage_brands()
     dedicated_brands = [BRAND_CONFIG[slug]["name"] for slug in BRAND_ORDER]
     timezone_name = hours["timezone"]
-    if ZoneInfo:
-        current_date = datetime.now(ZoneInfo(timezone_name)).date().isoformat()
-    else:  # pragma: no cover - Python < 3.9 fallback
-        current_date = datetime.now().date().isoformat()
+    current_date = existing_generated_date()
 
     lines = [
         f"# {facts['tradingName']}",

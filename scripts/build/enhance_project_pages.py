@@ -7,6 +7,8 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup, FeatureNotFound
 
+from build_output import write_html_if_changed
+
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
 TARGET_LANGS = ["en", "ru", "uk", "pt"]
@@ -145,8 +147,8 @@ def parse_html(markup: str) -> BeautifulSoup:
 
 
 def replace_html(el, html: str):
-    fragment = parse_html(html)
-    container = fragment.body or fragment
+    fragment = BeautifulSoup(html, "html.parser")
+    container = fragment
     el.clear()
     for child in list(container.children):
         el.append(child)
@@ -223,11 +225,11 @@ def insert_css(soup):
 """
 
 
-def enhancement_html(slug: str):
+def enhancement_html(slug: str, page_i18n: dict):
     badge_key = f"proj.{slug}.badge"
     cat_key = f"proj.{slug}.cat"
     where_key = f"proj.{slug}.where"
-    en = GLOBAL_I18N["en"]
+    en = {**GLOBAL_I18N["en"], **page_i18n.get("en", {})}
     return f'''<section class="sub-section" data-enhancement="project-highlights">
 <div class="container">
 <div class="heading reveal">
@@ -300,13 +302,13 @@ def process_project(slug: str) -> bool:
     if target is None:
         print(f"  SKIP no insertion point: projects/{slug}/index.html")
         return False
-    fragment = parse_html(enhancement_html(slug))
+    fragment = parse_html(enhancement_html(slug, page_i18n))
     sections = [child for child in (fragment.body or fragment).children if getattr(child, "name", None)]
     for section in reversed(sections):
         target.insert_before(section)
 
     sync_en_text(soup)
-    path.write_text(str(soup), encoding="utf-8")
+    write_html_if_changed(path, str(soup))
     print(f"  enhanced: projects/{slug}/index.html")
     return True
 

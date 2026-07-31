@@ -16,7 +16,7 @@ Format:
 
 ## 2026-07-31 - Pre-purchase inspection fixed price
 
-- Commit: this commit
+- Commit: `82bd35ef`
 - Changed: Replaced starting-price wording with the fixed EUR 150 inspection
   price in all localized page copy, metadata and `Offer` schema; clarified the
   separately agreed on-site travel charge and added `WebPage.dateModified`.
@@ -28,7 +28,7 @@ Format:
 
 ## 2026-07-30 - Pricing breadcrumbs and cache validation
 
-- Commit: this commit
+- Commit: `48009e44`
 - Changed: Added standalone localized `BreadcrumbList` entities to generated
   pricing pages, centralized project-page asset versions in `CACHE_BUST`, and
   enforced breadcrumb and cache-bust invariants in `validate_seo.py`.
@@ -40,7 +40,7 @@ Format:
 
 ## 2026-07-30 - Shared site navigation and footer
 
-- Commit: this commit
+- Commit: `f594df3b`
 - Changed: Centralized desktop navigation, mobile navigation and footer
   rendering in `site_chrome.py`; connected standalone and page-family
   generators; made `nav_patch.py` sitemap-wide; and added same-language chrome
@@ -53,7 +53,7 @@ Format:
 
 ## 2026-07-29 - AI discovery link labels
 
-- Commit: this commit
+- Commit: `122dece4`
 - Changed: Replaced marketing-heading anchors in generated `llms.txt` with
   stable page names sourced from navigation I18N and page-family registries;
   shortened news anchors to event names and reused the homepage meta
@@ -65,7 +65,7 @@ Format:
 
 ## 2026-07-29 - Generated AI discovery index
 
-- Commit: this commit
+- Commit: `1842bb98`
 - Changed: Added canonical business facts, generated `llms.txt` from maintained
   site registries and published metadata, declared it in `robots.txt`, and
   added complete sitemap coverage enforcement to SEO validation.
@@ -78,7 +78,7 @@ Format:
 
 ## 2026-07-29 - Repository documentation alignment
 
-- Commit: this commit
+- Commit: `d13893a2`
 - Changed: Removed the obsolete reviews script and legacy scripts README;
   aligned top-level agent documentation with the maintained project state,
   page-family ownership, review workflow and delivery rules.
@@ -90,7 +90,7 @@ Format:
 
 ## 2026-07-27 - Fighter project page
 
-- Commit: this commit
+- Commit: `6ea7118b`
 - Changed: Added the Fighter project page in EN/PT/RU/UK from the approved
   Markdown source, responsive AVIF/WebP hero and 11-image gallery, project
   listing cards, global Projects menu links, structured data and sitemap URLs.
@@ -102,7 +102,7 @@ Format:
 
 ## 2026-07-27 - Homepage project selection
 
-- Commit: this commit
+- Commit: `b6ec5921`
 - Changed: Reduced the homepage project section on EN/PT/RU/UK to the featured
   Beckman project plus six standard cards in two desktop rows, and added a
   localized all-projects CTA.
@@ -115,7 +115,7 @@ Format:
 
 ## 2026-07-24 - Homepage hero and Harley visual alignment
 
-- Commit: this commit
+- Commit: `754c8256`
 - Changed: Stopped the homepage hero heading from moving independently during
   scroll on EN/PT/RU/UK, and aligned the 12 Harley Hub pages with the approved
   site hero darkening, typography scale and compact vertical rhythm.
@@ -128,7 +128,7 @@ Format:
 
 ## 2026-07-24 - Harley Hub phase 1
 
-- Commit: this commit
+- Commit: `940427bb`
 - Changed: Added the Harley Hub, Harley tuning and Harley custom page family in
   EN/PT/RU/UK from the approved Markdown source, three responsive LCP heroes, a
   tagged Harley blog feed, four-project custom portfolio, global dropdown,
@@ -142,7 +142,7 @@ Format:
 
 ## 2026-07-24 - Sturmvogel photo refresh
 
-- Commit: this commit
+- Commit: `52dfe1a8`
 - Changed: Replaced the Sturmvogel hero under its existing stable image paths
   and added eight new responsive gallery photographs to all four language pages.
 - Verified: Image decoding and dimensions; 16-item gallery parity across
@@ -153,7 +153,7 @@ Format:
 
 ## 2026-07-24 - Unbreakable photo refresh
 
-- Commit: this commit
+- Commit: `d2ba2580`
 - Changed: Replaced the Unbreakable hero under its existing stable image paths
   and added 12 new responsive gallery photographs to all four language pages.
 - Verified: Image decoding and dimensions; 20-item gallery parity across
@@ -164,7 +164,7 @@ Format:
 
 ## 2026-07-24 - BMW Motorrad hero refresh
 
-- Commit: this commit
+- Commit: `2b00fd3b`
 - Changed: Replaced the BMW Motorrad service hero photograph and regenerated
   its existing responsive AVIF, WebP and JPEG variants under the same stable
   SEO-friendly filenames.
@@ -175,7 +175,7 @@ Format:
 
 ## 2026-07-20 - Cross-project confirmation gate
 
-- Commit: this commit
+- Commit: `04d5ac07`
 - Changed: Added a mandatory owner-confirmation gate before inspecting,
   modifying, deploying, or otherwise acting on a task outside `ICM_Website`.
 - Verified: Instruction scope review and clean Git diff validation.
@@ -184,7 +184,7 @@ Format:
 
 ## 2026-07-20 - Bear 650 VideoObject naming
 
-- Commit: this commit
+- Commit: `8192b4a5`
 - Changed: Added localized schema-only VideoObject names for the Bear 650
   scrambler build article while preserving the visible video-section headings.
 - Verified: Four-language schema-name and description checks; focused article
@@ -193,7 +193,7 @@ Format:
 
 ## 2026-07-20 - Bear 650 scrambler build article
 
-- Commit: this commit
+- Commit: `c6b2108a`
 - Changed: Added the complete Royal Enfield Bear 650 scrambler build article in
   EN/PT/RU/UK from the reviewed Markdown source, responsive local hero media,
   a native landscape R2 video, localized blog cards, reciprocal Royal Enfield
@@ -209,7 +209,7 @@ Format:
 
 ## 2026-07-17 - Reciprocal brand service links
 
-- Commit: this commit
+- Commit: `eed51847`
 - Changed: Added a compact localized other-brand service link grid to all 28
   brand service pages through the shared renderer.
 - Verified: Complete six-link same-language sets, brand validation, SEO and
@@ -220,7 +220,7 @@ Format:
 
 ## 2026-07-17 - Portuguese oficina SEO alignment
 
-- Commit: this commit
+- Commit: `2b2d34d2`
 - Changed: Added natural `oficina de motos` targeting to the PT homepage and
   motorcycle-service page, plus one PT-only conversational workshop FAQ with
   matching visible content and `FAQPage` schema.
@@ -231,7 +231,7 @@ Format:
 
 ## 2026-07-16 - C-Way Product graph deduplication
 
-- Commit: this commit
+- Commit: `5a7a24be`
 - Changed: Replaced the six partial Product nodes inside the C-Way Service
   OfferCatalog with `@id` references to the six complete priced Product nodes
   on all four language variants; updated their sitemap timestamps.
@@ -242,7 +242,7 @@ Format:
 
 ## 2026-07-15 - C-Way priced product catalog
 
-- Commit: this commit
+- Commit: `1096835d`
 - Changed: Replaced the three price-on-request C-Way positions with six priced
   Steel/Aluminium Canoe 2.0 configurations in EN/PT/RU/UK; added local lazy
   AVIF/WebP product media, in-stock states, gallery and fitment notes, and six
@@ -258,7 +258,7 @@ Format:
 
 ## 2026-07-10 - Harley service backlink and schema entities
 
-- Commit: this commit
+- Commit: `2ce91fbb`
 - Changed: Added one localized contextual link from each Harley-Davidson
   service page to the matching full-service article; expanded the article
   author and publisher references with names and an ImageObject publisher
@@ -270,7 +270,7 @@ Format:
 
 ## 2026-07-10 - Harley-Davidson full-service cornerstone article
 
-- Commit: this commit
+- Commit: `03bbcdb4`
 - Changed: Added the Harley-Davidson full-service cornerstone blog article in
   EN/PT/RU/UK from the reviewed Markdown source, responsive local AVIF/WebP/JPEG
   hero media, a portrait native R2 video, localized blog hub cards, reciprocal
@@ -285,7 +285,7 @@ Format:
 
 ## 2026-07-10 - Homepage project hero captions
 
-- Commit: this commit
+- Commit: `a55e015a`
 - Changed: Restored the standard project caption layer on the full-width
   Beckman homepage card while keeping the image uncropped and without hover
   zoom; bumped the asset cache-bust to `20260710b`.
@@ -298,7 +298,7 @@ Format:
 
 ## 2026-07-10 - Homepage project hero image
 
-- Commit: this commit
+- Commit: `92e97738`
 - Changed: Removed the inherited hero-section layout, overlay, filter and hover
   zoom from the full-width homepage project card so the Beckman image renders
   as a plain full image link; bumped the site asset cache-bust to
@@ -311,7 +311,7 @@ Format:
 
 ## 2026-07-10 - Reviews refresh deploy recovery
 
-- Commit: this commit
+- Commit: `a685f11d`
 - Changed: Merged the scheduled Google reviews snapshot commit with the local
   homepage featured-project changes, deployed the combined `main`, and updated
   the GitHub Pages workflow so a successful `Refresh Google Reviews Snapshot`
@@ -326,7 +326,7 @@ Format:
 
 ## 2026-07-10 - Homepage featured projects
 
-- Commit: this commit
+- Commit: `6c4ae46e`
 - Changed: Promoted Beckman to the full-width featured position on all four
   homepages, using `beckman-06-800`; moved Inspirium into the standard project
   grid and changed the Unbreakable card image to `unbreakable-04-800`.
@@ -338,7 +338,7 @@ Format:
 
 ## 2026-07-04 - C-Way stock status and offer schema
 
-- Commit: this commit
+- Commit: `7c16722e`
 - Changed: Updated the C-Way dealer subpage in EN/RU/UK/PT so the three
   approved positions show an in-stock status with price-on-request copy,
   changed the OfferCatalog `itemOffered` entities from `Product` to `Service`,
@@ -355,7 +355,7 @@ Format:
 
 ## 2026-07-03 - C-Way dealer partner page
 
-- Commit: this commit
+- Commit: `4ed79736`
 - Changed: Added the C-Way official dealer subpage in EN/RU/UK/PT under
   `/authorized-dealer/c-way/`, registered the C-Way card on the Authorized
   Dealer hub, added optimized local C-Way imagery, native self-hosted video
@@ -369,7 +369,7 @@ Format:
 
 ## 2026-07-02 - Stable sitemap lastmod dates
 
-- Commit: this commit
+- Commit: `942477a7`
 - Changed: Updated `build_sitemap.py` so sitemap `lastmod` values use real
   per-page content dates with timezone instead of the deploy/build date.
   Blog/news URLs use explicit article publish/modified dates; other pages use
@@ -384,7 +384,7 @@ Format:
 
 ## 2026-07-02 - Article schema recommended-field cleanup
 
-- Commit: this commit
+- Commit: `d8da3afd`
 - Changed: Updated BlogPosting/NewsArticle schema generation so article dates
   are emitted as full ISO-8601 datetimes with Europe/Lisbon offsets and authors
   keep the canonical business `@id` plus `url`; set the Bear 650 blog article
@@ -398,7 +398,7 @@ Format:
 
 ## 2026-07-02 - Project gallery award label parity
 
-- Commit: this commit
+- Commit: `7f39aa5a`
 - Changed: Updated `/projects/` gallery tile tags to mirror the homepage
   `projects.pN.label` award/category labels for all 10 projects in EN/RU/UK/PT;
   added build-time and runtime support for `data-i18n-proj-label` and
@@ -411,7 +411,7 @@ Format:
 
 ## 2026-06-29 - Full curated review schema parity
 
-- Commit: this commit
+- Commit: `a3d5ad7e`
 - Changed: Updated `build_reviews_schema.py` so curated JSON-LD `review[]`
   uses the full review text and original `publishedAt` value from
   `assets/reviews-curated.json`, matching the expandable visible cards.
@@ -423,7 +423,7 @@ Format:
 
 ## 2026-06-29 - English-speaking expat hub
 
-- Commit: this commit
+- Commit: `38ba7331`
 - Changed: Added `/english-speaking-motorcycle-workshop/` in EN/RU/UK/PT from
   `expat_hub_copy_4lang.md`, with optimized hero variants, footer-only service
   link, contextual inbound links from home/About/Motorcycle Service/Pre-purchase
@@ -438,7 +438,7 @@ Format:
 
 ## 2026-06-29 - Six curated homepage reviews
 
-- Commit: this commit
+- Commit: `5947d5b1`
 - Changed: Replaced `assets/reviews-curated.json` with the six owner-approved
   Google reviews in the requested order and regenerated static homepage review
   cards plus matching LocalBusiness `review[]` JSON-LD on EN/PT/RU/UK.
@@ -453,7 +453,7 @@ Format:
 
 ## 2026-06-29 - Curated reviews refresh pipeline
 
-- Commit: this commit
+- Commit: `b8192062`
 - Changed: Split reviews into live Worker rating/count and editorial curated
   visible cards from `assets/reviews-curated.json`; added read-more support for
   long reviews and weekly GitHub Actions refresh for static HTML/JSON-LD.
@@ -467,7 +467,7 @@ Format:
 
 ## 2026-06-28 - About page entity rework
 
-- Commit: this commit
+- Commit: `554a9f21`
 - Changed: Expanded About pages in 4 languages from `new_pages_data.py`,
   added the About hero image and Company FAQ, refreshed the story/timeline
   copy, and consolidated site identity around one canonical `#business` entity
@@ -480,7 +480,7 @@ Format:
 
 ## 2026-06-28 - Triumph brand service page
 
-- Commit: this commit
+- Commit: `dd4abed2`
 - Changed: Added Triumph brand service pages in 4 languages with hero photo,
   reciprocal brand links, navigation/footer/service hub integration and sitemap.
 - Verified: Local brand rebuild, SEO validation and Triumph-specific brand
@@ -504,8 +504,8 @@ Format:
 - Changed: Added repository-level context recovery documentation:
   `PROJECT_STATE`, `CONTENT_TYPES`, `CODEX_CHANGELOG`, `OPEN_TASKS` and
   `TASK_BRIEF_TEMPLATE`; updated `AGENTS.md`, `README.md`, `HANDOFF.md`,
-  `CHANGELOG.md` and `scripts/build/README.md` to point future sessions to the
-  active memory system.
+  the then-present top-level historical journal and `scripts/build/README.md`
+  to point future sessions to the active memory system.
 - Verified: `git diff --check`; GitHub Pages deploy success; production home
   page returned 200 after deploy.
 - Notes: After context compaction, read `AGENTS.md` first, then the active
@@ -618,7 +618,7 @@ Format:
 
 ## 2026-06-22 - Brand page build tooling
 
-- Commit: see Git history before `41cafe4`
+- Commit: `62577ae2`
 - Changed: Standardized brand-page intake and generator ownership so new brand
   pages can be added from a 4-language Markdown file plus one hero image.
 - Verified: Subsequent Honda and Royal Enfield pages used the pattern.

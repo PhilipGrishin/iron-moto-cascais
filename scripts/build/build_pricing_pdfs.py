@@ -8,6 +8,7 @@ pricing_data.py first, then run this script to refresh all four PDF files.
 from __future__ import annotations
 
 import re
+from io import BytesIO
 from html import unescape
 from pathlib import Path
 from typing import Any
@@ -19,6 +20,7 @@ from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfgen.canvas import Canvas
 from reportlab.platypus import (
     PageBreak,
     Paragraph,
@@ -27,6 +29,7 @@ from reportlab.platypus import (
     Table,
     TableStyle,
 )
+from pypdf import PdfReader
 
 from pricing_data import LABELS, LANGS, SECTIONS
 
@@ -478,12 +481,25 @@ def output_path(lang: str) -> Path:
     return SITE_ROOT / pdf_filename
 
 
+def pdf_semantics(payload: bytes) -> tuple:
+    reader = PdfReader(BytesIO(payload))
+    return tuple(
+        (
+            round(float(page.mediabox.width), 3),
+            round(float(page.mediabox.height), 3),
+            re.sub(r"\s+", " ", page.extract_text() or "").strip(),
+        )
+        for page in reader.pages
+    )
+
+
 def build_pdf(lang: str) -> Path:
     styles = make_styles()
     out = output_path(lang)
     out.parent.mkdir(parents=True, exist_ok=True)
+    buffer = BytesIO()
     doc = SimpleDocTemplate(
-        str(out),
+        buffer,
         pagesize=A4,
         leftMargin=20 * mm,
         rightMargin=20 * mm,
@@ -497,7 +513,13 @@ def build_pdf(lang: str) -> Path:
         build_story(lang, styles),
         onFirstPage=lambda canvas, doc: draw_page(canvas, doc, lang),
         onLaterPages=lambda canvas, doc: draw_page(canvas, doc, lang),
+        canvasmaker=lambda *args, **kwargs: Canvas(
+            *args, **{**kwargs, "invariant": 1}
+        ),
     )
+    generated = buffer.getvalue()
+    if not out.exists() or pdf_semantics(out.read_bytes()) != pdf_semantics(generated):
+        out.write_bytes(generated)
     return out
 
 

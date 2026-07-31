@@ -12,8 +12,9 @@ after context compaction read `docs/CODEX_CHANGELOG.md` and
 `docs/TASK_BRIEF_TEMPLATE.md`. For build scripts read
 `scripts/build/README.md`. For canonical NAP, hours, founder,
 service-language, profile and published key-price facts read
-`docs/BUSINESS_FACTS.md`. `HANDOFF.md` and `CHANGELOG.md` are
-historical top-level references and may lag behind the active docs.
+`docs/BUSINESS_FACTS.md`. `docs/CODEX_CHANGELOG.md` is the canonical compact
+implementation journal. `HANDOFF.md` is a historical top-level reference and
+may lag behind the active docs.
 
 ## Context compaction recovery
 

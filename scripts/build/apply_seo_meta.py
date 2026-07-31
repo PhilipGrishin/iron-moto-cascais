@@ -7,6 +7,7 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup, FeatureNotFound
 
+from build_output import write_html_if_changed
 from seo_meta import upsert_robots_image_preview
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -21,9 +22,7 @@ except FeatureNotFound:
 def apply_to_file(path: Path) -> bool:
     soup = BeautifulSoup(path.read_text(encoding="utf-8"), HTML_PARSER)
     changed = upsert_robots_image_preview(soup)
-    if changed:
-        path.write_text(str(soup), encoding="utf-8")
-    return changed
+    return changed and write_html_if_changed(path, str(soup))
 
 
 def main() -> int:

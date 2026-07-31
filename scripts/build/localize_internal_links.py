@@ -7,6 +7,7 @@ import re
 from pathlib import Path
 from bs4 import BeautifulSoup, FeatureNotFound
 
+from build_output import write_html_if_changed
 from brand_pages_data import BRAND_ORDER
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -121,7 +122,7 @@ def process_file(html_path: Path, lang: str) -> int:
             a["href"] = new
             changed += 1
     if changed:
-        html_path.write_text(str(soup), encoding="utf-8")
+        write_html_if_changed(html_path, str(soup))
     return changed
 
 

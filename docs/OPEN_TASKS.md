@@ -3,11 +3,23 @@
 This file keeps temporary context out of `AGENTS.md`. Update it when a task is
 resolved or a new follow-up appears.
 
-Last updated: 2026-06-28
+Last updated: 2026-07-31
 
 ## Active Implementation Tasks
 
 No active implementation task is pending at the time of this update.
+
+## Pending Content Follow-up
+
+### Pre-purchase description in `llms.txt`
+
+- Status: Deferred by the C6 scope boundary.
+- Context: The published inspection page and metadata now state the fixed
+  EUR 150 price, while the committed AI discovery summary still carries the
+  earlier starting-price wording. C6 explicitly requires `llms.txt` to remain
+  unchanged.
+- Next action: In the next approved GEO content task, update the maintained
+  discovery source and regenerate `llms.txt` together.
 
 ## Standing Watchlist
 

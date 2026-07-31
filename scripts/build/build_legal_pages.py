@@ -9,6 +9,7 @@ import json, re
 from pathlib import Path
 from bs4 import BeautifulSoup, FeatureNotFound
 
+from build_output import write_html_if_changed
 from legal_pages_data import LEGAL_PAGES, PRIVACY_HEAD, COOKIES_HEAD, TERMS_HEAD, LAST_UPDATED
 from seo_meta import upsert_robots_image_preview
 from site_chrome import apply_navigation_footer
@@ -232,7 +233,7 @@ def build_page(slug, lang):
         key = el["data-i18n"]
         if key in page_dict:
             new_html = page_dict[key]
-            new_soup = parse_html(new_html)
+            new_soup = BeautifulSoup(new_html, "html.parser")
             container = new_soup.body or new_soup
             children = list(container.children)
             el.clear()
@@ -245,7 +246,13 @@ def build_page(slug, lang):
     # 13. Write
     out = SITE_ROOT / slug / "index.html" if lang == "en" else SITE_ROOT / lang / slug / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(str(chrome), encoding="utf-8")
+    write_html_if_changed(
+        out,
+        str(chrome),
+        preserve_body_shell=True,
+        merge_page_i18n=True,
+        preserve_downstream_head=True,
+    )
     return out
 
 

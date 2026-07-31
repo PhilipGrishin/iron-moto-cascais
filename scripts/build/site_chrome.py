@@ -373,7 +373,9 @@ def apply_global_i18n(soup, lang: str) -> None:
         if key not in dictionary:
             continue
         element.clear()
-        fragment = BeautifulSoup(dictionary[key], HTML_PARSER)
+        # I18N values are fragments. Document parsers such as lxml wrap a
+        # plain label in <html><body><p>, which corrupts the target element.
+        fragment = BeautifulSoup(dictionary[key], "html.parser")
         for child in list(fragment.contents):
             element.append(child)
 
@@ -414,7 +416,7 @@ def render_site_footer(lang: str) -> str:
 
 def render_contact_modal(lang: str) -> str:
     soup = canonical_chrome_soup(lang)
-    return str(soup.select_one("#contactModal"))
+    return str(soup.select_one("#modal"))
 
 
 def chrome_fragments(lang: str, cache_bust: str) -> tuple[str, str]:

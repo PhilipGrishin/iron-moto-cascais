@@ -8,7 +8,8 @@ from typing import Optional
 
 from bs4 import BeautifulSoup, FeatureNotFound
 
-from brand_pages_data import BRAND_NAME, BRAND_NAV_KEYS, BRAND_ORDER, BRAND_RELATED_LINKS
+from build_output import write_html_if_changed
+from brand_pages_data import BRAND_NAME, BRAND_NAV_KEYS, BRAND_ORDER
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
@@ -136,20 +137,13 @@ PAGES = {
     },
 }
 
-for _slug in BRAND_ORDER:
-    PAGES[_slug] = {
-        "path": f"{_slug}/index.html",
-        "related": BRAND_RELATED_LINKS[_slug],
-    }
-
-
 def parse_html(markup: str) -> BeautifulSoup:
     return BeautifulSoup(markup, HTML_PARSER)
 
 
 def replace_html(el, html: str):
-    fragment = parse_html(html)
-    container = fragment.body or fragment
+    fragment = BeautifulSoup(html, "html.parser")
+    container = fragment
     el.clear()
     for child in list(container.children):
         el.append(child)
@@ -355,7 +349,7 @@ def process_page(slug: str, config: dict) -> bool:
         target.insert_before(section)
 
     sync_en_text(soup)
-    path.write_text(str(soup), encoding="utf-8")
+    write_html_if_changed(path, str(soup))
     print(f"  enhanced: {config['path']}")
     return True
 

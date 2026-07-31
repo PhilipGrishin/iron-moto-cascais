@@ -3,12 +3,15 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
 from pathlib import Path
 
 from hero_images import HERO_IMAGE_FORMATS, HERO_IMAGE_WIDTHS, hero_image_slug
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 OUTPUT_DIR = SITE_ROOT / "photos" / "optimized"
+MANIFEST_PATH = SITE_ROOT / "scripts" / "build" / "tyre_service_images_manifest.json"
 
 SOURCES = [
     "photos/services/motorcycle-tyre-service-workshop-cascais.jpg",
@@ -45,6 +48,39 @@ def save_variant(image: Image.Image, output: Path, ext: str) -> None:
         raise ValueError(f"Unsupported format: {ext}")
 
 
+def file_sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def source_manifest() -> dict:
+    return {
+        "version": 1,
+        "sources": {
+            relative_path: file_sha256(SITE_ROOT / relative_path)
+            for relative_path in SOURCES
+        },
+    }
+
+
+def expected_outputs_exist() -> bool:
+    return all(
+        (OUTPUT_DIR / f"{hero_image_slug(relative_path)}-{width}.{ext}").exists()
+        for relative_path in SOURCES
+        for width in HERO_IMAGE_WIDTHS
+        for ext in HERO_IMAGE_FORMATS
+    )
+
+
+def outputs_are_current(manifest: dict) -> bool:
+    if not MANIFEST_PATH.exists() or not expected_outputs_exist():
+        return False
+    try:
+        current = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return False
+    return current == manifest
+
+
 def optimize_source(relative_path: str) -> list[str]:
     source_path = SITE_ROOT / relative_path
     if not source_path.exists():
@@ -62,9 +98,17 @@ def optimize_source(relative_path: str) -> list[str]:
 
 
 def main() -> int:
+    manifest = source_manifest()
+    if outputs_are_current(manifest):
+        print("Tyre-service image variants are current.")
+        return 0
     for relative_path in SOURCES:
         for message in optimize_source(relative_path):
             print(message)
+    MANIFEST_PATH.write_text(
+        json.dumps(manifest, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
     return 0
 
 

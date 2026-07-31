@@ -461,7 +461,7 @@ Current state:
   `scripts/build/project_pages_data.py` and
   `scripts/build/build_project_pages.py`.
 - Approved long-form copy for data-driven pages lives in
-  `content/projects/<slug>_4lang.md`; responsive media and localized gallery
+  `scripts/build/content/projects/<slug>_4lang.md`; responsive media and localized gallery
   ALT text are registered in `PROJECT_CONFIGS`.
 
 When editing:

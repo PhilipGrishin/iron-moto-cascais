@@ -20,6 +20,8 @@ from html import escape
 from pathlib import Path
 from bs4 import BeautifulSoup
 
+from build_output import write_html_if_changed, write_text_if_changed
+
 SITE_ROOT = Path(__file__).resolve().parents[2]
 
 WORKER_URL = "https://icm-reviews.vg-ab6.workers.dev/"
@@ -55,6 +57,24 @@ def fetch_reviews():
         data = json.loads(resp.read().decode("utf-8"))
     print(f"  rating={data.get('rating')} count={data.get('total')} reviews={len(data.get('reviews', []))}")
     return data
+
+
+def stable_snapshot_payload(data):
+    """Drop worker fields that change with time but not with review content."""
+    payload = json.loads(json.dumps(data, ensure_ascii=False))
+    payload.pop("fetchedAt", None)
+    for review in payload.get("reviews", []):
+        review.pop("when", None)
+    return payload
+
+
+def write_snapshot_if_changed(data):
+    if SNAPSHOT_PATH.exists():
+        current = json.loads(SNAPSHOT_PATH.read_text(encoding="utf-8"))
+        if stable_snapshot_payload(current) == stable_snapshot_payload(data):
+            return False
+    content = json.dumps(data, ensure_ascii=False, indent=2)
+    return write_text_if_changed(SNAPSHOT_PATH, content)
 
 
 def build_aggregate_rating(data):
@@ -337,8 +357,12 @@ def main():
 
     # Also persist the reviews JSON as a snapshot the JS widget can fall back to
     SNAPSHOT_PATH.parent.mkdir(exist_ok=True)
-    SNAPSHOT_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"  snapshot → {SNAPSHOT_PATH.relative_to(SITE_ROOT)}")
+    snapshot_changed = write_snapshot_if_changed(data)
+    snapshot_status = "updated" if snapshot_changed else "unchanged"
+    print(
+        f"  snapshot {snapshot_status}: "
+        f"{SNAPSHOT_PATH.relative_to(SITE_ROOT)}"
+    )
 
     patched = 0
     last_review_count = 0
@@ -351,9 +375,15 @@ def main():
         last_review_count = len(reviews)
         html = p.read_text(encoding="utf-8")
         new_html, ok = inject_into_business_graph(html, agg, reviews)
-        new_html, fallback_ok = inject_static_review_fallback(new_html, data, page_reviews, page_lang)
-        if (ok or fallback_ok) and new_html != html:
-            p.write_text(new_html, encoding="utf-8")
+        # The committed fallback cards intentionally use the approved English
+        # source label on every language homepage; runtime UI is localized.
+        new_html, fallback_ok = inject_static_review_fallback(
+            new_html,
+            data,
+            page_reviews,
+            "en",
+        )
+        if (ok or fallback_ok) and write_html_if_changed(p, new_html):
             patched += 1
             print(f"  patched: {p.relative_to(SITE_ROOT)} ({len(reviews)} curated reviews)")
         elif ok:

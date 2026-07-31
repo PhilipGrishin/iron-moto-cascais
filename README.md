@@ -120,30 +120,9 @@ Open http://localhost:8080/ in a browser.
 
 ## Build Workflow
 
-Detailed source-of-truth instructions live in `scripts/build/README.md`.
-
-Full safe rebuild after content or page-structure changes:
-
-```bash
-node scripts/build/extract_i18n.js
-python3 scripts/build/build_new_pages.py
-python3 scripts/build/build_authorized_dealer.py
-python3 scripts/build/build_brand_pages.py
-python3 scripts/build/build_legal_pages.py
-python3 scripts/build/build_news.py
-python3 scripts/build/build_blog.py
-python3 scripts/build/build_pre_purchase_inspection.py
-python3 scripts/build/build_pricing.py
-python3 scripts/build/nav_patch.py
-python3 scripts/build/enhance_money_pages.py
-python3 scripts/build/enhance_project_pages.py
-python3 scripts/build/build_i18n.py
-python3 scripts/build/localize_internal_links.py
-python3 scripts/build/add_image_dims.py
-python3 scripts/build/apply_seo_meta.py
-python3 scripts/build/build_sitemap.py
-python3 scripts/build/validate_seo.py
-```
+The canonical generator ownership, full safe rebuild sequence and verification
+commands live only in `scripts/build/README.md`. Do not copy that command list
+into another document; update the canonical build README instead.
 
 Reviews are refreshed automatically by `.github/workflows/reviews-refresh.yml`
 every Monday at 06:17 UTC and can also be run manually. The workflow calls
@@ -170,9 +149,10 @@ node --check assets/main.js
 node --check assets/projects.js
 node --check worker/reviews.js
 python3 -m py_compile scripts/build/*.py
-python3 scripts/build/build_sitemap.py
 git diff --check
 ```
+
+Run the canonical site validators listed in `scripts/build/README.md`.
 
 Also verify:
 

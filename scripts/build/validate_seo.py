@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -264,6 +265,49 @@ def check_llms_sitemap_coverage(urls: list[str]) -> list[str]:
         "llms.txt is missing "
         f"{len(missing)} English sitemap URL(s): {', '.join(missing)}"
     ]
+
+
+def check_codex_changelog() -> list[str]:
+    changelog_path = SITE_ROOT / "docs" / "CODEX_CHANGELOG.md"
+    if not changelog_path.exists():
+        return ["docs/CODEX_CHANGELOG.md is missing"]
+
+    text = changelog_path.read_text(encoding="utf-8")
+    issues = []
+    if re.search(r"\bthis commit\b", text, flags=re.IGNORECASE):
+        issues.append("docs/CODEX_CHANGELOG.md contains a 'this commit' placeholder")
+
+    entries = list(
+        re.finditer(
+            r"^## (\d{4}-\d{2}-\d{2} - .+)$",
+            text,
+            flags=re.MULTILINE,
+        )
+    )
+    for index, entry in enumerate(entries):
+        block_end = entries[index + 1].start() if index + 1 < len(entries) else len(text)
+        block = text[entry.end():block_end]
+        commit_match = re.search(
+            r"^- Commit: `([0-9a-f]{7,40})`$",
+            block,
+            flags=re.MULTILINE,
+        )
+        if commit_match is None:
+            issues.append(f"changelog entry {entry.group(1)!r} has no commit hash")
+            continue
+        commit_hash = commit_match.group(1)
+        result = subprocess.run(
+            ["git", "cat-file", "-e", f"{commit_hash}^{{commit}}"],
+            cwd=SITE_ROOT,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+        if result.returncode != 0:
+            issues.append(
+                f"changelog entry {entry.group(1)!r} references unknown commit {commit_hash}"
+            )
+    return issues
 
 
 def file_for_url(url: str) -> tuple[Path, str, str]:
@@ -609,6 +653,7 @@ def main() -> int:
     for url in urls:
         issues.extend(validate_page(url))
     issues.extend(check_llms_sitemap_coverage(urls))
+    issues.extend(check_codex_changelog())
     issues.extend(check_navigation_parity(urls))
     issues.extend(check_asset_cache_bust_consistency(urls))
     if issues:

@@ -10,6 +10,7 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup
 
+from build_output import write_html_if_changed
 from blog_data import BLOG_POSTS
 from harley_hub_data import (
     HREFLANG_CODES,
@@ -802,7 +803,13 @@ def main() -> int:
             page = copy[config["key"]][lang]
             target = output_path(config["slug"], lang)
             target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_text(render_page(config, page, lang), encoding="utf-8")
+            write_html_if_changed(
+                target,
+                render_page(config, page, lang),
+                preserve_body_shell=True,
+                merge_page_i18n=True,
+                preserve_downstream_head=True,
+            )
             generated.append(target.relative_to(SITE_ROOT).as_posix())
     print(f"Generated {len(generated)} Harley Hub pages")
     for path in generated:

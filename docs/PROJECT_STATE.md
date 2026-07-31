@@ -1,6 +1,6 @@
 # Iron Custom Motors Website - Project State
 
-Last updated: 2026-07-30
+Last updated: 2026-07-31
 Production: https://ironcustommotors.com/  
 Repository: https://github.com/dreamcarua/iron-moto-cascais
 
@@ -45,6 +45,9 @@ goal is SEO, local search, AI-citation readiness and high-quality service leads.
   pages use semantic Git history for the served HTML.
 - Production deploy is triggered by pushing `main`.
 - Cloudflare fronts the domain and may cache recently deployed HTML/assets.
+- The canonical full rebuild sequence is documented only in
+  `scripts/build/README.md`; maintained generators preserve semantically
+  unchanged output so a clean rebuild is reviewable and repeatable.
 
 ## Source Of Truth Order
 

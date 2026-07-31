@@ -15,6 +15,7 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup, FeatureNotFound
 
+from build_output import write_html_if_changed
 from authorized_dealer_data import (
     AUTHORIZED_DEALER_BRANDS,
     AUTHORIZED_DEALER_HEAD,
@@ -92,8 +93,8 @@ def localized_brand_url(url: str, lang: str) -> str:
 
 
 def replace_element_html(el, html_fragment: str) -> None:
-    fragment_soup = BeautifulSoup(html_fragment, HTML_PARSER)
-    container = fragment_soup.body or fragment_soup
+    fragment_soup = BeautifulSoup(html_fragment, "html.parser")
+    container = fragment_soup
     el.clear()
     for child in list(container.children):
         el.append(child)
@@ -175,7 +176,7 @@ def render_brand_cards(lang: str) -> str:
     for brand in AUTHORIZED_DEALER_BRANDS:
         name = brand["name"][lang]
         url = localized_brand_url(brand["url"], lang)
-        description = brand.get("description", {}).get(lang, "")
+        description = brand.get("description", {}).get("en", "")
         image = brand.get("image")
         if image:
             media_html = image_picture(
@@ -229,16 +230,16 @@ def json_ld_blocks(lang: str) -> list[dict]:
             "@type": "CollectionPage",
             "@id": f"{url}#collection",
             "url": url,
-            "name": meta["title"],
+            "name": t["ad.h1"],
             "description": meta["description"],
-            "inLanguage": HREFLANG_CODES[lang],
+            "inLanguage": lang,
             "isPartOf": {"@id": f"{DOMAIN}/#website"},
             "provider": {"@id": f"{DOMAIN}/#business"},
             "publisher": {"@id": f"{DOMAIN}/#business"},
             "areaServed": ["Cascais", "Estoril", "Oeiras", "Sintra", "Lisbon", "Greater Lisbon"],
             "mainEntity": {
                 "@type": "ItemList",
-                "name": t["ad.brandsTitle"],
+                "name": AUTHORIZED_DEALER_I18N["en"]["ad.brandsTitle"],
                 "itemListElement": brand_items,
             },
         },
@@ -783,9 +784,9 @@ def render_cway_page(lang: str) -> str:
     {hero_picture(t["heroAlt"])}
     <div class="container">
       <nav aria-label="Breadcrumb" class="crumb">
-        <a href="/">{escape(t["breadHome"])}</a>
+        <a href="{escape(localize_path('/', lang))}">{escape(t["breadHome"])}</a>
         <span class="sep">→</span>
-        <a href="/authorized-dealer/">{escape(t["breadDealer"])}</a>
+        <a href="{escape(localize_path('/authorized-dealer/', lang))}">{escape(t["breadDealer"])}</a>
         <span class="sep">→</span>
         <span>{escape(t["breadCurrent"])}</span>
       </nav>
@@ -962,7 +963,7 @@ def render_page(lang: str = "en") -> str:
     <img alt="{escape(t["ad.heroAlt"])}" class="hero-alt-img" data-i18n-alt="ad.heroAlt" height="432" loading="eager" sizes="1px" src="{hero_alt_src}" srcset="{hero_alt_srcset}" width="768"/>
     <div class="container">
       <nav aria-label="Breadcrumb" class="crumb">
-        <a data-i18n="ad.breadHome" href="/">{escape(t["ad.breadHome"])}</a>
+        <a data-i18n="ad.breadHome" href="{escape(localize_path('/', lang))}">{escape(t["ad.breadHome"])}</a>
         <span class="sep">→</span>
         <span data-i18n="ad.breadCurrent">{escape(t["ad.breadCurrent"])}</span>
       </nav>
@@ -971,7 +972,7 @@ def render_page(lang: str = "en") -> str:
       <p class="lead" data-i18n="ad.intro">{escape(t["ad.intro"])}</p>
       <div class="subpage-cta">
         <a class="btn btn-primary" data-i18n="ad.btnWhatsapp" data-wa="" href="https://wa.me/351917961230" rel="noopener" target="_blank">{escape(t["ad.btnWhatsapp"])} {ARROW_SVG}</a>
-        <a class="btn btn-ghost" data-i18n="ad.btnContact" href="/contact/">{escape(t["ad.btnContact"])} {ARROW_SVG}</a>
+        <a class="btn btn-ghost" data-i18n="ad.btnContact" href="{escape(localize_path('/contact/', lang))}">{escape(t["ad.btnContact"])} {ARROW_SVG}</a>
       </div>
     </div>
   </section>
@@ -1026,7 +1027,7 @@ def render_page(lang: str = "en") -> str:
       <p class="lead authorized-cta-copy" data-i18n-html="ad.ctaText">{t["ad.ctaText"]}</p>
       <div class="btns">
         <a class="btn btn-primary" data-i18n="ad.btnWhatsapp" data-wa="" href="https://wa.me/351917961230" rel="noopener" target="_blank">{escape(t["ad.btnWhatsapp"])} {ARROW_SVG}</a>
-        <a class="btn btn-ghost" data-i18n="ad.btnContact" href="/contact/">{escape(t["ad.btnContact"])} {ARROW_SVG}</a>
+        <a class="btn btn-ghost" data-i18n="ad.btnContact" href="{escape(localize_path('/contact/', lang))}">{escape(t["ad.btnContact"])} {ARROW_SVG}</a>
       </div>
     </div>
   </section>
@@ -1042,14 +1043,26 @@ def main() -> None:
     for lang in LANGS:
         out_path = local_output_path(hub_path, lang)
         out_path.parent.mkdir(parents=True, exist_ok=True)
-        out_path.write_text(render_page(lang), encoding="utf-8")
+        write_html_if_changed(
+            out_path,
+            render_page(lang),
+            preserve_body_shell=True,
+            merge_page_i18n=True,
+            preserve_downstream_head=True,
+        )
         print(f"Wrote {out_path.relative_to(SITE_ROOT)}")
 
     cway_path = CWAY_PAGE_PATH.strip("/")
     for lang in LANGS:
         cway_out = local_output_path(cway_path, lang)
         cway_out.parent.mkdir(parents=True, exist_ok=True)
-        cway_out.write_text(render_cway_page(lang), encoding="utf-8")
+        write_html_if_changed(
+            cway_out,
+            render_cway_page(lang),
+            preserve_body_shell=True,
+            merge_page_i18n=True,
+            preserve_downstream_head=True,
+        )
         print(f"Wrote {cway_out.relative_to(SITE_ROOT)}")
 
 
