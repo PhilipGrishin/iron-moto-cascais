@@ -96,12 +96,11 @@ removal of translation attributes/inline payloads and HTML serialization.
   HTML diff SHA-256
   `b4d1bb88ede5076515012e6c5890c394cb47857174e20d362c1aba91d38f2667`.
 
-## Verification Boundary
+## Verification Sources
 
 The repository validator checks the Google Article required publisher/name/
-logo contract and reference resolution. External Rich Results Test and final
-production checks are recorded after publication; local validation must not be
-described as an external Google UI result.
+logo contract and reference resolution. The external result below comes from
+Google's live UI after publication and is kept distinct from local validation.
 
 ## Local Verification
 
@@ -122,5 +121,27 @@ described as an external Google UI result.
   Breadcrumb, Local Business and Organization results valid, but reported
   optional `LocalBusiness` warnings for `telephone`, `priceRange`, `address`
   and `image`. Commit `f42fb5d0` added those canonical fields to the shared
-  publisher entity and to the project validator; the final external result is
-  recorded after deployment rather than inferred from local checks.
+  publisher entity and to the project validator.
+
+## Production Verification
+
+- GitHub Pages workflow
+  [`30666948549`](https://github.com/dreamcarua/iron-moto-cascais/actions/runs/30666948549)
+  deployed documentation head `a783f0fe`, which contains schema-complete
+  implementation commit `f42fb5d0`.
+- Cache-bypass query `?c8=a783f0fe0e2423dccb461eba0583e60d8d1456ee`
+  returned the expected visible-text hash, schema, hero and cache-bust contract
+  on all 44 project pages. All 8 localized redirect stubs returned their
+  same-language canonical, noindex and meta-refresh contract. Error count: 0.
+- The live sitemap retained SHA-256
+  `4910de2803fdd535c37198cf27ed541c23e66be8bd53afe80466881261e54971`.
+- Google Rich Results Test result
+  [`jJofvvbCnFVaAOIxQqYMZQ`](https://search.google.com/test/rich-results/result?id=jJofvvbCnFVaAOIxQqYMZQ)
+  crawled the cache-bypass Beckman URL successfully on 2026-07-31 and reported
+  four valid items: Article, Breadcrumbs, Local Business and Organization.
+  No invalid items or non-critical warnings were shown.
+- The production browser rendered the Beckman H1 and complete project DOM,
+  found one high-priority hero, no high-priority lazy image, no inline
+  `window.ICM_I18N_PAGE`, and all seven maintained publisher fields. The
+  localized `/ru/projects/nezlamniy/` stub navigated to
+  `/ru/projects/unbreakable/`.

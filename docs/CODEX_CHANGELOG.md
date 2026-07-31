@@ -29,12 +29,15 @@ Format:
   four repository validator groups passed; the other 168 sitemap HTML files,
   site assets, sitemap bytes and all lastmod values remained unchanged; and
   the documented full rebuild left a clean clone of `f42fb5d0` with empty
-  `git status --short`.
+  `git status --short`. GitHub Pages workflow `30666948549` deployed the
+  schema-complete revision; cache-bypass production checks passed all 44
+  project pages and 8 redirects; Google Rich Results Test result
+  `jJofvvbCnFVaAOIxQqYMZQ` reported four valid items and no warnings.
 - Notes: The six new localized alias stubs remain noindex and outside the
   sitemap. The first production Rich Results Test proved the Article and
   publisher reference but identified four optional `LocalBusiness` fields;
   `f42fb5d0` added the canonical telephone, price range, postal address and
-  image. The final external result is recorded only after that commit is live.
+  image. The repeated live Google test then cleared every warning.
 
 ## 2026-07-31 - Blog picture hero preload alignment
 
