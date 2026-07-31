@@ -185,17 +185,6 @@ try:
 except ImportError:
     pass
 
-# --------- Project pages ---------
-# The badge translation comes from inline ICM_I18N_PAGE on each page (e.g. proj.inspirium.badge).
-# We just need title pattern: "<Name> — <badge> | Iron Custom Motors"
-# We'll read the badge from the inline script and build the title in the generator.
-
-PROJECT_NAMES = [
-    "inspirium", "beckman", "unbreakable",
-    "quanta-r", "burly", "sturmvogel",
-    "geometric", "joker", "hellboy", "true-religion", "fighter",
-]
-
 OG_LOCALES = {
     "en": "en_US",
     "ru": "ru_RU",

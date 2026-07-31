@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import html
+import json
 import re
 from pathlib import Path
 
@@ -16,7 +17,7 @@ LANGUAGE_SECTIONS = {
     "УКРАЇНСЬКА": "uk",
 }
 
-PROJECT_CONFIGS = {
+_FIGHTER_CONFIGS = {
     "fighter": {
         "source": SITE_ROOT / "content/projects/fighter_4lang.md",
         "year": "2014",
@@ -144,6 +145,119 @@ PROJECT_CONFIGS = {
     },
 }
 
+LEGACY_PROJECT_DATA_PATH = SITE_ROOT / "content/projects/legacy_projects_4lang.json"
+LEGACY_PROJECT_ORDER = [
+    "inspirium",
+    "beckman",
+    "unbreakable",
+    "quanta-r",
+    "burly",
+    "sturmvogel",
+    "geometric",
+    "joker",
+    "hellboy",
+    "true-religion",
+]
+
+# The publication timestamp is the first Git commit that introduced the
+# legacy project pages. Modified timestamps are the already-published sitemap
+# content dates and remain language-specific where Git history differs.
+LEGACY_PROJECT_DATES = {
+    "inspirium": "2026-06-20T11:33:40+01:00",
+    "beckman": "2026-06-20T11:33:40+01:00",
+    "unbreakable": {
+        "en": "2026-07-24T20:10:52+01:00",
+        "ru": "2026-07-24T20:10:52+01:00",
+        "uk": "2026-07-24T20:10:53+01:00",
+        "pt": "2026-07-24T20:10:52+01:00",
+    },
+    "quanta-r": "2026-06-20T11:33:40+01:00",
+    "burly": "2026-06-20T11:33:40+01:00",
+    "sturmvogel": "2026-07-24T20:24:26+01:00",
+    "geometric": "2026-06-20T11:33:40+01:00",
+    "joker": "2026-06-20T11:33:40+01:00",
+    "hellboy": "2026-06-20T11:33:40+01:00",
+    "true-religion": "2026-06-20T11:33:40+01:00",
+}
+
+_LEGACY_PROJECT_DATA = json.loads(
+    LEGACY_PROJECT_DATA_PATH.read_text(encoding="utf-8")
+)
+
+PROJECT_CONFIGS = {
+    slug: {
+        "source": LEGACY_PROJECT_DATA_PATH,
+        "source_format": "localized_html",
+        "published_iso": "2026-05-05T21:37:36+02:00",
+        "modified_iso": LEGACY_PROJECT_DATES[slug],
+    }
+    for slug in LEGACY_PROJECT_ORDER
+}
+PROJECT_CONFIGS.update(_FIGHTER_CONFIGS)
+PROJECT_CONFIGS["fighter"]["source_format"] = "markdown"
+PROJECT_CONFIGS["fighter"]["modified_iso"] = PROJECT_CONFIGS["fighter"][
+    "published_iso"
+]
+PROJECT_CONFIGS["fighter"]["visible_text_sha256"] = {
+    "en": "3a105c2135bad232b2d6e01b8cdb83686f7c87b1a4fefcf3e69b74d899bc9395",
+    "ru": "725b26e490480f786b929fc893853f41ad33b6642aca888af32231db2f543b53",
+    "uk": "d5e061959c0d98b0e59681f50a53fdcbaf64aa2f621ef17b634ebbbf32df9d78",
+    "pt": "3f8cc1b58b14eea3dd0155cb717dd5a61b473e3e451b2a4ff0103a66fef21f6c",
+}
+
+REDIRECT_CONFIGS = {
+    "nezlamniy": {
+        "target": "unbreakable",
+        "labels": {
+            "en": {
+                "title": "Redirecting to Unbreakable | Iron Custom Motors",
+                "message": "Redirecting to",
+                "target_name": "Unbreakable",
+            },
+            "ru": {
+                "title": "Переход на Unbreakable | Iron Custom Motors",
+                "message": "Переход на",
+                "target_name": "Unbreakable",
+            },
+            "uk": {
+                "title": "Перехід на Unbreakable | Iron Custom Motors",
+                "message": "Перехід на",
+                "target_name": "Unbreakable",
+            },
+            "pt": {
+                "title": "A redirecionar para Unbreakable | Iron Custom Motors",
+                "message": "A redirecionar para",
+                "target_name": "Unbreakable",
+            },
+        },
+    },
+    "quanta": {
+        "target": "quanta-r",
+        "labels": {
+            "en": {
+                "title": "Redirecting to Quanta R | Iron Custom Motors",
+                "message": "Redirecting to",
+                "target_name": "Quanta R",
+            },
+            "ru": {
+                "title": "Переход на Quanta R | Iron Custom Motors",
+                "message": "Переход на",
+                "target_name": "Quanta R",
+            },
+            "uk": {
+                "title": "Перехід на Quanta R | Iron Custom Motors",
+                "message": "Перехід на",
+                "target_name": "Quanta R",
+            },
+            "pt": {
+                "title": "A redirecionar para Quanta R | Iron Custom Motors",
+                "message": "A redirecionar para",
+                "target_name": "Quanta R",
+            },
+        },
+    },
+}
+
 
 def inline_markdown(value: str) -> str:
     """Render the limited inline Markdown used by project copy."""
@@ -243,8 +357,18 @@ def parse_project_source(source_path: Path) -> dict[str, dict]:
 
 def load_project(slug: str) -> dict:
     config = PROJECT_CONFIGS[slug]
-    content = parse_project_source(config["source"])
+    if config["source_format"] == "localized_html":
+        content = _LEGACY_PROJECT_DATA[slug]["languages"]
+    else:
+        content = parse_project_source(config["source"])
     return {**config, "slug": slug, "content": content}
+
+
+def project_modified_iso(project: dict, lang: str) -> str:
+    value = project["modified_iso"]
+    if isinstance(value, dict):
+        return value[lang]
+    return value
 
 
 PROJECT_PAGE_META = {
@@ -253,7 +377,7 @@ PROJECT_PAGE_META = {
             "title": values["title"],
             "description": values["description"],
         }
-        for lang, values in parse_project_source(config["source"]).items()
+        for lang, values in load_project(slug)["content"].items()
     }
-    for slug, config in PROJECT_CONFIGS.items()
+    for slug in PROJECT_CONFIGS
 }

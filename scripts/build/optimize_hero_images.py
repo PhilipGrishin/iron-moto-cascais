@@ -33,7 +33,7 @@ DEFAULT_HERO_SOURCES = [
     "photos/blog/blog-front-fork-service-motorcycle-cascais-01-1600.jpg",
     "photos/blog/blog-motorcycle-tyre-fitting-specialist-cascais-01-1600.jpg",
 ]
-LEGACY_PROJECT_HERO_SOURCES = [
+PROJECT_HERO_SOURCES = [
     project["img"].lstrip("/")[:-len("-800.jpg")] + ".jpg"
     for project in PROJECT_TILES
     if project["img"].startswith("/photos/projects/")
@@ -43,7 +43,7 @@ HERO_SOURCES = list(
     dict.fromkeys(
         [
             *DEFAULT_HERO_SOURCES,
-            *LEGACY_PROJECT_HERO_SOURCES,
+            *PROJECT_HERO_SOURCES,
             *[config["hero"].lstrip("/") for config in BRAND_CONFIG.values()],
         ]
     )

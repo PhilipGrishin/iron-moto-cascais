@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Validate generated multilingual project pages and their integrations."""
+"""Validate all generated multilingual project pages and legacy redirects."""
 
 from __future__ import annotations
 
 import argparse
+from datetime import datetime
+import hashlib
 import json
+import re
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -12,13 +15,28 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 from PIL import Image
 
-from project_pages_data import PROJECT_CONFIGS, load_project
+from build_output import html_semantically_equal
+from build_project_pages import CACHE_BUST
+from project_pages_data import (
+    PROJECT_CONFIGS,
+    REDIRECT_CONFIGS,
+    load_project,
+    project_modified_iso,
+)
 
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-LANGS = ["en", "pt", "ru", "uk"]
+LANGS = ["en", "ru", "uk", "pt"]
 HREFLANGS = {"en", "pt-PT", "ru", "uk", "x-default"}
+EXPECTED_SCHEMA_TYPES = {
+    "Article",
+    "BreadcrumbList",
+    "ImageObject",
+    "ListItem",
+    "LocalBusiness",
+    "WebPage",
+}
 
 
 def page_path(slug: str, lang: str) -> Path:
@@ -31,8 +49,12 @@ def page_url(slug: str, lang: str) -> str:
     return f"{DOMAIN}/{prefix}projects/{slug}/"
 
 
-def normalized_text(markup: str) -> str:
-    return " ".join(BeautifulSoup(markup, "html.parser").get_text(" ", strip=True).split())
+def normalized_text(markup) -> str:
+    if hasattr(markup, "get_text"):
+        value = markup.get_text(" ", strip=True)
+    else:
+        value = BeautifulSoup(str(markup), "html.parser").get_text(" ", strip=True)
+    return " ".join(value.split())
 
 
 def schema_entities(data):
@@ -45,27 +67,263 @@ def schema_entities(data):
             yield from schema_entities(value)
 
 
+def meta_content(soup: BeautifulSoup, *, name: str | None = None, prop: str | None = None) -> str:
+    attrs = {"name": name} if name else {"property": prop}
+    tag = soup.head.find("meta", attrs=attrs)
+    return tag.get("content", "") if tag else ""
+
+
+def expected_meta(project: dict, lang: str) -> dict:
+    content = project["content"][lang]
+    if project["source_format"] == "localized_html":
+        return content
+    image_url = f"{DOMAIN}{project['hero_base']}-2400.webp"
+    return {
+        "title": content["title"],
+        "description": content["description"],
+        "og_title": content["title"],
+        "og_description": content["description"],
+        "og_image": image_url,
+        "twitter_title": content["title"],
+        "twitter_description": content["description"],
+        "twitter_image": image_url,
+        "h1": content["h1"],
+    }
+
+
+def expected_visible_hash(project: dict, lang: str) -> str:
+    if project["source_format"] == "localized_html":
+        return project["content"][lang]["visible_text_sha256"]
+    return project["visible_text_sha256"][lang]
+
+
+def valid_iso_with_timezone(value: str) -> bool:
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return False
+    return "T" in value and parsed.tzinfo is not None
+
+
+def srcset_urls(value: str) -> list[str]:
+    return [part.strip().split()[0] for part in value.split(",") if part.strip()]
+
+
+def validate_local_asset(label: str, url: str, issues: list[str]) -> None:
+    if not url.startswith("/"):
+        issues.append(f"{label}: asset path is not absolute-local: {url}")
+        return
+    path = SITE_ROOT / url.split("?", 1)[0].lstrip("/")
+    if not path.exists():
+        issues.append(f"{label}: missing local asset {url}")
+
+
+def validate_cache_bust(label: str, soup: BeautifulSoup) -> list[str]:
+    issues = []
+    for asset_path, expected in CACHE_BUST.items():
+        refs = []
+        for tag in soup.find_all(["link", "script"]):
+            attr = "href" if tag.name == "link" else "src"
+            ref = tag.get(attr, "")
+            if ref.split("?", 1)[0] == asset_path:
+                refs.append(ref)
+        if not refs:
+            issues.append(f"{label}: missing cache-busted asset {asset_path}")
+            continue
+        values = {ref.split("?v=", 1)[1] if "?v=" in ref else "" for ref in refs}
+        if values != {expected}:
+            issues.append(
+                f"{label}: {asset_path} cache-bust values {sorted(values)} != {expected}"
+            )
+    return issues
+
+
+def validate_schema(
+    label: str,
+    soup: BeautifulSoup,
+    project: dict,
+    lang: str,
+    meta: dict,
+) -> list[str]:
+    issues = []
+    schemas = []
+    for script in soup.find_all("script", attrs={"type": "application/ld+json"}):
+        try:
+            schemas.append(json.loads(script.string or ""))
+        except json.JSONDecodeError:
+            issues.append(f"{label}: invalid JSON-LD")
+    entities = [entity for schema in schemas for entity in schema_entities(schema)]
+    typed = [entity for entity in entities if isinstance(entity.get("@type"), str)]
+    types = {entity["@type"] for entity in typed}
+    if types != EXPECTED_SCHEMA_TYPES:
+        issues.append(f"{label}: schema types {sorted(types)} != {sorted(EXPECTED_SCHEMA_TYPES)}")
+    if "CreativeWork" in types:
+        issues.append(f"{label}: legacy CreativeWork schema remains")
+    if "Organization" in types:
+        issues.append(f"{label}: inline Organization entity remains")
+
+    article = next((entity for entity in typed if entity.get("@type") == "Article"), None)
+    business = next(
+        (
+            entity
+            for entity in typed
+            if entity.get("@type") == "LocalBusiness"
+            and entity.get("@id") == f"{DOMAIN}/#business"
+        ),
+        None,
+    )
+    webpage = next(
+        (
+            entity
+            for entity in typed
+            if entity.get("@type") == "WebPage" and entity.get("@id") == page_url(project["slug"], lang)
+        ),
+        None,
+    )
+    breadcrumb = next(
+        (entity for entity in typed if entity.get("@type") == "BreadcrumbList"),
+        None,
+    )
+
+    if article is None:
+        issues.append(f"{label}: Article entity missing")
+    else:
+        if article.get("headline") != meta["h1"]:
+            issues.append(f"{label}: Article headline mismatch")
+        if article.get("description") != meta["description"]:
+            issues.append(f"{label}: Article description mismatch")
+        if article.get("inLanguage") != lang:
+            issues.append(f"{label}: Article language mismatch")
+        if article.get("publisher") != {"@id": f"{DOMAIN}/#business"}:
+            issues.append(f"{label}: publisher is not an @id-only reference")
+        if article.get("author") != {"@id": f"{DOMAIN}/#business"}:
+            issues.append(f"{label}: author is not an @id-only reference")
+        if article.get("mainEntityOfPage") != {"@id": page_url(project["slug"], lang)}:
+            issues.append(f"{label}: mainEntityOfPage reference mismatch")
+        expected_dates = {
+            "datePublished": project["published_iso"],
+            "dateModified": project_modified_iso(project, lang),
+        }
+        for field, expected in expected_dates.items():
+            value = article.get(field, "")
+            if value != expected:
+                issues.append(f"{label}: {field} {value!r} != {expected!r}")
+            if not valid_iso_with_timezone(value):
+                issues.append(f"{label}: {field} is not full ISO-8601 with timezone")
+
+    if business is None:
+        issues.append(f"{label}: referenced LocalBusiness entity missing")
+    else:
+        logo = business.get("logo")
+        if business.get("name") != "Iron Custom Motors" or not business.get("url"):
+            issues.append(f"{label}: referenced publisher name/url incomplete")
+        if not isinstance(logo, dict) or not logo.get("url") or not logo.get("width") or not logo.get("height"):
+            issues.append(f"{label}: referenced publisher logo incomplete")
+    if webpage is None:
+        issues.append(f"{label}: referenced WebPage entity missing")
+    if breadcrumb is None or len(breadcrumb.get("itemListElement", [])) != 3:
+        issues.append(f"{label}: three-level BreadcrumbList missing")
+    return issues
+
+
+def validate_media(label: str, soup: BeautifulSoup, project: dict, lang: str) -> list[str]:
+    issues = []
+    hero = soup.select_one(".subpage picture.bg img")
+    if hero is None:
+        return [f"{label}: hero image missing"]
+    picture = hero.find_parent("picture")
+    sources = {source.get("type"): source for source in picture.find_all("source")}
+    if set(sources) != {"image/avif", "image/webp"}:
+        issues.append(f"{label}: hero AVIF/WebP sources incomplete")
+    if hero.get("fetchpriority") != "high" or hero.has_attr("loading"):
+        issues.append(f"{label}: hero LCP attributes invalid")
+    if not hero.get("width") or not hero.get("height"):
+        issues.append(f"{label}: hero dimensions missing")
+    if project["source_format"] == "localized_html" and not hero.get("src", "").lower().endswith((".jpg", ".jpeg")):
+        issues.append(f"{label}: legacy JPEG hero fallback regressed")
+
+    high = soup.select('[fetchpriority="high"]')
+    if len(high) != 1:
+        issues.append(f"{label}: expected exactly one high-priority element, found {len(high)}")
+    if soup.select('[fetchpriority="high"][loading="lazy"]'):
+        issues.append(f"{label}: high-priority lazy image conflict")
+
+    avif = sources.get("image/avif")
+    preload = soup.find("link", attrs={"rel": "preload", "as": "image"})
+    if preload is None or avif is None:
+        issues.append(f"{label}: responsive AVIF preload missing")
+    else:
+        if preload.get("imagesrcset") != avif.get("srcset"):
+            issues.append(f"{label}: preload/AVIF srcset mismatch")
+        if preload.get("imagesizes") != avif.get("sizes"):
+            issues.append(f"{label}: preload/AVIF sizes mismatch")
+        if preload.get("fetchpriority") == "high":
+            issues.append(f"{label}: preload duplicates high priority")
+        if preload.get("href") not in srcset_urls(avif.get("srcset", "")):
+            issues.append(f"{label}: preload href is not an AVIF candidate")
+
+    for source in picture.find_all("source"):
+        for url in srcset_urls(source.get("srcset", "")):
+            validate_local_asset(label, url, issues)
+    validate_local_asset(label, hero.get("src", ""), issues)
+    for url in srcset_urls(hero.get("srcset", "")):
+        validate_local_asset(label, url, issues)
+
+    gallery_images = soup.select(".proj-gallery img")
+    expected_count = (
+        project["content"][lang]["gallery_count"]
+        if project["source_format"] == "localized_html"
+        else len(project["gallery_sources"])
+    )
+    if len(gallery_images) != expected_count:
+        issues.append(f"{label}: expected {expected_count} gallery images")
+    for index, image in enumerate(gallery_images, start=1):
+        if image.get("loading") != "lazy":
+            issues.append(f"{label}: gallery image {index} is not lazy")
+        if not image.get("width") or not image.get("height"):
+            issues.append(f"{label}: gallery image {index} dimensions missing")
+        validate_local_asset(label, image.get("src", ""), issues)
+        local_image = SITE_ROOT / image.get("src", "").lstrip("/")
+        if local_image.exists() and image.get("width") and image.get("height"):
+            with Image.open(local_image) as disk_image:
+                if (int(image["width"]), int(image["height"])) != disk_image.size:
+                    issues.append(f"{label}: gallery image {index} dimensions incorrect")
+        gallery_picture = image.find_parent("picture")
+        if gallery_picture:
+            source_types = {source.get("type") for source in gallery_picture.find_all("source")}
+            if source_types != {"image/avif", "image/webp"}:
+                issues.append(f"{label}: gallery image {index} responsive sources incomplete")
+    return issues
+
+
 def validate_page(slug: str, lang: str, project: dict) -> list[str]:
     issues = []
     path = page_path(slug, lang)
     if not path.exists():
         return [f"{path.relative_to(SITE_ROOT)}: missing page"]
-
+    label = path.relative_to(SITE_ROOT).as_posix()
     soup = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")
-    expected = project["content"][lang]
-    expected_url = page_url(slug, lang)
-    label = str(path.relative_to(SITE_ROOT))
+    meta = expected_meta(project, lang)
 
-    title = soup.title.get_text(strip=True) if soup.title else ""
-    if title != expected["title"]:
+    if soup.title is None or soup.title.get_text(strip=True) != meta["title"]:
         issues.append(f"{label}: title mismatch")
-    description = soup.find("meta", attrs={"name": "description"})
-    if not description or description.get("content") != expected["description"]:
-        issues.append(f"{label}: meta description mismatch")
-    canonical = soup.find("link", rel="canonical")
-    if not canonical or canonical.get("href") != expected_url:
-        issues.append(f"{label}: canonical mismatch")
+    expected_meta_values = {
+        ("name", "description"): meta["description"],
+        ("prop", "og:title"): meta["og_title"],
+        ("prop", "og:description"): meta["og_description"],
+        ("prop", "og:image"): meta["og_image"],
+        ("name", "twitter:title"): meta["twitter_title"],
+        ("name", "twitter:description"): meta["twitter_description"],
+        ("name", "twitter:image"): meta["twitter_image"],
+    }
+    for (kind, key), expected in expected_meta_values.items():
+        actual = meta_content(soup, **{kind: key})
+        if actual != expected:
+            issues.append(f"{label}: {key} mismatch")
 
+    canonical = soup.find("link", rel="canonical")
+    if canonical is None or canonical.get("href") != page_url(slug, lang):
+        issues.append(f"{label}: canonical mismatch")
     hreflangs = {
         link.get("hreflang"): link.get("href")
         for link in soup.find_all("link", rel="alternate")
@@ -77,97 +335,34 @@ def validate_page(slug: str, lang: str, project: dict) -> list[str]:
         issues.append(f"{label}: x-default does not point to EN")
 
     h1 = soup.find("h1")
-    if not h1 or normalized_text(str(h1)) != expected["h1"]:
+    if h1 is None or normalized_text(h1) != meta["h1"]:
         issues.append(f"{label}: H1 mismatch")
-    subtitle = soup.select_one(".subpage .tagline")
-    if not subtitle or normalized_text(str(subtitle)) != expected["subtitle"]:
-        issues.append(f"{label}: subtitle mismatch")
-    body = soup.select_one(".generated-project-story")
-    if not body or normalized_text(str(body)) != normalized_text(expected["body_html"]):
-        issues.append(f"{label}: body copy mismatch")
-    closing = soup.select_one(".generated-project-closing .lead")
-    if not closing or normalized_text(str(closing)) != normalized_text(expected["closing_html"]):
-        issues.append(f"{label}: closing copy mismatch")
+    visible = normalized_text(soup.main)
+    visible_hash = hashlib.sha256(visible.encode()).hexdigest()
+    if visible_hash != expected_visible_hash(project, lang):
+        issues.append(f"{label}: visible project text changed")
+    if project["source_format"] == "localized_html" and not html_semantically_equal(
+        str(soup.main), project["content"][lang]["main_html"]
+    ):
+        issues.append(f"{label}: legacy main structure or media differs from source data")
+    if any("window.ICM_I18N_PAGE" in (script.string or "") for script in soup.find_all("script")):
+        issues.append(f"{label}: inline ICM_I18N_PAGE remains")
 
-    hero = soup.select_one(".subpage picture.bg img")
-    if not hero:
-        issues.append(f"{label}: hero image missing")
-    else:
-        if hero.get("alt") != expected["hero_alt"]:
-            issues.append(f"{label}: hero alt mismatch")
-        if hero.get("fetchpriority") != "high" or hero.has_attr("loading"):
-            issues.append(f"{label}: hero LCP attributes invalid")
-        if not hero.get("width") or not hero.get("height"):
-            issues.append(f"{label}: hero dimensions missing")
-        picture = hero.find_parent("picture")
-        source_types = {source.get("type") for source in picture.find_all("source")}
-        if source_types != {"image/avif", "image/webp"}:
-            issues.append(f"{label}: hero AVIF/WebP sources incomplete")
-    preload = soup.find("link", attrs={"rel": "preload", "as": "image"})
-    if not preload or preload.get("fetchpriority") != "high":
-        issues.append(f"{label}: hero preload missing")
-
-    gallery_images = soup.select(".proj-gallery img")
-    if len(gallery_images) != len(project["gallery_sources"]):
-        issues.append(f"{label}: expected {len(project['gallery_sources'])} gallery images")
-    for index, image in enumerate(gallery_images):
-        if image.get("alt") != project["gallery_alts"][lang][index]:
-            issues.append(f"{label}: gallery alt {index + 1} mismatch")
-        if image.get("loading") != "lazy":
-            issues.append(f"{label}: gallery image {index + 1} is not lazy")
-        if not image.get("width") or not image.get("height"):
-            issues.append(f"{label}: gallery image {index + 1} dimensions missing")
-        picture = image.find_parent("picture")
-        source_types = {source.get("type") for source in picture.find_all("source")} if picture else set()
-        if source_types != {"image/avif", "image/webp"}:
-            issues.append(f"{label}: gallery image {index + 1} sources incomplete")
-        local_image = SITE_ROOT / image["src"].lstrip("/")
-        if not local_image.exists():
-            issues.append(f"{label}: missing gallery asset {image['src']}")
-        else:
-            with Image.open(local_image) as disk_image:
-                if (int(image["width"]), int(image["height"])) != disk_image.size:
-                    issues.append(f"{label}: gallery image {index + 1} dimensions incorrect")
-
-    internal_targets = {
-        "en": ["/projects/", "/custom/", "/contact/"],
-        "pt": ["/pt/projects/", "/pt/custom/", "/pt/contact/"],
-        "ru": ["/ru/projects/", "/ru/custom/", "/ru/contact/"],
-        "uk": ["/uk/projects/", "/uk/custom/", "/uk/contact/"],
-    }
-    closing_links = [anchor.get("href") for anchor in soup.select(".generated-project-closing a")]
-    if closing_links != internal_targets[lang]:
-        issues.append(f"{label}: closing internal links are not language-local")
-
-    schemas = []
-    for script in soup.find_all("script", attrs={"type": "application/ld+json"}):
-        try:
-            schemas.append(json.loads(script.string or ""))
-        except json.JSONDecodeError:
-            issues.append(f"{label}: invalid JSON-LD")
-    entities = [entity for schema in schemas for entity in schema_entities(schema)]
-    types = {entity.get("@type") for entity in entities}
-    if "Article" not in types or "BreadcrumbList" not in types:
-        issues.append(f"{label}: Article/BreadcrumbList schema missing")
-    if "Product" in types or "Offer" in types:
-        issues.append(f"{label}: Product/Offer schema must not be present")
-    article = next((entity for entity in entities if entity.get("@type") == "Article"), None)
-    if article:
-        publisher = article.get("publisher", {})
-        if not publisher.get("@id") or not publisher.get("name") or not publisher.get("logo"):
-            issues.append(f"{label}: publisher @id/name/logo incomplete")
-        author = article.get("author", {})
-        if not author.get("name") or not author.get("url"):
-            issues.append(f"{label}: author name/url incomplete")
-        main_page = article.get("mainEntityOfPage", {})
-        if not main_page.get("@id") or not main_page.get("name"):
-            issues.append(f"{label}: mainEntityOfPage @id/name incomplete")
-        for field in ("datePublished", "dateModified"):
-            value = article.get(field, "")
-            if "T" not in value or not (value.endswith("Z") or "+" in value[10:] or "-" in value[10:]):
-                issues.append(f"{label}: {field} is not full ISO-8601")
-
+    issues.extend(validate_media(label, soup, project, lang))
+    issues.extend(validate_cache_bust(label, soup))
+    issues.extend(validate_schema(label, soup, project, lang, meta))
     return issues
+
+
+def sitemap_data() -> tuple[set[str], dict[str, str]]:
+    namespace = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+    nodes = ET.parse(SITE_ROOT / "sitemap.xml").findall("s:url", namespace)
+    urls = {node.find("s:loc", namespace).text for node in nodes}
+    lastmods = {
+        node.find("s:loc", namespace).text: node.find("s:lastmod", namespace).text
+        for node in nodes
+    }
+    return urls, lastmods
 
 
 def validate_integration(slug: str) -> list[str]:
@@ -179,46 +374,79 @@ def validate_integration(slug: str) -> list[str]:
         target = f"/{prefix}projects/{slug}/"
         card = soup.select_one(f'.prj-tile[href="{target}"]')
         if card is None:
-            issues.append(f"{listing_path.relative_to(SITE_ROOT)}: Fighter card missing")
-        elif not card.select_one('source[type="image/avif"]') or not card.select_one('source[type="image/webp"]'):
-            issues.append(f"{listing_path.relative_to(SITE_ROOT)}: Fighter card AVIF/WebP missing")
+            issues.append(f"{listing_path.relative_to(SITE_ROOT)}: {slug} card missing")
+        elif slug == "fighter" and (
+            not card.select_one('source[type="image/avif"]')
+            or not card.select_one('source[type="image/webp"]')
+        ):
+            issues.append(f"{listing_path.relative_to(SITE_ROOT)}: {slug} card AVIF/WebP missing")
 
-    sitemap_ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-    sitemap_urls = {
-        node.find("s:loc", sitemap_ns).text
-        for node in ET.parse(SITE_ROOT / "sitemap.xml").findall("s:url", sitemap_ns)
-    }
+    urls, lastmods = sitemap_data()
+    project = PROJECT_CONFIGS[slug]
     for lang in LANGS:
         expected = page_url(slug, lang)
-        if expected not in sitemap_urls:
+        if expected not in urls:
             issues.append(f"sitemap.xml: missing {expected}")
-
-    sitemap_lastmods = {
-        node.find("s:loc", sitemap_ns).text: node.find("s:lastmod", sitemap_ns).text
-        for node in ET.parse(SITE_ROOT / "sitemap.xml").findall("s:url", sitemap_ns)
-    }
-    expected_lastmod = PROJECT_CONFIGS[slug]["published_iso"]
-    for lang in LANGS:
-        expected = page_url(slug, lang)
-        if sitemap_lastmods.get(expected) != expected_lastmod:
+        if lastmods.get(expected) != project_modified_iso(project, lang):
             issues.append(f"sitemap.xml: incorrect lastmod for {expected}")
+
+    listing_lastmod = max(
+        project_modified_iso(config, lang)
+        for config in PROJECT_CONFIGS.values()
+        for lang in LANGS
+    )
+    for lang in LANGS:
         listing_url = f"{DOMAIN}/{'projects/' if lang == 'en' else f'{lang}/projects/'}"
-        if sitemap_lastmods.get(listing_url) != expected_lastmod:
+        if lastmods.get(listing_url) != listing_lastmod:
             issues.append(f"sitemap.xml: incorrect projects listing lastmod for {listing_url}")
 
-    for hub_slug in ("harley", "harley-custom", "harley-tuning"):
-        for lang in LANGS:
-            prefix = "" if lang == "en" else f"{lang}/"
-            path = SITE_ROOT / prefix / hub_slug / "index.html"
-            soup = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")
-            main = soup.find("main")
-            if main and main.find("a", href=lambda href: href and f"/projects/{slug}/" in href):
-                issues.append(f"{path.relative_to(SITE_ROOT)}: Fighter leaked into Harley content")
-
+    if slug == "fighter":
+        for hub_slug in ("harley", "harley-custom", "harley-tuning"):
+            for lang in LANGS:
+                prefix = "" if lang == "en" else f"{lang}/"
+                path = SITE_ROOT / prefix / hub_slug / "index.html"
+                soup = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")
+                main = soup.find("main")
+                if main and main.find("a", href=lambda href: href and "/projects/fighter/" in href):
+                    issues.append(f"{path.relative_to(SITE_ROOT)}: Fighter leaked into Harley content")
     return issues
 
 
-def main():
+def validate_redirects() -> list[str]:
+    issues = []
+    sitemap_urls, _ = sitemap_data()
+    for old_slug, config in REDIRECT_CONFIGS.items():
+        for lang in LANGS:
+            prefix = "" if lang == "en" else f"{lang}/"
+            path = SITE_ROOT / prefix / "projects" / old_slug / "index.html"
+            label = path.relative_to(SITE_ROOT).as_posix()
+            if not path.exists():
+                issues.append(f"{label}: redirect missing")
+                continue
+            soup = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")
+            target_path = f"/{prefix}projects/{config['target']}/"
+            target_url = f"{DOMAIN}{target_path}"
+            canonical = soup.find("link", rel="canonical")
+            refresh = soup.find("meta", attrs={"http-equiv": "refresh"})
+            robots = soup.find("meta", attrs={"name": "robots"})
+            anchor = soup.find("a")
+            script = soup.find("script")
+            if canonical is None or canonical.get("href") != target_url:
+                issues.append(f"{label}: redirect canonical mismatch")
+            if refresh is None or refresh.get("content") != f"0; url={target_path}":
+                issues.append(f"{label}: meta refresh mismatch")
+            if robots is None or "noindex" not in robots.get("content", ""):
+                issues.append(f"{label}: noindex missing")
+            if anchor is None or anchor.get("href") != target_path:
+                issues.append(f"{label}: redirect anchor mismatch")
+            if script is None or f'window.location.replace("{target_path}")' not in (script.string or ""):
+                issues.append(f"{label}: JavaScript redirect mismatch")
+            if target_url.replace(f"projects/{config['target']}", f"projects/{old_slug}") in sitemap_urls:
+                issues.append(f"{label}: noindex redirect leaked into sitemap")
+    return issues
+
+
+def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("slug", choices=sorted(PROJECT_CONFIGS))
     args = parser.parse_args()
@@ -228,11 +456,15 @@ def main():
     for lang in LANGS:
         issues.extend(validate_page(args.slug, lang, project))
     issues.extend(validate_integration(args.slug))
+    issues.extend(validate_redirects())
 
     if issues:
         print("\n".join(f"ERROR: {issue}" for issue in issues))
         sys.exit(1)
-    print(f"OK: {args.slug} project page passed multilingual, media, schema and integration checks")
+    print(
+        f"OK: {args.slug} project page passed multilingual copy, media, schema, "
+        "cache-bust, redirect and integration checks"
+    )
 
 
 if __name__ == "__main__":

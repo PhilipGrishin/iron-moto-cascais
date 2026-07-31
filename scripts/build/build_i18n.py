@@ -2,8 +2,9 @@
 """
 Generate language variants of HTML pages for Iron Custom Motors.
 
-Produces /ru/<path>/, /uk/<path>/, /pt/<path>/ for every English page,
-each fully pre-rendered (Google + AI engines see correct content per URL).
+Produces /ru/<path>/, /uk/<path>/, /pt/<path>/ for generic English source
+pages. Project details are rendered directly in four languages by
+build_project_pages.py.
 
 Also adds proper hreflang block to every page.
 """
@@ -19,7 +20,7 @@ from bs4 import BeautifulSoup, FeatureNotFound, NavigableString
 from build_output import write_html_if_changed
 from brand_pages_data import BRAND_ORDER
 from localize_internal_links import is_language_switch_link, rewrite_href
-from page_meta import PAGE_META, PROJECT_NAMES, OG_LOCALES
+from page_meta import PAGE_META, OG_LOCALES
 from seo_meta import upsert_robots_image_preview
 
 # --------- Paths ---------
@@ -86,10 +87,6 @@ MAIN_PAGES = [
     ("news/opens-new-workshop-in-cascais/index.html", "news/opens-new-workshop-in-cascais"),
     ("news/lisbon-motorcycle-film-fest-2026-beckman/index.html", "news/lisbon-motorcycle-film-fest-2026-beckman"),
 ]
-
-# Project pages — handled separately because they have inline ICM_I18N_PAGE
-PROJECT_PAGES = [(f"projects/{name}/index.html", name) for name in PROJECT_NAMES]
-
 
 # --------- Load main I18N ---------
 I18N = json.loads((BUILD_DIR / "i18n.json").read_text(encoding="utf-8"))
@@ -650,7 +647,7 @@ def write_localized(out_path: Path, content: str):
 def main():
     output_pairs = []  # (target_path, content)
 
-    all_pages = MAIN_PAGES + PROJECT_PAGES
+    all_pages = MAIN_PAGES
 
     for source_rel, page_id in all_pages:
         src = SITE_ROOT / source_rel
@@ -659,18 +656,13 @@ def main():
             continue
 
         en_html = src.read_text(encoding="utf-8")
-        # is_project = an individual project page like projects/inspirium/...
-        # NOT the projects/ gallery index itself (page_id == "projects")
-        is_project = source_rel.startswith("projects/") and page_id in PROJECT_NAMES
-        project_name = page_id if is_project else None
+        project_name = None
 
         # Localized versions
         for lang in TARGET_LANGS:
             translated = localize_page(en_html, lang, page_id, project_name=project_name)
             # Path: <lang>/<page>/index.html ; for home it's <lang>/index.html
-            if is_project:
-                out = SITE_ROOT / lang / "projects" / project_name / "index.html"
-            elif page_id == "":
+            if page_id == "":
                 out = SITE_ROOT / lang / "index.html"
             else:
                 out = SITE_ROOT / lang / page_id / "index.html"

@@ -182,29 +182,36 @@ Commands: `scripts/build/README.md`, **News workflow**.
 
 ## Projects
 
-Ownership is intentionally split:
+Ownership:
 
-- Data-driven pages: approved Markdown under `content/projects/`, registry and
-  parsing in `project_pages_data.py`, renderer `build_project_pages.py`, media
-  importer `import_project_images.py`, validator
-  `validate_project_pages.py`.
-- Legacy pages: authored static detail HTML. Shared navigation, metadata, LCP
-  delivery and related blocks still come from common post-processors.
+- `project_pages_data.py` is the complete project and redirect registry.
+- Fighter uses approved Markdown under `content/projects/`; the 10 migrated
+  project pages use `content/projects/legacy_projects_4lang.json`, which
+  preserves their reviewed localized main content and media structure.
+- `build_project_pages.py` renders all 44 indexable project variants and all 8
+  localized noindex redirects directly. Project details are not outputs of the
+  generic `build_i18n.py` flow.
+- `import_project_images.py` owns newly approved data-driven project media.
+- `validate_project_pages.py` protects every registered project and redirect.
 - Portfolio cards and project names: `new_pages_data.py` `PROJECT_TILES`.
 
 Stable rules:
 
-- New projects use the data-driven flow unless an explicit migration decision
-  says otherwise.
-- Hero media is responsive and high priority; gallery media is responsive,
-  dimensioned and lazy.
+- New projects use the registered data-driven flow.
+- Generated project HTML must not contain `window.ICM_I18N_PAGE`; localized
+  project copy belongs in the registered source data.
+- Hero media is responsive and eager, with a responsive AVIF preload matching
+  its `<picture>` source. Only the hero image uses
+  `fetchpriority="high"`; gallery media remains dimensioned and lazy.
 - Listing card names, tags and project detail claims must not contradict each
   other.
-- Project schema follows the existing Article/WebPage pattern plus localized
-  breadcrumbs; no `Product`/`Offer` without approved commerce data.
-- The focused project validator currently protects projects registered in
-  `PROJECT_CONFIGS`; it does not certify the exact authored copy of legacy
-  project pages.
+- Every project uses the same Article/WebPage/ImageObject/LocalBusiness and
+  localized BreadcrumbList graph. Article publisher and author use an `@id`
+  reference to the complete LocalBusiness entity with maintained name and
+  logo. Dates are full ISO-8601 values with timezone.
+- The old `nezlamniy` and `quanta` paths are localized noindex redirects in all
+  four languages and stay out of the sitemap.
+- No `Product`/`Offer` is emitted without approved commerce data.
 
 Commands: `scripts/build/README.md`, **Project workflow**.
 

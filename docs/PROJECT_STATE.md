@@ -45,14 +45,14 @@ site generators during deployment; the workflow packages checked-in output.
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
 | English path patterns | 53 | `build_sitemap.py` `PAGES` |
 | Indexable sitemap URLs | 212 | parsed `sitemap.xml` `<url>` entries |
-| Tracked HTML files | 215 | filesystem enumeration |
+| Tracked HTML files | 221 | filesystem enumeration |
 | Indexable HTML files | 212 | sitemap-to-file resolution |
-| Non-indexed HTML files | 3 | `404.html` plus legacy redirect stubs |
+| Non-indexed HTML files | 9 | `404.html` plus 8 localized project redirect stubs |
 | Sitemap lastmod tags | 212 | parsed `sitemap.xml` |
 | Unique sitemap lastmod values | 49 | parsed `sitemap.xml` |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
 | Project detail pages | 11 | `PROJECT_TILES` |
-| Data-driven project definitions | 1 | `PROJECT_CONFIGS` |
+| Data-driven project definitions | 11 | `PROJECT_CONFIGS` |
 | Blog posts | 7 | `BLOG_POSTS` |
 | News articles | 3 | `NEWS_ARTICLES` |
 | Harley Hub English page patterns | 3 | `harley_hub_data.py` `PAGE_CONFIG` |
@@ -77,7 +77,7 @@ Registry alignment on the evidence date:
 | `build_sitemap.py` `PAGES` | 53 | canonical English indexable paths |
 | `localize_internal_links.py` `LOCALIZED_PATHS` | 53 | matches `PAGES` after normalization |
 | `build_i18n.py` `MAIN_PAGES` | 31 | English sources localized by the generic i18n flow |
-| `build_i18n.py` `PROJECT_PAGES` | 11 | project detail sources localized by the generic i18n flow |
+| `project_pages_data.py` `PROJECT_CONFIGS` | 11 | project details rendered directly in four languages |
 
 There is no active `EN_PAGES` registry. The canonical English page registry is
 `build_sitemap.py` `PAGES`.
@@ -144,13 +144,18 @@ entities, with no partial duplicate products.
 - `/projects/true-religion/`
 - `/projects/fighter/`
 
-`Fighter` is data-driven. The other current project pages retain legacy static
-copy while shared post-processors maintain common behavior.
+All 11 project details are data-driven and rendered through
+`build_project_pages.py`. Fighter uses approved Markdown; the 10 migrated
+projects use the versioned localized source at
+`content/projects/legacy_projects_4lang.json`. Generated project HTML contains
+no `window.ICM_I18N_PAGE` copy block.
 
-Legacy noindex redirects:
+Localized noindex redirects, intentionally excluded from the sitemap:
 
 - `/projects/nezlamniy/` -> `/projects/unbreakable/`
 - `/projects/quanta/` -> `/projects/quanta-r/`
+
+The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 
 ### Blog
 
@@ -180,7 +185,10 @@ Legacy noindex redirects:
   `fetchpriority="high"` element on those pages.
 - News article heroes remain in the CSS-background family protected by the
   responsive CSS hero contract; they are not `<picture>` heroes.
-- Legacy project heroes use responsive AVIF/WebP/JPEG `<picture>` delivery.
+- Project heroes retain responsive `<picture>` delivery. Migrated projects use
+  AVIF/WebP sources with a JPEG fallback; Fighter retains its registered
+  AVIF/WebP media set. Every project page has one responsive AVIF preload and
+  exactly one `fetchpriority="high"` hero image.
 - `llms.txt` is generated from the English page registry, maintained page-name
   sources, metadata and `docs/BUSINESS_FACTS.md`.
 - `robots.txt` advertises both `sitemap.xml` and `llms.txt`.

@@ -27,7 +27,7 @@ except ImportError:  # pragma: no cover - Python < 3.9 fallback
 from brand_pages_data import BRAND_ORDER
 from blog_data import BLOG_POSTS
 from news_data import NEWS_ARTICLES
-from project_pages_data import PROJECT_CONFIGS
+from project_pages_data import PROJECT_CONFIGS, project_modified_iso
 
 DOMAIN = "https://ironcustommotors.com"
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -146,10 +146,13 @@ EXPLICIT_LASTMOD = {
         f"news/{slug}/": article_lastmod(article)
         for slug, article in NEWS_ARTICLES.items()
     },
-    **{
-        f"projects/{slug}/": normalize_iso(project["published_iso"])
-        for slug, project in PROJECT_CONFIGS.items()
-    },
+}
+PROJECT_LASTMOD = {
+    f"projects/{slug}/": {
+        lang: normalize_iso(project_modified_iso(project, lang))
+        for lang in LANGS
+    }
+    for slug, project in PROJECT_CONFIGS.items()
 }
 EXPLICIT_LASTMOD["blog/"] = max(
     article_lastmod(article)
@@ -160,8 +163,9 @@ EXPLICIT_LASTMOD["news/"] = max(
     for article in NEWS_ARTICLES.values()
 )
 EXPLICIT_LASTMOD["projects/"] = max(
-    normalize_iso(project["published_iso"])
+    normalize_iso(project_modified_iso(project, lang))
     for project in PROJECT_CONFIGS.values()
+    for lang in LANGS
 )
 
 
@@ -272,6 +276,8 @@ def semantic_git_lastmod(rel_path):
 
 
 def lastmod_for(lang, path):
+    if path in PROJECT_LASTMOD:
+        return PROJECT_LASTMOD[path][lang]
     if path in EXPLICIT_LASTMOD and path not in {"blog/", "news/"}:
         return EXPLICIT_LASTMOD[path]
     html_file = html_file_for(lang, path)

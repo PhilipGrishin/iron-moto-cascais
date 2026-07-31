@@ -145,11 +145,12 @@ when risks or follow-ups changed. Add implementation chronology to
   `scripts/build/<feature>_data.py`. Editing the data file and
   re-running the matching `build_*.py` script regenerates the
   HTML.
-- Project-page ownership is split between legacy static pages and the shared
-  data-driven flow. New data-driven pages are registered in
-  `scripts/build/project_pages_data.py`, rendered by
-  `scripts/build/build_project_pages.py`, and checked by
-  `scripts/build/validate_project_pages.py`. Read the Projects section in
+- All project detail pages are registered in
+  `scripts/build/project_pages_data.py`, rendered directly in four languages
+  by `scripts/build/build_project_pages.py`, and checked by
+  `scripts/build/validate_project_pages.py`. Migrated copy lives in the
+  registered project data files, never only in generated HTML or an inline
+  `window.ICM_I18N_PAGE` block. Read the Projects section in
   `docs/CONTENT_TYPES.md` before editing this family.
 - News articles live in `scripts/build/news_data.py`. To add
   one, add an entry to `NEWS_ARTICLES`, then run

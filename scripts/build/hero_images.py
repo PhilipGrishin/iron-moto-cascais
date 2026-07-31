@@ -33,9 +33,6 @@ BACKGROUND_IMAGE_DECL_RE = re.compile(
     r"(?:^|;)\s*background-image\s*:\s*(?P<value>[^;{}]+)",
     re.IGNORECASE,
 )
-LEGACY_PROJECT_HERO_RE = re.compile(
-    r"(?P<url>/photos/projects/(?P<project>[a-z0-9-]+)-800\.jpg)"
-)
 RESPONSIVE_HERO_ATTR = "data-lcp-responsive-background"
 RESPONSIVE_HERO_STYLE_ATTR = "data-lcp-responsive-background-style"
 STANDARD_VIEWPORT_SAMPLES = (390, 900, 1440)
@@ -616,67 +613,12 @@ def _sync_responsive_preloads(soup, slug: str) -> bool:
     return changed
 
 
-def _upgrade_legacy_project_hero(soup, site_root: Path) -> Optional[str]:
-    """Replace a legacy project JPEG background with the shared picture pattern."""
-    background = soup.select_one("main section.subpage > .bg[style]")
-    if background is None:
-        return None
-    match = LEGACY_PROJECT_HERO_RE.search(background.get("style", ""))
-    if not match:
-        return None
-
-    slug = hero_image_slug(f"/photos/projects/{match.group('project')}.jpg")
-    fallback_url = f"{HERO_OPTIMIZED_URL_PREFIX}/{slug}-1920.jpg"
-    fallback_path = site_root / fallback_url.lstrip("/")
-    if not fallback_path.exists():
-        raise FileNotFoundError(
-            f"Missing optimized legacy project hero {fallback_url}; "
-            "run optimize_hero_images.py for its source image"
-        )
-
-    from PIL import Image
-
-    with Image.open(fallback_path) as image:
-        width, height = image.size
-
-    picture = soup.new_tag("picture")
-    picture["class"] = background.get("class", ["bg"])
-    picture["aria-hidden"] = "true"
-    for ext, mime in (("avif", "image/avif"), ("webp", "image/webp")):
-        source = soup.new_tag("source")
-        source["type"] = mime
-        source["sizes"] = "100vw"
-        source["srcset"] = hero_srcset_for_slug(slug, ext)
-        picture.append(source)
-    image = soup.new_tag("img")
-    image["alt"] = ""
-    image["decoding"] = "async"
-    image["fetchpriority"] = "high"
-    image["sizes"] = "100vw"
-    image["src"] = fallback_url
-    image["srcset"] = hero_srcset_for_slug(slug, "jpg")
-    image["width"] = str(width)
-    image["height"] = str(height)
-    picture.append(image)
-    background.replace_with(picture)
-
-    style = soup.new_tag("style")
-    style.string = (
-        ".subpage picture.bg{display:block}\n"
-        ".subpage picture.bg img{width:100%;height:100%;object-fit:cover;"
-        "object-position:center;display:block}"
-    )
-    soup.head.append(style)
-    return slug
-
-
 def ensure_lcp_image_delivery(soup, site_root: Path) -> bool:
     """Apply the established LCP image pattern to an indexable page."""
-    legacy_project_slug = _upgrade_legacy_project_hero(soup, site_root)
-    css_hero = None if legacy_project_slug else css_hero_element(soup, site_root)
+    css_hero = css_hero_element(soup, site_root)
     css_hero_slug = _hero_slug_from_css(soup, css_hero, site_root) if css_hero else None
-    optimized_slug = legacy_project_slug or css_hero_slug or _optimized_hero_slug(soup)
-    changed = bool(legacy_project_slug)
+    optimized_slug = css_hero_slug or _optimized_hero_slug(soup)
+    changed = False
     if optimized_slug:
         changed = _sync_responsive_preloads(soup, optimized_slug) or changed
     if css_hero_slug:

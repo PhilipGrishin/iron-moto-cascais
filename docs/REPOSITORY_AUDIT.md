@@ -172,12 +172,13 @@ or external Rich Results Test behavior.
 
 ### `validate_project_pages.py`
 
-Checks registered data-driven project pages for multilingual copy, media,
-schema, listings, menu integration, sitemap/lastmod behavior, and prohibited
-Harley Hub leakage.
+Checks all 11 registered projects for exact multilingual source-copy hashes,
+media, schema graph/dates/references, cache-bust values, localized redirects,
+listings, sitemap/lastmod behavior, and prohibited Fighter leakage into the
+Harley Hub.
 
-It does **not** fully validate legacy hand-authored project copy, browser
-layout, measured LCP, or external Rich Results Test output.
+It does **not** replace browser layout review, measured LCP, or external Rich
+Results Test output.
 
 ## External Dependencies And Failure Modes
 

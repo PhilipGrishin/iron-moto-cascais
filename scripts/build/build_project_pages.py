@@ -1,22 +1,32 @@
 #!/usr/bin/env python3
-"""Build data-driven project pages in the existing project-page family."""
+"""Build every multilingual project page and legacy redirect from source data."""
 
 from __future__ import annotations
 
+import html
 import json
+import re
 from pathlib import Path
 
 from bs4 import BeautifulSoup
 from PIL import Image
 
-from build_output import write_html_if_changed
-from project_pages_data import PROJECT_CONFIGS, load_project
+from build_output import write_html_if_changed, write_text_if_changed
+from page_meta import OG_LOCALES
+from project_pages_data import (
+    PROJECT_CONFIGS,
+    REDIRECT_CONFIGS,
+    load_project,
+    project_modified_iso,
+)
 from site_chrome import patch_navigation_footer
 
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
 TEMPLATE_PATH = SITE_ROOT / "projects/joker/index.html"
+LANGS = ["en", "ru", "uk", "pt"]
+HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 CACHE_BUST = {
     "/assets/main.css": "20260724a",
     "/assets/main.js": "20260724a",
@@ -24,8 +34,26 @@ CACHE_BUST = {
     "/assets/projects.js": "20260710b",
 }
 
+FIGHTER_STYLE = """
+.subpage picture.bg{position:absolute;inset:0;z-index:-1;display:block;filter:none;transform:none}
+.subpage picture.bg img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.85) contrast(1.05) brightness(.45)}
+.generated-project-story{max-width:900px}
+.generated-project-story h2{font-family:var(--font-display);font-size:clamp(26px,3vw,40px);font-weight:800;line-height:1.05;text-transform:uppercase;color:#fff;margin:44px 0 18px}
+.generated-project-story h2:first-child{margin-top:0}
+.generated-project-closing .lead{max-width:900px}
+.generated-project-closing .lead p{margin:0;color:var(--text);font-size:clamp(17px,1.6vw,21px);line-height:1.65}
+.generated-project-closing .lead a{color:var(--accent)}
+.proj-gallery picture{display:block;width:100%;height:100%}
+"""
 
-def upsert_meta(soup: BeautifulSoup, *, name: str | None = None, prop: str | None = None, content: str):
+
+def upsert_meta(
+    soup: BeautifulSoup,
+    *,
+    name: str | None = None,
+    prop: str | None = None,
+    content: str,
+) -> None:
     attrs = {"name": name} if name else {"property": prop}
     tag = soup.head.find("meta", attrs=attrs)
     if tag is None:
@@ -33,16 +61,6 @@ def upsert_meta(soup: BeautifulSoup, *, name: str | None = None, prop: str | Non
         tag.attrs.update(attrs)
         soup.head.append(tag)
     tag["content"] = content
-
-
-def upsert_link(soup: BeautifulSoup, rel: str, href: str):
-    tag = soup.head.find("link", attrs={"rel": rel})
-    if tag is None:
-        tag = soup.new_tag("link")
-        tag["rel"] = rel
-        soup.head.append(tag)
-    tag["href"] = href
-    return tag
 
 
 def apply_cache_bust(soup: BeautifulSoup) -> None:
@@ -66,36 +84,43 @@ def image_dimensions(path: str) -> tuple[int, int]:
         return image.size
 
 
-def page_i18n(project: dict) -> dict:
-    slug = project["slug"]
-    payload = {}
-    for lang in ["en", "ru", "uk", "pt"]:
-        content = project["content"][lang]
-        ui = project["ui"][lang]
-        values = {
-            f"proj.{slug}.name": content["h1"],
-            f"proj.{slug}.subtitle": f"<em>{content['subtitle']}</em>",
-            f"proj.{slug}.heroAlt": content["hero_alt"],
-            f"proj.{slug}.body": content["body_html"],
-            f"proj.{slug}.closing": content["closing_html"],
-            f"proj.{slug}.badge": ui["badge"],
-            f"proj.{slug}.cat": ui["category"],
-            f"proj.{slug}.where": ui["where"],
-            "proj.breadHome": ui["home"],
-            "proj.breadProjects": ui["projects"],
-            "proj.lblYear": ui["year_label"],
-            "proj.lblCategory": ui["category_label"],
-            "proj.lblWhere": ui["where_label"],
-            "proj.lblGallery": ui["gallery"],
-            f"proj.{slug}.galleryTitle": ui["gallery_title"],
-        }
-        for index, alt in enumerate(project["gallery_alts"][lang], start=1):
-            values[f"proj.{slug}.galleryAlt{index}"] = alt
-        payload[lang] = values
-    return payload
+def localized_path(slug: str, lang: str) -> str:
+    prefix = "" if lang == "en" else f"{lang}/"
+    return f"{prefix}projects/{slug}/"
 
 
-def picture_html(base: str, widths: list[int], *, alt_key: str, alt: str, hero: bool = False) -> str:
+def page_url(slug: str, lang: str) -> str:
+    return f"{DOMAIN}/{localized_path(slug, lang)}"
+
+
+def replace_hreflangs(soup: BeautifulSoup, slug: str) -> None:
+    for alternate in soup.head.find_all(
+        "link", attrs={"rel": "alternate", "hreflang": True}
+    ):
+        alternate.decompose()
+
+    anchor = soup.head.find("link", attrs={"rel": "canonical"})
+    for lang in LANGS:
+        alternate = soup.new_tag("link")
+        alternate["rel"] = "alternate"
+        alternate["hreflang"] = HREFLANG_CODES[lang]
+        alternate["href"] = page_url(slug, lang)
+        anchor.insert_after(alternate)
+        anchor = alternate
+    x_default = soup.new_tag("link")
+    x_default["rel"] = "alternate"
+    x_default["hreflang"] = "x-default"
+    x_default["href"] = page_url(slug, "en")
+    anchor.insert_after(x_default)
+
+
+def picture_html(
+    base: str,
+    widths: list[int],
+    *,
+    alt: str,
+    hero: bool = False,
+) -> str:
     candidates = []
     for width in widths:
         dimensions = image_dimensions(f"{base}-{width}.webp")
@@ -105,31 +130,34 @@ def picture_html(base: str, widths: list[int], *, alt_key: str, alt: str, hero: 
     srcset_webp = ", ".join(f"{base}-{width}.webp {width}w" for width, _ in candidates)
     sizes = "100vw" if hero else "(max-width:760px) 50vw, 25vw"
     picture_class = ' class="bg"' if hero else ""
-    hero_attrs = ' decoding="async" fetchpriority="high"' if hero else ' decoding="async" loading="lazy"'
+    image_attrs = (
+        ' decoding="async" fetchpriority="high"'
+        if hero
+        else ' decoding="async" loading="lazy"'
+    )
     return f'''<picture{picture_class}>
 <source srcset="{srcset_avif}" sizes="{sizes}" type="image/avif"/>
 <source srcset="{srcset_webp}" sizes="{sizes}" type="image/webp"/>
-<img alt="{alt}" data-i18n-alt="{alt_key}"{hero_attrs} height="{largest_h}" sizes="{sizes}" src="{base}-{largest_width}.webp" srcset="{srcset_webp}" width="{largest_w}"/>
+<img alt="{html.escape(alt, quote=True)}"{image_attrs} height="{largest_h}" sizes="{sizes}" src="{base}-{largest_width}.webp" srcset="{srcset_webp}" width="{largest_w}"/>
 </picture>'''
 
 
-def render_main(project: dict, i18n: dict) -> str:
+def render_fighter_main(project: dict, lang: str) -> str:
     slug = project["slug"]
-    en = project["content"]["en"]
-    ui = project["ui"]["en"]
+    content = project["content"][lang]
+    ui = project["ui"][lang]
+    prefix = "" if lang == "en" else f"/{lang}"
     hero = picture_html(
         project["hero_base"],
         [800, 1600, 2400],
-        alt_key=f"proj.{slug}.heroAlt",
-        alt=en["hero_alt"],
+        alt=content["hero_alt"],
         hero=True,
     )
     gallery = []
-    for index, alt in enumerate(project["gallery_alts"]["en"], start=1):
+    for index, alt in enumerate(project["gallery_alts"][lang], start=1):
         image = picture_html(
             f"{project['gallery_base']}-{index:02d}",
             [800, 1600],
-            alt_key=f"proj.{slug}.galleryAlt{index}",
             alt=alt,
         )
         gallery.append(f'<div class="gtile">{image}</div>')
@@ -138,27 +166,27 @@ def render_main(project: dict, i18n: dict) -> str:
 <section class="subpage">
 {hero}
 <div class="container">
-<div class="crumb"><a data-i18n="proj.breadHome" href="/">{ui["home"]}</a><span class="sep">→</span><a data-i18n="proj.breadProjects" href="/projects/">{ui["projects"]}</a><span class="sep">→</span><span data-i18n="proj.{slug}.name">{en["h1"]}</span></div>
-<span class="proj-badge" data-i18n="proj.{slug}.badge">{ui["badge"]}</span>
-<h1 class="reveal" data-i18n="proj.{slug}.name">{en["h1"]}</h1>
-<p class="tagline reveal" data-i18n-html="proj.{slug}.subtitle"><em>{en["subtitle"]}</em></p>
+<div class="crumb"><a href="{prefix}/">{ui["home"]}</a><span class="sep">→</span><a href="{prefix}/projects/">{ui["projects"]}</a><span class="sep">→</span><span>{content["h1"]}</span></div>
+<span class="proj-badge">{ui["badge"]}</span>
+<h1 class="reveal">{content["h1"]}</h1>
+<p class="tagline reveal"><em>{content["subtitle"]}</em></p>
 <div class="proj-meta">
-<div class="item"><span class="label" data-i18n="proj.lblYear">{ui["year_label"]}</span><span class="val">{project["year"]}</span></div>
-<div class="item"><span class="label" data-i18n="proj.lblCategory">{ui["category_label"]}</span><span class="val" data-i18n="proj.{slug}.cat">{ui["category"]}</span></div>
-<div class="item"><span class="label" data-i18n="proj.lblWhere">{ui["where_label"]}</span><span class="val" data-i18n="proj.{slug}.where">{ui["where"]}</span></div>
+<div class="item"><span class="label">{ui["year_label"]}</span><span class="val">{project["year"]}</span></div>
+<div class="item"><span class="label">{ui["category_label"]}</span><span class="val">{ui["category"]}</span></div>
+<div class="item"><span class="label">{ui["where_label"]}</span><span class="val">{ui["where"]}</span></div>
 </div>
 </div>
 </section>
 <section class="sub-section">
 <div class="container">
-<article class="proj-story generated-project-story reveal" data-i18n-html="proj.{slug}.body">{en["body_html"]}</article>
+<article class="proj-story generated-project-story reveal">{content["body_html"]}</article>
 </div>
 </section>
 <section class="sub-section">
 <div class="container">
 <div class="heading reveal">
-<span class="h-eyebrow" data-i18n="proj.lblGallery">{ui["gallery"]}</span>
-<div><h2 data-i18n-html="proj.{slug}.galleryTitle">{ui["gallery_title"]}</h2></div>
+<span class="h-eyebrow">{ui["gallery"]}</span>
+<div><h2>{ui["gallery_title"]}</h2></div>
 </div>
 <div class="proj-gallery reveal-stagger">
 {"".join(gallery)}
@@ -167,203 +195,298 @@ def render_main(project: dict, i18n: dict) -> str:
 </section>
 <section class="cta-back generated-project-closing">
 <div class="container">
-<div class="lead" data-i18n-html="proj.{slug}.closing">{en["closing_html"]}</div>
+<div class="lead">{content["closing_html"]}</div>
 </div>
 </section>
 </main>'''
 
 
-def schema_blocks(project: dict) -> list[dict]:
+def project_main(project: dict, lang: str) -> BeautifulSoup:
+    if project["source_format"] == "localized_html":
+        markup = project["content"][lang]["main_html"]
+    else:
+        markup = render_fighter_main(project, lang)
+    fragment = BeautifulSoup(markup, "html.parser")
+    if fragment.main is None:
+        raise ValueError(f"Project {project['slug']} {lang} source has no main element")
+    return fragment.main
+
+
+def project_meta(project: dict, lang: str, main) -> dict:
+    content = project["content"][lang]
+    if project["source_format"] == "localized_html":
+        return content
+
+    image_url = f"{DOMAIN}{project['hero_base']}-2400.webp"
+    return {
+        "title": content["title"],
+        "description": content["description"],
+        "og_title": content["title"],
+        "og_description": content["description"],
+        "og_image": image_url,
+        "twitter_title": content["title"],
+        "twitter_description": content["description"],
+        "twitter_image": image_url,
+        "h1": content["h1"],
+        "breadcrumb_names": [
+            project["ui"][lang]["home"],
+            project["ui"][lang]["projects"],
+            content["h1"],
+        ],
+    }
+
+
+def hero_details(main) -> dict:
+    hero = main.select_one(".subpage picture.bg img")
+    avif = main.select_one('.subpage picture.bg source[type="image/avif"]')
+    if hero is None or avif is None:
+        raise ValueError("Project hero picture is incomplete")
+    return {
+        "src": hero.get("src", ""),
+        "width": int(hero.get("width", 0)),
+        "height": int(hero.get("height", 0)),
+        "avif_srcset": avif.get("srcset", ""),
+        "sizes": avif.get("sizes", "100vw"),
+    }
+
+
+def responsive_preload(soup: BeautifulSoup, details: dict) -> None:
+    for preload in soup.head.find_all("link", attrs={"rel": "preload", "as": "image"}):
+        preload.decompose()
+    candidates = [part.strip().rsplit(" ", 1)[0] for part in details["avif_srcset"].split(",")]
+    if not candidates:
+        raise ValueError("Project hero has no AVIF preload candidate")
+    href = candidates[len(candidates) // 2]
+    preload = soup.new_tag("link")
+    preload["rel"] = "preload"
+    preload["as"] = "image"
+    preload["href"] = href
+    preload["type"] = "image/avif"
+    preload["imagesrcset"] = details["avif_srcset"]
+    preload["imagesizes"] = details["sizes"]
+    first_stylesheet = soup.head.find("link", attrs={"rel": "stylesheet"})
+    if first_stylesheet:
+        first_stylesheet.insert_before(preload)
+    else:
+        soup.head.append(preload)
+
+
+def faq_entities(main) -> list[dict]:
+    entities = []
+    for details in main.find_all("details"):
+        question = details.find("summary")
+        answer = details.find("p")
+        if question and answer:
+            entities.append(
+                {
+                    "@type": "Question",
+                    "name": " ".join(question.get_text(" ", strip=True).split()),
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": " ".join(answer.get_text(" ", strip=True).split()),
+                    },
+                }
+            )
+    return entities
+
+
+def schema_graph(project: dict, lang: str, meta: dict, main, hero: dict) -> dict:
     slug = project["slug"]
-    en = project["content"]["en"]
-    page_url = f"{DOMAIN}/projects/{slug}/"
-    hero_url = f"{DOMAIN}{project['hero_base']}-2400.webp"
-    hero_width, hero_height = image_dimensions(f"{project['hero_base']}-2400.webp")
-    return [
+    current_url = page_url(slug, lang)
+    image_url = f"{DOMAIN}{hero['src']}"
+    breadcrumbs = meta["breadcrumb_names"]
+    prefix = "" if lang == "en" else f"{lang}/"
+    graph = [
         {
-            "@context": "https://schema.org",
             "@type": "Article",
-            "@id": f"{page_url}#article",
-            "headline": en["h1"],
-            "description": en["description"],
-            "image": {
-                "@type": "ImageObject",
-                "url": hero_url,
-                "width": hero_width,
-                "height": hero_height,
-            },
+            "@id": f"{current_url}#article",
+            "headline": meta["h1"],
+            "description": meta["description"],
+            "image": {"@id": f"{current_url}#primaryimage"},
             "datePublished": project["published_iso"],
-            "dateModified": project["published_iso"],
-            "inLanguage": "en",
-            "author": {
-                "@type": "Organization",
-                "name": "Iron Custom Motors",
-                "url": f"{DOMAIN}/about/",
-            },
-            "publisher": {
-                "@type": "LocalBusiness",
-                "@id": f"{DOMAIN}/#business",
-                "name": "Iron Custom Motors",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": f"{DOMAIN}/photos/icon-512.png",
-                    "width": 512,
-                    "height": 512,
-                },
-            },
-            "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": page_url,
-                "name": en["h1"],
+            "dateModified": project_modified_iso(project, lang),
+            "inLanguage": lang,
+            "author": {"@id": f"{DOMAIN}/#business"},
+            "publisher": {"@id": f"{DOMAIN}/#business"},
+            "mainEntityOfPage": {"@id": current_url},
+        },
+        {
+            "@type": "WebPage",
+            "@id": current_url,
+            "url": current_url,
+            "name": meta["h1"],
+            "description": meta["description"],
+            "inLanguage": lang,
+            "isPartOf": {"@id": f"{DOMAIN}/#website"},
+            "primaryImageOfPage": {"@id": f"{current_url}#primaryimage"},
+        },
+        {
+            "@type": "ImageObject",
+            "@id": f"{current_url}#primaryimage",
+            "url": image_url,
+            "contentUrl": image_url,
+            "width": hero["width"],
+            "height": hero["height"],
+        },
+        {
+            "@type": "LocalBusiness",
+            "@id": f"{DOMAIN}/#business",
+            "name": "Iron Custom Motors",
+            "url": f"{DOMAIN}/{prefix}",
+            "logo": {
+                "@type": "ImageObject",
+                "url": f"{DOMAIN}/photos/icon-512.png",
+                "width": 512,
+                "height": 512,
             },
         },
         {
-            "@context": "https://schema.org",
             "@type": "BreadcrumbList",
+            "@id": f"{current_url}#breadcrumb",
             "itemListElement": [
                 {
                     "@type": "ListItem",
                     "position": 1,
-                    "name": project["ui"]["en"]["home"],
-                    "item": f"{DOMAIN}/",
+                    "name": breadcrumbs[0],
+                    "item": f"{DOMAIN}/{prefix}",
                 },
                 {
                     "@type": "ListItem",
                     "position": 2,
-                    "name": project["ui"]["en"]["projects"],
-                    "item": f"{DOMAIN}/projects/",
+                    "name": breadcrumbs[1],
+                    "item": f"{DOMAIN}/{prefix}projects/",
                 },
                 {
                     "@type": "ListItem",
                     "position": 3,
-                    "name": en["h1"],
-                    "item": page_url,
+                    "name": breadcrumbs[2],
+                    "item": current_url,
                 },
             ],
         },
     ]
-
-
-def render_project(slug: str) -> Path:
-    project = load_project(slug)
-    if len(project["gallery_sources"]) != len(project["gallery_alts"]["en"]):
-        raise ValueError(f"Gallery source/alt count mismatch for {slug}")
-
-    soup = BeautifulSoup(TEMPLATE_PATH.read_text(encoding="utf-8"), "html.parser")
-    apply_cache_bust(soup)
-    en = project["content"]["en"]
-    page_url = f"{DOMAIN}/projects/{slug}/"
-    image_url = f"{DOMAIN}{project['hero_base']}-2400.webp"
-
-    soup.title.string = en["title"]
-    upsert_meta(soup, name="description", content=en["description"])
-    upsert_meta(soup, prop="og:title", content=en["title"])
-    upsert_meta(soup, prop="og:description", content=en["description"])
-    upsert_meta(soup, prop="og:type", content="article")
-    upsert_meta(soup, prop="og:url", content=page_url)
-    upsert_meta(soup, prop="og:image", content=image_url)
-    upsert_meta(soup, name="twitter:title", content=en["title"])
-    upsert_meta(soup, name="twitter:description", content=en["description"])
-    upsert_meta(soup, name="twitter:image", content=image_url)
-    upsert_link(soup, "canonical", page_url)
-
-    alternates = {
-        alternate.get("hreflang"): alternate
-        for alternate in soup.head.find_all(
-            "link", attrs={"rel": "alternate", "hreflang": True}
+    questions = faq_entities(main)
+    if questions:
+        graph.append(
+            {
+                "@type": "FAQPage",
+                "@id": f"{current_url}#faq",
+                "mainEntity": questions,
+            }
         )
-    }
-    for lang, hreflang in (("en", "en"), ("pt", "pt-PT"), ("ru", "ru"), ("uk", "uk")):
-        alternate = alternates.get(hreflang)
-        if alternate is None:
-            alternate = soup.new_tag("link")
-            alternate["rel"] = "alternate"
-            alternate["hreflang"] = hreflang
-            soup.head.append(alternate)
-        prefix = "" if lang == "en" else f"/{lang}"
-        alternate["href"] = f"{DOMAIN}{prefix}/projects/{slug}/"
-    alternate = alternates.get("x-default")
-    if alternate is None:
-        alternate = soup.new_tag("link")
-        alternate["rel"] = "alternate"
-        alternate["hreflang"] = "x-default"
-        soup.head.append(alternate)
-    alternate["href"] = page_url
+    return {"@context": "https://schema.org", "@graph": graph}
 
-    for preload in soup.head.find_all("link", attrs={"rel": "preload", "as": "image"}):
-        preload.decompose()
-    preload = soup.new_tag("link")
-    preload["rel"] = "preload"
-    preload["as"] = "image"
-    preload["href"] = f"{project['hero_base']}-1600.avif"
-    preload["type"] = "image/avif"
-    preload["imagesrcset"] = ", ".join(
-        f"{project['hero_base']}-{width}.avif {width}w" for width in [800, 1600, 2400]
-    )
-    preload["imagesizes"] = "100vw"
-    preload["fetchpriority"] = "high"
-    soup.head.append(preload)
 
-    style = soup.head.find("style")
-    style.string = (style.string or "") + """
-.subpage picture.bg{position:absolute;inset:0;z-index:-1;display:block;filter:none;transform:none}
-.subpage picture.bg img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.85) contrast(1.05) brightness(.45)}
-.generated-project-story{max-width:900px}
-.generated-project-story h2{font-family:var(--font-display);font-size:clamp(26px,3vw,40px);font-weight:800;line-height:1.05;text-transform:uppercase;color:#fff;margin:44px 0 18px}
-.generated-project-story h2:first-child{margin-top:0}
-.generated-project-closing .lead{max-width:900px}
-.generated-project-closing .lead p{margin:0;color:var(--text);font-size:clamp(17px,1.6vw,21px);line-height:1.65}
-.generated-project-closing .lead a{color:var(--accent)}
-.proj-gallery picture{display:block;width:100%;height:100%}
-"""
+def remove_inline_project_i18n(soup: BeautifulSoup) -> None:
+    for script in soup.find_all("script"):
+        if "window.ICM_I18N_PAGE" in (script.string or ""):
+            script.decompose()
 
-    main = soup.find("main")
-    new_main = BeautifulSoup(render_main(project, page_i18n(project)), "html.parser").main
-    main.replace_with(new_main)
+
+def render_project(project: dict, lang: str, template_markup: str) -> Path:
+    slug = project["slug"]
+    soup = BeautifulSoup(template_markup, "html.parser")
+    apply_cache_bust(soup)
+    soup.html["lang"] = lang
+    soup.html["data-lang"] = lang
+
+    main = project_main(project, lang)
+    meta = project_meta(project, lang, main)
+    hero = hero_details(main)
+    for high in main.select('[fetchpriority="high"]'):
+        del high["fetchpriority"]
+    hero_img = main.select_one(".subpage picture.bg img")
+    hero_img["fetchpriority"] = "high"
+    hero_img.attrs.pop("loading", None)
+
+    soup.main.replace_with(main)
+    soup.title.string = meta["title"]
+    upsert_meta(soup, name="description", content=meta["description"])
+    upsert_meta(soup, prop="og:title", content=meta["og_title"])
+    upsert_meta(soup, prop="og:description", content=meta["og_description"])
+    upsert_meta(soup, prop="og:type", content="article")
+    upsert_meta(soup, prop="og:url", content=page_url(slug, lang))
+    upsert_meta(soup, prop="og:image", content=meta["og_image"])
+    upsert_meta(soup, prop="og:locale", content=OG_LOCALES[lang])
+    upsert_meta(soup, name="twitter:title", content=meta["twitter_title"])
+    upsert_meta(soup, name="twitter:description", content=meta["twitter_description"])
+    upsert_meta(soup, name="twitter:image", content=meta["twitter_image"])
+    canonical = soup.head.find("link", attrs={"rel": "canonical"})
+    canonical["href"] = page_url(slug, lang)
+    replace_hreflangs(soup, slug)
+    responsive_preload(soup, hero)
 
     for script in soup.find_all("script", attrs={"type": "application/ld+json"}):
         script.decompose()
-    for block in schema_blocks(project):
-        script = soup.new_tag("script")
-        script["type"] = "application/ld+json"
-        script.string = json.dumps(block, ensure_ascii=False, separators=(",", ":"))
-        soup.head.append(script)
-    for alternate in soup.head.find_all(
-        "link", attrs={"rel": "alternate", "hreflang": True}
-    ):
-        soup.head.append(alternate.extract())
-
-    i18n_script = None
-    for script in soup.find_all("script"):
-        if "window.ICM_I18N_PAGE" in (script.string or ""):
-            i18n_script = script
-            break
-    if i18n_script is None:
-        i18n_script = soup.new_tag("script")
-        soup.body.append(i18n_script)
-    i18n_script.string = (
-        "window.ICM_I18N_PAGE = "
-        + json.dumps(page_i18n(project), ensure_ascii=False, separators=(",", ":"))
-        + ";"
+    schema = soup.new_tag("script")
+    schema["type"] = "application/ld+json"
+    schema.string = json.dumps(
+        schema_graph(project, lang, meta, main, hero),
+        ensure_ascii=False,
+        separators=(",", ":"),
     )
+    soup.head.append(schema)
+    remove_inline_project_i18n(soup)
 
-    output = SITE_ROOT / "projects" / slug / "index.html"
+    if project["source_format"] == "markdown":
+        style = soup.head.find("style")
+        if "generated-project-story" not in (style.string or ""):
+            style.string = (style.string or "") + FIGHTER_STYLE
+
+    output = SITE_ROOT / localized_path(slug, lang) / "index.html"
     output.parent.mkdir(parents=True, exist_ok=True)
-    generated = patch_navigation_footer(str(soup), "en")
-    write_html_if_changed(
-        output,
-        generated,
-        preserve_body_shell=True,
-        merge_page_i18n=True,
-        preserve_downstream_head=True,
-    )
+    generated = patch_navigation_footer(str(soup), lang)
+    write_html_if_changed(output, generated)
     print(f"wrote {output.relative_to(SITE_ROOT)}")
     return output
 
 
-def main():
+def render_redirects() -> None:
+    for old_slug, config in REDIRECT_CONFIGS.items():
+        for lang in LANGS:
+            prefix = "" if lang == "en" else f"/{lang}"
+            target_path = f"{prefix}/projects/{config['target']}/"
+            target_url = f"{DOMAIN}{target_path}"
+            labels = config["labels"][lang]
+            markup = f'''<!DOCTYPE html>
+
+<html lang="{lang}">
+<head>
+<meta charset="utf-8"/>
+<title>{labels["title"]}</title>
+<link href="{target_url}" rel="canonical"/>
+<meta content="0; url={target_path}" http-equiv="refresh"/>
+<meta content="noindex, follow, max-image-preview:large" name="robots"/>
+<script>window.location.replace("{target_path}");</script>
+</head>
+<body>
+<p>{labels["message"]} <a href="{target_path}">{labels["target_name"]}</a>&hellip;</p>
+</body>
+</html>'''
+            relative = Path("projects") / old_slug / "index.html"
+            if lang != "en":
+                relative = Path(lang) / relative
+            output = SITE_ROOT / relative
+            output.parent.mkdir(parents=True, exist_ok=True)
+            write_text_if_changed(output, markup)
+            print(f"wrote {relative}")
+
+
+def main() -> None:
+    template_markup = TEMPLATE_PATH.read_text(encoding="utf-8")
     for slug in PROJECT_CONFIGS:
-        render_project(slug)
+        project = load_project(slug)
+        if project["source_format"] == "markdown" and len(project["gallery_sources"]) != len(
+            project["gallery_alts"]["en"]
+        ):
+            raise ValueError(f"Gallery source/alt count mismatch for {slug}")
+        for lang in LANGS:
+            render_project(project, lang, template_markup)
+    render_redirects()
+    print(
+        f"Done. Wrote {len(PROJECT_CONFIGS) * len(LANGS)} project pages and "
+        f"{len(REDIRECT_CONFIGS) * len(LANGS)} redirects."
+    )
 
 
 if __name__ == "__main__":

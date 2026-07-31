@@ -46,7 +46,7 @@ copy or business-semantic validation.
 | `build_legal_pages.py` | `legal_pages_data.py`, service chrome | localized legal pages | broad SEO; no legal-copy validator |
 | `build_news.py` | `news_data.py` | English news hub/articles | broad SEO and focused CSS-hero mode; no exact-copy validator |
 | `build_blog.py` | `blog_data.py`, approved content files | English blog hub/articles | broad SEO and focused picture-hero mode; no exact-copy validator |
-| `build_project_pages.py` | `project_pages_data.py`, approved project Markdown | English data-driven project pages | `validate_project_pages.py` |
+| `build_project_pages.py` | `project_pages_data.py`, approved project Markdown and localized project data | all localized project pages and noindex legacy redirects | `validate_project_pages.py` |
 | `build_pre_purchase_inspection.py` | approved inspection Markdown | localized inspection pages | broad SEO; no exact-copy validator |
 | `build_expat_hub.py` | approved expat Markdown | localized expat hub | broad SEO; no exact-copy validator |
 | `build_harley_hub.py` | approved Harley Markdown, `harley_hub_data.py` | localized Harley family | `validate_harley_hub.py` |
@@ -64,7 +64,6 @@ copy or business-semantic validation.
 |---|---|---|---|
 | `nav_patch.py` | `site_chrome.py`, sitemap registry | navigation/footer on sitemap HTML | broad SEO chrome parity |
 | `enhance_money_pages.py` | configured commercial page map | related/local blocks in owned pages | broad SEO only |
-| `enhance_project_pages.py` | legacy project enhancement map | related/highlight blocks in project pages | broad SEO only |
 | `localize_internal_links.py` | `LOCALIZED_PATHS` | same-language links in localized HTML | broad SEO locality |
 | `add_image_dims.py` | local image files | width/height on HTML images | broad SEO asset checks |
 | `apply_seo_meta.py` | sitemap HTML, `seo_meta.py`, `hero_images.py` | robots/LCP/preload normalization and canonical-byte restoration when the final DOM matches tracked output | broad SEO and focused hero modes |
@@ -90,7 +89,7 @@ source media changes and review the binary diff.
 | `news_data.py` | news registry and localized article content |
 | `page_meta.py` | generic localized page metadata |
 | `pricing_data.py` | shared HTML/PDF pricing data |
-| `project_pages_data.py` | data-driven project registry and Markdown parser |
+| `project_pages_data.py` | complete project/redirect registry, localized legacy data and Markdown parser |
 | `build_output.py` | semantic/idempotent file writers |
 | `hero_images.py` | hero discovery, responsive rendering and alignment helpers |
 | `seo_meta.py` | shared SEO meta constants/helpers |
@@ -107,7 +106,7 @@ module is named above or in `docs/CONTENT_TYPES.md`.
 | `validate_seo.py` | sitemap files; title/meta; canonical/hreflang; JSON parsing and breadcrumbs; localized JSON-LD URLs; local assets; cache-bust presence/consistency; LCP discovery; CSS hero alignment; Blog picture preload/source alignment and viewport/DPR candidate selection; navigation/footer parity; localized links; English `llms.txt` coverage; changelog commit references | Rich Results UI; schema recommended fields; global visible FAQ parity; Product/Offer semantics; real lastmod meaning; visual rendering; external services; measured performance |
 | `validate_brand_pages.py` | brand registry and assets; generated variants; schema type presence; sitemap/deploy wiring; homepage and reciprocal links; forbidden brand claims | exact visible copy; global RRT warnings; browser interaction/performance |
 | `validate_harley_hub.py` | exact maintained copy; visual tokens; hero media; schema families; language-local links; feed/portfolio and required integrations | live browser behavior; external RRT; performance benefit |
-| `validate_project_pages.py` | exact data-driven project copy; media; schema fields; listing/sitemap integration and Harley isolation | legacy project authored copy; browser rendering; external RRT |
+| `validate_project_pages.py` | all 11 projects: exact source copy; media; schema graph/dates/references; cache-bust; redirects; listing/sitemap integration and Harley isolation | browser rendering; external RRT |
 
 Scripts or data families without a dedicated validator rely on broad SEO plus
 manual/source review. This is a known coverage boundary, not proof of failure.
@@ -135,7 +134,6 @@ python3 scripts/build/build_tyre_service.py
 python3 scripts/build/build_i18n.py
 python3 scripts/build/nav_patch.py
 python3 scripts/build/enhance_money_pages.py
-python3 scripts/build/enhance_project_pages.py
 python3 scripts/build/localize_internal_links.py
 python3 scripts/build/add_image_dims.py
 python3 scripts/build/apply_seo_meta.py
@@ -335,10 +333,11 @@ New article media and `NEWS_ARTICLES` data must exist before this sequence.
 
 ## Project Workflow
 
-For a project already registered in `PROJECT_CONFIGS`:
+For a project registered in `PROJECT_CONFIGS` (the generator always refreshes
+the complete 11-project family and localized redirect set):
 
 ```bash
-SLUG=fighter
+SLUG=<project-slug>
 python3 scripts/build/build_project_pages.py
 python3 scripts/build/build_new_pages.py
 python3 scripts/build/build_i18n.py
@@ -359,7 +358,7 @@ SOURCE_DIR='/absolute/path/to/approved/project/photos'
 python3 scripts/build/import_project_images.py "$SLUG" "$SOURCE_DIR"
 ```
 
-Legacy project hero optimization uses the explicit source path accepted by
+Migrated project hero optimization uses the explicit source path accepted by
 `optimize_hero_images.py`. Do not run all binary optimizers during an idle
 rebuild.
 
