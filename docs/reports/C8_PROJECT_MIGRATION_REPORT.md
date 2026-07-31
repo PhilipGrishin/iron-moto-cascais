@@ -105,9 +105,10 @@ described as an external Google UI result.
 
 ## Local Verification
 
-- Implementation commit: `ce25a7c2`.
+- Implementation commits: `ce25a7c2` (migration) and `f42fb5d0`
+  (complete publisher entity after external preflight).
 - The complete canonical generator sequence from `scripts/build/README.md`
-  completed in a clean clone of that commit and left empty
+  completed in a clean clone of `f42fb5d0` and left empty
   `git status --short`.
 - All four repository validator groups passed: SEO (212 URLs), brand pages
   (7 sets), Harley Hub (12 pages), and project pages (all 11 slugs across all
@@ -117,3 +118,9 @@ described as an external Google UI result.
 - The implementation diff passed `git diff --check`; Python modules compiled
   successfully with bytecode redirected outside the repository, and the
   maintained JavaScript files passed `node --check`.
+- A Rich Results Test against the first deployed migration found the Article,
+  Breadcrumb, Local Business and Organization results valid, but reported
+  optional `LocalBusiness` warnings for `telephone`, `priceRange`, `address`
+  and `image`. Commit `f42fb5d0` added those canonical fields to the shared
+  publisher entity and to the project validator; the final external result is
+  recorded after deployment rather than inferred from local checks.

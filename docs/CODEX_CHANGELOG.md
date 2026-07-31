@@ -16,8 +16,9 @@ Format:
 
 ## 2026-07-31 - Project family generator migration
 
-- Commit: `ce25a7c2`
-- Changed: Migrated all 10 legacy project details into the shared four-language
+- Commit: `f42fb5d0`
+- Changed: Building on migration commit `ce25a7c2`, migrated all 10 legacy
+  project details into the shared four-language
   project data/generator flow, unified all 11 project schemas as `Article`
   graphs with complete referenced publisher data, removed inline project copy
   payloads and the obsolete post-processor, and generated the two historical
@@ -27,12 +28,13 @@ Format:
   cache-bust, redirect and sitemap invariants passed for all 11 projects; all
   four repository validator groups passed; the other 168 sitemap HTML files,
   site assets, sitemap bytes and all lastmod values remained unchanged; and
-  the documented full rebuild left a clean clone of `ce25a7c2` with empty
+  the documented full rebuild left a clean clone of `f42fb5d0` with empty
   `git status --short`.
 - Notes: The six new localized alias stubs remain noindex and outside the
-  sitemap. Local validation proves the maintained Google Article publisher,
-  name and logo contract; external Rich Results Test and production evidence
-  are recorded only after publication.
+  sitemap. The first production Rich Results Test proved the Article and
+  publisher reference but identified four optional `LocalBusiness` fields;
+  `f42fb5d0` added the canonical telephone, price range, postal address and
+  image. The final external result is recorded only after that commit is live.
 
 ## 2026-07-31 - Blog picture hero preload alignment
 
