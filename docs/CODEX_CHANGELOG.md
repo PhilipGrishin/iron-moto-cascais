@@ -14,6 +14,19 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-31 - Reproducible static-site builds
+
+- Commit: `fc25c4a4`
+- Changed: Made every maintained generator and post-processor idempotent,
+  corrected localized pricing CTAs, centralized semantic output preservation,
+  restored real historical hashes, and made the build README canonical.
+- Verified: Every executable build tool individually, the complete documented
+  rebuild on a clean worktree, all focused validators, immutable sitemap
+  lastmod/cache-bust values, protected-file scope, and `git diff --check`.
+- Notes: The obsolete root changelog was removed in favor of this maintained
+  compact journal; the deferred pre-purchase discovery summary remains tracked
+  in `docs/OPEN_TASKS.md` because C6 prohibited an `llms.txt` change.
+
 ## 2026-07-31 - Pre-purchase inspection fixed price
 
 - Commit: `82bd35ef`
