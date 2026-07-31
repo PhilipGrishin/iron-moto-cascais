@@ -37,6 +37,24 @@ GLOBAL_SCHEMA_IDS = {
 }
 LANG_HOME_HREFS = {"/", "/ru/", "/uk/", "/pt/"}
 LANG_HREFLANGS = {"en", "ru", "uk", "pt", "pt-PT"}
+CHROME_TEXT_REGIONS = (
+    "#cookieBanner",
+    "#stickyCta",
+    ".fab-wa",
+    "header.site-header",
+    "#mobileDrawer",
+    "footer.site-footer",
+)
+REQUIRED_CHROME_I18N_KEYS = {
+    "cookie.text",
+    "cookie.reject",
+    "cookie.accept",
+    "cta.bookHeader",
+    "cta.whatsapp",
+    "footer.tagline",
+    "footer.col1",
+    "footer.col2",
+}
 
 try:
     BeautifulSoup("", "lxml")
@@ -563,6 +581,74 @@ def navigation_signature(soup) -> dict[str, object]:
     }
 
 
+def chrome_text_signature(soup) -> tuple[tuple[str, str, str], ...]:
+    """Return every translated chrome string in canonical region order."""
+    signature = []
+    for selector in CHROME_TEXT_REGIONS:
+        region = soup.select_one(selector)
+        if region is None:
+            signature.append((selector, "<missing-region>", ""))
+            continue
+        elements = [region] if region.has_attr("data-i18n") else []
+        elements.extend(region.select("[data-i18n]"))
+        signature.extend(
+            (
+                selector,
+                element["data-i18n"],
+                clean_text(element.get_text(" ", strip=True)),
+            )
+            for element in elements
+        )
+    return tuple(signature)
+
+
+def check_chrome_text_parity(urls: list[str]) -> list[str]:
+    """Compare indexable chrome copy with the same-language homepage."""
+    soups = {}
+    baselines = {}
+    for url in urls:
+        html_path, lang, canonical_path = file_for_url(url)
+        if not html_path.exists():
+            continue
+        soup = BeautifulSoup(html_path.read_text(encoding="utf-8"), HTML_PARSER)
+        soups[url] = (lang, soup)
+        if canonical_path == "/":
+            baselines[lang] = chrome_text_signature(soup)
+
+    issues = []
+    for lang, baseline in baselines.items():
+        keys = {key for _, key, _ in baseline}
+        missing = sorted(REQUIRED_CHROME_I18N_KEYS - keys)
+        if missing:
+            issues.append(
+                f"{lang} homepage chrome baseline is missing keys: {', '.join(missing)}"
+            )
+
+    for url, (lang, soup) in soups.items():
+        expected = baselines.get(lang)
+        if expected is None:
+            issues.append(f"{url}: missing {lang} homepage chrome baseline")
+            continue
+        actual = chrome_text_signature(soup)
+        if actual == expected:
+            continue
+        mismatch_labels = []
+        for index in range(max(len(actual), len(expected))):
+            actual_item = actual[index] if index < len(actual) else None
+            expected_item = expected[index] if index < len(expected) else None
+            if actual_item == expected_item:
+                continue
+            item = actual_item or expected_item
+            label = f"{item[0]}:{item[1]}"
+            if label not in mismatch_labels:
+                mismatch_labels.append(label)
+        issues.append(
+            f"{url}: chrome text parity mismatch against {lang} homepage: "
+            f"{', '.join(mismatch_labels)}"
+        )
+    return issues
+
+
 def navigation_anchors(soup):
     primary = soup.find("nav", attrs={"aria-label": "Primary"})
     mobile = soup.find("nav", class_="nav-mobile")
@@ -765,6 +851,7 @@ def main() -> int:
     issues.extend(check_llms_sitemap_coverage(urls))
     issues.extend(check_codex_changelog())
     issues.extend(check_navigation_parity(urls))
+    issues.extend(check_chrome_text_parity(urls))
     issues.extend(check_asset_cache_bust_consistency(urls))
     if issues:
         print(f"SEO validation failed: {len(issues)} issue(s)")

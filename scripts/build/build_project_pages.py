@@ -19,7 +19,7 @@ from project_pages_data import (
     load_project,
     project_modified_iso,
 )
-from site_chrome import patch_navigation_footer
+from site_chrome import apply_global_i18n, patch_navigation_footer
 
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -400,6 +400,7 @@ def render_project(project: dict, lang: str, template_markup: str) -> Path:
     apply_cache_bust(soup)
     soup.html["lang"] = lang
     soup.html["data-lang"] = lang
+    apply_global_i18n(soup, lang)
 
     main = project_main(project, lang)
     meta = project_meta(project, lang, main)
