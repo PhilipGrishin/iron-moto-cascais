@@ -93,6 +93,28 @@ The expected transfer result under the documented 390px/DPR3 profile is one
 encoded bytes. This is an algorithmic expectation from identical selection
 inputs, not a substitute for a new throttled LCP measurement.
 
+## Production Verification
+
+GitHub Pages workflow `30662725617` deployed head `1431208a` successfully.
+Cache-bypass requests with a unique query string confirmed:
+
+- one Blog responsive preload whose `imagesrcset`/`imagesizes` exactly match
+  the AVIF `<source>`;
+- one Blog `fetchpriority="high"` element and zero high-priority lazy images;
+- one observed 768px Blog hero resource at the available 390px/DPR1 browser
+  profile;
+- zero News `<picture>` heroes, one News CSS hero marker and one observed
+  768px News hero resource at the same available profile;
+- production `sitemap.xml` SHA-256
+  `4910de2803fdd535c37198cf27ed541c23e66be8bd53afe80466881261e54971`.
+
+The unchanged News C7 CSS contract contains three mutually exclusive
+media-qualified preload links marked high priority. This does not create a
+second transferred hero in the observed profile, but it means the brief's
+literal “no more than one high-priority element per News page” condition is
+incompatible with its instruction not to modify CSS-background heroes. No
+News change is claimed.
+
 ## Verification
 
 Implementation commit: `c177b67a`.
@@ -111,5 +133,6 @@ Harley Hub validation passed: 12 pages and all required integrations
 OK: fighter project page passed multilingual, media, schema and integration checks
 ```
 
-Production checks after publication and any external measurement boundary are
-recorded in the task handoff.
+The exact DPR3 network replay and throttled after-LCP median remain unmeasured
+for the environment reason stated above; the task handoff must preserve that
+boundary.

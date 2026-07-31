@@ -28,13 +28,20 @@ Format:
   passed; exactly 28 Blog HTML files changed; News, projects, other HTML,
   CSS, JS, cache-bust values, sitemap bytes and all lastmod values remained
   unchanged; and the Full Safe Rebuild left a clean clone of `c177b67a` with
-  empty `git status --short`.
+  empty `git status --short`. GitHub Pages workflow `30662725617` deployed
+  documentation head `1431208a`; cache-bypass production checks found one
+  responsive Blog preload matching the AVIF source, one high-priority Blog
+  hero without lazy loading, one observed Blog hero resource at the available
+  390px/DPR1 profile, and the unchanged sitemap SHA-256.
 - Notes: Source inspection proved that the 12 News article variants use the
   already-aligned C7-FIX CSS-background contract, not `<picture>`, so they
   were not edited. The historical 390px/DPR3 trace predicts a 26,494-byte
   transfer reduction from the aligned selection inputs. The available browser
   did not expose the required DPR/network/CPU controls, so no new comparable
-  three-run LCP median is claimed.
+  three-run LCP median is claimed. The unchanged News CSS contract still has
+  three mutually exclusive media preloads marked high priority and transferred
+  one 768px hero at the available production profile; this is outside the
+  corrected Blog `<picture>` scope and was not rewritten.
 
 ## 2026-07-31 - Repository cleanup and discovery price alignment
 
