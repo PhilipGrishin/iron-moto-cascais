@@ -14,6 +14,18 @@ Format:
 - Notes: ...
 ```
 
+## 2026-07-31 - Pre-purchase inspection fixed price
+
+- Commit: this commit
+- Changed: Replaced starting-price wording with the fixed EUR 150 inspection
+  price in all localized page copy, metadata and `Offer` schema; clarified the
+  separately agreed on-site travel charge and added `WebPage.dateModified`.
+- Verified: Exact multilingual copy, visible FAQ and `FAQPage` parity, one
+  VAT-inclusive EUR 150 `Offer`, JSON-LD parsing, sitemap lastmod scope, all
+  focused validators, and desktop/mobile browser layout checks.
+- Notes: Travel remains a case-by-case charge agreed before booking; no rate,
+  zone, radius or minimum is published.
+
 ## 2026-07-30 - Pricing breadcrumbs and cache validation
 
 - Commit: this commit

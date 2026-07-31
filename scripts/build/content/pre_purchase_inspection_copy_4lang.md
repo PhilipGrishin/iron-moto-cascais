@@ -1,5 +1,5 @@
 # Pre-Purchase Inspection page — FULL REWORK (EN / PT-pt / RU / UK)
-Iron Custom Motors · flagship service page (alongside tyre service). Mirrors tyre-page template (numbered H2 01–08 + hero + CTA). Real price CONFIRMED from /pricing/: €150 fixed, 10-point inspection, written report → used as "from €150, taxes included".
+Iron Custom Motors · flagship service page (alongside tyre service). Mirrors tyre-page template (numbered H2 01–08 + hero + CTA). Real price CONFIRMED by /pricing/: €150 fixed, 10-point inspection, written report, taxes included.
 Slugs: EN /pre-purchase-inspection/ · PT /pt/pre-purchase-inspection/ · RU /ru/pre-purchase-inspection/ · UK /uk/pre-purchase-inspection/
 WhatsApp +351 917 961 230 · Tue–Sat 10:00–18:00 · São Domingos de Rana, Cascais.
 Differentiator: videoscope (borescope) internal cylinder inspection + compression test. Independent/unbiased (buyer-only). Expat/multilingual angle. Workshop OR on-site (we travel). Deliverable: written report + recommendations + photos & videoscope footage.
@@ -11,7 +11,7 @@ NOTE on localized slugs: mirror EN for most (/pt/motorcycle-service/, /pt/harley
 
 ## ENGLISH
 **SEO Title:** Motorcycle Pre-Purchase Inspection in Cascais & Lisbon
-**Meta:** Independent motorcycle pre-purchase inspection in Cascais & Lisbon. Compression test, videoscope cylinder check, written report. English-speaking. From €150.
+**Meta:** Independent motorcycle pre-purchase inspection in Cascais & Lisbon. Compression test, videoscope cylinder check, written report. English-speaking. Fixed price: €150.
 **Slug:** `/pre-purchase-inspection/`
 **Eyebrow:** Buying a used motorcycle · Cascais / Lisbon
 **H1:** Motorcycle Pre-Purchase Inspection in Cascais & Lisbon
@@ -50,7 +50,7 @@ Our pre-purchase inspection is a structured, 10-point check covering everything 
 ### 04 · How it works
 The process is simple and built around your purchase, not our schedule.
 **1. Tell us about the bike.** Message us on [WhatsApp](https://wa.me/351917961230) with the make, model, year and location. We'll confirm the price, what's included and the first available slot.
-**2. Choose where.** We can inspect the motorcycle **at our Cascais workshop**, or **on-site at the seller's location — we travel.** On-site is ideal when the bike isn't roadworthy, the seller won't move it, or you simply want it checked where it stands. Either way you get the same inspection.
+**2. Choose where.** We can inspect the motorcycle **at our Cascais workshop**, or **on-site at the seller's location — we travel.** On-site is ideal when the bike isn't roadworthy, the seller won't move it, or you simply want it checked where it stands. Either way you get the same inspection. Only the travel differs: for an on-site inspection we settle that charge with you in advance, based on how far we have to go.
 **3. We inspect.** A full 10-point check, including the compression test and videoscope cylinder inspection, with photos and video taken throughout.
 **4. You get the report.** A written report with a clear list of recommendations — so you can buy with confidence, negotiate from facts, or walk away clean.
 
@@ -62,8 +62,8 @@ The report comes with **photos** of what we found, and the **videoscope footage 
 We inspect every brand and type of motorcycle we service — sport, naked, touring, cruiser, adventure, classic and full custom. Our work spans [Harley-Davidson](/harley-service/), [BMW Motorrad](/bmw-service/), [Ducati](/ducati-service/), [Suzuki](/suzuki-service/) and [Honda](/honda-service/), and the wider range of machines that pass through our [workshop](/motorcycle-service/) every week. Whatever you're about to buy, it meets a workshop that knows it.
 
 ### 07 · Pricing
-**Pre-purchase inspection — from €150, taxes included.** A full 10-point technical inspection, including the compression test, videoscope cylinder inspection, and a written report with photos and video.
-The fixed fee covers a workshop inspection. For an **on-site inspection at the seller's location**, travel may apply depending on distance — message us with the location and we'll confirm an exact figure before you book. You'll always have a clear price up front, in writing.
+**Pre-purchase inspection — €150, fixed price, taxes included.** A full 10-point technical inspection, including the compression test, videoscope cylinder inspection, and a written report with photos and video.
+The €150 covers the inspection itself, carried out at our workshop in São Domingos de Rana, Cascais. If you'd rather we inspected the motorcycle at the seller's location, travel is charged separately — agreed with you case by case according to the distance, and confirmed before you book.
 See the full [price list](/pricing/) or [message us on WhatsApp](https://wa.me/351917961230) for a quote.
 
 ### 08 · Serving Cascais, Estoril, Oeiras & Greater Lisbon
@@ -75,7 +75,7 @@ Don't buy a used motorcycle blind. Message Iron Custom Motors on [WhatsApp at +3
 
 ### FAQ
 - **How long does a pre-purchase inspection take?** A full inspection typically takes around 1.5 to 2 hours, depending on the bike and whether it's at our Cascais workshop or on-site. We don't rush it — the point is to check everything that matters, including the compression test and the videoscope look inside the engine.
-- **Can you inspect the bike on-site, not just at your workshop?** Yes. We inspect at our Cascais workshop or on-site at the seller's location — we travel. On-site is ideal when the motorcycle isn't roadworthy or the seller won't move it. Travel may apply depending on distance; we confirm it before you book.
+- **Can you inspect the bike on-site, not just at your workshop?** Yes. We inspect at our Cascais workshop or on-site at the seller's location — we travel. On-site is ideal when the motorcycle isn't roadworthy or the seller won't move it. The travel charge is agreed separately according to distance, and confirmed before you book.
 - **Do I get a written report?** Yes. You receive a written report with a prioritised list of recommendations, photos, and videoscope footage including the internal cylinder video. It's evidence you can use to buy, negotiate or walk away.
 - **What if the seller refuses the internal cylinder inspection?** A seller who won't allow a compression test or a videoscope check is worth a second thought. We'll still complete every other point of the inspection and tell you clearly what we could and couldn't verify — so you can weigh the risk with open eyes.
 - **Do you inspect any brand of motorcycle?** Yes. We inspect every brand and type we service — Harley-Davidson, BMW, Ducati, Suzuki, Honda and beyond, from sport bikes to cruisers, classics and customs.
@@ -85,7 +85,7 @@ Don't buy a used motorcycle blind. Message Iron Custom Motors on [WhatsApp at +3
 
 ## PORTUGUÊS (pt-PT)
 **SEO Title:** Inspeção Pré-Compra de Mota em Cascais e Lisboa
-**Meta:** Inspeção pré-compra de mota independente em Cascais e Lisboa. Teste de compressão, inspeção do cilindro com videoscópio e relatório escrito. Desde 150 €.
+**Meta:** Inspeção pré-compra de mota independente em Cascais e Lisboa. Teste de compressão, inspeção do cilindro com videoscópio e relatório escrito. Preço fixo: 150 €.
 **Slug:** `/pt/pre-purchase-inspection/`
 **Eyebrow:** Comprar uma mota usada · Cascais / Lisboa
 **H1:** Inspeção Pré-Compra de Mota em Cascais e Lisboa
@@ -124,7 +124,7 @@ A nossa inspeção pré-compra é uma verificação estruturada de 10 pontos, qu
 ### 04 · Como funciona
 O processo é simples e pensado em torno da sua compra, não da nossa agenda.
 **1. Fale-nos da mota.** Envie-nos mensagem no [WhatsApp](https://wa.me/351917961230) com marca, modelo, ano e localização. Confirmamos o preço, o que está incluído e a primeira data disponível.
-**2. Escolha o local.** Podemos inspecionar a mota **na nossa oficina em Cascais** ou **no local do vendedor — deslocamo-nos.** A inspeção no local é ideal quando a mota não circula, o vendedor não a quer mover, ou simplesmente prefere vê-la verificada onde está. Em qualquer dos casos, a inspeção é a mesma.
+**2. Escolha o local.** Podemos inspecionar a mota **na nossa oficina em Cascais** ou **no local do vendedor — deslocamo-nos.** A inspeção no local é ideal quando a mota não circula, o vendedor não a quer mover, ou simplesmente prefere vê-la verificada onde está. Em qualquer dos casos, a inspeção é a mesma. Muda apenas o caminho: numa inspeção no local, o valor da deslocação é acertado consigo à partida, conforme a distância a percorrer.
 **3. Inspecionamos.** Uma verificação completa de 10 pontos, incluindo o teste de compressão e a inspeção do cilindro com videoscópio, com fotografias e vídeo ao longo de todo o processo.
 **4. Recebe o relatório.** Um relatório escrito com uma lista clara de recomendações — para comprar com confiança, negociar com base em factos ou desistir sem dúvidas.
 
@@ -136,8 +136,8 @@ O relatório inclui **fotografias** do que encontrámos e o **vídeo do videosc�
 Inspecionamos todas as marcas e tipos de mota que assistimos — desportiva, naked, touring, custom, trail, clássica e custom integral. O nosso trabalho abrange [Harley-Davidson](/pt/harley-service/), [BMW Motorrad](/pt/bmw-service/), [Ducati](/pt/ducati-service/), [Suzuki](/pt/suzuki-service/) e [Honda](/pt/honda-service/), e a grande variedade de máquinas que passam pela nossa [oficina](/pt/motorcycle-service/) todas as semanas. Seja qual for a mota que está prestes a comprar, encontra uma oficina que a conhece.
 
 ### 07 · Preços
-**Inspeção pré-compra — desde 150 €, impostos incluídos.** Uma inspeção técnica completa de 10 pontos, com teste de compressão, inspeção do cilindro com videoscópio e relatório escrito com fotografias e vídeo.
-O valor fixo cobre a inspeção em oficina. Para uma **inspeção no local do vendedor**, pode aplicar-se deslocação consoante a distância — envie-nos a localização e confirmamos um valor exato antes de marcar. Terá sempre um preço claro à partida, por escrito.
+**Inspeção pré-compra — 150 €, preço fixo, impostos incluídos.** Uma inspeção técnica completa de 10 pontos, com teste de compressão, inspeção do cilindro com videoscópio e relatório escrito com fotografias e vídeo.
+Os 150 € cobrem a inspeção realizada na nossa oficina em São Domingos de Rana, Cascais. Se preferir que vejamos a mota no local do vendedor, a deslocação é cobrada à parte: acordamos o valor caso a caso, em função da distância, e confirmamo-lo antes da marcação.
 Veja a [tabela de preços](/pt/pricing/) completa ou [contacte-nos no WhatsApp](https://wa.me/351917961230) para um orçamento.
 
 ### 08 · Ao serviço de Cascais, Estoril, Oeiras e Grande Lisboa
@@ -149,7 +149,7 @@ Não compre uma mota usada às cegas. Envie mensagem à Iron Custom Motors no [W
 
 ### FAQ
 - **Quanto tempo demora uma inspeção pré-compra?** Uma inspeção completa demora normalmente cerca de 1,5 a 2 horas, consoante a mota e se decorre na nossa oficina em Cascais ou no local. Não a fazemos à pressa — o objetivo é verificar tudo o que importa, incluindo o teste de compressão e o olhar com videoscópio dentro do motor.
-- **Podem inspecionar no local, e não só na oficina?** Sim. Inspecionamos na nossa oficina em Cascais ou no local do vendedor — deslocamo-nos. A inspeção no local é ideal quando a mota não circula ou o vendedor não a quer mover. Pode aplicar-se deslocação consoante a distância; confirmamos antes de marcar.
+- **Podem inspecionar no local, e não só na oficina?** Sim. Inspecionamos na nossa oficina em Cascais ou no local do vendedor — deslocamo-nos. A inspeção no local é ideal quando a mota não circula ou o vendedor não a quer mover. O valor da deslocação é acordado à parte, consoante a distância, e confirmado antes da marcação.
 - **Recebo um relatório escrito?** Sim. Recebe um relatório escrito com uma lista de recomendações por prioridades, fotografias e o vídeo do videoscópio, incluindo o vídeo interno do cilindro. É prova que pode usar para comprar, negociar ou desistir.
 - **E se o vendedor recusar a inspeção interna do cilindro?** Um vendedor que não permite um teste de compressão ou uma verificação com videoscópio merece uma segunda reflexão. Concluímos na mesma todos os outros pontos da inspeção e dizemos-lhe com clareza o que foi e o que não foi possível verificar — para que avalie o risco de olhos abertos.
 - **Inspecionam qualquer marca de mota?** Sim. Inspecionamos todas as marcas e tipos que assistimos — Harley-Davidson, BMW, Ducati, Suzuki, Honda e outras, de desportivas a customs, clássicas e projetos especiais.
@@ -159,7 +159,7 @@ Não compre uma mota usada às cegas. Envie mensagem à Iron Custom Motors no [W
 
 ## РУССКИЙ
 **SEO Title:** Проверка мотоцикла перед покупкой · Кашкайш, Лиссабон
-**Meta:** Независимая проверка мотоцикла перед покупкой в Кашкайше и Лиссабоне. Замер компрессии, осмотр цилиндра видеоскопом, письменный отчёт. От 150 €.
+**Meta:** Независимая проверка мотоцикла перед покупкой в Кашкайше и Лиссабоне. Замер компрессии, осмотр цилиндра видеоскопом, письменный отчёт. Фиксированная стоимость: 150 €.
 **Slug:** `/ru/pre-purchase-inspection/`
 **Eyebrow:** Покупка б/у мотоцикла · Кашкайш / Лиссабон
 **H1:** Проверка мотоцикла перед покупкой в Кашкайше и Лиссабоне
@@ -198,7 +198,7 @@ Não compre uma mota usada às cegas. Envie mensagem à Iron Custom Motors no [W
 ### 04 · Как это работает
 Процесс простой и выстроен вокруг вашей покупки, а не нашего расписания.
 **1. Расскажите о мотоцикле.** Напишите нам в [WhatsApp](https://wa.me/351917961230) марку, модель, год и местоположение. Мы подтвердим цену, состав проверки и ближайшее свободное время.
-**2. Выберите место.** Мы можем осмотреть мотоцикл **в нашей мастерской в Кашкайше** или **на месте у продавца — мы выезжаем.** Выезд удобен, когда мотоцикл не на ходу, продавец не хочет его перемещать или вы просто хотите проверить его там, где он стоит. В любом случае проверка одна и та же.
+**2. Выберите место.** Мы можем осмотреть мотоцикл **в нашей мастерской в Кашкайше** или **на месте у продавца — мы выезжаем.** Выезд удобен, когда мотоцикл не на ходу, продавец не хочет его перемещать или вы просто хотите проверить его там, где он стоит. В любом случае проверка одна и та же. Отличается только дорога: при выезде её стоимость обсуждаем заранее, исходя из расстояния.
 **3. Проводим проверку.** Полный осмотр по 10 пунктам, включая замер компрессии и осмотр цилиндра видеоскопом, с фотографиями и видео на каждом этапе.
 **4. Вы получаете отчёт.** Письменный отчёт с понятным списком рекомендаций — чтобы покупать уверенно, торговаться на основе фактов или спокойно отказаться.
 
@@ -210,8 +210,8 @@ Não compre uma mota usada às cegas. Envie mensagem à Iron Custom Motors no [W
 Мы проверяем все марки и типы мотоциклов, которые обслуживаем — спорт, naked, туреры, круизеры, эндуро, классику и полный кастом. Наша работа охватывает [Harley-Davidson](/ru/harley-service/), [BMW Motorrad](/ru/bmw-service/), [Ducati](/ru/ducati-service/), [Suzuki](/ru/suzuki-service/) и [Honda](/ru/honda-service/), а также широкий круг машин, которые проходят через нашу [мастерскую](/ru/motorcycle-service/) каждую неделю. Что бы вы ни собирались купить — это попадёт к мастерской, которая в этом разбирается.
 
 ### 07 · Цена
-**Проверка перед покупкой — от 150 €, налоги включены.** Полная техническая проверка по 10 пунктам, включая замер компрессии, осмотр цилиндра видеоскопом и письменный отчёт с фотографиями и видео.
-Фиксированная цена покрывает проверку в мастерской. Для **выезда к продавцу** может добавляться стоимость дороги в зависимости от расстояния — пришлите местоположение, и мы подтвердим точную сумму до записи. Цена всегда известна заранее и фиксируется письменно.
+**Проверка перед покупкой — 150 €, фиксированная стоимость, налоги включены.** Полная техническая проверка по 10 пунктам, включая замер компрессии, осмотр цилиндра видеоскопом и письменный отчёт с фотографиями и видео.
+150 € — это сама проверка в нашей мастерской в Сан-Домингуш-де-Рана, Кашкайш. Если удобнее, чтобы мы приехали к продавцу, дорога оплачивается отдельно: сумму оговариваем индивидуально, в зависимости от расстояния, и подтверждаем до записи.
 Смотрите полный [прайс-лист](/ru/pricing/) или [напишите нам в WhatsApp](https://wa.me/351917961230) для расчёта.
 
 ### 08 · Обслуживаем Кашкайш, Эшторил, Оэйраш и Большой Лиссабон
@@ -223,7 +223,7 @@ Iron Custom Motors находится в Сан-Домингуш-де-Рана, 
 
 ### FAQ
 - **Сколько длится проверка перед покупкой?** Полная проверка обычно занимает около 1,5–2 часов, в зависимости от мотоцикла и от того, проходит ли она в нашей мастерской в Кашкайше или на выезде. Мы не торопимся — задача в том, чтобы проверить всё важное, включая замер компрессии и осмотр двигателя изнутри видеоскопом.
-- **Можете ли вы провести проверку на месте, а не только в мастерской?** Да. Мы проверяем в нашей мастерской в Кашкайше или на месте у продавца — мы выезжаем. Выезд удобен, когда мотоцикл не на ходу или продавец не хочет его перемещать. В зависимости от расстояния может добавляться стоимость дороги; мы подтверждаем её до записи.
+- **Можете ли вы провести проверку на месте, а не только в мастерской?** Да. Мы проверяем в нашей мастерской в Кашкайше или на месте у продавца — мы выезжаем. Выезд удобен, когда мотоцикл не на ходу или продавец не хочет его перемещать. Стоимость выезда оговаривается отдельно и зависит от того, как далеко ехать; подтверждаем её до записи.
 - **Я получу письменный отчёт?** Да. Вы получаете письменный отчёт со списком рекомендаций по приоритетам, фотографиями и видео с видеоскопа, включая видео внутренней части цилиндра. Это доказательства, которые можно использовать, чтобы купить, поторговаться или отказаться.
 - **Что если продавец откажет в осмотре цилиндра изнутри?** Продавец, который не разрешает замер компрессии или осмотр видеоскопом, — повод задуматься. Мы всё равно выполним все остальные пункты проверки и чётко скажем, что удалось и что не удалось проверить — чтобы вы оценили риск с открытыми глазами.
 - **Вы проверяете мотоциклы любой марки?** Да. Мы проверяем все марки и типы, которые обслуживаем — Harley-Davidson, BMW, Ducati, Suzuki, Honda и другие, от спортбайков до круизеров, классики и кастома.
@@ -233,7 +233,7 @@ Iron Custom Motors находится в Сан-Домингуш-де-Рана, 
 
 ## УКРАЇНСЬКА
 **SEO Title:** Перевірка мотоцикла перед купівлею · Кашкайш, Лісабон
-**Meta:** Незалежна перевірка мотоцикла перед купівлею в Кашкайші та Лісабоні. Замір компресії, огляд циліндра відеоскопом, письмовий звіт. Від 150 €.
+**Meta:** Незалежна перевірка мотоцикла перед купівлею в Кашкайші та Лісабоні. Замір компресії, огляд циліндра відеоскопом, письмовий звіт. Фіксована вартість: 150 €.
 **Slug:** `/uk/pre-purchase-inspection/`
 **Eyebrow:** Купівля вживаного мотоцикла · Кашкайш / Лісабон
 **H1:** Перевірка мотоцикла перед купівлею в Кашкайші та Лісабоні
@@ -272,7 +272,7 @@ Iron Custom Motors находится в Сан-Домингуш-де-Рана, 
 ### 04 · Як це працює
 Процес простий і вибудуваний навколо вашої купівлі, а не нашого розкладу.
 **1. Розкажіть про мотоцикл.** Напишіть нам у [WhatsApp](https://wa.me/351917961230) марку, модель, рік і місцезнаходження. Ми підтвердимо ціну, склад перевірки та найближчий вільний час.
-**2. Оберіть місце.** Ми можемо оглянути мотоцикл **у нашій майстерні в Кашкайші** або **на місці у продавця — ми виїжджаємо.** Виїзд зручний, коли мотоцикл не на ходу, продавець не хоче його переміщувати або ви просто хочете перевірити його там, де він стоїть. У будь-якому разі перевірка однакова.
+**2. Оберіть місце.** Ми можемо оглянути мотоцикл **у нашій майстерні в Кашкайші** або **на місці у продавця — ми виїжджаємо.** Виїзд зручний, коли мотоцикл не на ходу, продавець не хоче його переміщувати або ви просто хочете перевірити його там, де він стоїть. У будь-якому разі перевірка однакова. Різниця лише в дорозі — про її вартість домовляємося заздалегідь, з огляду на відстань.
 **3. Проводимо перевірку.** Повний огляд за 10 пунктами, включно із заміром компресії та оглядом циліндра відеоскопом, з фотографіями й відео на кожному етапі.
 **4. Ви отримуєте звіт.** Письмовий звіт із зрозумілим списком рекомендацій — щоб купувати впевнено, торгуватися на основі фактів або спокійно відмовитися.
 
@@ -284,8 +284,8 @@ Iron Custom Motors находится в Сан-Домингуш-де-Рана, 
 Ми перевіряємо всі марки й типи мотоциклів, які обслуговуємо — спорт, naked, тури, круїзери, ендуро, класику та повний кастом. Наша робота охоплює [Harley-Davidson](/uk/harley-service/), [BMW Motorrad](/uk/bmw-service/), [Ducati](/uk/ducati-service/), [Suzuki](/uk/suzuki-service/) та [Honda](/uk/honda-service/), а також широке коло машин, що проходять через нашу [майстерню](/uk/motorcycle-service/) щотижня. Хоч би що ви збиралися купити — воно потрапить до майстерні, яка на цьому знається.
 
 ### 07 · Ціна
-**Перевірка перед купівлею — від 150 €, податки включено.** Повна технічна перевірка за 10 пунктами, включно із заміром компресії, оглядом циліндра відеоскопом і письмовим звітом з фотографіями та відео.
-Фіксована ціна покриває перевірку в майстерні. Для **виїзду до продавця** може додаватися вартість дороги залежно від відстані — надішліть місцезнаходження, і ми підтвердимо точну суму до запису. Ціна завжди відома заздалегідь і фіксується письмово.
+**Перевірка перед купівлею — 150 €, фіксована вартість, податки включено.** Повна технічна перевірка за 10 пунктами, включно із заміром компресії, оглядом циліндра відеоскопом і письмовим звітом з фотографіями та відео.
+У 150 € входить сама перевірка — у нашій майстерні в Сан-Домінгуш-де-Рана, Кашкайш. Коли їдемо до продавця, вартість дороги додається окремо: її визначаємо для кожного випадку, залежно від відстані, і підтверджуємо ще до запису.
 Дивіться повний [прайс-лист](/uk/pricing/) або [напишіть нам у WhatsApp](https://wa.me/351917961230) для розрахунку.
 
 ### 08 · Обслуговуємо Кашкайш, Ешторіл, Оейраш і Великий Лісабон
@@ -297,7 +297,7 @@ Iron Custom Motors розташована в Сан-Домінгуш-де-Ран
 
 ### FAQ
 - **Скільки триває перевірка перед купівлею?** Повна перевірка зазвичай триває близько 1,5–2 годин, залежно від мотоцикла й того, чи відбувається вона в нашій майстерні в Кашкайші або на виїзді. Ми не поспішаємо — завдання в тому, щоб перевірити все важливе, включно із заміром компресії та оглядом двигуна зсередини відеоскопом.
-- **Чи можете ви провести перевірку на місці, а не лише в майстерні?** Так. Ми перевіряємо в нашій майстерні в Кашкайші або на місці у продавця — ми виїжджаємо. Виїзд зручний, коли мотоцикл не на ходу або продавець не хоче його переміщувати. Залежно від відстані може додаватися вартість дороги; ми підтверджуємо її до запису.
+- **Чи можете ви провести перевірку на місці, а не лише в майстерні?** Так. Ми перевіряємо в нашій майстерні в Кашкайші або на місці у продавця — ми виїжджаємо. Виїзд зручний, коли мотоцикл не на ходу або продавець не хоче його переміщувати. Вартість виїзду обговорюємо окремо — вона залежить від того, як далеко їхати; підтверджуємо її до запису.
 - **Чи отримаю я письмовий звіт?** Так. Ви отримуєте письмовий звіт зі списком рекомендацій за пріоритетами, фотографіями та відео з відеоскопа, включно з відео внутрішньої частини циліндра. Це докази, які можна використати, щоб купити, поторгуватися або відмовитися.
 - **Що, якщо продавець відмовить в огляді циліндра зсередини?** Продавець, який не дозволяє замір компресії чи огляд відеоскопом, — привід замислитися. Ми все одно виконаємо всі інші пункти перевірки й чітко скажемо, що вдалося й що не вдалося перевірити — щоб ви оцінили ризик із розплющеними очима.
 - **Ви перевіряєте мотоцикли будь-якої марки?** Так. Ми перевіряємо всі марки й типи, які обслуговуємо — Harley-Davidson, BMW, Ducati, Suzuki, Honda та інші, від спортбайків до круїзерів, класики та кастому.

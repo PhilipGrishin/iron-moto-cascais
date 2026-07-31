@@ -37,7 +37,7 @@ UI = {
         "pricing": "See pricing",
         "hours": "Tue-Sat, 10:00-18:00",
         "service_type": "Motorcycle pre-purchase inspection",
-        "offer": "from EUR 150, taxes included",
+        "offer": "Pre-purchase inspection — €150, fixed price, taxes included.",
         "feature_label": "Key differentiator",
         "cta_fallback": "Book your inspection",
     },
@@ -51,7 +51,7 @@ UI = {
         "pricing": "Смотреть цены",
         "hours": "Вт-Сб, 10:00-18:00",
         "service_type": "Проверка мотоцикла перед покупкой",
-        "offer": "от 150 EUR, налоги включены",
+        "offer": "Проверка перед покупкой — 150 €, фиксированная стоимость, налоги включены.",
         "feature_label": "Главное отличие",
         "cta_fallback": "Записаться на проверку",
     },
@@ -65,7 +65,7 @@ UI = {
         "pricing": "Дивитися ціни",
         "hours": "Вт-Сб, 10:00-18:00",
         "service_type": "Перевірка мотоцикла перед купівлею",
-        "offer": "від 150 EUR, податки включено",
+        "offer": "Перевірка перед купівлею — 150 €, фіксована вартість, податки включено.",
         "feature_label": "Головна відмінність",
         "cta_fallback": "Записатися на перевірку",
     },
@@ -79,7 +79,7 @@ UI = {
         "pricing": "Ver preços",
         "hours": "Ter-Sáb, 10:00-18:00",
         "service_type": "Inspeção pré-compra de mota",
-        "offer": "desde 150 EUR, impostos incluídos",
+        "offer": "Inspeção pré-compra — 150 €, preço fixo, impostos incluídos.",
         "feature_label": "O diferencial",
         "cta_fallback": "Marcar inspeção",
     },
@@ -93,6 +93,7 @@ def detect_cache_bust() -> str:
 
 
 CACHE_BUST = detect_cache_bust()
+MODIFIED_ISO = "2026-07-31T14:23:59+01:00"
 
 
 def canonical_url(lang: str) -> str:
@@ -394,6 +395,10 @@ def json_ld(content: dict, lang: str) -> list[dict]:
             "provider": {"@id": f"{DOMAIN}/#business"},
             "areaServed": area_served,
             "url": canonical_url(lang),
+            "mainEntityOfPage": {
+                "@id": canonical_url(lang) + "#webpage",
+                "name": content["h1"],
+            },
             "offers": {
                 "@type": "Offer",
                 "name": UI[lang]["offer"],
@@ -407,6 +412,20 @@ def json_ld(content: dict, lang: str) -> list[dict]:
                     "priceCurrency": "EUR",
                     "valueAddedTaxIncluded": True,
                 },
+            },
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": canonical_url(lang) + "#webpage",
+            "url": canonical_url(lang),
+            "name": content["h1"],
+            "description": content["meta_description"],
+            "inLanguage": HREFLANG_CODES[lang],
+            "dateModified": MODIFIED_ISO,
+            "mainEntity": {
+                "@id": canonical_url(lang) + "#service",
+                "name": content["h1"],
             },
         },
         {
