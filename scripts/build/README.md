@@ -106,7 +106,7 @@ module is named above or in `docs/CONTENT_TYPES.md`.
 | `validate_seo.py` | sitemap files; title/meta; canonical/hreflang; JSON parsing and breadcrumbs; localized JSON-LD URLs; local assets; cache-bust presence/consistency; LCP discovery; CSS hero alignment; Blog picture preload/source alignment and viewport/DPR candidate selection; navigation/footer structure and same-language chrome-text parity; localized links; English `llms.txt` coverage; changelog commit references | Rich Results UI; schema recommended fields; global visible FAQ parity; Product/Offer semantics; real lastmod meaning; visual rendering; external services; measured performance |
 | `validate_brand_pages.py` | brand registry and assets; generated variants; schema type presence; sitemap/deploy wiring; homepage and reciprocal links; forbidden brand claims | exact visible copy; global RRT warnings; browser interaction/performance |
 | `validate_harley_hub.py` | exact maintained copy; visual tokens; hero media; schema families; language-local links; feed/portfolio and required integrations | live browser behavior; external RRT; performance benefit |
-| `validate_project_pages.py` | all 11 projects: exact source copy; media; schema graph/dates/references; cache-bust; redirects; listing/sitemap integration and Harley isolation | browser rendering; external RRT |
+| `validate_project_pages.py` | every registered project: exact source copy; media; schema graph/dates/references; cache-bust; redirects; listing/sitemap and optional Custom/Harley integration | browser rendering; external RRT |
 
 Scripts or data families without a dedicated validator rely on broad SEO plus
 manual/source review. This is a known coverage boundary, not proof of failure.
@@ -334,12 +334,13 @@ New article media and `NEWS_ARTICLES` data must exist before this sequence.
 ## Project Workflow
 
 For a project registered in `PROJECT_CONFIGS` (the generator always refreshes
-the complete 11-project family and localized redirect set):
+the complete registered project family and localized redirect set):
 
 ```bash
 SLUG=<project-slug>
 python3 scripts/build/build_project_pages.py
 python3 scripts/build/build_new_pages.py
+python3 scripts/build/build_harley_hub.py
 python3 scripts/build/build_i18n.py
 python3 scripts/build/nav_patch.py
 python3 scripts/build/localize_internal_links.py
@@ -353,10 +354,15 @@ python3 scripts/build/validate_seo.py
 For new approved source photos, import media before rendering:
 
 ```bash
-SLUG=fighter
+SLUG=<project-slug>
 SOURCE_DIR='/absolute/path/to/approved/project/photos'
 python3 scripts/build/import_project_images.py "$SLUG" "$SOURCE_DIR"
 ```
+
+The importer always writes AVIF and WebP variants. It also writes JPEG
+fallbacks when the project config enables `jpeg_fallback`. Binary media remains
+outside the Full Safe Rebuild and must be reviewed and committed with the
+approved source-media task.
 
 Migrated project hero optimization uses the explicit source path accepted by
 `optimize_hero_images.py`. Do not run all binary optimizers during an idle

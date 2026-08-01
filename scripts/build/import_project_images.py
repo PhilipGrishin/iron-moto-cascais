@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Import project photos as responsive AVIF and WebP assets."""
+"""Import project photos as registered responsive image formats."""
 
 from __future__ import annotations
 
@@ -19,24 +19,39 @@ def resize_to_width(image: Image.Image, width: int) -> Image.Image:
     return image.resize((width, height), Image.Resampling.LANCZOS)
 
 
-def save_variants(image: Image.Image, base_path: Path, widths: list[int]):
+def save_variants(
+    image: Image.Image,
+    base_path: Path,
+    widths: list[int],
+    *,
+    jpeg_fallback: bool,
+):
     for width in widths:
         resized = resize_to_width(image, width)
         webp_path = base_path.with_name(f"{base_path.name}-{width}.webp")
         avif_path = base_path.with_name(f"{base_path.name}-{width}.avif")
-        jpeg_path = base_path.with_name(f"{base_path.name}-{width}.jpg")
         resized.save(webp_path, "WEBP", quality=86, method=6)
         resized.save(avif_path, "AVIF", quality=68, speed=6)
-        resized.save(jpeg_path, "JPEG", quality=88, optimize=True, progressive=True)
-        print(
-            f"wrote {avif_path.relative_to(SITE_ROOT)}, "
-            f"{webp_path.relative_to(SITE_ROOT)} and "
-            f"{jpeg_path.relative_to(SITE_ROOT)} ({resized.width}x{resized.height})"
+        output_paths = [avif_path, webp_path]
+        if jpeg_fallback:
+            jpeg_path = base_path.with_name(f"{base_path.name}-{width}.jpg")
+            resized.save(
+                jpeg_path,
+                "JPEG",
+                quality=88,
+                optimize=True,
+                progressive=True,
+            )
+            output_paths.append(jpeg_path)
+        output_names = ", ".join(
+            str(path.relative_to(SITE_ROOT)) for path in output_paths
         )
+        print(f"wrote {output_names} ({resized.width}x{resized.height})")
 
 
 def import_project(slug: str, source_dir: Path):
     config = PROJECT_CONFIGS[slug]
+    jpeg_fallback = config.get("jpeg_fallback", False)
     hero_source = source_dir / config["hero_source"]
     if not hero_source.exists():
         raise FileNotFoundError(hero_source)
@@ -45,7 +60,12 @@ def import_project(slug: str, source_dir: Path):
     hero_base.parent.mkdir(parents=True, exist_ok=True)
     with Image.open(hero_source) as raw:
         hero = ImageOps.exif_transpose(raw).convert("RGB")
-        save_variants(hero, hero_base, [800, 1600, 2400])
+        save_variants(
+            hero,
+            hero_base,
+            [800, 1600, 2400],
+            jpeg_fallback=jpeg_fallback,
+        )
 
     gallery_base = SITE_ROOT / config["gallery_base"].lstrip("/")
     gallery_base.parent.mkdir(parents=True, exist_ok=True)
@@ -56,7 +76,12 @@ def import_project(slug: str, source_dir: Path):
         output_base = gallery_base.with_name(f"{gallery_base.name}-{index:02d}")
         with Image.open(source) as raw:
             image = ImageOps.exif_transpose(raw).convert("RGB")
-            save_variants(image, output_base, [800, 1600])
+            save_variants(
+                image,
+                output_base,
+                [800, 1600],
+                jpeg_fallback=jpeg_fallback,
+            )
 
 
 def main():

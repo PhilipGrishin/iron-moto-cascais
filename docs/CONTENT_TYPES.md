@@ -185,10 +185,10 @@ Commands: `scripts/build/README.md`, **News workflow**.
 Ownership:
 
 - `project_pages_data.py` is the complete project and redirect registry.
-- Fighter uses approved Markdown under `content/projects/`; the 10 migrated
-  project pages use `content/projects/legacy_projects_4lang.json`, which
-  preserves their reviewed localized main content and media structure.
-- `build_project_pages.py` renders all 44 indexable project variants and all 8
+- Fighter and Cocktail use approved Markdown under `content/projects/`; the 10
+  migrated project pages use `content/projects/legacy_projects_4lang.json`,
+  which preserves their reviewed localized main content and media structure.
+- `build_project_pages.py` renders all 48 indexable project variants and all 8
   localized noindex redirects directly. Project details are not outputs of the
   generic `build_i18n.py` flow.
 - `import_project_images.py` owns newly approved data-driven project media.
@@ -197,7 +197,10 @@ Ownership:
 
 Stable rules:
 
-- New projects use the registered data-driven flow.
+- New projects use the registered data-driven Markdown flow. Extend
+  `MARKDOWN_PROJECT_CONFIGS`; do not add a project-specific renderer or build
+  script. Listing, sitemap, localized-path and Harley portfolio membership are
+  derived from maintained registries.
 - Generated project HTML must not contain `window.ICM_I18N_PAGE`; localized
   project copy belongs in the registered source data.
 - Because project details bypass `build_i18n.py`, `build_project_pages.py` must
@@ -205,7 +208,8 @@ Stable rules:
   writes shared chrome. `validate_seo.py` compares translated chrome text on
   every indexable page with the same-language homepage baseline.
 - Hero media is responsive and eager, with a responsive AVIF preload matching
-  its `<picture>` source. Only the hero image uses
+  its `<picture>` source. New registered media uses AVIF/WebP with JPEG fallback
+  when `jpeg_fallback` is enabled. Only the hero image uses
   `fetchpriority="high"`; gallery media remains dimensioned and lazy.
 - Listing card names, tags and project detail claims must not contradict each
   other.

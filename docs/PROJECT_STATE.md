@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-07-31
+Last updated: 2026-08-01
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -10,20 +10,22 @@ deployed public identifiers and cache-bust values. Operating rules live in
 ## Status And Evidence
 
 - Status: **confirmed**.
-- Evidence date: 2026-07-31 (Europe/Lisbon).
-- Repository evidence: C8 implementation commits `ce25a7c2` and `f42fb5d0`,
-  plus C8-FIX implementation commit `52316a26`.
+- Evidence date: 2026-08-01 (Europe/Lisbon).
+- Repository evidence: P-COCKTAIL implementation commit `e3ef595c`, plus the
+  earlier C8 implementation commits `ce25a7c2` and `f42fb5d0` and C8-FIX
+  implementation commit `52316a26`.
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: C8-FIX GitHub Pages workflow `30669918930` and
-  cache-bypass chrome/full-text checks of all 33 localized project pages,
-  plus the prior C8 schema result `jJofvvbCnFVaAOIxQqYMZQ` with four valid
-  items and no warnings.
-- Reproducibility evidence: the documented full rebuild and all four
-  validator groups at C8-FIX implementation commit `52316a26` left a clean clone
-  with empty `git status --short`; verified 2026-07-31. `sitemap.xml` retained
-  SHA-256 `4910de2803fdd535c37198cf27ed541c23e66be8bd53afe80466881261e54971`.
+- Production evidence: P-COCKTAIL GitHub Pages workflow `30705942643`,
+  cache-bypass 200 and integration checks for all four Cocktail variants, and
+  Google Rich Results result `FcQJIDL6po_NRWLDwce_1w` with four valid items
+  and no warnings. Earlier C8-FIX evidence remains in its report and changelog.
+- Reproducibility evidence: the documented full rebuild and all four validator
+  groups at P-COCKTAIL implementation commit `e3ef595c` left a clean clone with
+  empty `git status --short`; verified 2026-08-01. The resulting `sitemap.xml`
+  SHA-256 is
+  `76facd632b6938030a86f038ca9e333aeb5c91998f369a83b68aae01e0b16e01`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
 
 ## Repository And Production
@@ -47,16 +49,16 @@ site generators during deployment; the workflow packages checked-in output.
 | Inventory | Current value | Canonical evidence |
 |---|---:|---|
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
-| English path patterns | 53 | `build_sitemap.py` `PAGES` |
-| Indexable sitemap URLs | 212 | parsed `sitemap.xml` `<url>` entries |
-| Tracked HTML files | 221 | filesystem enumeration |
-| Indexable HTML files | 212 | sitemap-to-file resolution |
+| English path patterns | 54 | `build_sitemap.py` `PAGES` |
+| Indexable sitemap URLs | 216 | parsed `sitemap.xml` `<url>` entries |
+| Tracked HTML files | 225 | filesystem enumeration |
+| Indexable HTML files | 216 | sitemap-to-file resolution |
 | Non-indexed HTML files | 9 | `404.html` plus 8 localized project redirect stubs |
-| Sitemap lastmod tags | 212 | parsed `sitemap.xml` |
-| Unique sitemap lastmod values | 49 | parsed `sitemap.xml` |
+| Sitemap lastmod tags | 216 | parsed `sitemap.xml` |
+| Unique sitemap lastmod values | 52 | parsed `sitemap.xml` |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
-| Project detail pages | 11 | `PROJECT_TILES` |
-| Data-driven project definitions | 11 | `PROJECT_CONFIGS` |
+| Project detail pages | 12 | `PROJECT_TILES` |
+| Data-driven project definitions | 12 | `PROJECT_CONFIGS` |
 | Blog posts | 7 | `BLOG_POSTS` |
 | News articles | 3 | `NEWS_ARTICLES` |
 | Harley Hub English page patterns | 3 | `harley_hub_data.py` `PAGE_CONFIG` |
@@ -78,10 +80,10 @@ Registry alignment on the evidence date:
 
 | Registry | Entries | Relationship |
 |---|---:|---|
-| `build_sitemap.py` `PAGES` | 53 | canonical English indexable paths |
-| `localize_internal_links.py` `LOCALIZED_PATHS` | 53 | matches `PAGES` after normalization |
+| `build_sitemap.py` `PAGES` | 54 | canonical English indexable paths |
+| `localize_internal_links.py` `LOCALIZED_PATHS` | 54 | matches `PAGES` after normalization |
 | `build_i18n.py` `MAIN_PAGES` | 31 | English sources localized by the generic i18n flow |
-| `project_pages_data.py` `PROJECT_CONFIGS` | 11 | project details rendered directly in four languages |
+| `project_pages_data.py` `PROJECT_CONFIGS` | 12 | project details rendered directly in four languages |
 
 There is no active `EN_PAGES` registry. The canonical English page registry is
 `build_sitemap.py` `PAGES`.
@@ -147,10 +149,11 @@ entities, with no partial duplicate products.
 - `/projects/hellboy/`
 - `/projects/true-religion/`
 - `/projects/fighter/`
+- `/projects/cocktail/`
 
-All 11 project details are data-driven and rendered through
-`build_project_pages.py`. Fighter uses approved Markdown; the 10 migrated
-projects use the versioned localized source at
+All 12 project details are data-driven and rendered through
+`build_project_pages.py`. Fighter and Cocktail use approved Markdown; the 10
+migrated projects use the versioned localized source at
 `content/projects/legacy_projects_4lang.json`. Generated project HTML contains
 no `window.ICM_I18N_PAGE` copy block.
 
@@ -189,10 +192,10 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   `fetchpriority="high"` element on those pages.
 - News article heroes remain in the CSS-background family protected by the
   responsive CSS hero contract; they are not `<picture>` heroes.
-- Project heroes retain responsive `<picture>` delivery. Migrated projects use
-  AVIF/WebP sources with a JPEG fallback; Fighter retains its registered
-  AVIF/WebP media set. Every project page has one responsive AVIF preload and
-  exactly one `fetchpriority="high"` hero image.
+- Project heroes retain responsive `<picture>` delivery. Migrated projects and
+  Cocktail use AVIF/WebP sources with a JPEG fallback; Fighter retains its
+  registered AVIF/WebP media set. Every project page has one responsive AVIF
+  preload and exactly one `fetchpriority="high"` hero image.
 - Project detail chrome is pre-rendered from the same `GLOBAL_I18N` source as
   the matching language homepage. Sitemap-wide validation compares cookie,
   booking, WhatsApp, header/mobile and footer chrome strings against that

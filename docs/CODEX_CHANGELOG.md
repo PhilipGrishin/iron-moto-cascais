@@ -14,6 +14,23 @@ Format:
 - Notes: ...
 ```
 
+## 2026-08-01 - Cocktail multilingual project publication
+
+- Commit: `e3ef595c`
+- Changed: Added Cocktail as the twelfth project in four languages, generalized
+  the Markdown project renderer for future approved projects, imported
+  responsive AVIF/WebP/JPEG hero and gallery media, and integrated the project
+  with Projects, Custom, Harley Custom, sitemap and `llms.txt`.
+- Verified: Exact canonical Markdown rendering, localized chrome and links,
+  responsive hero/preload alignment, one observed 390px production hero
+  resource, 200 responses on all four language URLs, all four validator groups,
+  and a clean Full Safe Rebuild clone. GitHub Pages workflow `30705942643`
+  succeeded. Rich Results result `FcQJIDL6po_NRWLDwce_1w` reported four valid
+  items and no warnings.
+- Notes: New Markdown projects extend `MARKDOWN_PROJECT_CONFIGS` and the
+  maintained listing/integration registries; do not create project-specific
+  renderers. Full evidence is in `docs/reports/P_COCKTAIL_REPORT.md`.
+
 ## 2026-07-31 - Project chrome localization regression fix
 
 - Commit: `52316a26`
