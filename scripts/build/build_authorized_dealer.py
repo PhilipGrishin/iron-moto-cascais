@@ -515,6 +515,7 @@ html[lang="ru"] .cway-video-title,html[lang="uk"] .cway-video-title{{font-size:c
 .cway-product p{{margin:0 0 18px;color:var(--text-dim);font-size:clamp(15px,1.05vw,18px);line-height:1.55}}
 .cway-product-meta{{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:auto}}
 .cway-price{{color:#fff;font-family:var(--font-display);font-size:clamp(24px,2vw,32px);font-weight:800;line-height:1}}
+.cway-price-vat{{color:var(--text-dim);font-family:var(--font-ui);font-size:13px;font-weight:400;line-height:1.2;white-space:nowrap}}
 .cway-stock{{display:inline-flex;align-items:center;gap:7px;color:#48d67a;font-family:var(--font-ui);font-size:13px;font-weight:800}}
 .cway-stock::before{{content:"";width:8px;height:8px;border-radius:50%;background:#48d67a;box-shadow:0 0 0 4px rgba(72,214,122,.12)}}
 .cway-studio-scroll{{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,360px);gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:10px}}
@@ -697,6 +698,11 @@ def cway_display_price(price: float) -> str:
 
 def render_cway_products(lang: str) -> str:
     t = CWAY_DEALER_I18N[lang]
+    vat_suffix = t["priceVatSuffix"]
+    if vat_suffix not in t["priceNote"] or vat_suffix not in t["installText"]:
+        raise ValueError(
+            f"C-Way VAT suffix for {lang} must reuse the existing price wording"
+        )
     groups = []
     for group in ("steel", "aluminium"):
         cards = []
@@ -711,7 +717,7 @@ def render_cway_products(lang: str) -> str:
     <h4>{escape(product["name"])}</h4>
     <p>{escape(product["text"])}</p>
     <div class="cway-product-meta">
-      <span class="cway-price">{escape(cway_display_price(media["price"]))}</span>
+      <span class="cway-price">{escape(cway_display_price(media["price"]))}<wbr/><span class="cway-price-vat">, {escape(vat_suffix)}</span></span>
       <span class="cway-stock">{escape(t["stockLabel"])}</span>
     </div>
   </div>

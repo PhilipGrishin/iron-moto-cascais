@@ -347,6 +347,7 @@ CWAY_DEALER_I18N = {
         "productsTitle": "C-Way products we supply for Honda Gold Wing",
         "productsIntro": "Choose the material and luggage configuration that fits your Honda Gold Wing.",
         "priceNote": "Prices in EUR, excl. VAT",
+        "priceVatSuffix": "excl. VAT",
         "stockLabel": "In stock",
         "groupLabels": {"steel": "Steel", "aluminium": "Aluminium"},
         "products": {
@@ -437,6 +438,7 @@ CWAY_DEALER_I18N = {
         "productsTitle": "Produtos C-Way que fornecemos para Honda Gold Wing",
         "productsIntro": "Escolha o material e a configuração de bagagem adequados à sua Honda Gold Wing.",
         "priceNote": "Preços em euros, sem IVA",
+        "priceVatSuffix": "sem IVA",
         "stockLabel": "Em stock",
         "groupLabels": {"steel": "Aço", "aluminium": "Alumínio"},
         "products": {
@@ -527,6 +529,7 @@ CWAY_DEALER_I18N = {
         "productsTitle": "Продукты C-Way, которые мы поставляем для Honda Gold Wing",
         "productsIntro": "Выберите материал и конфигурацию багажа для вашей Honda Gold Wing.",
         "priceNote": "Цены в евро, без НДС",
+        "priceVatSuffix": "без НДС",
         "stockLabel": "В наличии",
         "groupLabels": {"steel": "Сталь", "aluminium": "Алюминий"},
         "products": {
@@ -617,6 +620,7 @@ CWAY_DEALER_I18N = {
         "productsTitle": "Продукти C-Way, які ми постачаємо для Honda Gold Wing",
         "productsIntro": "Оберіть матеріал і конфігурацію багажу для вашої Honda Gold Wing.",
         "priceNote": "Ціни в євро, без ПДВ",
+        "priceVatSuffix": "без ПДВ",
         "stockLabel": "В наявності",
         "groupLabels": {"steel": "Сталь", "aluminium": "Алюміній"},
         "products": {
