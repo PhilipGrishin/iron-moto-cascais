@@ -14,6 +14,27 @@ Format:
 - Notes: ...
 ```
 
+## 2026-08-01 - C-Way per-price VAT labels
+
+- Commit: `560e3891`
+- Changed: Added the existing localized VAT-exclusion wording beside all six
+  visible C-Way configuration prices in EN/PT/RU/UK through the maintained
+  page i18n data and generator. The page-scoped style keeps the suffix at the
+  stock-label size, normal weight and secondary color without changing common
+  CSS, assets or cache-bust values.
+- Verified: All four pages contain exactly six prices and six matching
+  localized suffixes; the complete JSON-LD script set is byte-identical to the
+  pre-change HEAD; the sitemap URL set is unchanged and exactly four C-Way
+  lastmod values moved. Visual checks passed at 1440 x 1000 and 390 x 844 with
+  no horizontal overflow. All four validator groups passed, and the Full Safe
+  Rebuild left a clean clone of `560e3891`. GitHub Pages workflow
+  `30715488709` succeeded; cache-bypass production checks returned HTTP 200 on
+  all four pages with exact suffixes and repository-identical JSON-LD and
+  sitemap bytes.
+- Notes: `priceVatSuffix` must stay a substring of the existing `priceNote`
+  and `installText`; the generator enforces that single-source wording
+  contract. Full evidence is in `docs/reports/CWAY_VAT_REPORT.md`.
+
 ## 2026-08-01 - Responsive project exhibition split
 
 - Commit: `aa23075c`
