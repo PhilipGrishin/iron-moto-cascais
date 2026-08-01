@@ -103,7 +103,7 @@ module is named above or in `docs/CONTENT_TYPES.md`.
 
 | Script | What it protects | Important exclusions |
 |---|---|---|
-| `validate_seo.py` | sitemap files; title/meta; canonical/hreflang; JSON parsing and breadcrumbs; localized JSON-LD URLs; local assets; cache-bust presence/consistency; LCP discovery; CSS hero alignment; Blog picture preload/source alignment and viewport/DPR candidate selection; navigation/footer structure and same-language chrome-text parity; localized links; English `llms.txt` coverage; changelog commit references | Rich Results UI; schema recommended fields; global visible FAQ parity; Product/Offer semantics; real lastmod meaning; visual rendering; external services; measured performance |
+| `validate_seo.py` | sitemap files; title/meta; canonical/hreflang; JSON parsing and breadcrumbs; localized JSON-LD URLs; local assets; cache-bust presence/consistency; LCP discovery; CSS hero alignment; Blog picture preload/source alignment and viewport/DPR candidate selection; navigation/footer structure; project-menu registry membership, localized URLs and order; same-language chrome-text parity; localized links; English `llms.txt` coverage; changelog commit references | Rich Results UI; schema recommended fields; global visible FAQ parity; Product/Offer semantics; real lastmod meaning; visual rendering; external services; measured performance |
 | `validate_brand_pages.py` | brand registry and assets; generated variants; schema type presence; sitemap/deploy wiring; homepage and reciprocal links; forbidden brand claims | exact visible copy; global RRT warnings; browser interaction/performance |
 | `validate_harley_hub.py` | exact maintained copy; visual tokens; hero media; schema families; language-local links; feed/portfolio and required integrations | live browser behavior; external RRT; performance benefit |
 | `validate_project_pages.py` | every registered project: exact source copy; media; schema graph/dates/references; cache-bust; redirects; listing/sitemap and optional Custom/Harley integration | browser rendering; external RRT |
@@ -430,6 +430,16 @@ This mode requires one responsive AVIF preload per Blog article hero, exact
 `fetchpriority="high"` element, no high-priority lazy image, and matching
 candidate selection at 390px/DPR3, 390px/DPR2, 768px/DPR2, 1280px/DPR1 and
 1440px/DPR1.
+
+## Focused Project Navigation Validation
+
+```bash
+python3 scripts/build/validate_seo.py --check-project-navigation
+```
+
+This mode requires every project in `new_pages_data.py` `PROJECT_TILES` to
+appear in that exact order in both the desktop and mobile project menus on
+every sitemap page, with the URL localized to the page language.
 
 ## Dates And Cache-Bust
 

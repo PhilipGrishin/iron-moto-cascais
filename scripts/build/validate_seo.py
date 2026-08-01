@@ -15,6 +15,7 @@ from bs4 import BeautifulSoup, FeatureNotFound
 
 from brand_pages_data import BRAND_ORDER
 from hero_images import css_hero_preload_alignment, picture_hero_preload_alignment
+from new_pages_data import PROJECT_TILES
 from seo_meta import robots_has_large_image_preview
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -94,19 +95,7 @@ LOCALIZED_PATHS = {
     "/news/opens-new-workshop-in-cascais/",
     "/news/lisbon-motorcycle-film-fest-2026-beckman/",
 }
-for slug in [
-    "inspirium",
-    "beckman",
-    "unbreakable",
-    "quanta-r",
-    "burly",
-    "sturmvogel",
-    "geometric",
-    "joker",
-    "hellboy",
-    "true-religion",
-    "fighter",
-]:
+for slug in (tile["slug"] for tile in PROJECT_TILES):
     LOCALIZED_PATHS.add(f"/projects/{slug}/")
 
 
@@ -681,6 +670,61 @@ def check_navigation_link_locality(soup, lang: str) -> list[str]:
     return issues
 
 
+def expected_project_navigation_hrefs(lang: str) -> tuple[str, ...]:
+    prefix = "" if lang == "en" else f"/{lang}"
+    return (
+        f"{prefix}/projects/",
+        *(f"{prefix}/projects/{tile['slug']}/" for tile in PROJECT_TILES),
+    )
+
+
+def project_navigation_hrefs(soup, *, mobile: bool) -> tuple[str, ...]:
+    if mobile:
+        nav = soup.find("nav", class_="nav-mobile")
+        project_label = nav.find(attrs={"data-i18n": "nav.projects"}) if nav else None
+        group = (
+            project_label.find_parent("details", class_="mobile-nav-group")
+            if project_label
+            else None
+        )
+        region = group.find("div", class_="mobile-subnav") if group else None
+    else:
+        nav = soup.find("nav", attrs={"aria-label": "Primary"})
+        project_label = nav.find(attrs={"data-i18n": "nav.projects"}) if nav else None
+        group = (
+            project_label.find_parent("div", class_="nav-dropdown")
+            if project_label
+            else None
+        )
+        region = group.find("div", class_="nav-dropdown-menu") if group else None
+    if region is None:
+        return ()
+    return tuple(anchor["href"] for anchor in region.find_all("a", href=True))
+
+
+def check_project_navigation_registry(urls: list[str]) -> tuple[int, list[str]]:
+    """Protect desktop/mobile project navigation against registry drift."""
+    checked = 0
+    issues = []
+    for url in urls:
+        html_path, lang, _ = file_for_url(url)
+        if not html_path.exists():
+            continue
+        checked += 1
+        soup = BeautifulSoup(html_path.read_text(encoding="utf-8"), HTML_PARSER)
+        expected = expected_project_navigation_hrefs(lang)
+        mismatches = []
+        for label, mobile in (("desktop", False), ("mobile", True)):
+            actual = project_navigation_hrefs(soup, mobile=mobile)
+            if actual != expected:
+                mismatches.append(
+                    f"{label} has {len(actual)} link(s), expected {len(expected)}"
+                )
+        if mismatches:
+            issues.append(f"{url}: project navigation registry mismatch: " + "; ".join(mismatches))
+    return checked, issues
+
+
 def check_navigation_parity(urls: list[str]) -> list[str]:
     soups = {}
     signatures = {}
@@ -816,6 +860,25 @@ def validate_picture_hero_preloads(urls: list[str]) -> tuple[int, list[str]]:
 
 def main() -> int:
     urls = sitemap_urls()
+    if "--check-project-navigation" in sys.argv[1:]:
+        checked, issues = check_project_navigation_registry(urls)
+        if issues:
+            print(
+                "Project navigation validation failed: "
+                f"{len(issues)} page mismatch(es) across {checked} sitemap page(s); "
+                f"{len(PROJECT_TILES)} registered project(s) expected"
+            )
+            for issue in issues[:8]:
+                print(f"  - {issue}")
+            if len(issues) > 8:
+                print(f"  - ... {len(issues) - 8} more page mismatch(es)")
+            return 1
+        print(
+            "Project navigation validation passed: "
+            f"{checked} sitemap page(s); {len(PROJECT_TILES)} registered project(s); "
+            "desktop and mobile order match"
+        )
+        return 0
     if "--check-css-hero-preloads" in sys.argv[1:]:
         checked, issues = validate_css_hero_preloads(urls)
         if issues:
@@ -851,6 +914,8 @@ def main() -> int:
     issues.extend(check_llms_sitemap_coverage(urls))
     issues.extend(check_codex_changelog())
     issues.extend(check_navigation_parity(urls))
+    _, project_navigation_issues = check_project_navigation_registry(urls)
+    issues.extend(project_navigation_issues)
     issues.extend(check_chrome_text_parity(urls))
     issues.extend(check_asset_cache_bust_consistency(urls))
     if issues:

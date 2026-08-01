@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 
 from brand_pages_data import BRAND_NAME, BRAND_NAV_KEYS, BRAND_ORDER
 from localize_internal_links import rewrite_href
+from new_pages_data import PROJECT_TILES
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
@@ -57,17 +58,10 @@ HARLEY_NAV_LINKS = [
 
 PROJECT_NAV_LINKS = [
     ("nav.allProjects", "/projects/", "All projects"),
-    (None, "/projects/inspirium/", "Inspirium"),
-    (None, "/projects/beckman/", "Beckman"),
-    (None, "/projects/unbreakable/", "Unbreakable"),
-    (None, "/projects/quanta-r/", "Quanta R"),
-    (None, "/projects/burly/", "Burly"),
-    (None, "/projects/sturmvogel/", "Sturmvogel"),
-    (None, "/projects/geometric/", "Geometric"),
-    (None, "/projects/joker/", "Joker"),
-    (None, "/projects/hellboy/", "Hell Boy"),
-    (None, "/projects/true-religion/", "True Religion"),
-    (None, "/projects/fighter/", "Fighter"),
+    *[
+        (None, f"/projects/{tile['slug']}/", tile["label"]["en"])
+        for tile in PROJECT_TILES
+    ],
 ]
 
 ABOUT_NAV_LINKS = [

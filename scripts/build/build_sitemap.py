@@ -162,13 +162,6 @@ EXPLICIT_LASTMOD["news/"] = max(
     article_lastmod(article)
     for article in NEWS_ARTICLES.values()
 )
-EXPLICIT_LASTMOD["projects/"] = max(
-    normalize_iso(project_modified_iso(project, lang))
-    for project in PROJECT_CONFIGS.values()
-    for lang in LANGS
-)
-
-
 def url_for(lang, path):
     if path in CUSTOM_LOCALIZED_PATHS:
         return f"{DOMAIN}/{CUSTOM_LOCALIZED_PATHS[path][lang]}"

@@ -451,16 +451,6 @@ def validate_integration(slug: str) -> list[str]:
         if lastmods.get(expected) != project_modified_iso(project, lang):
             issues.append(f"sitemap.xml: incorrect lastmod for {expected}")
 
-    listing_lastmod = max(
-        project_modified_iso(config, lang)
-        for config in PROJECT_CONFIGS.values()
-        for lang in LANGS
-    )
-    for lang in LANGS:
-        listing_url = f"{DOMAIN}/{'projects/' if lang == 'en' else f'{lang}/projects/'}"
-        if lastmods.get(listing_url) != listing_lastmod:
-            issues.append(f"sitemap.xml: incorrect projects listing lastmod for {listing_url}")
-
     if slug == "fighter":
         for hub_slug in ("harley", "harley-custom", "harley-tuning"):
             for lang in LANGS:

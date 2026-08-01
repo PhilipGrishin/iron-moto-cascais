@@ -194,6 +194,8 @@ Ownership:
 - `import_project_images.py` owns newly approved data-driven project media.
 - `validate_project_pages.py` protects every registered project and redirect.
 - Portfolio cards and project names: `new_pages_data.py` `PROJECT_TILES`.
+- Desktop and mobile project navigation: `site_chrome.py`, derived from
+  `PROJECT_TILES` in the same order as the portfolio listing.
 
 Stable rules:
 
@@ -213,6 +215,13 @@ Stable rules:
   `fetchpriority="high"`; gallery media remains dimensioned and lazy.
 - Listing card names, tags and project detail claims must not contradict each
   other.
+- Adding a project to `PROJECT_TILES` must add it to both project menus without
+  a second inventory edit. `validate_seo.py --check-project-navigation`
+  protects exact registry membership, localized URLs and order on every
+  sitemap page.
+- A detail-only project content change updates only that project's localized
+  sitemap dates. The `/projects/` listing date changes only when its visible
+  listing content changes; shared chrome changes never move `lastmod`.
 - Every project uses the same Article/WebPage/ImageObject/LocalBusiness and
   localized BreadcrumbList graph. Article publisher and author use an `@id`
   reference to the complete LocalBusiness entity with maintained name and
