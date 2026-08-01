@@ -11,7 +11,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 - Status: **confirmed**.
 - Evidence date: 2026-08-01 (Europe/Lisbon).
-- Repository evidence: CWAY-VAT implementation commit `560e3891`, EXPO-V2
+- Repository evidence: CWAY-VAT size follow-up commit `8447160b`, CWAY-VAT
+  implementation commit `560e3891`, EXPO-V2
   implementation commit `aa23075c`, NAV+EXPO
   implementation commit `6a2bdff7`, P-COCKTAIL implementation commit
   `e3ef595c`, the earlier C8 implementation commits `ce25a7c2` and `f42fb5d0`,
@@ -19,7 +20,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: CWAY-VAT GitHub Pages workflow `30715488709`,
+- Production evidence: CWAY-VAT size follow-up workflow `30716569527`,
+  CWAY-VAT GitHub Pages workflow `30715488709`,
   cache-bypass checks on all four C-Way pages and the production sitemap,
   EXPO-V2 GitHub Pages workflow `30713880464`,
   cache-bypass checks on all 12 exhibition pages and four project listings,
@@ -27,7 +29,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
   result `QtK8FJYbOvDZFu-k-TWBng` with four valid items, no errors and no
   warnings. Earlier evidence remains in the task reports and changelog.
 - Reproducibility evidence: the documented full rebuild and all four validator
-  groups at CWAY-VAT implementation commit `560e3891` left a clean clone with
+  groups at CWAY-VAT size follow-up commit `8447160b` left a clean clone with
   empty `git status --short`; verified 2026-08-01. The current `sitemap.xml`
   SHA-256 is
   `34ae75b4e6484387ee8eb2011523796dd7a83aa125bf39597efc6ffb666c2cd3`.
@@ -142,7 +144,9 @@ This is a separate official parts/accessories channel. The C-Way page currently
 contains 6 visible priced configurations and 6 matching `Product`/`Offer`
 entities, with no partial duplicate products. Each visible configuration price
 repeats the existing VAT-exclusion wording in the page language; the summary
-price note and schema tax fields remain unchanged.
+price note and schema tax fields remain unchanged. The page-scoped suffix is
+17 px in every language, approximately 31% larger than its original 13 px
+release size.
 
 ### Projects
 

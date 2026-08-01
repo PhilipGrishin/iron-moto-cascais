@@ -14,6 +14,22 @@ Format:
 - Notes: ...
 ```
 
+## 2026-08-01 - C-Way VAT label size follow-up
+
+- Commit: `8447160b`
+- Changed: Increased the page-scoped C-Way per-price VAT suffix from 13 px to
+  17 px across all six configurations and all four language pages, then
+  refreshed the maintained 1440 px and 390 px screenshots.
+- Verified: Computed size is 17 px at both viewports, approximately 30.8%
+  larger than the original value; mobile horizontal overflow remains zero.
+  JSON-LD and sitemap bytes stayed unchanged, all four validator groups
+  passed, and the Full Safe Rebuild left a clean clone of `8447160b`.
+  GitHub Pages workflow `30716569527` succeeded; cache-bypass production
+  checks confirmed 17 px and 6/6 localized suffixes on every language page.
+- Notes: Common CSS/JS, cache-bust values, visible wording, schema and sitemap
+  dates were not changed. Updated evidence is retained in
+  `docs/reports/CWAY_VAT_REPORT.md`.
+
 ## 2026-08-01 - C-Way per-price VAT labels
 
 - Commit: `560e3891`

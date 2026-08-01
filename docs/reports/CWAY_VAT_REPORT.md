@@ -4,7 +4,9 @@ Date: 2026-08-01 (Europe/Lisbon)
 
 Implementation commit: `560e3891`
 
-Production workflow: `30715488709` — succeeded
+Visual-size follow-up commit: `8447160b`
+
+Latest production workflow: `30716569527` — succeeded
 
 ## Outcome
 
@@ -24,11 +26,15 @@ present in the same language's maintained `priceNote` and `installText`, then
 adds it to every generated `.cway-price`. The upper price note remains
 unchanged.
 
-The suffix uses the page-scoped C-Way style: 13 px, normal weight, the shared
+The suffix uses the page-scoped C-Way style: 17 px, normal weight, the shared
 secondary text color, and `white-space: nowrap`. A `<wbr>` before the suffix
 allows the complete comma-plus-label unit to move below the amount when a
 narrower layout requires it. No common CSS or JavaScript changed, so no
 cache-bust moved.
+
+The original `560e3891` release used 13 px. Owner follow-up `8447160b`
+increased it to 17 px, a 30.8% increase, without changing the markup, wording,
+schema or sitemap dates.
 
 ## Changed Files
 
@@ -53,8 +59,8 @@ generated Russian page at 390 x 844.
 
 Measured computed values:
 
-- desktop price: 28.8 px; suffix: 13 px; stock label: 13 px;
-- mobile price: 24 px; suffix: 13 px; stock label: 13 px;
+- desktop price: 28.8 px; suffix: 17 px; stock label: 13 px;
+- mobile price: 24 px; suffix: 17 px; stock label: 13 px;
 - suffix weight: `400` at both widths;
 - suffix color: `rgb(184, 184, 196)`, the shared `--text-dim` value;
 - mobile document horizontal overflow: `0` px;
@@ -94,9 +100,9 @@ Current sitemap SHA-256:
 
 1. **Passed.** All four variants have exactly one localized suffix inside
    each of six price elements.
-2. **Passed.** Desktop and mobile visual checks confirm the requested visual
-   hierarchy and zero mobile horizontal overflow; screenshots are linked
-   above.
+2. **Passed.** Desktop and mobile visual checks confirm the owner-approved
+   17 px follow-up size, continued price dominance and zero mobile horizontal
+   overflow; refreshed screenshots are linked above.
 3. **Passed.** The implementation is generator/data-driven and page-scoped.
    Only the four C-Way HTML outputs changed; common CSS and cache-bust values
    did not.
@@ -105,7 +111,8 @@ Current sitemap SHA-256:
 5. **Passed.** Sitemap membership is unchanged and only the four C-Way
    `lastmod` values moved.
 6. **Passed.** The four validator groups passed. The complete documented Full
-   Safe Rebuild at `560e3891` left empty `git status --short` in a clean clone.
+   Safe Rebuild at follow-up commit `8447160b` left empty
+   `git status --short` in a clean clone.
 
 ## Validator Output
 
@@ -122,7 +129,8 @@ passed.
 
 ## Production Verification
 
-GitHub Pages workflow `30715488709` deployed `560e3891` successfully.
+GitHub Pages workflow `30715488709` deployed `560e3891` successfully, and
+workflow `30716569527` deployed the 17 px follow-up `8447160b` successfully.
 Cache-bypass, no-cache requests returned HTTP 200 for all four production URLs,
 found 6/6 exact localized suffixes on each page, and confirmed production
 JSON-LD matches the committed pages. The production sitemap matched the
