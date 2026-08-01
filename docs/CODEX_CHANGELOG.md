@@ -14,6 +14,26 @@ Format:
 - Notes: ...
 ```
 
+## 2026-08-01 - Project navigation registry and permanent exhibition copy
+
+- Commit: `6a2bdff7`
+- Changed: Derived desktop and mobile project menus from the shared
+  `PROJECT_TILES` registry, added Cocktail to both menus across all 216 sitemap
+  pages, added exact registry/order/locality validation, and applied the 36
+  approved four-language exhibition replacements for Sturmvogel, Beckman and
+  Hell Boy. Corrected project-listing sitemap date ownership so detail-only
+  copy changes do not move `/projects/`.
+- Verified: The new assertion failed on all 216 prior pages and passed on all
+  216 regenerated pages. Exactly 12 project `<main>` elements and 12 sitemap
+  dates changed; all four validator groups passed; a full clean-clone rebuild
+  left empty status. GitHub Pages workflow `30710734079` succeeded; 216/216
+  production pages returned 200 with exact desktop/mobile registry menus; all
+  12 exhibition headings were live. Rich Results result
+  `t7AO4jGtQjTcFgYkw3MtpQ` reported four valid items with no warnings.
+- Notes: Future projects require one `PROJECT_TILES` entry for listing and
+  shared navigation membership; no separate menu inventory exists. Full
+  evidence is in `docs/reports/NAV_EXPO_REPORT.md`.
+
 ## 2026-08-01 - Cocktail multilingual project publication
 
 - Commit: `e3ef595c`

@@ -11,21 +11,23 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 - Status: **confirmed**.
 - Evidence date: 2026-08-01 (Europe/Lisbon).
-- Repository evidence: P-COCKTAIL implementation commit `e3ef595c`, plus the
-  earlier C8 implementation commits `ce25a7c2` and `f42fb5d0` and C8-FIX
-  implementation commit `52316a26`.
+- Repository evidence: NAV+EXPO implementation commit `6a2bdff7`,
+  P-COCKTAIL implementation commit `e3ef595c`, the earlier C8 implementation
+  commits `ce25a7c2` and `f42fb5d0`, and C8-FIX implementation commit
+  `52316a26`.
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: P-COCKTAIL GitHub Pages workflow `30705942643`,
-  cache-bypass 200 and integration checks for all four Cocktail variants, and
-  Google Rich Results result `FcQJIDL6po_NRWLDwce_1w` with four valid items
-  and no warnings. Earlier C8-FIX evidence remains in its report and changelog.
+- Production evidence: NAV+EXPO GitHub Pages workflow `30710734079`,
+  cache-bypass status/menu checks on all 216 sitemap URLs, exact exhibition
+  headings on all 12 target pages, byte-identical production sitemap, and
+  Google Rich Results result `t7AO4jGtQjTcFgYkw3MtpQ` with four valid items
+  and no warnings. Earlier evidence remains in the task reports and changelog.
 - Reproducibility evidence: the documented full rebuild and all four validator
-  groups at P-COCKTAIL implementation commit `e3ef595c` left a clean clone with
-  empty `git status --short`; verified 2026-08-01. The resulting `sitemap.xml`
+  groups at NAV+EXPO implementation commit `6a2bdff7` left a clean clone with
+  empty `git status --short`; verified 2026-08-01. The current `sitemap.xml`
   SHA-256 is
-  `76facd632b6938030a86f038ca9e333aeb5c91998f369a83b68aae01e0b16e01`.
+  `cc093c122b6225d2ec39a286cf9164ec614bac910ae6a95d87bb06b7ab2f935c`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
 
 ## Repository And Production
@@ -157,6 +159,11 @@ migrated projects use the versioned localized source at
 `content/projects/legacy_projects_4lang.json`. Generated project HTML contains
 no `window.ICM_I18N_PAGE` copy block.
 
+Sturmvogel, Beckman and Hell Boy are confirmed in the permanent workshop
+exhibition beside the rider lounge. Their four-language project copy and
+structured-data modification dates were updated on 2026-08-01 from the
+approved 36-replacement source.
+
 Localized noindex redirects, intentionally excluded from the sitemap:
 
 - `/projects/nezlamniy/` -> `/projects/unbreakable/`
@@ -200,6 +207,9 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   the matching language homepage. Sitemap-wide validation compares cookie,
   booking, WhatsApp, header/mobile and footer chrome strings against that
   same-language baseline.
+- The desktop and mobile Projects menus derive from `PROJECT_TILES`, the same
+  ordered registry as `/projects/`. Sitemap-wide validation protects all 12
+  localized project links on every indexable page.
 - `llms.txt` is generated from the English page registry, maintained page-name
   sources, metadata and `docs/BUSINESS_FACTS.md`.
 - `robots.txt` advertises both `sitemap.xml` and `llms.txt`.
