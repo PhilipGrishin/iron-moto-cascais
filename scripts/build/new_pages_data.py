@@ -443,7 +443,7 @@ PROJECT_TILES = [
     {"slug": "joker",         "img": "/photos/projects/joker-800.jpg",         "year": "2016",
      "label": {"en": "Joker",         "ru": "Joker",         "uk": "Joker",         "pt": "Joker"},
      "tag":   {"en": "Custom Harley-Davidson Dyna", "ru": "Кастом Harley-Davidson Dyna", "uk": "Кастом Harley-Davidson Dyna", "pt": "Custom Harley-Davidson Dyna"}},
-    {"slug": "hellboy",       "img": "/photos/projects/hellboy-800.jpg",       "year": "2015",
+    {"slug": "hellboy",       "img": "/photos/projects/hellboy-800.jpg",       "year": "2025",
      "label": {"en": "Hell Boy",      "ru": "Hell Boy",      "uk": "Hell Boy",      "pt": "Hell Boy"},
      "tag":   {"en": "Best Paint winner · Ericeira 2026", "ru": "Best Paint · победитель Ericeira 2026", "uk": "Best Paint · переможець Ericeira 2026", "pt": "Vencedor Best Paint · Ericeira 2026"}},
     {"slug": "true-religion", "img": "/photos/projects/true-religion-800.jpg", "year": "2014",

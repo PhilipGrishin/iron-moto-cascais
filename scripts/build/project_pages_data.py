@@ -290,7 +290,7 @@ LEGACY_PROJECT_ORDER = [
 # content dates and remain language-specific where Git history differs.
 LEGACY_PROJECT_DATES = {
     "inspirium": "2026-06-20T11:33:40+01:00",
-    "beckman": "2026-08-01T17:04:58+01:00",
+    "beckman": "2026-08-01T19:17:10+01:00",
     "unbreakable": {
         "en": "2026-07-24T20:10:52+01:00",
         "ru": "2026-07-24T20:10:52+01:00",
@@ -299,11 +299,44 @@ LEGACY_PROJECT_DATES = {
     },
     "quanta-r": "2026-06-20T11:33:40+01:00",
     "burly": "2026-06-20T11:33:40+01:00",
-    "sturmvogel": "2026-08-01T17:04:58+01:00",
+    "sturmvogel": "2026-08-01T19:17:10+01:00",
     "geometric": "2026-06-20T11:33:40+01:00",
     "joker": "2026-06-20T11:33:40+01:00",
-    "hellboy": "2026-08-01T17:04:58+01:00",
+    "hellboy": "2026-08-01T19:17:10+01:00",
     "true-religion": "2026-06-20T11:33:40+01:00",
+}
+
+PROJECT_EXHIBITION_MEDIA = {
+    "sturmvogel": {
+        "base": "/photos/projects/exhibition/sturmvogel-exhibition",
+        "widths": [800, 1600],
+        "alts": {
+            "en": "Sturmvogel — dieselpunk custom motorcycle in the Iron Custom Motors workshop exhibition next to the rider lounge, Cascais",
+            "pt": "Sturmvogel — mota custom dieselpunk na exposição permanente da oficina Iron Custom Motors, em Cascais",
+            "ru": "Sturmvogel — дизельпанк-кастом в постоянной экспозиции мастерской Iron Custom Motors в Cascais",
+            "uk": "Sturmvogel — дизельпанк-кастом у постійній експозиції майстерні Iron Custom Motors у Cascais",
+        },
+    },
+    "beckman": {
+        "base": "/photos/projects/exhibition/beckman-exhibition",
+        "widths": [800, 1600],
+        "alts": {
+            "en": "Beckman — 2016 AMD World Champion custom motorcycle in the Iron Custom Motors exhibition, Cascais",
+            "pt": "Beckman — Campeão Mundial AMD de 2016 na exposição permanente da Iron Custom Motors, em Cascais",
+            "ru": "Beckman — чемпион мира AMD 2016 года в постоянной экспозиции Iron Custom Motors в Cascais",
+            "uk": "Beckman — чемпіон світу AMD 2016 року в постійній експозиції Iron Custom Motors у Cascais",
+        },
+    },
+    "hellboy": {
+        "base": "/photos/projects/exhibition/hellboy-exhibition",
+        "widths": [800, 1600],
+        "alts": {
+            "en": "Hell Boy — Best Paint award-winning custom trike in the Iron Custom Motors exhibition, Cascais",
+            "pt": "Hell Boy — triciclo custom vencedor do Best Paint na exposição permanente da Iron Custom Motors, em Cascais",
+            "ru": "Hell Boy — кастом-трайк с наградой Best Paint в постоянной экспозиции Iron Custom Motors в Cascais",
+            "uk": "Hell Boy — кастом-трайк із нагородою Best Paint у постійній експозиції Iron Custom Motors у Cascais",
+        },
+    },
 }
 
 _LEGACY_PROJECT_DATA = json.loads(
@@ -319,6 +352,8 @@ PROJECT_CONFIGS = {
     }
     for slug in LEGACY_PROJECT_ORDER
 }
+for _slug, _media in PROJECT_EXHIBITION_MEDIA.items():
+    PROJECT_CONFIGS[_slug]["exhibition_media"] = _media
 PROJECT_CONFIGS.update(MARKDOWN_PROJECT_CONFIGS)
 for _markdown_project in MARKDOWN_PROJECT_CONFIGS.values():
     _markdown_project["source_format"] = "markdown"

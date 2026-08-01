@@ -71,6 +71,7 @@ copy or business-semantic validation.
 | `optimize_hero_images.py` | a registered brand slug or local source image | responsive hero variants | family asset checks where implemented |
 | `optimize_tyre_service_images.py` | tyre media sources and checksum manifest | tyre responsive variants and manifest | source checksum/idempotence logic |
 | `import_project_images.py` | registered project config and source directory | responsive project hero/gallery media | project validator |
+| `optimize_project_exhibition_images.py` | registered exhibition media config and one approved source image | responsive exhibition AVIF/WebP/JPEG variants | project validator |
 
 Binary media tools are intentionally outside the full rebuild. Codec versions
 can change encoded bytes without a source change; run them only when approved
@@ -363,6 +364,19 @@ The importer always writes AVIF and WebP variants. It also writes JPEG
 fallbacks when the project config enables `jpeg_fallback`. Binary media remains
 outside the Full Safe Rebuild and must be reviewed and committed with the
 approved source-media task.
+
+For an optional exhibition split registered in `PROJECT_EXHIBITION_MEDIA`,
+optimize its one approved source photo before rendering:
+
+```bash
+SLUG=<registered-project-slug>
+SOURCE_IMAGE='/absolute/path/to/approved/exhibition-photo.jpg'
+python3 scripts/build/optimize_project_exhibition_images.py "$SLUG" "$SOURCE_IMAGE"
+```
+
+The exhibition optimizer always writes the registered responsive widths in
+AVIF, WebP and JPEG. Like other binary media tools, it stays outside the Full
+Safe Rebuild to avoid codec-version churn.
 
 Migrated project hero optimization uses the explicit source path accepted by
 `optimize_hero_images.py`. Do not run all binary optimizers during an idle

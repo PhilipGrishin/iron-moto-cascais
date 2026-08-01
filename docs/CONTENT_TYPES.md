@@ -192,6 +192,8 @@ Ownership:
   localized noindex redirects directly. Project details are not outputs of the
   generic `build_i18n.py` flow.
 - `import_project_images.py` owns newly approved data-driven project media.
+- `optimize_project_exhibition_images.py` owns responsive media for optional
+  registered exhibition split sections.
 - `validate_project_pages.py` protects every registered project and redirect.
 - Portfolio cards and project names: `new_pages_data.py` `PROJECT_TILES`.
 - Desktop and mobile project navigation: `site_chrome.py`, derived from
@@ -213,6 +215,12 @@ Stable rules:
   its `<picture>` source. New registered media uses AVIF/WebP with JPEG fallback
   when `jpeg_fallback` is enabled. Only the hero image uses
   `fetchpriority="high"`; gallery media remains dimensioned and lazy.
+- Optional exhibition split sections are marked in maintained project source
+  with `data-project-exhibition="true"` and configured once in
+  `PROJECT_EXHIBITION_MEDIA`. The common project renderer supplies the
+  localized responsive AVIF/WebP/JPEG picture; generated HTML is never edited
+  per language. Exhibition media is dimensioned and lazy and never competes
+  with the hero for high priority.
 - Listing card names, tags and project detail claims must not contradict each
   other.
 - Adding a project to `PROJECT_TILES` must add it to both project menus without
@@ -307,6 +315,7 @@ and review the binary diff deliberately.
 - General/brand/legacy hero variants: `optimize_hero_images.py`.
 - Tyre-service variants: `optimize_tyre_service_images.py`.
 - Data-driven project import: `import_project_images.py`.
+- Registered project exhibition media: `optimize_project_exhibition_images.py`.
 - HTML dimensions: `add_image_dims.py` after generated markup changes.
 
 ## Task Completion

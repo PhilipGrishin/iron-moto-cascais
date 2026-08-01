@@ -30,7 +30,7 @@ HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 CACHE_BUST = {
     "/assets/main.css": "20260724a",
     "/assets/main.js": "20260724a",
-    "/assets/projects.css": "20260710b",
+    "/assets/projects.css": "20260801a",
     "/assets/projects.js": "20260710b",
 }
 
@@ -120,6 +120,7 @@ def picture_html(
     *,
     alt: str,
     hero: bool = False,
+    sizes: str | None = None,
 ) -> str:
     candidates = []
     for width in widths:
@@ -136,7 +137,7 @@ def picture_html(
     fallback_srcset = ", ".join(
         f"{base}-{width}.{fallback_extension} {width}w" for width, _ in candidates
     )
-    sizes = "100vw" if hero else "(max-width:760px) 50vw, 25vw"
+    sizes = sizes or ("100vw" if hero else "(max-width:760px) 50vw, 25vw")
     picture_class = ' class="bg"' if hero else ""
     image_attrs = (
         ' decoding="async" fetchpriority="high"'
@@ -148,6 +149,39 @@ def picture_html(
 <source srcset="{srcset_webp}" sizes="{sizes}" type="image/webp"/>
 <img alt="{html.escape(alt, quote=True)}"{image_attrs} height="{largest_h}" sizes="{sizes}" src="{base}-{largest_width}.{fallback_extension}" srcset="{fallback_srcset}" width="{largest_w}"/>
 </picture>'''
+
+
+def apply_exhibition_media(project: dict, lang: str, main) -> None:
+    media = project.get("exhibition_media")
+    sections = main.select('[data-project-exhibition="true"]')
+    if media is None:
+        if sections:
+            raise ValueError(
+                f"Project {project['slug']} {lang} has exhibition markup without media data"
+            )
+        return
+    if len(sections) != 1:
+        raise ValueError(
+            f"Project {project['slug']} {lang} must have exactly one exhibition section"
+        )
+
+    story = sections[0].select_one(".container > .proj-story")
+    if story is None:
+        raise ValueError(f"Project {project['slug']} {lang} exhibition story is missing")
+    picture = picture_html(
+        media["base"],
+        media["widths"],
+        alt=media["alts"][lang],
+        sizes="(max-width: 900px) calc(100vw - 40px), 42vw",
+    )
+    wrapper = BeautifulSoup(
+        f'''<div class="project-exhibition-split">
+<figure class="project-exhibition-media">{picture}</figure>
+{story}
+</div>''',
+        "html.parser",
+    ).div
+    story.replace_with(wrapper)
 
 
 def render_markdown_project_main(project: dict, lang: str) -> str:
@@ -217,6 +251,7 @@ def project_main(project: dict, lang: str) -> BeautifulSoup:
     fragment = BeautifulSoup(markup, "html.parser")
     if fragment.main is None:
         raise ValueError(f"Project {project['slug']} {lang} source has no main element")
+    apply_exhibition_media(project, lang, fragment.main)
     return fragment.main
 
 

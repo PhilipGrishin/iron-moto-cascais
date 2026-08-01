@@ -16,7 +16,7 @@ from bs4 import BeautifulSoup
 from PIL import Image
 
 from build_output import html_semantically_equal
-from build_project_pages import CACHE_BUST
+from build_project_pages import CACHE_BUST, project_main
 from project_pages_data import (
     PROJECT_CONFIGS,
     REDIRECT_CONFIGS,
@@ -314,6 +314,68 @@ def validate_media(label: str, soup: BeautifulSoup, project: dict, lang: str) ->
                 issues.append(f"{label}: gallery image {index} responsive sources incomplete")
         if project.get("jpeg_fallback") and not image.get("src", "").lower().endswith((".jpg", ".jpeg")):
             issues.append(f"{label}: gallery image {index} JPEG fallback missing")
+
+    exhibition = project.get("exhibition_media")
+    exhibition_sections = soup.select('[data-project-exhibition="true"]')
+    if exhibition is None:
+        if exhibition_sections:
+            issues.append(f"{label}: unregistered project exhibition section")
+        return issues
+    if len(exhibition_sections) != 1:
+        issues.append(
+            f"{label}: expected one project exhibition section, found {len(exhibition_sections)}"
+        )
+        return issues
+
+    section = exhibition_sections[0]
+    split = section.select_one(".project-exhibition-split")
+    image = section.select_one(".project-exhibition-media picture img")
+    if split is None or image is None:
+        issues.append(f"{label}: exhibition split media is incomplete")
+        return issues
+    if image.get("alt") != exhibition["alts"][lang]:
+        issues.append(f"{label}: exhibition image alt mismatch")
+    if image.get("loading") != "lazy" or image.has_attr("fetchpriority"):
+        issues.append(f"{label}: exhibition image priority attributes invalid")
+    if not image.get("width") or not image.get("height"):
+        issues.append(f"{label}: exhibition image dimensions missing")
+    if not image.get("src", "").endswith(".jpg"):
+        issues.append(f"{label}: exhibition JPEG fallback missing")
+
+    exhibition_picture = image.find_parent("picture")
+    sources = {
+        source.get("type"): source for source in exhibition_picture.find_all("source")
+    }
+    if set(sources) != {"image/avif", "image/webp"}:
+        issues.append(f"{label}: exhibition AVIF/WebP sources incomplete")
+    expected_sizes = "(max-width: 900px) calc(100vw - 40px), 42vw"
+    if image.get("sizes") != expected_sizes:
+        issues.append(f"{label}: exhibition image sizes mismatch")
+    expected_urls = {
+        extension: [
+            f"{exhibition['base']}-{width}.{extension}"
+            for width in exhibition["widths"]
+        ]
+        for extension in ("avif", "webp", "jpg")
+    }
+    for extension, source_type in (("avif", "image/avif"), ("webp", "image/webp")):
+        source = sources.get(source_type)
+        if source is None:
+            continue
+        if srcset_urls(source.get("srcset", "")) != expected_urls[extension]:
+            issues.append(f"{label}: exhibition {extension.upper()} srcset mismatch")
+        if source.get("sizes") != expected_sizes:
+            issues.append(f"{label}: exhibition {extension.upper()} sizes mismatch")
+    if srcset_urls(image.get("srcset", "")) != expected_urls["jpg"]:
+        issues.append(f"{label}: exhibition JPEG srcset mismatch")
+    for urls in expected_urls.values():
+        for url in urls:
+            validate_local_asset(label, url, issues)
+    local_image = SITE_ROOT / image.get("src", "").lstrip("/")
+    if local_image.exists() and image.get("width") and image.get("height"):
+        with Image.open(local_image) as disk_image:
+            if (int(image["width"]), int(image["height"])) != disk_image.size:
+                issues.append(f"{label}: exhibition image dimensions incorrect")
     return issues
 
 
@@ -363,7 +425,7 @@ def validate_page(slug: str, lang: str, project: dict) -> list[str]:
     if visible_hash != expected_visible_hash(project, lang):
         issues.append(f"{label}: visible project text changed")
     if project["source_format"] == "localized_html" and not html_semantically_equal(
-        str(soup.main), project["content"][lang]["main_html"]
+        str(soup.main), str(project_main(project, lang))
     ):
         issues.append(f"{label}: legacy main structure or media differs from source data")
     if any("window.ICM_I18N_PAGE" in (script.string or "") for script in soup.find_all("script")):
