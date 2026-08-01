@@ -14,6 +14,27 @@ Format:
 - Notes: ...
 ```
 
+## 2026-08-01 - Responsive project exhibition split
+
+- Commit: `aa23075c`
+- Changed: Rebuilt the approved On exhibition sections for Sturmvogel,
+  Beckman and Hell Boy as one registered responsive photo/text component in
+  all four languages; added localized AVIF/WebP/JPEG exhibition media and
+  focused generator validation; applied the 12 exact v2 body replacements;
+  and corrected the Hell Boy portfolio year from 2015 to 2025.
+- Verified: Exact replacement and full visible-text comparisons passed on all
+  12 detail pages; the four project listings changed only the year; sitemap
+  membership stayed unchanged and exactly 16 approved lastmod values moved.
+  All four validator groups passed, and the Full Safe Rebuild left a clean
+  clone of `aa23075c`. GitHub Pages workflow `30713880464` succeeded;
+  cache-bypass production checks passed all 16 affected URLs and found the
+  repository CSS and sitemap byte-identical. Rich Results result
+  `QtK8FJYbOvDZFu-k-TWBng` reported four valid items with no errors or warnings.
+- Notes: Optional exhibition sections are registered once in
+  `PROJECT_EXHIBITION_MEDIA` and rendered by `build_project_pages.py`; future
+  sections must not duplicate picture markup across localized HTML. Full
+  evidence is in `docs/reports/EXPO_V2_REPORT.md`.
+
 ## 2026-08-01 - Project navigation registry and permanent exhibition copy
 
 - Commit: `6a2bdff7`

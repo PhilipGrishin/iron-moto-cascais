@@ -11,23 +11,23 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 - Status: **confirmed**.
 - Evidence date: 2026-08-01 (Europe/Lisbon).
-- Repository evidence: NAV+EXPO implementation commit `6a2bdff7`,
-  P-COCKTAIL implementation commit `e3ef595c`, the earlier C8 implementation
-  commits `ce25a7c2` and `f42fb5d0`, and C8-FIX implementation commit
-  `52316a26`.
+- Repository evidence: EXPO-V2 implementation commit `aa23075c`, NAV+EXPO
+  implementation commit `6a2bdff7`, P-COCKTAIL implementation commit
+  `e3ef595c`, the earlier C8 implementation commits `ce25a7c2` and `f42fb5d0`,
+  and C8-FIX implementation commit `52316a26`.
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: NAV+EXPO GitHub Pages workflow `30710734079`,
-  cache-bypass status/menu checks on all 216 sitemap URLs, exact exhibition
-  headings on all 12 target pages, byte-identical production sitemap, and
-  Google Rich Results result `t7AO4jGtQjTcFgYkw3MtpQ` with four valid items
-  and no warnings. Earlier evidence remains in the task reports and changelog.
+- Production evidence: EXPO-V2 GitHub Pages workflow `30713880464`,
+  cache-bypass checks on all 12 exhibition pages and four project listings,
+  byte-identical production project CSS and sitemap, and Google Rich Results
+  result `QtK8FJYbOvDZFu-k-TWBng` with four valid items, no errors and no
+  warnings. Earlier evidence remains in the task reports and changelog.
 - Reproducibility evidence: the documented full rebuild and all four validator
-  groups at NAV+EXPO implementation commit `6a2bdff7` left a clean clone with
+  groups at EXPO-V2 implementation commit `aa23075c` left a clean clone with
   empty `git status --short`; verified 2026-08-01. The current `sitemap.xml`
   SHA-256 is
-  `cc093c122b6225d2ec39a286cf9164ec614bac910ae6a95d87bb06b7ab2f935c`.
+  `51cca0ab9d5959b56fb39577ca2f410d3c9fa207b100d6069d883e2777d0eef7`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
 
 ## Repository And Production
@@ -95,7 +95,8 @@ There is no active `EN_PAGES` registry. The canonical English page registry is
 | Assets | Value | Scope |
 |---|---|---|
 | `assets/main.css`, `assets/main.js` | `20260724a` | every sitemap page |
-| `assets/projects.css`, `assets/projects.js` | `20260710b` | project detail pages |
+| `assets/projects.css` | `20260801a` | project detail pages |
+| `assets/projects.js` | `20260710b` | project detail pages |
 
 Different asset families may legally use different values. Each individual
 asset must use one value site-wide. Change a value only when that asset changes.
@@ -160,9 +161,11 @@ migrated projects use the versioned localized source at
 no `window.ICM_I18N_PAGE` copy block.
 
 Sturmvogel, Beckman and Hell Boy are confirmed in the permanent workshop
-exhibition beside the rider lounge. Their four-language project copy and
-structured-data modification dates were updated on 2026-08-01 from the
-approved 36-replacement source.
+exhibition beside the rider lounge. Their four-language project pages use the
+registered responsive exhibition split: photo on the left and text on the
+right at desktop widths, then photo above text on mobile. The media uses
+dimensioned lazy AVIF/WebP with JPEG fallback and localized approved ALT text.
+The Hell Boy listing year is `2025` in every language.
 
 Localized noindex redirects, intentionally excluded from the sitemap:
 
@@ -203,6 +206,9 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   Cocktail use AVIF/WebP sources with a JPEG fallback; Fighter retains its
   registered AVIF/WebP media set. Every project page has one responsive AVIF
   preload and exactly one `fetchpriority="high"` hero image.
+- Registered project exhibition media is rendered through the common project
+  generator from `PROJECT_EXHIBITION_MEDIA`; its picture stays lazy and never
+  receives high fetch priority.
 - Project detail chrome is pre-rendered from the same `GLOBAL_I18N` source as
   the matching language homepage. Sitemap-wide validation compares cookie,
   booking, WhatsApp, header/mobile and footer chrome strings against that
