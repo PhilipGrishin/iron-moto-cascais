@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup, FeatureNotFound
 
 from build_output import write_html_if_changed
 from brand_pages_data import BRAND_ORDER
+from project_pages_data import PROJECT_CONFIGS
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 TARGET_LANGS = ["ru", "uk", "pt"]
@@ -58,9 +59,7 @@ LOCALIZED_PATHS = {
     "/news/opens-new-workshop-in-cascais/",
     "/news/lisbon-motorcycle-film-fest-2026-beckman/",
 }
-for proj in ["inspirium", "beckman", "unbreakable", "quanta-r",
-             "burly", "sturmvogel", "geometric", "joker",
-             "hellboy", "true-religion", "fighter"]:
+for proj in PROJECT_CONFIGS:
     LOCALIZED_PATHS.add(f"/projects/{proj}/")
 
 LANG_HOME_HREFS = {"/", "/ru/", "/uk/", "/pt/"}

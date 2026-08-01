@@ -38,6 +38,13 @@ try:
 except FeatureNotFound:
     HTML_PARSER = "html.parser"
 COMMITTED_LASTMOD_BY_URL = {}
+PROJECT_PRIORITIES = {
+    "inspirium": "0.8",
+    "beckman": "0.8",
+    "unbreakable": "0.8",
+    "quanta-r": "0.75",
+    "burly": "0.75",
+}
 
 # (path, changefreq, priority)
 PAGES = [
@@ -77,17 +84,10 @@ PAGES = [
     ("news/ericeira-kustom-fest-2026/", "yearly", "0.9"),
     ("news/opens-new-workshop-in-cascais/", "yearly", "0.8"),
     ("news/lisbon-motorcycle-film-fest-2026-beckman/", "yearly", "0.85"),
-    ("projects/inspirium/", "yearly", "0.8"),
-    ("projects/beckman/", "yearly", "0.8"),
-    ("projects/unbreakable/", "yearly", "0.8"),
-    ("projects/quanta-r/", "yearly", "0.75"),
-    ("projects/burly/", "yearly", "0.75"),
-    ("projects/sturmvogel/", "yearly", "0.7"),
-    ("projects/geometric/", "yearly", "0.7"),
-    ("projects/joker/", "yearly", "0.7"),
-    ("projects/hellboy/", "yearly", "0.7"),
-    ("projects/true-religion/", "yearly", "0.7"),
-    ("projects/fighter/", "yearly", "0.7"),
+    *[
+        (f"projects/{slug}/", "yearly", PROJECT_PRIORITIES.get(slug, "0.7"))
+        for slug in PROJECT_CONFIGS
+    ],
 ]
 
 LANGS = ["en", "ru", "uk", "pt"]

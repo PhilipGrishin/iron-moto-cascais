@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html data-lang="pt" lang="pt">
 <head>
 <meta charset="utf-8"/>
@@ -32,9 +31,9 @@
 <link href="/photos/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/photos/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="/photos/site.webmanifest" rel="manifest"/>
-<link as="image" fetchpriority="high" href="/photos/optimized/harley-harley-custom-hero-768.avif" media="(max-width: 767px)" rel="preload" type="image/avif"/>
-<link as="image" fetchpriority="high" href="/photos/optimized/harley-harley-custom-hero-1280.avif" media="(min-width: 768px) and (max-width: 1279px)" rel="preload" type="image/avif"/>
-<link as="image" fetchpriority="high" href="/photos/optimized/harley-harley-custom-hero-1920.avif" media="(min-width: 1280px)" rel="preload" type="image/avif"/>
+<link rel="preload" as="image" href="/photos/optimized/harley-harley-custom-hero-768.avif" type="image/avif" media="(max-width: 767px)" fetchpriority="high"/>
+<link rel="preload" as="image" href="/photos/optimized/harley-harley-custom-hero-1280.avif" type="image/avif" media="(min-width: 768px) and (max-width: 1279px)" fetchpriority="high"/>
+<link rel="preload" as="image" href="/photos/optimized/harley-harley-custom-hero-1920.avif" type="image/avif" media="(min-width: 1280px)" fetchpriority="high"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
@@ -367,7 +366,7 @@
 <picture>
 <source sizes="(max-width: 900px) 100vw, 54vw" srcset="/photos/optimized/projects-sturmvogel-768.avif 768w, /photos/optimized/projects-sturmvogel-1280.avif 1200w" type="image/avif"/>
 <source sizes="(max-width: 900px) 100vw, 54vw" srcset="/photos/optimized/projects-sturmvogel-768.webp 768w, /photos/optimized/projects-sturmvogel-1280.webp 1200w" type="image/webp"/>
-<img alt="Sturmvogel" decoding="async" height="800" loading="lazy" sizes="(max-width: 900px) 100vw, 54vw" src="/photos/optimized/projects-sturmvogel-1280.jpg" srcset="/photos/optimized/projects-sturmvogel-768.jpg 768w, /photos/optimized/projects-sturmvogel-1280.jpg 1200w" width="1200"/>
+<img alt="Sturmvogel" decoding="async" height="800" sizes="(max-width: 900px) 100vw, 54vw" src="/photos/optimized/projects-sturmvogel-1280.jpg" srcset="/photos/optimized/projects-sturmvogel-768.jpg 768w, /photos/optimized/projects-sturmvogel-1280.jpg 1200w" width="1200" loading="lazy"/>
 </picture>
 <div class="portfolio-body">
 <h3>Sturmvogel</h3>
@@ -379,7 +378,7 @@
 <picture>
 <source sizes="(max-width: 900px) 100vw, 54vw" srcset="/photos/optimized/projects-joker-768.avif 768w, /photos/optimized/projects-joker-1280.avif 1200w" type="image/avif"/>
 <source sizes="(max-width: 900px) 100vw, 54vw" srcset="/photos/optimized/projects-joker-768.webp 768w, /photos/optimized/projects-joker-1280.webp 1200w" type="image/webp"/>
-<img alt="Joker" decoding="async" height="900" loading="lazy" sizes="(max-width: 900px) 100vw, 54vw" src="/photos/optimized/projects-joker-1280.jpg" srcset="/photos/optimized/projects-joker-768.jpg 768w, /photos/optimized/projects-joker-1280.jpg 1200w" width="1200"/>
+<img alt="Joker" decoding="async" height="900" sizes="(max-width: 900px) 100vw, 54vw" src="/photos/optimized/projects-joker-1280.jpg" srcset="/photos/optimized/projects-joker-768.jpg 768w, /photos/optimized/projects-joker-1280.jpg 1200w" width="1200" loading="lazy"/>
 </picture>
 <div class="portfolio-body">
 <h3>Joker</h3>
@@ -391,7 +390,7 @@
 <picture>
 <source sizes="(max-width: 900px) 100vw, 54vw" srcset="/photos/optimized/projects-hellboy-768.avif 768w, /photos/optimized/projects-hellboy-1280.avif 1200w" type="image/avif"/>
 <source sizes="(max-width: 900px) 100vw, 54vw" srcset="/photos/optimized/projects-hellboy-768.webp 768w, /photos/optimized/projects-hellboy-1280.webp 1200w" type="image/webp"/>
-<img alt="Hell Boy" decoding="async" height="900" loading="lazy" sizes="(max-width: 900px) 100vw, 54vw" src="/photos/optimized/projects-hellboy-1280.jpg" srcset="/photos/optimized/projects-hellboy-768.jpg 768w, /photos/optimized/projects-hellboy-1280.jpg 1200w" width="1200"/>
+<img alt="Hell Boy" decoding="async" height="900" sizes="(max-width: 900px) 100vw, 54vw" src="/photos/optimized/projects-hellboy-1280.jpg" srcset="/photos/optimized/projects-hellboy-768.jpg 768w, /photos/optimized/projects-hellboy-1280.jpg 1200w" width="1200" loading="lazy"/>
 </picture>
 <div class="portfolio-body">
 <h3>Hell Boy</h3>
@@ -403,12 +402,24 @@
 <picture>
 <source sizes="(max-width: 900px) 100vw, 54vw" srcset="/photos/optimized/projects-true-religion-768.avif 768w, /photos/optimized/projects-true-religion-1280.avif 1200w" type="image/avif"/>
 <source sizes="(max-width: 900px) 100vw, 54vw" srcset="/photos/optimized/projects-true-religion-768.webp 768w, /photos/optimized/projects-true-religion-1280.webp 1200w" type="image/webp"/>
-<img alt="True Religion" decoding="async" height="900" loading="lazy" sizes="(max-width: 900px) 100vw, 54vw" src="/photos/optimized/projects-true-religion-1280.jpg" srcset="/photos/optimized/projects-true-religion-768.jpg 768w, /photos/optimized/projects-true-religion-1280.jpg 1200w" width="1200"/>
+<img alt="True Religion" decoding="async" height="900" sizes="(max-width: 900px) 100vw, 54vw" src="/photos/optimized/projects-true-religion-1280.jpg" srcset="/photos/optimized/projects-true-religion-768.jpg 768w, /photos/optimized/projects-true-religion-1280.jpg 1200w" width="1200" loading="lazy"/>
 </picture>
 <div class="portfolio-body">
 <h3>True Religion</h3>
 <p>A True Religion é uma custom americana moldada pela liberdade, atitude e pelo espírito intemporal Harley-Davidson. Construída na Ucrânia, inspira-se na cultura denim, nas proporções clássicas de chopper e na atmosfera da estrada aberta.</p>
 <a class="btn btn-ghost" href="/pt/projects/true-religion/">Ver projeto →</a>
+</div>
+</article>
+<article class="portfolio-row">
+<picture>
+<source sizes="(max-width: 900px) 100vw, 54vw" srcset="/photos/optimized/projects-cocktail-768.avif 768w, /photos/optimized/projects-cocktail-1280.avif 1280w, /photos/optimized/projects-cocktail-1920.avif 1920w" type="image/avif"/>
+<source sizes="(max-width: 900px) 100vw, 54vw" srcset="/photos/optimized/projects-cocktail-768.webp 768w, /photos/optimized/projects-cocktail-1280.webp 1280w, /photos/optimized/projects-cocktail-1920.webp 1920w" type="image/webp"/>
+<img alt="Cocktail" decoding="async" height="1600" sizes="(max-width: 900px) 100vw, 54vw" src="/photos/optimized/projects-cocktail-1280.jpg" srcset="/photos/optimized/projects-cocktail-768.jpg 768w, /photos/optimized/projects-cocktail-1280.jpg 1280w, /photos/optimized/projects-cocktail-1920.jpg 1920w" width="2400" loading="lazy"/>
+</picture>
+<div class="portfolio-body">
+<h3>Cocktail</h3>
+<p>A Cocktail é uma Harley-Davidson Street Glide FLHX de 2008 transformada num bagger full custom em Kharkiv, em 2013. Uma roda dianteira de 26 polegadas, o Twin Cam 96 cromado, Legend Air Ride e áudio Sony Marine a bordo definem a construção.</p>
+<a class="btn btn-ghost" href="/pt/projects/cocktail/">Ver projeto →</a>
 </div>
 </article>
 </div></div>

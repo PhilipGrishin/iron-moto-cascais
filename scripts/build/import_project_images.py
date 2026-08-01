@@ -24,11 +24,14 @@ def save_variants(image: Image.Image, base_path: Path, widths: list[int]):
         resized = resize_to_width(image, width)
         webp_path = base_path.with_name(f"{base_path.name}-{width}.webp")
         avif_path = base_path.with_name(f"{base_path.name}-{width}.avif")
+        jpeg_path = base_path.with_name(f"{base_path.name}-{width}.jpg")
         resized.save(webp_path, "WEBP", quality=86, method=6)
         resized.save(avif_path, "AVIF", quality=68, speed=6)
+        resized.save(jpeg_path, "JPEG", quality=88, optimize=True, progressive=True)
         print(
-            f"wrote {webp_path.relative_to(SITE_ROOT)} and "
-            f"{avif_path.relative_to(SITE_ROOT)} ({resized.width}x{resized.height})"
+            f"wrote {avif_path.relative_to(SITE_ROOT)}, "
+            f"{webp_path.relative_to(SITE_ROOT)} and "
+            f"{jpeg_path.relative_to(SITE_ROOT)} ({resized.width}x{resized.height})"
         )
 
 

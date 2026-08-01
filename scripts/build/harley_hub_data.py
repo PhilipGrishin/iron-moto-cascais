@@ -89,6 +89,7 @@ PORTFOLIO_ORDER = (
     "joker",
     "hellboy",
     "true-religion",
+    "cocktail",
 )
 
 PORTFOLIO = {
@@ -134,6 +135,17 @@ PORTFOLIO = {
             "pt": "A True Religion é uma custom americana moldada pela liberdade, atitude e pelo espírito intemporal Harley-Davidson. Construída na Ucrânia, inspira-se na cultura denim, nas proporções clássicas de chopper e na atmosfera da estrada aberta.",
             "ru": "True Religion — американский кастом, построенный вокруг свободы, характера и вневременного духа Harley-Davidson. Проект создан в Украине и опирается на деним-культуру, классические пропорции чоппера и атмосферу открытой дороги.",
             "uk": "True Religion — американський кастом, побудований навколо свободи, характеру та позачасового духу Harley-Davidson. Проєкт створено в Україні з опорою на денім-культуру, класичні пропорції чопера та атмосферу відкритої дороги.",
+        },
+    },
+    "cocktail": {
+        "name": "Cocktail",
+        "image": "/photos/projects/cocktail-2400.jpg",
+        "dims": (2400, 1600),
+        "copy": {
+            "en": "Cocktail is a 2008 Harley-Davidson Street Glide FLHX transformed into a full custom bagger in Kharkiv in 2013. A 26-inch front wheel, chromed Twin Cam 96, Legend Air Ride and onboard Sony Marine audio define the build.",
+            "pt": "A Cocktail é uma Harley-Davidson Street Glide FLHX de 2008 transformada num bagger full custom em Kharkiv, em 2013. Uma roda dianteira de 26 polegadas, o Twin Cam 96 cromado, Legend Air Ride e áudio Sony Marine a bordo definem a construção.",
+            "ru": "Cocktail — Harley-Davidson Street Glide FLHX 2008 года, превращённый в Харькове в 2013-м в полноценный кастом-бэггер. Проект определяют 26-дюймовое переднее колесо, хромированный Twin Cam 96, Legend Air Ride и бортовая аудиосистема Sony Marine.",
+            "uk": "Cocktail — Harley-Davidson Street Glide FLHX 2008 року, перетворений у Харкові 2013-го на повноцінний кастом-беггер. Проєкт визначають 26-дюймове переднє колесо, хромований Twin Cam 96, Legend Air Ride і бортова аудіосистема Sony Marine.",
         },
     },
 }

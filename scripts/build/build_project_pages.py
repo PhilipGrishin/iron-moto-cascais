@@ -34,7 +34,7 @@ CACHE_BUST = {
     "/assets/projects.js": "20260710b",
 }
 
-FIGHTER_STYLE = """
+MARKDOWN_PROJECT_STYLE = """
 .subpage picture.bg{position:absolute;inset:0;z-index:-1;display:block;filter:none;transform:none}
 .subpage picture.bg img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.85) contrast(1.05) brightness(.45)}
 .generated-project-story{max-width:900px}
@@ -128,6 +128,14 @@ def picture_html(
     largest_width, (largest_w, largest_h) = candidates[-1]
     srcset_avif = ", ".join(f"{base}-{width}.avif {width}w" for width, _ in candidates)
     srcset_webp = ", ".join(f"{base}-{width}.webp {width}w" for width, _ in candidates)
+    has_jpeg_fallback = all(
+        (SITE_ROOT / f"{base.lstrip('/')}-{width}.jpg").exists()
+        for width, _ in candidates
+    )
+    fallback_extension = "jpg" if has_jpeg_fallback else "webp"
+    fallback_srcset = ", ".join(
+        f"{base}-{width}.{fallback_extension} {width}w" for width, _ in candidates
+    )
     sizes = "100vw" if hero else "(max-width:760px) 50vw, 25vw"
     picture_class = ' class="bg"' if hero else ""
     image_attrs = (
@@ -138,11 +146,11 @@ def picture_html(
     return f'''<picture{picture_class}>
 <source srcset="{srcset_avif}" sizes="{sizes}" type="image/avif"/>
 <source srcset="{srcset_webp}" sizes="{sizes}" type="image/webp"/>
-<img alt="{html.escape(alt, quote=True)}"{image_attrs} height="{largest_h}" sizes="{sizes}" src="{base}-{largest_width}.webp" srcset="{srcset_webp}" width="{largest_w}"/>
+<img alt="{html.escape(alt, quote=True)}"{image_attrs} height="{largest_h}" sizes="{sizes}" src="{base}-{largest_width}.{fallback_extension}" srcset="{fallback_srcset}" width="{largest_w}"/>
 </picture>'''
 
 
-def render_fighter_main(project: dict, lang: str) -> str:
+def render_markdown_project_main(project: dict, lang: str) -> str:
     slug = project["slug"]
     content = project["content"][lang]
     ui = project["ui"][lang]
@@ -205,7 +213,7 @@ def project_main(project: dict, lang: str) -> BeautifulSoup:
     if project["source_format"] == "localized_html":
         markup = project["content"][lang]["main_html"]
     else:
-        markup = render_fighter_main(project, lang)
+        markup = render_markdown_project_main(project, lang)
     fragment = BeautifulSoup(markup, "html.parser")
     if fragment.main is None:
         raise ValueError(f"Project {project['slug']} {lang} source has no main element")
@@ -443,7 +451,7 @@ def render_project(project: dict, lang: str, template_markup: str) -> Path:
     if project["source_format"] == "markdown":
         style = soup.head.find("style")
         if "generated-project-story" not in (style.string or ""):
-            style.string = (style.string or "") + FIGHTER_STYLE
+            style.string = (style.string or "") + MARKDOWN_PROJECT_STYLE
 
     output = SITE_ROOT / localized_path(slug, lang) / "index.html"
     output.parent.mkdir(parents=True, exist_ok=True)

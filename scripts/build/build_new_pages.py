@@ -412,7 +412,7 @@ def render_projects():
         if p.get("img_avif"):
             image = f'''<picture>
 <source srcset="{p["img_avif"]}" type="image/avif"/>
-<source srcset="{p["img"]}" type="image/webp"/>
+<source srcset="{p.get("img_webp", p["img"])}" type="image/webp"/>
 {image}
 </picture>'''
         tiles_html += f'''<a class="prj-tile" href="/projects/{p["slug"]}/">

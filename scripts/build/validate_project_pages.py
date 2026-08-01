@@ -258,6 +258,8 @@ def validate_media(label: str, soup: BeautifulSoup, project: dict, lang: str) ->
         issues.append(f"{label}: hero dimensions missing")
     if project["source_format"] == "localized_html" and not hero.get("src", "").lower().endswith((".jpg", ".jpeg")):
         issues.append(f"{label}: legacy JPEG hero fallback regressed")
+    if project.get("jpeg_fallback") and not hero.get("src", "").lower().endswith((".jpg", ".jpeg")):
+        issues.append(f"{label}: registered JPEG hero fallback missing")
 
     high = soup.select('[fetchpriority="high"]')
     if len(high) != 1:
@@ -310,6 +312,8 @@ def validate_media(label: str, soup: BeautifulSoup, project: dict, lang: str) ->
             source_types = {source.get("type") for source in gallery_picture.find_all("source")}
             if source_types != {"image/avif", "image/webp"}:
                 issues.append(f"{label}: gallery image {index} responsive sources incomplete")
+        if project.get("jpeg_fallback") and not image.get("src", "").lower().endswith((".jpg", ".jpeg")):
+            issues.append(f"{label}: gallery image {index} JPEG fallback missing")
     return issues
 
 
@@ -384,6 +388,7 @@ def sitemap_data() -> tuple[set[str], dict[str, str]]:
 
 def validate_integration(slug: str) -> list[str]:
     issues = []
+    project = PROJECT_CONFIGS[slug]
     for lang in LANGS:
         prefix = "" if lang == "en" else f"{lang}/"
         listing_path = SITE_ROOT / prefix / "projects" / "index.html"
@@ -392,14 +397,53 @@ def validate_integration(slug: str) -> list[str]:
         card = soup.select_one(f'.prj-tile[href="{target}"]')
         if card is None:
             issues.append(f"{listing_path.relative_to(SITE_ROOT)}: {slug} card missing")
-        elif slug == "fighter" and (
+        elif project["source_format"] == "markdown" and (
             not card.select_one('source[type="image/avif"]')
             or not card.select_one('source[type="image/webp"]')
         ):
             issues.append(f"{listing_path.relative_to(SITE_ROOT)}: {slug} card AVIF/WebP missing")
 
+        integrations = project.get("integrations", {})
+        if integrations.get("custom"):
+            custom_path = SITE_ROOT / prefix / "custom" / "index.html"
+            custom_soup = BeautifulSoup(
+                custom_path.read_text(encoding="utf-8"), "html.parser"
+            )
+            custom_main = custom_soup.find("main")
+            if custom_main is None or custom_main.find("a", href=target) is None:
+                issues.append(
+                    f"{custom_path.relative_to(SITE_ROOT)}: {slug} contextual link missing"
+                )
+
+        if integrations.get("harley_custom"):
+            harley_path = SITE_ROOT / prefix / "harley-custom" / "index.html"
+            harley_soup = BeautifulSoup(
+                harley_path.read_text(encoding="utf-8"), "html.parser"
+            )
+            portfolio_link = harley_soup.select_one(
+                f'.portfolio-row .btn[href="{target}"]'
+            )
+            if portfolio_link is None:
+                issues.append(
+                    f"{harley_path.relative_to(SITE_ROOT)}: {slug} portfolio link missing"
+                )
+
+            project_path = page_path(slug, lang)
+            project_soup = BeautifulSoup(
+                project_path.read_text(encoding="utf-8"), "html.parser"
+            )
+            project_main = project_soup.find("main")
+            for related_slug in ("harley-service", "harley-custom"):
+                related_target = f"/{prefix}{related_slug}/"
+                if project_main is None or project_main.find(
+                    "a", href=related_target
+                ) is None:
+                    issues.append(
+                        f"{project_path.relative_to(SITE_ROOT)}: "
+                        f"outgoing {related_slug} link missing"
+                    )
+
     urls, lastmods = sitemap_data()
-    project = PROJECT_CONFIGS[slug]
     for lang in LANGS:
         expected = page_url(slug, lang)
         if expected not in urls:

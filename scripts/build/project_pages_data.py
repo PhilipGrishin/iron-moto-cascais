@@ -17,7 +17,7 @@ LANGUAGE_SECTIONS = {
     "УКРАЇНСЬКА": "uk",
 }
 
-_FIGHTER_CONFIGS = {
+MARKDOWN_PROJECT_CONFIGS = {
     "fighter": {
         "source": SITE_ROOT / "content/projects/fighter_4lang.md",
         "year": "2014",
@@ -143,6 +143,132 @@ _FIGHTER_CONFIGS = {
             ],
         },
     },
+    "cocktail": {
+        "source": SITE_ROOT / "content/projects/cocktail_4lang.md",
+        "year": "2013",
+        "published_iso": "2026-08-01T14:55:25+01:00",
+        "modified_iso": "2026-08-01T14:55:25+01:00",
+        "hero_base": "/photos/projects/cocktail",
+        "hero_source": "Cocktail_HERO.jpg",
+        "gallery_base": "/photos/projects/gallery/cocktail/cocktail",
+        "gallery_sources": [
+            "100507_DSC_5007.jpg",
+            "100516_DSC_5008.jpg",
+            "181033_IMG_9708.jpg",
+            "100447_DSC_5005.jpg",
+            "183048_IMG_9728.jpg",
+            "183830_IMG_9744.jpg",
+            "144307_DSC_5364.jpg",
+            "144351_DSC_5369.jpg",
+            "190848_IMG_5720.jpg",
+            "190740_IMG_5716.jpg",
+        ],
+        "jpeg_fallback": True,
+        "integrations": {
+            "custom": True,
+            "harley_custom": True,
+        },
+        "ui": {
+            "en": {
+                "home": "Home",
+                "projects": "Projects",
+                "badge": "Bagger · Full Custom",
+                "year_label": "Year",
+                "category_label": "Category",
+                "category": "Bagger · Full Custom",
+                "where_label": "Where",
+                "where": "Built in Kharkiv, Ukraine",
+                "gallery": "Gallery",
+                "gallery_title": "<em>Cocktail</em> — in detail.",
+            },
+            "pt": {
+                "home": "Início",
+                "projects": "Projetos",
+                "badge": "Bagger · Full Custom",
+                "year_label": "Ano",
+                "category_label": "Categoria",
+                "category": "Bagger · Full Custom",
+                "where_label": "Local",
+                "where": "Construído em Kharkiv, Ucrânia",
+                "gallery": "Galeria",
+                "gallery_title": "<em>Cocktail</em> — em detalhe.",
+            },
+            "ru": {
+                "home": "Главная",
+                "projects": "Проекты",
+                "badge": "Бэггер · Full Custom",
+                "year_label": "Год",
+                "category_label": "Категория",
+                "category": "Бэггер · Full Custom",
+                "where_label": "Где",
+                "where": "Построен в Харькове, Украина",
+                "gallery": "Галерея",
+                "gallery_title": "<em>Cocktail</em> — в деталях.",
+            },
+            "uk": {
+                "home": "Головна",
+                "projects": "Проєкти",
+                "badge": "Беггер · Full Custom",
+                "year_label": "Рік",
+                "category_label": "Категорія",
+                "category": "Беггер · Full Custom",
+                "where_label": "Де",
+                "where": "Збудовано у Харкові, Україна",
+                "gallery": "Галерея",
+                "gallery_title": "<em>Cocktail</em> — у деталях.",
+            },
+        },
+        "gallery_alts": {
+            "en": [
+                "Cocktail custom bagger dashboard and Dakota digital gauges",
+                "Cocktail custom bagger rear three-quarter view at Motobike-2013",
+                "Cocktail custom bagger in motion with its rider",
+                "Cocktail custom bagger front wheel and fairing at Motobike-2013",
+                "Cocktail custom bagger full left-side view outdoors",
+                "Cocktail custom bagger front three-quarter view outdoors",
+                "Cocktail chromed Twin Cam 96 engine and airbrush detail",
+                "Cocktail custom bagger with its rider outdoors",
+                "Cocktail Sony Marine speaker installation detail",
+                "Cocktail chromed Twin Cam 96 engine detail",
+            ],
+            "pt": [
+                "Cocktail bagger custom, painel e mostradores digitais Dakota",
+                "Cocktail bagger custom, vista traseira a três quartos no Motobike-2013",
+                "Cocktail bagger custom em andamento com o piloto",
+                "Cocktail bagger custom, roda dianteira e carenagem no Motobike-2013",
+                "Cocktail bagger custom, vista lateral esquerda completa no exterior",
+                "Cocktail bagger custom, vista dianteira a três quartos no exterior",
+                "Cocktail, detalhe do motor Twin Cam 96 cromado e da aerografia",
+                "Cocktail bagger custom com o piloto no exterior",
+                "Cocktail, detalhe da instalação do altifalante Sony Marine",
+                "Cocktail, detalhe do motor Twin Cam 96 cromado",
+            ],
+            "ru": [
+                "Cocktail — панель бэггера и цифровые приборы Dakota",
+                "Cocktail — бэггер сзади в три четверти на выставке Мотобайк-2013",
+                "Cocktail — кастом-бэггер в движении с райдером",
+                "Cocktail — переднее колесо и обтекатель на выставке Мотобайк-2013",
+                "Cocktail — полный вид кастом-бэггера слева",
+                "Cocktail — кастом-бэггер спереди в три четверти",
+                "Cocktail — хромированный Twin Cam 96 и аэрография",
+                "Cocktail — кастом-бэггер с райдером",
+                "Cocktail — установка динамика Sony Marine",
+                "Cocktail — детали хромированного Twin Cam 96",
+            ],
+            "uk": [
+                "Cocktail — панель беггера та цифрові прилади Dakota",
+                "Cocktail — беггер ззаду у три чверті на виставці Мотобайк-2013",
+                "Cocktail — кастом-беггер у русі з райдером",
+                "Cocktail — переднє колесо та обтічник на виставці Мотобайк-2013",
+                "Cocktail — повний вигляд кастом-беггера зліва",
+                "Cocktail — кастом-беггер спереду у три чверті",
+                "Cocktail — хромований Twin Cam 96 та аерографія",
+                "Cocktail — кастом-беггер із райдером",
+                "Cocktail — встановлення динаміка Sony Marine",
+                "Cocktail — деталі хромованого Twin Cam 96",
+            ],
+        },
+    },
 }
 
 LEGACY_PROJECT_DATA_PATH = SITE_ROOT / "content/projects/legacy_projects_4lang.json"
@@ -193,16 +319,21 @@ PROJECT_CONFIGS = {
     }
     for slug in LEGACY_PROJECT_ORDER
 }
-PROJECT_CONFIGS.update(_FIGHTER_CONFIGS)
-PROJECT_CONFIGS["fighter"]["source_format"] = "markdown"
-PROJECT_CONFIGS["fighter"]["modified_iso"] = PROJECT_CONFIGS["fighter"][
-    "published_iso"
-]
+PROJECT_CONFIGS.update(MARKDOWN_PROJECT_CONFIGS)
+for _markdown_project in MARKDOWN_PROJECT_CONFIGS.values():
+    _markdown_project["source_format"] = "markdown"
+    _markdown_project.setdefault("modified_iso", _markdown_project["published_iso"])
 PROJECT_CONFIGS["fighter"]["visible_text_sha256"] = {
     "en": "3a105c2135bad232b2d6e01b8cdb83686f7c87b1a4fefcf3e69b74d899bc9395",
     "ru": "725b26e490480f786b929fc893853f41ad33b6642aca888af32231db2f543b53",
     "uk": "d5e061959c0d98b0e59681f50a53fdcbaf64aa2f621ef17b634ebbbf32df9d78",
     "pt": "3f8cc1b58b14eea3dd0155cb717dd5a61b473e3e451b2a4ff0103a66fef21f6c",
+}
+PROJECT_CONFIGS["cocktail"]["visible_text_sha256"] = {
+    "en": "e43d1d9bb21e578daa812adf289f56aa4d8286ab1258d37235e5bf11d32423a0",
+    "pt": "7b00141b6e913441b8e6a8d10315e1d40ed1d5f31fe767b2c9cae1d5c9af20a0",
+    "ru": "6bd4cda40dbe3335d9173b3b5af8246e6eb51649f3c116a6c1e81109641442ee",
+    "uk": "957939d4a665bd23d5d7aa4dbb31ffba4343034b6ee9be3c4b9e8479b0b81007",
 }
 
 REDIRECT_CONFIGS = {

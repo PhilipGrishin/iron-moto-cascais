@@ -96,6 +96,7 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 - [Hell Boy](https://ironcustommotors.com/projects/hellboy/): ICM Hell Boy — Best Paint winner at Ericeira Kustom Fest 2026, a custom trike by Iron Custom Motors with comic-art airbrush, chrome skull mascot and 360-section rear tire.
 - [True Religion](https://ironcustommotors.com/projects/true-religion/): ICM True Religion — custom motorcycle by Iron Custom Motors inspired by denim culture, Harley-Davidson heritage and the open-road spirit.
 - [Fighter](https://ironcustommotors.com/projects/fighter/): A 2.90 m long chopper with a RevTech 110" engine and a real passenger seat. The story of Fighter, a full custom built by Iron Custom Motors in 2014.
+- [Cocktail](https://ironcustommotors.com/projects/cocktail/): A 2008 Street Glide FLHX turned custom bagger: 26" front wheel, chrome Twin Cam 96, Legend Air Ride and onboard sound. The story of Cocktail, built 2013.
 
 ## Hubs and information
 
@@ -125,7 +126,7 @@ All pages are available in 4 languages with reciprocal hreflang annotations:
 ## Sitemap
 
 Full machine-readable sitemap: [sitemap.xml](https://ironcustommotors.com/sitemap.xml)
-Generated coverage: 53 English paths across 4 language variants (212 sitemap URLs).
+Generated coverage: 54 English paths across 4 language variants (216 sitemap URLs).
 
 ## Citation guidance
 
