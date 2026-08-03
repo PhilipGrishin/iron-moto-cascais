@@ -505,6 +505,28 @@ def validate_integration(slug: str) -> list[str]:
                         f"outgoing {related_slug} link missing"
                     )
 
+        for related_slug in integrations.get("reciprocal_projects", []):
+            project_path = page_path(slug, lang)
+            related_path = page_path(related_slug, lang)
+            project_main = BeautifulSoup(
+                project_path.read_text(encoding="utf-8"), "html.parser"
+            ).find("main")
+            related_main = BeautifulSoup(
+                related_path.read_text(encoding="utf-8"), "html.parser"
+            ).find("main")
+            related_target = f"/{prefix}projects/{related_slug}/"
+            project_target = f"/{prefix}projects/{slug}/"
+            if project_main is None or project_main.find("a", href=related_target) is None:
+                issues.append(
+                    f"{project_path.relative_to(SITE_ROOT)}: "
+                    f"outgoing {related_slug} project link missing"
+                )
+            if related_main is None or related_main.find("a", href=project_target) is None:
+                issues.append(
+                    f"{related_path.relative_to(SITE_ROOT)}: "
+                    f"reciprocal {slug} project link missing"
+                )
+
     urls, lastmods = sitemap_data()
     for lang in LANGS:
         expected = page_url(slug, lang)

@@ -15,10 +15,11 @@ import json
 import re
 from pathlib import Path
 
-from build_output import write_html_if_changed
+from build_output import write_html_if_changed, write_text_if_changed
 from brand_pages_data import BRAND_NAME, BRAND_NAV_KEYS, BRAND_ORDER
 from hero_images import hero_background_css, optimized_hero_url
 from new_pages_data import PAGE_HEAD_META, PAGE_I18N, PROJECT_TILES, FAQ_QA
+from project_pages_data import PROJECT_CONFIGS
 from site_chrome import (
     render_contact_modal,
     render_pre_body_chrome,
@@ -30,6 +31,11 @@ BUILD_DIR = Path(__file__).resolve().parent
 DOMAIN = "https://ironcustommotors.com"
 CACHE_BUST = "20260724a"  # bump on each change to main.css/main.js
 GLOBAL_I18N = json.loads((BUILD_DIR / "i18n.json").read_text(encoding="utf-8"))
+
+CUSTOM_PROJECT_LINKS = re.compile(
+    r"<!-- PROJECT_CUSTOM_LINKS_START -->.*?<!-- PROJECT_CUSTOM_LINKS_END -->",
+    re.DOTALL,
+)
 
 # ---------- shared chrome fragments ----------
 
@@ -497,6 +503,37 @@ def render_projects():
     out.parent.mkdir(parents=True, exist_ok=True)
     write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
     return out
+
+
+def render_custom_project_links() -> Path:
+    """Keep the Custom-page project links aligned with project integration data."""
+    output = SITE_ROOT / "custom" / "index.html"
+    markup = output.read_text(encoding="utf-8")
+    links = []
+    for tile in PROJECT_TILES:
+        project = PROJECT_CONFIGS.get(tile["slug"])
+        if project and project.get("integrations", {}).get("custom"):
+            links.append(
+                f'<a class="btn btn-ghost" href="/projects/{tile["slug"]}/">'
+                f'{html_lib.escape(tile["label"]["en"])} →</a>'
+            )
+    if not links:
+        raise ValueError("No projects are registered for Custom-page integration")
+
+    block = (
+        "<!-- PROJECT_CUSTOM_LINKS_START -->\n"
+        + "\n".join(links)
+        + "\n<!-- PROJECT_CUSTOM_LINKS_END -->"
+    )
+    if CUSTOM_PROJECT_LINKS.search(markup):
+        updated = CUSTOM_PROJECT_LINKS.sub(block, markup, count=1)
+    else:
+        legacy = '<a class="btn btn-ghost" href="/projects/cocktail/">Cocktail →</a>'
+        if markup.count(legacy) != 1:
+            raise ValueError("Custom-page project integration anchor is missing or ambiguous")
+        updated = markup.replace(legacy, block, 1)
+    write_text_if_changed(output, updated)
+    return output
 
 
 # =========================================================================
@@ -1139,6 +1176,7 @@ def render_faq():
 
 def main():
     outs = [
+        render_custom_project_links(),
         render_services(),
         render_projects(),
         render_about(),

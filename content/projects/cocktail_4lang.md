@@ -20,7 +20,7 @@
 
 [IMAGE: hero — Cocktail custom bagger | ALT: Cocktail custom bagger on a Harley-Davidson Street Glide FLHX base, built by Iron Custom Motors]
 
-Cocktail was first shown at the Motobike-2013 show in Kyiv — but that spring the spotlight belonged to Fetish, our entry in the world custom-building championship. So the white bagger waited its turn quietly, and its moment came that September, when Ukraine's Motodrive magazine gave it a four-page feature. Underneath is a 2008 Harley-Davidson Street Glide FLHX; on top, everything a bagger should be. Built in our Kharkiv workshop, back when Iron Custom Motors was still called I.C.M.
+Cocktail was first shown at the Motobike-2013 show in Kyiv — but that spring the spotlight belonged to [Fetish,](/projects/fetish/) our entry in the world custom-building championship. So the white bagger waited its turn quietly, and its moment came that September, when Ukraine's Motodrive magazine gave it a four-page feature. Underneath is a 2008 Harley-Davidson Street Glide FLHX; on top, everything a bagger should be. Built in our Kharkiv workshop, back when Iron Custom Motors was still called I.C.M.
 
 ## A cocktail in white and red
 
@@ -62,7 +62,7 @@ Iron Custom Motors works on Harley-Davidson every day in Cascais, Portugal. See 
 
 [IMAGE: hero — Cocktail custom bagger | ALT: Cocktail, bagger custom sobre base Harley-Davidson Street Glide FLHX, construído pela Iron Custom Motors]
 
-O Cocktail estreou-se no salão Motobike-2013, em Kiev — mas nessa primavera os holofotes pertenciam ao Fetish, o nosso projeto no campeonato mundial de custom-building. O bagger branco esperou a sua vez sem pressa, e o momento chegou em setembro, quando a revista ucraniana Motodrive lhe dedicou quatro páginas. Por baixo está uma Harley-Davidson Street Glide FLHX de 2008; por cima, tudo o que um bagger deve ser. Construído na nossa oficina de Kharkiv, no tempo em que a Iron Custom Motors ainda se chamava I.C.M.
+O Cocktail estreou-se no salão Motobike-2013, em Kiev — mas nessa primavera os holofotes pertenciam ao [Fetish,](/pt/projects/fetish/) o nosso projeto no campeonato mundial de custom-building. O bagger branco esperou a sua vez sem pressa, e o momento chegou em setembro, quando a revista ucraniana Motodrive lhe dedicou quatro páginas. Por baixo está uma Harley-Davidson Street Glide FLHX de 2008; por cima, tudo o que um bagger deve ser. Construído na nossa oficina de Kharkiv, no tempo em que a Iron Custom Motors ainda se chamava I.C.M.
 
 ## Um cocktail em branco e vermelho
 
@@ -104,7 +104,7 @@ A Iron Custom Motors trabalha com Harley-Davidson todos os dias em Cascais, Port
 
 [IMAGE: hero — Cocktail custom bagger | ALT: Cocktail — кастом-бэггер на базе Harley-Davidson Street Glide FLHX, построенный Iron Custom Motors]
 
-Впервые Cocktail показали на выставке «Мотобайк-2013» в Киеве — но той весной все внимание доставалось Fetish, нашему участнику чемпионата мира по кастомайзингу. Белый бэггер спокойно ждал своей очереди, и его час пришел в сентябре, когда украинский журнал Motodrive отдал мотоциклу четыре полосы. В основе — Harley-Davidson Street Glide FLHX 2008 года, а сверху — все, чем должен быть бэггер. Построен в нашей харьковской мастерской, еще во времена, когда Iron Custom Motors называлась I.C.M.
+Впервые Cocktail показали на выставке «Мотобайк-2013» в Киеве — но той весной все внимание доставалось [Fetish,](/ru/projects/fetish/) нашему участнику чемпионата мира по кастомайзингу. Белый бэггер спокойно ждал своей очереди, и его час пришел в сентябре, когда украинский журнал Motodrive отдал мотоциклу четыре полосы. В основе — Harley-Davidson Street Glide FLHX 2008 года, а сверху — все, чем должен быть бэггер. Построен в нашей харьковской мастерской, еще во времена, когда Iron Custom Motors называлась I.C.M.
 
 ## Коктейль в белом и красном
 
@@ -146,7 +146,7 @@ A Iron Custom Motors trabalha com Harley-Davidson todos os dias em Cascais, Port
 
 [IMAGE: hero — Cocktail custom bagger | ALT: Cocktail — кастом-беггер на базі Harley-Davidson Street Glide FLHX, збудований Iron Custom Motors]
 
-Уперше Cocktail показали на виставці «Мотобайк-2013» у Києві — але тієї весни вся увага діставалася Fetish, нашому учаснику чемпіонату світу з кастомбілдингу. Білий беггер спокійно чекав своєї черги, і його час настав у вересні, коли український журнал Motodrive присвятив мотоциклу чотири сторінки. В основі — Harley-Davidson Street Glide FLHX 2008 року, а зверху — все, чим має бути беггер. Збудований у нашій харківській майстерні, ще за часів, коли Iron Custom Motors звалася I.C.M.
+Уперше Cocktail показали на виставці «Мотобайк-2013» у Києві — але тієї весни вся увага діставалася [Fetish,](/uk/projects/fetish/) нашому учаснику чемпіонату світу з кастомбілдингу. Білий беггер спокійно чекав своєї черги, і його час настав у вересні, коли український журнал Motodrive присвятив мотоциклу чотири сторінки. В основі — Harley-Davidson Street Glide FLHX 2008 року, а зверху — все, чим має бути беггер. Збудований у нашій харківській майстерні, ще за часів, коли Iron Custom Motors звалася I.C.M.
 
 ## Коктейль у білому й червоному
 

@@ -90,6 +90,7 @@ PORTFOLIO_ORDER = (
     "hellboy",
     "true-religion",
     "cocktail",
+    "fetish",
 )
 
 PORTFOLIO = {
@@ -146,6 +147,17 @@ PORTFOLIO = {
             "pt": "A Cocktail é uma Harley-Davidson Street Glide FLHX de 2008 transformada num bagger full custom em Kharkiv, em 2013. Uma roda dianteira de 26 polegadas, o Twin Cam 96 cromado, Legend Air Ride e áudio Sony Marine a bordo definem a construção.",
             "ru": "Cocktail — Harley-Davidson Street Glide FLHX 2008 года, превращённый в Харькове в 2013-м в полноценный кастом-бэггер. Проект определяют 26-дюймовое переднее колесо, хромированный Twin Cam 96, Legend Air Ride и бортовая аудиосистема Sony Marine.",
             "uk": "Cocktail — Harley-Davidson Street Glide FLHX 2008 року, перетворений у Харкові 2013-го на повноцінний кастом-беггер. Проєкт визначають 26-дюймове переднє колесо, хромований Twin Cam 96, Legend Air Ride і бортова аудіосистема Sony Marine.",
+        },
+    },
+    "fetish": {
+        "name": "Fetish",
+        "image": "/photos/projects/fetish-2400.jpg",
+        "dims": (2400, 1501),
+        "copy": {
+            "en": "Fetish is a 2013 full custom chopper built on a Harley-Davidson Rocker C. Air ride, a B-17 fork, a 26-inch solid front wheel and ZEX nitrous helped make it the first Ukrainian custom entered in the AMD World Championship.",
+            "pt": "A Fetish é uma chopper full custom de 2013 construída sobre uma Harley-Davidson Rocker C. Air ride, forquilha B-17, roda dianteira maciça de 26 polegadas e nitro ZEX ajudaram a torná-la no primeiro custom ucraniano inscrito no Mundial AMD.",
+            "ru": "Fetish — полноценно кастомный чоппер 2013 года на базе Harley-Davidson Rocker C. Пневмоподвеска, вилка B-17, цельное 26-дюймовое переднее колесо и закись ZEX помогли ему стать первым украинским кастомом, заявленным на чемпионат мира AMD.",
+            "uk": "Fetish — повністю кастомний чопер 2013 року на базі Harley-Davidson Rocker C. Пневмопідвіска, вилка B-17, суцільне 26-дюймове переднє колесо й закис ZEX допомогли йому стати першим українським кастомом, заявленим на чемпіонат світу AMD.",
         },
     },
 }
