@@ -14,6 +14,28 @@ Format:
 - Notes: ...
 ```
 
+## 2026-08-03 - Fetish multilingual project publication
+
+- Commit: `a0da49fd`
+- Changed: Added Fetish as the thirteenth registered project in EN/PT/RU/UK
+  through the shared Markdown project flow; imported responsive AVIF/WebP/JPEG
+  hero, gallery and Harley portfolio media; added the project to shared
+  navigation, the project listing, Custom and Harley Hub; and added a
+  reciprocal contextual link from Cocktail. Generalized `/custom/` project
+  mentions from the declared project integration registry and added reciprocal
+  link validation.
+- Verified: Exact approved-copy comparisons passed in all four languages. All
+  four validator groups passed for 220 sitemap URLs and 13 projects. The Full
+  Safe Rebuild left a clean clone of `a0da49fd`. GitHub Pages workflow
+  `30852768505` succeeded; cache-bypass production checks returned all four
+  project URLs and required integrations, and a production browser observed
+  one Fetish hero resource at 390 px with no console errors.
+- Notes: The four new sitemap URLs and the twelve visibly changed listing,
+  Custom and Harley Hub URLs are the only moved dates. Cocktail visible text
+  and lastmod remain unchanged. Competition result and current whereabouts are
+  intentionally unclaimed pending authoritative evidence. Full evidence is in
+  `docs/reports/P_FETISH_REPORT.md`.
+
 ## 2026-08-01 - C-Way VAT label size follow-up
 
 - Commit: `8447160b`

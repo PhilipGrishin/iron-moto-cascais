@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-08-01
+Last updated: 2026-08-03
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -10,8 +10,9 @@ deployed public identifiers and cache-bust values. Operating rules live in
 ## Status And Evidence
 
 - Status: **confirmed**.
-- Evidence date: 2026-08-01 (Europe/Lisbon).
-- Repository evidence: CWAY-VAT size follow-up commit `8447160b`, CWAY-VAT
+- Evidence date: 2026-08-03 (Europe/Lisbon).
+- Repository evidence: P-FETISH implementation commit `a0da49fd`, CWAY-VAT
+  size follow-up commit `8447160b`, CWAY-VAT
   implementation commit `560e3891`, EXPO-V2
   implementation commit `aa23075c`, NAV+EXPO
   implementation commit `6a2bdff7`, P-COCKTAIL implementation commit
@@ -20,7 +21,10 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: CWAY-VAT size follow-up workflow `30716569527`,
+- Production evidence: P-FETISH GitHub Pages workflow `30852768505`,
+  cache-bypass checks on the four Fetish pages, all twelve integration pages,
+  reciprocal Cocktail links, `llms.txt` and `sitemap.xml`; CWAY-VAT size
+  follow-up workflow `30716569527`,
   CWAY-VAT GitHub Pages workflow `30715488709`,
   cache-bypass checks on all four C-Way pages and the production sitemap,
   EXPO-V2 GitHub Pages workflow `30713880464`,
@@ -29,10 +33,10 @@ deployed public identifiers and cache-bust values. Operating rules live in
   result `QtK8FJYbOvDZFu-k-TWBng` with four valid items, no errors and no
   warnings. Earlier evidence remains in the task reports and changelog.
 - Reproducibility evidence: the documented full rebuild and all four validator
-  groups at CWAY-VAT size follow-up commit `8447160b` left a clean clone with
-  empty `git status --short`; verified 2026-08-01. The current `sitemap.xml`
+  groups at P-FETISH implementation commit `a0da49fd` left a clean clone with
+  empty `git status --short`; verified 2026-08-03. The current `sitemap.xml`
   SHA-256 is
-  `34ae75b4e6484387ee8eb2011523796dd7a83aa125bf39597efc6ffb666c2cd3`.
+  `c675fb2d21f9918e53cb7e7dcd5fe9f17634258b0f900c07c33654dd711fbd21`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
 
 ## Repository And Production
@@ -56,16 +60,16 @@ site generators during deployment; the workflow packages checked-in output.
 | Inventory | Current value | Canonical evidence |
 |---|---:|---|
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
-| English path patterns | 54 | `build_sitemap.py` `PAGES` |
-| Indexable sitemap URLs | 216 | parsed `sitemap.xml` `<url>` entries |
-| Tracked HTML files | 225 | filesystem enumeration |
-| Indexable HTML files | 216 | sitemap-to-file resolution |
+| English path patterns | 55 | `build_sitemap.py` `PAGES` |
+| Indexable sitemap URLs | 220 | parsed `sitemap.xml` `<url>` entries |
+| Tracked HTML files | 229 | filesystem enumeration |
+| Indexable HTML files | 220 | sitemap-to-file resolution |
 | Non-indexed HTML files | 9 | `404.html` plus 8 localized project redirect stubs |
-| Sitemap lastmod tags | 216 | parsed `sitemap.xml` |
-| Unique sitemap lastmod values | 52 | parsed `sitemap.xml` |
+| Sitemap lastmod tags | 220 | parsed `sitemap.xml` |
+| Unique sitemap lastmod values | 55 | parsed `sitemap.xml` |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
-| Project detail pages | 12 | `PROJECT_TILES` |
-| Data-driven project definitions | 12 | `PROJECT_CONFIGS` |
+| Project detail pages | 13 | `PROJECT_TILES` |
+| Data-driven project definitions | 13 | `PROJECT_CONFIGS` |
 | Blog posts | 7 | `BLOG_POSTS` |
 | News articles | 3 | `NEWS_ARTICLES` |
 | Harley Hub English page patterns | 3 | `harley_hub_data.py` `PAGE_CONFIG` |
@@ -87,10 +91,10 @@ Registry alignment on the evidence date:
 
 | Registry | Entries | Relationship |
 |---|---:|---|
-| `build_sitemap.py` `PAGES` | 54 | canonical English indexable paths |
-| `localize_internal_links.py` `LOCALIZED_PATHS` | 54 | matches `PAGES` after normalization |
+| `build_sitemap.py` `PAGES` | 55 | canonical English indexable paths |
+| `localize_internal_links.py` `LOCALIZED_PATHS` | 55 | matches `PAGES` after normalization |
 | `build_i18n.py` `MAIN_PAGES` | 31 | English sources localized by the generic i18n flow |
-| `project_pages_data.py` `PROJECT_CONFIGS` | 12 | project details rendered directly in four languages |
+| `project_pages_data.py` `PROJECT_CONFIGS` | 13 | project details rendered directly in four languages |
 
 There is no active `EN_PAGES` registry. The canonical English page registry is
 `build_sitemap.py` `PAGES`.
@@ -162,9 +166,11 @@ release size.
 - `/projects/true-religion/`
 - `/projects/fighter/`
 - `/projects/cocktail/`
+- `/projects/fetish/`
 
-All 12 project details are data-driven and rendered through
-`build_project_pages.py`. Fighter and Cocktail use approved Markdown; the 10
+All 13 project details are data-driven and rendered through
+`build_project_pages.py`. Fighter, Cocktail and Fetish use approved Markdown;
+the 10
 migrated projects use the versioned localized source at
 `content/projects/legacy_projects_4lang.json`. Generated project HTML contains
 no `window.ICM_I18N_PAGE` copy block.
@@ -211,8 +217,8 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   `fetchpriority="high"` element on those pages.
 - News article heroes remain in the CSS-background family protected by the
   responsive CSS hero contract; they are not `<picture>` heroes.
-- Project heroes retain responsive `<picture>` delivery. Migrated projects and
-  Cocktail use AVIF/WebP sources with a JPEG fallback; Fighter retains its
+- Project heroes retain responsive `<picture>` delivery. Migrated projects,
+  Cocktail and Fetish use AVIF/WebP sources with a JPEG fallback; Fighter retains its
   registered AVIF/WebP media set. Every project page has one responsive AVIF
   preload and exactly one `fetchpriority="high"` hero image.
 - Registered project exhibition media is rendered through the common project
@@ -223,7 +229,7 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   booking, WhatsApp, header/mobile and footer chrome strings against that
   same-language baseline.
 - The desktop and mobile Projects menus derive from `PROJECT_TILES`, the same
-  ordered registry as `/projects/`. Sitemap-wide validation protects all 12
+  ordered registry as `/projects/`. Sitemap-wide validation protects all 13
   localized project links on every indexable page.
 - `llms.txt` is generated from the English page registry, maintained page-name
   sources, metadata and `docs/BUSINESS_FACTS.md`.

@@ -1,13 +1,13 @@
 # Open Tasks, Risks And Watchlist
 
-Last updated: 2026-07-31
+Last updated: 2026-08-03
 
 This file owns unresolved work, external dependencies and access requirements.
 Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
 
-No active implementation task is recorded after the FINAL documentation audit.
+No active implementation task is recorded after P-FETISH delivery.
 
 ## Performance Follow-Up
 
@@ -93,6 +93,17 @@ Do not claim an account-only verification passed unless it was actually run.
 Local JSON-LD parsing and repository validators are separate evidence.
 
 ## Product And Publishing Watchlist
+
+### Fetish historical result and current whereabouts
+
+- Status: **unknown**, non-blocking publication follow-up.
+- Confirmed boundary: the approved source identifies Fetish as the first
+  Ukrainian custom entered in the 2013 AMD World Championship, but does not
+  provide a verified competition result or the motorcycle's current
+  whereabouts. The published project page therefore states participation only
+  and makes no current-location claim.
+- Next action: add either fact only when the owner supplies an authoritative
+  source. Do not infer the result or location from unrelated exhibition copy.
 
 ### CMS
 

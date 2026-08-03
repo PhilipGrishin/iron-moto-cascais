@@ -185,10 +185,11 @@ Commands: `scripts/build/README.md`, **News workflow**.
 Ownership:
 
 - `project_pages_data.py` is the complete project and redirect registry.
-- Fighter and Cocktail use approved Markdown under `content/projects/`; the 10
-  migrated project pages use `content/projects/legacy_projects_4lang.json`,
-  which preserves their reviewed localized main content and media structure.
-- `build_project_pages.py` renders all 48 indexable project variants and all 8
+- Fighter, Cocktail and Fetish use approved Markdown under `content/projects/`;
+  the 10 migrated project pages use
+  `content/projects/legacy_projects_4lang.json`, which preserves their reviewed
+  localized main content and media structure.
+- `build_project_pages.py` renders every indexable project variant and all 8
   localized noindex redirects directly. Project details are not outputs of the
   generic `build_i18n.py` flow.
 - `import_project_images.py` owns newly approved data-driven project media.
@@ -203,8 +204,16 @@ Stable rules:
 
 - New projects use the registered data-driven Markdown flow. Extend
   `MARKDOWN_PROJECT_CONFIGS`; do not add a project-specific renderer or build
-  script. Listing, sitemap, localized-path and Harley portfolio membership are
-  derived from maintained registries.
+  script. Listing and shared navigation membership come from `PROJECT_TILES`;
+  sitemap and localized-path membership derive from `PROJECT_CONFIGS`.
+- A project with `integrations.custom` is added to the four `/custom/` pages by
+  `build_new_pages.py`; do not patch those generated pages manually. Harley
+  portfolio copy and order remain explicit in `harley_hub_data.py` because not
+  every project is a Harley project. `validate_project_pages.py` enforces the
+  declared Custom and Harley integrations.
+- Contextual project-to-project relationships belong in
+  `reciprocal_projects`. The project validator requires same-language links in
+  both directions without duplicating visible copy in generated HTML.
 - Generated project HTML must not contain `window.ICM_I18N_PAGE`; localized
   project copy belongs in the registered source data.
 - Because project details bypass `build_i18n.py`, `build_project_pages.py` must
