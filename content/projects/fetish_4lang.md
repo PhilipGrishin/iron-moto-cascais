@@ -22,7 +22,7 @@
 
 [IMAGE: hero — Fetish custom chopper | ALT: Fetish custom chopper on a Harley-Davidson Rocker C base, the first Ukrainian custom at the AMD World Championship, built by Iron Custom Motors]
 
-The shoemaker without boots — Yaroslav Lutytskyi decided that old line was not going to be his story. After years of building motorcycles for other people, he sewed a pair to his own size and taste. The donor was a Harley-Davidson Rocker C, a mass-production custom that, once the work was done, you could recognise only by the oil tank, the under-seat frame section and the silhouette of the fuel tank. Built in our Kharkiv workshop in 2013, back when Iron Custom Motors was still called I.C.M. And built to ride: a proper custom looks one hundred percent only in motion, with the rider as part of the design.
+The shoemaker without boots — Yaroslav Lutytskyi decided that old line was not going to be his story. After years of building motorcycles for other people, he sewed a pair to his own size and taste. The donor was a Harley-Davidson Rocker C, a mass-production custom that, once the work was done, you could recognise only by the oil tank, the under-seat frame section and the silhouette of the fuel tank. Built in our Kharkiv workshop in 2013, back when Iron Custom Motors was still called I.C.M. It followed [The First](/projects/the-first/), the motorcycle that started the workshop. And built to ride: a proper custom looks one hundred percent only in motion, with the rider as part of the design.
 
 ## Riding on air
 
@@ -60,7 +60,7 @@ Iron Custom Motors works on Harley-Davidson every day in Cascais, Portugal. See 
 
 [IMAGE: hero — Fetish custom chopper | ALT: Fetish, chopper custom sobre base Harley-Davidson Rocker C, o primeiro custom ucraniano no Mundial AMD, construído pela Iron Custom Motors]
 
-Casa de ferreiro, espeto de pau — Yaroslav Lutytskyi decidiu que esse ditado não seria a história dele. Depois de anos a construir motas para os outros, fez umas botas à sua própria medida e ao seu gosto. A base foi uma Harley-Davidson Rocker C, um custom de produção em série que, terminado o trabalho, só se reconhecia pelo depósito de óleo, pela secção do quadro sob o assento e pela silhueta do depósito de combustível. Construído na nossa oficina de Kharkiv em 2013, no tempo em que a Iron Custom Motors ainda se chamava I.C.M. E construído para andar: um verdadeiro custom só está completo em movimento, com o piloto como parte do design.
+Casa de ferreiro, espeto de pau — Yaroslav Lutytskyi decidiu que esse ditado não seria a história dele. Depois de anos a construir motas para os outros, fez umas botas à sua própria medida e ao seu gosto. A base foi uma Harley-Davidson Rocker C, um custom de produção em série que, terminado o trabalho, só se reconhecia pelo depósito de óleo, pela secção do quadro sob o assento e pela silhueta do depósito de combustível. Construído na nossa oficina de Kharkiv em 2013, no tempo em que a Iron Custom Motors ainda se chamava I.C.M. Veio depois da [The First](/pt/projects/the-first/), a mota com que nasceu a oficina. E construído para andar: um verdadeiro custom só está completo em movimento, com o piloto como parte do design.
 
 ## A andar sobre ar
 
@@ -98,7 +98,7 @@ A Iron Custom Motors trabalha com Harley-Davidson todos os dias em Cascais, Port
 
 [IMAGE: hero — Fetish custom chopper | ALT: Fetish — кастом-чоппер на базе Harley-Davidson Rocker C, первый украинский кастом на чемпионате мира AMD, построен Iron Custom Motors]
 
-Сапожник без сапог — Ярослав Лутицкий решил, что эта поговорка не про него. Годами строив мотоциклы для других, он сшил себе пару по собственной мерке и вкусу. Донором стал Harley-Davidson Rocker C, серийный кастом, в котором после работы угадывались только маслобак, подседельная часть рамы и силуэт бензобака. Построен в нашей харьковской мастерской в 2013 году, еще во времена, когда Iron Custom Motors называлась I.C.M. И построен, чтобы ездить: настоящий кастом смотрится на все сто только в движении, а пилот — неотъемлемая часть дизайна.
+Сапожник без сапог — Ярослав Лутицкий решил, что эта поговорка не про него. Годами строив мотоциклы для других, он сшил себе пару по собственной мерке и вкусу. Донором стал Harley-Davidson Rocker C, серийный кастом, в котором после работы угадывались только маслобак, подседельная часть рамы и силуэт бензобака. Построен в нашей харьковской мастерской в 2013 году, еще во времена, когда Iron Custom Motors называлась I.C.M. До него был [The First](/ru/projects/the-first/) — мотоцикл, с которого началась мастерская. И построен, чтобы ездить: настоящий кастом смотрится на все сто только в движении, а пилот — неотъемлемая часть дизайна.
 
 ## На воздухе
 
@@ -136,7 +136,7 @@ A Iron Custom Motors trabalha com Harley-Davidson todos os dias em Cascais, Port
 
 [IMAGE: hero — Fetish custom chopper | ALT: Fetish — кастом-чопер на базі Harley-Davidson Rocker C, перший український кастом на чемпіонаті світу AMD, збудований Iron Custom Motors]
 
-Швець без чобіт — Ярослав Лутицький вирішив, що це прислів'я не про нього. Роками будуючи мотоцикли для інших, він пошив собі пару за власною міркою і смаком. Донором став Harley-Davidson Rocker C, серійний кастом, у якому після роботи вгадувалися лише маслобак, підсідельна частина рами та силует бензобака. Збудований у нашій харківській майстерні у 2013 році, ще за часів, коли Iron Custom Motors звалася I.C.M. І збудований, щоб їздити: справжній кастом виглядає на всі сто лише в русі, а пілот — невід'ємна частина дизайну.
+Швець без чобіт — Ярослав Лутицький вирішив, що це прислів'я не про нього. Роками будуючи мотоцикли для інших, він пошив собі пару за власною міркою і смаком. Донором став Harley-Davidson Rocker C, серійний кастом, у якому після роботи вгадувалися лише маслобак, підсідельна частина рами та силует бензобака. Збудований у нашій харківській майстерні у 2013 році, ще за часів, коли Iron Custom Motors звалася I.C.M. До нього був [The First](/uk/projects/the-first/) — мотоцикл, з якого почалася майстерня. І збудований, щоб їздити: справжній кастом виглядає на всі сто лише в русі, а пілот — невід'ємна частина дизайну.
 
 ## На повітрі
 

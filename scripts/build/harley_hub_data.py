@@ -91,6 +91,7 @@ PORTFOLIO_ORDER = (
     "true-religion",
     "cocktail",
     "fetish",
+    "the-first",
 )
 
 PORTFOLIO = {
@@ -158,6 +159,17 @@ PORTFOLIO = {
             "pt": "A Fetish é uma chopper full custom de 2013 construída sobre uma Harley-Davidson Rocker C. Air ride, forquilha B-17, roda dianteira maciça de 26 polegadas e nitro ZEX ajudaram a torná-la no primeiro custom ucraniano inscrito no Mundial AMD.",
             "ru": "Fetish — полноценно кастомный чоппер 2013 года на базе Harley-Davidson Rocker C. Пневмоподвеска, вилка B-17, цельное 26-дюймовое переднее колесо и закись ZEX помогли ему стать первым украинским кастомом, заявленным на чемпионат мира AMD.",
             "uk": "Fetish — повністю кастомний чопер 2013 року на базі Harley-Davidson Rocker C. Пневмопідвіска, вилка B-17, суцільне 26-дюймове переднє колесо й закис ZEX допомогли йому стати першим українським кастомом, заявленим на чемпіонат світу AMD.",
+        },
+    },
+    "the-first": {
+        "name": "The First",
+        "image": "/photos/projects/the-first-2400.jpg",
+        "dims": (2400, 1600),
+        "copy": {
+            "en": "The First is a 2012 full custom built from a 2009 Harley-Davidson Night Rod Special ABS. Front and rear air suspension and an in-house computerised ride-height system adjust ground clearance from 2 to 12 cm.",
+            "pt": "A The First é uma full custom de 2012 construída sobre uma Harley-Davidson Night Rod Special ABS de 2009. A suspensão pneumática à frente e atrás e um sistema computorizado de altura ao solo feito por nós regulam a distância ao chão entre 2 e 12 cm.",
+            "ru": "The First — полноценно кастомный проект 2012 года на базе Harley-Davidson Night Rod Special ABS 2009 года. Пневмоподвеска спереди и сзади и собственная компьютерная система регулируют клиренс от 2 до 12 см.",
+            "uk": "The First — повністю кастомний проєкт 2012 року на базі Harley-Davidson Night Rod Special ABS 2009 року. Пневмопідвіска спереду й ззаду та власна комп'ютерна система регулюють кліренс від 2 до 12 см.",
         },
     },
 }

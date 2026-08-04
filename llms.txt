@@ -98,6 +98,7 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 - [Fighter](https://ironcustommotors.com/projects/fighter/): A 2.90 m long chopper with a RevTech 110" engine and a real passenger seat. The story of Fighter, a full custom built by Iron Custom Motors in 2014.
 - [Cocktail](https://ironcustommotors.com/projects/cocktail/): A 2008 Street Glide FLHX turned custom bagger: 26" front wheel, chrome Twin Cam 96, Legend Air Ride and onboard sound. The story of Cocktail, built 2013.
 - [Fetish](https://ironcustommotors.com/projects/fetish/): A Harley-Davidson Rocker C turned personal chopper: air ride, B-17 fork, 26" solid wheels, nitrous. Fetish — the first Ukrainian custom at the AMD Worlds.
+- [The First](https://ironcustommotors.com/projects/the-first/): A 2009 Night Rod Special rebuilt in 2012: air suspension front and rear, a ride-height computer we built ourselves, 2 to 12 cm of clearance.
 
 ## Hubs and information
 
@@ -127,7 +128,7 @@ All pages are available in 4 languages with reciprocal hreflang annotations:
 ## Sitemap
 
 Full machine-readable sitemap: [sitemap.xml](https://ironcustommotors.com/sitemap.xml)
-Generated coverage: 55 English paths across 4 language variants (220 sitemap URLs).
+Generated coverage: 56 English paths across 4 language variants (224 sitemap URLs).
 
 ## Citation guidance
 
