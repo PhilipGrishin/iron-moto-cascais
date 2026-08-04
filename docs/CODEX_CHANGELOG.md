@@ -14,6 +14,27 @@ Format:
 - Notes: ...
 ```
 
+## 2026-08-04 - The First multilingual project publication
+
+- Commit: `06e04fff`
+- Changed: Added The First as the fourteenth registered project in EN/PT/RU/UK
+  through the shared Markdown project flow; imported responsive AVIF/WebP/JPEG
+  hero, gallery and Harley portfolio media; added the project to shared
+  navigation, the project listing, Custom and Harley Hub; and added reciprocal
+  contextual links from Cocktail and Fetish.
+- Verified: The approved source and repository copy have the same SHA-256 in
+  all four languages. All four validator groups passed for 224 sitemap URLs
+  and 14 projects; a separate internal-link crawl found zero broken targets
+  across 29,944 link references. The Full Safe Rebuild left a clean clone of
+  `06e04fff`. GitHub Pages workflow `30883611614` succeeded; cache-bypass
+  production checks returned all four project URLs and required integrations,
+  and the production browser observed one The First hero resource at 390 px.
+- Notes: The four new sitemap URLs plus the 20 visibly changed listing,
+  Custom, Harley Hub, Cocktail and Fetish URLs are the only added or moved
+  dates. Current whereabouts and any Motobike 2012 award/result remain
+  unclaimed pending authoritative evidence. Full evidence is in
+  `docs/reports/P_THE_FIRST_REPORT.md`.
+
 ## 2026-08-03 - Fetish multilingual project publication
 
 - Commit: `a0da49fd`

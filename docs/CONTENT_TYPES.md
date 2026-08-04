@@ -185,8 +185,8 @@ Commands: `scripts/build/README.md`, **News workflow**.
 Ownership:
 
 - `project_pages_data.py` is the complete project and redirect registry.
-- Fighter, Cocktail and Fetish use approved Markdown under `content/projects/`;
-  the 10 migrated project pages use
+- Fighter, Cocktail, Fetish and The First use approved Markdown under
+  `content/projects/`; the 10 migrated project pages use
   `content/projects/legacy_projects_4lang.json`, which preserves their reviewed
   localized main content and media structure.
 - `build_project_pages.py` renders every indexable project variant and all 8

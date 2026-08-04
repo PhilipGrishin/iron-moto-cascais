@@ -1,13 +1,13 @@
 # Open Tasks, Risks And Watchlist
 
-Last updated: 2026-08-03
+Last updated: 2026-08-04
 
 This file owns unresolved work, external dependencies and access requirements.
 Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
 
-No active implementation task is recorded after P-FETISH delivery.
+No active implementation task is recorded after P-THE-FIRST delivery.
 
 ## Performance Follow-Up
 
@@ -93,6 +93,15 @@ Do not claim an account-only verification passed unless it was actually run.
 Local JSON-LD parsing and repository validators are separate evidence.
 
 ## Product And Publishing Watchlist
+
+### The First historical result and current whereabouts
+
+- Status: **unknown**, non-blocking publication follow-up.
+- Confirmed boundary: the approved source does not establish the motorcycle's
+  current whereabouts or a verified Motobike 2012 award/result. The published
+  project page therefore makes no current-location or award claim.
+- Next action: add either fact only when the owner supplies an authoritative
+  source. Do not infer a result from the motorcycle's exhibition history.
 
 ### Fetish historical result and current whereabouts
 
