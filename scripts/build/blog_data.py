@@ -738,7 +738,7 @@ def _load_bear650_build_post():
 
 
 def _load_tubeless_post():
-    return _load_markdown_video_post(
+    post = _load_markdown_video_post(
         source_path=_TUBELESS_SOURCE,
         source_name="tubeless conversion article",
         slug=_TUBELESS_SLUG,
@@ -759,6 +759,8 @@ def _load_tubeless_post():
             "deferUntilPlay": True,
         },
     )
+    post["resolveBusinessEntity"] = True
+    return post
 
 BLOG_HUB_BODY = {
     "en": {

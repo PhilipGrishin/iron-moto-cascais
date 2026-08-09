@@ -481,20 +481,23 @@ def render_article(slug, article):
 
     article_author = schema_author()
     article_publisher = {"@id": f"{DOMAIN}/#business"}
-    if article.get("schemaEntityName"):
-        article_author.update({
-            "@type": "Organization",
-            "name": article["schemaEntityName"],
-        })
-        article_publisher.update({
-            "@type": "Organization",
-            "name": article["schemaEntityName"],
-        })
-    if article.get("publisherLogo"):
-        article_publisher["logo"] = {
-            "@type": "ImageObject",
-            **article["publisherLogo"],
-        }
+    if article.get("resolveBusinessEntity"):
+        article_author = {"@id": f"{DOMAIN}/#business"}
+    else:
+        if article.get("schemaEntityName"):
+            article_author.update({
+                "@type": "Organization",
+                "name": article["schemaEntityName"],
+            })
+            article_publisher.update({
+                "@type": "Organization",
+                "name": article["schemaEntityName"],
+            })
+        if article.get("publisherLogo"):
+            article_publisher["logo"] = {
+                "@type": "ImageObject",
+                **article["publisherLogo"],
+            }
     schema_headline = BeautifulSoup(en_body["h1"], "html.parser").get_text(" ", strip=True)
     blog_posting_schema = {
         "@context": "https://schema.org",
@@ -560,6 +563,29 @@ def render_article(slug, article):
             ],
         },
     ]
+    if article.get("resolveBusinessEntity"):
+        json_ld_blocks.append({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "@id": f"{DOMAIN}/#business",
+            "name": "Iron Custom Motors",
+            "url": f"{DOMAIN}/",
+            "image": f"{DOMAIN}/photos/og.jpg",
+            "telephone": "+351917961230",
+            "priceRange": "€€",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "R. António José da Silva 100 B",
+                "addressLocality": "São Domingos de Rana",
+                "addressRegion": "Lisbon",
+                "postalCode": "2785-253",
+                "addressCountry": "PT",
+            },
+            "logo": {
+                "@type": "ImageObject",
+                **article["publisherLogo"],
+            },
+        })
 
     head_html = head(
         f"blog/{slug}",
