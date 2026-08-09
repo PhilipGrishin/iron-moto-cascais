@@ -143,6 +143,9 @@ Ownership:
 - Long approved copy may live under `scripts/build/content/` and be parsed by
   `blog_data.py`.
 - `build_blog.py`: hub and article rendering.
+- `build_i18n.py`, `build_sitemap.py` and `localize_internal_links.py` derive
+  Blog article membership from `BLOG_POSTS`; a new registered post must not
+  require a second hand-maintained slug list.
 
 Stable rules:
 
@@ -156,6 +159,10 @@ Stable rules:
 - Other article images are lazy unless their position requires otherwise.
 - Native video uses the supplied source/poster and matching `VideoObject`; do
   not substitute an iframe when self-hosted media is required.
+- When a self-hosted video is declared deferred, keep the MP4 URL in
+  `data-src` with `preload="none"` and attach it only on the first deliberate
+  player activation. The poster and dimensioned aspect-ratio wrapper must
+  render before that activation without downloading the MP4.
 - `BlogPosting`, `VideoObject` when present, `FAQPage` when present and
   `BreadcrumbList` must match visible content and real dates.
 - Referenced author/provider/publisher entities need maintained names; article
@@ -260,6 +267,11 @@ Ownership:
 Edit the shared data first and regenerate both representations. Keep visible
 prices, `OfferCatalog` and linked PDFs aligned. The current PDF portability
 limit is documented in `docs/OPEN_TASKS.md`.
+
+Additional fixed services in a pricing section belong in the section's
+`additional_services` data. The HTML renderer, `OfferCatalog` builder and PDF
+renderer consume that same list so a published price cannot exist in only one
+representation.
 
 Commands: `scripts/build/README.md`, **Pricing workflow**.
 

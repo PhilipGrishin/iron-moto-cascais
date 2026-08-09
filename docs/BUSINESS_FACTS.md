@@ -88,6 +88,10 @@ that parser.
     {
       "name": "Harley-Davidson scheduled maintenance",
       "price": "300 EUR"
+    },
+    {
+      "name": "Tubeless conversion of one spoked wheel",
+      "price": "100 EUR per wheel"
     }
   ],
   "pricingNote": "Published prices include applicable taxes and fees and are indicative unless explicitly stated as fixed. The final amount depends on the motorcycle and confirmed scope of work."

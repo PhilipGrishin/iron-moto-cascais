@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-08-04
+Last updated: 2026-08-09
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -10,8 +10,9 @@ deployed public identifiers and cache-bust values. Operating rules live in
 ## Status And Evidence
 
 - Status: **confirmed**.
-- Evidence date: 2026-08-04 (Europe/Lisbon).
-- Repository evidence: P-THE-FIRST implementation commit `06e04fff`,
+- Evidence date: 2026-08-09 (Europe/Lisbon).
+- Repository evidence: B-TUBELESS implementation commit `fb4429e9`,
+  P-THE-FIRST implementation commit `06e04fff`,
   P-FETISH implementation commit `a0da49fd`, CWAY-VAT
   size follow-up commit `8447160b`, CWAY-VAT
   implementation commit `560e3891`, EXPO-V2
@@ -22,7 +23,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: P-THE-FIRST GitHub Pages workflow `30883611614`,
+- Production evidence: B-TUBELESS deployment and cache-bypass verification are
+  pending. The latest completed evidence is P-THE-FIRST GitHub Pages workflow `30883611614`,
   cache-bypass checks on the four The First pages, all twelve integration
   pages, eight reciprocal Cocktail/Fetish pages, `llms.txt` and `sitemap.xml`;
   P-FETISH GitHub Pages workflow `30852768505`,
@@ -36,11 +38,12 @@ deployed public identifiers and cache-bust values. Operating rules live in
   byte-identical production project CSS and sitemap, and Google Rich Results
   result `QtK8FJYbOvDZFu-k-TWBng` with four valid items, no errors and no
   warnings. Earlier evidence remains in the task reports and changelog.
-- Reproducibility evidence: the documented full rebuild and all four validator
-  groups at P-THE-FIRST implementation commit `06e04fff` left a clean clone
-  with empty `git status --short`; verified 2026-08-04. The current `sitemap.xml`
+- Reproducibility evidence: the B-TUBELESS clean-clone rebuild is pending. The
+  documented full rebuild and all four validator groups at P-THE-FIRST
+  implementation commit `06e04fff` left a clean clone with empty
+  `git status --short`; verified 2026-08-04. The current `sitemap.xml`
   SHA-256 is
-  `5908ba0946f97dcd31567142364eef68db0086eda0b666fd847df38ba3b13e00`.
+  `d46186c47b0978039fdb93d1345438f6c37235f87cfc660a63cebbf0b3d16048`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
 
 ## Repository And Production
@@ -64,17 +67,17 @@ site generators during deployment; the workflow packages checked-in output.
 | Inventory | Current value | Canonical evidence |
 |---|---:|---|
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
-| English path patterns | 56 | `build_sitemap.py` `PAGES` |
-| Indexable sitemap URLs | 224 | parsed `sitemap.xml` `<url>` entries |
-| Tracked HTML files | 233 | filesystem enumeration |
-| Indexable HTML files | 224 | sitemap-to-file resolution |
+| English path patterns | 57 | `build_sitemap.py` `PAGES` |
+| Indexable sitemap URLs | 228 | parsed `sitemap.xml` `<url>` entries |
+| Tracked HTML files | 237 | filesystem enumeration |
+| Indexable HTML files | 228 | sitemap-to-file resolution |
 | Non-indexed HTML files | 9 | `404.html` plus 8 localized project redirect stubs |
-| Sitemap lastmod tags | 224 | parsed `sitemap.xml` |
-| Unique sitemap lastmod values | 55 | parsed `sitemap.xml` |
+| Sitemap lastmod tags | 228 | parsed `sitemap.xml` |
+| Unique sitemap lastmod values | 61 | parsed `sitemap.xml` |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
 | Project detail pages | 14 | `PROJECT_TILES` |
 | Data-driven project definitions | 14 | `PROJECT_CONFIGS` |
-| Blog posts | 7 | `BLOG_POSTS` |
+| Blog posts | 8 | `BLOG_POSTS` |
 | News articles | 3 | `NEWS_ARTICLES` |
 | Harley Hub English page patterns | 3 | `harley_hub_data.py` `PAGE_CONFIG` |
 | Generated general hub English pages | 6 | `build_new_pages.py` / `new_pages_data.py` |
@@ -95,9 +98,9 @@ Registry alignment on the evidence date:
 
 | Registry | Entries | Relationship |
 |---|---:|---|
-| `build_sitemap.py` `PAGES` | 56 | canonical English indexable paths |
-| `localize_internal_links.py` `LOCALIZED_PATHS` | 56 | matches `PAGES` after normalization |
-| `build_i18n.py` `MAIN_PAGES` | 31 | English sources localized by the generic i18n flow |
+| `build_sitemap.py` `PAGES` | 57 | canonical English indexable paths |
+| `localize_internal_links.py` `LOCALIZED_PATHS` | 57 | matches `PAGES` after normalization |
+| `build_i18n.py` `MAIN_PAGES` | 32 | English sources localized by the generic i18n flow |
 | `project_pages_data.py` `PROJECT_CONFIGS` | 14 | project details rendered directly in four languages |
 
 There is no active `EN_PAGES` registry. The canonical English page registry is
@@ -203,6 +206,7 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 - `/blog/royal-enfield-bear-650-fork-oil-case-study/`
 - `/blog/harley-davidson-full-service-done-right/`
 - `/blog/royal-enfield-bear-650-scrambler-build/`
+- `/blog/tubeless-conversion-spoked-wheels/`
 
 ### News
 
@@ -220,6 +224,11 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 - Blog article `<picture>` heroes use one AVIF preload whose `imagesrcset` and
   `imagesizes` mirror the rendered AVIF source; the hero `<img>` is the only
   `fetchpriority="high"` element on those pages.
+- The tubeless-conversion video article keeps the self-hosted MP4 out of the
+  initial request graph: its poster is visible immediately and the MP4 source
+  is attached only on the first player click. Its visible price, the four
+  pricing pages, `OfferCatalog` entries and four generated PDFs all state
+  `100 EUR` per wheel.
 - News article heroes remain in the CSS-background family protected by the
   responsive CSS hero contract; they are not `<picture>` heroes.
 - Project heroes retain responsive `<picture>` delivery. Migrated projects,

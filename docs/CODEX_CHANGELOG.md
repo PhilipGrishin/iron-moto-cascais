@@ -14,6 +14,26 @@ Format:
 - Notes: ...
 ```
 
+## 2026-08-09 - Tubeless conversion video article and service price
+
+- Commit: `fb4429e9`
+- Changed: Added the four-language tubeless-conversion Blog article through
+  the shared video-article pipeline, responsive AVIF/WebP/JPEG hero media, a
+  generated Blog-hub card, deferred self-hosted video loading and localized
+  reciprocal links from the tyre-service family. Added the fixed `100 EUR per
+  wheel` service once in pricing data and regenerated visible pricing,
+  `OfferCatalog` and all four PDF price lists. Blog localization, sitemap and
+  internal-link registries now derive article membership from `BLOG_POSTS`.
+- Verified: The approved source and repository copy have identical SHA-256;
+  both media endpoints returned HTTP 200; four validator groups passed for 228
+  sitemap URLs and a separate internal-link crawl found zero broken targets.
+  The picture-hero validator passed all five maintained viewport/DPR cases.
+  Clean-clone rebuild and production verification are pending.
+- Notes: Exactly 16 sitemap dates changed: four new article URLs, four Blog
+  hubs, four tyre-service pages and four pricing pages. No CSS, JavaScript or
+  cache-bust value changed. Full evidence is in
+  `docs/reports/B_TUBELESS_REPORT.md`.
+
 ## 2026-08-04 - The First multilingual project publication
 
 - Commit: `06e04fff`
