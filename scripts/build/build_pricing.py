@@ -243,6 +243,14 @@ def build_pricing_main(lang: str) -> str:
     </div>
     <p class="section-note">{esc(tt["note"][lang])}</p>''')
 
+            for service in section.get("additional_services", []):
+                parts.append(f'''    <div class="price-card chain-card">
+      <div class="card-head">
+        <h3>{esc(service["name"][lang])}</h3>
+        <div class="price"><span class="amount">{esc(service["price"][lang])}</span></div>
+      </div>
+    </div>''')
+
             ch = section["chain"]
             parts.append(f'''    <div class="price-card chain-card">
       <div class="card-head">
@@ -459,6 +467,15 @@ def build_jsonld(lang: str) -> dict:
                     "url": f"{page_url}#sec-{section['anchor']}",
                 }
                 offers.append(offer)
+
+        for it in section.get("additional_services", []):
+            offers.append({
+                "@type": "Offer",
+                "name": it["name"][lang],
+                "price": it["schema_price"],
+                "priceCurrency": "EUR",
+                "url": f"{page_url}#sec-{section['anchor']}",
+            })
 
     return {
         "@context": "https://schema.org",

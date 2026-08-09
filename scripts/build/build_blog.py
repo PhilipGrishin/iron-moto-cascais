@@ -600,11 +600,16 @@ def render_article(slug, article):
                 raise ValueError(f"Article {slug} has a video slot without nativeVideo data")
             video = article["nativeVideo"]
             layout_style = ""
-            if video["width"] > video["height"]:
+            player_aspect_ratio = video.get("playerAspectRatio")
+            if player_aspect_ratio:
+                layout_style = f' style="aspect-ratio:{a(player_aspect_ratio)};width:100%"'
+            elif video["width"] > video["height"]:
                 layout_style = f' style="aspect-ratio:{video["width"]}/{video["height"]};width:100%"'
+            deferred_attr = ' data-deferred-video=""' if video.get("deferUntilPlay") else ""
+            source_attr = "data-src" if video.get("deferUntilPlay") else "src"
             return f'''<div class="blog-native-video"{layout_style}>
-<video controls height="{video["height"]}" playsinline poster="{a(video["poster"])}" preload="none" title="{a(en_body["videoTitle"])}" data-i18n-title="{pre}.videoTitle" width="{video["width"]}">
-<source src="{a(video["contentUrl"])}" type="video/mp4"/>
+<video controls{deferred_attr} height="{video["height"]}" playsinline poster="{a(video["poster"])}" preload="none" title="{a(en_body["videoTitle"])}" data-i18n-title="{pre}.videoTitle" width="{video["width"]}">
+<source {source_attr}="{a(video["contentUrl"])}" type="video/mp4"/>
 </video>
 </div>'''
         raise ValueError(f"Unsupported blog content block type: {block['type']}")
@@ -748,6 +753,22 @@ def render_article(slug, article):
 </article>
 </main>'''
 
+    deferred_video_script = ""
+    if article.get("nativeVideo", {}).get("deferUntilPlay"):
+        deferred_video_script = '''
+<script>
+document.querySelectorAll('video[data-deferred-video]').forEach(function(video) {
+  video.addEventListener('click', function activateDeferredVideo() {
+    var source = video.querySelector('source[data-src]');
+    if (!source) return;
+    source.src = source.dataset.src;
+    source.removeAttribute('data-src');
+    video.load();
+    video.play();
+  }, { once: true });
+});
+</script>'''
+
     html = (
         head_html
         + "\n<body>\n"
@@ -755,7 +776,9 @@ def render_article(slug, article):
         + body
         + FOOTER_HTML
         + MODAL_HTML
-        + f'\n<script defer="" src="/assets/main.js?v={CACHE_BUST}"></script>\n</body>\n</html>'
+        + f'\n<script defer="" src="/assets/main.js?v={CACHE_BUST}"></script>'
+        + deferred_video_script
+        + "\n</body>\n</html>"
     )
     html = patch_navigation_footer(html, "en")
 

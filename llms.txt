@@ -74,6 +74,7 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 - [We Found the Wrong Fork Oil in a Brand-New Royal Enfield Bear 650](https://ironcustommotors.com/blog/royal-enfield-bear-650-fork-oil-case-study/): We opened the Showa fork on a new Royal Enfield Bear 650 and found one leg badly underfilled with dark, worn oil. Here's what we learned.
 - [A Harley-Davidson Full Service, Done Right](https://ironcustommotors.com/blog/harley-davidson-full-service-done-right/): How a proper Harley-Davidson full service is done — three oils, oil filter, brake fluid flush and air-filter care — at Iron Custom Motors in Cascais, Lisbon.
 - [Royal Enfield Bear 650: a complete scrambler build](https://ironcustommotors.com/blog/royal-enfield-bear-650-scrambler-build/): A stock Royal Enfield Bear 650 turned into a full scrambler at Iron Custom Motors, Cascais (Lisbon): protection, luggage, exhaust, brakes and suspension.
+- [Tubeless conversion for spoked wheels: how we do it](https://ironcustommotors.com/blog/tubeless-conversion-spoked-wheels/): How Iron Custom Motors in Cascais (Lisbon) converts spoked motorcycle wheels to tubeless: polyurethane sealing in three layers, leak tests, zero balancing.
 
 ## News
 
@@ -128,7 +129,7 @@ All pages are available in 4 languages with reciprocal hreflang annotations:
 ## Sitemap
 
 Full machine-readable sitemap: [sitemap.xml](https://ironcustommotors.com/sitemap.xml)
-Generated coverage: 56 English paths across 4 language variants (224 sitemap URLs).
+Generated coverage: 57 English paths across 4 language variants (228 sitemap URLs).
 
 ## Citation guidance
 

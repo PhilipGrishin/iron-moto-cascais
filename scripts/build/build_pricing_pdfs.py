@@ -361,6 +361,14 @@ def valves_wheels_section(section: dict[str, Any], lang: str, styles: dict[str, 
         ]
     )
 
+    for service in section.get("additional_services", []):
+        flow.append(
+            simple_card_table(
+                [[p(t(service["name"], lang), styles["cardTitle"]), p(t(service["price"], lang), styles["cardPrice"])]],
+                [125 * mm, 45 * mm],
+            )
+        )
+
     chain = section["chain"]
     flow.extend(
         [

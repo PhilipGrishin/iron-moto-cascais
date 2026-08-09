@@ -157,6 +157,47 @@ _BEAR650_BUILD_LABELS = {
     },
 }
 
+_TUBELESS_SLUG = "tubeless-conversion-spoked-wheels"
+_TUBELESS_SOURCE = Path(__file__).resolve().parent / "content" / "tubeless_conversion_blog_4lang.md"
+_TUBELESS_LABELS = {
+    "en": {
+        "eyebrow": "Published 9 August 2026",
+        "publishedLabel": "Published 9 August 2026",
+        "breadHome": "Home",
+        "breadBlog": "Blog",
+        "faqTitle": "FAQ",
+        "videoSchemaName": "Tubeless conversion of spoked motorcycle wheels at Iron Custom Motors",
+        "videoSchemaDescription": "How Iron Custom Motors converts spoked motorcycle wheels to tubeless with three polyurethane layers, leak testing and zero balancing.",
+    },
+    "pt": {
+        "eyebrow": "Publicado em 9 de agosto de 2026",
+        "publishedLabel": "Publicado em 9 de agosto de 2026",
+        "breadHome": "Início",
+        "breadBlog": "Blog",
+        "faqTitle": "Perguntas frequentes",
+        "videoSchemaName": "Conversão tubeless de rodas de raios de mota na Iron Custom Motors",
+        "videoSchemaDescription": "Como a Iron Custom Motors converte rodas de raios para tubeless com três camadas de poliuretano, teste de fugas e equilibragem a zero.",
+    },
+    "ru": {
+        "eyebrow": "Опубликовано 9 августа 2026",
+        "publishedLabel": "Опубликовано 9 августа 2026",
+        "breadHome": "Главная",
+        "breadBlog": "Блог",
+        "faqTitle": "FAQ",
+        "videoSchemaName": "Конверсия спицованных колёс мотоцикла в бескамерные в Iron Custom Motors",
+        "videoSchemaDescription": "Как Iron Custom Motors переводит спицованные колёса на бескамерные: три слоя полиуретана, проверка герметичности и балансировка в ноль.",
+    },
+    "uk": {
+        "eyebrow": "Опубліковано 9 серпня 2026",
+        "publishedLabel": "Опубліковано 9 серпня 2026",
+        "breadHome": "Головна",
+        "breadBlog": "Блог",
+        "faqTitle": "FAQ",
+        "videoSchemaName": "Конверсія спицьованих коліс мотоцикла в безкамерні в Iron Custom Motors",
+        "videoSchemaDescription": "Як Iron Custom Motors переводить спицьовані колеса на безкамерні: три шари поліуретану, перевірка герметичності та балансування в нуль.",
+    },
+}
+
 
 def _inline_markdown(value):
     tokens = []
@@ -523,7 +564,7 @@ def _load_harley_service_post():
     }
 
 
-def _parse_bear650_build_language(raw):
+def _parse_markdown_video_language(raw, source_name):
     lines = raw.splitlines()
     meta = {}
     h1 = None
@@ -542,12 +583,12 @@ def _parse_bear650_build_language(raw):
         elif in_body:
             body_lines.append(line)
     if not (meta.get("title") and meta.get("description") and meta.get("slug") and h1):
-        raise ValueError("Incomplete Bear 650 scrambler build metadata")
+        raise ValueError(f"Incomplete {source_name} metadata")
 
     body = "\n".join(body_lines).strip()
     faq_match = re.search(r"\n## (?:FAQ|Perguntas frequentes)\n", body)
     if not faq_match:
-        raise ValueError("Missing Bear 650 scrambler build FAQ section")
+        raise ValueError(f"Missing {source_name} FAQ section")
     before_faq = body[:faq_match.start()].strip()
     faq_text = body[faq_match.end():].strip()
 
@@ -557,7 +598,7 @@ def _parse_bear650_build_language(raw):
         re.MULTILINE,
     )
     if not hero_match:
-        raise ValueError("Missing Bear 650 scrambler build hero image slot")
+        raise ValueError(f"Missing {source_name} hero image slot")
     hero_alt = (hero_match.group(1) or hero_match.group(2)).strip()
     before_faq = f"{before_faq[:hero_match.start()]}\n{before_faq[hero_match.end():]}".strip()
 
@@ -569,16 +610,16 @@ def _parse_bear650_build_language(raw):
     ]:
         match = re.match(r"\*\*(.*?)\*\*\s*(.*)", paragraph, re.S)
         if not match:
-            raise ValueError(f"Cannot parse Bear 650 scrambler build FAQ item: {paragraph[:80]}")
+            raise ValueError(f"Cannot parse {source_name} FAQ item: {paragraph[:80]}")
         faq_items.append({"q": match.group(1).strip(), "a": _inline_markdown(match.group(2).strip())})
     if len(faq_items) != 6:
-        raise ValueError(f"Expected 6 Bear 650 scrambler build FAQ items, got {len(faq_items)}")
+        raise ValueError(f"Expected 6 {source_name} FAQ items, got {len(faq_items)}")
 
     chunks = re.split(r"\n(?=## )", before_faq)
     preamble_blocks = _parse_markdown_blocks(chunks[0].splitlines())
     preamble_paragraphs = [block for block in preamble_blocks if block["type"] == "p"]
     if not preamble_paragraphs:
-        raise ValueError("Bear 650 scrambler build source has no lead paragraph")
+        raise ValueError(f"{source_name} source has no lead paragraph")
     lede = preamble_paragraphs[0]["text"]
     content_sections = []
     if preamble_blocks[1:]:
@@ -599,7 +640,7 @@ def _parse_bear650_build_language(raw):
     if content_sections:
         content_sections[-1]["className"] = "blog-cta-box"
     if not (video_title and video_text):
-        raise ValueError("Missing Bear 650 scrambler build video section copy")
+        raise ValueError(f"Missing {source_name} video section copy")
 
     return {
         "meta": meta,
@@ -613,22 +654,25 @@ def _parse_bear650_build_language(raw):
     }
 
 
-def _load_bear650_build_post():
-    source = _BEAR650_BUILD_SOURCE.read_text(encoding="utf-8")
+def _load_markdown_video_post(
+    *, source_path, source_name, slug, labels, published_iso, modified_iso,
+    hero_image, hero_image_dims, schema_image, native_video
+):
+    source = source_path.read_text(encoding="utf-8")
     parsed = {
-        code: _parse_bear650_build_language(raw)
+        code: _parse_markdown_video_language(raw, source_name)
         for code, raw in _split_localized_sections(
-            source, _BEAR650_BUILD_LANGS, "Bear 650 scrambler build"
+            source, _BEAR650_BUILD_LANGS, source_name
         ).items()
     }
     post_meta = {}
     post_body = {}
     for code in ("en", "ru", "uk", "pt"):
         item = parsed[code]
-        expected_slug = f"/{'' if code == 'en' else code + '/'}blog/{_BEAR650_BUILD_SLUG}/"
+        expected_slug = f"/{'' if code == 'en' else code + '/'}blog/{slug}/"
         if item["meta"]["slug"] != expected_slug:
             raise ValueError(
-                f"Unexpected Bear 650 scrambler build slug for {code}: {item['meta']['slug']}"
+                f"Unexpected {source_name} slug for {code}: {item['meta']['slug']}"
             )
         post_meta[code] = {
             "title": item["meta"]["title"],
@@ -636,7 +680,7 @@ def _load_bear650_build_post():
             "excerpt": item["meta"]["description"],
         }
         post_body[code] = {
-            **_BEAR650_BUILD_LABELS[code],
+            **labels[code],
             "h1": item["h1"],
             "h1Crumb": item["h1"],
             "lede": item["lede"],
@@ -647,22 +691,42 @@ def _load_bear650_build_post():
             "videoText": item["videoText"],
         }
     return {
-        "publishedISO": "2026-07-19T12:00:00+01:00",
-        "modifiedISO": "2026-07-20T09:00:53+01:00",
-        "heroImage": "/photos/blog/blog-royal-enfield-bear-650-scrambler-build-hero.png",
-        "heroImageDims": (1672, 941),
-        "schemaImage": "/photos/optimized/blog-blog-royal-enfield-bear-650-scrambler-build-hero-1920.webp",
+        "publishedISO": published_iso,
+        "modifiedISO": modified_iso,
+        "heroImage": hero_image,
+        "heroImageDims": hero_image_dims,
+        "schemaImage": schema_image,
         "schemaEntityName": "Iron Custom Motors",
         "publisherLogo": {
             "url": "https://ironcustommotors.com/photos/icon-512.png",
             "width": 512,
             "height": 512,
         },
-        "imageBase": "/photos/blog/blog-royal-enfield-bear-650-scrambler-build",
+        "imageBase": hero_image.rsplit("-hero", 1)[0],
         "imageHero": 0,
         "imageCount": 0,
         "imageDims": {},
-        "nativeVideo": {
+        "nativeVideo": native_video,
+        "sourceLocalizedSlugs": {
+            code: slug for code in ("en", "ru", "pt", "uk")
+        },
+        "meta": post_meta,
+        "body": post_body,
+    }
+
+
+def _load_bear650_build_post():
+    return _load_markdown_video_post(
+        source_path=_BEAR650_BUILD_SOURCE,
+        source_name="Bear 650 scrambler build",
+        slug=_BEAR650_BUILD_SLUG,
+        labels=_BEAR650_BUILD_LABELS,
+        published_iso="2026-07-19T12:00:00+01:00",
+        modified_iso="2026-07-20T09:00:53+01:00",
+        hero_image="/photos/blog/blog-royal-enfield-bear-650-scrambler-build-hero.png",
+        hero_image_dims=(1672, 941),
+        schema_image="/photos/optimized/blog-blog-royal-enfield-bear-650-scrambler-build-hero-1920.webp",
+        native_video={
             "contentUrl": "https://media.ironcustommotors.com/bear650-scrambler-build.mp4",
             "poster": "https://media.ironcustommotors.com/bear650-scrambler-build-cover.png",
             "uploadDate": "2026-07-19T12:00:00+01:00",
@@ -670,12 +734,31 @@ def _load_bear650_build_post():
             "width": 1920,
             "height": 1080,
         },
-        "sourceLocalizedSlugs": {
-            code: _BEAR650_BUILD_SLUG for code in ("en", "ru", "pt", "uk")
+    )
+
+
+def _load_tubeless_post():
+    return _load_markdown_video_post(
+        source_path=_TUBELESS_SOURCE,
+        source_name="tubeless conversion article",
+        slug=_TUBELESS_SLUG,
+        labels=_TUBELESS_LABELS,
+        published_iso="2026-08-09T10:00:00+01:00",
+        modified_iso="2026-08-09T10:00:00+01:00",
+        hero_image="/photos/blog/blog-tubeless-conversion-spoked-wheels-hero.png",
+        hero_image_dims=(1536, 1024),
+        schema_image="/photos/optimized/blog-blog-tubeless-conversion-spoked-wheels-hero-1920.webp",
+        native_video={
+            "contentUrl": "https://media.ironcustommotors.com/tubeless-conversion-spoked-wheels.mp4",
+            "poster": "https://media.ironcustommotors.com/tubeless-conversion-spoked-wheels-poster.jpg",
+            "uploadDate": "2026-08-09T10:00:00+01:00",
+            "duration": "PT5M37S",
+            "width": 1080,
+            "height": 1920,
+            "playerAspectRatio": "16/9",
+            "deferUntilPlay": True,
         },
-        "meta": post_meta,
-        "body": post_body,
-    }
+    )
 
 BLOG_HUB_BODY = {
     "en": {
@@ -4504,3 +4587,4 @@ BLOG_POSTS["motorcycle-tyre-fitting-specialist-cascais"] = {
 BLOG_POSTS[_BEAR650_SLUG] = _load_bear650_post()
 BLOG_POSTS[_HARLEY_SERVICE_SLUG] = _load_harley_service_post()
 BLOG_POSTS[_BEAR650_BUILD_SLUG] = _load_bear650_build_post()
+BLOG_POSTS[_TUBELESS_SLUG] = _load_tubeless_post()

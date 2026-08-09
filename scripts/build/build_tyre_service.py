@@ -262,7 +262,23 @@ def parse_copy() -> dict[str, dict]:
 
 
 def rich_text(text: str) -> str:
-    return html.escape(text, quote=False)
+    links: list[str] = []
+
+    def replace_link(match: re.Match[str]) -> str:
+        href = match.group(2).strip()
+        if not href.startswith("/"):
+            raise ValueError(f"Tyre-service Markdown links must be site-local: {href}")
+        links.append(
+            f'<a href="{html.escape(href, quote=True)}">'
+            f'{html.escape(match.group(1), quote=False)}</a>'
+        )
+        return f"@@ICM_TYRE_LINK_{len(links) - 1}@@"
+
+    rendered = re.sub(r"\[([^\]]+)\]\((/[^)]+)\)", replace_link, text)
+    rendered = html.escape(rendered, quote=False)
+    for index, link in enumerate(links):
+        rendered = rendered.replace(f"@@ICM_TYRE_LINK_{index}@@", link)
+    return rendered
 
 
 def render_paragraphs(text: str) -> str:

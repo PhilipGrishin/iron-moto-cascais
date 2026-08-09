@@ -402,6 +402,23 @@ SEC_04 = {
         ],
         "note": {"en":"All prices in euro.","ru":"Все цены в евро.","uk":"Усі ціни в євро.","pt":"Todos os preços em euro."},
     },
+    "additional_services": [
+        {
+            "name": {
+                "en": "Tubeless conversion of spoked wheels",
+                "ru": "Конверсия спицованного колеса в бескамерное",
+                "uk": "Конверсія спицьованого колеса в безкамерне",
+                "pt": "Conversão tubeless de rodas de raios",
+            },
+            "price": {
+                "en": "€100 per wheel",
+                "ru": "€100 за колесо",
+                "uk": "€100 за колесо",
+                "pt": "100 € por roda",
+            },
+            "schema_price": "100",
+        },
+    ],
     "chain": {
         "name": {"en":"Chain clean, lube & adjust","ru":"Чистка, смазка и регулировка цепи","uk":"Чищення, змащення та регулювання ланцюга","pt":"Limpeza, lubrificação e regulação da corrente"},
         "desc": {"en":"Complete chain-drive care — extends chain and sprocket life","ru":"Комплексный уход за цепным приводом — продлевает ресурс цепи и звёзд","uk":"Комплексний догляд за ланцюговим приводом — подовжує ресурс ланцюга та зірок","pt":"Cuidado completo da transmissão — prolonga a vida da corrente e cremalheiras"},

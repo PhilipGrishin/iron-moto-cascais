@@ -45,6 +45,11 @@ PROJECT_PRIORITIES = {
     "quanta-r": "0.75",
     "burly": "0.75",
 }
+BLOG_PRIORITIES = {
+    "harley-davidson-full-service-done-right": "0.9",
+    "royal-enfield-bear-650-scrambler-build": "0.9",
+    "tubeless-conversion-spoked-wheels": "0.9",
+}
 
 # (path, changefreq, priority)
 PAGES = [
@@ -73,13 +78,10 @@ PAGES = [
     *[(f"{slug}/", "monthly", "0.9") for slug in BRAND_ORDER],
     ("motorcycle-tyre-service/", "monthly", "0.95"),
     ("blog/", "weekly", "0.85"),
-    ("blog/revtech-110-oil-service-engine-gearbox-drive/", "monthly", "0.82"),
-    ("blog/motorcycle-brake-pad-replacement-cascais/", "monthly", "0.82"),
-    ("blog/front-fork-service-motorcycle-cascais/", "monthly", "0.82"),
-    ("blog/motorcycle-tyre-fitting-specialist-cascais/", "monthly", "0.82"),
-    ("blog/royal-enfield-bear-650-fork-oil-case-study/", "monthly", "0.82"),
-    ("blog/harley-davidson-full-service-done-right/", "monthly", "0.9"),
-    ("blog/royal-enfield-bear-650-scrambler-build/", "monthly", "0.9"),
+    *[
+        (f"blog/{slug}/", "monthly", BLOG_PRIORITIES.get(slug, "0.82"))
+        for slug in BLOG_POSTS
+    ],
     ("news/", "weekly", "0.9"),
     ("news/ericeira-kustom-fest-2026/", "yearly", "0.9"),
     ("news/opens-new-workshop-in-cascais/", "yearly", "0.8"),

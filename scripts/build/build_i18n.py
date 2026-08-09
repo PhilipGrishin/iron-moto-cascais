@@ -18,6 +18,7 @@ from copy import deepcopy
 from bs4 import BeautifulSoup, FeatureNotFound, NavigableString
 
 from build_output import write_html_if_changed
+from blog_data import BLOG_POSTS
 from brand_pages_data import BRAND_ORDER
 from localize_internal_links import is_language_switch_link, rewrite_href
 from page_meta import PAGE_META, OG_LOCALES
@@ -75,13 +76,10 @@ MAIN_PAGES = [
     ("faq/index.html", "faq"),
     *[(f"{slug}/index.html", slug) for slug in BRAND_ORDER],
     ("blog/index.html", "blog"),
-    ("blog/revtech-110-oil-service-engine-gearbox-drive/index.html", "blog/revtech-110-oil-service-engine-gearbox-drive"),
-    ("blog/motorcycle-brake-pad-replacement-cascais/index.html", "blog/motorcycle-brake-pad-replacement-cascais"),
-    ("blog/front-fork-service-motorcycle-cascais/index.html", "blog/front-fork-service-motorcycle-cascais"),
-    ("blog/motorcycle-tyre-fitting-specialist-cascais/index.html", "blog/motorcycle-tyre-fitting-specialist-cascais"),
-    ("blog/royal-enfield-bear-650-fork-oil-case-study/index.html", "blog/royal-enfield-bear-650-fork-oil-case-study"),
-    ("blog/harley-davidson-full-service-done-right/index.html", "blog/harley-davidson-full-service-done-right"),
-    ("blog/royal-enfield-bear-650-scrambler-build/index.html", "blog/royal-enfield-bear-650-scrambler-build"),
+    *[
+        (f"blog/{slug}/index.html", f"blog/{slug}")
+        for slug in BLOG_POSTS
+    ],
     ("news/index.html", "news"),
     ("news/ericeira-kustom-fest-2026/index.html", "news/ericeira-kustom-fest-2026"),
     ("news/opens-new-workshop-in-cascais/index.html", "news/opens-new-workshop-in-cascais"),

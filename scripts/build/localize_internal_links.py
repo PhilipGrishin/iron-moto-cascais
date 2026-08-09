@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup, FeatureNotFound
 
 from build_output import write_html_if_changed
 from brand_pages_data import BRAND_ORDER
+from blog_data import BLOG_POSTS
 from project_pages_data import PROJECT_CONFIGS
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -47,13 +48,7 @@ LOCALIZED_PATHS = {
     *[f"/{slug}/" for slug in BRAND_ORDER],
     "/motorcycle-tyre-service/",
     "/blog/",
-    "/blog/revtech-110-oil-service-engine-gearbox-drive/",
-    "/blog/motorcycle-brake-pad-replacement-cascais/",
-    "/blog/front-fork-service-motorcycle-cascais/",
-    "/blog/motorcycle-tyre-fitting-specialist-cascais/",
-    "/blog/royal-enfield-bear-650-fork-oil-case-study/",
-    "/blog/harley-davidson-full-service-done-right/",
-    "/blog/royal-enfield-bear-650-scrambler-build/",
+    *[f"/blog/{slug}/" for slug in BLOG_POSTS],
     "/news/",
     "/news/ericeira-kustom-fest-2026/",
     "/news/opens-new-workshop-in-cascais/",
