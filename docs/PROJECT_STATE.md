@@ -11,7 +11,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 - Status: **confirmed**.
 - Evidence date: 2026-08-09 (Europe/Lisbon).
-- Repository evidence: B-TUBELESS implementation commit `fb4429e9`,
+- Repository evidence: B-TUBELESS implementation commit `fb4429e9` and schema
+  resolution follow-up commit `44e202ee`,
   P-THE-FIRST implementation commit `06e04fff`,
   P-FETISH implementation commit `a0da49fd`, CWAY-VAT
   size follow-up commit `8447160b`, CWAY-VAT
@@ -23,8 +24,12 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: B-TUBELESS deployment and cache-bypass verification are
-  pending. The latest completed evidence is P-THE-FIRST GitHub Pages workflow `30883611614`,
+- Production evidence: B-TUBELESS GitHub Pages workflow `31306394300`,
+  cache-bypass checks on the four article pages, four Blog hubs, four pricing
+  pages, four tyre-service pages, `llms.txt` and `sitemap.xml`; both media
+  endpoints returned HTTP 200 and the production article graphs resolve
+  publisher `@id` to the complete `LocalBusiness` entity. Earlier completed
+  evidence includes P-THE-FIRST GitHub Pages workflow `30883611614`,
   cache-bypass checks on the four The First pages, all twelve integration
   pages, eight reciprocal Cocktail/Fetish pages, `llms.txt` and `sitemap.xml`;
   P-FETISH GitHub Pages workflow `30852768505`,
@@ -38,11 +43,10 @@ deployed public identifiers and cache-bust values. Operating rules live in
   byte-identical production project CSS and sitemap, and Google Rich Results
   result `QtK8FJYbOvDZFu-k-TWBng` with four valid items, no errors and no
   warnings. Earlier evidence remains in the task reports and changelog.
-- Reproducibility evidence: the B-TUBELESS clean-clone rebuild is pending. The
-  documented full rebuild and all four validator groups at P-THE-FIRST
-  implementation commit `06e04fff` left a clean clone with empty
-  `git status --short`; verified 2026-08-04. The current `sitemap.xml`
-  SHA-256 is
+- Reproducibility evidence: the documented full rebuild and all four validator
+  groups at B-TUBELESS schema follow-up commit `44e202ee` left a clean clone
+  with empty `git status --short`; verified 2026-08-09. The current
+  `sitemap.xml` SHA-256 is
   `d46186c47b0978039fdb93d1345438f6c37235f87cfc660a63cebbf0b3d16048`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
 

@@ -6,8 +6,10 @@ Date: 2026-08-09 (Europe/Lisbon)
 
 The tubeless-conversion workshop video article is registered as the eighth
 Blog post and rendered in EN/PT/RU/UK through the shared Blog pipeline. The
-implementation commit is `fb4429e9`. Deployment and cache-bypass production
-verification are pending.
+implementation commit is `fb4429e9`; publisher-entity resolution was completed
+in follow-up commit `44e202ee`. GitHub Pages workflow `31306394300` succeeded,
+and all four public article URLs plus all twelve integration URLs passed
+cache-bypass production verification.
 
 Public paths:
 
@@ -57,8 +59,8 @@ Both endpoints returned HTTP 200 before the implementation commit. The MP4 is
 registered as `video/mp4`, 294,648,850 bytes and `PT5M37S`; the poster is
 `image/jpeg`, 550,412 bytes. The page renders the poster with `preload="none"`,
 keeps the MP4 URL in `data-src`, and moves it to `src` only on the first player
-click. Local browser inspection before activation found an empty
-`currentSrc` and no MP4 in the page-assets inventory.
+click. Production browser inspection before activation found an empty
+`currentSrc`, the poster in the page-assets inventory and no MP4 request.
 
 Each localized graph contains `BlogPosting`, the localized `VideoObject`,
 `FAQPage`, `BreadcrumbList` and the complete `LocalBusiness` entity. The
@@ -87,9 +89,12 @@ Picture hero preload validation passed: 32 picture hero page(s); 390px/DPR3, 390
 The in-app browser cannot expose the exact maintained DPR3 network profile and
 has a known 10 px viewport-scrollbar discrepancy. Therefore the five-case
 candidate result is reported from the repository validator, not misrepresented
-as an unavailable exact DPR3 browser capture. At the available 390 x 844 and
-1440 x 1000 layouts the new page had one high-priority element, no high/lazy
-conflict, no horizontal overflow, an unrequested MP4, and a 16:9 player box.
+as an unavailable exact DPR3 browser capture. At the available 390 x 844
+production layout it requested exactly one hero candidate
+(`blog-blog-tubeless-conversion-spoked-wheels-hero-1280.avif`), had one
+high-priority element, no high/lazy conflict, no horizontal overflow, no MP4
+request, and a 16:9 player box. The 1440 x 1000 local layout passed the same
+visual and overflow checks.
 
 ## Price And Reciprocal Links
 
@@ -161,6 +166,27 @@ Harley Hub validation passed: 12 pages and all required integrations
 ```
 
 All 14 registered project validations passed their multilingual copy, media,
-schema, cache-bust, redirect and integration checks. The clean-clone Full Safe
-Rebuild and production checks are pending and must replace this sentence before
-final delivery.
+schema, cache-bust, redirect and integration checks. A separate internal-link
+crawl found zero broken targets. Exact parsed-copy checks covered all four
+languages and found six FAQ entries in each article.
+
+The documented Full Safe Rebuild was run on a clean clone of schema follow-up
+commit `44e202ee`, regenerated the complete static output and all four PDFs,
+passed the four validator groups and left `git status --short` empty.
+
+Production verification after workflow `31306394300` confirmed:
+
+- HTTP 200 for the four article URLs, four Blog hubs, four pricing pages and
+  four tyre-service pages.
+- Self-canonical, mutual five-member hreflang, FAQ6, deferred video and the
+  complete `BlogPosting` / `VideoObject` / `FAQPage` / `BreadcrumbList` /
+  `LocalBusiness` graph on every localized article.
+- The localized article card on all four Blog hubs, the visible EUR 100 service
+  and matching numeric `Offer` on all four pricing pages, and the localized
+  reciprocal link with the EUR 100 price on all four tyre-service pages.
+- Production `sitemap.xml` SHA-256
+  `d46186c47b0978039fdb93d1345438f6c37235f87cfc660a63cebbf0b3d16048`,
+  byte-identical to the repository artifact.
+- Production `llms.txt` SHA-256
+  `308e6c410837554bbec2b2d010592fcd9ba84ebc9ada78c2f1cc1fd5255c72bd`,
+  byte-identical to the repository artifact.

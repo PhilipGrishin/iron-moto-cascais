@@ -28,10 +28,16 @@ Format:
   both media endpoints returned HTTP 200; four validator groups passed for 228
   sitemap URLs and a separate internal-link crawl found zero broken targets.
   The picture-hero validator passed all five maintained viewport/DPR cases.
-  Clean-clone rebuild and production verification are pending.
+  The documented full rebuild left a clean clone at `44e202ee`. GitHub Pages
+  workflow `31306394300` succeeded; cache-bypass production checks passed for
+  the four articles and all twelve integration pages, and the production
+  sitemap and `llms.txt` match the repository byte-for-byte.
 - Notes: Exactly 16 sitemap dates changed: four new article URLs, four Blog
   hubs, four tyre-service pages and four pricing pages. No CSS, JavaScript or
-  cache-bust value changed. Full evidence is in
+  cache-bust value changed. Schema resolution follow-up commit `44e202ee`
+  added the canonical `LocalBusiness` entity to the four new article graphs.
+  Production mobile inspection loaded one responsive hero candidate and the
+  poster but no MP4 before interaction. Full evidence is in
   `docs/reports/B_TUBELESS_REPORT.md`.
 
 ## 2026-08-04 - The First multilingual project publication
