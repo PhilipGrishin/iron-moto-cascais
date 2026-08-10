@@ -1,6 +1,6 @@
 {
   "_comment": "Editorial source for visible homepage review cards and JSON-LD review[] items. Rating and total review count stay sourced from the Google Places Worker snapshot, not from this file.",
-  "displayCount": 6,
+  "displayCount": 9,
   "preferPageLanguage": false,
   "reviews": [
     {
@@ -10,6 +10,22 @@
       "lang": "en",
       "publishedAt": "2026-06-25",
       "url": "https://share.google/AHrUyAQcckj5uOPNP"
+    },
+    {
+      "author": "Vladimir Beck",
+      "rating": 5,
+      "text": "I brought my custom Harley-Davidson XR1200 to the workshop essentially dead, it wouldn't even start and had electrical issues, on top of needing a serious mechanical service. The guys brought the bike back to life and gave it a comprehensive service: diagnosed and fixed the electrical problems, overhauled the clutch, rebuilt the front fork, serviced the brakes, replaced the battery, fluids and filters, and took care of everything else needed to get the bike properly back on the road. What impressed me most was the technical level of the team. They clearly know motorcycles inside out, approach the work systematically, and pay attention to the details that actually matter. Everything was properly diagnosed, explained and done to a very high standard. The XR1200 is now running great and feels like a completely different bike. Excellent workshop, highly skilled people, and a place I would confidently trust with any motorcycle. Highly recommended!",
+      "publishedAt": "2026-08-07",
+      "url": "https://search.google.com/local/reviews?placeid=ChIJ-5VQL2bPHg0R-Oj5dD0Ojhk",
+      "lang": "en"
+    },
+    {
+      "author": "Volodymyr Chyrva",
+      "rating": 5,
+      "text": "Best moto workshop in our region so far - service, atmosphere, owners - just the best. Thank you guys for taking care of my S 1000 R, neither BMW officials nor other workshops can compare with the level of attention to details you demonstrated",
+      "publishedAt": "2026-08-07",
+      "url": "https://search.google.com/local/reviews?placeid=ChIJ-5VQL2bPHg0R-Oj5dD0Ojhk",
+      "lang": "en"
     },
     {
       "author": "Graeme Gilbertson",
@@ -26,6 +42,14 @@
       "lang": "en",
       "publishedAt": "2026-06-21",
       "url": "https://share.google/aannSWKEEscucReIZ"
+    },
+    {
+      "author": "Алексей Бегунов",
+      "rating": 5,
+      "text": "Hi, my name is Alex. I've been riding motorcycles since 2014. I rarely trust anyone with my bike and usually do all the maintenance myself. Unfortunately, I ran into a problem that I couldn't solve on my own. The team changed the oil, filters, spark plugs, and tires, and they also found and fixed the issue that was preventing the engine from starting. Thank you, Iron Custom Motors, for getting my bike back on the road. I'm happy to be riding again! Five stars—you've earned them. Love you guys!",
+      "publishedAt": "2026-08-03",
+      "url": "https://search.google.com/local/reviews?placeid=ChIJ-5VQL2bPHg0R-Oj5dD0Ojhk",
+      "lang": "en"
     },
     {
       "author": "Dmytro Zhuk",
