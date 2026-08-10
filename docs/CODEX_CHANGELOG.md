@@ -14,6 +14,24 @@ Format:
 - Notes: ...
 ```
 
+## 2026-08-10 - Nine curated homepage review cards
+
+- Commit: `800c4c68`
+- Changed: Replaced the curated review source byte-for-byte with the approved
+  nine-card file, regenerated the four home-page visible cards and matching
+  JSON-LD `Review` arrays, and moved only the four home-page sitemap dates.
+- Verified: The Reviews Workflow kept the Worker snapshot unchanged at `5.0`
+  from `22` reviews and injected 9 curated items into each language home page.
+  Exact card/schema/source comparisons, responsive browser checks at 1440 px
+  and 390 px, all four validator groups, and a Full Safe Rebuild on a clean
+  clone passed. GitHub Pages workflow `31390002213` succeeded; cache-bypass
+  production checks passed on all four home pages, and the production curated
+  JSON and sitemap match the repository byte-for-byte.
+- Notes: The six original review objects remain unchanged and in their prior
+  mutual order. The three added authors are Vladimir Beck, Volodymyr Chyrva
+  and Алексей Бегунов. The snapshot, CSS, JavaScript and cache-bust values did
+  not change. Full evidence is in `docs/reports/R9_REPORT.md`.
+
 ## 2026-08-09 - Tubeless conversion video article and service price
 
 - Commit: `fb4429e9`
