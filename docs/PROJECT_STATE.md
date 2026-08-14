@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-08-10
+Last updated: 2026-08-14
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -10,8 +10,9 @@ deployed public identifiers and cache-bust values. Operating rules live in
 ## Status And Evidence
 
 - Status: **confirmed**.
-- Evidence date: 2026-08-10 (Europe/Lisbon).
-- Repository evidence: R9 implementation commit `800c4c68`, the automated
+- Evidence date: 2026-08-14 (Europe/Lisbon).
+- Repository evidence: V-UPLOADDATE implementation commit `39e44293`, R9
+  implementation commit `800c4c68`, the automated
   review-snapshot refresh commit `7e834826`, B-TUBELESS implementation commit
   `fb4429e9` and schema
   resolution follow-up commit `44e202ee`,
@@ -26,7 +27,9 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: R9 GitHub Pages workflow `31390002213`, cache-bypass
+- Production evidence: V-UPLOADDATE GitHub Pages workflow `31781405314`,
+  cache-bypass schema checks on all 12 affected Blog pages and the production
+  sitemap; R9 GitHub Pages workflow `31390002213`, cache-bypass
   checks on all four home pages, `assets/reviews-curated.json` and
   `sitemap.xml`; B-TUBELESS GitHub Pages workflow `31306394300`,
   cache-bypass checks on the four article pages, four Blog hubs, four pricing
@@ -48,8 +51,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
   result `QtK8FJYbOvDZFu-k-TWBng` with four valid items, no errors and no
   warnings. Earlier evidence remains in the task reports and changelog.
 - Reproducibility evidence: the documented full rebuild and all four validator
-  groups at R9 implementation commit `800c4c68` left a clean clone with empty
-  `git status --short`; verified 2026-08-10. The current
+  groups at V-UPLOADDATE implementation commit `39e44293` left a clean clone
+  with empty `git status --short`; verified 2026-08-14. The current
   `sitemap.xml` SHA-256 is
   `4ff1085cda49c0a631899e876f82ee4b81c93eb83ca4b8e9b8c9f2500a16e427`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
@@ -231,6 +234,9 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   `aaad7c6c40839b4174653524fcc7749e17714792b033b861e011d57cdf708190`.
 - Every sitemap page has canonical, mutual hreflang and Schema.org JSON-LD with
   at least `BreadcrumbList`.
+- All 40 `VideoObject` entities across sitemap pages have a non-empty
+  `uploadDate`. The SEO validator checks this required field recursively in
+  every JSON-LD graph.
 - Every sitemap page has an early hero discovery hint.
 - CSS-background heroes use matching responsive preload/background candidates
   at the maintained viewport boundaries.

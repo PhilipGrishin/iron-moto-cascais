@@ -165,6 +165,9 @@ Stable rules:
   render before that activation without downloading the MP4.
 - `BlogPosting`, `VideoObject` when present, `FAQPage` when present and
   `BreadcrumbList` must match visible content and real dates.
+- Every `VideoObject` must have a non-empty `uploadDate` using the real video
+  or article publication time in full ISO-8601 form with timezone.
+  `validate_seo.py` enforces this contract across every sitemap page.
 - Referenced author/provider/publisher entities need maintained names; article
   publisher data includes the maintained logo where required.
 

@@ -14,6 +14,23 @@ Format:
 - Notes: ...
 ```
 
+## 2026-08-14 - Required upload dates for Blog videos
+
+- Commit: `39e44293`
+- Changed: Added the exact publication timestamps to the `VideoObject` schema
+  on three Blog articles in all four languages and added a site-wide SEO
+  assertion requiring every `VideoObject` to have a non-empty `uploadDate`.
+- Verified: The new assertion failed on the previous generated state with the
+  expected 12 page-specific errors, then passed after the Blog Workflow. All
+  four validator groups passed, a Full Safe Rebuild left a clean clone, and
+  GitHub Pages workflow `31781405314` succeeded. Cache-bypass production
+  parsing confirmed the exact timestamps on all 12 pages and zero missing
+  `uploadDate` fields.
+- Notes: Visible content and the other 28 `VideoObject` entities did not
+  change. `sitemap.xml` remained byte-identical with SHA-256
+  `4ff1085cda49c0a631899e876f82ee4b81c93eb83ca4b8e9b8c9f2500a16e427`.
+  Full evidence is in `docs/reports/V_UPLOADDATE_REPORT.md`.
+
 ## 2026-08-10 - Nine curated homepage review cards
 
 - Commit: `800c4c68`
