@@ -408,6 +408,30 @@ def jsonld_strings(value):
             yield from jsonld_strings(item)
 
 
+def jsonld_entities_of_type(value, schema_type: str):
+    if isinstance(value, list):
+        for item in value:
+            yield from jsonld_entities_of_type(item, schema_type)
+        return
+    if not isinstance(value, dict):
+        return
+    current = value.get("@type")
+    if current == schema_type or (isinstance(current, list) and schema_type in current):
+        yield value
+    for item in value.values():
+        yield from jsonld_entities_of_type(item, schema_type)
+
+
+def check_video_object_upload_dates(blocks: list[object]) -> list[str]:
+    issues = []
+    for video in jsonld_entities_of_type(blocks, "VideoObject"):
+        upload_date = video.get("uploadDate")
+        if not isinstance(upload_date, str) or not upload_date.strip():
+            name = clean_text(str(video.get("name", "unnamed video")))
+            issues.append(f"VideoObject {name!r} is missing required uploadDate")
+    return issues
+
+
 def schema_has_entity_type(blocks: list[object], schema_type: str) -> bool:
     for block in blocks:
         if not isinstance(block, dict):
@@ -815,6 +839,7 @@ def validate_page(url: str) -> list[str]:
         issues.append("missing BreadcrumbList JSON-LD entity")
     issues.extend(check_jsonld_localized_urls(jsonld_blocks, lang))
     issues.extend(check_jsonld_assets(jsonld_blocks, html_path))
+    issues.extend(check_video_object_upload_dates(jsonld_blocks))
 
     issues.extend(check_i18n_html_prerender(soup, lang))
     issues.extend(check_internal_links(soup, lang))

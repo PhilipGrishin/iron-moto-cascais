@@ -882,6 +882,7 @@ BLOG_POSTS = {'revtech-110-oil-service-engine-gearbox-drive': {'publishedISO': '
                                                   'imageDims': {1: (1600, 900)},
                                                   'youtubeUrl': 'https://www.youtube.com/shorts/ylsQq_bnvU0',
                                                   'youtubeEmbed': 'https://www.youtube.com/embed/ylsQq_bnvU0',
+                                                  'youtubeUploadDate': '2026-06-17T10:00:00+01:00',
                                                   'sourceLocalizedSlugs': {'en': 'revtech-110-oil-service-engine-gearbox-drive',
                                                                            'ru': 'revtech-110-zamena-masla-dvigatel-korobka-privod',
                                                                            'pt': 'servico-oleo-revtech-110-motor-caixa-transmissao',
@@ -2771,6 +2772,7 @@ BLOG_POSTS = {'revtech-110-oil-service-engine-gearbox-drive': {'publishedISO': '
         },
         'youtubeUrl': 'https://www.youtube.com/shorts/mskf3enVe4M',
         'youtubeEmbed': 'https://www.youtube.com/embed/mskf3enVe4M',
+        'youtubeUploadDate': '2026-06-17T10:00:00+01:00',
         'sourceLocalizedSlugs': {
             'en': 'motorcycle-brake-pad-replacement-cascais',
             'ru': 'zamena-tormoznyh-kolodok-motocikla-cascais',
@@ -3381,6 +3383,7 @@ BLOG_POSTS['front-fork-service-motorcycle-cascais'] = {'publishedISO': '2026-06-
  'imageDims': {1: (1600, 900)},
  'youtubeUrl': 'https://www.youtube.com/shorts/WkXuGSn0-yw',
  'youtubeEmbed': 'https://www.youtube.com/embed/WkXuGSn0-yw',
+ 'youtubeUploadDate': '2026-06-18T10:00:00+01:00',
  'sourceLocalizedSlugs': {'en': 'front-fork-service-motorcycle-cascais',
                           'ru': 'obsluzhivanie-peredney-vilki-mototsikl-cascais',
                           'pt': 'servico-forquilha-dianteira-moto-cascais',
