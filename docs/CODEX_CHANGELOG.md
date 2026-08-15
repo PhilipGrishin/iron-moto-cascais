@@ -14,6 +14,27 @@ Format:
 - Notes: ...
 ```
 
+## 2026-08-15 - Sealing-tape failure video article
+
+- Commit: `6c24e8ef`
+- Changed: Added the four-language sealing-tape failure Blog case through the
+  shared Markdown video-article pipeline, responsive AVIF/WebP/JPEG hero
+  media, localized Blog-hub cards, five-item FAQ graphs and reciprocal links
+  from the tubeless-conversion article. The self-hosted portrait video uses
+  the shared centered 9:16 wrapper and deferred `data-src` loading.
+- Verified: Both media endpoints returned HTTP 200. Exact approved-copy,
+  schema, canonical/hreflang, hero preload/picture, reciprocal-link and
+  sitemap-date checks passed in all four languages. All four validator groups
+  passed, a separate crawl found zero broken targets across 34,084 internal
+  references, and the Full Safe Rebuild left a clean clone. GitHub Pages
+  workflow `31874899365` succeeded; cache-bypass production parsing and
+  responsive browser checks passed at 390 px and 1440 px without downloading
+  the MP4 before interaction.
+- Notes: Exactly 12 sitemap dates were added or moved: four new article URLs,
+  four Blog hubs and four tubeless-conversion article URLs. Common CSS,
+  JavaScript and cache-bust values did not change. Full evidence is in
+  `docs/reports/B_TAPE_REPORT.md`.
+
 ## 2026-08-14 - Required upload dates for Blog videos
 
 - Commit: `39e44293`

@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-08-14
+Last updated: 2026-08-15
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -10,8 +10,9 @@ deployed public identifiers and cache-bust values. Operating rules live in
 ## Status And Evidence
 
 - Status: **confirmed**.
-- Evidence date: 2026-08-14 (Europe/Lisbon).
-- Repository evidence: V-UPLOADDATE implementation commit `39e44293`, R9
+- Evidence date: 2026-08-15 (Europe/Lisbon).
+- Repository evidence: B-TAPE implementation commit `6c24e8ef`,
+  V-UPLOADDATE implementation commit `39e44293`, R9
   implementation commit `800c4c68`, the automated
   review-snapshot refresh commit `7e834826`, B-TUBELESS implementation commit
   `fb4429e9` and schema
@@ -27,7 +28,13 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: V-UPLOADDATE GitHub Pages workflow `31781405314`,
+- Production evidence: B-TAPE GitHub Pages workflow `31874899365`,
+  cache-bypass checks on the four new Blog pages, four Blog hubs, four
+  reciprocal tubeless-conversion pages, `llms.txt` and `sitemap.xml`; the
+  self-hosted portrait MP4 and poster returned HTTP 200, and browser resource
+  inventories at 390 px and 1440 px contained one responsive hero and the
+  poster but no MP4 before interaction. V-UPLOADDATE GitHub Pages workflow
+  `31781405314`,
   cache-bypass schema checks on all 12 affected Blog pages and the production
   sitemap; R9 GitHub Pages workflow `31390002213`, cache-bypass
   checks on all four home pages, `assets/reviews-curated.json` and
@@ -51,10 +58,10 @@ deployed public identifiers and cache-bust values. Operating rules live in
   result `QtK8FJYbOvDZFu-k-TWBng` with four valid items, no errors and no
   warnings. Earlier evidence remains in the task reports and changelog.
 - Reproducibility evidence: the documented full rebuild and all four validator
-  groups at V-UPLOADDATE implementation commit `39e44293` left a clean clone
-  with empty `git status --short`; verified 2026-08-14. The current
+  groups at B-TAPE implementation commit `6c24e8ef` left a clean clone with
+  empty `git status --short`; verified 2026-08-15. The current
   `sitemap.xml` SHA-256 is
-  `4ff1085cda49c0a631899e876f82ee4b81c93eb83ca4b8e9b8c9f2500a16e427`.
+  `d0c0d98dc180f44a3d13cadc859c7f1c355c8999557c2a232b84855d87d22b82`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
 
 ## Repository And Production
@@ -78,17 +85,17 @@ site generators during deployment; the workflow packages checked-in output.
 | Inventory | Current value | Canonical evidence |
 |---|---:|---|
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
-| English path patterns | 57 | `build_sitemap.py` `PAGES` |
-| Indexable sitemap URLs | 228 | parsed `sitemap.xml` `<url>` entries |
-| Tracked HTML files | 237 | filesystem enumeration |
-| Indexable HTML files | 228 | sitemap-to-file resolution |
+| English path patterns | 58 | `build_sitemap.py` `PAGES` |
+| Indexable sitemap URLs | 232 | parsed `sitemap.xml` `<url>` entries |
+| Tracked HTML files | 241 | filesystem enumeration |
+| Indexable HTML files | 232 | sitemap-to-file resolution |
 | Non-indexed HTML files | 9 | `404.html` plus 8 localized project redirect stubs |
-| Sitemap lastmod tags | 228 | parsed `sitemap.xml` |
-| Unique sitemap lastmod values | 61 | parsed `sitemap.xml` |
+| Sitemap lastmod tags | 232 | parsed `sitemap.xml` |
+| Unique sitemap lastmod values | 58 | parsed `sitemap.xml` |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
 | Project detail pages | 14 | `PROJECT_TILES` |
 | Data-driven project definitions | 14 | `PROJECT_CONFIGS` |
-| Blog posts | 8 | `BLOG_POSTS` |
+| Blog posts | 9 | `BLOG_POSTS` |
 | News articles | 3 | `NEWS_ARTICLES` |
 | Harley Hub English page patterns | 3 | `harley_hub_data.py` `PAGE_CONFIG` |
 | Generated general hub English pages | 6 | `build_new_pages.py` / `new_pages_data.py` |
@@ -109,8 +116,8 @@ Registry alignment on the evidence date:
 
 | Registry | Entries | Relationship |
 |---|---:|---|
-| `build_sitemap.py` `PAGES` | 57 | canonical English indexable paths |
-| `localize_internal_links.py` `LOCALIZED_PATHS` | 57 | matches `PAGES` after normalization |
+| `build_sitemap.py` `PAGES` | 58 | canonical English indexable paths |
+| `localize_internal_links.py` `LOCALIZED_PATHS` | 58 | matches `PAGES` after normalization |
 | `build_i18n.py` `MAIN_PAGES` | 32 | English sources localized by the generic i18n flow |
 | `project_pages_data.py` `PROJECT_CONFIGS` | 14 | project details rendered directly in four languages |
 
@@ -218,6 +225,7 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 - `/blog/harley-davidson-full-service-done-right/`
 - `/blog/royal-enfield-bear-650-scrambler-build/`
 - `/blog/tubeless-conversion-spoked-wheels/`
+- `/blog/tubeless-sealing-tape-failure/`
 
 ### News
 
@@ -234,7 +242,7 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   `aaad7c6c40839b4174653524fcc7749e17714792b033b861e011d57cdf708190`.
 - Every sitemap page has canonical, mutual hreflang and Schema.org JSON-LD with
   at least `BreadcrumbList`.
-- All 40 `VideoObject` entities across sitemap pages have a non-empty
+- All 44 `VideoObject` entities across sitemap pages have a non-empty
   `uploadDate`. The SEO validator checks this required field recursively in
   every JSON-LD graph.
 - Every sitemap page has an early hero discovery hint.
@@ -248,6 +256,10 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   is attached only on the first player click. Its visible price, the four
   pricing pages, `OfferCatalog` entries and four generated PDFs all state
   `100 EUR` per wheel.
+- The sealing-tape failure case uses the same deferred self-hosted media
+  contract with a centered portrait `9 / 16` player. The four new pages have
+  five localized FAQ items, and the preceding tubeless-conversion article
+  links back to the case in every language.
 - News article heroes remain in the CSS-background family protected by the
   responsive CSS hero contract; they are not `<picture>` heroes.
 - Project heroes retain responsive `<picture>` delivery. Migrated projects,

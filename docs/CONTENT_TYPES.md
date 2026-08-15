@@ -163,6 +163,10 @@ Stable rules:
   `data-src` with `preload="none"` and attach it only on the first deliberate
   player activation. The poster and dimensioned aspect-ratio wrapper must
   render before that activation without downloading the MP4.
+- Portrait native video uses the common centered `9 / 16` wrapper, constrained
+  to 420 px at desktop widths and to the article column on mobile. Do not apply
+  the landscape width/aspect override unless the registered video is actually
+  landscape.
 - `BlogPosting`, `VideoObject` when present, `FAQPage` when present and
   `BreadcrumbList` must match visible content and real dates.
 - Every `VideoObject` must have a non-empty `uploadDate` using the real video
