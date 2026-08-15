@@ -198,6 +198,47 @@ _TUBELESS_LABELS = {
     },
 }
 
+_TAPE_SLUG = "tubeless-sealing-tape-failure"
+_TAPE_SOURCE = Path(__file__).resolve().parent / "content" / "tubeless_sealing_tape_failure_blog_4lang.md"
+_TAPE_LABELS = {
+    "en": {
+        "eyebrow": "Published 15 August 2026",
+        "publishedLabel": "Published 15 August 2026",
+        "breadHome": "Home",
+        "breadBlog": "Blog",
+        "faqTitle": "FAQ",
+        "videoSchemaName": "Sealing tape two years after a tubeless conversion",
+        "videoSchemaDescription": "A converted spoked wheel losing air overnight: Iron Custom Motors in Cascais shows why sealing tape fails after two years and what holds for decades.",
+    },
+    "pt": {
+        "eyebrow": "Publicado em 15 de agosto de 2026",
+        "publishedLabel": "Publicado em 15 de agosto de 2026",
+        "breadHome": "Início",
+        "breadBlog": "Blog",
+        "faqTitle": "Perguntas frequentes",
+        "videoSchemaName": "Fita de vedação dois anos após uma conversão tubeless",
+        "videoSchemaDescription": "Uma roda convertida a perder ar de noite: a Iron Custom Motors, em Cascais, mostra porque a fita de vedação falha em dois anos e o que dura décadas.",
+    },
+    "ru": {
+        "eyebrow": "Опубликовано 15 августа 2026",
+        "publishedLabel": "Опубликовано 15 августа 2026",
+        "breadHome": "Главная",
+        "breadBlog": "Блог",
+        "faqTitle": "FAQ",
+        "videoSchemaName": "Герметизирующая лента через два года после конверсии",
+        "videoSchemaDescription": "Колесо после конверсии спускает за ночь. Iron Custom Motors в Кашкайше показывает, во что превратилась лента за два года и чем герметизировать правильно.",
+    },
+    "uk": {
+        "eyebrow": "Опубліковано 15 серпня 2026",
+        "publishedLabel": "Опубліковано 15 серпня 2026",
+        "breadHome": "Головна",
+        "breadBlog": "Блог",
+        "faqTitle": "FAQ",
+        "videoSchemaName": "Герметизувальна стрічка через два роки після конверсії",
+        "videoSchemaDescription": "Колесо після конверсії спускає за ніч. Iron Custom Motors у Кашкайші показує, на що перетворилася стрічка за два роки і чим герметизувати правильно.",
+    },
+}
+
 
 def _inline_markdown(value):
     tokens = []
@@ -564,7 +605,7 @@ def _load_harley_service_post():
     }
 
 
-def _parse_markdown_video_language(raw, source_name):
+def _parse_markdown_video_language(raw, source_name, expected_faq_count=6):
     lines = raw.splitlines()
     meta = {}
     h1 = None
@@ -612,8 +653,10 @@ def _parse_markdown_video_language(raw, source_name):
         if not match:
             raise ValueError(f"Cannot parse {source_name} FAQ item: {paragraph[:80]}")
         faq_items.append({"q": match.group(1).strip(), "a": _inline_markdown(match.group(2).strip())})
-    if len(faq_items) != 6:
-        raise ValueError(f"Expected 6 {source_name} FAQ items, got {len(faq_items)}")
+    if len(faq_items) != expected_faq_count:
+        raise ValueError(
+            f"Expected {expected_faq_count} {source_name} FAQ items, got {len(faq_items)}"
+        )
 
     chunks = re.split(r"\n(?=## )", before_faq)
     preamble_blocks = _parse_markdown_blocks(chunks[0].splitlines())
@@ -656,11 +699,14 @@ def _parse_markdown_video_language(raw, source_name):
 
 def _load_markdown_video_post(
     *, source_path, source_name, slug, labels, published_iso, modified_iso,
-    hero_image, hero_image_dims, schema_image, native_video
+    hero_image, hero_image_dims, schema_image, native_video,
+    expected_faq_count=6
 ):
     source = source_path.read_text(encoding="utf-8")
     parsed = {
-        code: _parse_markdown_video_language(raw, source_name)
+        code: _parse_markdown_video_language(
+            raw, source_name, expected_faq_count=expected_faq_count
+        )
         for code, raw in _split_localized_sections(
             source, _BEAR650_BUILD_LANGS, source_name
         ).items()
@@ -744,7 +790,7 @@ def _load_tubeless_post():
         slug=_TUBELESS_SLUG,
         labels=_TUBELESS_LABELS,
         published_iso="2026-08-09T10:00:00+01:00",
-        modified_iso="2026-08-09T10:00:00+01:00",
+        modified_iso="2026-08-15T10:00:00+01:00",
         hero_image="/photos/blog/blog-tubeless-conversion-spoked-wheels-hero.png",
         hero_image_dims=(1536, 1024),
         schema_image="/photos/optimized/blog-blog-tubeless-conversion-spoked-wheels-hero-1920.webp",
@@ -758,6 +804,32 @@ def _load_tubeless_post():
             "playerAspectRatio": "16/9",
             "deferUntilPlay": True,
         },
+    )
+    post["resolveBusinessEntity"] = True
+    return post
+
+
+def _load_tape_post():
+    post = _load_markdown_video_post(
+        source_path=_TAPE_SOURCE,
+        source_name="tubeless sealing tape failure article",
+        slug=_TAPE_SLUG,
+        labels=_TAPE_LABELS,
+        published_iso="2026-08-15T10:00:00+01:00",
+        modified_iso="2026-08-15T10:00:00+01:00",
+        hero_image="/photos/blog/blog-tubeless-sealing-tape-failure-hero.png",
+        hero_image_dims=(941, 1672),
+        schema_image="/photos/optimized/blog-blog-tubeless-sealing-tape-failure-hero-1920.webp",
+        native_video={
+            "contentUrl": "https://media.ironcustommotors.com/tubeless-sealing-tape-failure.mp4",
+            "poster": "https://media.ironcustommotors.com/tubeless-sealing-tape-failure-poster.jpg",
+            "uploadDate": "2026-08-15T10:00:00+01:00",
+            "duration": "PT1M33S",
+            "width": 1080,
+            "height": 1920,
+            "deferUntilPlay": True,
+        },
+        expected_faq_count=5,
     )
     post["resolveBusinessEntity"] = True
     return post
@@ -4593,3 +4665,4 @@ BLOG_POSTS[_BEAR650_SLUG] = _load_bear650_post()
 BLOG_POSTS[_HARLEY_SERVICE_SLUG] = _load_harley_service_post()
 BLOG_POSTS[_BEAR650_BUILD_SLUG] = _load_bear650_build_post()
 BLOG_POSTS[_TUBELESS_SLUG] = _load_tubeless_post()
+BLOG_POSTS[_TAPE_SLUG] = _load_tape_post()

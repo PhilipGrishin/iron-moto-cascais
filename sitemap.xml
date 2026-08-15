@@ -1323,7 +1323,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/blog/</loc>
-    <lastmod>2026-08-09T10:00:00+01:00</lastmod>
+    <lastmod>2026-08-15T10:00:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/blog/"/>
@@ -1334,7 +1334,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/ru/blog/</loc>
-    <lastmod>2026-08-09T10:00:00+01:00</lastmod>
+    <lastmod>2026-08-15T10:00:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/blog/"/>
@@ -1345,7 +1345,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/uk/blog/</loc>
-    <lastmod>2026-08-09T10:00:00+01:00</lastmod>
+    <lastmod>2026-08-15T10:00:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/blog/"/>
@@ -1356,7 +1356,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/pt/blog/</loc>
-    <lastmod>2026-08-09T10:00:00+01:00</lastmod>
+    <lastmod>2026-08-15T10:00:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/blog/"/>
@@ -1675,7 +1675,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/blog/tubeless-conversion-spoked-wheels/</loc>
-    <lastmod>2026-08-09T10:00:00+01:00</lastmod>
+    <lastmod>2026-08-15T10:00:00+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/blog/tubeless-conversion-spoked-wheels/"/>
@@ -1686,7 +1686,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/ru/blog/tubeless-conversion-spoked-wheels/</loc>
-    <lastmod>2026-08-09T10:00:00+01:00</lastmod>
+    <lastmod>2026-08-15T10:00:00+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/blog/tubeless-conversion-spoked-wheels/"/>
@@ -1697,7 +1697,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/uk/blog/tubeless-conversion-spoked-wheels/</loc>
-    <lastmod>2026-08-09T10:00:00+01:00</lastmod>
+    <lastmod>2026-08-15T10:00:00+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/blog/tubeless-conversion-spoked-wheels/"/>
@@ -1708,7 +1708,7 @@
   </url>
   <url>
     <loc>https://ironcustommotors.com/pt/blog/tubeless-conversion-spoked-wheels/</loc>
-    <lastmod>2026-08-09T10:00:00+01:00</lastmod>
+    <lastmod>2026-08-15T10:00:00+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/blog/tubeless-conversion-spoked-wheels/"/>
@@ -1716,6 +1716,50 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://ironcustommotors.com/uk/blog/tubeless-conversion-spoked-wheels/"/>
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://ironcustommotors.com/pt/blog/tubeless-conversion-spoked-wheels/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ironcustommotors.com/blog/tubeless-conversion-spoked-wheels/"/>
+  </url>
+  <url>
+    <loc>https://ironcustommotors.com/blog/tubeless-sealing-tape-failure/</loc>
+    <lastmod>2026-08-15T10:00:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.82</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ironcustommotors.com/ru/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://ironcustommotors.com/uk/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://ironcustommotors.com/pt/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ironcustommotors.com/blog/tubeless-sealing-tape-failure/"/>
+  </url>
+  <url>
+    <loc>https://ironcustommotors.com/ru/blog/tubeless-sealing-tape-failure/</loc>
+    <lastmod>2026-08-15T10:00:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.82</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ironcustommotors.com/ru/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://ironcustommotors.com/uk/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://ironcustommotors.com/pt/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ironcustommotors.com/blog/tubeless-sealing-tape-failure/"/>
+  </url>
+  <url>
+    <loc>https://ironcustommotors.com/uk/blog/tubeless-sealing-tape-failure/</loc>
+    <lastmod>2026-08-15T10:00:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.82</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ironcustommotors.com/ru/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://ironcustommotors.com/uk/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://ironcustommotors.com/pt/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ironcustommotors.com/blog/tubeless-sealing-tape-failure/"/>
+  </url>
+  <url>
+    <loc>https://ironcustommotors.com/pt/blog/tubeless-sealing-tape-failure/</loc>
+    <lastmod>2026-08-15T10:00:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.82</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ironcustommotors.com/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ironcustommotors.com/ru/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://ironcustommotors.com/uk/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://ironcustommotors.com/pt/blog/tubeless-sealing-tape-failure/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ironcustommotors.com/blog/tubeless-sealing-tape-failure/"/>
   </url>
   <url>
     <loc>https://ironcustommotors.com/news/</loc>

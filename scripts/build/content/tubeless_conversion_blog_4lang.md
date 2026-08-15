@@ -32,7 +32,7 @@ Wheels apart, rim tape off, and the work starts with spoke tension. First by ear
 
 ## Three thin layers and 36 hours
 
-The sealant rule is hard: never construction or sanitary silicone — it shrinks over time, dries out, cracks. We use single-component polyurethane made for load-bearing parts under constant vibration: resistant to aggressive environments and UV, elastic for decades. It cures on atmospheric moisture, so it goes on in three thin stages of 1–2 mm: the spoke cavities first, then two top layers, with 12–16 hours of polymerisation between them and space left for the valve stem. On camera, the first layer had dried after 16 hours; at 36 hours both were dry, smooth and neat. Not fast. Worth it.
+The sealant rule is hard: never construction or sanitary silicone — it shrinks over time, dries out, cracks. We use single-component polyurethane made for load-bearing parts under constant vibration: resistant to aggressive environments and UV, elastic for decades. It cures on atmospheric moisture, so it goes on in three thin stages of 1–2 mm: the spoke cavities first, then two top layers, with 12–16 hours of polymerisation between them and space left for the valve stem. On camera, the first layer had dried after 16 hours; at 36 hours both were dry, smooth and neat. Not fast. Worth it. What sealing tape can look like after two years is shown in our [real workshop failure case](/blog/tubeless-sealing-tape-failure/).
 
 ## The result
 
@@ -92,7 +92,7 @@ Rodas desmontadas, fita protetora fora, e o trabalho começa pela tensão dos ra
 
 ## Três camadas finas e 36 horas
 
-No vedante a regra é rígida: nunca silicones de construção ou sanitários — encolhem com o tempo, secam e estalam. Usamos poliuretano monocomponente concebido para peças estruturais sob vibração constante: resistente a ambientes agressivos e aos UV, elástico durante décadas. Cura com a humidade atmosférica, por isso aplica-se em três fases finas de 1–2 mm: primeiro as cavidades dos raios, depois duas camadas de cobertura, com 12–16 horas de polimerização entre elas e espaço livre para a válvula. No vídeo, a primeira camada secou ao fim de 16 horas; às 36 estavam ambas secas, lisas e limpas. Não é rápido. Vale a pena.
+No vedante a regra é rígida: nunca silicones de construção ou sanitários — encolhem com o tempo, secam e estalam. Usamos poliuretano monocomponente concebido para peças estruturais sob vibração constante: resistente a ambientes agressivos e aos UV, elástico durante décadas. Cura com a humidade atmosférica, por isso aplica-se em três fases finas de 1–2 mm: primeiro as cavidades dos raios, depois duas camadas de cobertura, com 12–16 horas de polimerização entre elas e espaço livre para a válvula. No vídeo, a primeira camada secou ao fim de 16 horas; às 36 estavam ambas secas, lisas e limpas. Não é rápido. Vale a pena. O que pode acontecer à fita de vedação ao fim de dois anos está no nosso [caso real de oficina](/pt/blog/tubeless-sealing-tape-failure/).
 
 ## O resultado
 
@@ -152,7 +152,7 @@ Sim. O vídeo mostra uma roda clássica de 30 polegadas convertida com o mesmo m
 
 ## Три тонких слоя и 36 часов
 
-Насчёт герметика правило железное: никаких строительных и сантехнических силиконов — любой силикон со временем усаживается, высыхает и трескается. Мы используем однокомпонентный полиуретан, созданный для нагруженных деталей под постоянной вибрацией: стойкий к агрессивной среде и ультрафиолету, десятилетиями эластичный. Полимеризуется он от атмосферной влаги, поэтому толстым слоем его не нанести — три этапа по 1–2 мм: сначала полости у спиц, затем два верхних слоя, между ними 12–16 часов на полимеризацию, место под вентиль остаётся свободным. В кадре: через 16 часов первый слой высох, через 36 сухи оба — ровно и аккуратно. Небыстро, но того стоит.
+Насчёт герметика правило железное: никаких строительных и сантехнических силиконов — любой силикон со временем усаживается, высыхает и трескается. Мы используем однокомпонентный полиуретан, созданный для нагруженных деталей под постоянной вибрацией: стойкий к агрессивной среде и ультрафиолету, десятилетиями эластичный. Полимеризуется он от атмосферной влаги, поэтому толстым слоем его не нанести — три этапа по 1–2 мм: сначала полости у спиц, затем два верхних слоя, между ними 12–16 часов на полимеризацию, место под вентиль остаётся свободным. В кадре: через 16 часов первый слой высох, через 36 сухи оба — ровно и аккуратно. Небыстро, но того стоит. Что происходит с герметизирующей лентой со временем, мы показали в [живом кейсе спустя два года](/ru/blog/tubeless-sealing-tape-failure/).
 
 ## Результат
 
@@ -212,7 +212,7 @@ Fix your ride & fuel your soul.
 
 ## Три тонкі шари і 36 годин
 
-Щодо герметика правило залізне: жодних будівельних чи сантехнічних силіконів — будь-який силікон з часом всідається, висихає й тріскається. Ми використовуємо однокомпонентний поліуретан, створений для навантажених деталей під постійною вібрацією: стійкий до агресивного середовища та ультрафіолету, десятиліттями еластичний. Полімеризується він від атмосферної вологи, тому товстим шаром його не нанести — три етапи по 1–2 мм: спершу порожнини біля спиць, потім два верхні шари, між ними 12–16 годин на полімеризацію, місце під вентиль лишається вільним. У кадрі: за 16 годин перший шар висох, за 36 сухі обидва — рівно й акуратно. Нешвидко, але воно того варте.
+Щодо герметика правило залізне: жодних будівельних чи сантехнічних силіконів — будь-який силікон з часом всідається, висихає й тріскається. Ми використовуємо однокомпонентний поліуретан, створений для навантажених деталей під постійною вібрацією: стійкий до агресивного середовища та ультрафіолету, десятиліттями еластичний. Полімеризується він від атмосферної вологи, тому товстим шаром його не нанести — три етапи по 1–2 мм: спершу порожнини біля спиць, потім два верхні шари, між ними 12–16 годин на полімеризацію, місце під вентиль лишається вільним. У кадрі: за 16 годин перший шар висох, за 36 сухі обидва — рівно й акуратно. Нешвидко, але воно того варте. Що відбувається з герметизувальною стрічкою з часом, ми показали в [реальному кейсі через два роки](/uk/blog/tubeless-sealing-tape-failure/).
 
 ## Результат
 
