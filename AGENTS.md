@@ -204,6 +204,10 @@ when risks or follow-ups changed. Add implementation chronology to
   time. An unchanged page must keep the same `lastmod` across deploys.
 - Structured-data `datePublished` and `dateModified` must use real
   content dates with timezone, not deploy time.
+- FormSubmit privacy. Every FormSubmit form action must use an activated
+  private alias, never the recipient email address. The public contact email
+  may remain in visible copy, `mailto:` links and structured business data;
+  this rule applies only to the form `action` URL.
 
 ## Conventions
 

@@ -104,7 +104,7 @@ module is named above or in `docs/CONTENT_TYPES.md`.
 
 | Script | What it protects | Important exclusions |
 |---|---|---|
-| `validate_seo.py` | sitemap files; title/meta; canonical/hreflang; JSON parsing and breadcrumbs; localized JSON-LD URLs; local assets; cache-bust presence/consistency; LCP discovery; CSS hero alignment; Blog picture preload/source alignment and viewport/DPR candidate selection; navigation/footer structure; project-menu registry membership, localized URLs and order; same-language chrome-text parity; localized links; English `llms.txt` coverage; changelog commit references | Rich Results UI; schema recommended fields; global visible FAQ parity; Product/Offer semantics; real lastmod meaning; visual rendering; external services; measured performance |
+| `validate_seo.py` | all built HTML FormSubmit-action privacy; sitemap files; title/meta; canonical/hreflang; JSON parsing and breadcrumbs; localized JSON-LD URLs; local assets; cache-bust presence/consistency; LCP discovery; CSS hero alignment; Blog picture preload/source alignment and viewport/DPR candidate selection; navigation/footer structure; project-menu registry membership, localized URLs and order; same-language chrome-text parity; localized links; English `llms.txt` coverage; changelog commit references | Rich Results UI; schema recommended fields; global visible FAQ parity; Product/Offer semantics; real lastmod meaning; visual rendering; external services; measured performance |
 | `validate_brand_pages.py` | brand registry and assets; generated variants; schema type presence; sitemap/deploy wiring; homepage and reciprocal links; forbidden brand claims | exact visible copy; global RRT warnings; browser interaction/performance |
 | `validate_harley_hub.py` | exact maintained copy; visual tokens; hero media; schema families; language-local links; feed/portfolio and required integrations | live browser behavior; external RRT; performance benefit |
 | `validate_project_pages.py` | every registered project: exact source copy; media; schema graph/dates/references; cache-bust; redirects; listing/sitemap and optional Custom/Harley integration | browser rendering; external RRT |
@@ -182,6 +182,12 @@ python3 scripts/build/build_sitemap.py
 python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 ```
+
+The lead-form modal is currently retained in checked-in HTML and copied by
+page-family generators rather than rendered from a standalone form template.
+Its FormSubmit `action` must use an activated private alias and must never
+contain the recipient email address. `validate_seo.py` checks this rule across
+all built HTML, including files outside the sitemap.
 
 If `assets/main.css` or `assets/main.js` changed, read the current main-asset
 stamp from `docs/PROJECT_STATE.md`, choose the next date-letter value, update

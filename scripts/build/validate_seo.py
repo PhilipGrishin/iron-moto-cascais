@@ -432,6 +432,32 @@ def check_video_object_upload_dates(blocks: list[object]) -> list[str]:
     return issues
 
 
+def check_formsubmit_action_privacy() -> list[str]:
+    """Reject recipient email addresses exposed in FormSubmit form actions."""
+    issues = []
+    excluded_directories = {".git", ".venv", "node_modules"}
+    html_paths = sorted(
+        path
+        for path in SITE_ROOT.rglob("*.html")
+        if not excluded_directories.intersection(path.relative_to(SITE_ROOT).parts)
+    )
+    for html_path in html_paths:
+        soup = BeautifulSoup(html_path.read_text(encoding="utf-8"), HTML_PARSER)
+        for form in soup.find_all("form", action=True):
+            action = str(form["action"]).strip()
+            parsed = urlparse(action)
+            if parsed.hostname not in {"formsubmit.co", "www.formsubmit.co"}:
+                continue
+            if "@" not in action:
+                continue
+            relative_path = html_path.relative_to(SITE_ROOT)
+            issues.append(
+                f"{relative_path}: FormSubmit form action exposes an email address; "
+                "use the activated private alias"
+            )
+    return issues
+
+
 def schema_has_entity_type(blocks: list[object], schema_type: str) -> bool:
     for block in blocks:
         if not isinstance(block, dict):
@@ -938,6 +964,7 @@ def main() -> int:
         issues.extend(validate_page(url))
     issues.extend(check_llms_sitemap_coverage(urls))
     issues.extend(check_codex_changelog())
+    issues.extend(check_formsubmit_action_privacy())
     issues.extend(check_navigation_parity(urls))
     _, project_navigation_issues = check_project_navigation_registry(urls)
     issues.extend(project_navigation_issues)
