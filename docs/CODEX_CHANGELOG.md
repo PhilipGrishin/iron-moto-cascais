@@ -14,6 +14,28 @@ Format:
 - Notes: ...
 ```
 
+## 2026-08-22 - Private FormSubmit action alias
+
+- Commit: `5c010b49`
+- Changed: Replaced the recipient-email FormSubmit action with the activated
+  private alias on all 120 pages that contain the lead form. Added a permanent
+  all-built-HTML SEO assertion that rejects any FormSubmit action containing
+  `@`, and documented the alias-only rule and the form's checked-in chrome
+  ownership.
+- Verified: The assertion's break test failed on a temporary exposed-email
+  action with the expected file-specific error and passed after restoration.
+  Exact comparison confirmed one action-only substitution per form page,
+  unchanged visible text across all 241 HTML files, unchanged normalized form
+  markup, and a byte-identical sitemap. All four validator groups passed, the
+  Full Safe Rebuild left a clean clone, and GitHub Pages workflow
+  `32566489805` succeeded. Cache-bypass production checks passed on all 120
+  form pages.
+- Notes: The delivery inbox remains canonical business data and is unchanged
+  in visible contact information, `mailto` links and schema. Exactly 30 route
+  shapes in each of four languages contain the form; the other built HTML
+  files had no FormSubmit action to change. Full evidence is in
+  `docs/reports/F_HASH_REPORT.md`.
+
 ## 2026-08-15 - Sealing-tape failure video article
 
 - Commit: `6c24e8ef`

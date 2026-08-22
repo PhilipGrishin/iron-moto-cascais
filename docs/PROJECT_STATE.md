@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-08-15
+Last updated: 2026-08-22
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -10,8 +10,9 @@ deployed public identifiers and cache-bust values. Operating rules live in
 ## Status And Evidence
 
 - Status: **confirmed**.
-- Evidence date: 2026-08-15 (Europe/Lisbon).
-- Repository evidence: B-TAPE implementation commit `6c24e8ef`,
+- Evidence date: 2026-08-22 (Europe/Lisbon).
+- Repository evidence: F-HASH implementation commit `5c010b49`,
+  B-TAPE implementation commit `6c24e8ef`,
   V-UPLOADDATE implementation commit `39e44293`, R9
   implementation commit `800c4c68`, the automated
   review-snapshot refresh commit `7e834826`, B-TUBELESS implementation commit
@@ -28,7 +29,11 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: B-TAPE GitHub Pages workflow `31874899365`,
+- Production evidence: F-HASH GitHub Pages workflow `32566489805`,
+  cache-bypass checks on all 120 pages that contain the lead form and the
+  production sitemap; every deployed FormSubmit action uses the activated
+  private alias, none exposes an email address, and the complete normalized
+  form markup matches the repository. B-TAPE GitHub Pages workflow `31874899365`,
   cache-bypass checks on the four new Blog pages, four Blog hubs, four
   reciprocal tubeless-conversion pages, `llms.txt` and `sitemap.xml`; the
   self-hosted portrait MP4 and poster returned HTTP 200, and browser resource
@@ -58,8 +63,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
   result `QtK8FJYbOvDZFu-k-TWBng` with four valid items, no errors and no
   warnings. Earlier evidence remains in the task reports and changelog.
 - Reproducibility evidence: the documented full rebuild and all four validator
-  groups at B-TAPE implementation commit `6c24e8ef` left a clean clone with
-  empty `git status --short`; verified 2026-08-15. The current
+  groups at F-HASH implementation commit `5c010b49` left a clean clone with
+  empty `git status --short`; verified 2026-08-22. The current
   `sitemap.xml` SHA-256 is
   `d0c0d98dc180f44a3d13cadc859c7f1c355c8999557c2a232b84855d87d22b82`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
@@ -235,6 +240,10 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 
 ## Current Delivery And Discovery State
 
+- All 120 pages that contain the lead form submit to FormSubmit through the
+  activated private action alias. No built HTML exposes the delivery inbox in
+  a FormSubmit action, and the SEO validator enforces this contract across all
+  built HTML files, including non-sitemap output.
 - The four home pages render 9 curated Google-review cards and the matching
   9 JSON-LD `Review` items from `assets/reviews-curated.json`. Their
   `AggregateRating` remains independently sourced from the Worker snapshot and
@@ -291,7 +300,8 @@ Open performance caveats and external verification limits are in
 | Reviews Worker | `https://icm-reviews.vg-ab6.workers.dev/` |
 | Google Analytics | `G-D15BLYEKBN` |
 | Meta Pixel | `1708697916976439` |
-| FormSubmit inbox | `Ironcustom.office@gmail.com` |
+| FormSubmit delivery inbox | `Ironcustom.office@gmail.com` |
+| FormSubmit action alias | `https://formsubmit.co/c29ab5a6818b2926388e8978888304a2` |
 
 The Google Places API key is a Cloudflare Worker secret and must never appear
 in client files or documentation. Account-only risks and verification limits
