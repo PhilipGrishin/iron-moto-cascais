@@ -1,7 +1,7 @@
 {
   "name": "Iron Custom Motors",
   "rating": 5,
-  "total": 22,
+  "total": 24,
   "reviews": [
     {
       "author": "Dream Carua",
@@ -32,7 +32,7 @@
       "rating": 5,
       "text": "Always easy to arrange a specific time. You can arrive, have a cup of coffee, and leave with your new windshield installed :))) The level of service is rare around here! And they do any service for any bike, even for my Vespa :))",
       "lang": "en",
-      "when": "a week ago",
+      "when": "2 weeks ago",
       "publishedAt": "2026-08-07T09:38:38.019020187Z",
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xodWFGbzRPVmxQVTBsSFpsZGxSMW93U0doVWVGRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     },
@@ -43,7 +43,7 @@
       "rating": 5,
       "text": "Great service — these guys really take their work seriously!\nI had my rear tire repaired here after a puncture, and my front sprocket replaced.\nDone quickly and done right!",
       "lang": "en",
-      "when": "a week ago",
+      "when": "2 weeks ago",
       "publishedAt": "2026-08-07T15:10:29.445268917Z",
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xOTlJsSTRSemRUZW1Ga1RXTnpObk5pYkZwemRVRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     },
@@ -54,10 +54,10 @@
       "rating": 5,
       "text": "Finally, I found a motorcycle service I can trust 100% with my bike!\n\nThe team not only fixed the issue I originally came in for, but also thoroughly inspected all the related components and systems. They performed a complete service, identified potential problems before they became serious, and made sure everything was in perfect condition.\n\nNow I have total confidence in my motorcycle and can ride with complete peace of mind. Professional, knowledgeable, honest, and genuinely passionate about what they do.\n\nHighly recommended to anyone looking for a trustworthy motorcycle workshop!",
       "lang": "en",
-      "when": "a month ago",
+      "when": "2 months ago",
       "publishedAt": "2026-06-21T14:27:42.557465443Z",
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2prMGNXaEtaMnRUTldRemQwODNiblEyUlZGVFltYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     }
   ],
-  "fetchedAt": "2026-08-17T07:17:57.967Z"
+  "fetchedAt": "2026-08-24T07:30:35.601Z"
 }
