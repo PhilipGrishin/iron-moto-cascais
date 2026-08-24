@@ -20,6 +20,7 @@ from bs4 import BeautifulSoup, FeatureNotFound, NavigableString
 from build_output import write_html_if_changed
 from blog_data import BLOG_POSTS
 from brand_pages_data import BRAND_ORDER
+from news_data import NEWS_ARTICLES
 from localize_internal_links import is_language_switch_link, rewrite_href
 from page_meta import PAGE_META, OG_LOCALES
 from seo_meta import upsert_robots_image_preview
@@ -81,9 +82,10 @@ MAIN_PAGES = [
         for slug in BLOG_POSTS
     ],
     ("news/index.html", "news"),
-    ("news/ericeira-kustom-fest-2026/index.html", "news/ericeira-kustom-fest-2026"),
-    ("news/opens-new-workshop-in-cascais/index.html", "news/opens-new-workshop-in-cascais"),
-    ("news/lisbon-motorcycle-film-fest-2026-beckman/index.html", "news/lisbon-motorcycle-film-fest-2026-beckman"),
+    *[
+        (f"news/{slug}/index.html", f"news/{slug}")
+        for slug in NEWS_ARTICLES
+    ],
 ]
 
 # --------- Load main I18N ---------
@@ -268,6 +270,11 @@ def apply_translations(soup, lang: str) -> dict:
         key = el["data-i18n-title"]
         if key in full_dict:
             el["title"] = full_dict[key]
+
+    for el in soup.find_all(attrs={"data-i18n-aria-label": True}):
+        key = el["data-i18n-aria-label"]
+        if key in full_dict:
+            el["aria-label"] = BeautifulSoup(full_dict[key], "html.parser").get_text(" ", strip=True)
 
     for attr, prefix in (
         ("data-i18n-proj-label", "proj.label"),

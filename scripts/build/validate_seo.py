@@ -14,8 +14,10 @@ from urllib.parse import parse_qs, urlparse
 from bs4 import BeautifulSoup, FeatureNotFound
 
 from brand_pages_data import BRAND_ORDER
+from blog_data import BLOG_POSTS
 from hero_images import css_hero_preload_alignment, picture_hero_preload_alignment
 from new_pages_data import PROJECT_TILES
+from news_data import NEWS_ARTICLES
 from seo_meta import robots_has_large_image_preview
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -86,14 +88,9 @@ LOCALIZED_PATHS = {
     *[f"/{slug}/" for slug in BRAND_ORDER],
     "/motorcycle-tyre-service/",
     "/blog/",
-    "/blog/revtech-110-oil-service-engine-gearbox-drive/",
-    "/blog/motorcycle-brake-pad-replacement-cascais/",
-    "/blog/front-fork-service-motorcycle-cascais/",
-    "/blog/motorcycle-tyre-fitting-specialist-cascais/",
+    *[f"/blog/{slug}/" for slug in BLOG_POSTS],
     "/news/",
-    "/news/ericeira-kustom-fest-2026/",
-    "/news/opens-new-workshop-in-cascais/",
-    "/news/lisbon-motorcycle-film-fest-2026-beckman/",
+    *[f"/news/{slug}/" for slug in NEWS_ARTICLES],
 }
 for slug in (tile["slug"] for tile in PROJECT_TILES):
     LOCALIZED_PATHS.add(f"/projects/{slug}/")

@@ -81,6 +81,7 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 ## News
 
 - [News](https://ironcustommotors.com/news/): Latest news from Iron Custom Motors workshop in Cascais — openings, events, custom builds, community rides and announcements from our motorcycle workshop in Greater Lisbon.
+- [A Saturday BBQ with friends of the workshop](https://ironcustommotors.com/news/workshop-bbq-party-august-2026/): On Saturday, 22 August 2026, Iron Custom Motors hosted a BBQ for friends and clients at the Cascais workshop. Grill, bikes, music and good company.
 - [Ericeira Kustom Fest 2026](https://ironcustommotors.com/news/ericeira-kustom-fest-2026/): Iron Custom Motors took part in Ericeira Kustom Fest 2026 — our first major custom competition in Portugal — and won 1st place for Hell Boy and 2nd place for Sturmvogel.
 - [New workshop](https://ironcustommotors.com/news/opens-new-workshop-in-cascais/): Iron Custom Motors opens a new motorcycle workshop in Cascais, Greater Lisbon. Premium service, tuning, custom projects, parts, a rider lounge and a growing motorcycle community in Portugal.
 - [Lisbon Motorcycle Film Fest 2026](https://ironcustommotors.com/news/lisbon-motorcycle-film-fest-2026-beckman/): On 23 May 2026, Iron Custom Motors joins Lisbon Motorcycle Film Fest with Beckman — the world champion cafe racer that defined our international custom motorcycle history.
@@ -131,7 +132,7 @@ All pages are available in 4 languages with reciprocal hreflang annotations:
 ## Sitemap
 
 Full machine-readable sitemap: [sitemap.xml](https://ironcustommotors.com/sitemap.xml)
-Generated coverage: 58 English paths across 4 language variants (232 sitemap URLs).
+Generated coverage: 59 English paths across 4 language variants (236 sitemap URLs).
 
 ## Citation guidance
 

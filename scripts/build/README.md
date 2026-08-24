@@ -325,6 +325,19 @@ sequence. Binary image preparation is an explicit source-media task.
 
 ## News Workflow
 
+For a registered article with supplied hero and gallery sources, import the
+media first. The importer reads filenames, order and dimensions from
+`NEWS_ARTICLES`, creates the maintained responsive AVIF/WebP/JPEG candidates,
+and never edits generated HTML directly:
+
+```bash
+python3 scripts/build/import_news_images.py \
+  workshop-bbq-party-august-2026 \
+  "/absolute/path/to/source-media"
+```
+
+Then run the canonical generated-page sequence:
+
 ```bash
 python3 scripts/build/build_news.py
 python3 scripts/build/build_i18n.py
@@ -336,7 +349,10 @@ python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 ```
 
-New article media and `NEWS_ARTICLES` data must exist before this sequence.
+New article content, media and `NEWS_ARTICLES` data must exist before this
+sequence. Source-backed multilingual copy belongs in
+`scripts/build/content/`; preserve the supplied file byte-for-byte and parse
+placeholders into maintained renderer elements.
 
 ## Project Workflow
 

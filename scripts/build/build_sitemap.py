@@ -50,6 +50,10 @@ BLOG_PRIORITIES = {
     "royal-enfield-bear-650-scrambler-build": "0.9",
     "tubeless-conversion-spoked-wheels": "0.9",
 }
+NEWS_PRIORITIES = {
+    "ericeira-kustom-fest-2026": "0.9",
+    "opens-new-workshop-in-cascais": "0.8",
+}
 
 # (path, changefreq, priority)
 PAGES = [
@@ -83,9 +87,13 @@ PAGES = [
         for slug in BLOG_POSTS
     ],
     ("news/", "weekly", "0.9"),
-    ("news/ericeira-kustom-fest-2026/", "yearly", "0.9"),
-    ("news/opens-new-workshop-in-cascais/", "yearly", "0.8"),
-    ("news/lisbon-motorcycle-film-fest-2026-beckman/", "yearly", "0.85"),
+    *[
+        (f"news/{slug}/", "yearly", NEWS_PRIORITIES.get(slug, "0.85"))
+        for slug in sorted(
+            NEWS_ARTICLES,
+            key=lambda item: NEWS_ARTICLES[item].get("sitemapOrder", 999),
+        )
+    ],
     *[
         (f"projects/{slug}/", "yearly", PROJECT_PRIORITIES.get(slug, "0.7"))
         for slug in PROJECT_CONFIGS

@@ -28,6 +28,7 @@ DEFAULT_HERO_SOURCES = [
     "photos/news/news-opening-01-1600.jpg",
     "photos/news/news-lmff2026-01-1600.jpg",
     "photos/news/news-ericeira-kustom-fest-2026-01-1600.jpg",
+    "photos/news/news-workshop-bbq-party-august-2026-01-1600.jpg",
     "photos/blog/blog-revtech-110-oil-service-01-1600.jpg",
     "photos/blog/blog-motorcycle-brake-pad-replacement-cascais-01-1600.jpg",
     "photos/blog/blog-front-fork-service-motorcycle-cascais-01-1600.jpg",

@@ -192,6 +192,14 @@ schema-to-visible-content alignment. `NewsArticle` is used for event and
 workshop news. Event names used in machine indexes should be concise;
 marketing subtitles belong in descriptions.
 
+Approved multilingual delivery files belong under `scripts/build/content/`
+and are parsed by the registered article data rather than copied into generated
+HTML by hand. When a delivery includes a gallery, register its source order,
+dimensions and localized ALT pattern in `NEWS_ARTICLES`; the common renderer
+owns the responsive AVIF/WebP/JPEG `<picture>` markup and the contained
+horizontal scroll-snap layout. Import registered hero and gallery sources with
+`import_news_images.py`, then use the complete News Workflow.
+
 Commands: `scripts/build/README.md`, **News workflow**.
 
 ## Projects

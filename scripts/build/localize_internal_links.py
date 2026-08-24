@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup, FeatureNotFound
 from build_output import write_html_if_changed
 from brand_pages_data import BRAND_ORDER
 from blog_data import BLOG_POSTS
+from news_data import NEWS_ARTICLES
 from project_pages_data import PROJECT_CONFIGS
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -50,9 +51,7 @@ LOCALIZED_PATHS = {
     "/blog/",
     *[f"/blog/{slug}/" for slug in BLOG_POSTS],
     "/news/",
-    "/news/ericeira-kustom-fest-2026/",
-    "/news/opens-new-workshop-in-cascais/",
-    "/news/lisbon-motorcycle-film-fest-2026-beckman/",
+    *[f"/news/{slug}/" for slug in NEWS_ARTICLES],
 }
 for proj in PROJECT_CONFIGS:
     LOCALIZED_PATHS.add(f"/projects/{proj}/")

@@ -16,7 +16,14 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup
 
-from hero_images import hero_background_css
+from hero_images import (
+    RESPONSIVE_HERO_ATTR,
+    RESPONSIVE_HERO_STYLE_ATTR,
+    hero_background_css,
+    hero_image_slug,
+    hero_preload_links,
+    responsive_hero_background_style,
+)
 from build_output import write_html_if_changed
 from news_data import (
     NEWS_HUB_META, NEWS_HUB_BODY,
@@ -58,6 +65,15 @@ def schema_author():
 
 def plain_html(value):
     return BeautifulSoup(value, "html.parser").get_text(" ", strip=True)
+
+
+def format_gallery_alt(pattern, number):
+    """Render the delivery file's localized gallery ALT number placeholder."""
+    if "{N}" in pattern:
+        return pattern.replace("{N}", str(number))
+    if pattern.endswith(" N"):
+        return f"{pattern[:-1]}{number}"
+    raise ValueError(f"Gallery ALT pattern is missing N: {pattern}")
 
 NEWS_RELATED_I18N = {
     "en": {
@@ -150,7 +166,7 @@ ARTICLE_CSS = """.subpage.news-article{padding:0;position:relative;overflow:hidd
 .news-article h1 .accent{color:var(--accent)}
 .news-article .lede{font-family:var(--font-ui);font-size:clamp(17px,1.5vw,21px);color:var(--text);max-width:64ch;line-height:1.5}
 .article-body{padding:56px 0;background:#0a0a0a;border-top:1px solid var(--border)}
-.article-body .container{max-width:780px}
+.article-body .container{max-width:780px;min-width:0}
 .article-body section{padding:0;margin-bottom:22px}
 .article-body section:last-child{margin-bottom:0}
 .article-body h2{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(22px,2.1vw,28px);color:#fff;line-height:1.05;margin-bottom:24px}
@@ -161,6 +177,11 @@ ARTICLE_CSS = """.subpage.news-article{padding:0;position:relative;overflow:hidd
 .article-fig figcaption{padding:14px 20px;font-family:var(--font-ui);font-size:13px;color:var(--text-mute);font-style:italic;border-top:1px solid var(--border);background:#0c0c10}
 .article-author{margin-top:44px;padding-top:24px;border-top:1px solid var(--border);display:flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-mute)}
 .article-author .pill{padding:6px 14px;border:1px solid var(--accent);border-radius:30px;color:var(--accent);font-weight:600}
+.news-gallery-shell{width:100%;max-width:100%;min-width:0;overflow:hidden;margin:34px 0 42px}
+.news-gallery{display:grid;grid-auto-flow:column;grid-auto-columns:min(86vw,680px);gap:16px;width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scroll-padding-inline:2px;padding:2px 2px 14px;touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch;scrollbar-color:var(--accent) #171717}
+.news-gallery figure{min-width:0;margin:0;scroll-snap-align:start;scroll-snap-stop:always;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:#111}
+.news-gallery picture{display:block}
+.news-gallery img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 .news-related{padding:var(--gap) 0;background:#0a0a0a;border-top:1px solid var(--border)}
 .news-related .heading{margin-bottom:34px;display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:end;padding-bottom:24px;border-bottom:1px solid var(--border)}
 .news-related .heading h2{margin:0;font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.2vw,44px);line-height:.95;color:#fff}
@@ -171,10 +192,18 @@ ARTICLE_CSS = """.subpage.news-article{padding:0;position:relative;overflow:hidd
 .news-related-card p{font-size:15px;color:var(--text-dim);line-height:1.55}
 .news-related-card a{margin-top:auto;color:var(--accent);font-family:var(--font-ui);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
 @media (max-width:900px){.news-related .heading{grid-template-columns:1fr;gap:24px}.news-related-grid{grid-template-columns:1fr}}
-@media (max-width:760px){.news-article .container{padding-top:110px}.article-fig{margin:36px -20px;border-left:none;border-right:none;border-radius:0}}"""
+@media (max-width:760px){.news-article .container{padding-top:110px}.article-fig{margin:36px -20px;border-left:none;border-right:none;border-radius:0}.news-gallery{grid-auto-columns:min(86vw,680px);gap:12px}}"""
 
 
-def head(slug_for_url, lang, head_meta, body_data, json_ld_blocks, og_image=None):
+def head(
+    slug_for_url,
+    lang,
+    head_meta,
+    body_data,
+    json_ld_blocks,
+    og_image=None,
+    preload_html="",
+):
     canonical = f"{DOMAIN}/{slug_for_url}/"
     og_img = og_image or f"{DOMAIN}/photos/og.jpg"
     hreflang_html = "".join(
@@ -217,6 +246,7 @@ def head(slug_for_url, lang, head_meta, body_data, json_ld_blocks, og_image=None
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+{preload_html}
 <link href="/assets/main.css?v={CACHE_BUST}" rel="stylesheet"/>
 <style>
 {SHARED_STYLES}
@@ -376,6 +406,11 @@ def render_article(slug, article):
 
     # JSON-LD: NewsArticle + BreadcrumbList
     images = [f"{DOMAIN}{article['imageBase']}-{i:02d}-1600.jpg" for i in range(1, n_img+1)]
+    if article.get("galleryBase"):
+        images.extend(
+            f"{DOMAIN}{article['galleryBase']}-{i:02d}-1600.jpg"
+            for i in range(1, article["galleryCount"] + 1)
+        )
     schema_headline = plain_html(en_body["h1"])
     json_ld_blocks = [
         {
@@ -407,6 +442,33 @@ def render_article(slug, article):
             ],
         },
     ]
+    if article.get("sourceBacked"):
+        json_ld_blocks.append(
+            {
+                "@context": "https://schema.org",
+                "@type": "LocalBusiness",
+                "@id": BUSINESS_ID,
+                "name": "Iron Custom Motors",
+                "url": f"{DOMAIN}/",
+                "image": f"{DOMAIN}/photos/og.jpg",
+                "telephone": "+351917961230",
+                "priceRange": "€€",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "R. António José da Silva 100 B",
+                    "addressLocality": "São Domingos de Rana",
+                    "addressRegion": "Lisbon",
+                    "postalCode": "2785-253",
+                    "addressCountry": "PT",
+                },
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": f"{DOMAIN}/photos/icon-512.png",
+                    "width": 512,
+                    "height": 512,
+                },
+            }
+        )
 
     # Inline I18N: flatten article body per language with a single prefix per slug
     pre = f"art_{slug.replace('-', '_')}"
@@ -415,6 +477,10 @@ def render_article(slug, article):
         ab = article["body"][lang]
         for k, v in ab.items():
             inline_i18n[lang][f"{pre}.{k}"] = v
+        for img_num in range(1, article.get("galleryCount", 0) + 1):
+            inline_i18n[lang][f"{pre}.gallery.img{img_num}.alt"] = format_gallery_alt(
+                ab["gallery.altPattern"], img_num
+            )
         inline_i18n[lang][f"{pre}.related.readMore"] = NEWS_HUB_BODY[lang]["readMore"]
         for other_slug, other_data in NEWS_ARTICLES.items():
             if other_slug == slug:
@@ -424,8 +490,22 @@ def render_article(slug, article):
         inline_i18n[lang].update(NEWS_RELATED_I18N[lang])
 
     # Compose head + override the ICM_I18N_PAGE
-    head_html = head(f"news/{slug}", "en", en_meta, en_body, json_ld_blocks, og_image=hero_img_url).replace(
+    hero_source = f"{article['imageBase']}-01-1600.jpg"
+    head_html = head(
+        f"news/{slug}",
+        "en",
+        en_meta,
+        en_body,
+        json_ld_blocks,
+        og_image=hero_img_url,
+        preload_html=hero_preload_links(hero_source),
+    ).replace(
         "window.ICM_I18N_PAGE = {};", f"window.ICM_I18N_PAGE = {json.dumps(inline_i18n, ensure_ascii=False)};"
+    )
+    responsive_style = responsive_hero_background_style(hero_image_slug(hero_source))
+    head_html = head_html.replace(
+        "</head>",
+        f'<style {RESPONSIVE_HERO_STYLE_ATTR}="">{responsive_style}</style></head>',
     )
 
     # Body: hero (full-bleed photo + title), then sections with inline figures.
@@ -459,9 +539,30 @@ def render_article(slug, article):
 <figcaption data-i18n="{pre}.img{img_num}.cap">{en_body[f"img{img_num}.cap"]}</figcaption>
 </figure>'''
 
+    def render_gallery():
+        gallery_base = article["galleryBase"]
+        width, height = article.get("galleryDims", (1600, 1200))
+        figures = []
+        for img_num in range(1, article["galleryCount"] + 1):
+            alt = format_gallery_alt(en_body["gallery.altPattern"], img_num)
+            figures.append(f'''<figure>
+<picture>
+<source sizes="(max-width: 840px) 86vw, 680px" srcset="{gallery_base}-{img_num:02d}-800.avif 800w, {gallery_base}-{img_num:02d}-1600.avif 1600w" type="image/avif"/>
+<source sizes="(max-width: 840px) 86vw, 680px" srcset="{gallery_base}-{img_num:02d}-800.webp 800w, {gallery_base}-{img_num:02d}-1600.webp 1600w" type="image/webp"/>
+<img alt="{alt}" data-i18n-alt="{pre}.gallery.img{img_num}.alt" decoding="async" height="{height}" loading="lazy" sizes="(max-width: 840px) 86vw, 680px" src="{gallery_base}-{img_num:02d}-1600.jpg" srcset="{gallery_base}-{img_num:02d}-800.jpg 800w, {gallery_base}-{img_num:02d}-1600.jpg 1600w" width="{width}"/>
+</picture>
+</figure>''')
+        return f'''<div class="news-gallery-shell">
+<div aria-label="{en_body['galleryLabel']}" class="news-gallery" data-i18n-aria-label="{pre}.galleryLabel" role="region" tabindex="0">
+{"".join(figures)}
+</div>
+</div>'''
+
     sections_html_parts = []
     for sec in range(1, section_count + 1):
         sections_html_parts.append(render_section(sec))
+        if sec == article.get("galleryAfterSection"):
+            sections_html_parts.append(render_gallery())
         if sec in images_after:
             for img_num in images_after[sec]:
                 sections_html_parts.append(render_figure(img_num))
@@ -483,10 +584,35 @@ def render_article(slug, article):
 </article>
 '''
 
+    if article.get("sourceBacked"):
+        cta_html = f'''<section class="cta-back">
+<div class="container"><div class="btns">
+<a class="btn btn-ghost" data-i18n="{pre}.btnBack" href="/news/">{en_body["btnBack"]}</a>
+</div></div>
+</section>'''
+    else:
+        cta_html = f'''<section class="cta-back">
+<div class="container">
+<span class="h-eyebrow" data-i18n="{pre}.ctaEyebrow">{en_body["ctaEyebrow"]}</span>
+<h2 data-i18n="{pre}.ctaTitle">{en_body["ctaTitle"]}</h2>
+<p class="lead" data-i18n="{pre}.ctaText">{en_body["ctaText"]}</p>
+<div class="btns">
+<a class="btn btn-primary" data-wa="" href="https://wa.me/351917961230" rel="noopener" target="_blank"><span data-i18n="{pre}.btnWA">{en_body["btnWA"]}</span>{ARROW_SVG}</a>
+<a class="btn btn-ghost" data-i18n="{pre}.btnBack" href="/news/">{en_body["btnBack"]}</a>
+</div>
+</div>
+</section>'''
+
+    hero_accessibility = ' aria-hidden="true"'
+    if en_body.get("heroAlt"):
+        hero_accessibility = (
+            f' aria-label="{en_body["heroAlt"]}" data-i18n-aria-label="{pre}.heroAlt" role="img"'
+        )
+
     body = f'''<main>
 <article>
 <section class="subpage news-article">
-<div aria-hidden="true" class="bg" style="{hero_background_css(article['imageBase'] + '-01-1600.jpg')}"></div>
+<div class="bg" {RESPONSIVE_HERO_ATTR}=""{hero_accessibility} style="{hero_background_css(hero_source)}"></div>
 <div aria-hidden="true" class="scrim"></div>
 <div class="container">
 <div class="crumb"><a data-i18n="{pre}.breadHome" href="/">Home</a><span class="sep">→</span><a data-i18n="{pre}.breadNews" href="/news/">News</a><span class="sep">→</span><span data-i18n="{pre}.h1Crumb">{en_body["h1Crumb"]}</span></div>
@@ -538,17 +664,7 @@ def render_article(slug, article):
 </div>
 </section>
 
-<section class="cta-back">
-<div class="container">
-<span class="h-eyebrow" data-i18n="{pre}.ctaEyebrow">{en_body["ctaEyebrow"]}</span>
-<h2 data-i18n="{pre}.ctaTitle">{en_body["ctaTitle"]}</h2>
-<p class="lead" data-i18n="{pre}.ctaText">{en_body["ctaText"]}</p>
-<div class="btns">
-<a class="btn btn-primary" data-wa="" href="https://wa.me/351917961230" rel="noopener" target="_blank"><span data-i18n="{pre}.btnWA">{en_body["btnWA"]}</span>{ARROW_SVG}</a>
-<a class="btn btn-ghost" data-i18n="{pre}.btnBack" href="/news/">{en_body["btnBack"]}</a>
-</div>
-</div>
-</section>
+{cta_html}
 
 </article>
 </main>'''

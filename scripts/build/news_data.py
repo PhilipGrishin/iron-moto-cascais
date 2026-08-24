@@ -2,9 +2,58 @@
 News section content: hub + individual articles.
 Each article has full multilingual content (en, ru, uk, pt).
 
-Article slug is keyed in NEWS_ARTICLES.
-First article: "opens-new-workshop-in-cascais", published 2026-05-02.
+Article slugs are keyed in NEWS_ARTICLES and rendered in registry order.
 """
+
+import hashlib
+import html
+import re
+from pathlib import Path
+
+
+_BBQ_SLUG = "workshop-bbq-party-august-2026"
+_BBQ_SOURCE = Path(__file__).resolve().parent / "content" / "workshop_bbq_party_news_4lang.md"
+_BBQ_SOURCE_SHA256 = "e6f7f3745c53b704832aad44e1a2bebbd1f9dc6c71f749360fb5df9cf6e76a16"
+_BBQ_LANGUAGE_HEADINGS = {
+    "en": "EN",
+    "pt": "PT",
+    "ru": "RU",
+    "uk": "UK",
+}
+_BBQ_LABELS = {
+    "en": {
+        "eyebrow": "News · 23 August 2026",
+        "publishedLabel": "Published 23 August 2026",
+        "breadHome": "Home",
+        "breadNews": "News",
+        "btnBack": "Back to news",
+        "galleryLabel": "Workshop BBQ photo gallery",
+    },
+    "pt": {
+        "eyebrow": "Notícias · 23 de agosto de 2026",
+        "publishedLabel": "Publicado a 23 de agosto de 2026",
+        "breadHome": "Início",
+        "breadNews": "Notícias",
+        "btnBack": "Voltar às notícias",
+        "galleryLabel": "Galeria de fotos do churrasco na oficina",
+    },
+    "ru": {
+        "eyebrow": "Новости · 23 августа 2026",
+        "publishedLabel": "Опубликовано 23 августа 2026",
+        "breadHome": "Главная",
+        "breadNews": "Новости",
+        "btnBack": "Назад к новостям",
+        "galleryLabel": "Фотогалерея барбекю в мастерской",
+    },
+    "uk": {
+        "eyebrow": "Новини · 23 серпня 2026",
+        "publishedLabel": "Опубліковано 23 серпня 2026",
+        "breadHome": "Головна",
+        "breadNews": "Новини",
+        "btnBack": "Назад до новин",
+        "galleryLabel": "Фотогалерея барбекю в майстерні",
+    },
+}
 
 # ============================================================
 # Hub /news/ — title + description + heading per language
@@ -841,37 +890,208 @@ ARTICLE_ERICEIRA_BODY = {
     },
 }
 
+# ============================================================
+# Markdown-backed news delivery: Workshop BBQ Party
+# ============================================================
+
+
+def _render_delivery_links(value):
+    """Render the delivery file's explicit [LINK: path — label] tokens."""
+    tokens = []
+
+    def replace_link(match):
+        href = html.escape(match.group(1).strip(), quote=True)
+        label = html.escape(match.group(2).strip(), quote=False)
+        tokens.append(f'<a href="{href}">{label}</a>')
+        return f"@@ICM_NEWS_LINK_{len(tokens) - 1}@@"
+
+    rendered = re.sub(r"\[LINK:\s*([^\]]+?)\s+—\s+([^\]]+?)\]", replace_link, value)
+    rendered = html.escape(rendered, quote=False)
+    return re.sub(
+        r"@@ICM_NEWS_LINK_(\d+)@@",
+        lambda match: tokens[int(match.group(1))],
+        rendered,
+    )
+
+
+def _split_delivery_languages(source):
+    matches = []
+    for code, heading in _BBQ_LANGUAGE_HEADINGS.items():
+        match = re.search(rf"^## {re.escape(heading)}\s*$", source, re.MULTILINE)
+        if not match:
+            raise ValueError(f"Missing BBQ news language heading: {heading}")
+        matches.append((match.start(), match.end(), code))
+    matches.sort()
+    sections = {}
+    for index, (_, start, code) in enumerate(matches):
+        end = matches[index + 1][0] if index + 1 < len(matches) else len(source)
+        sections[code] = source[start:end].strip()
+    return sections
+
+
+def _paragraphs(lines):
+    paragraphs = []
+    current = []
+    for line in lines:
+        stripped = line.strip()
+        if not stripped:
+            if current:
+                paragraphs.append(_render_delivery_links(" ".join(current)))
+                current = []
+            continue
+        current.append(stripped)
+    if current:
+        paragraphs.append(_render_delivery_links(" ".join(current)))
+    return paragraphs
+
+
+def _parse_bbq_language(raw, code):
+    seo_title = re.search(r"^\*\*SEO title:\*\*\s*(.+)$", raw, re.MULTILINE)
+    description = re.search(r"^\*\*Meta description:\*\*\s*(.+)$", raw, re.MULTILINE)
+    h1 = re.search(r"^# (.+)$", raw, re.MULTILINE)
+    hero_slot = re.search(
+        r"^\[IMAGE:[^\n]+\]\s*\nALT:\s*(.+)$",
+        raw,
+        re.MULTILINE,
+    )
+    gallery_slot = re.search(
+        r"^\[GALLERY:[^\n]+\]\s*\n(?:ALT pattern|Padrão de ALT|Шаблон ALT):\s*(.+)$",
+        raw,
+        re.MULTILINE,
+    )
+    if not all((seo_title, description, h1, hero_slot, gallery_slot)):
+        raise ValueError(f"Incomplete BBQ news delivery content for {code}")
+
+    lead_source = raw[h1.end():hero_slot.start()].strip()
+    lead_paragraphs = _paragraphs(lead_source.splitlines())
+    if len(lead_paragraphs) != 1:
+        raise ValueError(f"Expected one BBQ news lead paragraph for {code}")
+
+    body_source = raw[hero_slot.end():].strip()
+    body_source = body_source.replace(gallery_slot.group(0), "").strip()
+    section_chunks = re.split(r"\n(?=## )", body_source)
+    sections = []
+    for chunk in section_chunks:
+        chunk = chunk.strip()
+        if not chunk or chunk == "---":
+            continue
+        lines = chunk.splitlines()
+        if not lines[0].startswith("## "):
+            raise ValueError(f"Unexpected BBQ news body content for {code}: {lines[0]}")
+        title = html.escape(lines[0][3:].strip(), quote=False)
+        section_paragraphs = _paragraphs(
+            [line for line in lines[1:] if line.strip() != "---"]
+        )
+        sections.append((title, section_paragraphs))
+    if len(sections) != 4:
+        raise ValueError(f"Expected four BBQ news sections for {code}, got {len(sections)}")
+
+    body = {
+        **_BBQ_LABELS[code],
+        "h1": html.escape(h1.group(1).strip(), quote=False),
+        "h1Crumb": html.escape(h1.group(1).strip(), quote=False),
+        "lede": lead_paragraphs[0],
+        "heroAlt": html.escape(hero_slot.group(1).strip(), quote=False),
+        "gallery.altPattern": html.escape(gallery_slot.group(1).strip(), quote=False),
+    }
+    for section_index, (title, section_paragraphs) in enumerate(sections, start=1):
+        body[f"s{section_index}.h2"] = title
+        for paragraph_index, paragraph in enumerate(section_paragraphs, start=1):
+            body[f"s{section_index}.p{paragraph_index}"] = paragraph
+
+    return {
+        "meta": {
+            "title": seo_title.group(1).strip(),
+            "description": description.group(1).strip(),
+            "excerpt": description.group(1).strip(),
+        },
+        "body": body,
+    }
+
+
+def _load_bbq_article():
+    source_bytes = _BBQ_SOURCE.read_bytes()
+    source_sha256 = hashlib.sha256(source_bytes).hexdigest()
+    if source_sha256 != _BBQ_SOURCE_SHA256:
+        raise ValueError(
+            "BBQ news delivery source changed unexpectedly: "
+            f"expected {_BBQ_SOURCE_SHA256}, got {source_sha256}"
+        )
+    source = source_bytes.decode("utf-8")
+    localized = {
+        code: _parse_bbq_language(raw, code)
+        for code, raw in _split_delivery_languages(source).items()
+    }
+    return {
+        "publishedISO": "2026-08-23T10:00:00+01:00",
+        "modifiedISO": "2026-08-23T10:00:00+01:00",
+        "imageBase": "/photos/news/news-workshop-bbq-party-august-2026",
+        "imageCount": 1,
+        "imageHero": 1,
+        "heroSource": "Hero.png",
+        "heroSourceDims": (1672, 941),
+        "galleryBase": "/photos/news/gallery/workshop-bbq-party-august-2026/workshop-bbq-party-august-2026",
+        "gallerySources": [
+            "IMG_7936.jpeg",
+            "IMG_7942.jpeg",
+            "IMG_7944.jpeg",
+            "IMG_7947.jpeg",
+            "IMG_7948.jpeg",
+            "IMG_7937.jpeg",
+            "IMG_7938.jpeg",
+            "IMG_7939.jpg",
+            "IMG_7941.jpeg",
+            "IMG_7940.jpg",
+        ],
+        "galleryCount": 10,
+        "galleryAfterSection": 2,
+        "galleryDims": (1600, 1200),
+        "sectionCount": 4,
+        "sitemapOrder": 0,
+        "sourceBacked": True,
+        "meta": {code: item["meta"] for code, item in localized.items()},
+        "body": {code: item["body"] for code, item in localized.items()},
+    }
+
+
 # Article metadata (slug → meta + body)
 NEWS_ARTICLES = {
+    _BBQ_SLUG: _load_bbq_article(),
     "ericeira-kustom-fest-2026": {
         "publishedISO": "2026-06-07",
+        "modifiedISO": "2026-08-23T10:00:00+01:00",
         "imageBase": "/photos/news/news-ericeira-kustom-fest-2026",
         "imageCount": 5,
         "imageHero": 1,
         "meta": ARTICLE_ERICEIRA_META,
         "body": ARTICLE_ERICEIRA_BODY,
         "sectionCount": 8,
+        "sitemapOrder": 10,
         "imageMap": [(2, 2), (3, 5), (4, 6), (5, 6)],
         "imageDims": {1: (1600, 1200), 2: (1600, 1200), 3: (1600, 1200), 4: (1200, 1600), 5: (1200, 1600)},
     },
     "lisbon-motorcycle-film-fest-2026-beckman": {
         "publishedISO": "2026-05-23",
+        "modifiedISO": "2026-08-23T10:00:00+01:00",
         "imageBase": "/photos/news/news-lmff2026",
         "imageCount": 5,
         "imageHero": 1,
         "meta": ARTICLE_LMFF_META,
         "body": ARTICLE_LMFF_BODY,
         "sectionCount": 5,
+        "sitemapOrder": 30,
         "imageMap": [(2, 2), (4, 4), (3, 5), (5, 5)],  # (img_num, after_section) — flexible placement
     },
     "opens-new-workshop-in-cascais": {
         "publishedISO": "2026-05-02",
+        "modifiedISO": "2026-08-23T10:00:00+01:00",
         "imageBase": "/photos/news/news-opening",
         "imageCount": 4,
         "imageHero": 1,
         "meta": ARTICLE_OPENING_META,
         "body": ARTICLE_OPENING_BODY,
         "sectionCount": 7,
+        "sitemapOrder": 20,
         "imageMap": [(2, 2), (4, 3), (3, 4)],
     },
 }
