@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-08-22
+Last updated: 2026-08-24
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -10,8 +10,10 @@ deployed public identifiers and cache-bust values. Operating rules live in
 ## Status And Evidence
 
 - Status: **confirmed**.
-- Evidence date: 2026-08-22 (Europe/Lisbon).
-- Repository evidence: F-HASH implementation commit `5c010b49`,
+- Evidence date: 2026-08-24 (Europe/Lisbon).
+- Repository evidence: N-BBQ implementation commit `f4d4dd07` and merged
+  deployment state `93b4f460`, the automated review-snapshot refresh commit
+  `1e2e9e6c`, F-HASH implementation commit `5c010b49`,
   B-TAPE implementation commit `6c24e8ef`,
   V-UPLOADDATE implementation commit `39e44293`, R9
   implementation commit `800c4c68`, the automated
@@ -29,7 +31,14 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: F-HASH GitHub Pages workflow `32566489805`,
+- Production evidence: N-BBQ GitHub Pages workflow `32704971695`,
+  cache-bypass checks on all four new News pages, the four News hubs, the
+  twelve existing News articles, `llms.txt` and `sitemap.xml`; responsive
+  browser checks at 390 px and 1440 px found no document overflow and selected
+  the 768 AVIF and 1920 AVIF CSS hero candidates respectively. Google Rich
+  Results result `YVVmMMh-Ri99Utdpst9nbA` detected four valid items, including
+  valid Article, Breadcrumb and Local business items. F-HASH GitHub Pages
+  workflow `32566489805`,
   cache-bypass checks on all 120 pages that contain the lead form and the
   production sitemap; every deployed FormSubmit action uses the activated
   private alias, none exposes an email address, and the complete normalized
@@ -63,10 +72,10 @@ deployed public identifiers and cache-bust values. Operating rules live in
   result `QtK8FJYbOvDZFu-k-TWBng` with four valid items, no errors and no
   warnings. Earlier evidence remains in the task reports and changelog.
 - Reproducibility evidence: the documented full rebuild and all four validator
-  groups at F-HASH implementation commit `5c010b49` left a clean clone with
-  empty `git status --short`; verified 2026-08-22. The current
+  groups at merged N-BBQ state `93b4f460` left a clean clone with empty
+  `git status --short`; verified 2026-08-24. The current
   `sitemap.xml` SHA-256 is
-  `d0c0d98dc180f44a3d13cadc859c7f1c355c8999557c2a232b84855d87d22b82`.
+  `4ef974f467c30c2e67efe7e276dbb6b03f93efd87959a3e72d7178673a9c31ae`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
 
 ## Repository And Production
@@ -90,18 +99,18 @@ site generators during deployment; the workflow packages checked-in output.
 | Inventory | Current value | Canonical evidence |
 |---|---:|---|
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
-| English path patterns | 58 | `build_sitemap.py` `PAGES` |
-| Indexable sitemap URLs | 232 | parsed `sitemap.xml` `<url>` entries |
-| Tracked HTML files | 241 | filesystem enumeration |
-| Indexable HTML files | 232 | sitemap-to-file resolution |
+| English path patterns | 59 | `build_sitemap.py` `PAGES` |
+| Indexable sitemap URLs | 236 | parsed `sitemap.xml` `<url>` entries |
+| Tracked HTML files | 245 | filesystem enumeration |
+| Indexable HTML files | 236 | sitemap-to-file resolution |
 | Non-indexed HTML files | 9 | `404.html` plus 8 localized project redirect stubs |
-| Sitemap lastmod tags | 232 | parsed `sitemap.xml` |
-| Unique sitemap lastmod values | 58 | parsed `sitemap.xml` |
+| Sitemap lastmod tags | 236 | parsed `sitemap.xml` |
+| Unique sitemap lastmod values | 56 | parsed `sitemap.xml` |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
 | Project detail pages | 14 | `PROJECT_TILES` |
 | Data-driven project definitions | 14 | `PROJECT_CONFIGS` |
 | Blog posts | 9 | `BLOG_POSTS` |
-| News articles | 3 | `NEWS_ARTICLES` |
+| News articles | 4 | `NEWS_ARTICLES` |
 | Harley Hub English page patterns | 3 | `harley_hub_data.py` `PAGE_CONFIG` |
 | Generated general hub English pages | 6 | `build_new_pages.py` / `new_pages_data.py` |
 | Authorized Dealer English page patterns | 2 | `build_authorized_dealer.py` |
@@ -121,8 +130,8 @@ Registry alignment on the evidence date:
 
 | Registry | Entries | Relationship |
 |---|---:|---|
-| `build_sitemap.py` `PAGES` | 58 | canonical English indexable paths |
-| `localize_internal_links.py` `LOCALIZED_PATHS` | 58 | matches `PAGES` after normalization |
+| `build_sitemap.py` `PAGES` | 59 | canonical English indexable paths |
+| `localize_internal_links.py` `LOCALIZED_PATHS` | 59 | matches `PAGES` after normalization |
 | `build_i18n.py` `MAIN_PAGES` | 32 | English sources localized by the generic i18n flow |
 | `project_pages_data.py` `PROJECT_CONFIGS` | 14 | project details rendered directly in four languages |
 
@@ -234,6 +243,7 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 
 ### News
 
+- `/news/workshop-bbq-party-august-2026/`
 - `/news/ericeira-kustom-fest-2026/`
 - `/news/opens-new-workshop-in-cascais/`
 - `/news/lisbon-motorcycle-film-fest-2026-beckman/`
@@ -247,7 +257,7 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 - The four home pages render 9 curated Google-review cards and the matching
   9 JSON-LD `Review` items from `assets/reviews-curated.json`. Their
   `AggregateRating` remains independently sourced from the Worker snapshot and
-  is currently `5.0` from `22` reviews. The curated source SHA-256 is
+  is currently `5.0` from `24` reviews. The curated source SHA-256 is
   `aaad7c6c40839b4174653524fcc7749e17714792b033b861e011d57cdf708190`.
 - Every sitemap page has canonical, mutual hreflang and Schema.org JSON-LD with
   at least `BreadcrumbList`.
@@ -271,6 +281,10 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   links back to the case in every language.
 - News article heroes remain in the CSS-background family protected by the
   responsive CSS hero contract; they are not `<picture>` heroes.
+- Registered News galleries use AVIF/WebP/JPEG candidates with explicit
+  dimensions and native lazy loading inside a contained horizontal scroll-snap
+  region. The BBQ article is the first registered News page using this shared
+  gallery path.
 - Project heroes retain responsive `<picture>` delivery. Migrated projects,
   Cocktail, Fetish and The First use AVIF/WebP sources with a JPEG fallback;
   Fighter retains its registered AVIF/WebP media set. Every project page has one responsive AVIF

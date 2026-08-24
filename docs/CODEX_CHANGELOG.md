@@ -14,6 +14,29 @@ Format:
 - Notes: ...
 ```
 
+## 2026-08-24 - Workshop BBQ News publication
+
+- Commit: `f4d4dd07`
+- Changed: Added the four-language workshop BBQ News article through the
+  shared News generator, copied the approved source byte-for-byte, imported a
+  responsive CSS-background hero and a ten-image AVIF/WebP/JPEG horizontal
+  gallery, and added the new story first on all News hubs and related-story
+  feeds. News, sitemap, localization and SEO registries now derive their News
+  membership from `NEWS_ARTICLES`.
+- Verified: Exact approved-copy, localized link/ALT, canonical/hreflang,
+  gallery, NewsArticle/Breadcrumb/LocalBusiness and honest-lastmod checks passed
+  in all four languages. All four validator groups passed for 236 sitemap
+  URLs, and the documented Full Safe Rebuild left a clean clone at merged
+  state `93b4f460`. GitHub Pages workflow `32704971695` succeeded;
+  cache-bypass production checks returned HTTP 200 for all four pages, and
+  responsive browser checks passed at 390 px and 1440 px without page
+  overflow. Google Rich Results result `YVVmMMh-Ri99Utdpst9nbA` detected four
+  valid items.
+- Notes: Deployed merged state: `93b4f460`. Exactly 20 sitemap dates were added or moved: four new article URLs,
+  four News hubs and twelve existing News articles whose visible related-story
+  feed changed. Common CSS, JavaScript and cache-bust values did not change.
+  Full evidence is in `docs/reports/N_BBQ_REPORT.md`.
+
 ## 2026-08-22 - Private FormSubmit action alias
 
 - Commit: `5c010b49`
