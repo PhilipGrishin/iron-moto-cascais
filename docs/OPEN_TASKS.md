@@ -1,6 +1,6 @@
 # Open Tasks, Risks And Watchlist
 
-Last updated: 2026-08-04
+Last updated: 2026-08-27
 
 This file owns unresolved work, external dependencies and access requirements.
 Statuses use the labels defined in the `AGENTS.md` documentation protocol.
@@ -91,6 +91,21 @@ measure representative page families under a stated profile.
 
 Do not claim an account-only verification passed unless it was actually run.
 Local JSON-LD parsing and repository validators are separate evidence.
+
+### Deploy the Reviews Worker preview-origin update
+
+- Status: **access required**, open.
+- Evidence: M-REPO changed the checked-in GitHub Pages preview origin from the
+  former owner host to `https://philipgrishin.github.io`. A production request
+  with that `Origin` on 2026-08-27 still received the custom-domain fallback
+  CORS origin. `npx wrangler deploy` was attempted and stopped before any
+  deployment because `CLOUDFLARE_API_TOKEN` is not available locally.
+- Impact: the production custom domain remains allowed and the static review
+  fallback remains intact. Only direct GitHub Pages preview requests cannot
+  use the Worker through CORS until the checked-in Worker is redeployed.
+- Next action: authenticate Wrangler for the account that owns `icm-reviews`,
+  deploy from `worker/`, then verify that an `Origin` request from
+  `https://philipgrishin.github.io` receives the same allow-origin value.
 
 ## Product And Publishing Watchlist
 

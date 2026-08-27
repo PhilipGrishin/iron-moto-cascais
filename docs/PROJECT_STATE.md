@@ -11,8 +11,10 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 - Status: **confirmed**.
 - Evidence date: 2026-08-27 (Europe/Lisbon).
-- Repository evidence: N-BBQ implementation commit `f4d4dd07` and merged
-  deployment state `93b4f460`, the automated review-snapshot refresh commit
+- Repository evidence: M-REPO commits `88a44503` and `599a0429`, automated
+  review-snapshot refresh commit `6f28a412`, N-BBQ implementation commit
+  `f4d4dd07` and merged deployment state `93b4f460`, the automated
+  review-snapshot refresh commit
   `1e2e9e6c`, F-HASH implementation commit `5c010b49`,
   B-TAPE implementation commit `6c24e8ef`,
   V-UPLOADDATE implementation commit `39e44293`, R9
@@ -261,7 +263,7 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 - The four home pages render 9 curated Google-review cards and the matching
   9 JSON-LD `Review` items from `assets/reviews-curated.json`. Their
   `AggregateRating` remains independently sourced from the Worker snapshot and
-  is currently `5.0` from `24` reviews. The curated source SHA-256 is
+  is currently `5.0` from `25` reviews. The curated source SHA-256 is
   `aaad7c6c40839b4174653524fcc7749e17714792b033b861e011d57cdf708190`.
 - Every sitemap page has canonical, mutual hreflang and Schema.org JSON-LD with
   at least `BreadcrumbList`.

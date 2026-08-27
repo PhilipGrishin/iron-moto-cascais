@@ -14,6 +14,31 @@ Format:
 - Notes: ...
 ```
 
+## 2026-08-24 - Repository ownership transfer and CI cleanup
+
+- Commit: `599a0429`
+- Changed: Recorded the transfer to
+  `PhilipGrishin/iron-moto-cascais`, updated the local canonical remote and
+  repository references, switched the Reviews Worker GitHub Pages preview
+  allowlist to the new owner host, enabled cancellation of superseded Pages
+  runs, and made Pages reusable so the Reviews workflow calls it only after a
+  real review commit.
+- Verified: The new remote passed fetch, push dry-run and real push checks.
+  Repository-wide search found no remaining former-owner literal outside Git
+  history. Both workflows passed YAML and embedded Bash parsing; all four
+  validator groups passed; the Full Safe Rebuild changed no tracked output;
+  and no-change Reviews run `33099517887` skipped its deploy job and created no
+  commit or Pages run. GitHub Pages runs `33099469591` and `33100602162`
+  reached the provider's deployment stage but hit its 10-minute
+  `updating_pages` timeout; a final fresh deployment remains pending.
+- Notes: The owner confirmed that domain, DNS and Pages settings were moved on
+  2026-08-24 and that the old repository URL currently redirects. The manual
+  changed-path acceptance run produced the separate automated review commit
+  `6f28a412`, raising the Worker-backed total from 24 to 25. Deploying the
+  checked-in Worker preview-origin change remains access-required because no
+  Cloudflare API token is available locally. Full evidence is in
+  `docs/reports/M_REPO_REPORT.md`.
+
 ## 2026-08-24 - Workshop BBQ News publication
 
 - Commit: `f4d4dd07`
