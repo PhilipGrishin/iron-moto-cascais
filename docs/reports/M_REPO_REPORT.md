@@ -2,7 +2,7 @@
 
 Date: 2026-08-27 (Europe/Lisbon)
 
-Status: **implementation and CI gating confirmed; final Pages retry pending**
+Status: **complete; implementation, CI gating and final Pages deployment confirmed**
 
 ## Repository Transfer
 
@@ -58,15 +58,19 @@ environment. The production custom-domain origin remains allowed.
   GitHub Pages backend remained at `updating_pages` until the action's
   10-minute timeout. Retrying the same run was not used as evidence because it
   correctly encountered two same-name artifacts from the two attempts. The
-  official GitHub status API reported both Actions and Pages operational, so a
-  fresh final deployment is required after a cooldown; no green result is
-  claimed from these attempts.
+  official GitHub status API reported both Actions and Pages operational; these
+  failed attempts remain recorded rather than being presented as successes.
+- After a cooldown, fresh push run `33102072508` deployed commit `508421a9`
+  successfully in 45 seconds. Checkout, artifact preparation, upload and the
+  GitHub Pages deployment all completed green.
 
 ## Build And Scope Evidence
 
 - All four validator groups passed: SEO for 236 sitemap URLs, 7 Brand page
   sets, 12 Harley Hub pages, and every registered project slug.
 - The documented Full Safe Rebuild changed no generated output.
+- A clean clone from the new canonical repository URL completed the same Full
+  Safe Rebuild with an empty `git status`.
 - `sitemap.xml` remained byte-identical with SHA-256
   `4ef974f467c30c2e67efe7e276dbb6b03f93efd87959a3e72d7178673a9c31ae`.
 - M-REPO source scope is limited to both workflows, current repository docs,
