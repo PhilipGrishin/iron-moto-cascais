@@ -119,8 +119,9 @@ Reviews are refreshed automatically by `.github/workflows/reviews-refresh.yml`
 and can also be run manually. The workflow calls
 `scripts/build/build_reviews_schema.py`, updates the static snapshot, home-page
 review cards and JSON-LD, and commits only when tracked review output changed.
-A resulting `main` push triggers the normal GitHub Pages deployment; a
-no-change refresh makes no push and therefore starts no deployment.
+The workflow publishes a small result artifact. The Pages workflow deploys a
+successful review refresh only when that artifact records a commit; a
+no-change refresh completes without running the deploy job.
 
 Run `scripts/build/build_reviews_schema.py` manually only when an immediate
 Google rating/count refresh is needed. It calls the Cloudflare Worker and
