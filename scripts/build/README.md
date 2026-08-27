@@ -448,9 +448,9 @@ Expected source ownership:
 An unchanged Worker response and curated source should leave tracked output
 unchanged. The scheduled automation is defined in
 `.github/workflows/reviews-refresh.yml`. It pushes only changed tracked review
-output and publishes a `committed` result artifact. The Pages workflow reads
-that artifact after the refresh completes and runs its deploy job only when a
-commit was pushed. A no-change refresh completes without a deploy job.
+output. Its `committed` job output conditionally calls the reusable Pages
+workflow only after a commit was pushed. A no-change refresh skips that job,
+creates no Pages run and cannot interrupt an in-progress deployment.
 
 ## Focused CSS Hero Validation
 

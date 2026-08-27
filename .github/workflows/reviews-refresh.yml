@@ -56,22 +56,16 @@ jobs:
         shell: bash
         run: |
           if [[ "${{ steps.commit.outputs.committed }}" == "true" ]]; then
-            echo "Review changes were pushed; the refresh-result artifact authorizes one Pages deployment." >> "$GITHUB_STEP_SUMMARY"
+            echo "Review changes were pushed; the conditional Pages job will deploy them." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "No review changes were pushed; no Pages deployment is triggered." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Write refresh result
-        if: ${{ always() }}
-        shell: bash
-        run: |
-          printf '%s\n' "${{ steps.commit.outputs.committed }}" > "${{ runner.temp }}/reviews-refresh-committed.txt"
-
-      - name: Upload refresh result
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: reviews-refresh-result
-          path: ${{ runner.temp }}/reviews-refresh-committed.txt
-          if-no-files-found: error
-          retention-days: 7
+  deploy:
+    needs: refresh
+    if: ${{ needs.refresh.outputs.committed == 'true' }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml

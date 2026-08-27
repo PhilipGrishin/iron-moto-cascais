@@ -5,14 +5,9 @@ on:
     branches:
       - main
   workflow_dispatch:
-  workflow_run:
-    workflows:
-      - Refresh Google Reviews Snapshot
-    types:
-      - completed
+  workflow_call:
 
 permissions:
-  actions: read
   contents: read
   pages: write
   id-token: write
@@ -22,47 +17,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deployment-gate:
-    runs-on: ubuntu-latest
-    outputs:
-      deploy: ${{ steps.decision.outputs.deploy }}
-    steps:
-      - name: Download reviews refresh result
-        if: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' }}
-        uses: actions/download-artifact@v5
-        with:
-          name: reviews-refresh-result
-          path: ${{ runner.temp }}/reviews-refresh-result
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          run-id: ${{ github.event.workflow_run.id }}
-
-      - name: Decide whether to deploy
-        id: decision
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          if [[ "${{ github.event_name }}" != "workflow_run" ]]; then
-            echo "deploy=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          if [[ "${{ github.event.workflow_run.conclusion }}" != "success" ]]; then
-            echo "deploy=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          result_file="${{ runner.temp }}/reviews-refresh-result/reviews-refresh-committed.txt"
-          committed="$(tr -d '[:space:]' < "$result_file")"
-          if [[ "$committed" == "true" ]]; then
-            echo "deploy=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "deploy=false" >> "$GITHUB_OUTPUT"
-          fi
-
   deploy:
-    needs: deployment-gate
-    if: ${{ needs.deployment-gate.outputs.deploy == 'true' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
