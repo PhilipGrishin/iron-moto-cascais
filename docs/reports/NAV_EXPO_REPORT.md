@@ -9,7 +9,7 @@ Implementation commit: `6a2bdff72ba36b34906571d33f7a14c83f0c419a`
 Production deployment:
 
 - GitHub Pages workflow:
-  `https://github.com/dreamcarua/iron-moto-cascais/actions/runs/30710734079`
+  `https://github.com/PhilipGrishin/iron-moto-cascais/actions/runs/30710734079`
 - Result: success, deploy job completed in 41 seconds.
 - Production cache-bypass token: `?navexpo=6a2bdff7`.
 - Rich Results Test:

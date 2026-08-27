@@ -37,7 +37,7 @@ const ALLOWED_ORIGINS = [
   'https://ironcustommotors.com',
   'https://www.ironcustommotors.com',
   // GitHub Pages preview
-  'https://dreamcarua.github.io'
+  'https://philipgrishin.github.io'
 ];
 
 function corsHeaders(origin) {

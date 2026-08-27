@@ -126,7 +126,7 @@ Google's live UI after publication and is kept distinct from local validation.
 ## Production Verification
 
 - GitHub Pages workflow
-  [`30666948549`](https://github.com/dreamcarua/iron-moto-cascais/actions/runs/30666948549)
+  [`30666948549`](https://github.com/PhilipGrishin/iron-moto-cascais/actions/runs/30666948549)
   deployed documentation head `a783f0fe`, which contains schema-complete
   implementation commit `f42fb5d0`.
 - Cache-bypass query `?c8=a783f0fe0e2423dccb461eba0583e60d8d1456ee`

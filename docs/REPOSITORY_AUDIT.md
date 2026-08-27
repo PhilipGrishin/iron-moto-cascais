@@ -25,9 +25,11 @@ and cache-bypassed HTTP requests where production behavior was relevant.
 ## Repository Identity And Copies
 
 **Confirmed:** the active checkout is
-`/Users/philipgrishin/Documents/ICM_Website`, on branch `main`, with remote
-`https://github.com/dreamcarua/iron-moto-cascais.git`. At audit start the local
-branch and `origin/main` had no divergence.
+`/Users/philipgrishin/Documents/ICM_Website`, on branch `main`. At audit start
+the local branch and `origin/main` had no divergence. Historical note added
+2026-08-27: the audit originally recorded the repository's former owner URL;
+the repository was transferred on 2026-08-24 and its canonical remote is now
+`https://github.com/PhilipGrishin/iron-moto-cascais.git`.
 
 **Resolved, 2026-07-31:** temporary Git worktrees from the C6 reproducibility
 work were found under `/private/tmp` during the audit. After explicit owner

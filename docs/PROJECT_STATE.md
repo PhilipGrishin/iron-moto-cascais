@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-08-24
+Last updated: 2026-08-27
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -10,7 +10,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
 ## Status And Evidence
 
 - Status: **confirmed**.
-- Evidence date: 2026-08-24 (Europe/Lisbon).
+- Evidence date: 2026-08-27 (Europe/Lisbon).
 - Repository evidence: N-BBQ implementation commit `f4d4dd07` and merged
   deployment state `93b4f460`, the automated review-snapshot refresh commit
   `1e2e9e6c`, F-HASH implementation commit `5c010b49`,
@@ -83,8 +83,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
 | Item | Current value |
 |---|---|
 | Production | `https://ironcustommotors.com/` |
-| Repository | `https://github.com/dreamcarua/iron-moto-cascais` |
-| Git remote | `https://github.com/dreamcarua/iron-moto-cascais.git` |
+| Repository | `https://github.com/PhilipGrishin/iron-moto-cascais` |
+| Git remote | `https://github.com/PhilipGrishin/iron-moto-cascais.git` |
 | Production branch | `main` |
 | Hosting | GitHub Pages, checked-in static output |
 | DNS/CDN | Cloudflare |
@@ -93,6 +93,10 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 Pushing `main` triggers `.github/workflows/pages.yml`. GitHub does not run the
 site generators during deployment; the workflow packages checked-in output.
+The repository was transferred to the owner's `PhilipGrishin` account on
+2026-08-24. The owner confirmed that the domain, DNS and GitHub Pages settings
+were reconfigured for the new repository and verified in production. The old
+repository URL currently redirects, but it is not a supported canonical URL.
 
 ## Current Inventory
 

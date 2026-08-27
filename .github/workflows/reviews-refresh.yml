@@ -14,6 +14,8 @@ concurrency:
 
 jobs:
   refresh:
+    outputs:
+      committed: ${{ steps.commit.outputs.committed }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,10 +33,12 @@ jobs:
         run: python3 scripts/build/build_reviews_schema.py
 
       - name: Commit refreshed review data
+        id: commit
         shell: bash
         run: |
           set -euo pipefail
           if git diff --quiet; then
+            echo "committed=false" >> "$GITHUB_OUTPUT"
             echo "No review changes to commit."
             exit 0
           fi
@@ -44,3 +48,15 @@ jobs:
           git add assets/reviews-snapshot.json index.html pt/index.html ru/index.html uk/index.html
           git commit -m "Refresh Google reviews snapshot"
           git push
+          echo "committed=true" >> "$GITHUB_OUTPUT"
+          echo "Review changes committed and pushed; the main push will trigger Pages."
+
+      - name: Summarize deployment trigger
+        if: ${{ always() }}
+        shell: bash
+        run: |
+          if [[ "${{ steps.commit.outputs.committed }}" == "true" ]]; then
+            echo "Review changes were pushed; the main push triggers one Pages deployment." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No review changes were pushed; no Pages deployment is triggered." >> "$GITHUB_STEP_SUMMARY"
+          fi

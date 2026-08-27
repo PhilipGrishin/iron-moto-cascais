@@ -118,8 +118,9 @@ into another document; update the canonical build README instead.
 Reviews are refreshed automatically by `.github/workflows/reviews-refresh.yml`
 and can also be run manually. The workflow calls
 `scripts/build/build_reviews_schema.py`, updates the static snapshot, home-page
-review cards and JSON-LD, commits the result, and lets the normal GitHub Pages
-deploy run.
+review cards and JSON-LD, and commits only when tracked review output changed.
+A resulting `main` push triggers the normal GitHub Pages deployment; a
+no-change refresh makes no push and therefore starts no deployment.
 
 Run `scripts/build/build_reviews_schema.py` manually only when an immediate
 Google rating/count refresh is needed. It calls the Cloudflare Worker and
