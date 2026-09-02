@@ -114,11 +114,71 @@ PAGE_HEAD_META = {
             "description": "Rider lounge e comunidade motard da Iron Custom Motors em Cascais: motos campeãs, troféus, café, encontros e cultura motociclista na Grande Lisboa.",
         },
     },
+    "thank-you": {
+        "en": {
+            "title": "Request Received | Iron Custom Motors",
+            "description": "Your request has been received by Iron Custom Motors. We will reply during business hours.",
+        },
+        "ru": {
+            "title": "Заявка получена | Iron Custom Motors",
+            "description": "Iron Custom Motors получил вашу заявку. Мы ответим в рабочие часы.",
+        },
+        "uk": {
+            "title": "Заявку отримано | Iron Custom Motors",
+            "description": "Iron Custom Motors отримав вашу заявку. Ми відповімо в робочі години.",
+        },
+        "pt": {
+            "title": "Pedido recebido | Iron Custom Motors",
+            "description": "A Iron Custom Motors recebeu o seu pedido. Responderemos durante o horário de funcionamento.",
+        },
+    },
 }
 
 # Page-specific inline I18N content (used in body with data-i18n attributes).
 # Keys are prefixed: services.* / projects.* / about.* / contact.* / faq.*
 PAGE_I18N = {}
+
+# =========================================================================
+# /thank-you/ — noindex FormSubmit destination
+# =========================================================================
+PAGE_I18N["thank-you"] = {
+    "en": {
+        "thanks.breadHome": "Home",
+        "thanks.crumb": "Request received",
+        "thanks.eyebrow": "Request received",
+        "thanks.h1": "Thank you.",
+        "thanks.text": "Your request has been received. We’ll reply during business hours.",
+        "thanks.whatsapp": "Message us on WhatsApp",
+        "thanks.home": "Back to home",
+    },
+    "pt": {
+        "thanks.breadHome": "Início",
+        "thanks.crumb": "Pedido recebido",
+        "thanks.eyebrow": "Pedido recebido",
+        "thanks.h1": "Obrigado.",
+        "thanks.text": "Recebemos o seu pedido. Responderemos durante o horário de funcionamento.",
+        "thanks.whatsapp": "Fale connosco no WhatsApp",
+        "thanks.home": "Voltar ao início",
+    },
+    "ru": {
+        "thanks.breadHome": "Главная",
+        "thanks.crumb": "Заявка получена",
+        "thanks.eyebrow": "Заявка получена",
+        "thanks.h1": "Спасибо.",
+        "thanks.text": "Мы получили вашу заявку и ответим в рабочие часы.",
+        "thanks.whatsapp": "Написать в WhatsApp",
+        "thanks.home": "На главную",
+    },
+    "uk": {
+        "thanks.breadHome": "Головна",
+        "thanks.crumb": "Заявку отримано",
+        "thanks.eyebrow": "Заявку отримано",
+        "thanks.h1": "Дякуємо.",
+        "thanks.text": "Ми отримали вашу заявку й відповімо в робочі години.",
+        "thanks.whatsapp": "Написати у WhatsApp",
+        "thanks.home": "На головну",
+    },
+}
 
 # =========================================================================
 # /services/ — hub page

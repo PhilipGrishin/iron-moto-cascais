@@ -23,6 +23,7 @@ from brand_pages_data import BRAND_ORDER
 from news_data import NEWS_ARTICLES
 from localize_internal_links import is_language_switch_link, rewrite_href
 from page_meta import PAGE_META, OG_LOCALES
+from site_chrome import apply_form_next
 from seo_meta import upsert_robots_image_preview
 
 # --------- Paths ---------
@@ -75,6 +76,7 @@ MAIN_PAGES = [
     ("community/index.html", "community"),
     ("contact/index.html", "contact"),
     ("faq/index.html", "faq"),
+    ("thank-you/index.html", "thank-you"),
     *[(f"{slug}/index.html", slug) for slug in BRAND_ORDER],
     ("blog/index.html", "blog"),
     *[
@@ -614,6 +616,8 @@ def localize_page(en_html: str, lang: str, page_id: str, *, project_name=None) -
         if not is_language_switch_link(anchor):
             anchor["href"] = rewrite_href(anchor["href"], lang)
 
+    apply_form_next(soup, lang)
+
     return str(soup)
 
 
@@ -639,6 +643,7 @@ def update_en_page(en_html: str, page_id: str, project_name=None) -> str:
             t.attrs["content"] = OG_LOCALES[lang]
             soup.head.append(t)
     upsert_robots_image_preview(soup)
+    apply_form_next(soup, "en")
     return str(soup)
 
 

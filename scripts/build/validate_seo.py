@@ -23,6 +23,14 @@ from seo_meta import robots_has_large_image_preview
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
 OWN_HOSTS = {"ironcustommotors.com", "www.ironcustommotors.com"}
+FORMSUBMIT_ALIAS = "https://formsubmit.co/c29ab5a6818b2926388e8978888304a2"
+LEAD_EVENT_URL = "https://icm-leads.vg-ab6.workers.dev/event"
+THANK_YOU_PAGES = {
+    Path("thank-you/index.html"): f"{DOMAIN}/thank-you/",
+    Path("pt/thank-you/index.html"): f"{DOMAIN}/pt/thank-you/",
+    Path("ru/thank-you/index.html"): f"{DOMAIN}/ru/thank-you/",
+    Path("uk/thank-you/index.html"): f"{DOMAIN}/uk/thank-you/",
+}
 LANGS = ["en", "ru", "uk", "pt"]
 HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 TARGET_LANGS = ["ru", "uk", "pt"]
@@ -452,6 +460,86 @@ def check_formsubmit_action_privacy() -> list[str]:
                 f"{relative_path}: FormSubmit form action exposes an email address; "
                 "use the activated private alias"
             )
+    return issues
+
+
+def check_lead_measurement_contract() -> list[str]:
+    """Validate anonymous beacon runtime and localized FormSubmit redirects."""
+    issues = []
+    sitemap_set = set(sitemap_urls())
+    html_paths = sorted(
+        path
+        for path in SITE_ROOT.rglob("*.html")
+        if not {".git", ".venv", "node_modules"}.intersection(
+            path.relative_to(SITE_ROOT).parts
+        )
+    )
+    form_count = 0
+    for html_path in html_paths:
+        relative_path = html_path.relative_to(SITE_ROOT)
+        soup = BeautifulSoup(html_path.read_text(encoding="utf-8"), HTML_PARSER)
+        form = soup.select_one("form#leadForm")
+        if form is None:
+            continue
+        form_count += 1
+        if form.get("action") != FORMSUBMIT_ALIAS:
+            issues.append(f"{relative_path}: #leadForm must keep the private FormSubmit alias")
+        lang = "en"
+        if relative_path.parts and relative_path.parts[0] in TARGET_LANGS:
+            lang = relative_path.parts[0]
+        next_url = (
+            f"{DOMAIN}/thank-you/"
+            if lang == "en"
+            else f"{DOMAIN}/{lang}/thank-you/"
+        )
+        next_inputs = form.find_all("input", attrs={"name": "_next"})
+        if len(next_inputs) != 1 or next_inputs[0].get("value") != next_url:
+            issues.append(
+                f"{relative_path}: #leadForm must contain exactly one localized "
+                f"absolute _next value ({next_url})"
+            )
+        for field_name in ("_subject", "_template", "_captcha", "_honey"):
+            if form.find(attrs={"name": field_name}) is None:
+                issues.append(f"{relative_path}: #leadForm is missing preserved field {field_name}")
+    if not form_count:
+        issues.append("No #leadForm forms found for lead measurement")
+
+    for relative_path, canonical_url in THANK_YOU_PAGES.items():
+        html_path = SITE_ROOT / relative_path
+        if not html_path.exists():
+            issues.append(f"{relative_path}: missing noindex thank-you page")
+            continue
+        soup = BeautifulSoup(html_path.read_text(encoding="utf-8"), HTML_PARSER)
+        robots = soup.find("meta", attrs={"name": "robots"})
+        if robots is None or "noindex" not in str(robots.get("content", "")).lower():
+            issues.append(f"{relative_path}: thank-you page must be noindex")
+        canonical = soup.find("link", attrs={"rel": "canonical"})
+        if canonical is None or canonical.get("href") != canonical_url:
+            issues.append(f"{relative_path}: thank-you page canonical must be {canonical_url}")
+        if canonical_url in sitemap_set:
+            issues.append(f"{relative_path}: thank-you page must stay out of sitemap.xml")
+
+    main_js = (SITE_ROOT / "assets" / "main.js").read_text(encoding="utf-8")
+    if LEAD_EVENT_URL not in main_js:
+        issues.append("assets/main.js: missing icm-leads event endpoint")
+    for event_type in ("whatsapp", "tel", "form_submit", "form_view"):
+        if event_type not in main_js:
+            issues.append(f"assets/main.js: missing lead event type {event_type}")
+    forbidden_runtime = {
+        "googletagmanager.com": "Google Analytics",
+        "connect.facebook.net": "Meta Pixel",
+    }
+    for needle, label in forbidden_runtime.items():
+        if needle in main_js:
+            issues.append(f"assets/main.js: {label} runtime is forbidden by cookie-free measurement")
+        for html_path in html_paths:
+            if needle in html_path.read_text(encoding="utf-8"):
+                relative_path = html_path.relative_to(SITE_ROOT)
+                issues.append(
+                    f"{relative_path}: {label} runtime is forbidden by cookie-free measurement"
+                )
+    if "document.cookie" in main_js or "icm-consent" in main_js:
+        issues.append("assets/main.js: lead measurement must not use cookie-consent state")
     return issues
 
 
@@ -962,6 +1050,7 @@ def main() -> int:
     issues.extend(check_llms_sitemap_coverage(urls))
     issues.extend(check_codex_changelog())
     issues.extend(check_formsubmit_action_privacy())
+    issues.extend(check_lead_measurement_contract())
     issues.extend(check_navigation_parity(urls))
     _, project_navigation_issues = check_project_navigation_registry(urls)
     issues.extend(project_navigation_issues)

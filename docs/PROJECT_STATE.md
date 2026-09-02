@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-08-27
+Last updated: 2026-09-02
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -9,8 +9,9 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
-- Status: **confirmed**.
-- Evidence date: 2026-08-27 (Europe/Lisbon).
+- Status: **confirmed** for the deployed baseline; A-MEASURE is **access
+  required** before its new Worker can be deployed.
+- Evidence date: 2026-09-02 (Europe/Lisbon).
 - Repository evidence: M-REPO commits `88a44503` and `599a0429`, automated
   review-snapshot refresh commit `6f28a412`, N-BBQ implementation commit
   `f4d4dd07` and merged deployment state `93b4f460`, the automated
@@ -79,6 +80,10 @@ deployed public identifiers and cache-bust values. Operating rules live in
   `sitemap.xml` SHA-256 is
   `4ef974f467c30c2e67efe7e276dbb6b03f93efd87959a3e72d7178673a9c31ae`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
+- Pending local evidence: A-MEASURE's Worker unit tests, broad site validators,
+  visible-text comparison, responsive browser checks and Full Safe Rebuild pass
+  in the current worktree. Production evidence is intentionally not claimed
+  until the owner authorizes and authenticates the new `icm-leads` deployment.
 
 ## Repository And Production
 
@@ -107,9 +112,9 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
 | English path patterns | 59 | `build_sitemap.py` `PAGES` |
 | Indexable sitemap URLs | 236 | parsed `sitemap.xml` `<url>` entries |
-| Tracked HTML files | 245 | filesystem enumeration |
+| Tracked HTML files | 249 | filesystem enumeration |
 | Indexable HTML files | 236 | sitemap-to-file resolution |
-| Non-indexed HTML files | 9 | `404.html` plus 8 localized project redirect stubs |
+| Non-indexed HTML files | 13 | `404.html`, 8 localized project redirect stubs and 4 `thank-you` pages |
 | Sitemap lastmod tags | 236 | parsed `sitemap.xml` |
 | Unique sitemap lastmod values | 56 | parsed `sitemap.xml` |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
@@ -118,7 +123,7 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | Blog posts | 9 | `BLOG_POSTS` |
 | News articles | 4 | `NEWS_ARTICLES` |
 | Harley Hub English page patterns | 3 | `harley_hub_data.py` `PAGE_CONFIG` |
-| Generated general hub English pages | 6 | `build_new_pages.py` / `new_pages_data.py` |
+| Generated general/utility localized entries | 7 | `build_new_pages.py` / `new_pages_data.py` |
 | Authorized Dealer English page patterns | 2 | `build_authorized_dealer.py` |
 | Legal English page patterns | 3 | `LEGAL_PAGES` |
 
@@ -138,7 +143,7 @@ Registry alignment on the evidence date:
 |---|---:|---|
 | `build_sitemap.py` `PAGES` | 59 | canonical English indexable paths |
 | `localize_internal_links.py` `LOCALIZED_PATHS` | 59 | matches `PAGES` after normalization |
-| `build_i18n.py` `MAIN_PAGES` | 32 | English sources localized by the generic i18n flow |
+| `build_i18n.py` `MAIN_PAGES` | 35 | English sources localized by the generic i18n flow |
 | `project_pages_data.py` `PROJECT_CONFIGS` | 14 | project details rendered directly in four languages |
 
 There is no active `EN_PAGES` registry. The canonical English page registry is
@@ -148,7 +153,7 @@ There is no active `EN_PAGES` registry. The canonical English page registry is
 
 | Assets | Value | Scope |
 |---|---|---|
-| `assets/main.css`, `assets/main.js` | `20260724a` | every sitemap page |
+| `assets/main.css`, `assets/main.js` | `20260902b` | every sitemap page |
 | `assets/projects.css` | `20260801a` | project detail pages |
 | `assets/projects.js` | `20260710b` | project detail pages |
 
@@ -256,10 +261,19 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 
 ## Current Delivery And Discovery State
 
-- All 120 pages that contain the lead form submit to FormSubmit through the
+- All 128 pages that contain the lead form submit to FormSubmit through the
   activated private action alias. No built HTML exposes the delivery inbox in
   a FormSubmit action, and the SEO validator enforces this contract across all
-  built HTML files, including non-sitemap output.
+  built HTML files, including non-sitemap output. The 124 indexable form pages
+  redirect to their language-local noindex `thank-you` page; those four utility
+  pages contain the same shared modal and remain outside `sitemap.xml`.
+- A-MEASURE's checked-in client sends only four anonymous lead-intent types:
+  `whatsapp`, `tel`, `form_submit` and `form_view`. The payload contains the
+  query-free path, path-derived language and a sanitized referrer hostname;
+  it contains no form values or browser identifiers. The new Worker stores KV
+  counters only and does not read or store IP addresses or user-agent strings.
+  Deployment of `icm-leads` remains **access required** and is not yet a
+  production claim.
 - The four home pages render 9 curated Google-review cards and the matching
   9 JSON-LD `Review` items from `assets/reviews-curated.json`. Their
   `AggregateRating` remains independently sourced from the Worker snapshot and
@@ -318,8 +332,8 @@ Open performance caveats and external verification limits are in
 | Service | Current public identifier or endpoint |
 |---|---|
 | Reviews Worker | `https://icm-reviews.vg-ab6.workers.dev/` |
-| Google Analytics | `G-D15BLYEKBN` |
-| Meta Pixel | `1708697916976439` |
+| Lead Worker | planned `https://icm-leads.vg-ab6.workers.dev/`; deployment pending owner approval/authentication |
+| Cloudflare Web Analytics | owner-managed edge injection; no repository HTML snippet |
 | FormSubmit delivery inbox | `Ironcustom.office@gmail.com` |
 | FormSubmit action alias | `https://formsubmit.co/c29ab5a6818b2926388e8978888304a2` |
 
@@ -358,7 +372,9 @@ portability risk, not a cross-platform guarantee.
 ## Recovery Answer
 
 For a new session: this repository is the production static marketing site for
-Iron Custom Motors. Its current inventory is above. There is no active
-implementation task recorded; unresolved performance, portability, CDN and
+Iron Custom Motors. Its current inventory is above. A-MEASURE is locally
+implemented but awaits explicit owner authorization and Cloudflare
+authentication before the `icm-leads` Worker can be deployed and the site can
+be committed/pushed safely. Other unresolved performance, portability, CDN and
 external-account work is in `docs/OPEN_TASKS.md`. Read the affected family in
 `docs/CONTENT_TYPES.md`, then use only `scripts/build/README.md` for commands.

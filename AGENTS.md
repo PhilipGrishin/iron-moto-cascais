@@ -208,6 +208,11 @@ when risks or follow-ups changed. Add implementation chronology to
   private alias, never the recipient email address. The public contact email
   may remain in visible copy, `mailto:` links and structured business data;
   this rule applies only to the form `action` URL.
+- Lead measurement privacy. Lead events may contain only event type, path,
+  language and a sanitized referrer source. Never add cookies, IP addresses,
+  user-agent strings, form values, phone numbers or other personal data to the
+  lead beacon or its KV storage. Keep the stats token in `.secrets/` or a
+  Cloudflare Worker secret, never in tracked files.
 
 ## Conventions
 
@@ -268,9 +273,10 @@ cron and manual trigger are defined only in that workflow.
 - No CMS.
 - No test suite.
 - No type checking.
-- No backend other than FormSubmit and the Cloudflare Worker.
-- No Google Tag Manager container (events go to `dataLayer`
-  via `gtag` directly; no GTM loader).
+- No backend other than FormSubmit and the documented Cloudflare Workers.
+- No Google Analytics, Meta Pixel or Google Tag Manager runtime in repository
+  HTML or JavaScript. Cloudflare Web Analytics is owner-managed through edge
+  injection and must not be added to repository HTML.
 - No admin UI.
 
 If a task seems to require any of the above, stop and ask the

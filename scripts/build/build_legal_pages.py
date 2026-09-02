@@ -16,7 +16,7 @@ from site_chrome import apply_navigation_footer
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260724a"
+CACHE_BUST = "20260902b"
 
 OG_LOCALES = {"en":"en_US","ru":"ru_RU","uk":"uk_UA","pt":"pt_PT"}
 LANGS = ["en", "ru", "uk", "pt"]

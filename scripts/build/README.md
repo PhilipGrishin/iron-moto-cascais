@@ -104,7 +104,7 @@ module is named above or in `docs/CONTENT_TYPES.md`.
 
 | Script | What it protects | Important exclusions |
 |---|---|---|
-| `validate_seo.py` | all built HTML FormSubmit-action privacy; sitemap files; title/meta; canonical/hreflang; JSON parsing and breadcrumbs; localized JSON-LD URLs; local assets; cache-bust presence/consistency; LCP discovery; CSS hero alignment; Blog picture preload/source alignment and viewport/DPR candidate selection; navigation/footer structure; project-menu registry membership, localized URLs and order; same-language chrome-text parity; localized links; English `llms.txt` coverage; changelog commit references | Rich Results UI; schema recommended fields; global visible FAQ parity; Product/Offer semantics; real lastmod meaning; visual rendering; external services; measured performance |
+| `validate_seo.py` | all built HTML FormSubmit-action privacy and localized `_next` redirects; noindex thank-you exclusion; cookie-free lead runtime; sitemap files; title/meta; canonical/hreflang; JSON parsing and breadcrumbs; localized JSON-LD URLs; local assets; cache-bust presence/consistency; LCP discovery; CSS hero alignment; Blog picture preload/source alignment and viewport/DPR candidate selection; navigation/footer structure; project-menu registry membership, localized URLs and order; same-language chrome-text parity; localized links; English `llms.txt` coverage; changelog commit references | Rich Results UI; schema recommended fields; global visible FAQ parity; Product/Offer semantics; real lastmod meaning; visual rendering; external services; measured performance |
 | `validate_brand_pages.py` | brand registry and assets; generated variants; schema type presence; sitemap/deploy wiring; homepage and reciprocal links; forbidden brand claims | exact visible copy; global RRT warnings; browser interaction/performance |
 | `validate_harley_hub.py` | exact maintained copy; visual tokens; hero media; schema families; language-local links; feed/portfolio and required integrations | live browser behavior; external RRT; performance benefit |
 | `validate_project_pages.py` | every registered project: exact source copy; media; schema graph/dates/references; cache-bust; redirects; listing/sitemap and optional Custom/Harley integration | browser rendering; external RRT |
@@ -187,12 +187,50 @@ The lead-form modal is currently retained in checked-in HTML and copied by
 page-family generators rather than rendered from a standalone form template.
 Its FormSubmit `action` must use an activated private alias and must never
 contain the recipient email address. `validate_seo.py` checks this rule across
-all built HTML, including files outside the sitemap.
+all built HTML, including files outside the sitemap. `site_chrome.py` assigns
+the absolute language-local `_next` URL when the modal is copied; generic
+localization repeats that normalization in `build_i18n.py`.
 
 If `assets/main.css` or `assets/main.js` changed, read the current main-asset
 stamp from `docs/PROJECT_STATE.md`, choose the next date-letter value, update
 the HTML references and every applicable generator constant, then run the broad
 validator. Different asset families may keep independent stamps.
+
+## Lead Measurement Workflow
+
+Ownership:
+
+- Worker/API/KV contract: `worker/leads/worker.mjs` and
+  `worker/leads/wrangler.toml`;
+- browser events and WhatsApp page attribution: `assets/main.js`;
+- FormSubmit redirect destinations: `new_pages_data.py`,
+  `build_new_pages.py`, `site_chrome.py` and `build_i18n.py`;
+- private checkup report: `tools/leads_report.py`.
+
+The Worker stores counters only. It never reads or stores IP addresses,
+user-agent strings, form values or raw events. Its accepted `ref` field is
+sanitized by the browser and discarded by the Worker. Worker deployment
+changes Cloudflare account state and therefore requires owner approval.
+
+Local verification:
+
+```bash
+node --test worker/leads/worker.test.mjs
+python3 tools/leads_report.py --help
+python3 scripts/build/validate_seo.py
+```
+
+After the owner has provisioned the Worker secret, place the report credentials
+in gitignored `.secrets/leads.env` as documented in `worker/leads/README.md`,
+then run:
+
+```bash
+python3 tools/leads_report.py
+```
+
+The report writes `data/leads/<date>_leads.json` locally and prints the 7/28-day
+type totals, top pages and language breakdown. Those JSON snapshots are
+gitignored operational data.
 
 ## General Hub And Service Workflow
 

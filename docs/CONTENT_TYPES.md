@@ -342,6 +342,28 @@ Google Places key client-side.
 
 Commands: `scripts/build/README.md`, **Reviews workflow**.
 
+## Anonymous Lead Measurement
+
+Ownership:
+
+- Browser transport, delegated WhatsApp/telephone tracking and localized
+  WhatsApp page attribution: `assets/main.js`.
+- Lead Worker and KV data model: `worker/leads/`.
+- FormSubmit language-local success destinations: the shared modal source in
+  `index.html`, normalization in `site_chrome.py` / `build_i18n.py`, and the
+  generated `thank-you` entry in `new_pages_data.py` / `build_new_pages.py`.
+- Private checkup report: `tools/leads_report.py`; local JSON output under
+  `data/leads/` is intentionally gitignored.
+
+The four event types are `whatsapp`, `tel`, `form_submit` and `form_view`.
+Payloads contain only event type, query-free path, path-derived language and a
+sanitized referrer source. KV retains daily counters, not raw events. Thank-you
+pages are `noindex` utility output and must never enter the sitemap or discovery
+index. Cloudflare Web Analytics is owner-managed through edge injection and is
+not added to repository HTML.
+
+Commands: `scripts/build/README.md`, **Lead Measurement Workflow**.
+
 ## Media Optimization
 
 Binary optimization is intentionally outside the canonical full rebuild to

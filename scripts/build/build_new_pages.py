@@ -29,7 +29,7 @@ from site_chrome import (
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260724a"  # bump on each change to main.css/main.js
+CACHE_BUST = "20260902b"  # bump on each change to main.css/main.js
 GLOBAL_I18N = json.loads((BUILD_DIR / "i18n.json").read_text(encoding="utf-8"))
 
 CUSTOM_PROJECT_LINKS = re.compile(
@@ -69,7 +69,15 @@ SHARED_STYLES = """.subpage{padding:160px 0 100px;background:#0a0a0a;position:re
 @media (max-width:760px){.subpage{padding-top:130px}}"""
 
 
-def head(page_id, lang, extra_styles="", json_ld_blocks=None, hreflang=True, og_image=None):
+def head(
+    page_id,
+    lang,
+    extra_styles="",
+    json_ld_blocks=None,
+    hreflang=True,
+    og_image=None,
+    robots="max-image-preview:large",
+):
     """Build the <head> section for a page."""
     meta = PAGE_HEAD_META[page_id][lang]
     canonical = f"{DOMAIN}/{page_id}/"
@@ -103,7 +111,7 @@ def head(page_id, lang, extra_styles="", json_ld_blocks=None, hreflang=True, og_
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#0a0a0a" name="theme-color"/>
-<meta content="max-image-preview:large" name="robots"/>
+<meta content="{robots}" name="robots"/>
 <title>{meta["title"]}</title>
 <meta content="{meta["description"]}" name="description"/>
 <link href="{canonical}" rel="canonical"/>
@@ -197,6 +205,73 @@ def optional_paragraph(en, key):
     if not value:
         return ""
     return f'<p data-i18n-html="{key}">{value}</p>'
+
+
+# =========================================================================
+# /thank-you/ — noindex FormSubmit destination
+# =========================================================================
+
+def render_thank_you():
+    page_id = "thank-you"
+    page_url = f"{DOMAIN}/{page_id}/"
+    en = PAGE_I18N[page_id]["en"]
+    json_ld = [
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": page_url,
+            "name": en["thanks.crumb"],
+            "url": page_url,
+            "isPartOf": {"@id": f"{DOMAIN}/#website"},
+            "about": {"@id": f"{DOMAIN}/#business"},
+        },
+        breadcrumb_jsonld(en["thanks.crumb"], page_url),
+    ]
+    extra_css = """.thanks-page{min-height:72vh;display:flex;align-items:center;padding:150px 0 90px;background:#0a0a0a}
+.thanks-card{max-width:760px;padding:clamp(28px,5vw,58px);border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface)}
+.thanks-card h1{max-width:none;margin:14px 0 18px}
+.thanks-card .lead{font-size:clamp(17px,2vw,21px)}
+.thanks-card .subpage-cta{margin-top:30px}"""
+    body = f'''<main>
+<section class="subpage thanks-page">
+<div class="container">
+<div class="thanks-card">
+<div class="crumb"><a data-i18n="thanks.breadHome" href="/">{en["thanks.breadHome"]}</a><span class="sep">→</span><span data-i18n="thanks.crumb">{en["thanks.crumb"]}</span></div>
+<span class="h-eyebrow" data-i18n="thanks.eyebrow">{en["thanks.eyebrow"]}</span>
+<h1 data-i18n="thanks.h1">{en["thanks.h1"]}</h1>
+<p class="lead" data-i18n="thanks.text">{en["thanks.text"]}</p>
+<div class="subpage-cta">
+<a class="btn btn-primary" data-wa="" href="https://wa.me/351917961230" rel="noopener" target="_blank"><span data-i18n="thanks.whatsapp">{en["thanks.whatsapp"]}</span>{ARROW_SVG}</a>
+<a class="btn btn-ghost" data-i18n="thanks.home" href="/">{en["thanks.home"]}</a>
+</div>
+</div>
+</div>
+</section>
+</main>'''
+    page_html = (
+        head(
+            page_id,
+            "en",
+            extra_styles=extra_css,
+            json_ld_blocks=json_ld,
+            robots="noindex,follow",
+        )
+        + "\n<body>\n"
+        + header_html()
+        + body
+        + footer_html()
+        + end_html()
+    )
+    out = SITE_ROOT / page_id / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    write_html_if_changed(
+        out,
+        page_html,
+        preserve_body_shell=True,
+        merge_page_i18n=True,
+        preserve_downstream_head=True,
+    )
+    return out
 
 
 # =========================================================================
@@ -1176,6 +1251,7 @@ def render_faq():
 
 def main():
     outs = [
+        render_thank_you(),
         render_custom_project_links(),
         render_services(),
         render_projects(),
@@ -1187,7 +1263,7 @@ def main():
     for o in outs:
         size = o.stat().st_size
         print(f"  wrote {o.relative_to(SITE_ROOT)} ({size} bytes)")
-    print(f"Done. {len(outs)} new EN pages written.")
+    print(f"Done. {len(outs)} EN pages written.")
 
 
 if __name__ == "__main__":

@@ -2,38 +2,44 @@
    IRON CUSTOM MOTORS — Interactivity & i18n
    ====================================================================== */
 
-/* ---------- Analytics event tracking ----------
-   One unified channel — sends to GA4 (gtag), Meta Pixel (fbq), and the
-   dataLayer (for future GTM). All event names match the spec in the TZ:
-     form_submit, click_whatsapp, click_phone, click_email, click_map,
-     book_service, view_service_page, lead_success
-   Safe to call before consent: if GA/Pixel aren't loaded yet (user hasn't
-   accepted cookies), the call is a no-op for them but still pushes to
-   the dataLayer queue. This matches GDPR behavior — we don't ship the
-   event to Google until consent is given.
-   ----------------------------------------------------------------- */
-window.icmEventQueue = [];
-window.icmTrack = function(name, params){
-  params = params || {};
-  if(params.page_lang === undefined) params.page_lang = document.documentElement.lang || 'en';
-  if(params.page_path === undefined) params.page_path = location.pathname;
-  if(typeof window.gtag === 'function'){
-    window.gtag('event', name, params);
-  } else {
-    // No consent yet — queue for replay after loadAnalytics() runs
-    window.icmEventQueue.push({name: name, params: params});
+/* ---------- Private, cookie-free lead measurement ---------- */
+const ICM_LEADS_EVENT_URL = 'https://icm-leads.vg-ab6.workers.dev/event';
+const ICM_LEAD_TYPES = new Set(['whatsapp', 'tel', 'form_submit', 'form_view']);
+
+function leadPageLang(){
+  const match = location.pathname.match(/^\/(pt|ru|uk)(?:\/|$)/);
+  return match ? match[1] : 'en';
+}
+
+function leadRefSource(){
+  if(!document.referrer) return 'direct';
+  try{
+    const host = new URL(document.referrer).hostname.toLowerCase();
+    return host === location.hostname.toLowerCase() ? 'internal' : host;
+  }catch(e){
+    return 'direct';
   }
-  if(typeof window.fbq === 'function') window.fbq('trackCustom', name, params);
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(Object.assign({event: name}, params));
-};
-window.icmFlushEventQueue = function(){
-  if(typeof window.gtag !== 'function') return;
-  while(window.icmEventQueue && window.icmEventQueue.length){
-    const ev = window.icmEventQueue.shift();
-    window.gtag('event', ev.name, ev.params);
-  }
-};
+}
+
+function sendLeadEvent(type){
+  if(!ICM_LEAD_TYPES.has(type)) return;
+  const payload = JSON.stringify({
+    type,
+    page: location.pathname,
+    lang: leadPageLang(),
+    ref: leadRefSource()
+  });
+  if(navigator.sendBeacon && navigator.sendBeacon(ICM_LEADS_EVENT_URL, payload)) return;
+  fetch(ICM_LEADS_EVENT_URL, {
+    method: 'POST',
+    body: payload,
+    mode: 'cors',
+    keepalive: true,
+    headers: {'Content-Type': 'text/plain;charset=UTF-8'}
+  }).catch(()=>{});
+}
+
+window.icmSendLeadEvent = sendLeadEvent;
 
 /* ---------- Translations ---------- */
 const I18N = {
@@ -552,7 +558,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
   /* Modal — only present on the homepage */
   const modal = document.getElementById('modal');
   if(modal){
-    const openModal = ()=>{ modal.classList.add('open'); document.body.style.overflow='hidden'; };
+    const openModal = ()=>{
+      if(!modal.classList.contains('open')) sendLeadEvent('form_view');
+      modal.classList.add('open');
+      document.body.style.overflow='hidden';
+    };
     const closeModal = ()=>{
       modal.classList.remove('open');
       document.body.style.overflow='';
@@ -576,42 +586,39 @@ document.addEventListener('DOMContentLoaded', ()=>{
     document.addEventListener('keydown', e=>{ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
   }
 
-  /* Form — only on homepage */
+  /* Form — track a valid submit, then let FormSubmit redirect to _next */
   const leadForm = document.getElementById('leadForm');
   if(leadForm){
-    leadForm.addEventListener('submit', e=>{
-      e.preventDefault();
-      const form = e.target;
-      const fd = new FormData(form);
-      const lines = [];
-      fd.forEach((v,k)=>{ if(!String(k).startsWith('_') && k!=='_honey' && v) lines.push(`${k}: ${v}`); });
-      const msg = encodeURIComponent('Iron Custom Motors — new request:\n\n'+lines.join('\n'));
-      const service = fd.get('service') || '';
-      const vehicle = fd.get('vehicle') || '';
-      icmTrack('form_submit', {form: 'lead', service: service, vehicle: vehicle});
-      fetch(form.action, { method:'POST', body: fd, mode: 'no-cors' })
-        .then(()=> icmTrack('lead_success', {form: 'lead', service: service}))
-        .catch(()=>{ /* network failed — user still gets WhatsApp fallback */ });
-      window.open(`https://wa.me/351917961230?text=${msg}`, '_blank');
-      icmTrack('click_whatsapp', {source: 'lead_form'});
-      form.style.display='none';
-      document.getElementById('formSuccess')?.classList.add('show');
+    leadForm.addEventListener('submit', ()=>{
+      sendLeadEvent('form_submit');
     });
   }
 
-  /* Localized WhatsApp prefill — runs after each language change */
-  function refreshWaLinks(){
-    const dict = I18N[document.documentElement.dataset.lang||'en']||I18N.en;
-    const txt = encodeURIComponent(dict['wa.prefill']||'');
-    document.querySelectorAll('a[data-wa]').forEach(a=>{
-      const base = 'https://wa.me/351917961230';
-      a.href = txt ? `${base}?text=${txt}` : base;
-    });
-  }
-  // hook into applyLang
-  const _origApplyLang = applyLang;
-  applyLang = function(lang){ _origApplyLang(lang); refreshWaLinks(); };
-  refreshWaLinks();
+  /* Delegated lead clicks and page-title attribution for WhatsApp. */
+  const WHATSAPP_PAGE_TEXT = {
+    en: "Hi Iron Custom Motors! I'm writing from the page: {title}",
+    pt: 'Olá Iron Custom Motors! Escrevo a partir da página: {title}',
+    ru: 'Здравствуйте, Iron Custom Motors! Пишу со страницы: {title}',
+    uk: 'Вітаю, Iron Custom Motors! Пишу зі сторінки: {title}'
+  };
+  document.addEventListener('click', event=>{
+    const anchor = event.target.closest?.('a[href]');
+    if(!anchor) return;
+    const rawHref = anchor.getAttribute('href') || '';
+    if(rawHref.startsWith('https://wa.me')){
+      try{
+        const url = new URL(anchor.href);
+        if(!url.searchParams.has('text')){
+          const template = WHATSAPP_PAGE_TEXT[leadPageLang()] || WHATSAPP_PAGE_TEXT.en;
+          url.searchParams.set('text', template.replace('{title}', document.title));
+          anchor.href = url.toString();
+        }
+      }catch(e){}
+      sendLeadEvent('whatsapp');
+    }else if(rawHref.startsWith('tel:')){
+      sendLeadEvent('tel');
+    }
+  }, true);
 
   /* Sticky CTA bar — show after hero scroll (homepage only) */
   const stickyCta = document.getElementById('stickyCta');
@@ -624,189 +631,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
   }, {threshold:0});
   stickyIo.observe(heroEl);
   }
-  /* ---------- Event tracking per TZ ---------- */
-
-  // WhatsApp clicks — any link that opens WhatsApp
-  document.querySelectorAll('a[data-wa], a[href*="wa.me/"], a[href*="api.whatsapp.com"]').forEach(a=>{
-    a.addEventListener('click', ()=> icmTrack('click_whatsapp', {
-      link_url: a.href, link_text: (a.textContent||'').trim().slice(0,80)
-    }));
-  });
-
-  // Phone clicks
-  document.querySelectorAll('a[href^="tel:"]').forEach(a=>{
-    a.addEventListener('click', ()=> icmTrack('click_phone', {link_url: a.href}));
-  });
-
-  // Email clicks
-  document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
-    a.addEventListener('click', ()=> icmTrack('click_email', {link_url: a.href}));
-  });
-
-  // Map clicks — Google Maps directions, place links, and the embedded map iframe area
-  document.querySelectorAll('a[href*="google.com/maps"], a[href*="maps.app.goo.gl"], a[href*="goo.gl/maps"]').forEach(a=>{
-    a.addEventListener('click', ()=> icmTrack('click_map', {
-      link_url: a.href,
-      destination: a.href.includes('directions') || a.href.includes('/dir/') ? 'directions' : 'place'
-    }));
-  });
-
-  // Book service CTAs — any element marked data-cta="book"
-  document.querySelectorAll('[data-cta="book"]').forEach(b=>{
-    b.addEventListener('click', ()=> icmTrack('book_service', {
-      cta_text: (b.textContent||'').trim().slice(0,80),
-      cta_location: b.closest('section')?.id || b.closest('header')?.id || 'unknown'
-    }));
-  });
-
-  // Auto-fire view_service_page / view_hub_page / view_project_page
-  (function(){
-    const services = {
-      'motorcycle-service':'service','parts':'parts','upgrades-tuning':'upgrades',
-      'custom':'custom','pre-purchase-inspection':'inspection',
-      'motorcycle-tyre-service':'tyre_service','shinomontazh-mototsiklov':'tyre_service',
-      'shynomontazh-mototsykliv':'tyre_service','montagem-de-pneus-mota':'tyre_service'
-    };
-    const hubs = {
-      'services':'services_hub', 'projects':'projects_hub',
-      'about':'about', 'contact':'contact', 'faq':'faq', 'pricing':'pricing'
-    };
-    const path = location.pathname.replace(/^\/(ru|uk|pt)\//, '/');
-    for(const slug in services){
-      if(path === `/${slug}/` || path === `/${slug}/index.html`){
-        icmTrack('view_service_page', {service: services[slug], service_slug: slug});
-        return;
-      }
-    }
-    for(const slug in hubs){
-      if(path === `/${slug}/` || path === `/${slug}/index.html`){
-        icmTrack('view_hub_page', {hub: hubs[slug], page_slug: slug});
-        return;
-      }
-    }
-    const projMatch = path.match(/^\/projects\/([a-z0-9-]+)\/?$/);
-    if(projMatch){
-      icmTrack('view_project_page', {project: projMatch[1]});
-    }
-  })();
-
-  // PDF downloads (pricing PDFs etc.)
-  document.querySelectorAll('a[href$=".pdf"], a[href*="/pricing/files/"]').forEach(a=>{
-    a.addEventListener('click', ()=> icmTrack('download_pdf', {
-      file: a.href.split('/').pop(),
-      label: (a.textContent||'').trim().slice(0,80)
-    }));
-  });
-
-  // Outbound social
-  document.querySelectorAll('a[href*="instagram.com"], a[href*="facebook.com"], a[href*="youtube.com"]').forEach(a=>{
-    a.addEventListener('click', ()=> {
-      const net = a.href.includes('instagram') ? 'instagram'
-        : a.href.includes('facebook') ? 'facebook'
-        : a.href.includes('youtube') ? 'youtube' : 'other';
-      icmTrack('outbound_social', {network: net, link_url: a.href});
-    });
-  });
-
-  // Modal open/close — proxies for form intent vs. submit
-  const _modalEl = document.getElementById('modal');
-  if(_modalEl){
-    const mo = new MutationObserver(()=>{
-      if(_modalEl.classList.contains('open')){
-        icmTrack('modal_open', {form: 'lead'});
-      }
-    });
-    mo.observe(_modalEl, {attributes:true, attributeFilter:['class']});
-    document.getElementById('closeModal')?.addEventListener('click', ()=> icmTrack('modal_close', {reason:'user_close'}));
-  }
-
-  // Brand click (header / footer logo)
-  document.querySelectorAll('a.brand, footer a.logo').forEach(a=>{
-    a.addEventListener('click', ()=> icmTrack('click_logo', {location: a.closest('header')?'header':'footer'}));
-  });
-
-  // Scroll depth (25/50/75/100) — fired once per threshold per page
-  (function(){
-    const marks = [25,50,75,100], fired = new Set();
-    function onScroll(){
-      const h = document.documentElement;
-      const scrolled = (window.scrollY + window.innerHeight) / h.scrollHeight * 100;
-      marks.forEach(m => {
-        if(scrolled >= m && !fired.has(m)){
-          fired.add(m);
-          icmTrack('scroll_depth', {percent: m});
-        }
-      });
-    }
-    let ticking = false;
-    window.addEventListener('scroll', ()=>{
-      if(!ticking){
-        requestAnimationFrame(()=>{ onScroll(); ticking=false; });
-        ticking = true;
-      }
-    }, {passive:true});
-  })();
-
-  // Language switch — track when user changes language
-  document.querySelectorAll('.lang-menu button[data-lang], .mobile-langs button[data-lang]').forEach(b=>{
-    b.addEventListener('click', ()=> icmTrack('lang_switch', {
-      to_lang: b.dataset.lang, from_lang: document.documentElement.lang || 'en'
-    }));
-  });
-
-  // Cookie banner choice — proxy for consent rate
-  document.getElementById('cookieAccept')?.addEventListener('click', ()=>
-    icmTrack('cookie_consent', {choice: 'accept'}));
-  document.getElementById('cookieReject')?.addEventListener('click', ()=>
-    icmTrack('cookie_consent', {choice: 'reject'}));
-
-  /* Cookie consent — minimal self-hosted */
-  const cookieBanner = document.getElementById('cookieBanner');
-  const consent = (()=>{ try{return localStorage.getItem('icm-consent');}catch(e){return null;}})();
-  function loadAnalytics(){
-    /* === GA4 === */
-    const GA_ID = 'G-D15BLYEKBN';
-    if(GA_ID){
-      const s = document.createElement('script');
-      s.async = true; s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-      document.head.appendChild(s);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments)}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', GA_ID, {anonymize_ip:true});
-      // Replay events that fired before consent was given
-      if(typeof window.icmFlushEventQueue === 'function') window.icmFlushEventQueue();
-    } else {
-      window.dataLayer = window.dataLayer || [];
-    }
-    /* === Meta (Facebook) Pixel === */
-    const FB_PIXEL = '1708697916976439';
-    if(FB_PIXEL){
-      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', FB_PIXEL); fbq('track', 'PageView');
-    }
-  }
-  function showBanner(){
-    cookieBanner.classList.add('show');
-    document.body.classList.add('has-cookie-banner');
-  }
-  function hideBanner(){
-    cookieBanner.classList.remove('show');
-    document.body.classList.remove('has-cookie-banner');
-  }
-  if(consent === 'accepted') loadAnalytics();
-  else if(consent !== 'rejected'){ setTimeout(showBanner, 1500); }
-  document.getElementById('cookieAccept').addEventListener('click', ()=>{
-    try{ localStorage.setItem('icm-consent','accepted'); }catch(e){}
-    hideBanner(); loadAnalytics();
-  });
-  document.getElementById('cookieReject').addEventListener('click', ()=>{
-    try{ localStorage.setItem('icm-consent','rejected'); }catch(e){}
-    hideBanner();
-    window.dataLayer = window.dataLayer || [];
-  });
-
   /* === GOOGLE REVIEWS — live rating/count + editorial curated cards === */
   const REVIEWS_ENDPOINT = (window.ICM_REVIEWS_ENDPOINT) || 'https://icm-reviews.vg-ab6.workers.dev/';
   const REVIEWS_CURATED_URL = '/assets/reviews-curated.json';

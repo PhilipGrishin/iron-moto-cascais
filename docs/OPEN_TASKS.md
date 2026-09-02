@@ -1,13 +1,26 @@
 # Open Tasks, Risks And Watchlist
 
-Last updated: 2026-08-27
+Last updated: 2026-09-02
 
 This file owns unresolved work, external dependencies and access requirements.
 Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
 
-No active implementation task is recorded after P-THE-FIRST delivery.
+### A-MEASURE anonymous lead counters
+
+- Status: **access required**, local implementation and verification complete.
+- Evidence: the Worker unit tests, site validators, sitemap byte comparison,
+  old-page visible-text comparison and responsive browser checks passed on
+  2026-09-02. Wrangler is not authenticated in the local environment and no
+  `CLOUDFLARE_API_TOKEN` is present.
+- Boundary: deploying the Worker, creating its KV namespace and setting its
+  stats secret change the owner's Cloudflare account and require explicit
+  owner authorization. The stats token must be stored only as a Worker secret
+  and in gitignored `.secrets/leads.env`.
+- Next action: after authorization, authenticate Wrangler to the owner's Vg
+  account, deploy `icm-leads`, run the four event/CORS/401 checks, then commit,
+  push and verify the GitHub Pages production deployment.
 
 ## Performance Follow-Up
 
@@ -84,8 +97,9 @@ measure representative page families under a stated profile.
 | GitHub Pages / Actions | **confirmed** | deploys stop; checked-in production output remains served | repository/account access required for workflow administration |
 | Cloudflare DNS/CDN | **confirmed** | DNS, TLS, cache or routing can obscure a valid GitHub Pages deploy | account access required |
 | Reviews Worker and Google Places | **confirmed** | live review widget/snapshot refresh can fail; existing static curated fallback remains | Worker and Google Cloud access required; secret must stay server-side |
+| Leads Worker / KV | **access required** | lead-intent beacons and private reports remain unavailable until first deployment | owner authorization and authenticated Cloudflare Vg account required; secret must stay server-side and in `.secrets/` |
 | FormSubmit | **confirmed** | contact form delivery can fail; WhatsApp remains a separate lead path | inbox activation/account access required |
-| Google Analytics and Meta Pixel | **confirmed** | attribution/analytics fail without blocking core page rendering | analytics/business account access required |
+| Cloudflare Web Analytics | **owner-managed** | pageview/referrer/CWV reporting is independent of repository lead counters | owner enables edge injection; no HTML snippet is maintained here |
 | Google Fonts | **confirmed** | remote font failure causes fallback typography and possible layout variation | external network dependency |
 | Google Search Console / Rich Results UI | **access required** | live indexing and Google UI status cannot be certified locally | owner/browser account access required |
 
@@ -140,9 +154,22 @@ Local JSON-LD parsing and repository validators are separate evidence.
 ### Advanced lead form
 
 - Status: **assumption**, future enhancement only.
-- Context: the current lead path is WhatsApp plus FormSubmit.
+- Context: the current lead path is WhatsApp plus FormSubmit; A-MEASURE adds
+  anonymous intent counters without changing form fields.
 - Candidate scope: structured motorcycle/request fields, anti-spam, media
   intake and a measurable success state. Requirements need owner approval.
+
+### Legal analytics disclosure follows the retired runtime
+
+- Status: **confirmed**, deliberately deferred by A-MEASURE scope.
+- Evidence: `scripts/build/legal_pages_data.py` still describes the former
+  consent-gated Google Analytics and Meta Pixel runtime, while A-MEASURE
+  removes those loaders and the consent-state code from `assets/main.js`.
+- Impact: the legal pages over-disclose inactive processors; the runtime itself
+  remains privacy-conservative and sets no analytics cookies.
+- Next action: update the four-language legal copy only in a separately
+  approved content/legal task. A-MEASURE explicitly forbids visible-copy
+  changes, so this discrepancy must not be silently rewritten here.
 
 ## External Strategy Workspace Boundary
 

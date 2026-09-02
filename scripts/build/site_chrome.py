@@ -18,6 +18,12 @@ from new_pages_data import PROJECT_TILES
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
 DOMAIN_HOSTS = {"ironcustommotors.com", "www.ironcustommotors.com"}
+THANK_YOU_URLS = {
+    "en": "https://ironcustommotors.com/thank-you/",
+    "pt": "https://ironcustommotors.com/pt/thank-you/",
+    "ru": "https://ironcustommotors.com/ru/thank-you/",
+    "uk": "https://ironcustommotors.com/uk/thank-you/",
+}
 
 HTML_PARSER = "html.parser"
 
@@ -278,6 +284,7 @@ def apply_navigation_footer(soup, lang: str) -> None:
     current_lang = soup.select_one("#langCurrent")
     if current_lang:
         current_lang.string = lang.upper()
+    apply_form_next(soup, lang)
 
 
 def patch_navigation_footer(html_text: str, lang: str) -> str:
@@ -357,6 +364,31 @@ def patch_navigation_footer(html_text: str, lang: str) -> str:
     )
     if count != 1:
         raise ValueError("Expected one current-language label")
+
+    next_url = THANK_YOU_URLS[lang]
+
+    def set_form_next(match: re.Match[str]) -> str:
+        opening, form_body, closing = match.groups()
+        without_existing = re.sub(
+            r'<input\b(?=[^>]*\bname=["\']_next["\'])[^>]*?/?>\s*',
+            "",
+            form_body,
+            flags=re.DOTALL,
+        )
+        next_input = (
+            f'<input name="_next" type="hidden" value="{next_url}"/>\n'
+        )
+        return opening + "\n" + next_input + without_existing.lstrip("\n") + closing
+
+    patched, form_count = re.subn(
+        r'(<form\b(?=[^>]*\bid=["\']leadForm["\'])[^>]*>)(.*?)(</form>)',
+        set_form_next,
+        patched,
+        count=1,
+        flags=re.DOTALL,
+    )
+    if "id=\"leadForm\"" in html_text and form_count != 1:
+        raise ValueError("Expected one managed lead form")
     return patched
 
 
@@ -383,6 +415,19 @@ def canonical_chrome_soup(lang: str):
     apply_navigation_footer(soup, lang)
     apply_global_i18n(soup, lang)
     return soup
+
+
+def apply_form_next(soup, lang: str) -> None:
+    """Set FormSubmit's absolute localized redirect without changing other fields."""
+    form = soup.select_one("form#leadForm")
+    if form is None:
+        return
+    next_input = form.find("input", attrs={"name": "_next"})
+    if next_input is None:
+        next_input = soup.new_tag("input")
+        next_input.attrs.update({"name": "_next", "type": "hidden"})
+        form.insert(0, next_input)
+    next_input["value"] = THANK_YOU_URLS[lang]
 
 
 def render_pre_body_chrome(lang: str, include_loader: bool = False) -> str:

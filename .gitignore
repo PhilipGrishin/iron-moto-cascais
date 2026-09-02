@@ -23,6 +23,7 @@ __pycache__/
 .venv/
 .env
 .env.local
+.secrets/
 
 # macOS metadata
 __MACOSX/
