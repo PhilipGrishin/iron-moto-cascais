@@ -52,7 +52,12 @@ def settings() -> tuple[str, str]:
 
 def fetch_stats(url: str, token: str, days: int) -> dict:
     separator = "&" if "?" in url else "?"
-    request_url = f"{url}{separator}{urlencode({'days': days, 'token': token})}"
+    query = urlencode({
+        'days': days,
+        'includeTests': 0,
+        'token': token,
+    })
+    request_url = f"{url}{separator}{query}"
     request = Request(
         request_url,
         headers={"accept": "application/json", "user-agent": "icm-leads-report/1.0"},
@@ -64,7 +69,11 @@ def fetch_stats(url: str, token: str, days: int) -> dict:
         raise RuntimeError(f"Lead stats returned HTTP {exc.code}") from exc
     except URLError as exc:
         raise RuntimeError(f"Could not reach lead stats endpoint: {exc.reason}") from exc
-    if not isinstance(payload, dict) or payload.get("days") != days:
+    if (
+        not isinstance(payload, dict)
+        or payload.get("days") != days
+        or payload.get("includeTests") is not False
+    ):
         raise RuntimeError(f"Lead stats returned an invalid {days}-day response")
     return payload
 

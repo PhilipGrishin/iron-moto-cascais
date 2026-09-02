@@ -59,6 +59,12 @@ test("records all supported lead types and reports totals", async () => {
     assert.equal(response.status, 202);
     assert.equal(response.headers.get("set-cookie"), null);
   }
+  for (const type of ["whatsapp", "tel", "form_submit", "form_view"]) {
+    const response = await worker.fetch(eventRequest({
+      type, page: "/**test**/", lang: "en", ref: "direct",
+    }), env, context());
+    assert.equal(response.status, 202);
+  }
 
   const response = await worker.fetch(
     new Request("https://icm-leads.example/stats?days=7&token=test-stats-token"),
@@ -76,12 +82,33 @@ test("records all supported lead types and reports totals", async () => {
   assert.equal(stats.pages.length, 4);
   assert.deepEqual(stats.languages.map(({ lang }) => lang).sort(), ["en", "pt", "ru", "uk"]);
   assert.equal(stats.byDay.reduce((sum, row) => sum + row.total, 0), 4);
+  assert.equal(stats.includeTests, false);
+  assert.equal(stats.pages.some(({ page }) => page === "/**test**/"), false);
+
+  const acceptanceResponse = await worker.fetch(
+    new Request("https://icm-leads.example/stats?days=7&includeTests=1&token=test-stats-token"),
+    env,
+    context(),
+  );
+  const acceptanceStats = await acceptanceResponse.json();
+  assert.equal(acceptanceStats.includeTests, true);
+  assert.deepEqual(acceptanceStats.totals, {
+    whatsapp: 2,
+    tel: 2,
+    form_submit: 2,
+    form_view: 2,
+  });
+  assert.equal(
+    acceptanceStats.pages.find(({ page }) => page === "/**test**/")?.total,
+    4,
+  );
 
   const persisted = JSON.stringify([
     ...env.LEAD_COUNTS.values.entries(),
     ...env.LEAD_COUNTS.metadata.entries(),
   ]);
   assert.doesNotMatch(persisted, /private|google\.com|user-agent|127\.0\.0\.1/i);
+  assert.match(persisted, /test:d:/);
 });
 
 test("rejects missing token and untrusted origins", async () => {

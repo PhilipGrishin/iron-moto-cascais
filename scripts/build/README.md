@@ -211,6 +211,12 @@ The Worker stores counters only. It never reads or stores IP addresses,
 user-agent strings, form values or raw events. Its accepted `ref` field is
 sanitized by the browser and discarded by the Worker. Worker deployment
 changes Cloudflare account state and therefore requires owner approval.
+Acceptance events use the reserved `/**test**/` page and separate `test:d:` KV
+prefix. `/stats` and `tools/leads_report.py` exclude those counters by default;
+`includeTests=1` is for explicit acceptance inspection only. To exercise the
+real production UI without polluting operational totals, append
+`?icm-leads-test=1` to the page URL; the browser payload then uses the reserved
+test page while still following the normal delegated event path.
 
 Local verification:
 

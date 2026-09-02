@@ -8,6 +8,7 @@ const LANGS = new Set(["en", "pt", "ru", "uk"]);
 const MAX_STATS_DAYS = 90;
 const RATE_LIMIT_PER_MINUTE = 120;
 const COUNTER_TTL_SECONDS = 400 * 24 * 60 * 60;
+const TEST_PAGE = "/**test**/";
 
 const rateBuckets = new Map();
 const pendingWrites = new Map();
@@ -144,14 +145,15 @@ async function recordEvent(request, env, ctx, origin) {
   }
 
   const date = dateInLisbon();
+  const prefix = page === TEST_PAGE ? "test:d" : "d";
   const writes = [
-    enqueueIncrement(env.LEAD_COUNTS, `d:${date}:t:${type}`, {
+    enqueueIncrement(env.LEAD_COUNTS, `${prefix}:${date}:t:${type}`, {
       scope: "type", date, type,
     }),
-    enqueueIncrement(env.LEAD_COUNTS, `d:${date}:l:${lang}:t:${type}`, {
+    enqueueIncrement(env.LEAD_COUNTS, `${prefix}:${date}:l:${lang}:t:${type}`, {
       scope: "language", date, lang, type,
     }),
-    enqueueIncrement(env.LEAD_COUNTS, `d:${date}:p:${encodePage(page)}:t:${type}`, {
+    enqueueIncrement(env.LEAD_COUNTS, `${prefix}:${date}:p:${encodePage(page)}:t:${type}`, {
       scope: "page", date, page, lang, type,
     }),
   ];
@@ -175,11 +177,11 @@ function safeEqual(left, right) {
   return diff === 0;
 }
 
-async function listDay(kv, date) {
+async function listDay(kv, date, prefix = "d") {
   const keys = [];
   let cursor;
   do {
-    const result = await kv.list({ prefix: `d:${date}:`, cursor });
+    const result = await kv.list({ prefix: `${prefix}:${date}:`, cursor });
     keys.push(...result.keys);
     cursor = result.list_complete ? undefined : result.cursor;
   } while (cursor);
@@ -199,6 +201,9 @@ async function readStats(request, env, origin) {
   if (!Number.isInteger(days) || days < 1 || days > MAX_STATS_DAYS) {
     return jsonResponse({ error: `days must be an integer from 1 to ${MAX_STATS_DAYS}` }, 400, origin);
   }
+  const includeTests = ["1", "true"].includes(
+    (url.searchParams.get("includeTests") || "").toLowerCase(),
+  );
 
   const dates = dateRange(days);
   const totals = emptyTypes();
@@ -209,6 +214,7 @@ async function readStats(request, env, origin) {
   for (const date of dates) {
     const dayTypes = emptyTypes();
     const keys = await listDay(env.LEAD_COUNTS, date);
+    if (includeTests) keys.push(...await listDay(env.LEAD_COUNTS, date, "test:d"));
     for (const key of keys) {
       const metadata = key.metadata || {};
       const count = Number(metadata.count ?? await env.LEAD_COUNTS.get(key.name)) || 0;
@@ -249,6 +255,7 @@ async function readStats(request, env, origin) {
   return jsonResponse({
     generatedAt: new Date().toISOString(),
     days,
+    includeTests,
     from: dates[0],
     to: dates.at(-1),
     totals,

@@ -362,6 +362,11 @@ pages are `noindex` utility output and must never enter the sitemap or discovery
 index. Cloudflare Web Analytics is owner-managed through edge injection and is
 not added to repository HTML.
 
+Synthetic acceptance events must use the reserved `/**test**/` page. The
+Worker stores them below a separate `test:d:` KV prefix. Normal `/stats`
+responses and `tools/leads_report.py` exclude that prefix; use
+`includeTests=1` only for explicit acceptance inspection.
+
 Commands: `scripts/build/README.md`, **Lead Measurement Workflow**.
 
 ## Media Optimization

@@ -20,6 +20,15 @@ locations, which is appropriate for this low-volume operational counter.
 The event route also applies a deliberately anonymous per-isolate limit of 120
 requests per minute. It uses no client identifier, IP address or fingerprint.
 
+Acceptance events use the reserved page `/**test**/`. They are written under
+the separate `test:d:` KV prefix and do not enter normal aggregates. `/stats`
+excludes them by default; append `includeTests=1` only while inspecting an
+acceptance run. `tools/leads_report.py` explicitly requests
+`includeTests=0`, so its operational reports never include those counters.
+For an end-to-end browser check against the deployed site, append
+`?icm-leads-test=1` to the page URL. The client then sends `/**test**/` instead
+of the visible page path, without changing the production event code path.
+
 ## One-time deployment
 
 Deployment changes Cloudflare account state and requires owner approval. From

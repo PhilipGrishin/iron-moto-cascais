@@ -9,18 +9,17 @@ Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ### A-MEASURE anonymous lead counters
 
-- Status: **access required**, local implementation and verification complete.
+- Status: **in progress**, Worker deployment and local verification complete;
+  GitHub Pages rollout and live form acceptance remain.
 - Evidence: the Worker unit tests, site validators, sitemap byte comparison,
   old-page visible-text comparison and responsive browser checks passed on
-  2026-09-02. Wrangler is not authenticated in the local environment and no
-  `CLOUDFLARE_API_TOKEN` is present.
-- Boundary: deploying the Worker, creating its KV namespace and setting its
-  stats secret change the owner's Cloudflare account and require explicit
-  owner authorization. The stats token must be stored only as a Worker secret
-  and in gitignored `.secrets/leads.env`.
-- Next action: after authorization, authenticate Wrangler to the owner's Vg
-  account, deploy `icm-leads`, run the four event/CORS/401 checks, then commit,
-  push and verify the GitHub Pages production deployment.
+  2026-09-02. The owner authorized the external actions and personally
+  completed Wrangler OAuth. The deployed Worker passed four reserved-event,
+  stats-exclusion, CORS and 401 checks. The stats token exists only as a Worker
+  secret and in gitignored `.secrets/leads.env`.
+- Next action: commit and push the final source, verify GitHub Pages and all
+  four browser event types in production, then submit the authorized clearly
+  labeled FormSubmit acceptance request.
 
 ## Performance Follow-Up
 
@@ -97,7 +96,7 @@ measure representative page families under a stated profile.
 | GitHub Pages / Actions | **confirmed** | deploys stop; checked-in production output remains served | repository/account access required for workflow administration |
 | Cloudflare DNS/CDN | **confirmed** | DNS, TLS, cache or routing can obscure a valid GitHub Pages deploy | account access required |
 | Reviews Worker and Google Places | **confirmed** | live review widget/snapshot refresh can fail; existing static curated fallback remains | Worker and Google Cloud access required; secret must stay server-side |
-| Leads Worker / KV | **access required** | lead-intent beacons and private reports remain unavailable until first deployment | owner authorization and authenticated Cloudflare Vg account required; secret must stay server-side and in `.secrets/` |
+| Leads Worker / KV | **confirmed** | lead-intent beacons and private reports fail if the Worker or KV binding is unavailable | stats secret stays server-side and in gitignored `.secrets/` |
 | FormSubmit | **confirmed** | contact form delivery can fail; WhatsApp remains a separate lead path | inbox activation/account access required |
 | Cloudflare Web Analytics | **owner-managed** | pageview/referrer/CWV reporting is independent of repository lead counters | owner enables edge injection; no HTML snippet is maintained here |
 | Google Fonts | **confirmed** | remote font failure causes fallback typography and possible layout variation | external network dependency |
@@ -105,21 +104,6 @@ measure representative page families under a stated profile.
 
 Do not claim an account-only verification passed unless it was actually run.
 Local JSON-LD parsing and repository validators are separate evidence.
-
-### Deploy the Reviews Worker preview-origin update
-
-- Status: **access required**, open.
-- Evidence: M-REPO changed the checked-in GitHub Pages preview origin from the
-  former owner host to `https://philipgrishin.github.io`. A production request
-  with that `Origin` on 2026-08-27 still received the custom-domain fallback
-  CORS origin. `npx wrangler deploy` was attempted and stopped before any
-  deployment because `CLOUDFLARE_API_TOKEN` is not available locally.
-- Impact: the production custom domain remains allowed and the static review
-  fallback remains intact. Only direct GitHub Pages preview requests cannot
-  use the Worker through CORS until the checked-in Worker is redeployed.
-- Next action: authenticate Wrangler for the account that owns `icm-reviews`,
-  deploy from `worker/`, then verify that an `Origin` request from
-  `https://philipgrishin.github.io` receives the same allow-origin value.
 
 ## Product And Publishing Watchlist
 

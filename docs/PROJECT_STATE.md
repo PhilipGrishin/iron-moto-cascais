@@ -9,8 +9,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
-- Status: **confirmed** for the deployed baseline; A-MEASURE is **access
-  required** before its new Worker can be deployed.
+- Status: **confirmed** for the deployed baseline and both Worker services;
+  the A-MEASURE GitHub Pages rollout is in progress.
 - Evidence date: 2026-09-02 (Europe/Lisbon).
 - Repository evidence: M-REPO commits `88a44503` and `599a0429`, automated
   review-snapshot refresh commit `6f28a412`, N-BBQ implementation commit
@@ -80,10 +80,15 @@ deployed public identifiers and cache-bust values. Operating rules live in
   `sitemap.xml` SHA-256 is
   `4ef974f467c30c2e67efe7e276dbb6b03f93efd87959a3e72d7178673a9c31ae`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
-- Pending local evidence: A-MEASURE's Worker unit tests, broad site validators,
-  visible-text comparison, responsive browser checks and Full Safe Rebuild pass
-  in the current worktree. Production evidence is intentionally not claimed
-  until the owner authorizes and authenticates the new `icm-leads` deployment.
+- A-MEASURE evidence: the owner authorized Cloudflare deployment and completed
+  Wrangler OAuth for the Vg account on 2026-09-02. `icm-leads` is deployed with
+  its KV binding and private stats secret. Four reserved `/**test**/` events
+  returned 202, normal stats excluded them, `includeTests=1` returned one of
+  each type, no-token stats returned 401 and a foreign origin returned 403.
+  `icm-reviews` was redeployed from the repository and returned 200 with the
+  correct CORS header for both production and the current GitHub Pages preview
+  origin. GitHub Pages and production form evidence remain pending in this
+  in-progress task.
 
 ## Repository And Production
 
@@ -272,8 +277,9 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   query-free path, path-derived language and a sanitized referrer hostname;
   it contains no form values or browser identifiers. The new Worker stores KV
   counters only and does not read or store IP addresses or user-agent strings.
-  Deployment of `icm-leads` remains **access required** and is not yet a
-  production claim.
+  The production Worker endpoint is deployed. Reserved `/**test**/` events use
+  a separate `test:d:` KV prefix and are excluded from normal stats and checkup
+  reports.
 - The four home pages render 9 curated Google-review cards and the matching
   9 JSON-LD `Review` items from `assets/reviews-curated.json`. Their
   `AggregateRating` remains independently sourced from the Worker snapshot and
@@ -332,7 +338,7 @@ Open performance caveats and external verification limits are in
 | Service | Current public identifier or endpoint |
 |---|---|
 | Reviews Worker | `https://icm-reviews.vg-ab6.workers.dev/` |
-| Lead Worker | planned `https://icm-leads.vg-ab6.workers.dev/`; deployment pending owner approval/authentication |
+| Lead Worker | `https://icm-leads.vg-ab6.workers.dev/` |
 | Cloudflare Web Analytics | owner-managed edge injection; no repository HTML snippet |
 | FormSubmit delivery inbox | `Ironcustom.office@gmail.com` |
 | FormSubmit action alias | `https://formsubmit.co/c29ab5a6818b2926388e8978888304a2` |
@@ -372,9 +378,9 @@ portability risk, not a cross-platform guarantee.
 ## Recovery Answer
 
 For a new session: this repository is the production static marketing site for
-Iron Custom Motors. Its current inventory is above. A-MEASURE is locally
-implemented but awaits explicit owner authorization and Cloudflare
-authentication before the `icm-leads` Worker can be deployed and the site can
-be committed/pushed safely. Other unresolved performance, portability, CDN and
-external-account work is in `docs/OPEN_TASKS.md`. Read the affected family in
-`docs/CONTENT_TYPES.md`, then use only `scripts/build/README.md` for commands.
+Iron Custom Motors. Its current inventory is above. Both Workers are deployed;
+A-MEASURE still needs its authorized GitHub Pages push, production browser
+checks and the clearly labeled FormSubmit acceptance message. Other unresolved
+performance, portability, CDN and external-account work is in
+`docs/OPEN_TASKS.md`. Read the affected family in `docs/CONTENT_TYPES.md`, then
+use only `scripts/build/README.md` for commands.

@@ -1,6 +1,14 @@
 name = "icm-reviews"
 main = "reviews.js"
-compatibility_date = "2025-01-01"
+compatibility_date = "2026-05-05"
+account_id = "ab63a85bdfbf5894c28efe7076acbd82"
+preview_urls = false
+
+[observability]
+enabled = true
+
+[observability.logs]
+enabled = true
 
 # Optional: bind a custom route on your domain
 # Uncomment and set up after the worker is deployed.

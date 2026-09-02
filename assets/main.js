@@ -5,6 +5,7 @@
 /* ---------- Private, cookie-free lead measurement ---------- */
 const ICM_LEADS_EVENT_URL = 'https://icm-leads.vg-ab6.workers.dev/event';
 const ICM_LEAD_TYPES = new Set(['whatsapp', 'tel', 'form_submit', 'form_view']);
+const ICM_LEADS_TEST_PAGE = '/**test**/';
 
 function leadPageLang(){
   const match = location.pathname.match(/^\/(pt|ru|uk)(?:\/|$)/);
@@ -23,10 +24,11 @@ function leadRefSource(){
 
 function sendLeadEvent(type){
   if(!ICM_LEAD_TYPES.has(type)) return;
+  const isAcceptanceTest = new URLSearchParams(location.search).get('icm-leads-test') === '1';
   const payload = JSON.stringify({
     type,
-    page: location.pathname,
-    lang: leadPageLang(),
+    page: isAcceptanceTest ? ICM_LEADS_TEST_PAGE : location.pathname,
+    lang: isAcceptanceTest ? 'en' : leadPageLang(),
     ref: leadRefSource()
   });
   if(navigator.sendBeacon && navigator.sendBeacon(ICM_LEADS_EVENT_URL, payload)) return;
