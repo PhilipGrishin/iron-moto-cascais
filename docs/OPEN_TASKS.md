@@ -7,19 +7,7 @@ Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
 
-### A-MEASURE anonymous lead counters
-
-- Status: **in progress**, Worker deployment and local verification complete;
-  GitHub Pages rollout and live form acceptance remain.
-- Evidence: the Worker unit tests, site validators, sitemap byte comparison,
-  old-page visible-text comparison and responsive browser checks passed on
-  2026-09-02. The owner authorized the external actions and personally
-  completed Wrangler OAuth. The deployed Worker passed four reserved-event,
-  stats-exclusion, CORS and 401 checks. The stats token exists only as a Worker
-  secret and in gitignored `.secrets/leads.env`.
-- Next action: commit and push the final source, verify GitHub Pages and all
-  four browser event types in production, then submit the authorized clearly
-  labeled FormSubmit acceptance request.
+None.
 
 ## Performance Follow-Up
 

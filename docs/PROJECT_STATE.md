@@ -9,10 +9,10 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
-- Status: **confirmed** for the deployed baseline and both Worker services;
-  the A-MEASURE GitHub Pages rollout is in progress.
+- Status: **confirmed** for the deployed site and both Worker services.
 - Evidence date: 2026-09-02 (Europe/Lisbon).
-- Repository evidence: M-REPO commits `88a44503` and `599a0429`, automated
+- Repository evidence: A-MEASURE commits `fae3a7ce`, `173d62e1` and
+  `a286b68a`, M-REPO commits `88a44503` and `599a0429`, automated
   review-snapshot refresh commit `6f28a412`, N-BBQ implementation commit
   `f4d4dd07` and merged deployment state `93b4f460`, the automated
   review-snapshot refresh commit
@@ -34,7 +34,13 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: N-BBQ GitHub Pages workflow `32704971695`,
+- Production evidence: A-MEASURE GitHub Pages workflows `33665877221` and
+  `33666134112`, production HTTP checks on all four noindex thank-you pages,
+  all four localized contact forms, the shared JavaScript and `sitemap.xml`,
+  and browser checks of all four event types and all four WhatsApp languages.
+  The first Pages run exposed a missing root `thank-you` directory in the
+  artifact allowlist; commit `a286b68a` corrected it and the second run
+  deployed all four utility pages. N-BBQ GitHub Pages workflow `32704971695`,
   cache-bypass checks on all four new News pages, the four News hubs, the
   twelve existing News articles, `llms.txt` and `sitemap.xml`; responsive
   browser checks at 390 px and 1440 px found no document overflow and selected
@@ -74,21 +80,26 @@ deployed public identifiers and cache-bust values. Operating rules live in
   byte-identical production project CSS and sitemap, and Google Rich Results
   result `QtK8FJYbOvDZFu-k-TWBng` with four valid items, no errors and no
   warnings. Earlier evidence remains in the task reports and changelog.
-- Reproducibility evidence: the documented full rebuild and all four validator
-  groups at merged N-BBQ state `93b4f460` left a clean clone with empty
-  `git status --short`; verified 2026-08-24. The current
+- Reproducibility evidence: the documented Full Safe Rebuild and all four
+  validator groups passed in a full-history clean clone from the canonical
+  GitHub URL at A-MEASURE state `a286b68a`, leaving empty
+  `git status --short`; verified 2026-09-02. The current
   `sitemap.xml` SHA-256 is
   `4ef974f467c30c2e67efe7e276dbb6b03f93efd87959a3e72d7178673a9c31ae`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
 - A-MEASURE evidence: the owner authorized Cloudflare deployment and completed
   Wrangler OAuth for the Vg account on 2026-09-02. `icm-leads` is deployed with
-  its KV binding and private stats secret. Four reserved `/**test**/` events
-  returned 202, normal stats excluded them, `includeTests=1` returned one of
-  each type, no-token stats returned 401 and a foreign origin returned 403.
-  `icm-reviews` was redeployed from the repository and returned 200 with the
-  correct CORS header for both production and the current GitHub Pages preview
-  origin. GitHub Pages and production form evidence remain pending in this
-  in-progress task.
+  its KV binding and private stats secret. Production acceptance exercised all
+  four event types through the live client and stored them only under the
+  reserved `/**test**/` page; ordinary stats and `tools/leads_report.py`
+  excluded them. No-token stats returned 401, both production origins passed
+  CORS preflight, and a foreign origin returned 403 without an allow-origin
+  header. One owner-confirmed FormSubmit request labeled
+  `TEST A-MEASURE — ignore` redirected to `/thank-you/`. `icm-reviews` was
+  redeployed from the repository and returned 200 with the correct CORS header
+  for both production and the current GitHub Pages preview origin. The static
+  production review widget remained operational with its checked-in snapshot
+  and nine curated cards.
 
 ## Repository And Production
 
@@ -279,7 +290,8 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   counters only and does not read or store IP addresses or user-agent strings.
   The production Worker endpoint is deployed. Reserved `/**test**/` events use
   a separate `test:d:` KV prefix and are excluded from normal stats and checkup
-  reports.
+  reports. Appending `?icm-leads-test=1` to a production page exercises the
+  normal browser event path while assigning the reserved test page.
 - The four home pages render 9 curated Google-review cards and the matching
   9 JSON-LD `Review` items from `assets/reviews-curated.json`. Their
   `AggregateRating` remains independently sourced from the Worker snapshot and
@@ -378,9 +390,8 @@ portability risk, not a cross-platform guarantee.
 ## Recovery Answer
 
 For a new session: this repository is the production static marketing site for
-Iron Custom Motors. Its current inventory is above. Both Workers are deployed;
-A-MEASURE still needs its authorized GitHub Pages push, production browser
-checks and the clearly labeled FormSubmit acceptance message. Other unresolved
-performance, portability, CDN and external-account work is in
+Iron Custom Motors. Its current inventory is above. Both Workers and the
+cookie-free A-MEASURE client are deployed and production-verified. Other
+unresolved performance, portability, CDN and external-account work is in
 `docs/OPEN_TASKS.md`. Read the affected family in `docs/CONTENT_TYPES.md`, then
 use only `scripts/build/README.md` for commands.

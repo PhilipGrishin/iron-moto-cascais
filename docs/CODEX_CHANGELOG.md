@@ -14,6 +14,28 @@ Format:
 - Notes: ...
 ```
 
+## 2026-09-02 - Private lead measurement
+
+- Commit: `fae3a7ce`
+- Changed: Added the cookie-free `icm-leads` Cloudflare Worker and KV counter
+  model, delegated WhatsApp/telephone/form browser events, localized WhatsApp
+  page attribution, four noindex FormSubmit thank-you destinations, a private
+  7/28-day reporting tool, permanent SEO assertions and the required Pages
+  artifact entry. Follow-ups `173d62e1` and `a286b68a` record the deployed
+  Worker contract and root artifact allowlist. Acceptance traffic uses a
+  separate `test:d:` KV prefix.
+- Verified: Worker tests passed 5/5; all four site validator groups passed;
+  `sitemap.xml` stayed byte-identical; a full-history clean clone from the
+  canonical repository completed the Full Safe Rebuild with empty status.
+  Both Workers were deployed through owner-authorized Wrangler OAuth. Pages
+  run `33666134112` deployed the final artifact; production browser checks
+  exercised all four event types, verified localized WhatsApp text, and a
+  single owner-confirmed FormSubmit test redirected to `/thank-you/`.
+- Notes: Normal stats and `tools/leads_report.py` exclude the reserved
+  `/**test**/` counters. The stats token exists only as a Worker secret and in
+  gitignored `.secrets/leads.env`; its value was never committed or recorded.
+  Full evidence is in `docs/reports/A_MEASURE_REPORT.md`.
+
 ## 2026-08-24 - Repository ownership transfer and CI cleanup
 
 - Commit: `599a0429`
