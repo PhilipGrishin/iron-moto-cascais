@@ -42,7 +42,7 @@ INTERNAL LINKING — DECISION (Philip): FOOTER + contextual links only, NOT in t
 
 ### ── ENGLISH ──
 **SEO Title:** English-Speaking Motorcycle Workshop in Cascais & Lisbon
-**Meta:** Just moved to Portugal? Iron Custom Motors is an English-speaking motorcycle workshop in Cascais & Greater Lisbon. Written estimates, transparent, independent. Tue–Sat.
+**Meta:** Just moved to Portugal? Iron Custom Motors is an English-speaking, independent motorcycle workshop in Cascais, Greater Lisbon. Written estimates, Tue–Sat.
 **Slug:** /english-speaking-motorcycle-workshop/
 **Eyebrow:** For expats & newcomers · Cascais / Greater Lisbon
 `[IMAGE: hero — real ICM Cascais workshop/team (Philip will attach)]` · ALT: "English-speaking motorcycle workshop Iron Custom Motors in Cascais, Greater Lisbon — workshop and team"
@@ -95,7 +95,7 @@ This is motorcycle service for expats done properly — overviewed here, explain
 
 ### ── PORTUGUÊS (pt-PT) ──
 **SEO Title:** Oficina de Motas em Inglês em Cascais e Lisboa
-**Meta:** Acabou de chegar a Portugal? A Iron Custom Motors é uma oficina de motas que fala inglês em Cascais e Grande Lisboa. Orçamentos por escrito, transparente, independente.
+**Meta:** Acabou de chegar a Portugal? A Iron Custom Motors é uma oficina de motas independente que fala inglês, em Cascais, Grande Lisboa. Orçamentos por escrito.
 **Slug:** /pt/english-speaking-motorcycle-workshop/
 **Eyebrow:** Para estrangeiros e recém-chegados · Cascais / Grande Lisboa
 `[IMAGE: hero — oficina/equipa real da ICM em Cascais (o Philip anexa)]` · ALT: "Oficina de motas que fala inglês Iron Custom Motors em Cascais, Grande Lisboa — oficina e equipa"
@@ -148,7 +148,7 @@ This is motorcycle service for expats done properly — overviewed here, explain
 
 ### ── РУССКИЙ ──
 **SEO Title:** Англоязычный мотосервис в Кашкайше и Лиссабоне
-**Meta:** Только переехали в Португалию? Iron Custom Motors — мотомастерская в Кашкайше и Большом Лиссабоне, где говорят на вашем языке. Письменные сметы, прозрачно, независимо.
+**Meta:** Только переехали в Португалию? Iron Custom Motors — независимая мотомастерская в Кашкайше, где говорят по-русски и по-английски. Письменные сметы.
 **Slug:** /ru/english-speaking-motorcycle-workshop/
 **Eyebrow:** Для экспатов и тех, кто только приехал · Кашкайш / Большой Лиссабон
 `[IMAGE: hero — реальная мастерская/команда ICM в Кашкайше (Philip приложит)]` · ALT: «Мотомастерская Iron Custom Motors в Кашкайше, где говорят по-русски и по-английски — мастерская и команда»
@@ -201,7 +201,7 @@ This is motorcycle service for expats done properly — overviewed here, explain
 
 ### ── УКРАЇНСЬКА ──
 **SEO Title:** Мотосервіс із вашою мовою в Кашкайші та Лісабоні
-**Meta:** Щойно переїхали до Португалії? Iron Custom Motors — мотомайстерня в Кашкайші та Великому Лісабоні, де говорять вашою мовою. Письмові кошториси, прозоро, незалежно.
+**Meta:** Щойно переїхали до Португалії? Iron Custom Motors — незалежна мотомайстерня в Кашкайші, де говорять українською та англійською. Письмові кошториси.
 **Slug:** /uk/english-speaking-motorcycle-workshop/
 **Eyebrow:** Для експатів і тих, хто щойно приїхав · Кашкайш / Великий Лісабон
 `[IMAGE: hero — реальна майстерня/команда ICM у Кашкайші (Philip додасть)]` · ALT: «Мотомайстерня Iron Custom Motors у Кашкайші, де говорять українською та англійською — майстерня й команда»

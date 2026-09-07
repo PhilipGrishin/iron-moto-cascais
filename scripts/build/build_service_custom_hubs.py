@@ -15,6 +15,7 @@ from hero_images import hero_background_css, hero_preload_links
 from new_pages_data import PROJECT_TILES
 from project_pages_data import PROJECT_CONFIGS
 from site_chrome import chrome_fragments, localized_href
+from trust_strip import TRUST_STRIP_CSS, render_trust_strip
 
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -25,6 +26,8 @@ HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 EXPECTED_SOURCE_SHA256 = {
     "motorcycle-service": "c16a33ae3c204084a9e5356c2bd0a3b7c9d99dcfd44b30752565cea49f38d28c",
     "custom": "10790be1dab936791dd01b47bcfa9c3f1c73e12cc495275d2195a025a14f4292",
+    "parts": "86687081e07eb74377e9d15aa0c81aca3a2beec138dfc7677ebb4ace5272538e",
+    "upgrades-tuning": "1385731f4051d2d1bf32885f5c9decdc802f602b90de507189d7883d07c7ebfc",
 }
 
 HUBS = {
@@ -50,6 +53,28 @@ HUBS = {
             "uk": "Повні проєкти кастом-мотоциклів",
         },
     },
+    "parts": {
+        "copy": BUILD_DIR / "content" / "parts_hub_copy_4lang.md",
+        "hero": "/photos/parts-shelf-1600.jpg",
+        "section_count": 5,
+        "service_type": {
+            "en": "Motorcycle parts sourcing and fitting",
+            "pt": "Peças de moto: encomenda e montagem",
+            "ru": "Подбор, заказ и установка запчастей для мотоциклов",
+            "uk": "Підбір, замовлення та встановлення запчастин для мотоциклів",
+        },
+    },
+    "upgrades-tuning": {
+        "copy": BUILD_DIR / "content" / "upgrades_hub_copy_4lang.md",
+        "hero": "/photos/mechanic-1600.jpg",
+        "section_count": 5,
+        "service_type": {
+            "en": "Motorcycle upgrades and tuning",
+            "pt": "Upgrades e tuning de motos",
+            "ru": "Апгрейды и тюнинг мотоциклов",
+            "uk": "Апгрейди та тюнінг мотоциклів",
+        },
+    },
 }
 
 UI = {
@@ -63,7 +88,7 @@ UI = {
 def detect_cache_bust() -> str:
     source = (SITE_ROOT / "index.html").read_text(encoding="utf-8")
     match = re.search(r"/assets/main\.css\?v=([a-zA-Z0-9]+)", source)
-    return match.group(1) if match else "20260906a"
+    return match.group(1) if match else "20260907a"
 
 
 def canonical_path(slug: str, lang: str) -> str:
@@ -534,6 +559,7 @@ def page_css(hero_url: str) -> str:
 .hub-cta{background:#101010;text-align:center}.hub-cta .container{max-width:980px}.hub-cta .hub-copy{margin:0 auto}.hub-cta .hub-actions{justify-content:center}
 .related-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.related-card{position:relative;display:flex;min-height:128px;flex-direction:column;justify-content:space-between;gap:18px;padding:20px 18px;border:1px solid var(--border);border-radius:16px;background:var(--surface);color:#fff;text-decoration:none;overflow:hidden;transition:transform .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease)}.related-card:hover,.related-card:focus-visible{transform:translateY(-4px);border-color:var(--accent);background:var(--surface-2);outline:none}.related-card-label{position:relative;z-index:1;font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(17px,1.35vw,22px);line-height:1;color:#fff}.related-card-arrow{color:var(--accent);font-weight:800}
 .hub-faq-list{display:grid;gap:12px}.hub-faq-list details{border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);overflow:hidden}.hub-faq-list summary{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;cursor:pointer;padding:22px 24px;list-style:none;font-family:var(--font-display);font-size:clamp(18px,1.6vw,24px);font-weight:800;line-height:1.1;text-transform:uppercase;color:#fff}.hub-faq-list summary::-webkit-details-marker{display:none}.hub-faq-list .chev{color:var(--accent);transition:transform .2s var(--ease)}.hub-faq-list details[open] .chev{transform:rotate(180deg)}.hub-faq-list .answer{padding:0 24px 24px;color:var(--text-dim);font-size:16px;line-height:1.65}.hub-faq-list .answer p{margin:0}
+""" + TRUST_STRIP_CSS + """
 @media (max-width:900px){.related-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.hub-hero{min-height:auto;padding:124px 0 62px}.hub-hero h1{max-width:calc(100vw - 40px);font-size:clamp(29px,9vw,39px);line-height:.94}.hub-hero .lead{max-width:calc(100vw - 40px)}.hub-actions{display:grid;grid-template-columns:1fr}.hub-actions .btn{width:100%;justify-content:center;text-align:center}.hub-section{padding:38px 0}.hub-heading{margin-bottom:24px}.related-card-grid{grid-template-columns:1fr}.related-card{min-height:108px}.hub-copy-card{padding:18px}}
 """
@@ -572,6 +598,7 @@ def render_page(slug: str, content: dict, lang: str) -> str:
 <div class="hub-actions">{hero_action_html}</div>
 </div>
 </section>
+{render_trust_strip(lang)}
 {sections}
 <section class="hub-section hub-cta" data-copy-section="cta">
 <div class="container">

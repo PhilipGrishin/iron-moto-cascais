@@ -11,6 +11,7 @@ from pathlib import Path
 from build_output import write_html_if_changed
 from hero_images import hero_background_css, hero_preload_links, optimized_hero_url
 from site_chrome import chrome_fragments, localized_href
+from trust_strip import TRUST_STRIP_CSS, render_trust_strip
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
@@ -550,7 +551,7 @@ def head_html(content: dict, lang: str) -> str:
 {preload}
 {json_scripts}
 <link href="/assets/main.css?v={CACHE_BUST}" rel="stylesheet"/>
-<style>{PAGE_CSS}</style>
+<style>{PAGE_CSS}{TRUST_STRIP_CSS}</style>
 </head>"""
 
 
@@ -580,6 +581,7 @@ def render_page(content: dict, lang: str) -> str:
 </div>
 </div>
 </section>
+{render_trust_strip(lang)}
 {''.join(sections_html)}
 {render_ai_blocks(content["ai"], lang)}
 <section class="tyre-cta">

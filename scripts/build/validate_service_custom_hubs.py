@@ -24,8 +24,11 @@ from build_service_custom_hubs import (
     split_hero_actions,
 )
 from new_pages_data import PROJECT_TILES
+from brand_pages_data import BRAND_ORDER
 from pricing_data import LABELS
 from site_chrome import THANK_YOU_URLS, localized_href
+from trust_strip import format_rating, snapshot_rating
+from w3_shared_data import HEAD_TRIMS, RELATED_DESCRIPTIONS, TRUST_LABELS, related_source_path
 
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -49,6 +52,18 @@ PRICING_NUMBERS = {
     )
     if value.replace(" ", "").isdigit()
 }
+EXPECTED_HUBS = {"motorcycle-service", "custom", "parts", "upgrades-tuning"}
+FILLER_SENTENCES = (
+    "Open the related page for details, process, pricing context and booking options.",
+    "Откройте связанную страницу, чтобы увидеть детали, процесс, контекст цены и варианты записи.",
+    "Откройте связанную страницу, чтобы посмотреть детали, процесс, контекст цены и варианты записи.",
+    "Відкрийте пов'язану сторінку, щоб побачити деталі, процес, контекст ціни і варіанти запису.",
+    "Abra a página relacionada para detalhes, processo, contexto de preço e opções de marcação.",
+    "Open the brand page for model-specific service details, diagnostics, parts and booking context.",
+    "Откройте страницу бренда, чтобы увидеть сервисные детали по моделям, диагностике, запчастям и записи.",
+    "Відкрийте сторінку бренду, щоб побачити сервісні деталі за моделями, діагностикою, запчастинами й записом.",
+    "Abra a página da marca para detalhes de serviço por modelo, diagnóstico, peças e marcação.",
+)
 
 
 def clean_text(value: str) -> str:
@@ -133,7 +148,7 @@ def validate_hub(slug: str, lang: str, content: dict, issues: list[str]) -> None
         issues.append(f"{label}: copy-driven hub marker missing")
         return
     raw_main = str(main)
-    if re.search(r"\b(?:msr|cs)\.", raw_main) or "{{PROJECT_CUSTOM_LINKS}}" in raw_main:
+    if re.search(r'data-i18n(?:-html)?="(?:msr|cs|pp|up)\.', raw_main) or "{{PROJECT_CUSTOM_LINKS}}" in raw_main:
         issues.append(f"{label}: legacy i18n key or project placeholder remains")
     if soup.select_one(".money-local, .money-related"):
         issues.append(f"{label}: generic money-page enhancer duplicated hub-owned copy")
@@ -144,6 +159,7 @@ def validate_hub(slug: str, lang: str, content: dict, issues: list[str]) -> None
         issues.append(f"{label}: hero eyebrow differs from approved copy")
     hero_body, hero_actions = split_hero_actions(content["hero"])
     assert_copy_lines(hero.select_one(".lead") if hero else None, hero_body, f"{label} hero", issues)
+    validate_trust_strip(soup, lang, label, ".hub-hero", issues)
 
     actions = hero.select(".hub-actions a") if hero else []
     if len(actions) != 3:
@@ -296,20 +312,144 @@ def validate_pricing_and_tyre(issues: list[str]) -> None:
             issues.append(f"{tyre_path.relative_to(SITE_ROOT)}: tyre meta refinement mismatch")
 
 
+def expected_commercial_files() -> dict[Path, str]:
+    files: dict[Path, str] = {}
+    for lang in LANGS:
+        for slug in EXPECTED_HUBS:
+            files[output_path(slug, lang)] = lang
+        for slug in BRAND_ORDER:
+            prefix = "" if lang == "en" else f"{lang}/"
+            files[SITE_ROOT / prefix / slug / "index.html"] = lang
+        files[SITE_ROOT / TYRE_PATHS[lang]] = lang
+        prefix = "" if lang == "en" else f"{lang}/"
+        files[SITE_ROOT / prefix / "pre-purchase-inspection/index.html"] = lang
+    return files
+
+
+def validate_trust_strip(
+    soup: BeautifulSoup,
+    lang: str,
+    label: str,
+    hero_selector: str,
+    issues: list[str],
+) -> None:
+    strips = soup.select("[data-icm-trust-strip]")
+    if len(strips) != 1:
+        issues.append(f"{label}: expected one trust strip, found {len(strips)}")
+        return
+    strip = strips[0]
+    previous = strip.find_previous_sibling()
+    hero_classes = set(hero_selector.lstrip(".").split("."))
+    if previous is None or not hero_classes.issubset(set(previous.get("class", []))):
+        issues.append(f"{label}: trust strip is not directly after the hero")
+    rating = format_rating(snapshot_rating(), lang)
+    expected = [
+        f"★ {TRUST_LABELS[lang][0].format(rating=rating)}",
+        *TRUST_LABELS[lang][1:],
+    ]
+    actual = [text_of(item) for item in strip.select(".icm-trust-item")]
+    if actual != expected:
+        issues.append(f"{label}: trust labels/rating differ from approved Wave 3 source")
+    if len(strip.select("[data-icm-rating]")) != 1:
+        issues.append(f"{label}: trust strip requires one live-rating hook")
+
+
+def validate_commercial_trust_and_related(issues: list[str]) -> None:
+    expected_files = expected_commercial_files()
+    if len(expected_files) != 52:
+        issues.append(f"commercial trust inventory is {len(expected_files)}, expected 52")
+        return
+
+    actual_files: set[Path] = set()
+    for path in SITE_ROOT.rglob("index.html"):
+        source = path.read_text(encoding="utf-8")
+        soup = BeautifulSoup(source, "lxml")
+        if soup.select_one("[data-icm-trust-strip]"):
+            actual_files.add(path)
+        for sentence in FILLER_SENTENCES:
+            if sentence in source:
+                issues.append(f"{path.relative_to(SITE_ROOT)}: retired related-card filler remains")
+                break
+    expected_set = set(expected_files)
+    if actual_files != expected_set:
+        for path in sorted(expected_set - actual_files):
+            issues.append(f"{path.relative_to(SITE_ROOT)}: trust strip missing")
+        for path in sorted(actual_files - expected_set):
+            issues.append(f"{path.relative_to(SITE_ROOT)}: trust strip outside the 52-page inventory")
+
+    for path, lang in expected_files.items():
+        soup = BeautifulSoup(path.read_text(encoding="utf-8"), "lxml")
+        label = str(path.relative_to(SITE_ROOT))
+        if path.parent.name not in EXPECTED_HUBS:
+            hero_selector = (
+                ".tyre-hero" if path.as_posix().endswith(TYRE_PATHS[lang])
+                else ".ppi-hero" if path.parent.name == "pre-purchase-inspection"
+                else ".subpage.brand"
+            )
+            validate_trust_strip(soup, lang, label, hero_selector, issues)
+
+        if path.parent.name not in BRAND_ORDER:
+            continue
+        related = soup.select_one('[data-enhancement="money-related"]')
+        if related is None:
+            issues.append(f"{label}: brand related section missing")
+            continue
+        cards = [
+            *related.select("a.related-card"),
+            *related.select(".brand-pill-grid a.brand-pill"),
+        ]
+        for card in cards:
+            href = urlsplit(card.get("href", "")).path
+            try:
+                source_path = related_source_path(href, lang)
+            except KeyError as exc:
+                issues.append(f"{label}: {exc}")
+                continue
+            description = card.select_one(".related-card-text, .brand-pill-text")
+            if text_of(description) != RELATED_DESCRIPTIONS[source_path][lang]:
+                issues.append(f"{label}: related description mismatch for {source_path}")
+
+
+def validate_head_trims(issues: list[str]) -> None:
+    for source_path, fields in HEAD_TRIMS.items():
+        slug = source_path.strip("/")
+        for lang in LANGS:
+            prefix = "" if lang == "en" else f"{lang}/"
+            path = SITE_ROOT / prefix / slug / "index.html"
+            soup = BeautifulSoup(path.read_text(encoding="utf-8"), "lxml")
+            label = str(path.relative_to(SITE_ROOT))
+            if "title" in fields:
+                title = soup.title.string.strip() if soup.title and soup.title.string else ""
+                if title != fields["title"][lang]:
+                    issues.append(f"{label}: Wave 3 title trim mismatch")
+                if len(title) > 60:
+                    issues.append(f"{label}: title exceeds 60 characters")
+            description = soup.find("meta", attrs={"name": "description"})
+            meta = description.get("content", "") if description else ""
+            if meta != fields["meta"][lang]:
+                issues.append(f"{label}: Wave 3 meta trim mismatch")
+            if not 140 <= len(meta) <= 155:
+                issues.append(f"{label}: meta length {len(meta)} is outside 140–155")
+
+
 def main() -> int:
     issues: list[str] = []
+    if set(HUBS) != EXPECTED_HUBS:
+        issues.append(f"copy-driven hub registry mismatch: {sorted(HUBS)}")
     for slug in HUBS:
         parsed = parse_copy(slug)
         for lang in LANGS:
             validate_hub(slug, lang, parsed[lang], issues)
     validate_pricing_and_tyre(issues)
+    validate_commercial_trust_and_related(issues)
+    validate_head_trims(issues)
 
     if issues:
         print("Service/Custom hub validation failed:")
         for issue in issues:
             print(f"- {issue}")
         return 1
-    print("Service/Custom hub validation passed: 8 hubs, 4 pricing pages, 4 tyre metas.")
+    print("Commercial hub validation passed: 16 hub pages, 52 trust strips, related descriptions and head trims.")
     return 0
 
 

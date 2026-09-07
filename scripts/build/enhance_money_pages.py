@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup, FeatureNotFound
 
 from build_output import write_html_if_changed
 from brand_pages_data import BRAND_NAME, BRAND_NAV_KEYS, BRAND_ORDER
+from w3_shared_data import RELATED_DESCRIPTIONS, related_description_key
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
@@ -37,10 +38,8 @@ COMMON_I18N = {
         "seo.relatedEyebrow": "Related workshop paths",
         "seo.relatedTitle": "Continue through the <em>same service system.</em>",
         "seo.relatedLead": "These pages connect the most common next steps: service, parts, upgrades, pricing, brand-specific help and the rider lounge.",
-        "seo.relatedText": "Open the related page for details, process, pricing context and booking options.",
         "seo.otherBrandsTitle": "Other brands we service.",
         "seo.otherBrandsLead": "Compare the same workshop process across our brand-specific service pages.",
-        "seo.otherBrandText": "Open the brand page for model-specific service details, diagnostics, parts and booking context.",
     },
     "ru": {
         "seo.localEyebrow": "Локальная зона сервиса",
@@ -55,10 +54,8 @@ COMMON_I18N = {
         "seo.relatedEyebrow": "Связанные направления",
         "seo.relatedTitle": "Двигайтесь дальше в <em>той же системе сервиса.</em>",
         "seo.relatedLead": "Эти страницы связывают самые частые следующие шаги: сервис, запчасти, апгрейды, цены, брендовые страницы и rider lounge.",
-        "seo.relatedText": "Откройте связанную страницу, чтобы посмотреть детали, процесс, контекст цены и варианты записи.",
         "seo.otherBrandsTitle": "Другие марки, которые обслуживаем.",
         "seo.otherBrandsLead": "Сравните тот же процесс мастерской на брендовых страницах сервиса.",
-        "seo.otherBrandText": "Откройте страницу бренда, чтобы увидеть сервисные детали по моделям, диагностике, запчастям и записи.",
     },
     "uk": {
         "seo.localEyebrow": "Локальна зона сервісу",
@@ -73,10 +70,8 @@ COMMON_I18N = {
         "seo.relatedEyebrow": "Пов'язані напрямки",
         "seo.relatedTitle": "Рухайтесь далі у <em>тій самій системі сервісу.</em>",
         "seo.relatedLead": "Ці сторінки пов'язують найчастіші наступні кроки: сервіс, запчастини, апґрейди, ціни, брендові сторінки і rider lounge.",
-        "seo.relatedText": "Відкрийте пов'язану сторінку, щоб побачити деталі, процес, контекст ціни і варіанти запису.",
         "seo.otherBrandsTitle": "Інші марки, які обслуговуємо.",
         "seo.otherBrandsLead": "Порівняйте той самий процес майстерні на брендових сторінках сервісу.",
-        "seo.otherBrandText": "Відкрийте сторінку бренду, щоб побачити сервісні деталі за моделями, діагностикою, запчастинами й записом.",
     },
     "pt": {
         "seo.localEyebrow": "Área local de serviço",
@@ -91,33 +86,13 @@ COMMON_I18N = {
         "seo.relatedEyebrow": "Caminhos relacionados",
         "seo.relatedTitle": "Continue no <em>mesmo sistema de serviço.</em>",
         "seo.relatedLead": "Estas páginas ligam os próximos passos mais comuns: serviço, peças, upgrades, preços, ajuda por marca e rider lounge.",
-        "seo.relatedText": "Abra a página relacionada para detalhes, processo, contexto de preço e opções de marcação.",
         "seo.otherBrandsTitle": "Outras marcas que servimos.",
         "seo.otherBrandsLead": "Compare o mesmo processo de oficina nas nossas páginas de serviço por marca.",
-        "seo.otherBrandText": "Abra a página da marca para detalhes de serviço por modelo, diagnóstico, peças e marcação.",
     },
 }
 
-PAGES = {
-    "parts": {
-        "path": "parts/index.html",
-        "related": [
-            ("services.s1.title", "/motorcycle-service/", "Motorcycle service & repair"),
-            ("services.s3.title", "/upgrades-tuning/", "Upgrades & tuning"),
-            ("nav.pricing", "/pricing/", "Pricing"),
-            ("nav.community", "/community/", "Community"),
-        ],
-    },
-    "upgrades-tuning": {
-        "path": "upgrades-tuning/index.html",
-        "related": [
-            ("services.s1.title", "/motorcycle-service/", "Motorcycle service & repair"),
-            ("services.s2.title", "/parts/", "Parts & consumables"),
-            ("services.s4.title", "/custom/", "Custom & special projects"),
-            ("nav.pricing", "/pricing/", "Pricing"),
-        ],
-    },
-}
+# Parts and upgrades moved to the copy-driven hub generator in Wave 3.
+PAGES = {}
 
 def parse_html(markup: str) -> BeautifulSoup:
     return BeautifulSoup(markup, HTML_PARSER)
@@ -149,6 +124,10 @@ def merge_i18n(page_i18n: dict):
     for lang in TARGET_LANGS:
         page_i18n.setdefault(lang, {})
         page_i18n[lang].update(COMMON_I18N[lang])
+        page_i18n[lang].update({
+            related_description_key(path): descriptions[lang]
+            for path, descriptions in RELATED_DESCRIPTIONS.items()
+        })
 
 
 def sync_en_text(soup):
@@ -203,7 +182,7 @@ def related_rows(links):
 <span class="num">{idx:02d}</span>
 <div>
 <h4><a data-i18n="{key}" href="{href}">{label}</a></h4>
-<p data-i18n="seo.relatedText">{COMMON_I18N["en"]["seo.relatedText"]}</p>
+<p data-i18n="{related_description_key(href)}">{RELATED_DESCRIPTIONS[href]["en"]}</p>
 </div>
 </article>''')
     return "\n".join(rows)
@@ -224,7 +203,7 @@ def other_brand_rows(slug: Optional[str], start: int) -> str:
 <span class="num">{idx:02d}</span>
 <div>
 <h4><a data-i18n="{BRAND_NAV_KEYS[other_slug]}" href="/{other_slug}/">{BRAND_NAME[other_slug]}</a></h4>
-<p data-i18n="seo.otherBrandText">{COMMON_I18N["en"]["seo.otherBrandText"]}</p>
+<p data-i18n="{related_description_key(f"/{other_slug}/")}">{RELATED_DESCRIPTIONS[f"/{other_slug}/"]["en"]}</p>
 </div>
 </article>''')
     return "\n".join(rows)
@@ -236,7 +215,7 @@ def brand_related_cards(links):
         label = GLOBAL_I18N["en"].get(key, fallback)
         cards.append(f'''<a class="related-card" href="{href}">
 <span class="related-card-label" data-i18n="{key}">{label}</span>
-<span class="related-card-text" data-i18n="seo.relatedText">{COMMON_I18N["en"]["seo.relatedText"]}</span>
+<span class="related-card-text" data-i18n="{related_description_key(href)}">{RELATED_DESCRIPTIONS[href]["en"]}</span>
 <span aria-hidden="true" class="related-card-arrow">→</span>
 </a>''')
     return "\n".join(cards)
@@ -254,7 +233,7 @@ def other_brand_cards(slug: Optional[str]) -> str:
     ]
     cards.append('<div class="brand-pill-grid">')
     cards.extend(
-        f'''<a class="brand-pill" data-i18n="{BRAND_NAV_KEYS[other_slug]}" href="/{other_slug}/">{BRAND_NAME[other_slug]}</a>'''
+        f'''<a class="brand-pill" href="/{other_slug}/"><span class="brand-pill-copy"><span class="brand-pill-label" data-i18n="{BRAND_NAV_KEYS[other_slug]}">{BRAND_NAME[other_slug]}</span><span class="brand-pill-text" data-i18n="{related_description_key(f"/{other_slug}/")}">{RELATED_DESCRIPTIONS[f"/{other_slug}/"]["en"]}</span></span></a>'''
         for other_slug in (item for item in BRAND_ORDER if item != slug)
     )
     cards.append("</div>")

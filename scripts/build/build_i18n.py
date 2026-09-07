@@ -61,10 +61,9 @@ except FeatureNotFound:
 # Pages to translate: (source_path_relative_to_site_root, page_id)
 MAIN_PAGES = [
     ("index.html", ""),
-    ("parts/index.html", "parts"),
-    ("upgrades-tuning/index.html", "upgrades-tuning"),
     ("authorized-dealer/index.html", "authorized-dealer"),
-    # motorcycle-service and custom are rendered directly in four languages by
+    # motorcycle-service, custom, parts and upgrades-tuning are rendered
+    # directly in four languages by
     # build_service_custom_hubs.py from their approved multilingual copy files.
     # pre-purchase-inspection is generated directly in four languages by
     # build_pre_purchase_inspection.py because the page has rich service-page

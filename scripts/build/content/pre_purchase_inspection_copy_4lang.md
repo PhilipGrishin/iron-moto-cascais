@@ -11,7 +11,7 @@ NOTE on localized slugs: mirror EN for most (/pt/motorcycle-service/, /pt/harley
 
 ## ENGLISH
 **SEO Title:** Motorcycle Pre-Purchase Inspection in Cascais & Lisbon
-**Meta:** Independent motorcycle pre-purchase inspection in Cascais & Lisbon. Compression test, videoscope cylinder check, written report. English-speaking. Fixed price: €150.
+**Meta:** Independent motorcycle pre-purchase inspection in Cascais & Lisbon: compression test, videoscope cylinder check, written report. Fixed price 150 €.
 **Slug:** `/pre-purchase-inspection/`
 **Eyebrow:** Buying a used motorcycle · Cascais / Lisbon
 **H1:** Motorcycle Pre-Purchase Inspection in Cascais & Lisbon
@@ -85,7 +85,7 @@ Don't buy a used motorcycle blind. Message Iron Custom Motors on [WhatsApp at +3
 
 ## PORTUGUÊS (pt-PT)
 **SEO Title:** Inspeção Pré-Compra de Mota em Cascais e Lisboa
-**Meta:** Inspeção pré-compra de mota independente em Cascais e Lisboa. Teste de compressão, inspeção do cilindro com videoscópio e relatório escrito. Preço fixo: 150 €.
+**Meta:** Inspeção pré-compra de mota independente em Cascais e Lisboa: teste de compressão, cilindro com videoscópio, relatório escrito. Preço fixo: 150 €.
 **Slug:** `/pt/pre-purchase-inspection/`
 **Eyebrow:** Comprar uma mota usada · Cascais / Lisboa
 **H1:** Inspeção Pré-Compra de Mota em Cascais e Lisboa
@@ -159,7 +159,7 @@ Não compre uma mota usada às cegas. Envie mensagem à Iron Custom Motors no [W
 
 ## РУССКИЙ
 **SEO Title:** Проверка мотоцикла перед покупкой · Кашкайш, Лиссабон
-**Meta:** Независимая проверка мотоцикла перед покупкой в Кашкайше и Лиссабоне. Замер компрессии, осмотр цилиндра видеоскопом, письменный отчёт. Фиксированная стоимость: 150 €.
+**Meta:** Независимая проверка мотоцикла перед покупкой в Кашкайше и Лиссабоне: замер компрессии, видеоскоп в цилиндре, письменный отчёт. Фиксированная цена 150 €.
 **Slug:** `/ru/pre-purchase-inspection/`
 **Eyebrow:** Покупка б/у мотоцикла · Кашкайш / Лиссабон
 **H1:** Проверка мотоцикла перед покупкой в Кашкайше и Лиссабоне
@@ -233,7 +233,7 @@ Iron Custom Motors находится в Сан-Домингуш-де-Рана, 
 
 ## УКРАЇНСЬКА
 **SEO Title:** Перевірка мотоцикла перед купівлею · Кашкайш, Лісабон
-**Meta:** Незалежна перевірка мотоцикла перед купівлею в Кашкайші та Лісабоні. Замір компресії, огляд циліндра відеоскопом, письмовий звіт. Фіксована вартість: 150 €.
+**Meta:** Незалежна перевірка мотоцикла перед купівлею в Кашкайші та Лісабоні: замір компресії, огляд циліндра відеоскопом, письмовий звіт. Фіксована ціна 150 €.
 **Slug:** `/uk/pre-purchase-inspection/`
 **Eyebrow:** Купівля вживаного мотоцикла · Кашкайш / Лісабон
 **H1:** Перевірка мотоцикла перед купівлею в Кашкайші та Лісабоні

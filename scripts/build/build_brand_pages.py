@@ -34,10 +34,12 @@ from site_chrome import (
     render_pre_body_chrome,
     render_site_footer,
 )
+from trust_strip import TRUST_STRIP_CSS, render_trust_strip, trust_i18n
+from w3_shared_data import RELATED_DESCRIPTIONS, related_description_key
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260906a"
+CACHE_BUST = "20260907a"
 
 SEO_I18N = {
     "en": {
@@ -53,7 +55,6 @@ SEO_I18N = {
         "seo.relatedEyebrow": "Related workshop paths",
         "seo.relatedTitle": "Continue through the <em>same service system.</em>",
         "seo.relatedLead": "Six common next steps from every brand page: service, upgrades, parts, custom work, tyre service and pricing.",
-        "seo.relatedText": "Open the related page for details, process, pricing context and booking options.",
         "seo.relatedService": "Service and repair",
         "seo.relatedUpgrades": "Upgrades and tuning",
         "seo.relatedParts": "Parts and consumables",
@@ -62,7 +63,6 @@ SEO_I18N = {
         "seo.relatedPricing": "Pricing",
         "seo.otherBrandsTitle": "Other brands we service",
         "seo.otherBrandsLead": "Compare the same workshop process across our brand-specific service pages.",
-        "seo.otherBrandText": "Open the brand page for model-specific service details, diagnostics, parts and booking context.",
         "seo.harleyExploreTitle": "Explore more Harley",
         "seo.harleyHub": "Harley Hub",
         "seo.harleyTuning": "Harley tuning",
@@ -81,7 +81,6 @@ SEO_I18N = {
         "seo.relatedEyebrow": "Связанные направления",
         "seo.relatedTitle": "Двигайтесь дальше в <em>той же сервисной системе.</em>",
         "seo.relatedLead": "Шесть общих следующих шагов с любой брендовой страницы: сервис, апгрейды, запчасти, кастом, шиномонтаж и цены.",
-        "seo.relatedText": "Откройте связанную страницу, чтобы увидеть детали, процесс, контекст цены и варианты записи.",
         "seo.relatedService": "Сервис и ремонт",
         "seo.relatedUpgrades": "Апгрейды и тюнинг",
         "seo.relatedParts": "Запчасти и расходники",
@@ -90,7 +89,6 @@ SEO_I18N = {
         "seo.relatedPricing": "Цены",
         "seo.otherBrandsTitle": "Другие бренды, которые мы обслуживаем",
         "seo.otherBrandsLead": "Сравните тот же процесс мастерской на брендовых страницах сервиса.",
-        "seo.otherBrandText": "Откройте страницу бренда, чтобы увидеть сервисные детали по моделям, диагностике, запчастям и записи.",
         "seo.harleyExploreTitle": "Больше о Harley",
         "seo.harleyHub": "Harley Hub",
         "seo.harleyTuning": "Тюнинг Harley",
@@ -109,7 +107,6 @@ SEO_I18N = {
         "seo.relatedEyebrow": "Пов'язані напрямки",
         "seo.relatedTitle": "Рухайтесь далі у <em>тій самій системі сервісу.</em>",
         "seo.relatedLead": "Шість спільних наступних кроків з будь-якої брендової сторінки: сервіс, апгрейди, запчастини, кастом, шиномонтаж і ціни.",
-        "seo.relatedText": "Відкрийте пов'язану сторінку, щоб побачити деталі, процес, контекст ціни і варіанти запису.",
         "seo.relatedService": "Сервіс і ремонт",
         "seo.relatedUpgrades": "Апгрейди та тюнінг",
         "seo.relatedParts": "Запчастини та витратники",
@@ -118,7 +115,6 @@ SEO_I18N = {
         "seo.relatedPricing": "Ціни",
         "seo.otherBrandsTitle": "Інші бренди, які ми обслуговуємо",
         "seo.otherBrandsLead": "Порівняйте той самий процес майстерні на брендових сторінках сервісу.",
-        "seo.otherBrandText": "Відкрийте сторінку бренду, щоб побачити сервісні деталі за моделями, діагностикою, запчастинами й записом.",
         "seo.harleyExploreTitle": "Більше про Harley",
         "seo.harleyHub": "Harley Hub",
         "seo.harleyTuning": "Тюнінг Harley",
@@ -137,7 +133,6 @@ SEO_I18N = {
         "seo.relatedEyebrow": "Caminhos relacionados",
         "seo.relatedTitle": "Continue no <em>mesmo sistema de serviço.</em>",
         "seo.relatedLead": "Seis próximos passos comuns em todas as páginas de marca: serviço, upgrades, peças, custom, pneus e preços.",
-        "seo.relatedText": "Abra a página relacionada para detalhes, processo, contexto de preço e opções de marcação.",
         "seo.relatedService": "Serviço e reparação",
         "seo.relatedUpgrades": "Upgrades e tuning",
         "seo.relatedParts": "Peças e consumíveis",
@@ -146,7 +141,6 @@ SEO_I18N = {
         "seo.relatedPricing": "Preços",
         "seo.otherBrandsTitle": "Outras marcas que reparamos",
         "seo.otherBrandsLead": "Compare o mesmo processo de oficina nas nossas páginas de serviço por marca.",
-        "seo.otherBrandText": "Abra a página da marca para detalhes de serviço por modelo, diagnóstico, peças e marcação.",
         "seo.harleyExploreTitle": "Explore mais sobre Harley",
         "seo.harleyHub": "Harley Hub",
         "seo.harleyTuning": "Tuning Harley",
@@ -198,6 +192,11 @@ def page_i18n_for(slug):
     pages = {}
     for lang, values in PAGE_I18N[slug].items():
         merged = {**values, **SEO_I18N[lang]}
+        # W3 retired the generic related-card filler stored in legacy page data.
+        # Filter it at the renderer boundary until the historical data module is
+        # migrated independently; generated HTML must contain only registry copy.
+        merged.pop("seo.relatedText", None)
+        merged.pop("seo.otherBrandText", None)
         pricing = brand_pricing_source(slug)
         labels = BRAND_PRICING_LABELS[lang]
         pre = BRAND_PREFIX[slug]
@@ -231,8 +230,13 @@ def page_i18n_for(slug):
             f"seo.brand.{brand_slug}": label
             for brand_slug, label in BRAND_SERVICE_LABELS[lang].items()
         })
+        merged.update(trust_i18n(lang))
+        merged.update({
+            related_description_key(path): descriptions[lang]
+            for path, descriptions in RELATED_DESCRIPTIONS.items()
+        })
         for key, value in values.items():
-            if key.startswith("seo.") and not key.startswith(("seo.related", "seo.otherBrands")):
+            if key.startswith("seo.") and not key.startswith(("seo.related", "seo.otherBrand")):
                 merged[key] = value
         pages[lang] = merged
     return pages
@@ -414,14 +418,15 @@ BRAND_CSS = """.subpage.brand{padding:140px 0 90px}
 .related-subhead h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(20px,2vw,30px);line-height:1;color:#fff;margin-bottom:8px}
 .related-subhead p{font-size:14px;color:var(--text-dim);max-width:62ch}
 .brand-pill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.brand-pill{display:flex;min-height:58px;align-items:center;justify-content:space-between;gap:14px;padding:15px 16px;border:1px solid var(--border);border-radius:8px;background:rgba(255,255,255,.035);font-family:var(--font-ui);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:#fff;text-decoration:none;transition:transform .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease),color .25s var(--ease)}
+.brand-pill{display:flex;min-height:104px;align-items:center;justify-content:space-between;gap:14px;padding:15px 16px;border:1px solid var(--border);border-radius:8px;background:rgba(255,255,255,.035);font-family:var(--font-ui);font-weight:700;color:#fff;text-decoration:none;transition:transform .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease),color .25s var(--ease)}
 .brand-pill::after{content:"→";color:var(--accent);font-size:16px;line-height:1}
 .brand-pill:hover,.brand-pill:focus-visible{transform:translateY(-3px);border-color:var(--accent);background:rgba(255,87,34,.08);color:var(--accent);outline:none}
+.brand-pill-copy{display:flex;min-width:0;flex-direction:column;gap:7px}.brand-pill-label{font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:13px;line-height:1.15}.brand-pill-text{font-weight:400;letter-spacing:0;font-size:12px;line-height:1.4;text-transform:none;color:var(--text-dim)}
 .hero-alt-img{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;clip-path:inset(50%)!important;white-space:nowrap!important}
 @media (max-width:900px){.tools-grid,.brand-srv-grid,.models-grid,.brand-price-grid{grid-template-columns:1fr}.issue-row{grid-template-columns:30px 1fr}}
 @media (max-width:600px){.brand-price-panel{padding:22px 18px}.brand-price-checklist{grid-template-columns:1fr}}
 @media (max-width:900px){.related-card-grid,.brand-pill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:760px){.related-card-grid,.brand-pill-grid{grid-template-columns:1fr}.related-card{min-height:112px}.trust-row{grid-template-columns:20px 1fr;gap:16px}}"""
+@media (max-width:760px){.related-card-grid,.brand-pill-grid{grid-template-columns:1fr}.related-card{min-height:112px}.trust-row{grid-template-columns:20px 1fr;gap:16px}}""" + TRUST_STRIP_CSS
 
 
 def head(slug, lang):
@@ -638,13 +643,13 @@ def render_related_sections(slug, en):
     related = "\n".join(
         f'''<a class="related-card" href="{href}">
 <span class="related-card-label" data-i18n="{key}">{label}</span>
-<span class="related-card-text" data-i18n="seo.relatedText">{en["seo.relatedText"]}</span>
+<span class="related-card-text" data-i18n="{related_description_key(href)}">{en[related_description_key(href)]}</span>
 <span aria-hidden="true" class="related-card-arrow">→</span>
 </a>'''
         for key, href, label in BRAND_RELATED_LINKS[slug]
     )
     other_brands = "\n".join(
-        f'''<a class="brand-pill" data-i18n="seo.brand.{other_slug}" href="/{other_slug}/">{en[f"seo.brand.{other_slug}"]}</a>'''
+        f'''<a class="brand-pill" href="/{other_slug}/"><span class="brand-pill-copy"><span class="brand-pill-label" data-i18n="seo.brand.{other_slug}">{en[f"seo.brand.{other_slug}"]}</span><span class="brand-pill-text" data-i18n="{related_description_key(f"/{other_slug}/")}">{en[related_description_key(f"/{other_slug}/")]}</span></span></a>'''
         for other_slug in BRAND_ORDER
         if other_slug != slug
     )
@@ -775,6 +780,7 @@ def render(slug):
 </div>
 </div>
 </section>
+{render_trust_strip("en", i18n=True)}
 
 <section class="sub-section sub-intro">
 <div class="container">
@@ -862,7 +868,10 @@ def render(slug):
 
     out = SITE_ROOT / slug / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
+    # This renderer owns the complete brand-page dictionary. Writing it as a
+    # replacement (rather than merging) lets retired keys disappear instead of
+    # surviving forever in generated HTML.
+    write_html_if_changed(out, html, preserve_body_shell=True, preserve_downstream_head=True)
     return out
 
 

@@ -639,6 +639,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const REVIEWS_LS_KEY = 'icm-reviews-cache-v2';
   const REVIEWS_LS_TTL = 12 * 60 * 60 * 1000; // 12h browser-side cache
   const REVIEWS_TEXT_LIMIT = 380;
+  const trustRatingNodes = document.querySelectorAll('[data-icm-rating]');
   const REVIEW_COPY = {
     en: { more: 'Read more', less: 'Show less', source: 'Google review' },
     pt: { more: 'Ler mais', less: 'Mostrar menos', source: 'Avaliação Google' },
@@ -705,6 +706,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   function renderReviewsSummary(data){
     if(!data || typeof data.rating !== 'number') return false;
+    const liveRating = data.rating.toFixed(1);
+    const localizedRating = currentReviewLang() === 'en' ? liveRating : liveRating.replace('.', ',');
+    trustRatingNodes.forEach(node => { node.textContent = localizedRating; });
     const summary = document.getElementById('reviewsSummary');
     if(summary){
       const ratingNode = document.getElementById('rsRating');
@@ -804,7 +808,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     // Try local cache first — instant render
     const cached = getCachedReviews();
     if(cached){ renderReviewsSummary(cached); }
-    loadCuratedReviews();
+    if(document.getElementById('reviews')) loadCuratedReviews();
 
     try{
       const resp = await fetch(REVIEWS_ENDPOINT, { cache: 'no-store' });
@@ -843,6 +847,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
       }
     }, {rootMargin: '300px 0px'});
     ro.observe(reviewsSection);
+  }else if(trustRatingNodes.length){
+    loadReviews();
   }
 
   /* Make whole-card clickable on desktop AND mobile for cards that contain

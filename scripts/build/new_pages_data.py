@@ -8,20 +8,20 @@ Used by build_new_pages.py.
 PAGE_HEAD_META = {
     "services": {
         "en": {
-            "title": "Motorcycle Services in Cascais — Service, Parts, Upgrades, Custom | Iron Custom Motors",
-            "description": "All motorcycle services in one workshop: maintenance & repair, parts & consumables, upgrades & tuning, pre-purchase inspection and custom builds. Cascais, Greater Lisbon.",
+            "title": "Motorcycle Services in Cascais | Iron Custom Motors",
+            "description": "All motorcycle services in one Cascais workshop: maintenance and repair, parts, upgrades and tuning, tyres, pre-purchase inspection and custom builds.",
         },
         "ru": {
-            "title": "Услуги мотосервиса в Кашкайше — сервис, запчасти, тюнинг, кастом | Iron Custom Motors",
-            "description": "Все услуги для мотоцикла в одной мастерской: обслуживание и ремонт, запчасти и расходники, апгрейды и тюнинг, предпокупочная инспекция и кастом. Кашкайш, Большой Лиссабон.",
+            "title": "Услуги мотосервиса в Кашкайше | Iron Custom Motors",
+            "description": "Все услуги для мотоцикла в одной мастерской в Кашкайше: ТО и ремонт, запчасти, апгрейды и тюнинг, шиномонтаж, проверка перед покупкой, кастом.",
         },
         "uk": {
-            "title": "Послуги мотосервісу у Кашкайші — сервіс, запчастини, тюнінг, кастом | Iron Custom Motors",
-            "description": "Усі послуги для мотоцикла в одній майстерні: обслуговування та ремонт, запчастини та витратники, апґрейди й тюнінг, передкупівельна інспекція й кастом. Кашкайш, Великий Лісабон.",
+            "title": "Послуги мотосервісу у Кашкайші | Iron Custom Motors",
+            "description": "Усі послуги для мотоцикла в одній майстерні в Кашкайші: ТО й ремонт, запчастини, апгрейди й тюнінг, шиномонтаж, перевірка перед купівлею, кастом.",
         },
         "pt": {
-            "title": "Serviços de Motas em Cascais — Serviço, Peças, Upgrades, Custom | Iron Custom Motors",
-            "description": "Todos os serviços para a sua moto numa só oficina: manutenção e reparação, peças e consumíveis, upgrades e tuning, inspeção pré-compra e custom. Cascais, Grande Lisboa.",
+            "title": "Serviços de Motas em Cascais | Iron Custom Motors",
+            "description": "Todos os serviços para a sua moto numa só oficina em Cascais: manutenção e reparação, peças, upgrades e tuning, pneus, inspeção pré-compra e custom.",
         },
     },
     "projects": {
@@ -62,20 +62,20 @@ PAGE_HEAD_META = {
     },
     "contact": {
         "en": {
-            "title": "Contact Iron Custom Motors — Address, Phone, WhatsApp | Cascais",
-            "description": "Iron Custom Motors workshop in Cascais: address, opening hours, phone, WhatsApp, email and contact form. We answer in English, Russian, Ukrainian and Portuguese.",
+            "title": "Contact Iron Custom Motors — Address & WhatsApp | Cascais",
+            "description": "Iron Custom Motors workshop in Cascais: address, opening hours, phone, WhatsApp and contact form. We answer in English, Portuguese, Russian and Ukrainian.",
         },
         "ru": {
-            "title": "Контакты Iron Custom Motors — адрес, телефон, WhatsApp | Кашкайш",
-            "description": "Мастерская Iron Custom Motors в Кашкайше: адрес, часы работы, телефон, WhatsApp, email и форма связи. Отвечаем на английском, русском, украинском и португальском.",
+            "title": "Контакты Iron Custom Motors — адрес и WhatsApp | Кашкайш",
+            "description": "Мастерская Iron Custom Motors в Кашкайше: адрес, часы работы, WhatsApp и форма связи. Отвечаем по-русски, по-английски, по-португальски и по-украински.",
         },
         "uk": {
-            "title": "Контакти Iron Custom Motors — адреса, телефон, WhatsApp | Кашкайш",
-            "description": "Майстерня Iron Custom Motors у Кашкайші: адреса, години роботи, телефон, WhatsApp, email і форма зв'язку. Відповідаємо англійською, російською, українською та португальською.",
+            "title": "Контакти Iron Custom Motors — адреса і WhatsApp | Кашкайш",
+            "description": "Майстерня Iron Custom Motors у Кашкайші: адреса, години роботи, WhatsApp, форма зв'язку. Відповідаємо українською, англійською, російською, португальською.",
         },
         "pt": {
-            "title": "Contactos Iron Custom Motors — Morada, Telefone, WhatsApp | Cascais",
-            "description": "Oficina Iron Custom Motors em Cascais: morada, horário, telefone, WhatsApp, email e formulário de contacto. Atendemos em inglês, russo, ucraniano e português.",
+            "title": "Contactos Iron Custom Motors — Morada e WhatsApp | Cascais",
+            "description": "Oficina Iron Custom Motors em Cascais: morada, horário, telefone, WhatsApp e formulário de contacto. Atendemos em português, inglês, russo e ucraniano.",
         },
     },
     "faq": {
