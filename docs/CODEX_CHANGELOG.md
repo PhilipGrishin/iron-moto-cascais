@@ -16,7 +16,8 @@ Format:
 
 ## 2026-09-07 - Intent routing from home, Blog and legacy projects
 
-- Commits: `e72c6827`, `8db59642`, `34c3cf94`
+- Commit: `e72c6827`
+- Follow-up commits: `8db59642`, `34c3cf94`
 - Changed: Replaced the shared homepage service-card anchors with the approved
   four-language intent anchors, updated the homepage Pricing year and CTAs,
   expanded the related-description registry from 17 to 19 targets, added the
