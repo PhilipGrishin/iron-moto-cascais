@@ -1,6 +1,6 @@
 # Open Tasks, Risks And Watchlist
 
-Last updated: 2026-09-06
+Last updated: 2026-09-07
 
 This file owns unresolved work, external dependencies and access requirements.
 Statuses use the labels defined in the `AGENTS.md` documentation protocol.
@@ -44,6 +44,11 @@ measure representative page families under a stated profile.
 - Status: **confirmed**, open.
 - Evidence: `scripts/build/build_pricing_pdfs.py` hardcodes Arial files under
   `/System/Library/Fonts/Supplemental/`; source inspection 2026-07-31.
+- Current artifact status: **confirmed current** for S-REBUILD-W2 on
+  2026-09-07. All four PDFs were regenerated from the extended
+  `pricing_data.py`, remained byte-idempotent on a second run, contained the
+  new brand-specific cards and Triumph / Royal Enfield valve row, and passed a
+  seven-page visual/text inspection. This does not resolve portability.
 - Impact: the documented full build currently succeeds only on macOS with those
   fonts installed. HTML-only generators are not blocked by this specific issue.
 - Next action: in a separately scoped build-portability task, vendor approved

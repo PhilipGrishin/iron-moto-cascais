@@ -32,7 +32,7 @@ LABELS = {
         "cta_title": "Ready to book your motorcycle in?",
         "cta_text": "WhatsApp is the fastest way to reach us. Reply during working hours, usually within an hour.",
         "disclaimer_title": "About these prices",
-        "disclaimer": "All prices are in euro and include applicable taxes and fees. Prices are indicative: the final amount is determined after diagnostics and depends on the make, model, technical condition of the motorcycle and the actual scope of work. The scheduled-service price includes all necessary consumables, except the air-filter replacement on Indian, BMW, Moto Guzzi, Ducati, Japan and KTM models. For other work, the cost of parts and consumables is not included unless stated otherwise. This price list is for information only and does not constitute a binding offer. Valid from 2025 until the next edition.",
+        "disclaimer": "All prices are in euro and include applicable taxes and fees. Prices are indicative: the final amount is determined after diagnostics and depends on the make, model, technical condition of the motorcycle and the actual scope of work. The scheduled-service price includes all necessary consumables, except the air-filter replacement on Indian, BMW, Moto Guzzi, Ducati, Japan, KTM, Triumph and Royal Enfield models. For other work, the cost of parts and consumables is not included unless stated otherwise. This price list is for information only and does not constitute a binding offer. Valid from 2025 until the next edition.",
     },
     "ru": {
         "page_title": "Цены на мотосервис 2026 · Кашкайш | Iron Custom Motors",
@@ -52,7 +52,7 @@ LABELS = {
         "cta_title": "Готовы записать мотоцикл?",
         "cta_text": "WhatsApp — самый быстрый способ связаться. Ответ в рабочее время, обычно в течение часа.",
         "disclaimer_title": "О ценах",
-        "disclaimer": "Все цены указаны в евро и включают применимые налоги и сборы. Цены являются ориентировочными: итоговая сумма определяется по результатам диагностики и зависит от марки, модели, технического состояния мотоцикла и фактического объёма работ. В стоимость планового ТО включены все необходимые расходные материалы, за исключением замены воздушного фильтра у моделей Indian, BMW, Moto Guzzi, Ducati, Japan и KTM. Для прочих работ стоимость запчастей и расходных материалов не включена, если не указано иное. Прайс-лист носит информационный характер и не является публичной офертой. Действителен с 2025 года до следующей редакции.",
+        "disclaimer": "Все цены указаны в евро и включают применимые налоги и сборы. Цены являются ориентировочными: итоговая сумма определяется по результатам диагностики и зависит от марки, модели, технического состояния мотоцикла и фактического объёма работ. В стоимость планового ТО включены все необходимые расходные материалы, за исключением замены воздушного фильтра у моделей Indian, BMW, Moto Guzzi, Ducati, Japan, KTM, Triumph и Royal Enfield. Для прочих работ стоимость запчастей и расходных материалов не включена, если не указано иное. Прайс-лист носит информационный характер и не является публичной офертой. Действителен с 2025 года до следующей редакции.",
     },
     "uk": {
         "page_title": "Ціни на мотосервіс 2026 · Кашкайш | Iron Custom Motors",
@@ -72,7 +72,7 @@ LABELS = {
         "cta_title": "Готові записати мотоцикл?",
         "cta_text": "WhatsApp — найшвидший спосіб зв'язатися. Відповідь у робочий час, зазвичай протягом години.",
         "disclaimer_title": "Про ціни",
-        "disclaimer": "Усі ціни вказано в євро і включають застосовні податки та збори. Ціни є орієнтовними: підсумкова сума визначається за результатами діагностики й залежить від марки, моделі, технічного стану мотоцикла та фактичного обсягу робіт. До вартості планового ТО входять усі необхідні витратні матеріали, окрім заміни повітряного фільтра у моделей Indian, BMW, Moto Guzzi, Ducati, Japan і KTM. Для інших робіт вартість запчастин і витратних матеріалів не входить, якщо не зазначено інше. Прайс-лист має інформаційний характер і не є публічною офертою. Чинний з 2025 року до наступної редакції.",
+        "disclaimer": "Усі ціни вказано в євро і включають застосовні податки та збори. Ціни є орієнтовними: підсумкова сума визначається за результатами діагностики й залежить від марки, моделі, технічного стану мотоцикла та фактичного обсягу робіт. До вартості планового ТО входять усі необхідні витратні матеріали, окрім заміни повітряного фільтра у моделей Indian, BMW, Moto Guzzi, Ducati, Japan, KTM, Triumph і Royal Enfield. Для інших робіт вартість запчастин і витратних матеріалів не входить, якщо не зазначено інше. Прайс-лист має інформаційний характер і не є публічною офертою. Чинний з 2025 року до наступної редакції.",
     },
     "pt": {
         "page_title": "Preços 2026 · Oficina de Motas Cascais | Iron Custom Motors",
@@ -92,7 +92,7 @@ LABELS = {
         "cta_title": "Pronto para marcar o serviço da sua moto?",
         "cta_text": "WhatsApp é a forma mais rápida de nos contactar. Resposta em horário de trabalho, normalmente dentro de uma hora.",
         "disclaimer_title": "Sobre estes preços",
-        "disclaimer": "Todos os preços estão em euros e incluem os impostos e taxas aplicáveis. Os preços são indicativos: o valor final é determinado após o diagnóstico e depende da marca, modelo, estado técnico da moto e do âmbito real do trabalho. O preço da manutenção programada inclui todos os consumíveis necessários, exceto a substituição do filtro de ar nos modelos Indian, BMW, Moto Guzzi, Ducati, Japan e KTM. Para outros trabalhos, o custo das peças e consumíveis não está incluído salvo indicação em contrário. Esta tabela de preços é meramente informativa e não constitui uma oferta vinculativa. Válida desde 2025 até à próxima edição.",
+        "disclaimer": "Todos os preços estão em euros e incluem os impostos e taxas aplicáveis. Os preços são indicativos: o valor final é determinado após o diagnóstico e depende da marca, modelo, estado técnico da moto e do âmbito real do trabalho. O preço da manutenção programada inclui todos os consumíveis necessários, exceto a substituição do filtro de ar nos modelos Indian, BMW, Moto Guzzi, Ducati, Japan, KTM, Triumph e Royal Enfield. Para outros trabalhos, o custo das peças e consumíveis não está incluído salvo indicação em contrário. Esta tabela de preços é meramente informativa e não constitui uma oferta vinculativa. Válida desde 2025 até à próxima edição.",
     },
 }
 
@@ -119,6 +119,7 @@ SEC_01 = {
     },
     "cards": [
         {
+            "id": "pre_purchase_inspection",
             "name": {
                 "en": "Pre-purchase inspection",
                 "ru": "Диагностика перед покупкой",
@@ -140,6 +141,7 @@ SEC_01 = {
             },
         },
         {
+            "id": "fault_diagnostics",
             "name": {
                 "en": "Fault diagnostics",
                 "ru": "Диагностика неисправностей",
@@ -221,13 +223,14 @@ SEC_02 = {
         "pt": "Consumíveis incluídos",
     },
     "consumables_text": {
-        "en": "The scheduled-service price includes all necessary consumables and applicable taxes — oils, oil filters and related consumables: you pay a single amount for fully completed servicing. The only exception is the air-filter replacement on Indian, BMW, Moto Guzzi, Ducati, Japan and KTM models: the filter itself is charged separately (marked in the lists below).",
-        "ru": "В стоимость планового ТО входят все необходимые расходные материалы и применимые налоги — масла, масляные фильтры и сопутствующие расходники: вы платите одну сумму за полностью выполненное обслуживание. Единственное исключение — замена воздушного фильтра у моделей Indian, BMW, Moto Guzzi, Ducati, Japan и KTM: сам фильтр оплачивается отдельно (отмечено в списках ниже).",
-        "uk": "У вартість планового ТО входять усі необхідні витратні матеріали та застосовні податки — оливи, масляні фільтри та супутні витратні матеріали: ви сплачуєте одну суму за повністю виконане обслуговування. Єдиний виняток — заміна повітряного фільтра у моделей Indian, BMW, Moto Guzzi, Ducati, Japan і KTM: сам фільтр оплачується окремо (позначено в переліках нижче).",
-        "pt": "O preço da manutenção programada inclui todos os consumíveis necessários e os impostos aplicáveis — óleos, filtros de óleo e consumíveis associados: paga um valor único pelo serviço totalmente concluído. A única exceção é a substituição do filtro de ar nos modelos Indian, BMW, Moto Guzzi, Ducati, Japan e KTM: o filtro é cobrado à parte (assinalado nas listas abaixo).",
+        "en": "The scheduled-service price includes all necessary consumables and applicable taxes — oils, oil filters and related consumables: you pay a single amount for fully completed servicing. The only exception is the air-filter replacement on Indian, BMW, Moto Guzzi, Ducati, Japan, KTM, Triumph and Royal Enfield models: the filter itself is charged separately (marked in the lists below).",
+        "ru": "В стоимость планового ТО входят все необходимые расходные материалы и применимые налоги — масла, масляные фильтры и сопутствующие расходники: вы платите одну сумму за полностью выполненное обслуживание. Единственное исключение — замена воздушного фильтра у моделей Indian, BMW, Moto Guzzi, Ducati, Japan, KTM, Triumph и Royal Enfield: сам фильтр оплачивается отдельно (отмечено в списках ниже).",
+        "uk": "У вартість планового ТО входять усі необхідні витратні матеріали та застосовні податки — оливи, масляні фільтри та супутні витратні матеріали: ви сплачуєте одну суму за повністю виконане обслуговування. Єдиний виняток — заміна повітряного фільтра у моделей Indian, BMW, Moto Guzzi, Ducati, Japan, KTM, Triumph і Royal Enfield: сам фільтр оплачується окремо (позначено в переліках нижче).",
+        "pt": "O preço da manutenção programada inclui todos os consumíveis necessários e os impostos aplicáveis — óleos, filtros de óleo e consumíveis associados: paga um valor único pelo serviço totalmente concluído. A única exceção é a substituição do filtro de ar nos modelos Indian, BMW, Moto Guzzi, Ducati, Japan, KTM, Triumph e Royal Enfield: o filtro é cobrado à parte (assinalado nas listas abaixo).",
     },
     "groups": [
         {
+            "id": "harley",
             "name": "HARLEY-DAVIDSON",
             "price": "300 EUR",
             "checklist": {
@@ -238,6 +241,7 @@ SEC_02 = {
             },
         },
         {
+            "id": "indian",
             "name": "INDIAN",
             "price": "200 EUR",
             "checklist": {
@@ -248,6 +252,7 @@ SEC_02 = {
             },
         },
         {
+            "id": "bmw_moto_guzzi",
             "name": "BMW · MOTO GUZZI",
             "price_from": True,
             "price": "180 EUR",
@@ -259,7 +264,8 @@ SEC_02 = {
             },
         },
         {
-            "name": "DUCATI · JAPAN · KTM GROUP",
+            "id": "ducati_japan_ktm_triumph_royal_enfield",
+            "name": "DUCATI · JAPAN · KTM · TRIUMPH · ROYAL ENFIELD",
             "price_from": True,
             "price": "150 EUR",
             "checklist": {
@@ -270,11 +276,46 @@ SEC_02 = {
             },
         },
     ],
+    "brand_specific_heading": {
+        "en": "Brand-specific services",
+        "ru": "Сервисы по маркам",
+        "uk": "Сервіси за марками",
+        "pt": "Serviços específicos por marca",
+    },
+    "brand_specific_cards": [
+        {
+            "id": "harley_major",
+            "name": {"en": "Harley-Davidson major service (25,000 km)", "pt": "Major service Harley-Davidson (25 000 km)", "ru": "Harley-Davidson major service (25 000 км)", "uk": "Harley-Davidson major service (25 000 км)"},
+            "desc": {"en": "Scheduled service plus brake fluid and the platform-specific items", "pt": "Revisão programada mais líquido de travões e itens específicos da plataforma", "ru": "Плановое ТО плюс тормозная жидкость и позиции под платформу", "uk": "Планове ТО плюс гальмівна рідина та позиції під платформу"},
+            "price": "400 EUR",
+            "price_from": True,
+        },
+        {
+            "id": "bmw_inspection_2",
+            "name": {"en": "BMW Inspection 2", "pt": "Inspection 2 BMW", "ru": "BMW Inspection 2", "uk": "BMW Inspection 2"},
+            "desc": {"en": "Scope depends on the model; confirmed in a written estimate", "pt": "Âmbito conforme o modelo; confirmado em orçamento escrito", "ru": "Объём зависит от модели; подтверждается в письменной смете", "uk": "Обсяг залежить від моделі; підтверджується в письмовому кошторисі"},
+            "price": "350 EUR",
+            "price_from": True,
+        },
+        {
+            "id": "bmw_r1250_valve_interval",
+            "name": {"en": "BMW R 1250 GS / GSA — valve-interval service", "pt": "BMW R 1250 GS / GSA — serviço no intervalo de válvulas", "ru": "BMW R 1250 GS / GSA — сервис на клапанном интервале", "uk": "BMW R 1250 GS / GSA — сервіс на клапанному інтервалі"},
+            "desc": {"en": "All fluids, valve-clearance check and throttle-body synchronisation included", "pt": "Todos os fluidos, verificação de folgas e sincronização das borboletas incluídos", "ru": "Все жидкости, проверка зазоров и синхронизация дросселей включены", "uk": "Усі рідини, перевірка зазорів і синхронізація дроселів включені"},
+            "price": "450–650 EUR",
+        },
+        {
+            "id": "ducati_full_desmo",
+            "name": {"en": "Ducati full Desmo service", "pt": "Serviço Desmo completo Ducati", "ru": "Полный Desmo-сервис Ducati", "uk": "Повний Desmo-сервіс Ducati"},
+            "desc": {"en": "Per model — from an older Monster to a Panigale V4 with full inspection", "pt": "Por modelo — de uma Monster antiga a uma Panigale V4 com inspeção completa", "ru": "По модели — от старого Monster до Panigale V4 с полной проверкой", "uk": "За моделлю — від старого Monster до Panigale V4 з повною перевіркою"},
+            "price": "750–1 500 EUR",
+            "price_suffix": "+",
+        },
+    ],
     "note": {
-        "en": "The \"from\" price for BMW, Moto Guzzi, Ducati, Japanese brands and KTM-group machines is a starting price — the exact amount depends on the model and is confirmed in a written estimate before work begins. Valve adjustment and carburettor service are not part of scheduled maintenance — see Sections 03 and 04.",
-        "ru": "Цена «от» для групп BMW, Moto Guzzi, Ducati, японских марок и техники KTM означает стартовую стоимость — точная сумма зависит от модели и подтверждается в письменной смете до начала работ. Регулировка клапанов и сервис карбюраторов в регламентное ТО не входят — см. разделы 03 и 04.",
-        "uk": "Ціна «від» для груп BMW, Moto Guzzi, Ducati, японських марок і техніки KTM означає стартову вартість — точна сума залежить від моделі та підтверджується у письмовому кошторисі до початку робіт. Регулювання клапанів та сервіс карбюраторів до планового ТО не входять — див. розділи 03 і 04.",
-        "pt": "O preço \"desde\" para BMW, Moto Guzzi, Ducati, marcas japonesas e grupo KTM é um preço inicial — o valor exato depende do modelo e é confirmado num orçamento escrito antes do início dos trabalhos. A regulação de válvulas e o serviço de carburadores não fazem parte da manutenção programada — ver Secções 03 e 04.",
+        "en": "The \"from\" price for BMW, Moto Guzzi, Ducati, Japanese brands, KTM-group, Triumph and Royal Enfield machines is a starting price — the exact amount depends on the model and is confirmed in a written estimate before work begins. Valve adjustment and carburettor service are not part of scheduled maintenance — see Sections 03 and 04.",
+        "ru": "Цена «от» для групп BMW, Moto Guzzi, Ducati, японских марок, группы KTM, Triumph и Royal Enfield означает стартовую стоимость — точная сумма зависит от модели и подтверждается в письменной смете до начала работ. Регулировка клапанов и сервис карбюраторов в регламентное ТО не входят — см. разделы 03 и 04.",
+        "uk": "Ціна «від» для груп BMW, Moto Guzzi, Ducati, японських марок, групи KTM, Triumph і Royal Enfield означає стартову вартість — точна сума залежить від моделі та підтверджується у письмовому кошторисі до початку робіт. Регулювання клапанів та сервіс карбюраторів до планового ТО не входять — див. розділи 03 і 04.",
+        "pt": "O preço \"desde\" para BMW, Moto Guzzi, Ducati, marcas japonesas, grupo KTM, Triumph e Royal Enfield é um preço inicial — o valor exato depende do modelo e é confirmado num orçamento escrito antes do início dos trabalhos. A regulação de válvulas e o serviço de carburadores não fazem parte da manutenção programada — ver Secções 03 e 04.",
     },
 }
 
@@ -303,8 +344,8 @@ SEC_03 = {
         {
             "label": {"en":"Brake system","ru":"Тормозная система","uk":"Гальмівна система","pt":"Sistema de travagem"},
             "items": [
-                {"name": {"en":"Brake fluid · non-ABS","ru":"Тормозная жидкость · non-ABS","uk":"Гальмівна рідина · non-ABS","pt":"Líquido de travões · não-ABS"}, "price": "100 EUR"},
-                {"name": {"en":"Brake fluid · ABS","ru":"Тормозная жидкость · ABS","uk":"Гальмівна рідина · ABS","pt":"Líquido de travões · ABS"}, "price": "150 EUR", "price_from": True},
+                {"id": "brake_fluid_non_abs", "name": {"en":"Brake fluid · non-ABS","ru":"Тормозная жидкость · non-ABS","uk":"Гальмівна рідина · non-ABS","pt":"Líquido de travões · não-ABS"}, "price": "100 EUR"},
+                {"id": "brake_fluid_abs", "name": {"en":"Brake fluid · ABS","ru":"Тормозная жидкость · ABS","uk":"Гальмівна рідина · ABS","pt":"Líquido de travões · ABS"}, "price": "150 EUR", "price_from": True},
             ],
         },
         {
@@ -375,6 +416,7 @@ SEC_04 = {
         "rows": [
             ["BMW Boxer", "150", "300"],
             ["Japanese Inline 2 / 4", "250 / 400", "300 / 650"],
+            ["Triumph / Royal Enfield twin", "250", "300"],
             ["KTM / Japanese", "350–450", "550–750"],
             ["Moto Guzzi / Vintage", "100", "150"],
             ["Ducati Desmo", "550", "1200"],
@@ -537,6 +579,7 @@ SEC_06 = {
             "price": "100 EUR", "price_from": True,
         },
         {
+            "id": "other_work",
             "name": {"en":"Other work","ru":"Прочие работы","uk":"Інші роботи","pt":"Outros trabalhos"},
             "desc": {"en":"Work not listed — hourly rate","ru":"Работы, не вошедшие в прайс — почасовая ставка","uk":"Роботи, що не увійшли до прайсу — погодинна ставка","pt":"Trabalhos não listados — tarifa horária"},
             "price": "50 EUR",

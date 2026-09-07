@@ -42,7 +42,7 @@ TYRE_METAS = {
     "uk": 'Шиномонтаж мотоциклів і балансування в Кашкайші: робота від 40 € за колесо, диски до 30" і 400 мм, спиці, класика, Harley і кастом. Будь-які бренди шин.',
 }
 PRICING_NUMBERS = {
-    int(value)
+    int(value.replace(" ", ""))
     for value in re.findall(
         r"\d[\d ]*",
         (SITE_ROOT / "scripts/build/pricing_data.py").read_text(encoding="utf-8"),

@@ -35,7 +35,13 @@ inventory counts. Use `docs/PROJECT_STATE.md` for current quantities and
 Source and registry:
 
 - `scripts/build/brand_pages_data.py`: `BRAND_ORDER`, `BRAND_CONFIG`,
-  `BRAND_HEAD`, `PAGE_I18N`.
+  `BRAND_HEAD`, `PAGE_I18N` and `BRAND_PRICING`.
+- `scripts/build/content/brand_pages_w2_copy_4lang.md`: owner-approved Wave 2
+  metadata, pricing-section introductions and FAQ copy. The checked parser in
+  `brand_pages_w2_content.py` rejects an unexpected source checksum.
+- `scripts/build/pricing_data.py`: canonical service groups, checklists, valve
+  rows, brand-specific cards and universal workshop prices rendered on every
+  brand page.
 - `assets/main.js`: navigation labels when a new label key is required.
 - Hero sources under `photos/`; variants under `photos/optimized/`.
 
@@ -56,6 +62,13 @@ Stable rules:
   the current language.
 - Keep the homepage brand strip synchronized with `BRAND_ORDER`.
 - Preserve approved model names, technical claims, prices and contact facts.
+- Build the visible pricing section only through `BRAND_PRICING` references to
+  stable IDs in `pricing_data.py`; never duplicate its monetary values in the
+  renderer or add a page-only price.
+- Owner-approved FAQ and legacy service-card copy can contain formatted euro
+  amounts because that exact prose is checksum-controlled. The brand validator
+  requires every such amount, as well as every rendered section amount, to be
+  a subset of the canonical pricing registry.
 - A text or hero refresh changes source data, not just generated HTML.
 
 Commands: `scripts/build/README.md`, **Brand page workflow**.
@@ -308,6 +321,12 @@ Additional fixed services in a pricing section belong in the section's
 `additional_services` data. The HTML renderer, `OfferCatalog` builder and PDF
 renderer consume that same list so a published price cannot exist in only one
 representation.
+
+Scheduled-maintenance brand groups and their `id` fields, valve-table rows and
+`brand_specific_cards` are also public pricing interfaces. Brand service pages
+refer to those records through `BRAND_PRICING`; preserve IDs when editing copy
+or display order, and regenerate both pricing outputs and brand pages after a
+price change.
 
 Commands: `scripts/build/README.md`, **Pricing workflow**.
 

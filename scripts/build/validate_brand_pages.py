@@ -18,12 +18,15 @@ from brand_pages_data import (
     BRAND_NAME,
     BRAND_NAV_KEYS,
     BRAND_ORDER,
+    BRAND_PRICING,
     BRAND_PREFIX,
     BRAND_RELATED_LINKS,
     LANGS,
     PAGE_I18N,
 )
+from brand_pages_w2_content import CONTENT_PATH, EXPECTED_SHA256
 from hero_images import HERO_IMAGE_FORMATS, HERO_IMAGE_WIDTHS, hero_image_slug
+from pricing_data import SEC_02, SEC_04, SECTIONS
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
@@ -75,6 +78,81 @@ def schema_contains_type(value: object, schema_type: str) -> bool:
     if "@graph" in value:
         return schema_contains_type(value["@graph"], schema_type)
     return any(schema_contains_type(item, schema_type) for item in value.values())
+
+
+def schema_objects(value: object, schema_type: str) -> list[dict]:
+    found: list[dict] = []
+    if isinstance(value, list):
+        for item in value:
+            found.extend(schema_objects(item, schema_type))
+    elif isinstance(value, dict):
+        current = value.get("@type")
+        if current == schema_type or (isinstance(current, list) and schema_type in current):
+            found.append(value)
+        for item in value.values():
+            found.extend(schema_objects(item, schema_type))
+    return found
+
+
+def canonical_amount(value: str) -> str:
+    return re.sub(r"[\s.,]", "", value)
+
+
+def source_amounts(value: str) -> set[str]:
+    return {
+        canonical_amount(number)
+        for number in re.findall(r"\d[\d\s.,]*", value)
+        if canonical_amount(number)
+    }
+
+
+def normalized_text(value: str) -> str:
+    return " ".join(value.split())
+
+
+def monetary_amounts(text: str) -> set[str]:
+    text = text.replace("\xa0", " ")
+    number = r"(?:\d{1,3}(?:[\s.,]\d{3})+|\d+)"
+    matches: list[str] = []
+    for match in re.finditer(rf"€\s*({number})(?:\s*[–-]\s*€?\s*({number}))?", text):
+        matches.extend(group for group in match.groups() if group)
+    for match in re.finditer(rf"({number})(?:\s*/\s*({number}))?(?:\s*[–-]\s*({number}))?\+?\s*€", text):
+        matches.extend(group for group in match.groups() if group)
+    return {
+        canonical_amount(value)
+        for value in matches
+        if canonical_amount(value)
+    }
+
+
+def pricing_amounts() -> set[str]:
+    values: list[str] = []
+
+    def visit(value, key=""):
+        if isinstance(value, dict):
+            for child_key, child in value.items():
+                if child_key in {"price", "schema_price"}:
+                    visit(child, child_key)
+                else:
+                    visit(child, child_key)
+        elif isinstance(value, list):
+            for child in value:
+                visit(child, key)
+        elif isinstance(value, str) and key in {"price", "schema_price"}:
+            values.append(value)
+
+    visit(SECTIONS)
+    for row in SEC_04["valve_table"]["rows"]:
+        values.extend(row[1:])
+    return {
+        canonical_amount(number)
+        for value in values
+        for number in re.findall(r"\d[\d\s.,]*", value)
+        if canonical_amount(number)
+    }
+
+
+ALLOWED_PRICING_AMOUNTS = pricing_amounts()
 
 
 def extract_inline_i18n(soup: BeautifulSoup) -> dict:
@@ -163,6 +241,15 @@ def check_registry(slug: str) -> list[str]:
         if lang not in PAGE_I18N.get(slug, {}):
             issues.append(f"missing page i18n for {lang}")
             continue
+        meta = BRAND_HEAD[slug][lang]
+        if len(meta["title"]) > 60:
+            issues.append(f"title is {len(meta['title'])} characters in {lang}; maximum is 60")
+        if not 140 <= len(meta["description"]) <= 155:
+            issues.append(f"meta description is {len(meta['description'])} characters in {lang}; expected 140–155")
+        for key, value in {**PAGE_I18N[slug][lang], **meta}.items():
+            unexpected = monetary_amounts(value) - ALLOWED_PRICING_AMOUNTS
+            if unexpected:
+                issues.append(f"{lang} {key} contains price amount(s) absent from pricing_data.py: {sorted(unexpected)}")
         prefix = BRAND_PREFIX.get(slug)
         if prefix:
             required_keys, group_issues = required_content_keys(prefix, PAGE_I18N[slug][lang])
@@ -234,6 +321,15 @@ def check_generated_page(slug: str, lang: str, sitemap: set[str]) -> list[str]:
     soup = BeautifulSoup(html_path.read_text(encoding="utf-8"), HTML_PARSER)
     url = expected_url(slug, lang)
 
+    expected_head = BRAND_HEAD[slug][lang]
+    actual_title = soup.title.get_text(strip=True) if soup.title else ""
+    if actual_title != expected_head["title"]:
+        issues.append(f"title does not match BRAND_HEAD: {actual_title!r}")
+    description = soup.find("meta", attrs={"name": "description"})
+    actual_description = description.get("content", "") if description else ""
+    if actual_description != expected_head["description"]:
+        issues.append("meta description does not match BRAND_HEAD")
+
     canonical = soup.find("link", rel="canonical")
     if not canonical or canonical.get("href") != url:
         issues.append(f"bad canonical: {canonical.get('href') if canonical else 'missing'}")
@@ -262,6 +358,89 @@ def check_generated_page(slug: str, lang: str, sitemap: set[str]) -> list[str]:
     for schema_type in ("Service", "FAQPage", "BreadcrumbList"):
         if not schema_contains_type(blocks, schema_type):
             issues.append(f"missing JSON-LD {schema_type}")
+
+    faq = soup.select(".brand-faq details")
+    faq_schemas = [item for block in blocks for item in schema_objects(block, "FAQPage")]
+    schema_faq_count = len(faq_schemas[0].get("mainEntity", [])) if faq_schemas else 0
+    if len(faq) != schema_faq_count:
+        issues.append(f"visible FAQ count {len(faq)} != FAQPage count {schema_faq_count}")
+
+    pricing_section = soup.find("section", attrs={"data-brand-pricing": True})
+    if pricing_section is None:
+        issues.append("missing generated brand pricing section")
+    else:
+        config = BRAND_PRICING[slug]
+        group_id = config["group"]
+        if pricing_section.get("data-source-group") != group_id:
+            issues.append(f"brand pricing source group is {pricing_section.get('data-source-group')}, expected {group_id}")
+        group = next((item for item in SEC_02["groups"] if item.get("id") == group_id), None)
+        if group is None:
+            issues.append(f"missing pricing source group {group_id}")
+            return issues
+        checklist = pricing_section.select(".brand-price-checklist li")
+        actual_checklist = [normalized_text(item.get_text(" ", strip=True)) for item in checklist]
+        expected_checklist = [normalized_text(item) for item in group["checklist"][lang]]
+        if actual_checklist != expected_checklist:
+            issues.append("pricing checklist does not match pricing_data.py")
+        scheduled = pricing_section.find(attrs={"data-price-id": "scheduled-service"})
+        if scheduled is None or scheduled.find(class_="amount") is None:
+            issues.append("missing scheduled-service group price line")
+        else:
+            actual_group_amounts = monetary_amounts(scheduled.get_text(" ", strip=True))
+            expected_group_amounts = source_amounts(group["price"])
+            if actual_group_amounts != expected_group_amounts:
+                issues.append(
+                    f"scheduled-service amount(s) {sorted(actual_group_amounts)} != pricing source {sorted(expected_group_amounts)}"
+                )
+            has_from = scheduled.find(class_="from") is not None
+            if has_from != bool(group.get("price_from")):
+                issues.append(f"scheduled-service from marker is {has_from}, expected {bool(group.get('price_from'))}")
+
+        expected_extra_ids = list(config["extras"])
+        actual_extra_ids = [
+            item.get("data-price-id")
+            for item in pricing_section.select(".brand-price-card")
+            if item.get("data-price-id") in expected_extra_ids
+        ]
+        if actual_extra_ids != expected_extra_ids:
+            issues.append(f"brand-specific price cards {actual_extra_ids} != source {expected_extra_ids}")
+        extra_sources = {
+            item["id"]: item
+            for item in SEC_02["brand_specific_cards"]
+            if item.get("id") in expected_extra_ids
+        }
+        for item_id in expected_extra_ids:
+            item = extra_sources.get(item_id)
+            if item is None:
+                issues.append(f"missing brand-specific pricing source {item_id}")
+                continue
+            card = pricing_section.find(attrs={"data-price-id": item["id"]})
+            actual_amounts = monetary_amounts(card.get_text(" ", strip=True)) if card else set()
+            if actual_amounts != source_amounts(item["price"]):
+                issues.append(f"{item['id']} amount(s) {sorted(actual_amounts)} != pricing source {sorted(source_amounts(item['price']))}")
+
+        pricing_href = "/pricing/" if lang == "en" else f"/{lang}/pricing/"
+        if pricing_section.find("a", href=pricing_href) is None:
+            issues.append(f"missing same-language price-list link to {pricing_href}")
+
+        prefix = BRAND_PREFIX[slug]
+        intro = pricing_section.find(attrs={"data-i18n": f"{prefix}.pricingIntro"})
+        expected_intro = PAGE_I18N[slug][lang][f"{prefix}.pricingIntro"]
+        if intro is None or normalized_text(intro.get_text(" ", strip=True)) != normalized_text(expected_intro):
+            issues.append("pricing section intro does not match approved W2 copy")
+
+    main = soup.find("main")
+    direct_sections = main.find_all("section", recursive=False) if main else []
+    pricing_index = direct_sections.index(pricing_section) if pricing_section in direct_sections else -1
+    if pricing_index <= 0 or pricing_index + 1 >= len(direct_sections):
+        issues.append("brand pricing section is not between page sections")
+    elif not direct_sections[pricing_index - 1].find(attrs={"data-i18n": re.compile(r"\.servicesTitle$")}) or not direct_sections[pricing_index + 1].find(attrs={"data-i18n": re.compile(r"\.issuesTitle$")}):
+        issues.append("brand pricing section is not directly between services and failure patterns")
+
+    main_visible = main.get_text(" ", strip=True) if main else ""
+    unexpected_visible = monetary_amounts(main_visible) - ALLOWED_PRICING_AMOUNTS
+    if unexpected_visible:
+        issues.append(f"visible price amount(s) absent from pricing_data.py: {sorted(unexpected_visible)}")
 
     inline_i18n = extract_inline_i18n(soup)
     for required_lang in LANGS:
@@ -310,6 +489,10 @@ def main() -> int:
     slugs = args.slugs or list(BRAND_ORDER)
     sitemap = sitemap_urls()
     all_issues: list[str] = []
+    import hashlib
+    actual_copy_sha = hashlib.sha256(CONTENT_PATH.read_bytes()).hexdigest() if CONTENT_PATH.exists() else "missing"
+    if actual_copy_sha != EXPECTED_SHA256:
+        all_issues.append(f"W2 copy SHA-256 is {actual_copy_sha}; expected {EXPECTED_SHA256}")
     all_issues.extend(check_home_brand_strip())
     for slug in slugs:
         if slug not in BRAND_ORDER and slug not in BRAND_CONFIG:

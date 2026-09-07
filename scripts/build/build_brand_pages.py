@@ -8,6 +8,7 @@ Same skeleton for every brand:
 """
 
 import json
+from html import escape
 from pathlib import Path
 
 from bs4 import BeautifulSoup
@@ -18,10 +19,14 @@ from brand_pages_data import (
     BRAND_HEAD,
     BRAND_NAME,
     BRAND_ORDER,
+    BRAND_PRICING,
+    BRAND_PRICING_LABELS,
     BRAND_PREFIX,
     BRAND_RELATED_LINKS,
     PAGE_I18N,
 )
+from pricing_data import LABELS as PRICING_PAGE_LABELS
+from pricing_data import SEC_01, SEC_02, SEC_03, SEC_04, SEC_06
 from hero_images import hero_background_css, optimized_hero_url
 from site_chrome import (
     patch_navigation_footer,
@@ -193,6 +198,35 @@ def page_i18n_for(slug):
     pages = {}
     for lang, values in PAGE_I18N[slug].items():
         merged = {**values, **SEO_I18N[lang]}
+        pricing = brand_pricing_source(slug)
+        labels = BRAND_PRICING_LABELS[lang]
+        pre = BRAND_PREFIX[slug]
+        merged.update({
+            f"{pre}.pricingEyebrow": labels["eyebrow"],
+            f"{pre}.pricingTitle": labels["title"].format(brand=BRAND_NAME[slug]),
+            "pricing.scheduled": labels["scheduled"],
+            "pricing.included": labels["included"],
+            "pricing.air": labels[f"air_{pricing['config']['air_filter']}"],
+            "pricing.valves": labels["valves"],
+            "pricing.engine": labels["engine"],
+            "pricing.check": labels["check"],
+            "pricing.adjust": labels["adjust"],
+            "pricing.estimate": labels["estimate"],
+            "pricing.specific": labels["specific"],
+            "pricing.universal": labels["universal"],
+            "pricing.link": labels["pricing_link"],
+            "pricing.from": PRICING_PAGE_LABELS[lang]["from"],
+            "pricing.perHour": PRICING_PAGE_LABELS[lang]["per_hour"],
+        })
+        for index, item in enumerate(pricing["group"]["checklist"][lang], 1):
+            merged[f"pricing.checklist{index}"] = item
+        for index, row in enumerate(pricing["valve_rows"], 1):
+            merged[f"pricing.valveRow{index}"] = valve_row_name(slug, row, labels)
+        for card in pricing["extras"]:
+            merged[f"pricing.extra.{card['id']}.name"] = card["name"][lang]
+            merged[f"pricing.extra.{card['id']}.desc"] = card["desc"][lang]
+        for item in pricing["universal"]:
+            merged[f"pricing.universal.{item['id']}"] = item["name"][lang]
         merged.update({
             f"seo.brand.{brand_slug}": label
             for brand_slug, label in BRAND_SERVICE_LABELS[lang].items()
@@ -202,6 +236,62 @@ def page_i18n_for(slug):
                 merged[key] = value
         pages[lang] = merged
     return pages
+
+
+def _item_by_id(items, item_id):
+    for item in items:
+        if item.get("id") == item_id:
+            return item
+    raise KeyError(f"Pricing item not found: {item_id}")
+
+
+def brand_pricing_source(slug):
+    config = BRAND_PRICING[slug]
+    group = _item_by_id(SEC_02["groups"], config["group"])
+    valve_table_rows = {row[0]: row for row in SEC_04["valve_table"]["rows"]}
+    rows = []
+    for row_config in config["valve_rows"]:
+        source = valve_table_rows[row_config["row"]]
+        if row_config.get("split"):
+            check = [part.strip() for part in source[1].split("/")]
+            adjust = [part.strip() for part in source[2].split("/")]
+            rows.extend([
+                {"kind": "twin", "check": check[0], "adjust": adjust[0]},
+                {"kind": "inline_four", "check": check[1], "adjust": adjust[1]},
+            ])
+        else:
+            rows.append({"kind": "source", "source_name": source[0], "check": source[1], "adjust": source[2]})
+    for estimate_id in config["estimate_rows"]:
+        rows.append({"kind": "estimate", "estimate_id": estimate_id, "check": None, "adjust": None})
+
+    brake_items = SEC_03["subgroups"][0]["items"]
+    universal = [
+        _item_by_id(SEC_01["cards"], "fault_diagnostics"),
+        _item_by_id(brake_items, "brake_fluid_non_abs"),
+        _item_by_id(brake_items, "brake_fluid_abs"),
+        _item_by_id(SEC_06["cards"], "other_work"),
+        _item_by_id(SEC_01["cards"], "pre_purchase_inspection"),
+    ]
+    return {
+        "config": config,
+        "group": group,
+        "valve_rows": rows,
+        "extras": [_item_by_id(SEC_02["brand_specific_cards"], item_id) for item_id in config["extras"]],
+        "universal": universal,
+    }
+
+
+def valve_row_name(slug, row, labels):
+    if row["kind"] == "source":
+        source_name = row["source_name"]
+        if source_name == "Triumph / Royal Enfield twin":
+            return f"{BRAND_NAME[slug]} {labels['twin']}"
+        return source_name
+    if row["kind"] == "estimate":
+        return labels[row["estimate_id"]]
+    return labels[row["kind"]]
+
+
 
 def numbered_items(values, prefix, item_prefix, suffixes):
     items = []
@@ -260,6 +350,34 @@ BRAND_CSS = """.subpage.brand{padding:140px 0 90px}
 .brand-srv .num{font-family:var(--font-display);font-weight:800;font-size:28px;color:var(--accent);line-height:1}
 .brand-srv h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:18px;color:#fff;margin-bottom:6px;line-height:1.1}
 .brand-srv p{font-size:14px;color:var(--text-dim)}
+.brand-pricing .heading{align-items:start}
+.brand-pricing-intro{font-size:16px;line-height:1.65;color:var(--text-dim);max-width:72ch}
+.brand-price-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px 28px;margin-bottom:22px}
+.brand-price-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;margin-bottom:16px}
+.brand-price-head h3,.brand-price-subtitle{font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:#fff;line-height:1.05}
+.brand-price-head h3{font-size:clamp(18px,1.7vw,24px)}
+.brand-price-subtitle{font-size:clamp(19px,2vw,27px);margin:34px 0 16px}
+.brand-price-amount{font-family:var(--font-display);font-weight:800;color:var(--accent);font-size:clamp(22px,2.2vw,30px);white-space:nowrap}
+.brand-price-amount .from,.brand-price-amount .suffix{font-family:var(--font-ui);font-size:.5em;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text-mute);margin-right:5px}
+.brand-price-amount .suffix{margin:0 0 0 5px}
+.brand-price-note{font-size:14px;color:var(--text-dim);margin:0 0 14px}
+.brand-price-note.air{color:var(--text);margin-top:16px}
+.brand-price-checklist{list-style:none;padding:16px 0 0;margin:0;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 22px}
+.brand-price-checklist li{position:relative;padding-left:15px;font-size:13px;line-height:1.45;color:var(--text-dim)}
+.brand-price-checklist li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:1px;background:var(--accent)}
+.brand-price-table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-lg)}
+.brand-price-table{width:100%;border-collapse:collapse;font-family:var(--font-ui);min-width:620px}
+.brand-price-table th,.brand-price-table td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--border)}
+.brand-price-table th{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);background:rgba(255,87,34,.05)}
+.brand-price-table td{font-size:14px;color:var(--text)}
+.brand-price-table td:not(:first-child){font-family:var(--font-display);font-weight:700;color:var(--accent);font-size:17px}
+.brand-price-table tr:last-child td{border-bottom:0}
+.brand-price-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.brand-price-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 20px}
+.brand-price-card h4{font-family:var(--font-display);font-size:18px;line-height:1.1;text-transform:uppercase;color:#fff;margin:0 0 10px}
+.brand-price-card p{font-size:13px;line-height:1.5;color:var(--text-dim);margin:0}
+.brand-price-card .brand-price-amount{font-size:22px;margin:14px 0 0}
+.brand-price-link{display:inline-flex;margin-top:26px;font-family:var(--font-ui);font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
 .issue-row{display:grid;grid-template-columns:50px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--border);align-items:start;transition:padding-left .25s var(--ease)}
 .issue-row:hover{padding-left:10px}
 .issue-row .bullet{width:12px;height:12px;background:var(--accent);clip-path:polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);margin-top:6px}
@@ -300,7 +418,8 @@ BRAND_CSS = """.subpage.brand{padding:140px 0 90px}
 .brand-pill::after{content:"→";color:var(--accent);font-size:16px;line-height:1}
 .brand-pill:hover,.brand-pill:focus-visible{transform:translateY(-3px);border-color:var(--accent);background:rgba(255,87,34,.08);color:var(--accent);outline:none}
 .hero-alt-img{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;clip-path:inset(50%)!important;white-space:nowrap!important}
-@media (max-width:900px){.tools-grid,.brand-srv-grid,.models-grid{grid-template-columns:1fr}.issue-row{grid-template-columns:30px 1fr}}
+@media (max-width:900px){.tools-grid,.brand-srv-grid,.models-grid,.brand-price-grid{grid-template-columns:1fr}.issue-row{grid-template-columns:30px 1fr}}
+@media (max-width:600px){.brand-price-panel{padding:22px 18px}.brand-price-checklist{grid-template-columns:1fr}}
 @media (max-width:900px){.related-card-grid,.brand-pill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){.related-card-grid,.brand-pill-grid{grid-template-columns:1fr}.related-card{min-height:112px}.trust-row{grid-template-columns:20px 1fr;gap:16px}}"""
 
@@ -432,6 +551,87 @@ FOOTER_HTML = render_site_footer("en")
 
 
 MODAL_HTML = render_contact_modal("en")
+
+
+def display_price(value, suffix=""):
+    if value.endswith(" EUR"):
+        value = value[:-4] + suffix + " €"
+    elif suffix:
+        value += suffix
+    return value
+
+
+def render_price(item):
+    from_html = '<span class="from" data-i18n="pricing.from">from</span>' if item.get("price_from") else ""
+    suffix = item.get("price_suffix", "")
+    amount_suffix = suffix if suffix != "per_hour" else ""
+    per_hour = '<span class="suffix" data-i18n="pricing.perHour">/hour</span>' if suffix == "per_hour" else ""
+    return f'<div class="brand-price-amount">{from_html}<span class="amount">{escape(display_price(item["price"], amount_suffix))}</span>{per_hour}</div>'
+
+
+def render_pricing_section(slug, en):
+    pre = BRAND_PREFIX[slug]
+    source = brand_pricing_source(slug)
+    group = source["group"]
+    checklist = "".join(
+        f'<li data-i18n="pricing.checklist{index}">{escape(item)}</li>'
+        for index, item in enumerate(group["checklist"]["en"], 1)
+    )
+    valves = ""
+    if source["valve_rows"]:
+        rows = []
+        for index, row in enumerate(source["valve_rows"], 1):
+            if row["kind"] == "estimate":
+                estimate = '<span data-i18n="pricing.estimate">Written estimate per model</span>'
+                check = adjust = estimate
+            else:
+                check = escape(f'{row["check"]} €')
+                adjust = escape(f'{row["adjust"]} €')
+            rows.append(f'''<tr>
+<td data-i18n="pricing.valveRow{index}">{escape(en[f"pricing.valveRow{index}"])}</td>
+<td>{check}</td><td>{adjust}</td>
+</tr>''')
+        valves = f'''<h3 class="brand-price-subtitle" data-i18n="pricing.valves">{escape(en["pricing.valves"])}</h3>
+<div class="brand-price-table-wrap"><table class="brand-price-table">
+<thead><tr><th data-i18n="pricing.engine">{escape(en["pricing.engine"])}</th><th data-i18n="pricing.check">{escape(en["pricing.check"])}</th><th data-i18n="pricing.adjust">{escape(en["pricing.adjust"])}</th></tr></thead>
+<tbody>{''.join(rows)}</tbody></table></div>'''
+
+    extras = ""
+    if source["extras"]:
+        cards = "".join(
+            f'''<article class="brand-price-card" data-price-id="{escape(card["id"])}">
+<h4 data-i18n="pricing.extra.{escape(card["id"])}.name">{escape(card["name"]["en"])}</h4>
+<p data-i18n="pricing.extra.{escape(card["id"])}.desc">{escape(card["desc"]["en"])}</p>
+{render_price(card)}
+</article>'''
+            for card in source["extras"]
+        )
+        extras = f'''<h3 class="brand-price-subtitle" data-i18n="pricing.specific">{escape(en["pricing.specific"])}</h3>
+<div class="brand-price-grid">{cards}</div>'''
+
+    universal_cards = "".join(
+        f'''<article class="brand-price-card" data-price-id="{escape(item["id"])}">
+<h4 data-i18n="pricing.universal.{escape(item["id"])}">{escape(item["name"]["en"])}</h4>
+{render_price(item)}
+</article>'''
+        for item in source["universal"]
+    )
+    return f'''<section class="sub-section brand-pricing" data-brand-pricing="" data-source-group="{escape(source["config"]["group"])}">
+<div class="container">
+<div class="heading"><span class="h-eyebrow" data-i18n="{pre}.pricingEyebrow">{escape(en[f"{pre}.pricingEyebrow"])}</span><div><h2 data-i18n="{pre}.pricingTitle">{escape(en[f"{pre}.pricingTitle"])}</h2><p class="brand-pricing-intro" data-i18n="{pre}.pricingIntro">{escape(en[f"{pre}.pricingIntro"])}</p></div></div>
+<article class="brand-price-panel" data-price-id="scheduled-service">
+<div class="brand-price-head"><h3><span data-i18n="pricing.scheduled">{escape(en["pricing.scheduled"])}</span> · {escape(group["name"])}</h3>{render_price(group)}</div>
+<p class="brand-price-note" data-i18n="pricing.included">{escape(en["pricing.included"])}</p>
+<ul class="brand-price-checklist">{checklist}</ul>
+<p class="brand-price-note air" data-i18n="pricing.air">{escape(en["pricing.air"])}</p>
+</article>
+{valves}
+{extras}
+<h3 class="brand-price-subtitle" data-i18n="pricing.universal">{escape(en["pricing.universal"])}</h3>
+<div class="brand-price-grid">{universal_cards}</div>
+<a class="brand-price-link" data-i18n="pricing.link" href="/pricing/">{escape(en["pricing.link"])}</a>
+</div>
+</section>'''
 
 
 def render_related_sections(slug, en):
@@ -602,6 +802,8 @@ def render(slug):
 </div>
 </div>
 </section>
+
+{render_pricing_section(slug, en)}
 
 <section class="sub-section">
 <div class="container">

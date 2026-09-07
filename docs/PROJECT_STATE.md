@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-09-06
+Last updated: 2026-09-07
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -11,7 +11,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 - Status: **confirmed** for the deployed site and both Worker services.
 - Evidence date: 2026-09-06 (Europe/Lisbon).
-- Repository evidence: S-REBUILD-W1 implementation commit `42c51732`,
+- Repository evidence: S-REBUILD-W2 implementation commit pending,
+  S-REBUILD-W1 implementation commit `42c51732`,
   A-MEASURE commits `fae3a7ce`, `173d62e1` and
   `a286b68a`, M-REPO commits `88a44503` and `599a0429`, automated
   review-snapshot refresh commit `6f28a412`, N-BBQ implementation commit
@@ -222,6 +223,16 @@ feed membership comes from `BLOG_POSTS[*].topics`.
 The current ordered inventory is the brands registered in `BRAND_ORDER`.
 These are independent workshop pages, not authorized motorcycle-brand dealer
 pages.
+
+All seven brands now use the checked Wave 2 source for localized metadata,
+pricing introductions and appended FAQ copy. Their four-language pricing
+sections sit between services and known failure patterns and resolve scheduled
+maintenance, checklists, valve rows, brand-specific services and universal
+workshop prices from `pricing_data.py` through `BRAND_PRICING`. The validator
+protects the approved source checksum, monetary subset, title/meta limits,
+section placement and visible/schema FAQ parity. The four Pricing HTML pages,
+their `OfferCatalog` data and all four downloadable PDFs expose the same new
+brand-specific services and Triumph / Royal Enfield valve row.
 
 ### Authorized Dealer
 

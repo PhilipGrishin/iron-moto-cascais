@@ -90,6 +90,30 @@ that parser.
       "price": "300 EUR"
     },
     {
+      "name": "Harley-Davidson major service (25,000 km)",
+      "price": "from 400 EUR"
+    },
+    {
+      "name": "BMW Inspection 2",
+      "price": "from 350 EUR"
+    },
+    {
+      "name": "BMW R 1250 GS / GSA valve-interval service",
+      "price": "450–650 EUR"
+    },
+    {
+      "name": "Ducati full Desmo service",
+      "price": "750–1,500+ EUR"
+    },
+    {
+      "name": "Triumph / Royal Enfield twin valve-clearance check",
+      "price": "250 EUR"
+    },
+    {
+      "name": "Triumph / Royal Enfield twin valve-clearance check and adjustment",
+      "price": "300 EUR"
+    },
+    {
       "name": "Tubeless conversion of one spoked wheel",
       "price": "100 EUR per wheel"
     }

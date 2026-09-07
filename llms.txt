@@ -30,6 +30,12 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 - Ducati Desmo valve-clearance check: 550 EUR
 - Ducati Desmo valve-clearance check and adjustment: 1,200 EUR
 - Harley-Davidson scheduled maintenance: 300 EUR
+- Harley-Davidson major service (25,000 km): from 400 EUR
+- BMW Inspection 2: from 350 EUR
+- BMW R 1250 GS / GSA valve-interval service: 450–650 EUR
+- Ducati full Desmo service: 750–1,500+ EUR
+- Triumph / Royal Enfield twin valve-clearance check: 250 EUR
+- Triumph / Royal Enfield twin valve-clearance check and adjustment: 300 EUR
 - Tubeless conversion of one spoked wheel: 100 EUR per wheel
 - Pricing note: Published prices include applicable taxes and fees and are indicative unless explicitly stated as fixed. The final amount depends on the motorcycle and confirmed scope of work.
 - Full current price list: [Pricing](https://ironcustommotors.com/pricing/)
@@ -46,13 +52,13 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 
 ## Brand service pages
 
-- [Harley-Davidson service](https://ironcustommotors.com/harley-service/): Independent Harley-Davidson specialist in Cascais. Sportster, Softail, Touring, Pan America. Stage I/II/IV upgrades, dyno tuning, custom. AMD World Championship project pedigree.
-- [BMW Motorrad service](https://ironcustommotors.com/bmw-service/): Independent BMW Motorrad workshop in Cascais. Diagnostics, scheduled service, valve clearance, final drive, ABS and tuning for R, K, S, F, G-series. BMW Customizing Champions 2023.
-- [Ducati service](https://ironcustommotors.com/ducati-service/): Independent Ducati workshop in Cascais. Desmodromic service, Panigale, Multistrada, Monster, Scrambler, Streetfighter. Transparent pricing, real specialist tooling, dyno-tuned exhausts.
-- [Suzuki service](https://ironcustommotors.com/suzuki-service/): Independent Suzuki workshop in Cascais. SDS diagnostics, scheduled service, valve clearance, charging and suspension for GSX-R, GSX-S, V-Strom, SV650, Hayabusa.
-- [Honda service](https://ironcustommotors.com/honda-service/): Independent Honda motorcycle workshop in Cascais. MCS diagnostics, scheduled service, DCT service, valve clearance, tuning for Africa Twin, CB, CBR, Gold Wing.
-- [Royal Enfield service](https://ironcustommotors.com/royal-enfield-service/): Independent Royal Enfield workshop in Cascais. Service, valve/tappet clearance, EFI/ECU diagnostics, oil-leak fixes, custom builds and Bullet restoration for 350, 450, 650 and classics.
-- [Triumph service](https://ironcustommotors.com/triumph-service/): Independent Triumph workshop in Cascais. Diagnostics, scheduled service, valve clearance, throttle balance and tuning for Bonneville, Street Triple, Tiger, Trident, Rocket 3.
+- [Harley-Davidson service](https://ironcustommotors.com/harley-service/): Independent Harley-Davidson workshop in Cascais, Lisbon. 17-point service 300 €, major service from 400 €, Stage I/II/IV, dyno. Written estimate first.
+- [BMW Motorrad service](https://ironcustommotors.com/bmw-service/): Independent BMW Motorrad workshop in Cascais, Lisbon. Service from 180 €, Boxer valves 150 / 300 €, Inspection 2 from 350 €, GS-911. Written estimate.
+- [Ducati service](https://ironcustommotors.com/ducati-service/): Independent Ducati workshop in Cascais, Greater Lisbon. Service from 150 €, Desmo valves 550 / 1 200 €, DDS diagnostics, dyno. Written estimate first.
+- [Suzuki service](https://ironcustommotors.com/suzuki-service/): Independent Suzuki workshop in Cascais, Lisbon. Service from 150 €, SDS diagnostics, charging-system load test, valve clearance. Written estimate first.
+- [Honda service](https://ironcustommotors.com/honda-service/): Independent Honda motorcycle workshop in Cascais, Lisbon. Service from 150 €, DCT fluid and filter service, MCS diagnostics. Written estimate first.
+- [Royal Enfield service](https://ironcustommotors.com/royal-enfield-service/): Independent Royal Enfield workshop in Cascais, Lisbon. Service from 150 €, 650 twin valve clearance, EFI diagnostics, Bullet restoration. Written estimate.
+- [Triumph service](https://ironcustommotors.com/triumph-service/): Independent Triumph workshop in Cascais, Lisbon. Service from 150 €, twin and triple valve clearance, TuneECU, throttle balance. Written estimate first.
 
 ## Harley-Davidson hub
 

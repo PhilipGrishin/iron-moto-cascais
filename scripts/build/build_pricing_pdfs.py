@@ -77,6 +77,8 @@ def price_text(item: dict[str, Any], lang: str) -> str:
     bits.append(item["price"])
     if item.get("price_suffix") == "per_hour":
         bits.append(LABELS[lang]["per_hour"])
+    elif item.get("price_suffix"):
+        bits[-1] = bits[-1].replace(" EUR", f"{item['price_suffix']} EUR")
     return " ".join(bits)
 
 
@@ -284,6 +286,21 @@ def scheduled_section(section: dict[str, Any], lang: str, styles: dict[str, Para
                         p(price_text(group, lang), styles["cardPrice"]),
                     ],
                     [p(checklist, styles["cell"]), ""],
+                ],
+                [125 * mm, 45 * mm],
+            )
+        )
+        flow.append(Spacer(1, 5))
+    flow.append(p(t(section["brand_specific_heading"], lang), styles["sectionMeta"]))
+    for card in section["brand_specific_cards"]:
+        flow.append(
+            simple_card_table(
+                [
+                    [
+                        p(t(card["name"], lang), styles["cardTitle"]),
+                        p(price_text(card, lang), styles["cardPrice"]),
+                    ],
+                    [p(t(card["desc"], lang), styles["cell"]), ""],
                 ],
                 [125 * mm, 45 * mm],
             )

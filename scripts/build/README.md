@@ -42,7 +42,7 @@ copy or business-semantic validation.
 |---|---|---|---|
 | `build_new_pages.py` | `new_pages_data.py`, existing chrome | English general hub pages | broad SEO |
 | `build_authorized_dealer.py` | `authorized_dealer_data.py`, existing chrome | localized Authorized Dealer family | broad SEO; no dedicated validator |
-| `build_brand_pages.py` | `brand_pages_data.py` | English registered brand pages | `validate_brand_pages.py` |
+| `build_brand_pages.py` | `brand_pages_data.py`, checked Wave 2 copy, `pricing_data.py` | English registered brand pages | `validate_brand_pages.py` |
 | `build_legal_pages.py` | `legal_pages_data.py`, service chrome | localized legal pages | broad SEO; no legal-copy validator |
 | `build_news.py` | `news_data.py` | English news hub/articles | broad SEO and focused CSS-hero mode; no exact-copy validator |
 | `build_blog.py` | `blog_data.py`, approved content files | English blog hub/articles | broad SEO and focused picture-hero mode; no exact-copy validator |
@@ -85,6 +85,7 @@ source media changes and review the binary diff.
 | `authorized_dealer_data.py` | Authorized Dealer copy, hero and partner registry |
 | `blog_data.py` | blog registry, localized article content and media/schema inputs |
 | `brand_pages_data.py` | brand registry, metadata and localized page content |
+| `brand_pages_w2_content.py` | checksum validation and parsing for the approved Wave 2 brand copy |
 | `harley_hub_data.py` | Harley UI, media, feed and portfolio data |
 | `legal_pages_data.py` | legal copy and update label |
 | `new_pages_data.py` | general hubs and project listing registry |
@@ -106,7 +107,7 @@ module is named above or in `docs/CONTENT_TYPES.md`.
 | Script | What it protects | Important exclusions |
 |---|---|---|
 | `validate_seo.py` | all built HTML FormSubmit-action privacy and localized `_next` redirects; noindex thank-you exclusion; cookie-free lead runtime; sitemap files; title/meta; canonical/hreflang; JSON parsing and breadcrumbs; localized JSON-LD URLs; local assets; cache-bust presence/consistency; LCP discovery; CSS hero alignment; Blog picture preload/source alignment and viewport/DPR candidate selection; navigation/footer structure; project-menu registry membership, localized URLs and order; same-language chrome-text parity; localized links; English `llms.txt` coverage; changelog commit references | Rich Results UI; schema recommended fields; global visible FAQ parity; Product/Offer semantics; real lastmod meaning; visual rendering; external services; measured performance |
-| `validate_brand_pages.py` | brand registry and assets; generated variants; schema type presence; sitemap/deploy wiring; homepage and reciprocal links; forbidden brand claims | exact visible copy; global RRT warnings; browser interaction/performance |
+| `validate_brand_pages.py` | brand registry and assets; checked Wave 2 source; generated variants; pricing-registry amount subset; pricing section placement/group/checklist; title/meta bounds; visible/schema FAQ parity; schema type presence; sitemap/deploy wiring; homepage and reciprocal links; forbidden brand claims | global RRT warnings; browser interaction/performance |
 | `validate_harley_hub.py` | exact maintained copy; visual tokens; hero media; schema families; language-local links; feed/portfolio and required integrations | live browser behavior; external RRT; performance benefit |
 | `validate_project_pages.py` | every registered project: exact source copy; media; schema graph/dates/references; cache-bust; redirects; listing/sitemap and optional Custom/Harley integration | browser rendering; external RRT |
 
@@ -296,9 +297,18 @@ Set `SLUG` to an entry in `BRAND_CONFIG`. A new brand also requires approved
 localized source data, a nav label when needed, a deploy copy entry, and hero
 media.
 
+Wave 2 metadata and FAQ copy are read from
+`content/brand_pages_w2_copy_4lang.md`; its parser enforces the approved
+SHA-256. `BRAND_PRICING` maps each page to stable group, valve-row and
+brand-card IDs in `pricing_data.py`. When those canonical records change,
+build Pricing first (including PDFs on macOS), then build the brand family so
+the pages cannot retain an earlier price.
+
 ```bash
 SLUG=harley-service
 node scripts/build/extract_i18n.js
+python3 scripts/build/build_pricing.py
+python3 scripts/build/build_pricing_pdfs.py
 python3 scripts/build/optimize_hero_images.py "$SLUG"
 python3 scripts/build/build_brand_pages.py
 python3 scripts/build/build_new_pages.py

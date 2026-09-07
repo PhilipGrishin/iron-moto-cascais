@@ -152,6 +152,8 @@ def build_pricing_main(lang: str) -> str:
                 price_html += f'<span class="amount">{price}</span>'
                 if price_suffix == "per_hour":
                     price_html += f'<span class="suffix">{LABELS[lang]["per_hour"]}</span>'
+                elif price_suffix:
+                    price_html = price_html.replace('</span>', f'{esc(price_suffix)}</span>', 1)
 
                 tags_html = ""
                 if "tags" in card:
@@ -188,6 +190,21 @@ def build_pricing_main(lang: str) -> str:
           <div class="price">{from_html}<span class="amount">{price}</span></div>
         </div>
         <ul class="group-list">{checklist_html}</ul>
+      </div>''')
+            parts.append('    </div>')
+            parts.append(f'    <h3 class="subgroup-title">{esc(section["brand_specific_heading"][lang])}</h3>')
+            parts.append('    <div class="price-cards brand-specific-cards">')
+            for card in section["brand_specific_cards"]:
+                from_html = f'<span class="from">{LABELS[lang]["from"]}</span> ' if card.get("price_from") else ""
+                suffix = card.get("price_suffix", "")
+                price = card["price"]
+                display_price = price[:-4] + suffix + " €" if price.endswith(" EUR") else price + suffix
+                parts.append(f'''      <div class="price-card" data-price-id="{esc(card["id"])}">
+        <div class="card-head">
+          <h3>{esc(card["name"][lang])}</h3>
+          <div class="price">{from_html}<span class="amount">{esc(display_price)}</span></div>
+        </div>
+        <p class="card-desc">{esc(card["desc"][lang])}</p>
       </div>''')
             parts.append('    </div>')
             parts.append(f'    <p class="section-note">{esc(section["note"][lang])}</p>')
@@ -447,7 +464,8 @@ def build_jsonld(lang: str) -> dict:
             continue
         # Skip table-only and column-style sections in JSON-LD (only push card-style)
         if section["num"] in ("01", "02", "06"):
-            items = section.get("cards") or section.get("groups", [])
+            items = list(section.get("cards") or section.get("groups", []))
+            items.extend(section.get("brand_specific_cards", []))
             for it in items:
                 name_dict = it.get("name", {"en": it.get("name")} if isinstance(it.get("name"), str) else it.get("name", {}))
                 if isinstance(name_dict, dict):

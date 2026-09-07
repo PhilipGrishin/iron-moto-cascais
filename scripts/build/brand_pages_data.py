@@ -8,6 +8,8 @@ SEO validation and page rendering in sync.
 Used by build_brand_pages.py and the site-wide build helpers.
 """
 
+from brand_pages_w2_content import W2_BRAND_COPY
+
 LANGS = ("en", "ru", "uk", "pt")
 BRAND_ORDER = ("harley-service", "bmw-service", "ducati-service", "suzuki-service", "honda-service", "royal-enfield-service", "triumph-service")
 
@@ -3740,3 +3742,175 @@ PAGE_I18N["triumph-service"] = {'en': {'tri.eyebrow': 'Triumph · Cascais / Grea
         'tri.ctaText': 'Надішліть модель, рік і короткий опис у WhatsApp. Повернемося з найближчим вільним вікном і '
                        'письмовим кошторисом до початку робіт. Вт–Сб, 10:00–18:00.',
         'tri.btnBack': 'На головну'}}
+
+
+# Wave 2 pricing joins each brand page to the canonical pricing registry.
+BRAND_PRICING = {
+    "harley-service": {
+        "group": "harley",
+        "valve_rows": [],
+        "estimate_rows": [],
+        "extras": ["harley_major"],
+        "air_filter": "included",
+    },
+    "bmw-service": {
+        "group": "bmw_moto_guzzi",
+        "valve_rows": [{"row": "BMW Boxer"}],
+        "estimate_rows": ["bmw_series"],
+        "extras": ["bmw_inspection_2", "bmw_r1250_valve_interval"],
+        "air_filter": "separate",
+    },
+    "ducati-service": {
+        "group": "ducati_japan_ktm_triumph_royal_enfield",
+        "valve_rows": [{"row": "Ducati Desmo"}],
+        "estimate_rows": [],
+        "extras": ["ducati_full_desmo"],
+        "air_filter": "separate",
+    },
+    "honda-service": {
+        "group": "ducati_japan_ktm_triumph_royal_enfield",
+        "valve_rows": [{"row": "Japanese Inline 2 / 4", "split": True}],
+        "estimate_rows": [],
+        "extras": [],
+        "air_filter": "separate",
+    },
+    "suzuki-service": {
+        "group": "ducati_japan_ktm_triumph_royal_enfield",
+        "valve_rows": [{"row": "Japanese Inline 2 / 4", "split": True}],
+        "estimate_rows": [],
+        "extras": [],
+        "air_filter": "separate",
+    },
+    "triumph-service": {
+        "group": "ducati_japan_ktm_triumph_royal_enfield",
+        "valve_rows": [{"row": "Triumph / Royal Enfield twin"}],
+        "estimate_rows": ["triumph_triples"],
+        "extras": [],
+        "air_filter": "separate",
+    },
+    "royal-enfield-service": {
+        "group": "ducati_japan_ktm_triumph_royal_enfield",
+        "valve_rows": [{"row": "Triumph / Royal Enfield twin"}],
+        "estimate_rows": ["royal_enfield_singles"],
+        "extras": [],
+        "air_filter": "separate",
+    },
+}
+
+
+BRAND_PRICING_LABELS = {
+    "en": {
+        "eyebrow": "Service pricing",
+        "title": "{brand} service: what it includes and what it costs",
+        "scheduled": "Scheduled maintenance",
+        "included": "Consumables and taxes included",
+        "air_included": "Air filter clean and oil is included.",
+        "air_separate": "A new air filter is charged separately.",
+        "valves": "Valve clearances",
+        "engine": "Engine type",
+        "check": "Clearance check only",
+        "adjust": "Check + adjustment",
+        "twin": "Twin",
+        "inline_four": "Inline-four",
+        "estimate": "Written estimate per model",
+        "bmw_series": "BMW K, S, F and G series",
+        "triumph_triples": "Triumph triples",
+        "royal_enfield_singles": "Royal Enfield singles",
+        "specific": "Brand-specific services",
+        "universal": "Other workshop prices",
+        "pricing_link": "See the complete price list",
+    },
+    "pt": {
+        "eyebrow": "Preços de serviço",
+        "title": "Revisão {brand}: o que inclui e quanto custa",
+        "scheduled": "Manutenção programada",
+        "included": "Consumíveis e impostos incluídos",
+        "air_included": "A limpeza e o óleo do filtro de ar estão incluídos.",
+        "air_separate": "O filtro de ar novo é cobrado à parte.",
+        "valves": "Folgas de válvulas",
+        "engine": "Tipo de motor",
+        "check": "Só verificação de folgas",
+        "adjust": "Verificação + afinação",
+        "twin": "Bicilíndrica",
+        "inline_four": "Quatro cilindros em linha",
+        "estimate": "Orçamento escrito por modelo",
+        "bmw_series": "Séries BMW K, S, F e G",
+        "triumph_triples": "Tricilíndricas Triumph",
+        "royal_enfield_singles": "Monocilíndricas Royal Enfield",
+        "specific": "Serviços específicos por marca",
+        "universal": "Outros preços da oficina",
+        "pricing_link": "Ver a tabela de preços completa",
+    },
+    "ru": {
+        "eyebrow": "Цены на сервис",
+        "title": "ТО {brand}: что входит и сколько стоит",
+        "scheduled": "Плановое ТО",
+        "included": "Расходники и налоги включены",
+        "air_included": "Чистка и пропитка воздушного фильтра включены.",
+        "air_separate": "Новый воздушный фильтр оплачивается отдельно.",
+        "valves": "Зазоры клапанов",
+        "engine": "Тип двигателя",
+        "check": "Только проверка зазоров",
+        "adjust": "Проверка + регулировка",
+        "twin": "Твин",
+        "inline_four": "Рядная четвёрка",
+        "estimate": "Письменная смета по модели",
+        "bmw_series": "Серии BMW K, S, F и G",
+        "triumph_triples": "Триплы Triumph",
+        "royal_enfield_singles": "Одноцилиндровые Royal Enfield",
+        "specific": "Сервисы по маркам",
+        "universal": "Другие цены мастерской",
+        "pricing_link": "Смотреть полный прайс-лист",
+    },
+    "uk": {
+        "eyebrow": "Ціни на сервіс",
+        "title": "ТО {brand}: що входить і скільки коштує",
+        "scheduled": "Планове ТО",
+        "included": "Витратні матеріали й податки включені",
+        "air_included": "Чищення та просочення повітряного фільтра включені.",
+        "air_separate": "Новий повітряний фільтр оплачується окремо.",
+        "valves": "Зазори клапанів",
+        "engine": "Тип двигуна",
+        "check": "Лише перевірка зазорів",
+        "adjust": "Перевірка + регулювання",
+        "twin": "Твін",
+        "inline_four": "Рядна четвірка",
+        "estimate": "Письмовий кошторис за моделлю",
+        "bmw_series": "Серії BMW K, S, F і G",
+        "triumph_triples": "Трипли Triumph",
+        "royal_enfield_singles": "Одноциліндрові Royal Enfield",
+        "specific": "Сервіси за марками",
+        "universal": "Інші ціни майстерні",
+        "pricing_link": "Дивитися повний прайс",
+    },
+}
+
+
+PRICE_FAQ_KEYS = {
+    "harley-service": ("q4", "a4", 6, 7),
+    "bmw-service": ("q3", "a3", 6, 7),
+    "ducati-service": ("q2", "a2", 6, 7),
+    "honda-service": ("q2", "a2", 7, 8),
+    "suzuki-service": ("q2", "a2", 7, 8),
+    "triumph-service": ("q2", "a2", 7, 8),
+    "royal-enfield-service": ("q2", "a2", 6, 7),
+}
+
+
+for _slug, _copy_by_lang in W2_BRAND_COPY.items():
+    _prefix = BRAND_PREFIX[_slug]
+    _question_key, _answer_key, _faq_1_index, _faq_2_index = PRICE_FAQ_KEYS[_slug]
+    for _lang, _copy in _copy_by_lang.items():
+        BRAND_HEAD[_slug][_lang]["title"] = _copy["title"]
+        BRAND_HEAD[_slug][_lang]["description"] = _copy["description"]
+        _values = PAGE_I18N[_slug][_lang]
+        _values[f"{_prefix}.pricingIntro"] = _copy["section_intro"]
+        if _question_key:
+            _values[f"{_prefix}.{_question_key}"] = _copy["price_faq_q"]
+        _values[f"{_prefix}.{_answer_key}"] = _copy["price_faq_a"]
+        _values[f"{_prefix}.q{_faq_1_index}"] = _copy["faq_1_q"]
+        _values[f"{_prefix}.a{_faq_1_index}"] = _copy["faq_1_a"]
+        _values[f"{_prefix}.q{_faq_2_index}"] = _copy["faq_2_q"]
+        _values[f"{_prefix}.a{_faq_2_index}"] = _copy["faq_2_a"]
+
+del _slug, _copy_by_lang, _prefix, _question_key, _answer_key, _faq_1_index, _faq_2_index, _lang, _copy, _values
