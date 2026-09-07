@@ -11,7 +11,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 - Status: **confirmed** for the deployed site and both Worker services.
 - Evidence date: 2026-09-07 (Europe/Lisbon).
-- Repository evidence: S-REBUILD-W2 implementation commit `5074ef71`,
+- Repository evidence: S-REBUILD-W3 implementation commit `49e80dfc`,
+  S-REBUILD-W2 implementation commit `5074ef71`,
   S-REBUILD-W1 implementation commit `42c51732`,
   A-MEASURE commits `fae3a7ce`, `173d62e1` and
   `a286b68a`, M-REPO commits `88a44503` and `599a0429`, automated
@@ -177,7 +178,7 @@ Registry alignment on the evidence date:
 |---|---:|---|
 | `build_sitemap.py` `PAGES` | 59 | canonical English indexable paths |
 | `localize_internal_links.py` `LOCALIZED_PATHS` | 59 | matches `PAGES` after normalization |
-| `build_i18n.py` `MAIN_PAGES` | 33 | English sources localized by the generic i18n flow |
+| `build_i18n.py` `MAIN_PAGES` | 31 | English sources localized by the generic i18n flow |
 | `project_pages_data.py` `PROJECT_CONFIGS` | 14 | project details rendered directly in four languages |
 
 There is no active `EN_PAGES` registry. The canonical English page registry is
@@ -187,7 +188,7 @@ There is no active `EN_PAGES` registry. The canonical English page registry is
 
 | Assets | Value | Scope |
 |---|---|---|
-| `assets/main.css`, `assets/main.js` | `20260906a` | every sitemap page |
+| `assets/main.css`, `assets/main.js` | `20260907a` | every sitemap page |
 | `assets/projects.css` | `20260801a` | project detail pages |
 | `assets/projects.js` | `20260710b` | project detail pages |
 
@@ -208,15 +209,26 @@ asset must use one value site-wide. Change a value only when that asset changes.
 The expat workshop page is intentionally footer-only and contextual-link-only;
 it is not a top-navigation item.
 
-The Service and Custom hubs are copy-driven four-language families owned by
+The Service, Custom, Parts and Upgrades hubs are copy-driven four-language
+families owned by
 `scripts/build/content/service_hub_copy_4lang.md`,
-`scripts/build/content/custom_hub_copy_4lang.md` and the shared
+`scripts/build/content/custom_hub_copy_4lang.md`,
+`scripts/build/content/parts_hub_copy_4lang.md`,
+`scripts/build/content/upgrades_hub_copy_4lang.md` and the shared
 `build_service_custom_hubs.py` renderer. Their current pages use distinct
 search-intent H1s, six source-matched FAQ items, localized lead CTAs and the
 `Service`/`FAQPage`/`BreadcrumbList` graph. The Custom hub lists all 14
-registered projects in `PROJECT_TILES` order. Pricing titles, descriptions,
-eyebrows and H1s identify the 2026 price list; the tyre-service family received
-metadata-only refinements with unchanged visible content.
+registered projects in `PROJECT_TILES` order. Parts and Upgrades no longer use
+the legacy generic-i18n source path.
+
+The checked Wave 3 registry owns localized descriptions for 17 related targets
+and the exact shared trust-strip labels. The trust strip is present on 52
+commercial pages: the four copy-driven hubs, seven brand-service families,
+tyre service and pre-purchase inspection in four languages. Its static rating
+is read from `assets/reviews-snapshot.json`; `assets/main.js` updates the
+`data-icm-rating` hook from the Reviews Worker and its existing 12-hour cache.
+The homepage intentionally has no trust strip. Wave 3 also applies the approved
+head trims to Contact, Services, pre-purchase inspection and the expat hub.
 
 ### Harley Hub
 

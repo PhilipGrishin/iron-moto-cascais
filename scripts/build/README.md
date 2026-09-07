@@ -47,7 +47,7 @@ copy or business-semantic validation.
 | `build_news.py` | `news_data.py` | English news hub/articles | broad SEO and focused CSS-hero mode; no exact-copy validator |
 | `build_blog.py` | `blog_data.py`, approved content files | English blog hub/articles | broad SEO and focused picture-hero mode; no exact-copy validator |
 | `build_project_pages.py` | `project_pages_data.py`, approved project Markdown and localized project data | all localized project pages and noindex legacy redirects | `validate_project_pages.py` |
-| `build_service_custom_hubs.py` | approved Service/Custom hub Markdown | localized Service and Custom hubs | `validate_service_custom_hubs.py` |
+| `build_service_custom_hubs.py` | approved Service, Custom, Parts and Upgrades hub Markdown | four localized copy-driven hub families | `validate_service_custom_hubs.py` |
 | `build_pre_purchase_inspection.py` | approved inspection Markdown | localized inspection pages | broad SEO; no exact-copy validator |
 | `build_expat_hub.py` | approved expat Markdown | localized expat hub | broad SEO; no exact-copy validator |
 | `build_harley_hub.py` | approved Harley Markdown, `harley_hub_data.py` | localized Harley family | `validate_harley_hub.py` |
@@ -64,7 +64,7 @@ copy or business-semantic validation.
 | Script | Maintained input | Direct output | Focused protection |
 |---|---|---|---|
 | `nav_patch.py` | `site_chrome.py`, sitemap registry | navigation/footer on sitemap HTML | broad SEO chrome parity |
-| `enhance_money_pages.py` | configured commercial page map | related/local blocks in owned pages | broad SEO only |
+| `enhance_money_pages.py` | compatibility page map, checked Wave 3 related-description registry | related/local blocks in pages still owned by the compatibility path; current page map is empty | broad SEO and commercial-hub checks |
 | `localize_internal_links.py` | `LOCALIZED_PATHS` | same-language links in localized HTML | broad SEO locality |
 | `add_image_dims.py` | local image files | width/height on HTML images | broad SEO asset checks |
 | `apply_seo_meta.py` | sitemap HTML, `seo_meta.py`, `hero_images.py` | robots/LCP/preload normalization and canonical-byte restoration when the final DOM matches tracked output | broad SEO and focused hero modes |
@@ -97,6 +97,8 @@ source media changes and review the binary diff.
 | `hero_images.py` | hero discovery, responsive rendering and alignment helpers |
 | `seo_meta.py` | shared SEO meta constants/helpers |
 | `site_chrome.py` | canonical desktop/mobile navigation and footer renderer |
+| `trust_strip.py` | shared commercial trust strip and snapshot-derived localized rating fallback |
+| `w3_shared_data.py` | checksum-checked Wave 3 related descriptions, head trims and trust labels |
 
 Content Markdown and JSON files under `scripts/build/content/` and
 `scripts/build/*.json` are data, not standalone executables. Their owning
@@ -109,6 +111,7 @@ module is named above or in `docs/CONTENT_TYPES.md`.
 | `validate_seo.py` | all built HTML FormSubmit-action privacy and localized `_next` redirects; noindex thank-you exclusion; cookie-free lead runtime; sitemap files; title/meta; canonical/hreflang; JSON parsing and breadcrumbs; localized JSON-LD URLs; local assets; cache-bust presence/consistency; LCP discovery; CSS hero alignment; Blog picture preload/source alignment and viewport/DPR candidate selection; navigation/footer structure; project-menu registry membership, localized URLs and order; same-language chrome-text parity; localized links; English `llms.txt` coverage; changelog commit references | Rich Results UI; schema recommended fields; global visible FAQ parity; Product/Offer semantics; real lastmod meaning; visual rendering; external services; measured performance |
 | `validate_brand_pages.py` | brand registry and assets; checked Wave 2 source; generated variants; pricing-registry amount subset; pricing section placement/group/checklist; title/meta bounds; visible/schema FAQ parity; schema type presence; sitemap/deploy wiring; homepage and reciprocal links; forbidden brand claims | global RRT warnings; browser interaction/performance |
 | `validate_harley_hub.py` | exact maintained copy; visual tokens; hero media; schema families; language-local links; feed/portfolio and required integrations | live browser behavior; external RRT; performance benefit |
+| `validate_service_custom_hubs.py` | exact four-language copy-driven hub output; Wave 3 source checksums; pricing anchors; WhatsApp/form CTAs; trust-strip inventory and labels; related-description registry use; retired filler/key absence; approved head trims and price-head parity | external Rich Results UI; measured network performance |
 | `validate_project_pages.py` | every registered project: exact source copy; media; schema graph/dates/references; cache-bust; redirects; listing/sitemap and optional Custom/Harley integration | browser rendering; external RRT |
 
 Scripts or data families without a dedicated validator rely on broad SEO plus

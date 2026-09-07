@@ -14,6 +14,24 @@ Format:
 - Notes: ...
 ```
 
+## 2026-09-07 - Commercial hub routing and trust strip
+
+- Commit: `49e80dfc`
+- Changed: Migrated Parts and Upgrades to the checked four-language commercial
+  hub renderer, replaced generic related-card filler with the checked 17-target
+  registry on brand routing, added the snapshot-backed trust strip to the 52
+  commercial pages in scope, and applied the approved Contact, Services,
+  inspection and expat head trims. Retired the Parts/Upgrades generic-i18n path
+  and bumped the common asset cache key to `20260907a` for the rating hook.
+- Verified: Both approved hub files and the shared Wave 3 data file match their
+  expected SHA-256 values. The snapshot-rating mutation test, 52-page responsive
+  browser matrix, one-hero-resource checks, exact 52-URL sitemap comparison,
+  Full Safe Rebuild and all focused validators passed locally.
+- Notes: The static rating is the no-JS fallback; `assets/main.js` updates the
+  same element through the existing Reviews Worker and 12-hour cache. No review
+  count or schema change was added. Production and Rich Results evidence is
+  recorded after deployment in `docs/reports/S_REBUILD_W3_REPORT.md`.
+
 ## 2026-09-07 - Data-driven brand service pricing
 
 - Commit: `5074ef71`

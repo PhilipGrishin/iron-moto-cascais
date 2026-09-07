@@ -78,9 +78,11 @@ Commands: `scripts/build/README.md`, **Brand page workflow**.
 Ownership:
 
 - General hubs: `new_pages_data.py` + `build_new_pages.py`.
-- Copy-driven Service/Custom hubs:
+- Copy-driven commercial hubs:
   `content/service_hub_copy_4lang.md` and
-  `content/custom_hub_copy_4lang.md` +
+  `content/custom_hub_copy_4lang.md`,
+  `content/parts_hub_copy_4lang.md` and
+  `content/upgrades_hub_copy_4lang.md` +
   `build_service_custom_hubs.py`; exact family checks live in
   `validate_service_custom_hubs.py`.
 - Pre-purchase inspection:
@@ -91,20 +93,33 @@ Ownership:
   `optimize_tyre_service_images.py` and its checksum manifest.
 - English-speaking expat hub: `content/expat_hub_copy_4lang.md` +
   `build_expat_hub.py`.
-- Shared commercial enhancements: `enhance_money_pages.py`.
+- Shared related-path descriptions and trust-strip labels:
+  `content/w3_anchors_heads_strip.md` + `w3_shared_data.py`.
+- Shared commercial related-card compatibility path:
+  `enhance_money_pages.py`.
+- Shared trust strip: `trust_strip.py`; `assets/main.js` refreshes its rating
+  from the Reviews Worker while the checked-in snapshot remains the no-JS and
+  network-failure fallback.
 
-Stable Service/Custom hub rules:
+Stable copy-driven commercial hub rules:
 
-- Both hubs use the same parser and renderer and are rendered directly in all
-  four languages. They are not outputs of the generic `build_i18n.py` flow.
+- Service, Custom, Parts and Upgrades use the same parser and renderer and are
+  rendered directly in all four languages. They are not outputs of the generic
+  `build_i18n.py` flow.
 - The approved copy owns each hub's local-area and related-path sections.
   `enhance_money_pages.py` must not add either generic block to these pages.
-- Service price anchors must already exist in `pricing_data.py`; no new price
+- Published price anchors must already exist in `pricing_data.py`; no new price
   may be introduced only in hub copy. Custom-build prices are not published.
 - Project links come from all `PROJECT_CONFIGS` entries with
   `integrations.custom`, in `PROJECT_TILES` order and with same-language URLs.
-- A literal Google rating may be used only without a hard-coded review count.
-  Recheck that literal when the review snapshot rating changes.
+- Related and other-brand card descriptions come from the checked shared
+  registry and are selected by target path, never from a generic filler key.
+- The trust strip sits directly after the hero on the copy-driven commercial
+  hubs, registered brand-service pages, tyre-service family and pre-purchase
+  inspection family. Its build-time rating comes from
+  `assets/reviews-snapshot.json`, uses the language's decimal separator, and
+  carries `data-icm-rating` for the existing 12-hour Reviews Worker refresh.
+  Do not hard-code a rating or review count in the component.
 - The confirmed custom-build policy is maintained in
   [BUSINESS_FACTS.md](BUSINESS_FACTS.md#custom-build-policy); do not duplicate
   it as a second documentation source.
