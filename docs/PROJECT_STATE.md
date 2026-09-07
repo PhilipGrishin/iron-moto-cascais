@@ -11,7 +11,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 - Status: **confirmed** for the deployed site and both Worker services.
 - Evidence date: 2026-09-07 (Europe/Lisbon).
-- Repository evidence: S-REBUILD-W4 implementation commit `e72c6827`,
+- Repository evidence: S-REBUILD-W4 implementation commits `e72c6827` and
+  `34c3cf94`, documentation commit `8db59642`,
   S-REBUILD-W3 implementation commit `49e80dfc` and
   documentation commit `207e0638`,
   S-REBUILD-W2 implementation commit `5074ef71`,
@@ -39,7 +40,12 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: S-REBUILD-W3 GitHub Pages workflow `34102070677`, HTTP
+- Production evidence: S-REBUILD-W4 GitHub Pages workflow `34156212818`, HTTP
+  200 and repository-identical semantic `<main>` checks on all 80 changed
+  pages, responsive 390/1440 checks on the requested legacy and Markdown Blog
+  posts, byte-identical production sitemap/runtime assets, and clean Google
+  Rich Results reports `ytzdF9NkdYzEEnOGOeDxzg` and
+  `12zZKdQMzlR8nJzSpDmEIg`; S-REBUILD-W3 GitHub Pages workflow `34102070677`, HTTP
   200 and source-identical semantic `<main>` checks on all 52 commercial pages,
   byte-identical production `sitemap.xml`, `llms.txt` and `assets/main.js`, and
   responsive 390/1440 checks of Portuguese Parts and English Upgrades. Google
@@ -108,8 +114,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
   result `QtK8FJYbOvDZFu-k-TWBng` with four valid items, no errors and no
   warnings. Earlier evidence remains in the task reports and changelog.
 - Reproducibility evidence: the documented Full Safe Rebuild, including all
-  four PDF outputs and all four validator groups, passed in a fresh clone of
-  S-REBUILD-W2 documentation commit `27a6b375`, leaving empty
+  four PDF outputs and every validator family, passed in a fresh clone of
+  S-REBUILD-W4 schema-closure commit `34c3cf94`, leaving empty
   `git status --short`; verified 2026-09-07. The current
   `sitemap.xml` SHA-256 is
   `d307cbc83053f44b22875d42362796d91d85c8a582fc9467c462574bf6c8d406`.
@@ -233,11 +239,13 @@ The checked Wave 3 and Wave 4 sources jointly own localized descriptions for
 19 related targets; Wave 3 also owns the exact shared trust-strip labels. The
 homepage uses Wave 4's distinct intent anchors for its four primary service
 cards, tyre/PPI cards and Pricing CTA. Every registered Blog post has exactly
-three mapped related-service cards, and the 10 legacy projects render their
-four generic related rows from the same registry. The trust strip is present on 52
-commercial pages: the four copy-driven hubs, seven brand-service families,
-tyre service and pre-purchase inspection in four languages. Its static rating
-is read from `assets/reviews-snapshot.json`; `assets/main.js` updates the
+three mapped related-service cards and resolves its author/publisher
+`#business` reference to one complete `LocalBusiness` entity. The 10 legacy
+projects render their four generic related rows from the same registry. The
+trust strip is present on 52 commercial pages: the four copy-driven hubs,
+seven brand-service families, tyre service and pre-purchase inspection in four
+languages. Its static rating is read from `assets/reviews-snapshot.json`;
+`assets/main.js` updates the
 `data-icm-rating` hook from the Reviews Worker and its existing 12-hour cache.
 The homepage intentionally has no trust strip. Wave 3 also applies the approved
 head trims to Contact, Services, pre-purchase inspection and the expat hub.
