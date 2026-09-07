@@ -11,7 +11,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 - Status: **confirmed** for the deployed site and both Worker services.
 - Evidence date: 2026-09-07 (Europe/Lisbon).
-- Repository evidence: S-REBUILD-W3 implementation commit `49e80dfc`,
+- Repository evidence: S-REBUILD-W3 implementation commit `49e80dfc` and
+  documentation commit `207e0638`,
   S-REBUILD-W2 implementation commit `5074ef71`,
   S-REBUILD-W1 implementation commit `42c51732`,
   A-MEASURE commits `fae3a7ce`, `173d62e1` and
@@ -37,7 +38,13 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: S-REBUILD-W2 GitHub Pages workflow `34094429593`,
+- Production evidence: S-REBUILD-W3 GitHub Pages workflow `34102070677`, HTTP
+  200 and source-identical semantic `<main>` checks on all 52 commercial pages,
+  byte-identical production `sitemap.xml`, `llms.txt` and `assets/main.js`, and
+  responsive 390/1440 checks of Portuguese Parts and English Upgrades. Google
+  Rich Results results `4IymClRwww4t0XIblH-KhA` and
+  `_KC6wtVpYg5Rtd3WR7WZzg` each reported three valid supported items and no
+  errors. S-REBUILD-W2 GitHub Pages workflow `34094429593`,
   HTTP 200 checks on all 32 affected Brand/Pricing URLs, byte-identical
   production `sitemap.xml` and `llms.txt`, and responsive browser inspection
   of the Portuguese Honda page. Google Rich Results results

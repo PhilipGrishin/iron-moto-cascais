@@ -26,11 +26,16 @@ Format:
 - Verified: Both approved hub files and the shared Wave 3 data file match their
   expected SHA-256 values. The snapshot-rating mutation test, 52-page responsive
   browser matrix, one-hero-resource checks, exact 52-URL sitemap comparison,
-  Full Safe Rebuild and all focused validators passed locally.
+  Full Safe Rebuild and all focused validators passed locally. Pages workflow
+  `34102070677` completed successfully; all 52 production pages returned HTTP
+  200 with source-identical semantic content. Rich Results results
+  `4IymClRwww4t0XIblH-KhA` and `_KC6wtVpYg5Rtd3WR7WZzg` reported three valid
+  supported items each and no errors. A clean clone at `207e0638` rebuilt with
+  empty Git status.
 - Notes: The static rating is the no-JS fallback; `assets/main.js` updates the
   same element through the existing Reviews Worker and 12-hour cache. No review
-  count or schema change was added. Production and Rich Results evidence is
-  recorded after deployment in `docs/reports/S_REBUILD_W3_REPORT.md`.
+  count or schema change was added. Full evidence is in
+  `docs/reports/S_REBUILD_W3_REPORT.md`.
 
 ## 2026-09-07 - Data-driven brand service pricing
 
