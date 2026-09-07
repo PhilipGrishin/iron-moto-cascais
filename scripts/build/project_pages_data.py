@@ -563,21 +563,7 @@ LEGACY_PROJECT_ORDER = [
 # legacy project pages. Modified timestamps are the already-published sitemap
 # content dates and remain language-specific where Git history differs.
 LEGACY_PROJECT_DATES = {
-    "inspirium": "2026-06-20T11:33:40+01:00",
-    "beckman": "2026-08-01T19:17:10+01:00",
-    "unbreakable": {
-        "en": "2026-07-24T20:10:52+01:00",
-        "ru": "2026-07-24T20:10:52+01:00",
-        "uk": "2026-07-24T20:10:53+01:00",
-        "pt": "2026-07-24T20:10:52+01:00",
-    },
-    "quanta-r": "2026-06-20T11:33:40+01:00",
-    "burly": "2026-06-20T11:33:40+01:00",
-    "sturmvogel": "2026-08-01T19:17:10+01:00",
-    "geometric": "2026-06-20T11:33:40+01:00",
-    "joker": "2026-06-20T11:33:40+01:00",
-    "hellboy": "2026-08-01T19:17:10+01:00",
-    "true-religion": "2026-06-20T11:33:40+01:00",
+    slug: "2026-09-07T10:00:00+01:00" for slug in LEGACY_PROJECT_ORDER
 }
 
 PROJECT_EXHIBITION_MEDIA = {

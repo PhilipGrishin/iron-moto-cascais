@@ -28,7 +28,8 @@ from brand_pages_data import BRAND_ORDER
 from pricing_data import LABELS
 from site_chrome import THANK_YOU_URLS, localized_href
 from trust_strip import format_rating, snapshot_rating
-from w3_shared_data import HEAD_TRIMS, RELATED_DESCRIPTIONS, TRUST_LABELS, related_source_path
+from w3_shared_data import HEAD_TRIMS, TRUST_LABELS
+from w4_shared_data import RELATED_DESCRIPTIONS, related_source_path
 
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -63,6 +64,10 @@ FILLER_SENTENCES = (
     "Откройте страницу бренда, чтобы увидеть сервисные детали по моделям, диагностике, запчастям и записи.",
     "Відкрийте сторінку бренду, щоб побачити сервісні деталі за моделями, діагностикою, запчастинами й записом.",
     "Abra a página da marca para detalhes de serviço por modelo, diagnóstico, peças e marcação.",
+    "Open the related page for service context, booking options or the broader Iron Custom Motors story.",
+    "Abra a página relacionada para contexto de serviço, opções de marcação ou a história mais ampla da Iron Custom Motors.",
+    "Откройте связанную страницу для сервисного контекста, вариантов записи или широкой истории Iron Custom Motors.",
+    "Відкрийте пов'язану сторінку для сервісного контексту, варіантів запису або ширшої історії Iron Custom Motors.",
 )
 
 

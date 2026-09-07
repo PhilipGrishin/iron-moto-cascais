@@ -9,6 +9,8 @@ import html
 import re
 from pathlib import Path
 
+from w4_shared_data import BLOG_RELATED_TARGETS, ORPHAN_SENTENCES
+
 # ============================================================
 # Hub /blog/ — title + description + heading per language
 # ============================================================
@@ -4666,3 +4668,45 @@ BLOG_POSTS[_HARLEY_SERVICE_SLUG] = _load_harley_service_post()
 BLOG_POSTS[_BEAR650_BUILD_SLUG] = _load_bear650_build_post()
 BLOG_POSTS[_TUBELESS_SLUG] = _load_tubeless_post()
 BLOG_POSTS[_TAPE_SLUG] = _load_tape_post()
+
+_W4_CHECK_SECTION_TITLES = {
+    "en": "What We Check at Iron Custom Motors",
+    "pt": "O que verificamos na Iron Custom Motors",
+    "ru": "Что мы проверяем в Iron Custom Motors",
+    "uk": "Що ми перевіряємо в Iron Custom Motors",
+}
+
+
+def _apply_w4_blog_routing() -> None:
+    """Apply Wave 4 copy to all posts from its checksum-backed source."""
+    if set(BLOG_RELATED_TARGETS) != set(BLOG_POSTS):
+        missing = sorted(set(BLOG_POSTS) - set(BLOG_RELATED_TARGETS))
+        extra = sorted(set(BLOG_RELATED_TARGETS) - set(BLOG_POSTS))
+        raise ValueError(
+            "Wave 4 blog mapping must cover every BLOG_POSTS entry exactly once; "
+            f"missing={missing}, extra={extra}"
+        )
+
+    for slug, targets in BLOG_RELATED_TARGETS.items():
+        if len(targets) != 3:
+            raise ValueError(f"{slug}: Wave 4 requires exactly three related targets")
+        BLOG_POSTS[slug]["relatedTargets"] = targets
+        BLOG_POSTS[slug]["modifiedISO"] = "2026-09-07T10:00:00+01:00"
+
+    for slug, localized in ORPHAN_SENTENCES.items():
+        for lang, approved in localized.items():
+            sections = BLOG_POSTS[slug]["body"][lang].get("sections", [])
+            matches = [
+                section
+                for section in sections
+                if section.get("title", "").casefold()
+                == _W4_CHECK_SECTION_TITLES[lang].casefold()
+            ]
+            if len(matches) != 1:
+                raise ValueError(
+                    f"{slug} {lang}: expected one exact Wave 4 workshop-check section"
+                )
+            matches[0].setdefault("paragraphs", []).append(approved["html"])
+
+
+_apply_w4_blog_routing()

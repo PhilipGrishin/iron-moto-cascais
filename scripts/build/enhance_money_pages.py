@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup, FeatureNotFound
 
 from build_output import write_html_if_changed
 from brand_pages_data import BRAND_NAME, BRAND_NAV_KEYS, BRAND_ORDER
-from w3_shared_data import RELATED_DESCRIPTIONS, related_description_key
+from w4_shared_data import RELATED_DESCRIPTIONS, related_description_key
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent

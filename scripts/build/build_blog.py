@@ -41,6 +41,17 @@ from hero_images import (
     responsive_hero_background_style,
 )
 from site_chrome import patch_navigation_footer
+from w4_shared_data import (
+    BLOG_RELATED_COPY,
+    RELATED_DESCRIPTIONS,
+    RELATED_TITLE_KEYS,
+    related_description_key,
+)
+
+
+GLOBAL_I18N = json.loads(
+    (Path(__file__).resolve().parent / "i18n.json").read_text(encoding="utf-8")
+)
 
 
 BLOG_CSS = """.subpage.blog-hub{padding:126px 0 58px}
@@ -100,6 +111,15 @@ ARTICLE_CSS = """.subpage.blog-article{padding:0;position:relative;overflow:hidd
 .blog-list.blog-ordered-list{counter-reset:blog-step}
 .blog-list.blog-ordered-list li{counter-increment:blog-step;padding-left:34px}
 .blog-list.blog-ordered-list li::before{content:counter(blog-step);top:.18em;width:22px;height:22px;border:1px solid rgba(255,87,34,.65);border-radius:50%;display:grid;place-items:center;font-family:var(--font-ui);font-weight:800;font-size:11px;line-height:1;color:var(--accent)}
+.blog-related{padding:34px 0 12px;border-top:1px solid var(--border)}
+.blog-related .lead{margin-top:-10px;margin-bottom:22px;color:var(--text-dim);font-size:16px}
+.blog-related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.blog-related-card{position:relative;display:flex;min-width:0;min-height:170px;flex-direction:column;gap:12px;padding:22px 20px 40px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);color:inherit;text-decoration:none;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.blog-article-body .blog-related-card{border-bottom:1px solid var(--border)}
+.blog-article-body .blog-related-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.blog-related-label{font-family:var(--font-display);font-size:21px;font-weight:800;line-height:1.05;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
+.blog-related-text{font-family:var(--font-ui);font-size:14px;line-height:1.5;color:var(--text-dim);overflow-wrap:anywhere}
+.blog-related-arrow{position:absolute;right:18px;bottom:14px;color:var(--accent);font-size:22px}
 .blog-media{margin:34px 0;padding:18px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface)}
 .blog-media picture{display:block}
 .blog-media img{display:block;width:100%;height:auto;border-radius:calc(var(--radius-lg) - 4px)}
@@ -119,7 +139,7 @@ ARTICLE_CSS = """.subpage.blog-article{padding:0;position:relative;overflow:hidd
 .blog-article-body .blog-cta-box{padding:34px 36px;border:1px solid var(--border);border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(255,87,34,.14),rgba(255,255,255,.03));text-align:left}
 .blog-cta-box .btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
 @media (max-width:900px){.blog-video{grid-template-columns:1fr}.blog-video .video-frame{max-width:320px;margin:0 auto;width:100%}}
-@media (max-width:760px){.blog-article{min-height:84vh}.blog-article .container{padding-top:112px}.blog-article .crumb{line-height:1.5}.blog-article .crumb span:last-child{flex-basis:100%;min-width:0}.blog-article-body{padding:32px 0}.blog-article-body section{margin-bottom:20px}.blog-article-body .blog-article-lead{padding:26px 24px}.blog-media{margin:28px -20px;border-left:none;border-right:none;border-radius:0}.blog-media img{border-radius:0}.blog-article-body .blog-video{margin-left:-20px;margin-right:-20px;padding:28px 20px;border-left:none;border-right:none;border-radius:0}.blog-article-body .blog-cta-box{margin-left:-20px;margin-right:-20px;padding:28px 20px;border-left:none;border-right:none;border-radius:0}}"""
+@media (max-width:760px){.blog-article{min-height:84vh}.blog-article .container{padding-top:112px}.blog-article .crumb{line-height:1.5}.blog-article .crumb span:last-child{flex-basis:100%;min-width:0}.blog-article-body{padding:32px 0}.blog-article-body section{margin-bottom:20px}.blog-article-body .blog-article-lead{padding:26px 24px}.blog-related-grid{grid-template-columns:1fr}.blog-related-card{min-height:0}.blog-media{margin:28px -20px;border-left:none;border-right:none;border-radius:0}.blog-media img{border-radius:0}.blog-article-body .blog-video{margin-left:-20px;margin-right:-20px;padding:28px 20px;border-left:none;border-right:none;border-radius:0}.blog-article-body .blog-cta-box{margin-left:-20px;margin-right:-20px;padding:28px 20px;border-left:none;border-right:none;border-radius:0}}"""
 
 
 def h(value):
@@ -469,6 +489,12 @@ def render_article(slug, article):
         for idx, faq in enumerate(body["faqs"], start=1):
             inline_i18n[lang][f"{pre}.faq{idx}.q"] = faq["q"]
             inline_i18n[lang][f"{pre}.faq{idx}.a"] = faq["a"]
+        inline_i18n[lang][f"{pre}.related.heading"] = BLOG_RELATED_COPY[lang]["heading"]
+        inline_i18n[lang][f"{pre}.related.lead"] = BLOG_RELATED_COPY[lang]["lead"]
+        for target in article["relatedTargets"]:
+            title_key = RELATED_TITLE_KEYS[target]
+            inline_i18n[lang][title_key] = GLOBAL_I18N[lang][title_key]
+            inline_i18n[lang][related_description_key(target)] = RELATED_DESCRIPTIONS[target][lang]
 
     faq_entities = [
         {
@@ -746,6 +772,21 @@ def render_article(slug, article):
 </details>'''
         for idx, faq in enumerate(en_body["faqs"], start=1)
     )
+    related_cards_html = "\n".join(
+        f'''<a class="blog-related-card" href="{target}">
+<span class="blog-related-label" data-i18n="{RELATED_TITLE_KEYS[target]}">{h(GLOBAL_I18N["en"][RELATED_TITLE_KEYS[target]])}</span>
+<span class="blog-related-text" data-i18n="{related_description_key(target)}">{h(RELATED_DESCRIPTIONS[target]["en"])}</span>
+<span aria-hidden="true" class="blog-related-arrow">→</span>
+</a>'''
+        for target in article["relatedTargets"]
+    )
+    related_html = f'''<section class="blog-related" data-w4-related="">
+<h2 data-i18n="{pre}.related.heading">{h(BLOG_RELATED_COPY["en"]["heading"])}</h2>
+<p class="lead" data-i18n="{pre}.related.lead">{h(BLOG_RELATED_COPY["en"]["lead"])}</p>
+<div class="blog-related-grid">
+{related_cards_html}
+</div>
+</section>'''
     hero_alt_text = en_body.get("heroAlt", en_body.get("imageAlt", en_body["h1Crumb"]))
     hero_alt_key = f"{pre}.heroAlt" if "heroAlt" in en_body else f"{pre}.imageAlt"
 
@@ -772,6 +813,8 @@ def render_article(slug, article):
 {faq_html}
 </div>
 </section>
+
+{related_html}
 
 {article_cta_html}
 </div>

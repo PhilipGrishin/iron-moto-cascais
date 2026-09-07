@@ -20,6 +20,7 @@ from project_pages_data import (
     project_modified_iso,
 )
 from site_chrome import apply_global_i18n, patch_navigation_footer
+from w4_shared_data import RELATED_DESCRIPTIONS, related_source_path
 
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -28,8 +29,8 @@ TEMPLATE_PATH = SITE_ROOT / "projects/joker/index.html"
 LANGS = ["en", "ru", "uk", "pt"]
 HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 CACHE_BUST = {
-    "/assets/main.css": "20260907a",
-    "/assets/main.js": "20260907a",
+    "/assets/main.css": "20260907b",
+    "/assets/main.js": "20260907b",
     "/assets/projects.css": "20260801a",
     "/assets/projects.js": "20260710b",
 }
@@ -251,6 +252,32 @@ def project_main(project: dict, lang: str) -> BeautifulSoup:
     fragment = BeautifulSoup(markup, "html.parser")
     if fragment.main is None:
         raise ValueError(f"Project {project['slug']} {lang} source has no main element")
+    if project["source_format"] == "localized_html":
+        related_section = fragment.main.select_one(
+            'section[data-enhancement="project-related"]'
+        )
+        if related_section is None:
+            raise ValueError(f"Project {project['slug']} {lang} has no related section")
+        replaced: set[str] = set()
+        for row in related_section.select("article.project-enhance-row"):
+            link = row.select_one("h4 a[href]")
+            description = row.find("p")
+            if link is None or description is None:
+                continue
+            try:
+                source_path = related_source_path(link.get("href", ""), lang)
+            except KeyError:
+                continue
+            if source_path not in {"/projects/", "/custom/", "/community/", "/contact/"}:
+                continue
+            description.string = RELATED_DESCRIPTIONS[source_path][lang]
+            replaced.add(source_path)
+        expected = {"/projects/", "/custom/", "/community/", "/contact/"}
+        if replaced != expected:
+            raise ValueError(
+                f"Project {project['slug']} {lang} Wave 4 rows {sorted(replaced)} "
+                f"!= {sorted(expected)}"
+            )
     apply_exhibition_media(project, lang, fragment.main)
     return fragment.main
 
