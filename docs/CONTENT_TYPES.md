@@ -94,7 +94,9 @@ Ownership:
 - English-speaking expat hub: `content/expat_hub_copy_4lang.md` +
   `build_expat_hub.py`.
 - Shared related-path descriptions and trust-strip labels:
-  `content/w3_anchors_heads_strip.md` + `w3_shared_data.py`.
+  `content/w3_anchors_heads_strip.md` + `w3_shared_data.py`, extended by
+  `content/w4_routing_copy_4lang.md` + `w4_shared_data.py` for the Projects
+  and Contact targets.
 - Shared commercial related-card compatibility path:
   `enhance_money_pages.py`.
 - Shared trust strip: `trust_strip.py`; `assets/main.js` refreshes its rating
@@ -114,6 +116,8 @@ Stable copy-driven commercial hub rules:
   `integrations.custom`, in `PROJECT_TILES` order and with same-language URLs.
 - Related and other-brand card descriptions come from the checked shared
   registry and are selected by target path, never from a generic filler key.
+  The combined registry has 19 targets and both approved inputs are
+  SHA-256-pinned by their owning modules.
 - The trust strip sits directly after the hero on the copy-driven commercial
   hubs, registered brand-service pages, tyre-service family and pre-purchase
   inspection family. Its build-time rating comes from
@@ -223,6 +227,13 @@ Stable rules:
   `validate_seo.py` enforces this contract across every sitemap page.
 - Referenced author/provider/publisher entities need maintained names; article
   publisher data includes the maintained logo where required.
+- Every registered post must have exactly three known related-service targets
+  in the checksum-backed Wave 4 mapping. `blog_data.py` applies that mapping
+  after all literal and Markdown-backed posts are loaded and fails the build
+  on missing, extra or unknown entries. `build_blog.py` renders the localized
+  registry cards immediately after FAQ and immediately before the article CTA.
+  `validate_w4_routing.py` protects mapping coverage, order, copy, localized
+  links, placement and `dateModified` on all four language variants.
 
 Commands: `scripts/build/README.md`, **Blog workflow**.
 
@@ -285,6 +296,11 @@ Stable rules:
 - Contextual project-to-project relationships belong in
   `reciprocal_projects`. The project validator requires same-language links in
   both directions without duplicating visible copy in generated HTML.
+- The four generic related rows on the 10 legacy projects are rewritten at
+  render time from the combined 19-target related-description registry. Their
+  frozen `main_html` remains unchanged; only `visible_text_sha256` pins move
+  when the registry produces new visible copy. The four Markdown-backed
+  projects do not receive legacy related rows.
 - Generated project HTML must not contain `window.ICM_I18N_PAGE`; localized
   project copy belongs in the registered source data.
 - Because project details bypass `build_i18n.py`, `build_project_pages.py` must

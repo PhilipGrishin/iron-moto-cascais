@@ -11,7 +11,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 - Status: **confirmed** for the deployed site and both Worker services.
 - Evidence date: 2026-09-07 (Europe/Lisbon).
-- Repository evidence: S-REBUILD-W3 implementation commit `49e80dfc` and
+- Repository evidence: S-REBUILD-W4 implementation commit `e72c6827`,
+  S-REBUILD-W3 implementation commit `49e80dfc` and
   documentation commit `207e0638`,
   S-REBUILD-W2 implementation commit `5074ef71`,
   S-REBUILD-W1 implementation commit `42c51732`,
@@ -111,7 +112,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
   S-REBUILD-W2 documentation commit `27a6b375`, leaving empty
   `git status --short`; verified 2026-09-07. The current
   `sitemap.xml` SHA-256 is
-  `cbf40099d3ab4b0502bf678d4c65f01ec71b807eea9abad215faf39e0a87b52f`.
+  `d307cbc83053f44b22875d42362796d91d85c8a582fc9467c462574bf6c8d406`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
 - A-MEASURE evidence: the owner authorized Cloudflare deployment and completed
   Wrangler OAuth for the Vg account on 2026-09-02. `icm-leads` is deployed with
@@ -195,7 +196,7 @@ There is no active `EN_PAGES` registry. The canonical English page registry is
 
 | Assets | Value | Scope |
 |---|---|---|
-| `assets/main.css`, `assets/main.js` | `20260907a` | every sitemap page |
+| `assets/main.css`, `assets/main.js` | `20260907b` | every sitemap page |
 | `assets/projects.css` | `20260801a` | project detail pages |
 | `assets/projects.js` | `20260710b` | project detail pages |
 
@@ -228,8 +229,12 @@ search-intent H1s, six source-matched FAQ items, localized lead CTAs and the
 registered projects in `PROJECT_TILES` order. Parts and Upgrades no longer use
 the legacy generic-i18n source path.
 
-The checked Wave 3 registry owns localized descriptions for 17 related targets
-and the exact shared trust-strip labels. The trust strip is present on 52
+The checked Wave 3 and Wave 4 sources jointly own localized descriptions for
+19 related targets; Wave 3 also owns the exact shared trust-strip labels. The
+homepage uses Wave 4's distinct intent anchors for its four primary service
+cards, tyre/PPI cards and Pricing CTA. Every registered Blog post has exactly
+three mapped related-service cards, and the 10 legacy projects render their
+four generic related rows from the same registry. The trust strip is present on 52
 commercial pages: the four copy-driven hubs, seven brand-service families,
 tyre service and pre-purchase inspection in four languages. Its static rating
 is read from `assets/reviews-snapshot.json`; `assets/main.js` updates the

@@ -45,7 +45,7 @@ copy or business-semantic validation.
 | `build_brand_pages.py` | `brand_pages_data.py`, checked Wave 2 copy, `pricing_data.py` | English registered brand pages | `validate_brand_pages.py` |
 | `build_legal_pages.py` | `legal_pages_data.py`, service chrome | localized legal pages | broad SEO; no legal-copy validator |
 | `build_news.py` | `news_data.py` | English news hub/articles | broad SEO and focused CSS-hero mode; no exact-copy validator |
-| `build_blog.py` | `blog_data.py`, approved content files | English blog hub/articles | broad SEO and focused picture-hero mode; no exact-copy validator |
+| `build_blog.py` | `blog_data.py`, approved content files, Wave 4 routing source | English blog hub/articles | broad SEO, focused picture-hero mode and `validate_w4_routing.py` |
 | `build_project_pages.py` | `project_pages_data.py`, approved project Markdown and localized project data | all localized project pages and noindex legacy redirects | `validate_project_pages.py` |
 | `build_service_custom_hubs.py` | approved Service, Custom, Parts and Upgrades hub Markdown | four localized copy-driven hub families | `validate_service_custom_hubs.py` |
 | `build_pre_purchase_inspection.py` | approved inspection Markdown | localized inspection pages | broad SEO; no exact-copy validator |
@@ -99,6 +99,7 @@ source media changes and review the binary diff.
 | `site_chrome.py` | canonical desktop/mobile navigation and footer renderer |
 | `trust_strip.py` | shared commercial trust strip and snapshot-derived localized rating fallback |
 | `w3_shared_data.py` | checksum-checked Wave 3 related descriptions, head trims and trust labels |
+| `w4_shared_data.py` | checksum-checked Wave 4 home anchors, registry additions, Blog routing and orphan-post anchors |
 
 Content Markdown and JSON files under `scripts/build/content/` and
 `scripts/build/*.json` are data, not standalone executables. Their owning
@@ -113,6 +114,7 @@ module is named above or in `docs/CONTENT_TYPES.md`.
 | `validate_harley_hub.py` | exact maintained copy; visual tokens; hero media; schema families; language-local links; feed/portfolio and required integrations | live browser behavior; external RRT; performance benefit |
 | `validate_service_custom_hubs.py` | exact four-language copy-driven hub output; Wave 3 source checksums; pricing anchors; WhatsApp/form CTAs; trust-strip inventory and labels; related-description registry use; retired filler/key absence; approved head trims and price-head parity | external Rich Results UI; measured network performance |
 | `validate_project_pages.py` | every registered project: exact source copy; media; schema graph/dates/references; cache-bust; redirects; listing/sitemap and optional Custom/Harley integration | browser rendering; external RRT |
+| `validate_w4_routing.py` | Wave 4 source checksum; homepage intent anchors; 19-target registry; complete 9-post related mapping; localized card order/copy/placement; orphan anchors; legacy project rows; Blog dates | visual overflow; external Rich Results UI |
 
 Scripts or data families without a dedicated validator rely on broad SEO plus
 manual/source review. This is a known coverage boundary, not proof of failure.
@@ -150,6 +152,7 @@ python3 scripts/build/validate_seo.py
 python3 scripts/build/validate_brand_pages.py
 python3 scripts/build/validate_harley_hub.py
 python3 scripts/build/validate_service_custom_hubs.py
+python3 scripts/build/validate_w4_routing.py
 for slug in $(python3 -c "import sys; sys.path.insert(0, 'scripts/build'); from project_pages_data import PROJECT_CONFIGS; print(' '.join(sorted(PROJECT_CONFIGS)))"); do
   python3 scripts/build/validate_project_pages.py "$slug"
 done
@@ -169,6 +172,8 @@ python3 -m py_compile scripts/build/*.py
 python3 scripts/build/validate_seo.py
 python3 scripts/build/validate_brand_pages.py
 python3 scripts/build/validate_harley_hub.py
+python3 scripts/build/validate_service_custom_hubs.py
+python3 scripts/build/validate_w4_routing.py
 for slug in $(python3 -c "import sys; sys.path.insert(0, 'scripts/build'); from project_pages_data import PROJECT_CONFIGS; print(' '.join(sorted(PROJECT_CONFIGS)))"); do
   python3 scripts/build/validate_project_pages.py "$slug"
 done
@@ -380,10 +385,18 @@ python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
+python3 scripts/build/validate_w4_routing.py
 ```
 
 New media must be processed and registered in `blog_data.py` before this
 sequence. Binary image preparation is an explicit source-media task.
+
+Every `BLOG_POSTS` entry must also appear exactly once in the related-services
+mapping parsed from `content/w4_routing_copy_4lang.md`, with exactly three
+known registry targets. Missing coverage is a build error. The common renderer
+places those cards after FAQ and before the CTA; do not patch generated Blog
+HTML. Wave 4 also applies the approved `modifiedISO` after both literal and
+Markdown-backed post loaders have populated `BLOG_POSTS`.
 
 ## News Workflow
 
@@ -433,6 +446,7 @@ python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/build_llms.py
 python3 scripts/build/validate_project_pages.py "$SLUG"
+python3 scripts/build/validate_w4_routing.py
 python3 scripts/build/validate_seo.py
 ```
 
@@ -465,6 +479,11 @@ Safe Rebuild to avoid codec-version churn.
 Migrated project hero optimization uses the explicit source path accepted by
 `optimize_hero_images.py`. Do not run all binary optimizers during an idle
 rebuild.
+
+The 10 legacy projects keep frozen localized `main_html`. Their four generic
+related rows (`/projects/`, `/custom/`, `/community/`, `/contact/`) are replaced
+at render time from the combined Wave 3 + Wave 4 description registry; update
+the 40 `visible_text_sha256` pins after an approved registry-copy change.
 
 ## Pricing Workflow
 

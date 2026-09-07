@@ -14,6 +14,25 @@ Format:
 - Notes: ...
 ```
 
+## 2026-09-07 - Intent routing from home, Blog and legacy projects
+
+- Commit: `e72c6827`
+- Changed: Replaced the shared homepage service-card anchors with the approved
+  four-language intent anchors, updated the homepage Pricing year and CTAs,
+  expanded the related-description registry from 17 to 19 targets, added the
+  required three-card related-services route to every Blog post, added the
+  approved in-copy links to the three orphan posts, and rendered the four
+  generic rows on 10 legacy projects from the same registry. Bumped the common
+  asset cache key to `20260907b` for the maintained i18n runtime changes.
+- Verified: The approved Wave 4 source checksum, 80-page visible-content
+  boundary, exact 80-URL sitemap delta, missing-mapping break test, Full Safe
+  Rebuild, focused Wave 4 validator and all existing validator families passed
+  locally. Production and external Rich Results evidence are recorded in the
+  task report after deployment.
+- Notes: The five Markdown-backed posts receive the Wave 4 `modifiedISO` only
+  after their loaders populate `BLOG_POSTS`; the 40 frozen legacy-project body
+  sources remain unchanged and only their visible-text pins moved.
+
 ## 2026-09-07 - Commercial hub routing and trust strip
 
 - Commit: `49e80dfc`
