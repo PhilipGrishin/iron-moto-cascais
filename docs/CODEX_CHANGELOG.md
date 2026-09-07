@@ -14,6 +14,26 @@ Format:
 - Notes: ...
 ```
 
+## 2026-09-07 - Data-driven brand service pricing
+
+- Commit: `5074ef71`
+- Changed: Added the approved four-language Wave 2 metadata, pricing-section
+  introductions and FAQ copy for all seven brand service families. Each of the
+  28 pages now renders its maintenance group, checklist, valve work,
+  brand-specific services and universal workshop rates from stable records in
+  `pricing_data.py`. Extended the four Pricing pages, `OfferCatalog` data and
+  four PDFs with the owner-approved services and prices.
+- Verified: The approved source checksum and 252 field-level comparisons pass;
+  the price-construction test and foreign-price break-test pass; the 28-page
+  FAQ/head/section contract passes; the sitemap retains 236 URLs with exactly
+  the approved 32 `lastmod` changes; PDF text, targeted visual layout and
+  byte-idempotence checks pass. Full Safe Rebuild, clean-clone and production
+  evidence are recorded in `docs/reports/S_REBUILD_W2_REPORT.md`.
+- Notes: Common CSS/JavaScript and cache-bust values are unchanged. The
+  generated pricing section owns no monetary literals; exact approved FAQ and
+  legacy service-card prose still carries formatted prices, and the validator
+  enforces that every amount exists in the canonical pricing registry.
+
 ## 2026-09-06 - Search-intent Service and Custom hub rebuild
 
 - Commit: `42c51732`

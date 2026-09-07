@@ -11,7 +11,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 - Status: **confirmed** for the deployed site and both Worker services.
 - Evidence date: 2026-09-06 (Europe/Lisbon).
-- Repository evidence: S-REBUILD-W2 implementation commit pending,
+- Repository evidence: S-REBUILD-W2 implementation commit `5074ef71`,
   S-REBUILD-W1 implementation commit `42c51732`,
   A-MEASURE commits `fae3a7ce`, `173d62e1` and
   `a286b68a`, M-REPO commits `88a44503` and `599a0429`, automated
