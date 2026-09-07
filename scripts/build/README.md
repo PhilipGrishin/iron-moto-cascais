@@ -396,7 +396,10 @@ mapping parsed from `content/w4_routing_copy_4lang.md`, with exactly three
 known registry targets. Missing coverage is a build error. The common renderer
 places those cards after FAQ and before the CTA; do not patch generated Blog
 HTML. Wave 4 also applies the approved `modifiedISO` after both literal and
-Markdown-backed post loaders have populated `BLOG_POSTS`.
+Markdown-backed post loaders have populated `BLOG_POSTS`. The same post-load
+step makes every article's author and publisher `#business` reference resolve
+to a complete `LocalBusiness` node; `validate_w4_routing.py` guards that schema
+contract as well as the visible routing block.
 
 ## News Workflow
 

@@ -128,7 +128,7 @@ def validate_blog(issues: list[str]) -> None:
                 issues.append(f"{label}: related block is not immediately after FAQ")
             if cta is None or "blog-cta-box" not in cta.get("class", []):
                 issues.append(f"{label}: related block is not immediately before CTA")
-            posting_dates = []
+            schema_nodes = []
             for script in soup.select('script[type="application/ld+json"]'):
                 try:
                     graph = json.loads(script.string or "null")
@@ -136,14 +136,28 @@ def validate_blog(issues: list[str]) -> None:
                     continue
                 nodes = graph.get("@graph", []) if isinstance(graph, dict) else []
                 nodes = [graph, *nodes] if isinstance(graph, dict) else []
-                posting_dates.extend(
-                    node.get("dateModified")
-                    for node in nodes
-                    if isinstance(node, dict)
-                    and node.get("@type") in {"BlogPosting", "Article"}
-                )
+                schema_nodes.extend(node for node in nodes if isinstance(node, dict))
+            postings = [
+                node
+                for node in schema_nodes
+                if node.get("@type") in {"BlogPosting", "Article"}
+            ]
+            posting_dates = [node.get("dateModified") for node in postings]
             if posting_dates != [CHANGE_DATE]:
                 issues.append(f"{label}: BlogPosting dateModified differs from Wave 4")
+            business_id = "https://ironcustommotors.com/#business"
+            businesses = [
+                node
+                for node in schema_nodes
+                if node.get("@type") == "LocalBusiness" and node.get("@id") == business_id
+            ]
+            if len(businesses) != 1:
+                issues.append(f"{label}: publisher @id does not resolve to one LocalBusiness")
+            elif postings and (
+                postings[0].get("publisher", {}).get("@id") != business_id
+                or postings[0].get("author", {}).get("@id") != business_id
+            ):
+                issues.append(f"{label}: article author/publisher do not use the business @id")
 
     for slug, localized in ORPHAN_SENTENCES.items():
         for lang, approved in localized.items():

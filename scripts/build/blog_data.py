@@ -4692,6 +4692,15 @@ def _apply_w4_blog_routing() -> None:
             raise ValueError(f"{slug}: Wave 4 requires exactly three related targets")
         BLOG_POSTS[slug]["relatedTargets"] = targets
         BLOG_POSTS[slug]["modifiedISO"] = "2026-09-07T10:00:00+01:00"
+        BLOG_POSTS[slug]["resolveBusinessEntity"] = True
+        BLOG_POSTS[slug].setdefault(
+            "publisherLogo",
+            {
+                "url": "https://ironcustommotors.com/photos/icon-512.png",
+                "width": 512,
+                "height": 512,
+            },
+        )
 
     for slug, localized in ORPHAN_SENTENCES.items():
         for lang, approved in localized.items():

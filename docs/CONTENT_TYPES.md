@@ -225,8 +225,11 @@ Stable rules:
 - Every `VideoObject` must have a non-empty `uploadDate` using the real video
   or article publication time in full ISO-8601 form with timezone.
   `validate_seo.py` enforces this contract across every sitemap page.
-- Referenced author/provider/publisher entities need maintained names; article
-  publisher data includes the maintained logo where required.
+- Blog author and publisher references use the canonical `#business` ID, and
+  every generated article carries the complete `LocalBusiness` node that
+  resolves it. The maintained business name and logo belong on that entity;
+  `validate_w4_routing.py` protects the resolution contract for the current
+  Blog inventory.
 - Every registered post must have exactly three known related-service targets
   in the checksum-backed Wave 4 mapping. `blog_data.py` applies that mapping
   after all literal and Markdown-backed posts are loaded and fails the build
