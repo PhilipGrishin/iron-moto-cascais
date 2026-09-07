@@ -11,7 +11,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 - Status: **confirmed** for the deployed site and both Worker services.
 - Evidence date: 2026-09-07 (Europe/Lisbon).
-- Repository evidence: S-REBUILD-W4 implementation commits `e72c6827` and
+- Repository evidence: S-REBUILD-W4b implementation commit `ff7c7e11`,
+  S-REBUILD-W4 implementation commits `e72c6827` and
   `34c3cf94`, documentation commit `8db59642`,
   S-REBUILD-W3 implementation commit `49e80dfc` and
   documentation commit `207e0638`,
@@ -40,7 +41,11 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: S-REBUILD-W4 GitHub Pages workflow `34156212818`, HTTP
+- Production evidence: S-REBUILD-W4b GitHub Pages workflow `34163554738`, HTTP
+  200 and exact approved eyebrow checks on all four home URLs, byte-identical
+  production `assets/main.js` and `sitemap.xml`, and an interactive runtime
+  language-switch check through EN, PT, RU, UK and back to EN. S-REBUILD-W4
+  GitHub Pages workflow `34156212818`, HTTP
   200 and repository-identical semantic `<main>` checks on all 80 changed
   pages, responsive 390/1440 checks on the requested legacy and Markdown Blog
   posts, byte-identical production sitemap/runtime assets, and clean Google

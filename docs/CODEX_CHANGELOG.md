@@ -14,6 +14,24 @@ Format:
 - Notes: ...
 ```
 
+## 2026-09-07 - Homepage Pricing eyebrow year
+
+- Commit: `ff7c7e11`
+- Changed: Replaced only the year in the four localized homepage
+  `pricing.eyebrow` strings, synchronized the maintained runtime and extracted
+  i18n data, and bumped the shared asset cache key to `20260907c`. Closed the
+  corresponding product watchlist item and added a focused regression check.
+- Verified: All four home files contain exactly one remaining `2025`, in the
+  historical story sentence. The 236-URL sitemap has exactly four `lastmod`
+  changes, all validators pass, and a clean-clone Full Safe Rebuild is
+  idempotent. Pages workflow `34163554738` passed; all four production homes
+  returned HTTP 200 and the runtime language switch showed the approved 2026
+  eyebrow in EN, PT, RU and UK.
+- Notes: The 240 changed HTML files are byte-identical to the Wave 4 baseline
+  after reversing the required shared cache key and the four approved eyebrow
+  year substitutions. Full evidence is in
+  `docs/reports/S_REBUILD_W4B_REPORT.md`.
+
 ## 2026-09-07 - Intent routing from home, Blog and legacy projects
 
 - Commit: `e72c6827`
