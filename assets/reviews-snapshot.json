@@ -1,8 +1,30 @@
 {
   "name": "Iron Custom Motors",
   "rating": 5,
-  "total": 25,
+  "total": 26,
   "reviews": [
+    {
+      "author": "Aleksandr F",
+      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjWhqWDog-ivneqCk46PwHe8dfQGEHbLX3j6t-JzVBwbeeqfFA=s128-c0x00000000-cc-rp-mo",
+      "profileUrl": "https://www.google.com/maps/contrib/112819378495569293115/reviews",
+      "rating": 5,
+      "text": "Great service — these guys really take their work seriously!\nI had my rear tire repaired here after a puncture, and my front sprocket replaced.\nDone quickly and done right!",
+      "lang": "en",
+      "when": "a month ago",
+      "publishedAt": "2026-08-07T15:10:29.445268917Z",
+      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xOTlJsSTRSemRUZW1Ga1RXTnpObk5pYkZwemRVRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
+    },
+    {
+      "author": "Dmytro Vartanian",
+      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjXurtiknpKLC8SCIXFr_zczQgszM5oXZ_MjC8Ff_CxA0sZJZ3o1CA=s128-c0x00000000-cc-rp-mo-ba3",
+      "profileUrl": "https://www.google.com/maps/contrib/102353669913450118089/reviews",
+      "rating": 5,
+      "text": "Always easy to arrange a specific time. You can arrive, have a cup of coffee, and leave with your new windshield installed :))) The level of service is rare around here! And they do any service for any bike, even for my Vespa :))",
+      "lang": "en",
+      "when": "a month ago",
+      "publishedAt": "2026-08-07T09:38:38.019020187Z",
+      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xodWFGbzRPVmxQVTBsSFpsZGxSMW93U0doVWVGRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
+    },
     {
       "author": "Dream Carua",
       "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjVSv-yTPqagKWgfuKUOIDIamud4gh6y67X6wgwqR0yGSUxIWIVg=s128-c0x00000000-cc-rp-mo",
@@ -26,28 +48,6 @@
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2s1VFdUaDROVmg2UzNkR1RqTnBRbFl0UldKeVdsRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     },
     {
-      "author": "Dmytro Vartanian",
-      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjXurtiknpKLC8SCIXFr_zczQgszM5oXZ_MjC8Ff_CxA0sZJZ3o1CA=s128-c0x00000000-cc-rp-mo-ba3",
-      "profileUrl": "https://www.google.com/maps/contrib/102353669913450118089/reviews",
-      "rating": 5,
-      "text": "Always easy to arrange a specific time. You can arrive, have a cup of coffee, and leave with your new windshield installed :))) The level of service is rare around here! And they do any service for any bike, even for my Vespa :))",
-      "lang": "en",
-      "when": "2 weeks ago",
-      "publishedAt": "2026-08-07T09:38:38.019020187Z",
-      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xodWFGbzRPVmxQVTBsSFpsZGxSMW93U0doVWVGRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
-    },
-    {
-      "author": "Aleksandr F",
-      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjWhqWDog-ivneqCk46PwHe8dfQGEHbLX3j6t-JzVBwbeeqfFA=s128-c0x00000000-cc-rp-mo",
-      "profileUrl": "https://www.google.com/maps/contrib/112819378495569293115/reviews",
-      "rating": 5,
-      "text": "Great service — these guys really take their work seriously!\nI had my rear tire repaired here after a puncture, and my front sprocket replaced.\nDone quickly and done right!",
-      "lang": "en",
-      "when": "2 weeks ago",
-      "publishedAt": "2026-08-07T15:10:29.445268917Z",
-      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xOTlJsSTRSemRUZW1Ga1RXTnpObk5pYkZwemRVRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
-    },
-    {
       "author": "Yurii Adam",
       "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjWYKmM6zrhqZRYk-lhNvuttcMN31fmjGu4azT3BDbwnVCBzfE1z=s128-c0x00000000-cc-rp-mo",
       "profileUrl": "https://www.google.com/maps/contrib/100875129844700188336/reviews",
@@ -59,5 +59,5 @@
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2prMGNXaEtaMnRUTldRemQwODNiblEyUlZGVFltYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     }
   ],
-  "fetchedAt": "2026-08-27T17:32:22.876Z"
+  "fetchedAt": "2026-09-07T12:40:28.572Z"
 }
