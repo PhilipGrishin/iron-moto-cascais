@@ -154,12 +154,12 @@ Google Rich Results Test crawled both requested language variants successfully:
 
 ## Diff Scope And Deviations
 
-The implementation commit changes exactly 52 files: 28 generated brand HTML
+The implementation commit changes exactly 52 files. The cumulative
+baseline-to-final task diff contains 54 unique files: 28 generated brand HTML
 pages, four Pricing HTML pages, four Pricing PDFs, `sitemap.xml`, `llms.txt`,
-the checked source copy and parser, pricing/brand data and renderers, two
-validators, and five canonical documentation/process files. Homepage, hubs,
-tyre pages, PPI, contact, forms, Workers, secrets, CI, common CSS/JavaScript and
-sitemap membership are unchanged.
+10 build/data/source/validator files and six documentation/report files.
+Homepage, hubs, tyre pages, PPI, contact, forms, Workers, secrets, CI, common
+CSS/JavaScript and sitemap membership are unchanged.
 
 The only implementation deviation is the one-line whitespace normalization in
 `validate_service_custom_hubs.py`, required because the new approved localized
