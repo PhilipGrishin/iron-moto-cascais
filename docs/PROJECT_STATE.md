@@ -10,7 +10,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
 ## Status And Evidence
 
 - Status: **confirmed** for the deployed site and both Worker services.
-- Evidence date: 2026-09-06 (Europe/Lisbon).
+- Evidence date: 2026-09-07 (Europe/Lisbon).
 - Repository evidence: S-REBUILD-W2 implementation commit `5074ef71`,
   S-REBUILD-W1 implementation commit `42c51732`,
   A-MEASURE commits `fae3a7ce`, `173d62e1` and
@@ -36,7 +36,16 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Inventory method: import the maintained Python registries, parse
   `sitemap.xml`, and enumerate tracked `*.html` files.
 - Cache-bust method: scan asset references in every sitemap HTML file.
-- Production evidence: S-REBUILD-W1 GitHub Pages workflow `34060700603`,
+- Production evidence: S-REBUILD-W2 GitHub Pages workflow `34094429593`,
+  HTTP 200 checks on all 32 affected Brand/Pricing URLs, byte-identical
+  production `sitemap.xml` and `llms.txt`, and responsive browser inspection
+  of the Portuguese Honda page. Google Rich Results results
+  `edxtmTQwzBGiuqLZrCBsPA` for EN Harley and
+  `1RENYeQWSHdJdTHDuVFNTA` for PT Honda each reported one valid Breadcrumb
+  item and no errors. Cloudflare's production edge rewrites the public contact
+  email for browser-side obfuscation; normalized source comparison found no
+  other repository/production HTML difference. S-REBUILD-W1 GitHub Pages
+  workflow `34060700603`,
   cache-bypass checks on all eight rebuilt Service/Custom hubs, four Pricing
   pages, four tyre-service pages, `llms.txt` and `sitemap.xml`; responsive
   browser checks at 390 px and 1440 px found zero document overflow and one
@@ -89,12 +98,12 @@ deployed public identifiers and cache-bust values. Operating rules live in
   byte-identical production project CSS and sitemap, and Google Rich Results
   result `QtK8FJYbOvDZFu-k-TWBng` with four valid items, no errors and no
   warnings. Earlier evidence remains in the task reports and changelog.
-- Reproducibility evidence: the documented Full Safe Rebuild with the PDF step
-  intentionally skipped and all four validator groups passed after
-  S-REBUILD-W1 commit `42c51732`, leaving empty `git status --short`; verified
-  2026-09-06. The current
+- Reproducibility evidence: the documented Full Safe Rebuild, including all
+  four PDF outputs and all four validator groups, passed in a fresh clone of
+  S-REBUILD-W2 documentation commit `27a6b375`, leaving empty
+  `git status --short`; verified 2026-09-07. The current
   `sitemap.xml` SHA-256 is
-  `52aead525994703b941a5cca0f5dd94bc9589b651267a500fda767bf7e331956`.
+  `cbf40099d3ab4b0502bf678d4c65f01ec71b807eea9abad215faf39e0a87b52f`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
 - A-MEASURE evidence: the owner authorized Cloudflare deployment and completed
   Wrangler OAuth for the Vg account on 2026-09-02. `icm-leads` is deployed with

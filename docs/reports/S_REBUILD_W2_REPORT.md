@@ -126,8 +126,31 @@ Service/Custom hub validation passed: 8 hubs, 4 pricing pages, 4 tyre metas.
 
 All 14 registered project validators also pass. The sitemap-wide SEO pass
 confirms zero broken internal links and the maintained hreflang/chrome
-contracts. Final clean-clone, deployment and external Rich Results evidence is
-added here after the implementation reaches production.
+contracts. A fresh clone from
+`https://github.com/PhilipGrishin/iron-moto-cascais.git` at documentation
+commit `27a6b375ea4185791e67b7f4a6c9666a43c53cdd` completed the documented Full
+Safe Rebuild, including the PDF step and every project validator, with empty
+`git status --short` afterward.
+
+GitHub Pages workflow
+[`34094429593`](https://github.com/PhilipGrishin/iron-moto-cascais/actions/runs/34094429593)
+completed successfully. All 32 affected production URLs returned HTTP 200.
+Production `sitemap.xml` and `llms.txt` are byte-identical to the repository,
+with SHA-256 values `cbf40099d3ab4b0502bf678d4c65f01ec71b807eea9abad215faf39e0a87b52f`
+and `fb90fcdeb2f37b907178136406ba76fe09f081357c90a2ede47f94631e8c123f`
+respectively. Cloudflare's email-obfuscation layer rewrites the visible contact
+email and injects its decoder script in production HTML; after normalizing that
+documented edge transformation, no other source difference remained.
+
+Production browser inspection of `/pt/honda-service/` confirmed the approved
+title, self-canonical, one pricing section, `150 €` source-group value,
+same-language `/pt/pricing/` link, 8 visible FAQs and 8 matching schema FAQs.
+Google Rich Results Test crawled both requested language variants successfully:
+
+- EN `/harley-service/`: result `edxtmTQwzBGiuqLZrCBsPA`, one valid Breadcrumb
+  item, no errors.
+- PT `/pt/honda-service/`: result `1RENYeQWSHdJdTHDuVFNTA`, one valid Breadcrumb
+  item, no errors.
 
 ## Diff Scope And Deviations
 
