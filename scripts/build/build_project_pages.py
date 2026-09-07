@@ -29,8 +29,8 @@ TEMPLATE_PATH = SITE_ROOT / "projects/joker/index.html"
 LANGS = ["en", "ru", "uk", "pt"]
 HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 CACHE_BUST = {
-    "/assets/main.css": "20260907b",
-    "/assets/main.js": "20260907b",
+    "/assets/main.css": "20260907c",
+    "/assets/main.js": "20260907c",
     "/assets/projects.css": "20260801a",
     "/assets/projects.js": "20260710b",
 }

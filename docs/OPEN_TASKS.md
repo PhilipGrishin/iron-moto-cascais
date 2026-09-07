@@ -101,17 +101,6 @@ Local JSON-LD parsing and repository validators are separate evidence.
 
 ## Product And Publishing Watchlist
 
-### Homepage Pricing eyebrow still names 2025
-
-- Status: **confirmed**, non-blocking copy follow-up.
-- Evidence: S-REBUILD-W4 explicitly changed only the year inside
-  `pricing.sub`; the existing localized `pricing.eyebrow` strings still name
-  2025 while the paragraph and CTA now name the current 2026 price list.
-- Impact: the homepage Pricing block contains a visible year inconsistency,
-  but changing the eyebrow was outside the owner-approved Wave 4 strings.
-- Next action: obtain owner-approved four-language eyebrow copy and update it
-  in a separately scoped content change.
-
 ### The First historical result and current whereabouts
 
 - Status: **unknown**, non-blocking publication follow-up.

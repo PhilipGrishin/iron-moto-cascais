@@ -37,6 +37,12 @@ HOME_TARGETS = (
     ("services.cta6", "/pre-purchase-inspection/"),
     ("pricing.cta", "/pricing/"),
 )
+HOME_PRICING_EYEBROWS = {
+    "en": "Pricing · 2026",
+    "pt": "Tabela de preços · 2026",
+    "ru": "Прайс-лист · 2026",
+    "uk": "Прайс-лист · 2026",
+}
 
 
 def page_path(path: str, lang: str) -> Path:
@@ -84,6 +90,12 @@ def validate_home(issues: list[str]) -> None:
         pricing_sub = soup.find(attrs={"data-i18n": "pricing.sub"})
         if pricing_sub is None or "2026" not in text_of(pricing_sub) or "2025" in text_of(pricing_sub):
             issues.append(f"{label}: pricing.sub year is not 2026-only")
+        pricing_eyebrow = soup.find(attrs={"data-i18n": "pricing.eyebrow"})
+        expected_eyebrow = HOME_PRICING_EYEBROWS[lang]
+        if pricing_eyebrow is None or text_of(pricing_eyebrow) != expected_eyebrow:
+            issues.append(f"{label}: pricing.eyebrow is not the approved 2026 copy")
+        if i18n[lang].get("pricing.eyebrow") != expected_eyebrow:
+            issues.append(f"i18n.json {lang}: pricing.eyebrow is not the approved 2026 copy")
 
 
 def validate_blog(issues: list[str]) -> None:

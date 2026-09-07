@@ -202,7 +202,7 @@ There is no active `EN_PAGES` registry. The canonical English page registry is
 
 | Assets | Value | Scope |
 |---|---|---|
-| `assets/main.css`, `assets/main.js` | `20260907b` | every sitemap page |
+| `assets/main.css`, `assets/main.js` | `20260907c` | every sitemap page |
 | `assets/projects.css` | `20260801a` | project detail pages |
 | `assets/projects.js` | `20260710b` | project detail pages |
 

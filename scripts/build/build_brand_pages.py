@@ -39,7 +39,7 @@ from w4_shared_data import RELATED_DESCRIPTIONS, related_description_key
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20260907b"
+CACHE_BUST = "20260907c"
 
 SEO_I18N = {
     "en": {
