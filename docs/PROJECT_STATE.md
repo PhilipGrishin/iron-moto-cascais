@@ -9,17 +9,22 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
-- Maintenance stabilization, **implemented and locally verified** 2026-09-18,
-  implementation commit `67a014f6`: every review consumer is synchronized,
-  both workflows validate before publication and Pages selects an exact
-  commit. Full Safe Rebuild passed in a fresh full-history clone with empty
-  Git status. Production verification is the remaining release gate; the
-  preceding deployed baseline is `7d9e482d`.
-- [Stabilization evidence](reports/STABILIZATION_2026_09_18.md) records the
-  complete local checks and scope. The initial audit's failed gates are
-  corrected; [the readiness audit](reports/MAINTENANCE_READINESS_2026_09_18.md)
-  remains historical evidence. Private intake originals were preserved.
-- Rebuilt sitemap SHA-256: `e74adc51af44bd854afd87d7c457506fa61dbe92274816487a28297d9435469c`.
+- Maintenance stabilization, **deployed and production-verified** 2026-09-18:
+  implementation `67a014f6`, published artifact commit `ace048eb`, Pages run
+  `35331757612`. Every review consumer is synchronized; both workflows validate
+  before publication and Pages selects an exact commit. Full Safe Rebuild
+  passed in a fresh full-history implementation clone with empty Git status.
+- Production acceptance: every sitemap URL returned HTTP 200 and matched local
+  main content, schema, canonical/hreflang and shared cache keys. Shared assets,
+  snapshot and discovery files matched byte-for-byte. Responsive/browser checks
+  and the old-domain The First redirect passed. Reviews run `35331761980`
+  passed with no changes and correctly skipped deployment.
+- [Stabilization evidence](reports/STABILIZATION_2026_09_18.md) records checks
+  and limits. The initial audit's failed gates are corrected;
+  [the readiness audit](reports/MAINTENANCE_READINESS_2026_09_18.md) remains
+  historical evidence. Private intake originals were preserved.
+- Current local/production sitemap SHA-256:
+  `e74adc51af44bd854afd87d7c457506fa61dbe92274816487a28297d9435469c`.
 - Historical delivery evidence below remains dated evidence, not a claim that
   the current checkout passes every release gate.
 - Status: **confirmed** for the deployed site and both Worker services.
@@ -185,7 +190,7 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
 | English path patterns | 59 | `build_sitemap.py` `PAGES` |
 | Indexable sitemap URLs | 236 | parsed `sitemap.xml` `<url>` entries |
-| Tracked HTML files | 253 | managed HTML enumeration; four added legacy aliases |
+| Tracked HTML files | 253 | git ls-files enumeration; four added legacy aliases |
 | Indexable HTML files | 236 | sitemap-to-file resolution |
 | Non-indexed HTML files | 17 | `404.html`, 12 localized project redirect stubs and 4 `thank-you` pages |
 | Sitemap lastmod tags | 236 | parsed `sitemap.xml` |

@@ -24,8 +24,10 @@ Format:
   intake originals and published an explicit technical handoff summary.
 - Verified: Full Safe Rebuild and all validators; a fresh clone remained clean;
   existing Worker tests; representative 390/1440 browser checks; isolated
-  review-change/idempotence/invalid-response scenarios. Full evidence and
-  publication status are in `docs/reports/STABILIZATION_2026_09_18.md`.
+  review-change/idempotence/invalid-response scenarios. Pages `35331757612`
+  deployed `ace048eb`; all 236 production URLs and six shared assets matched.
+  Reviews `35331761980` passed with no changes and skipped deployment.
+  Evidence is in `docs/reports/STABILIZATION_2026_09_18.md`.
 - Notes: Dyno is explicitly deferred. No new service, customer message, secret
   rotation or business-profile capability change was introduced.
 

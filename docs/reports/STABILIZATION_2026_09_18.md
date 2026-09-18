@@ -4,7 +4,8 @@
 
 The owner authorized immediate website stabilization and data consistency,
 explicitly deferring the dyno topic. Implementation commit: `67a014f6`.
-Production verification is pending publication at the time of this entry.
+Published artifact commit: `ace048eb` (documentation on top of the implementation).
+Production verification completed successfully on 2026-09-18.
 
 The earlier [readiness audit](MAINTENANCE_READINESS_2026_09_18.md) describes
 conditions before these fixes. Current inventories belong to
@@ -79,6 +80,32 @@ to [Open Tasks](../OPEN_TASKS.md).
 - Google Cloud's website project listed one available key created after the
   historical exposure, restricted to Places API (New). Its value was never
   revealed. Historical revocation in every possible project is still unknown.
+
+## Production acceptance
+
+**Confirmed**, 2026-09-18:
+
+- [Pages run 35331757612](https://github.com/PhilipGrishin/iron-moto-cascais/actions/runs/35331757612)
+  passed its new validation gate and deployed exact commit `ace048eb`.
+- [Reviews run 35331761980](https://github.com/PhilipGrishin/iron-moto-cascais/actions/runs/35331761980)
+  fetched current Worker data, refreshed zero already-current consumers, passed
+  all checks, created no commit and correctly skipped redundant deployment.
+- A cache-bypassed production crawl verified every sitemap URL: HTTP 200,
+  exactly one H1, matching title/canonical/hreflang, source-identical JSON-LD,
+  matching placeholders/cache keys and matching main text after normalizing
+  whitespace and Cloudflare email obfuscation. All 236 passed.
+- Shared CSS/JS, review snapshot, sitemap, robots and discovery index returned
+  HTTP 200 and byte-identical local/production content. The published asset
+  stamp matches Project State.
+- Production browser checks confirmed PT mobile contact-card bounds and form
+  hints at 390 px, PT BMW trust rating and Cookies at 1440 px, and the complete
+  old-domain `/ru/proekty/first` chain reaching the current RU The First page.
+  Sampled console warnings/errors were empty. Raw production HTML on all four
+  homes retains the private form alias and correct language-local `_next` URL.
+  No live message or inbox-delivery test was sent.
+- The final handoff update changes documentation only. Its site artifact is
+  unchanged from the verified deployment; `[skip ci]` avoids republishing an
+  identical site. Remote commit/file identity is checked after that push.
 
 ## Sources and limits
 
