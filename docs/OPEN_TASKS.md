@@ -9,6 +9,15 @@ Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 None.
 
+## Valve Pricing External Handoff
+
+- **Website completed and production-verified**, 2026-09-18:
+  [S-PRICE-VALVES-FROM](reports/S_PRICE_VALVES_FROM_REPORT.md).
+- **Outside this task:** Part E of the approved delivery assigns the three GBP
+  service-description edits to the external coordinator after website delivery.
+  No GBP edit or verification is claimed here. The website is ready for that
+  separately owned handoff.
+
 ## Maintenance Readiness Follow-Up
 
 Status: **implemented and production-verified**, 2026-09-18; clean-clone
@@ -120,12 +129,12 @@ measure representative page families under a stated profile.
 - Status: **confirmed**, open.
 - Evidence: `scripts/build/build_pricing_pdfs.py` hardcodes Arial files under
   `/System/Library/Fonts/Supplemental/`; source inspection 2026-07-31.
-- Current artifact status: **confirmed current** for S-REBUILD-W2 on
-  2026-09-07. All four PDFs were regenerated from the extended
-  `pricing_data.py`, remained byte-idempotent on a second run, contained the
-  new brand-specific cards and Triumph / Royal Enfield valve row, and passed
-  text extraction across all seven pages plus visual inspection of the new
-  section in all four files. This does not resolve portability.
+- Current artifact status: **confirmed current** for S-PRICE-VALVES-FROM on
+  2026-09-18. All four PDFs were regenerated from `pricing_data.py`, remained
+  byte-identical during the clean-clone rebuild, passed text comparisons
+  across all seven pages and visual inspection of the changed table/note in
+  all four files. Production downloads match their repository bytes.
+  This does not resolve portability.
 - Impact: the documented full build currently succeeds only on macOS with those
   fonts installed. HTML-only generators are not blocked by this specific issue.
 - Next action: in a separately scoped build-portability task, vendor approved
@@ -174,6 +183,13 @@ measure representative page families under a stated profile.
 
 Do not claim an account-only verification passed unless it was actually run.
 Local JSON-LD parsing and repository validators are separate evidence.
+
+**Confirmed external validation limit, 2026-09-18:** Google retired FAQ rich
+results on 2026-05-07 and removed their documentation in June. Rich Results
+Test therefore cannot serve as an FAQPage acceptance gate. Preserve the
+repository's FAQPage-to-visible-answer contract and verify it directly;
+report only the supported items actually shown by Google's live test.
+Evidence: [Google Search documentation updates](https://developers.google.com/search/updates).
 
 ## Product And Publishing Watchlist
 

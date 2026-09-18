@@ -14,6 +14,24 @@ Format:
 - Notes: ...
 ```
 
+## 2026-09-18 - Valve-clearance starting prices in all languages
+
+- Commit: `108684b3`
+- Changed: Applied the approved table `+` and localized prose wording to
+  Pricing, Service and six brand families; regenerated all four PDFs; updated
+  both copy checksums, canonical key-price labels and discovery output.
+  Preserved every amount and all excluded content.
+- Verified: Exact approved strings, unchanged page remainder, FAQ/schema
+  parity, all validators, 32,341 local link destinations, four PDF layouts,
+  responsive browser checks and a clean-clone Full Safe Rebuild. Both one-byte
+  checksum failure tests passed and were restored. Pages `35333451302`
+  deployed the implementation; all 236 production URLs and ten checked files
+  matched. Both requested live Rich Results tests passed for Breadcrumbs.
+- Notes: Exactly 32 sitemap dates moved, not the old task's 56: stabilization
+  had already corrected trust ratings. Google retired FAQ rich results;
+  FAQPage parity was checked directly. GBP Part E is outside this task.
+  Evidence: `docs/reports/S_PRICE_VALVES_FROM_REPORT.md`.
+
 ## 2026-09-18 - Maintenance stabilization and review consistency
 
 - Commit: `67a014f6`

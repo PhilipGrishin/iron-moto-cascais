@@ -9,6 +9,16 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
+- S-PRICE-VALVES-FROM, **deployed and production-verified** 2026-09-18:
+  implementation/artifact `108684b3`, Pages run `35333451302`. Approved
+  starting-price notation is consistent across Pricing, Service, six brand
+  families and all downloadable pricing PDFs. Amounts are unchanged.
+  Full Safe Rebuild passed in a fresh full-history clone with empty Git status;
+  both copy-checksum failure tests passed. All sitemap URLs matched production,
+  and both requested Google Rich Results tests found a valid Breadcrumb item
+  without errors. FAQPage parity was verified separately because Google has
+  retired FAQ rich results. See the [task report](reports/S_PRICE_VALVES_FROM_REPORT.md)
+  for exact copy, PDF, scope and external-test evidence.
 - Maintenance stabilization, **deployed and production-verified** 2026-09-18:
   implementation `67a014f6`, published artifact commit `ace048eb`, Pages run
   `35331757612`. Every review consumer is synchronized; both workflows validate
@@ -24,7 +34,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
   [the readiness audit](reports/MAINTENANCE_READINESS_2026_09_18.md) remains
   historical evidence. Private intake originals were preserved.
 - Current local/production sitemap SHA-256:
-  `e74adc51af44bd854afd87d7c457506fa61dbe92274816487a28297d9435469c`.
+  `30bba88f734b189177f0d54f9b558e8d0f0f491829b40434d8141fc5ab3a5492`.
 - Historical delivery evidence below remains dated evidence, not a claim that
   the current checkout passes every release gate.
 - Status: **confirmed** for the deployed site and both Worker services.
@@ -194,7 +204,7 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | Indexable HTML files | 236 | sitemap-to-file resolution |
 | Non-indexed HTML files | 17 | `404.html`, 12 localized project redirect stubs and 4 `thank-you` pages |
 | Sitemap lastmod tags | 236 | parsed `sitemap.xml` |
-| Unique sitemap lastmod values | 52 | parsed rebuilt `sitemap.xml`, 2026-09-18; 64 content changes, 172 unchanged dates |
+| Unique sitemap lastmod values | 64 | parsed rebuilt `sitemap.xml`, 2026-09-18; valve-price task: 32 content changes, 204 unchanged dates |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
 | Project detail pages | 14 | `PROJECT_TILES` |
 | Data-driven project definitions | 14 | `PROJECT_CONFIGS` |
@@ -303,6 +313,11 @@ protects the approved source checksum, monetary subset, title/meta limits,
 section placement and visible/schema FAQ parity. The four Pricing HTML pages,
 their `OfferCatalog` data and all four downloadable PDFs expose the same new
 brand-specific services and Triumph / Royal Enfield valve row.
+
+Valve-clearance amounts are now explicitly starting prices in all pricing
+tables, the Service hub, six brand FAQs and BMW/Ducati metadata. The shared
+pricing data also supplies all four regenerated PDFs. The approved delivery
+and verification are recorded in the S-PRICE-VALVES-FROM report above.
 
 ### Authorized Dealer
 
