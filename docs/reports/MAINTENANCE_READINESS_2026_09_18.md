@@ -1,7 +1,8 @@
 # Maintenance Readiness Audit — 18 September 2026
 
 This report describes the **pre-fix audit baseline**. Subsequent owner-authorized
-stabilization is recorded in Project State and the stabilization report; the
+stabilization is recorded in Project State and the
+[stabilization report](STABILIZATION_2026_09_18.md); the
 audit findings below remain dated evidence rather than current open status.
 
 ## Decision and scope

@@ -9,16 +9,17 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
-- Maintenance stabilization, **implemented and locally verified** 2026-09-18:
-  local main was fast-forwarded to upstream `7d9e482d` with private intake work
-  preserved. Full rebuild and every validator family pass after synchronizing
-  all review consumers. Both workflows now validate before publishing and
-  Pages checks out the exact requested commit. Production verification is the
-  remaining release gate; the previously deployed baseline is `7d9e482d`.
-- The initial audit's failed gates were corrected: all commercial ratings now
-  follow the snapshot, and analysis-only changelog notes no longer masquerade
-  as implementation entries. The prior findings remain in
-  [the readiness audit](reports/MAINTENANCE_READINESS_2026_09_18.md).
+- Maintenance stabilization, **implemented and locally verified** 2026-09-18,
+  implementation commit `67a014f6`: every review consumer is synchronized,
+  both workflows validate before publication and Pages selects an exact
+  commit. Full Safe Rebuild passed in a fresh full-history clone with empty
+  Git status. Production verification is the remaining release gate; the
+  preceding deployed baseline is `7d9e482d`.
+- [Stabilization evidence](reports/STABILIZATION_2026_09_18.md) records the
+  complete local checks and scope. The initial audit's failed gates are
+  corrected; [the readiness audit](reports/MAINTENANCE_READINESS_2026_09_18.md)
+  remains historical evidence. Private intake originals were preserved.
+- Rebuilt sitemap SHA-256: `e74adc51af44bd854afd87d7c457506fa61dbe92274816487a28297d9435469c`.
 - Historical delivery evidence below remains dated evidence, not a claim that
   the current checkout passes every release gate.
 - Status: **confirmed** for the deployed site and both Worker services.

@@ -11,8 +11,8 @@ None.
 
 ## Maintenance Readiness Follow-Up
 
-Status: **implemented and locally verified**, 2026-09-18; publication and
-clean-clone verification are being recorded in the stabilization report.
+Status: **implemented and locally verified**, 2026-09-18; clean-clone verification passed. Publication status is recorded in the
+[stabilization report](reports/STABILIZATION_2026_09_18.md).
 The preceding [readiness audit](reports/MAINTENANCE_READINESS_2026_09_18.md)
 is historical evidence from before these fixes.
 

@@ -14,6 +14,21 @@ Format:
 - Notes: ...
 ```
 
+## 2026-09-18 - Maintenance stabilization and review consistency
+
+- Commit: `67a014f6`
+- Changed: Synchronized all review consumers, added shared local/CI release
+  validation and exact-commit publication, retired the destructive bootstrap,
+  localized form hints, fixed mobile contacts/static counters, corrected
+  runtime disclosures and added The First legacy aliases. Preserved private
+  intake originals and published an explicit technical handoff summary.
+- Verified: Full Safe Rebuild and all validators; a fresh clone remained clean;
+  existing Worker tests; representative 390/1440 browser checks; isolated
+  review-change/idempotence/invalid-response scenarios. Full evidence and
+  publication status are in `docs/reports/STABILIZATION_2026_09_18.md`.
+- Notes: Dyno is explicitly deferred. No new service, customer message, secret
+  rotation or business-profile capability change was introduced.
+
 ## Audit note: 2026-09-18 maintenance readiness
 
 Analysis/documentation only; no implementation commit or deployment. Audited
