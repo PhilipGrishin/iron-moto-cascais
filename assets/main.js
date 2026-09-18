@@ -77,7 +77,7 @@ const I18N = {
     "story.p2":"In 2017 the team set a world speed record at Bonneville Salt Flats with the Inspirium 350APS-VG. In 2023 — BMW Motorrad Customizing Champions. Projects shown at the world's top motorcycle events.",
     "story.p3":"In 2025 we brought the workshop to Cascais, Greater Lisbon. Same team, same engineering culture, now within reach of every rider on the Portuguese coast.",
     "story.quote":"“The same hands that built world-champion motorcycles now keep yours running every day.”",
-    "story.stat1l":"Founded","story.stat1s":"15 years of continuous craft","story.stat2l":"World championships","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Projects delivered","story.stat3s":"Service · custom · engineering","story.stat4l":"Brands serviced","story.stat4s":"From BMW to one-off builds",
+    "story.stat1l":"Founded","story.stat1s":"Continuous craft since 2010","story.stat2l":"World championships","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Projects delivered","story.stat3s":"Service · custom · engineering","story.stat4l":"Brands serviced","story.stat4s":"From BMW to one-off builds",
     "community.eyebrow":"Lounge & Community","community.title":"More than a service.<br/>A place for riders, stories<br/>and motorcycle culture.","community.sub":"The Iron Custom Motors lounge is where the brand lives offline — championship bikes, trophies, conversations and coffee. Come by even if your bike is fine.",
     "community.heroTitle":"A lounge built around <em>real</em> stories.","community.heroSub":"Inspirium Bonneville salt-flat bike, championship trophies, riding gear and racing memorabilia. This is where the workshop becomes a brand.","community.heroBadge":"Cascais · Open Tue–Sat","community.ctaVisit":"Plan your visit",
     "community.introTitle":"Beyond the workshop.","community.introP1":"The lounge is part of what makes Iron Custom Motors feel like Iron Custom Motors. Wood-panelled walls, championship-winning machines on the floor, race-worn leathers on the wall, trophies from Bonneville, helmets, books, magazines, riding masks.","community.introP2":"It's a place to wait while your bike is being serviced — but more importantly, it's a place to drop in even when you don't need anything fixed. Have a coffee. Look at the Inspirium up close. Talk to people who actually rode it.","community.introP3":"No pretension, no membership, no dress code. If you ride or you love motorcycles — you're welcome.",
@@ -110,6 +110,7 @@ const I18N = {
     "footer.tagline":"Premium motorcycle service, parts, upgrades and custom expertise in Cascais. Engineering culture from world-champion projects, applied to every job.",
     "footer.col1":"Services","footer.col2":"Company","footer.col3":"Workshop",
     "footer.hours":"Tue–Sat · 10:00–18:00<br/>Closed Sun &amp; Mon","footer.rights":"All rights reserved",
+    "form.vehiclePlaceholder":"e.g. BMW R nineT 2020","form.messagePlaceholder":"Symptoms, history, anything that helps us prepare.",
     "form.title":"Send a request","form.sub":"Service, parts, upgrades or custom — tell us what you need. We'll come back to you within business hours.",
     "form.name":"Your name","form.phone":"Phone / WhatsApp","form.email":"Email (optional)","form.vehicle":"Motorcycle (brand · model · year)","form.service":"Request type",
     "form.opt1":"Motorcycle service & repair","form.opt2":"Parts & consumables","form.opt3":"Upgrades & tuning","form.opt4":"Custom & special project","form.opt5":"Other / not sure",
@@ -147,7 +148,7 @@ const I18N = {
     "story.p2":"В 2017 команда установила мировой рекорд скорости на солончаке Bonneville на Inspirium 350APS-VG. В 2023 — чемпионы BMW Motorrad Customizing. Проекты на ведущих мотовыставках мира.",
     "story.p3":"В 2025 мы привезли мастерскую в Кашкайш, Большой Лиссабон. Та же команда, та же инженерная культура — теперь в шаговой доступности для каждого райдера на побережье Португалии.",
     "story.quote":"«Те же руки, что строили чемпионов мира, теперь поддерживают ваш мотоцикл в форме каждый день.»",
-    "story.stat1l":"Основание","story.stat1s":"15 лет непрерывной работы","story.stat2l":"Чемпионств мира","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Реализованных проектов","story.stat3s":"Сервис · кастом · инжиниринг","story.stat4l":"Брендов в работе","story.stat4s":"От BMW до индивидуальных сборок",
+    "story.stat1l":"Основание","story.stat1s":"Непрерывная работа с 2010 года","story.stat2l":"Чемпионств мира","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Реализованных проектов","story.stat3s":"Сервис · кастом · инжиниринг","story.stat4l":"Брендов в работе","story.stat4s":"От BMW до индивидуальных сборок",
     "community.eyebrow":"Lounge и Сообщество","community.title":"Больше, чем сервис.<br/>Место для райдеров, историй<br/>и мотокультуры.","community.sub":"Lounge-зона Iron Custom Motors — это бренд офлайн: чемпионские мотоциклы, трофеи, разговоры и кофе. Заезжайте, даже если с мотоциклом всё в порядке.",
     "community.heroTitle":"Lounge на <em>настоящих</em> историях.","community.heroSub":"Inspirium с солончака Bonneville, чемпионские трофеи, гоночная экипировка и racing-атрибутика. Здесь мастерская превращается в бренд.","community.heroBadge":"Кашкайш · Вт–Сб","community.ctaVisit":"Спланировать визит",
     "community.introTitle":"Не только мастерская.","community.introP1":"Lounge — часть того, что делает Iron Custom Motors собой. Деревянные стены, чемпионские мотоциклы на полу, гоночные костюмы на стенах, трофеи Bonneville, шлемы, книги, журналы, гоночные маски.","community.introP2":"Это место, где можно подождать, пока обслуживают ваш мотоцикл — но главное, сюда можно заехать просто так. Выпить кофе. Посмотреть на Inspirium вблизи. Поговорить с людьми, которые на нём ехали.","community.introP3":"Без пафоса, без членства, без дресс-кода. Если вы ездите или любите мотоциклы — вам сюда.",
@@ -180,6 +181,7 @@ const I18N = {
     "footer.tagline":"Премиальный мотосервис, запчасти, апгрейды и кастом-экспертиза в Кашкайше. Инженерная культура из чемпионских проектов — в каждой работе.",
     "footer.col1":"Услуги","footer.col2":"Компания","footer.col3":"Мастерская",
     "footer.hours":"Вт–Сб · 10:00–18:00<br/>Вс и Пн — выходные","footer.rights":"Все права защищены",
+    "form.vehiclePlaceholder":"Например, BMW R nineT 2020","form.messagePlaceholder":"Симптомы, история — всё, что поможет нам подготовиться.",
     "form.title":"Отправить заявку","form.sub":"Сервис, запчасти, апгрейды или кастом — расскажите, что нужно. Ответим в рабочее время.",
     "form.name":"Ваше имя","form.phone":"Телефон / WhatsApp","form.email":"Email (необязательно)","form.vehicle":"Мотоцикл (бренд · модель · год)","form.service":"Тип запроса",
     "form.opt1":"Сервис и ремонт","form.opt2":"Запчасти и расходники","form.opt3":"Апгрейды и тюнинг","form.opt4":"Кастом и спец-проект","form.opt5":"Другое / не уверен",
@@ -217,7 +219,7 @@ const I18N = {
     "story.p2":"У 2017 команда встановила світовий рекорд швидкості на солончаку Bonneville на Inspirium 350APS-VG. У 2023 — чемпіони BMW Motorrad Customizing. Проекти на провідних мотовиставках світу.",
     "story.p3":"У 2025 ми привезли майстерню до Кашкайша, Великий Лісабон. Та сама команда, та сама інженерна культура — тепер у пішій доступності для кожного райдера на узбережжі Португалії.",
     "story.quote":"«Ті самі руки, що будували чемпіонів світу, тепер тримають у формі ваш мотоцикл щодня.»",
-    "story.stat1l":"Заснування","story.stat1s":"15 років безперервної роботи","story.stat2l":"Чемпіонств світу","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Реалізованих проектів","story.stat3s":"Сервіс · кастом · інжиніринг","story.stat4l":"Брендів у роботі","story.stat4s":"Від BMW до індивідуальних збірок",
+    "story.stat1l":"Заснування","story.stat1s":"Безперервна робота з 2010 року","story.stat2l":"Чемпіонств світу","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Реалізованих проектів","story.stat3s":"Сервіс · кастом · інжиніринг","story.stat4l":"Брендів у роботі","story.stat4s":"Від BMW до індивідуальних збірок",
     "community.eyebrow":"Lounge і Спільнота","community.title":"Більше, ніж сервіс.<br/>Місце для райдерів, історій<br/>і мотокультури.","community.sub":"Lounge-зона Iron Custom Motors — це бренд офлайн: чемпіонські мотоцикли, трофеї, розмови і кава. Заїжджайте, навіть якщо з мотоциклом усе гаразд.",
     "community.heroTitle":"Lounge на <em>справжніх</em> історіях.","community.heroSub":"Inspirium з солончаку Bonneville, чемпіонські трофеї, гоночна екіпіровка і racing-атрибутика. Тут майстерня стає брендом.","community.heroBadge":"Кашкайш · Вт–Сб","community.ctaVisit":"Спланувати візит",
     "community.introTitle":"Не лише майстерня.","community.introP1":"Lounge — частина того, що робить Iron Custom Motors собою. Дерев'яні стіни, чемпіонські мотоцикли на підлозі, гоночні костюми на стінах, трофеї Bonneville, шоломи, книги, журнали, гоночні маски.","community.introP2":"Це місце, де можна почекати, поки обслуговують ваш мотоцикл — але головне, сюди можна заїхати просто так. Випити кави. Подивитися на Inspirium зблизька. Поговорити з людьми, які на ньому їхали.","community.introP3":"Без пафосу, без членства, без дрес-коду. Якщо ви їздите або любите мотоцикли — вам сюди.",
@@ -250,6 +252,7 @@ const I18N = {
     "footer.tagline":"Преміальний мотосервіс, запчастини, апгрейди й кастом-експертиза у Кашкайші. Інженерна культура з чемпіонських проектів — у кожній роботі.",
     "footer.col1":"Послуги","footer.col2":"Компанія","footer.col3":"Майстерня",
     "footer.hours":"Вт–Сб · 10:00–18:00<br/>Нд та Пн — вихідні","footer.rights":"Усі права захищені",
+    "form.vehiclePlaceholder":"Наприклад, BMW R nineT 2020","form.messagePlaceholder":"Симптоми, історія — усе, що допоможе нам підготуватися.",
     "form.title":"Надіслати заявку","form.sub":"Сервіс, запчастини, апгрейди або кастом — розкажіть, що потрібно. Відповімо в робочий час.",
     "form.name":"Ваше ім'я","form.phone":"Телефон / WhatsApp","form.email":"Email (необов'язково)","form.vehicle":"Мотоцикл (бренд · модель · рік)","form.service":"Тип запиту",
     "form.opt1":"Сервіс і ремонт","form.opt2":"Запчастини та витратники","form.opt3":"Апгрейди і тюнінг","form.opt4":"Кастом і спецпроект","form.opt5":"Інше / не впевнений",
@@ -287,7 +290,7 @@ const I18N = {
     "story.p2":"Em 2017 a equipa estabeleceu um recorde mundial de velocidade nas Bonneville Salt Flats com a Inspirium 350APS-VG. Em 2023 — campeões BMW Motorrad Customizing. Projetos apresentados nos maiores eventos do mundo.",
     "story.p3":"Em 2025 trouxemos o workshop para Cascais, Grande Lisboa. A mesma equipa, a mesma cultura de engenharia, agora ao alcance de qualquer rider na costa portuguesa.",
     "story.quote":"«As mesmas mãos que construíram motos campeãs do mundo agora mantêm a sua a rolar todos os dias.»",
-    "story.stat1l":"Fundada","story.stat1s":"15 anos de craft contínuo","story.stat2l":"Campeonatos do mundo","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Projetos entregues","story.stat3s":"Serviço · custom · engenharia","story.stat4l":"Marcas servidas","story.stat4s":"De BMW a builds únicos",
+    "story.stat1l":"Fundada","story.stat1s":"Trabalho contínuo desde 2010","story.stat2l":"Campeonatos do mundo","story.stat2s":"AMD · BMW Motorrad · Bonneville","story.stat3l":"Projetos entregues","story.stat3s":"Serviço · custom · engenharia","story.stat4l":"Marcas servidas","story.stat4s":"De BMW a builds únicos",
     "community.eyebrow":"Lounge e Comunidade","community.title":"Mais do que um serviço.<br/>Um lugar para riders, histórias<br/>e cultura motociclista.","community.sub":"O lounge da Iron Custom Motors é onde a marca vive offline — motas campeãs, troféus, conversas e café. Apareça mesmo que a sua moto esteja em ordem.",
     "community.heroTitle":"Um lounge construído sobre histórias <em>reais</em>.","community.heroSub":"A Inspirium de Bonneville, troféus de campeonato, fato de corrida e memorabilia. Aqui a oficina torna-se uma marca.","community.heroBadge":"Cascais · Aberto Ter–Sáb","community.ctaVisit":"Planear a visita",
     "community.introTitle":"Para além da oficina.","community.introP1":"O lounge é parte do que faz a Iron Custom Motors ser ela mesma. Paredes em madeira, motos campeãs no chão, fatos de corrida nas paredes, troféus de Bonneville, capacetes, livros, revistas, máscaras de pilotagem.","community.introP2":"É um sítio para esperar enquanto a sua moto é servida — mas, mais importante, é um sítio para passar mesmo sem precisar de nada. Tomar um café. Ver a Inspirium de perto. Falar com as pessoas que a guiaram.","community.introP3":"Sem pretensão, sem inscrição, sem dress code. Se anda de moto ou ama motas — é bem-vindo.",
@@ -320,6 +323,7 @@ const I18N = {
     "footer.tagline":"Serviço premium de moto, peças, upgrades e expertise custom em Cascais. Cultura de engenharia de projetos campeões do mundo, aplicada a cada trabalho.",
     "footer.col1":"Serviços","footer.col2":"Empresa","footer.col3":"Workshop",
     "footer.hours":"Ter–Sáb · 10:00–18:00<br/>Encerrado dom &amp; seg","footer.rights":"Todos os direitos reservados",
+    "form.vehiclePlaceholder":"Ex.: BMW R nineT 2020","form.messagePlaceholder":"Sintomas, histórico e outros detalhes que nos ajudem a preparar.",
     "form.title":"Enviar pedido","form.sub":"Serviço, peças, upgrades ou custom — diga-nos o que precisa. Voltamos em horário de trabalho.",
     "form.name":"O seu nome","form.phone":"Telefone / WhatsApp","form.email":"Email (opcional)","form.vehicle":"Moto (marca · modelo · ano)","form.service":"Tipo de pedido",
     "form.opt1":"Serviço e reparação","form.opt2":"Peças e consumíveis","form.opt3":"Upgrades e tuning","form.opt4":"Custom e projeto especial","form.opt5":"Outro / não tenho a certeza",
@@ -416,6 +420,10 @@ function applyLang(lang){
   document.querySelectorAll('[data-i18n-alt]').forEach(el=>{
     const k = el.getAttribute('data-i18n-alt');
     if(dict[k] !== undefined){ el.setAttribute('alt', String(dict[k])); }
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-placeholder');
+    if(dict[k] !== undefined){ el.setAttribute('placeholder', String(dict[k])); }
   });
   document.querySelectorAll('[data-i18n-proj-label]').forEach(el=>{
     const slug = el.getAttribute('data-i18n-proj-label');

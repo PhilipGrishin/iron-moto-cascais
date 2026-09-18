@@ -133,6 +133,15 @@ The owner confirmed these facts on 2026-09-06:
 - No prices are published for custom builds. Scope, budget and timeline are
   agreed for each complete project after the free consultation.
 
+## Commercial Planning Baseline
+
+Owner-supplied planning inputs from 2026-09-08 are preserved privately in
+`.secrets/maintenance-intake-2026-09-18/docs/BUSINESS_FACTS.md`. They include
+unmeasured commercial estimates and are not public website copy. The public
+handoff retains implementation boundaries in [Open Tasks](OPEN_TASKS.md).
+This deliberate publication review on 2026-09-18 preserves the original record
+without publishing internal budget, customer-flow or capacity estimates.
+
 ## Maintenance Rules
 
 - Verify NAP, hours, founder, origin, service languages and profile URLs here

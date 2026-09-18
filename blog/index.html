@@ -31,7 +31,7 @@
 <link rel="preload" as="image" href="/photos/optimized/lounge-1280.avif" type="image/avif" media="(min-width: 768px) and (max-width: 1279px)" fetchpriority="high"/>
 <link rel="preload" as="image" href="/photos/optimized/lounge-1920.avif" type="image/avif" media="(min-width: 1280px)" fetchpriority="high"/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="/assets/main.css?v=20260907c" rel="stylesheet"/>
+<link href="/assets/main.css?v=20260918a" rel="stylesheet"/>
 <style>
 .subpage{padding:160px 0 100px;background:#0a0a0a;position:relative;overflow:hidden;isolation:isolate}
 .subpage::before{content:"";position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,87,34,.20),transparent 60%);pointer-events:none;z-index:1}
@@ -578,9 +578,9 @@
 <div class="field"><label data-i18n="form.name">Your name</label><input name="name" required="" type="text"/></div>
 <div class="field"><label data-i18n="form.phone">Phone / WhatsApp</label><input name="phone" placeholder="+351 ..." required="" type="tel"/></div>
 <div class="field full"><label data-i18n="form.email">Email (optional)</label><input name="email" type="email"/></div>
-<div class="field"><label data-i18n="form.vehicle">Motorcycle (brand · model · year)</label><input name="vehicle" placeholder="e.g. BMW R nineT 2020" type="text"/></div>
+<div class="field"><label data-i18n="form.vehicle">Motorcycle (brand · model · year)</label><input data-i18n-placeholder="form.vehiclePlaceholder" name="vehicle" placeholder="e.g. BMW R nineT 2020" type="text"/></div>
 <div class="field"><label data-i18n="form.service">Request type</label><select name="service"><option data-i18n="form.opt1">Motorcycle service &amp; repair</option><option data-i18n="form.opt2">Parts &amp; consumables</option><option data-i18n="form.opt3">Upgrades &amp; tuning</option><option data-i18n="form.opt4">Custom &amp; special project</option><option data-i18n="form.opt5">Other / not sure</option></select></div>
-<div class="field full"><label data-i18n="form.message">Tell us about the job</label><textarea name="message" placeholder="Symptoms, history, anything that helps us prepare."></textarea></div>
+<div class="field full"><label data-i18n="form.message">Tell us about the job</label><textarea data-i18n-placeholder="form.messagePlaceholder" name="message" placeholder="Symptoms, history, anything that helps us prepare."></textarea></div>
 </div>
 <div class="form-actions">
 <p class="note" data-i18n="form.note">By sending you agree to be contacted about this request. No spam, ever.</p>
@@ -594,6 +594,6 @@
 </div>
 </div>
 </div>
-<script defer="" src="/assets/main.js?v=20260907c"></script>
+<script defer="" src="/assets/main.js?v=20260918a"></script>
 </body>
 </html>

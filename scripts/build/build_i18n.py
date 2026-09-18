@@ -267,6 +267,11 @@ def apply_translations(soup, lang: str) -> dict:
         if key in full_dict:
             el["alt"] = full_dict[key]
 
+    for el in soup.find_all(attrs={"data-i18n-placeholder": True}):
+        key = el["data-i18n-placeholder"]
+        if key in full_dict:
+            el["placeholder"] = full_dict[key]
+
     for el in soup.find_all(attrs={"data-i18n-title": True}):
         key = el["data-i18n-title"]
         if key in full_dict:

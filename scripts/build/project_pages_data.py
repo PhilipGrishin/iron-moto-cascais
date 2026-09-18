@@ -647,6 +647,16 @@ PROJECT_CONFIGS["the-first"]["visible_text_sha256"] = {
 }
 
 REDIRECT_CONFIGS = {
+    "first": {
+        "source_path": "proekty/first",
+        "target": "the-first",
+        "labels": {
+            "en": {"title": "Redirecting to The First | Iron Custom Motors", "message": "Redirecting to", "target_name": "The First"},
+            "pt": {"title": "A redirecionar para The First | Iron Custom Motors", "message": "A redirecionar para", "target_name": "The First"},
+            "ru": {"title": "Переход на The First | Iron Custom Motors", "message": "Переход на", "target_name": "The First"},
+            "uk": {"title": "Перехід на The First | Iron Custom Motors", "message": "Перехід на", "target_name": "The First"},
+        },
+    },
     "nezlamniy": {
         "target": "unbreakable",
         "labels": {

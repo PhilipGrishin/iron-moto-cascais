@@ -634,6 +634,11 @@ def html_fragment_text(fragment: str) -> str:
 def check_i18n_html_prerender(soup, lang: str) -> list[str]:
     issues = []
     dictionary = translation_dict_for_soup(soup, lang)
+    for name in ("vehicle", "message"):
+        key = f"form.{name}Placeholder"
+        for el in soup.select(f'#leadForm [name="{name}"]'):
+            if el.get("data-i18n-placeholder") != key or el.get("placeholder") != dictionary.get(key):
+                issues.append(f"lead form placeholder not localized: {name}")
     for el in soup.find_all(attrs={"data-i18n-html": True}):
         key = el["data-i18n-html"]
         expected = dictionary.get(key)
@@ -644,6 +649,53 @@ def check_i18n_html_prerender(soup, lang: str) -> list[str]:
         expected_text = html_fragment_text(expected)
         if actual_text != expected_text:
             issues.append(f"data-i18n-html not pre-rendered for {key}: {actual_text!r} != {expected_text!r}")
+    return issues
+
+
+def check_review_output(soup, blocks: list[object], lang: str, homepage: bool) -> list[str]:
+    """Protect snapshot totals, visible/schema review parity and static fallbacks."""
+    issues = []
+    snapshot = json.loads((SITE_ROOT / "assets/reviews-snapshot.json").read_text())
+    rating, total = snapshot.get("rating"), snapshot.get("total")
+    if type(rating) not in (int, float) or not 1 <= rating <= 5 or type(total) is not int or total < 1:
+        return ["Invalid reviews snapshot rating/total"]
+    localized = f"{rating:.1f}" if lang == "en" else f"{rating:.1f}".replace(".", ",")
+    for node in soup.select("[data-icm-rating]"):
+        if node.get_text(strip=True) != localized:
+            issues.append("Commercial rating differs from reviews snapshot")
+    inline = extract_inline_i18n(soup, lang)
+    if "trust.rating" in inline and inline["trust.rating"] != localized:
+        issues.append("Runtime trust rating differs from reviews snapshot")
+    if not homepage:
+        return issues
+    for selector, value in (("#rsRating", f"{rating:.1f}"), ("#rsTotal", str(total))):
+        node = soup.select_one(selector)
+        if node is None or node.get_text(strip=True) != value:
+            issues.append(f"Homepage {selector} differs from reviews snapshot")
+    businesses = list(jsonld_entities_of_type(blocks, "LocalBusiness"))
+    if len(businesses) != 1:
+        return issues + ["Expected exactly one homepage LocalBusiness"]
+    business = businesses[0]
+    aggregate = business.get("aggregateRating", {})
+    if aggregate.get("ratingValue") != rating or aggregate.get("reviewCount") != total:
+        issues.append("Homepage AggregateRating differs from reviews snapshot")
+    cards = soup.select("#reviewsRow .review")
+    reviews = business.get("review", [])
+    curated = json.loads((SITE_ROOT / "assets/reviews-curated.json").read_text())
+    expected_count = min(curated["displayCount"], len(curated["reviews"]))
+    if len(cards) != expected_count or len(reviews) != expected_count:
+        issues.append("Visible/structured review count differs from curated source")
+    for card, review in zip(cards, reviews):
+        text, author = card.select_one("[data-full-text]"), card.select_one(".name")
+        if (text is None or text.get("data-full-text") != review.get("reviewBody")
+                or author is None or author.get_text(strip=True) != review.get("author", {}).get("name")):
+            issues.append("Visible review differs from its structured data")
+        if not any(item["text"] == review.get("reviewBody") and item["author"] == review.get("author", {}).get("name")
+                   and item["rating"] == review.get("reviewRating", {}).get("ratingValue") for item in curated["reviews"]):
+            issues.append("Structured review absent from curated source")
+    for counter in soup.select("[data-counter]"):
+        if counter.get_text(strip=True) != counter["data-counter"] + counter.get("data-suffix", ""):
+            issues.append("Homepage counter lacks its static value")
     return issues
 
 
@@ -951,6 +1003,7 @@ def validate_page(url: str) -> list[str]:
     issues.extend(check_jsonld_localized_urls(jsonld_blocks, lang))
     issues.extend(check_jsonld_assets(jsonld_blocks, html_path))
     issues.extend(check_video_object_upload_dates(jsonld_blocks))
+    issues.extend(check_review_output(soup, jsonld_blocks, lang, canonical_path == "/"))
 
     issues.extend(check_i18n_html_prerender(soup, lang))
     issues.extend(check_internal_links(soup, lang))

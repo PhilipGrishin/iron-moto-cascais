@@ -378,7 +378,9 @@ def patch_navigation_footer(html_text: str, lang: str) -> str:
         next_input = (
             f'<input name="_next" type="hidden" value="{next_url}"/>\n'
         )
-        return opening + "\n" + next_input + without_existing.lstrip("\n") + closing
+        fields = BeautifulSoup(without_existing, "html.parser")
+        apply_form_placeholders(fields, lang)
+        return opening + "\n" + next_input + str(fields).lstrip("\n") + closing
 
     patched, form_count = re.subn(
         r'(<form\b(?=[^>]*\bid=["\']leadForm["\'])[^>]*>)(.*?)(</form>)',
@@ -392,7 +394,17 @@ def patch_navigation_footer(html_text: str, lang: str) -> str:
     return patched
 
 
+def apply_form_placeholders(soup, lang: str) -> None:
+    dictionary = GLOBAL_I18N.get(lang, GLOBAL_I18N["en"])
+    for name in ("vehicle", "message"):
+        key = f"form.{name}Placeholder"
+        for element in soup.select(f'input[name="{name}"], textarea[name="{name}"]'):
+            element["data-i18n-placeholder"] = key
+            element["placeholder"] = dictionary[key]
+
+
 def apply_global_i18n(soup, lang: str) -> None:
+    apply_form_placeholders(soup, lang)
     dictionary = GLOBAL_I18N.get(lang, GLOBAL_I18N["en"])
     for element in soup.select("[data-i18n]"):
         key = element.get("data-i18n")
@@ -422,6 +434,7 @@ def apply_form_next(soup, lang: str) -> None:
     form = soup.select_one("form#leadForm")
     if form is None:
         return
+    apply_form_placeholders(form, lang)
     next_input = form.find("input", attrs={"name": "_next"})
     if next_input is None:
         next_input = soup.new_tag("input")

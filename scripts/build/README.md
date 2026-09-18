@@ -12,7 +12,7 @@ location, but the pricing PDF generator also depends on macOS system fonts.
 Requirements:
 
 - Python 3.10 or newer. The source uses PEP 604 union syntax.
-- Node.js 14 or newer for `extract_i18n.js` and JavaScript syntax checks.
+- Node.js 22 or newer for `extract_i18n.js` and JavaScript syntax checks.
 - Python packages from `requirements.txt`.
 - macOS Arial files under `/System/Library/Fonts/Supplemental/` for
   `build_pricing_pdfs.py` and therefore for the complete rebuild.
@@ -57,7 +57,7 @@ copy or business-semantic validation.
 | `build_i18n.py` | English sources, `page_meta.py`, `i18n.json` | generic localized page variants | broad SEO and family validators |
 | `build_sitemap.py` | `PAGES`, language maps, article dates, Git history | `sitemap.xml` | broad SEO checks URL/file alignment, not date semantics |
 | `build_llms.py` | sitemap/content registries, metadata, I18N labels, `BUSINESS_FACTS.md` | `llms.txt` | internal generator assertions and broad SEO coverage |
-| `build_reviews_schema.py` | Reviews Worker, snapshot, curated reviews | snapshot and home review HTML/JSON-LD | broad SEO; no live-service validator |
+| `build_reviews_schema.py` | Reviews Worker (or `--offline` snapshot), curated reviews | snapshot, home review HTML/JSON-LD and all commercial rating hooks/inline translations | broad SEO review parity and commercial-hub validator |
 
 ### Post-Processors And Media Tools
 
@@ -109,7 +109,8 @@ module is named above or in `docs/CONTENT_TYPES.md`.
 
 | Script | What it protects | Important exclusions |
 |---|---|---|
-| `validate_seo.py` | all built HTML FormSubmit-action privacy and localized `_next` redirects; noindex thank-you exclusion; cookie-free lead runtime; sitemap files; title/meta; canonical/hreflang; JSON parsing and breadcrumbs; localized JSON-LD URLs; local assets; cache-bust presence/consistency; LCP discovery; CSS hero alignment; Blog picture preload/source alignment and viewport/DPR candidate selection; navigation/footer structure; project-menu registry membership, localized URLs and order; same-language chrome-text parity; localized links; English `llms.txt` coverage; changelog commit references | Rich Results UI; schema recommended fields; global visible FAQ parity; Product/Offer semantics; real lastmod meaning; visual rendering; external services; measured performance |
+| `verify_site.sh` | shared local/CI entry point for the checks below, JS syntax and Leads Worker tests | no build or external request |
+| `validate_seo.py` | snapshot/visible/structured review parity, static counters and localized form placeholders; all built HTML FormSubmit-action privacy and localized `_next` redirects; noindex thank-you exclusion; cookie-free lead runtime; sitemap files; title/meta; canonical/hreflang; JSON parsing and breadcrumbs; localized JSON-LD URLs; local assets; cache-bust presence/consistency; LCP discovery; CSS hero alignment; Blog picture preload/source alignment and viewport/DPR candidate selection; navigation/footer structure; project-menu registry membership, localized URLs and order; same-language chrome-text parity; localized links; English `llms.txt` coverage; changelog commit references | Rich Results UI; schema recommended fields; global visible FAQ parity; Product/Offer semantics; real lastmod meaning; visual rendering; external services; measured performance |
 | `validate_brand_pages.py` | brand registry and assets; checked Wave 2 source; generated variants; pricing-registry amount subset; pricing section placement/group/checklist; title/meta bounds; visible/schema FAQ parity; schema type presence; sitemap/deploy wiring; homepage and reciprocal links; forbidden brand claims | global RRT warnings; browser interaction/performance |
 | `validate_harley_hub.py` | exact maintained copy; visual tokens; hero media; schema families; language-local links; feed/portfolio and required integrations | live browser behavior; external RRT; performance benefit |
 | `validate_service_custom_hubs.py` | exact four-language copy-driven hub output; Wave 3 source checksums; pricing anchors; WhatsApp/form CTAs; trust-strip inventory and labels; related-description registry use; retired filler/key absence; approved head trims and price-head parity | external Rich Results UI; measured network performance |
@@ -122,7 +123,8 @@ manual/source review. This is a known coverage boundary, not proof of failure.
 ## Full Safe Rebuild
 
 Use this on macOS after structural source changes or as the reproducibility
-gate. It excludes network-backed reviews and binary media optimization.
+gate. It renders reviews from the committed snapshot without a network request
+and excludes binary media optimization.
 
 ```bash
 node scripts/build/extract_i18n.js
@@ -144,6 +146,7 @@ python3 scripts/build/build_i18n.py
 python3 scripts/build/nav_patch.py
 python3 scripts/build/enhance_money_pages.py
 python3 scripts/build/localize_internal_links.py
+python3 scripts/build/build_reviews_schema.py --offline
 python3 scripts/build/add_image_dims.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
@@ -165,20 +168,19 @@ do not discard it blindly.
 ## Broad Verification
 
 ```bash
-node --check assets/main.js
-node --check assets/projects.js
-node --check worker/reviews.js
-python3 -m py_compile scripts/build/*.py
-python3 scripts/build/validate_seo.py
-python3 scripts/build/validate_brand_pages.py
-python3 scripts/build/validate_harley_hub.py
-python3 scripts/build/validate_service_custom_hubs.py
-python3 scripts/build/validate_w4_routing.py
-for slug in $(python3 -c "import sys; sys.path.insert(0, 'scripts/build'); from project_pages_data import PROJECT_CONFIGS; print(' '.join(sorted(PROJECT_CONFIGS)))"); do
-  python3 scripts/build/validate_project_pages.py "$slug"
-done
-git diff --check
+bash scripts/build/verify_site.sh
 ```
+
+`verify_site.sh` is the common read-only release gate for local work, Pages and
+Reviews workflows. It runs all site validator families, every registered
+project validator, JavaScript syntax checks and the existing Leads Worker Node
+tests. It does not regenerate the site or make network requests. CI checks out
+full Git history so real changelog references and content dates are available.
+The static website uses validators; the Leads Worker has a separate test suite.
+
+Pages validates and publishes the triggering commit (or the exact commit
+passed by the Reviews workflow). The obsolete `deploy.sh` is a non-mutating
+notice and exits with status 1; it must never initialize or replace Git history.
 
 ## Shared Chrome And Translation Workflow
 
@@ -519,7 +521,8 @@ This calls the public Reviews Worker and requires outbound network access.
 
 ```bash
 python3 scripts/build/build_reviews_schema.py
-python3 scripts/build/validate_seo.py
+python3 scripts/build/build_sitemap.py
+bash scripts/build/verify_site.sh
 ```
 
 Expected source ownership:
@@ -527,7 +530,16 @@ Expected source ownership:
 - aggregate rating/count: Worker response saved to
   `assets/reviews-snapshot.json`;
 - visible cards and JSON-LD reviews: `assets/reviews-curated.json` according to
-  `displayCount`.
+  `displayCount`;
+- all commercial rating hooks and their inline translations: `trust_strip.py`
+  refreshes them from the same snapshot without regenerating unrelated copy.
+
+Use `--offline` to reproduce the rendering from the existing snapshot. A live
+refresh ignores timestamp-only Worker changes, rejects invalid aggregate
+values, rebuilds sitemap content dates, and validates before committing. The
+scheduled workflow stages the snapshot, changed HTML and sitemap together; it
+passes the resulting commit to Pages. Never publish a snapshot independently
+of its visible and structured consumers.
 
 An unchanged Worker response and curated source should leave tracked output
 unchanged. The scheduled automation is defined in

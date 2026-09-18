@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-09-07
+Last updated: 2026-09-18
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -9,6 +9,18 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
+- Maintenance stabilization, **implemented and locally verified** 2026-09-18:
+  local main was fast-forwarded to upstream `7d9e482d` with private intake work
+  preserved. Full rebuild and every validator family pass after synchronizing
+  all review consumers. Both workflows now validate before publishing and
+  Pages checks out the exact requested commit. Production verification is the
+  remaining release gate; the previously deployed baseline is `7d9e482d`.
+- The initial audit's failed gates were corrected: all commercial ratings now
+  follow the snapshot, and analysis-only changelog notes no longer masquerade
+  as implementation entries. The prior findings remain in
+  [the readiness audit](reports/MAINTENANCE_READINESS_2026_09_18.md).
+- Historical delivery evidence below remains dated evidence, not a claim that
+  the current checkout passes every release gate.
 - Status: **confirmed** for the deployed site and both Worker services.
 - Evidence date: 2026-09-07 (Europe/Lisbon).
 - Repository evidence: S-REBUILD-W4b implementation commit `ff7c7e11`,
@@ -121,10 +133,16 @@ deployed public identifiers and cache-bust values. Operating rules live in
 - Reproducibility evidence: the documented Full Safe Rebuild, including all
   four PDF outputs and every validator family, passed in a fresh clone of
   S-REBUILD-W4 schema-closure commit `34c3cf94`, leaving empty
-  `git status --short`; verified 2026-09-07. The current
-  `sitemap.xml` SHA-256 is
+  `git status --short`; verified 2026-09-07. The previous documentation recorded
+  the following `sitemap.xml` SHA-256 as current:
   `d307cbc83053f44b22875d42362796d91d85c8a582fc9467c462574bf6c8d406`.
   The earlier repository audit baseline was documentation commit `d08a3297`.
+  Correction, 2026-09-18: the preceding SHA-256 was stale as a current-state
+  claim. Local, upstream and cache-bypassed production `sitemap.xml` at the audit baseline all
+  had SHA-256
+  `3d5e96e1f0cbf94c2cb44c05d92db04e8acbb6a4b73a873d9841a1a287d7796f`.
+  The clean-rebuild evidence above applies to its historical commit only;
+  the subsequent stabilization corrects that drift as recorded above.
 - A-MEASURE evidence: the owner authorized Cloudflare deployment and completed
   Wrangler OAuth for the Vg account on 2026-09-02. `icm-leads` is deployed with
   its KV binding and private stats secret. Production acceptance exercised all
@@ -153,7 +171,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
 | CMS | None |
 
 Pushing `main` triggers `.github/workflows/pages.yml`. GitHub does not run the
-site generators during deployment; the workflow packages checked-in output.
+site generators during deployment; the workflow validates and packages checked-in output.
 The repository was transferred to the owner's `PhilipGrishin` account on
 2026-08-24. The owner confirmed that the domain, DNS and GitHub Pages settings
 were reconfigured for the new repository and verified in production. The old
@@ -166,11 +184,11 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
 | English path patterns | 59 | `build_sitemap.py` `PAGES` |
 | Indexable sitemap URLs | 236 | parsed `sitemap.xml` `<url>` entries |
-| Tracked HTML files | 249 | filesystem enumeration |
+| Tracked HTML files | 253 | managed HTML enumeration; four added legacy aliases |
 | Indexable HTML files | 236 | sitemap-to-file resolution |
-| Non-indexed HTML files | 13 | `404.html`, 8 localized project redirect stubs and 4 `thank-you` pages |
+| Non-indexed HTML files | 17 | `404.html`, 12 localized project redirect stubs and 4 `thank-you` pages |
 | Sitemap lastmod tags | 236 | parsed `sitemap.xml` |
-| Unique sitemap lastmod values | 58 | parsed `sitemap.xml` |
+| Unique sitemap lastmod values | 52 | parsed rebuilt `sitemap.xml`, 2026-09-18; 64 content changes, 172 unchanged dates |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
 | Project detail pages | 14 | `PROJECT_TILES` |
 | Data-driven project definitions | 14 | `PROJECT_CONFIGS` |
@@ -207,7 +225,7 @@ There is no active `EN_PAGES` registry. The canonical English page registry is
 
 | Assets | Value | Scope |
 |---|---|---|
-| `assets/main.css`, `assets/main.js` | `20260907c` | every sitemap page |
+| `assets/main.css`, `assets/main.js` | `20260918a` | every sitemap page |
 | `assets/projects.css` | `20260801a` | project detail pages |
 | `assets/projects.js` | `20260710b` | project detail pages |
 
@@ -370,7 +388,18 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 - The four home pages render 9 curated Google-review cards and the matching
   9 JSON-LD `Review` items from `assets/reviews-curated.json`. Their
   `AggregateRating` remains independently sourced from the Worker snapshot and
-  is currently `5.0` from `25` reviews. The curated source SHA-256 is
+  is currently **confirmed** `4.9` from `29` reviews: upstream and production
+  snapshot dated 2026-09-14 plus live Worker verification on 2026-09-18.
+  The local checkout was synchronized before stabilization; it no longer has
+  the older `5.0` from `26` aggregate.
+  All 52 commercial trust strips and their runtime translations now derive
+  from the same snapshot. The earlier audit documented stale deployed strips;
+  the repaired refresh pipeline prevents independent snapshot publication.
+  Historical correction recorded 2026-09-08:
+  the previous documentation count of 25 was stale; the checked-in snapshot,
+  production snapshot, live Reviews Worker and authenticated Google Business
+  Profile each confirmed 26 during the audit. This was a documentation
+  correction, not a new review-snapshot deployment. The curated source SHA-256 is
   `aaad7c6c40839b4174653524fcc7749e17714792b033b861e011d57cdf708190`.
 - Every sitemap page has canonical, mutual hreflang and Schema.org JSON-LD with
   at least `BreadcrumbList`.

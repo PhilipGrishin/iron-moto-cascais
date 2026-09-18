@@ -553,7 +553,8 @@ def validate_redirects() -> list[str]:
     for old_slug, config in REDIRECT_CONFIGS.items():
         for lang in LANGS:
             prefix = "" if lang == "en" else f"{lang}/"
-            path = SITE_ROOT / prefix / "projects" / old_slug / "index.html"
+            source_path = config.get("source_path", f"projects/{old_slug}")
+            path = SITE_ROOT / prefix / source_path / "index.html"
             label = path.relative_to(SITE_ROOT).as_posix()
             if not path.exists():
                 issues.append(f"{label}: redirect missing")
@@ -576,7 +577,9 @@ def validate_redirects() -> list[str]:
                 issues.append(f"{label}: redirect anchor mismatch")
             if script is None or f'window.location.replace("{target_path}")' not in (script.string or ""):
                 issues.append(f"{label}: JavaScript redirect mismatch")
-            if target_url.replace(f"projects/{config['target']}", f"projects/{old_slug}") in sitemap_urls:
+            if not (SITE_ROOT / prefix / "projects" / config["target"] / "index.html").exists():
+                issues.append(f"{label}: redirect target missing")
+            if f"{DOMAIN}/{prefix}{source_path}/" in sitemap_urls:
                 issues.append(f"{label}: noindex redirect leaked into sitemap")
     return issues
 

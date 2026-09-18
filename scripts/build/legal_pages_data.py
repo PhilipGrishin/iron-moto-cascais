@@ -1,6 +1,6 @@
 """
 Content for legal pages: /privacy/, /cookies/, /terms/.
-Plain GDPR-compliant boilerplate adapted for Iron Custom Motors business profile.
+Policy copy aligned with the maintained website runtime; not a compliance certification.
 Not lawyer-reviewed — owner should pass through a Portuguese lawyer before relying on this.
 """
 
@@ -39,70 +39,190 @@ PRIVACY_BODY = {
         "h1": "Privacy Policy",
         "intro": "This privacy policy explains how Iron Custom Motors (\"we\", \"us\") collects, uses, and protects personal data of visitors and customers. We follow the EU General Data Protection Regulation (GDPR) and applicable Portuguese data-protection law.",
         "sections": [
-            ("1. Who we are", "Data controller: Iron Custom Motors. Address: " + CONTROLLER["address"] + ". Contact: " + CONTROLLER["email"] + ", " + CONTROLLER["phone"] + "."),
-            ("2. What data we collect", "When you contact us by form, WhatsApp, phone, or email, we collect: name, phone number, email (optional), motorcycle details (brand, model, year), and the content of your message. When you visit this site we also collect technical data via analytics: browser type, device, country, pages viewed, referring page. Analytics data is only collected after you accept cookies."),
-            ("3. Why we collect it", "We use your contact details to reply to your request, prepare estimates, book service appointments, and follow up after a job. We use analytics to understand which pages help riders find us and improve the site. We never sell your data."),
-            ("4. Legal basis", "Processing of contact form data is based on your consent and on our legitimate interest in answering business enquiries. Service work and invoicing is based on the contract between us. Analytics is based on consent (cookie banner)."),
-            ("5. How long we keep it", "Contact enquiries are kept for up to 24 months for follow-up and quality. Customer records (invoices, service history) are kept for the period required by Portuguese tax law (currently 10 years). Analytics data is retained for 14 months in Google Analytics."),
-            ("6. Who has access", "Your data is processed by Iron Custom Motors staff. We use the following third-party processors: FormSubmit (form delivery), Google Analytics 4, Meta Pixel (only after consent), Cloudflare (security/CDN for reviews widget), Google Maps (embedded map). Each processor handles your data under their own privacy terms."),
-            ("7. International transfers", "Some processors are located outside the EU/EEA (Google, Meta, Cloudflare in the US). Transfers rely on Standard Contractual Clauses (SCCs) and/or the EU-US Data Privacy Framework."),
-            ("8. Your rights", "You have the right to access, rectify, delete or restrict processing of your personal data; to data portability; to object to processing; to withdraw consent at any time; and to lodge a complaint with the Portuguese supervisory authority (CNPD — Comissão Nacional de Proteção de Dados)."),
-            ("9. How to contact us", "To exercise any of the above rights, email us at " + CONTROLLER["email"] + ". We will respond within 30 days."),
-            ("10. Changes", "We may update this policy. The last update date is shown below."),
+            [
+                "1. Who we are",
+                "Data controller: Iron Custom Motors. Address: R. António José da Silva 100 B, 2785-253 São Domingos de Rana, Cascais, Portugal. Contact: Ironcustom.office@gmail.com, +351 917 961 230."
+            ],
+            [
+                "2. What data we collect",
+                "When you contact us by form, WhatsApp, phone or email, we receive the details you provide, such as your name, contact details, motorcycle details and message. Cloudflare Web Analytics provides aggregate traffic and performance information without analytics cookies. Separate contact-action counters record daily totals by action type, page and language. They do not store form content, IP addresses, browser identifiers or individual event records. Hosting and security providers may process request data, including IP addresses, to deliver and protect the site."
+            ],
+            [
+                "3. Why we collect it",
+                "We use your contact details to reply to your request, prepare estimates, book service appointments, and follow up after a job. We use analytics to understand which pages help riders find us and improve the site. We never sell your data."
+            ],
+            [
+                "4. Legal basis",
+                "Processing of contact form data is based on your consent and on our legitimate interest in answering business enquiries. Service work and invoicing is based on the contract between us."
+            ],
+            [
+                "5. How long we keep it",
+                "Contact enquiries are kept for up to 24 months for follow-up and quality. Customer records (invoices, service history) are kept for the period required by Portuguese tax law (currently 10 years). The separate daily contact-action counters expire 400 days after their last update; they contain totals rather than customer records."
+            ],
+            [
+                "6. Who has access",
+                "Iron Custom Motors staff handle your enquiries. Website providers include FormSubmit for form delivery, GitHub Pages for hosting, Cloudflare for delivery, security, aggregate analytics and review/contact-action services, and Google for fonts, maps and embedded YouTube videos. If you choose WhatsApp, that communication is also handled by WhatsApp. Provider processing is governed by their respective privacy terms."
+            ],
+            [
+                "7. International transfers",
+                "Some processors are located outside the EU/EEA (Google, Meta, Cloudflare in the US). Transfers rely on Standard Contractual Clauses (SCCs) and/or the EU-US Data Privacy Framework."
+            ],
+            [
+                "8. Your rights",
+                "You have the right to access, rectify, delete or restrict processing of your personal data; to data portability; to object to processing; to withdraw consent at any time; and to lodge a complaint with the Portuguese supervisory authority (CNPD — Comissão Nacional de Proteção de Dados)."
+            ],
+            [
+                "9. How to contact us",
+                "To exercise any of the above rights, email us at Ironcustom.office@gmail.com. We will respond within 30 days."
+            ],
+            [
+                "10. Changes",
+                "We may update this policy. The last update date is shown below."
+            ]
         ],
-        "updated": "Last updated: " + LAST_UPDATED,
+        "updated": "Last updated: 18 September 2026"
     },
     "ru": {
         "h1": "Политика конфиденциальности",
         "intro": "Эта политика объясняет, как Iron Custom Motors («мы») собирает, использует и защищает персональные данные посетителей и клиентов. Мы следуем общему регламенту ЕС по защите данных (GDPR) и законодательству Португалии о защите данных.",
         "sections": [
-            ("1. Кто мы", "Контроллер данных: Iron Custom Motors. Адрес: " + CONTROLLER["address"] + ". Связь: " + CONTROLLER["email"] + ", " + CONTROLLER["phone"] + "."),
-            ("2. Какие данные мы собираем", "Когда вы пишете нам через форму, WhatsApp, телефон или email, мы получаем: имя, номер телефона, email (необязательно), данные мотоцикла (бренд, модель, год) и текст обращения. При посещении сайта собираются технические данные через аналитику: тип браузера, устройство, страна, просмотренные страницы, источник перехода. Аналитика загружается только после принятия cookie."),
-            ("3. Зачем мы это собираем", "Контактные данные — чтобы ответить вам, подготовить смету, записать на сервис и связаться после работы. Аналитика — чтобы понять, какие страницы помогают клиентам находить нас, и улучшить сайт. Мы не продаём ваши данные."),
-            ("4. Правовое основание", "Обработка формы — ваше согласие и наш законный интерес ответить на коммерческое обращение. Сервис и выставление счетов — договор между нами. Аналитика — согласие через cookie-баннер."),
-            ("5. Сколько мы храним", "Обращения — до 24 месяцев для последующей связи. Клиентские записи (счета, история работ) — срок, требуемый налоговым кодексом Португалии (на момент написания — 10 лет). Аналитика — 14 месяцев в Google Analytics."),
-            ("6. Кто имеет доступ", "Данные обрабатывают сотрудники Iron Custom Motors. Используем сторонних процессоров: FormSubmit (доставка форм), Google Analytics 4, Meta Pixel (только после согласия), Cloudflare (безопасность/CDN виджета отзывов), Google Maps (встроенная карта). Каждый процессор обрабатывает данные по своим условиям."),
-            ("7. Международная передача", "Часть процессоров расположены вне ЕС/ЕЭП (Google, Meta, Cloudflare — США). Передача основана на стандартных договорных условиях (SCC) и/или EU-US Data Privacy Framework."),
-            ("8. Ваши права", "Право доступа, исправления, удаления или ограничения обработки данных; переносимости данных; возражения; отзыва согласия в любое время; обращения в надзорный орган Португалии (CNPD — Comissão Nacional de Proteção de Dados)."),
-            ("9. Связь с нами", "Чтобы воспользоваться правами выше, пишите на " + CONTROLLER["email"] + ". Отвечаем в течение 30 дней."),
-            ("10. Изменения", "Мы можем обновлять эту политику. Дата последнего обновления — ниже."),
+            [
+                "1. Кто мы",
+                "Контроллер данных: Iron Custom Motors. Адрес: R. António José da Silva 100 B, 2785-253 São Domingos de Rana, Cascais, Portugal. Связь: Ironcustom.office@gmail.com, +351 917 961 230."
+            ],
+            [
+                "2. Какие данные мы собираем",
+                "Когда вы обращаетесь через форму, WhatsApp, телефон или email, мы получаем предоставленные вами сведения: например, имя, контактные данные, сведения о мотоцикле и текст сообщения. Cloudflare Web Analytics предоставляет сводные данные о посещаемости и работе сайта без аналитических cookie. Отдельные счётчики обращений сохраняют дневные итоги по типу действия, странице и языку. Они не сохраняют содержимое форм, IP-адреса, идентификаторы браузера или записи отдельных событий. Поставщики хостинга и защиты могут обрабатывать данные запросов, включая IP-адреса, для работы и защиты сайта."
+            ],
+            [
+                "3. Зачем мы это собираем",
+                "Контактные данные — чтобы ответить вам, подготовить смету, записать на сервис и связаться после работы. Аналитика — чтобы понять, какие страницы помогают клиентам находить нас, и улучшить сайт. Мы не продаём ваши данные."
+            ],
+            [
+                "4. Правовое основание",
+                "Обработка формы — ваше согласие и наш законный интерес ответить на коммерческое обращение. Сервис и выставление счетов — договор между нами."
+            ],
+            [
+                "5. Сколько мы храним",
+                "Обращения — до 24 месяцев для последующей связи. Клиентские записи (счета, история работ) — срок, требуемый налоговым законодательством Португалии (на момент написания — 10 лет). Отдельные дневные счётчики обращений удаляются через 400 дней после последнего обновления; они содержат итоги, а не клиентские записи."
+            ],
+            [
+                "6. Кто имеет доступ",
+                "Обращения обрабатывают сотрудники Iron Custom Motors. Для сайта используются FormSubmit для доставки форм, GitHub Pages для хостинга, Cloudflare для доставки, защиты, сводной аналитики, отзывов и счётчиков обращений, а также Google для шрифтов, карт и встроенных видео YouTube. Если вы выбираете WhatsApp, это общение также обрабатывается WhatsApp. Обработка у поставщиков регулируется их собственными политиками конфиденциальности."
+            ],
+            [
+                "7. Международная передача",
+                "Часть процессоров расположены вне ЕС/ЕЭП (Google, Meta, Cloudflare — США). Передача основана на стандартных договорных условиях (SCC) и/или EU-US Data Privacy Framework."
+            ],
+            [
+                "8. Ваши права",
+                "Право доступа, исправления, удаления или ограничения обработки данных; переносимости данных; возражения; отзыва согласия в любое время; обращения в надзорный орган Португалии (CNPD — Comissão Nacional de Proteção de Dados)."
+            ],
+            [
+                "9. Связь с нами",
+                "Чтобы воспользоваться правами выше, пишите на Ironcustom.office@gmail.com. Отвечаем в течение 30 дней."
+            ],
+            [
+                "10. Изменения",
+                "Мы можем обновлять эту политику. Дата последнего обновления — ниже."
+            ]
         ],
-        "updated": "Последнее обновление: " + LAST_UPDATED,
+        "updated": "Последнее обновление: 18 сентября 2026 года"
     },
     "uk": {
         "h1": "Політика конфіденційності",
         "intro": "Ця політика пояснює, як Iron Custom Motors («ми») збирає, використовує та захищає персональні дані відвідувачів і клієнтів. Ми дотримуємось загального регламенту ЄС про захист даних (GDPR) і португальського законодавства про захист даних.",
         "sections": [
-            ("1. Хто ми", "Контролер даних: Iron Custom Motors. Адреса: " + CONTROLLER["address"] + ". Зв'язок: " + CONTROLLER["email"] + ", " + CONTROLLER["phone"] + "."),
-            ("2. Які дані ми збираємо", "Коли ви пишете нам через форму, WhatsApp, телефон чи email, ми отримуємо: ім'я, номер телефону, email (необов'язково), дані мотоцикла (бренд, модель, рік) і текст звернення. Під час візиту збираються технічні дані через аналітику: тип браузера, пристрій, країна, переглянуті сторінки, джерело переходу. Аналітика завантажується лише після прийняття cookie."),
-            ("3. Навіщо ми це збираємо", "Контактні дані — щоб відповісти, підготувати кошторис, записати на сервіс і зв'язатися після роботи. Аналітика — щоб зрозуміти, які сторінки допомагають клієнтам знаходити нас, і покращити сайт. Ми не продаємо ваші дані."),
-            ("4. Правова підстава", "Обробка форми — ваша згода і наш законний інтерес відповісти на комерційне звернення. Сервіс і виставлення рахунків — договір між нами. Аналітика — згода через cookie-банер."),
-            ("5. Скільки ми зберігаємо", "Звернення — до 24 місяців для подальшого зв'язку. Клієнтські записи (рахунки, історія робіт) — термін, потрібний податковим кодексом Португалії (наразі — 10 років). Аналітика — 14 місяців у Google Analytics."),
-            ("6. Хто має доступ", "Дані обробляють співробітники Iron Custom Motors. Використовуємо сторонніх процесорів: FormSubmit (доставка форм), Google Analytics 4, Meta Pixel (тільки після згоди), Cloudflare (безпека/CDN віджета відгуків), Google Maps (вбудована мапа). Кожен процесор обробляє дані за своїми умовами."),
-            ("7. Міжнародна передача", "Частина процесорів розташовані поза ЄС/ЄЕЗ (Google, Meta, Cloudflare — США). Передача базується на стандартних договірних положеннях (SCC) та/або EU-US Data Privacy Framework."),
-            ("8. Ваші права", "Право доступу, виправлення, видалення або обмеження обробки даних; переносимості даних; заперечення; відкликання згоди в будь-який час; звернення до наглядового органу Португалії (CNPD — Comissão Nacional de Proteção de Dados)."),
-            ("9. Зв'язок з нами", "Щоб скористатися правами вище, пишіть на " + CONTROLLER["email"] + ". Відповідаємо протягом 30 днів."),
-            ("10. Зміни", "Ми можемо оновлювати цю політику. Дата останнього оновлення — нижче."),
+            [
+                "1. Хто ми",
+                "Контролер даних: Iron Custom Motors. Адреса: R. António José da Silva 100 B, 2785-253 São Domingos de Rana, Cascais, Portugal. Зв'язок: Ironcustom.office@gmail.com, +351 917 961 230."
+            ],
+            [
+                "2. Які дані ми збираємо",
+                "Коли ви звертаєтеся через форму, WhatsApp, телефон або email, ми отримуємо надані вами відомості: наприклад, ім’я, контактні дані, відомості про мотоцикл і текст повідомлення. Cloudflare Web Analytics надає зведені дані про відвідуваність і роботу сайту без аналітичних cookie. Окремі лічильники звернень зберігають денні підсумки за типом дії, сторінкою та мовою. Вони не зберігають вміст форм, IP-адреси, ідентифікатори браузера або записи окремих подій. Постачальники хостингу й захисту можуть обробляти дані запитів, зокрема IP-адреси, для роботи та захисту сайту."
+            ],
+            [
+                "3. Навіщо ми це збираємо",
+                "Контактні дані — щоб відповісти, підготувати кошторис, записати на сервіс і зв'язатися після роботи. Аналітика — щоб зрозуміти, які сторінки допомагають клієнтам знаходити нас, і покращити сайт. Ми не продаємо ваші дані."
+            ],
+            [
+                "4. Правова підстава",
+                "Обробка форми — ваша згода і наш законний інтерес відповісти на комерційне звернення. Сервіс і виставлення рахунків — договір між нами."
+            ],
+            [
+                "5. Скільки ми зберігаємо",
+                "Звернення — до 24 місяців для подальшого зв’язку. Клієнтські записи (рахунки, історія робіт) — термін, потрібний податковим законодавством Португалії (наразі — 10 років). Окремі денні лічильники звернень видаляються через 400 днів після останнього оновлення; вони містять підсумки, а не клієнтські записи."
+            ],
+            [
+                "6. Хто має доступ",
+                "Звернення обробляють співробітники Iron Custom Motors. Для сайту використовуються FormSubmit для доставки форм, GitHub Pages для хостингу, Cloudflare для доставки, захисту, зведеної аналітики, відгуків і лічильників звернень, а також Google для шрифтів, карт і вбудованих відео YouTube. Якщо ви обираєте WhatsApp, це спілкування також обробляється WhatsApp. Обробка у постачальників регулюється їхніми власними політиками конфіденційності."
+            ],
+            [
+                "7. Міжнародна передача",
+                "Частина процесорів розташовані поза ЄС/ЄЕЗ (Google, Meta, Cloudflare — США). Передача базується на стандартних договірних положеннях (SCC) та/або EU-US Data Privacy Framework."
+            ],
+            [
+                "8. Ваші права",
+                "Право доступу, виправлення, видалення або обмеження обробки даних; переносимості даних; заперечення; відкликання згоди в будь-який час; звернення до наглядового органу Португалії (CNPD — Comissão Nacional de Proteção de Dados)."
+            ],
+            [
+                "9. Зв'язок з нами",
+                "Щоб скористатися правами вище, пишіть на Ironcustom.office@gmail.com. Відповідаємо протягом 30 днів."
+            ],
+            [
+                "10. Зміни",
+                "Ми можемо оновлювати цю політику. Дата останнього оновлення — нижче."
+            ]
         ],
-        "updated": "Останнє оновлення: " + LAST_UPDATED,
+        "updated": "Останнє оновлення: 18 вересня 2026 року"
     },
     "pt": {
         "h1": "Política de Privacidade",
         "intro": "Esta política explica como a Iron Custom Motors («nós») recolhe, usa e protege os dados pessoais dos visitantes e clientes. Seguimos o Regulamento Geral sobre a Proteção de Dados da UE (RGPD) e a legislação portuguesa aplicável.",
         "sections": [
-            ("1. Quem somos", "Responsável pelo tratamento: Iron Custom Motors. Morada: " + CONTROLLER["address"] + ". Contacto: " + CONTROLLER["email"] + ", " + CONTROLLER["phone"] + "."),
-            ("2. Que dados recolhemos", "Quando nos contacta por formulário, WhatsApp, telefone ou email, recolhemos: nome, telefone, email (opcional), dados da moto (marca, modelo, ano) e o conteúdo da sua mensagem. Ao visitar o site recolhemos também dados técnicos via analítica: tipo de navegador, dispositivo, país, páginas vistas, página de origem. A analítica só carrega após aceitação dos cookies."),
-            ("3. Porque recolhemos", "Usamos os contactos para responder, preparar orçamentos, agendar serviço e acompanhar trabalhos. Usamos analítica para perceber que páginas ajudam os clientes a encontrar-nos e melhorar o site. Nunca vendemos os seus dados."),
-            ("4. Base legal", "O tratamento de dados do formulário baseia-se no seu consentimento e no nosso interesse legítimo em responder a pedidos comerciais. Serviço e faturação baseiam-se no contrato entre as partes. A analítica baseia-se no consentimento (banner de cookies)."),
-            ("5. Por quanto tempo", "Pedidos de contacto: até 24 meses para acompanhamento. Registos de cliente (faturas, histórico de serviço): período exigido pela lei fiscal portuguesa (atualmente 10 anos). Dados de analítica: 14 meses no Google Analytics."),
-            ("6. Quem tem acesso", "Os dados são tratados por colaboradores da Iron Custom Motors. Usamos os seguintes subcontratantes: FormSubmit (entrega de formulários), Google Analytics 4, Meta Pixel (apenas após consentimento), Cloudflare (segurança/CDN do widget de avaliações), Google Maps (mapa incorporado). Cada um trata os dados ao abrigo das suas próprias condições."),
-            ("7. Transferências internacionais", "Alguns subcontratantes estão fora da UE/EEE (Google, Meta, Cloudflare nos EUA). As transferências baseiam-se em Cláusulas Contratuais-Tipo (CCT) e/ou no EU-US Data Privacy Framework."),
-            ("8. Os seus direitos", "Tem direito a aceder, retificar, apagar ou limitar o tratamento dos seus dados; à portabilidade; a opor-se ao tratamento; a retirar o consentimento a qualquer momento; e a apresentar reclamação à autoridade de controlo portuguesa (CNPD — Comissão Nacional de Proteção de Dados)."),
-            ("9. Como contactar-nos", "Para exercer qualquer dos direitos acima, envie email para " + CONTROLLER["email"] + ". Respondemos em 30 dias."),
-            ("10. Alterações", "Esta política pode ser atualizada. A data da última atualização aparece abaixo."),
+            [
+                "1. Quem somos",
+                "Responsável pelo tratamento: Iron Custom Motors. Morada: R. António José da Silva 100 B, 2785-253 São Domingos de Rana, Cascais, Portugal. Contacto: Ironcustom.office@gmail.com, +351 917 961 230."
+            ],
+            [
+                "2. Que dados recolhemos",
+                "Quando nos contacta por formulário, WhatsApp, telefone ou email, recebemos os dados que fornece, como nome, contactos, dados da moto e mensagem. O Cloudflare Web Analytics fornece informação agregada sobre tráfego e desempenho sem cookies de analítica. Contadores separados de ações de contacto guardam totais diários por tipo de ação, página e idioma. Não guardam conteúdo de formulários, endereços IP, identificadores do navegador ou registos de eventos individuais. Os fornecedores de alojamento e segurança podem tratar dados dos pedidos, incluindo endereços IP, para disponibilizar e proteger o site."
+            ],
+            [
+                "3. Porque recolhemos",
+                "Usamos os contactos para responder, preparar orçamentos, agendar serviço e acompanhar trabalhos. Usamos analítica para perceber que páginas ajudam os clientes a encontrar-nos e melhorar o site. Nunca vendemos os seus dados."
+            ],
+            [
+                "4. Base legal",
+                "O tratamento de dados do formulário baseia-se no seu consentimento e no nosso interesse legítimo em responder a pedidos comerciais. Serviço e faturação baseiam-se no contrato entre as partes."
+            ],
+            [
+                "5. Por quanto tempo",
+                "Pedidos de contacto: até 24 meses para acompanhamento. Registos de cliente (faturas, histórico de serviço): período exigido pela lei fiscal portuguesa (atualmente 10 anos). Os contadores diários separados de ações de contacto expiram 400 dias após a última atualização; contêm totais, não registos de clientes."
+            ],
+            [
+                "6. Quem tem acesso",
+                "Os colaboradores da Iron Custom Motors tratam os seus pedidos. Os fornecedores do site incluem FormSubmit para entrega de formulários, GitHub Pages para alojamento, Cloudflare para distribuição, segurança, analítica agregada, avaliações e contadores de contacto, e Google para tipos de letra, mapas e vídeos YouTube incorporados. Se optar pelo WhatsApp, essa comunicação é também tratada pelo WhatsApp. O tratamento pelos fornecedores está sujeito às respetivas políticas de privacidade."
+            ],
+            [
+                "7. Transferências internacionais",
+                "Alguns subcontratantes estão fora da UE/EEE (Google, Meta, Cloudflare nos EUA). As transferências baseiam-se em Cláusulas Contratuais-Tipo (CCT) e/ou no EU-US Data Privacy Framework."
+            ],
+            [
+                "8. Os seus direitos",
+                "Tem direito a aceder, retificar, apagar ou limitar o tratamento dos seus dados; à portabilidade; a opor-se ao tratamento; a retirar o consentimento a qualquer momento; e a apresentar reclamação à autoridade de controlo portuguesa (CNPD — Comissão Nacional de Proteção de Dados)."
+            ],
+            [
+                "9. Como contactar-nos",
+                "Para exercer qualquer dos direitos acima, envie email para Ironcustom.office@gmail.com. Respondemos em 30 dias."
+            ],
+            [
+                "10. Alterações",
+                "Esta política pode ser atualizada. A data da última atualização aparece abaixo."
+            ]
         ],
-        "updated": "Última atualização: " + LAST_UPDATED,
-    },
+        "updated": "Última atualização: 18 de setembro de 2026"
+    }
 }
 
 # ============================================================
@@ -118,56 +238,128 @@ COOKIES_HEAD = {
 COOKIES_BODY = {
     "en": {
         "h1": "Cookie Policy",
-        "intro": "We use a minimal set of cookies and similar storage technologies. This page explains which ones, why, and how to control them. By using our site you can accept or reject non-essential cookies via the cookie banner.",
+        "intro": "This page explains browser storage and the external services used by this website, and how you can control them.",
         "sections": [
-            ("Essential (always active)", "Used for the cookie banner itself (localStorage key icm-consent) to remember your choice, and for the language preference. No tracking."),
-            ("Analytics (only after consent)", "Google Analytics 4 (G-D15BLYEKBN) to measure site traffic and improve content. Cookies set: _ga, _gid, _ga_<id>. Retention: up to 2 years. Data is anonymised where possible."),
-            ("Marketing (only after consent)", "Meta Pixel (1708697916976439) — currently inactive (kept for future ad campaigns). When active, it would set _fbp and similar cookies for ad attribution."),
-            ("Reviews widget", "Our reviews block fetches Google reviews via a Cloudflare Worker (icm-reviews.vg-ab6.workers.dev). The Worker may set caching headers — no personal cookies."),
-            ("Embedded Google Maps", "When you view the embedded map on the contact page, Google may set its own cookies. We have no control over these — refer to Google's own privacy policy."),
-            ("How to change your choice", "Clear your browser's site data for ironcustommotors.com — the cookie banner will appear again on next visit and you can choose differently."),
+            [
+                "Language preference",
+                "When you select a language, the site stores that preference in your browser. It remains until you clear the site data. The page address determines the language displayed."
+            ],
+            [
+                "Reviews cache",
+                "Public Google review data is cached in your browser to reduce repeated requests. Cached data is reused for up to 12 hours and can remain stored until replaced or cleared. This cache does not identify visitors."
+            ],
+            [
+                "Traffic and contact measurement",
+                "Cloudflare Web Analytics measures aggregate traffic and performance without analytics cookies or browser fingerprinting. Our separate contact-action counters count WhatsApp and telephone clicks, form opens and submissions without cookies or persistent visitor identifiers. Google Analytics, Google Tag Manager and Meta Pixel are not loaded by this site."
+            ],
+            [
+                "Hosting and security",
+                "Cloudflare delivers and protects the site. Security features may use cookies when required; these are separate from Web Analytics."
+            ],
+            [
+                "External content and communication",
+                "Google Maps and embedded YouTube content may process requests or use their own cookies when loaded. Google Fonts also receives requests for fonts. Sending a form uses FormSubmit; following a WhatsApp link uses WhatsApp. These providers apply their own privacy and storage policies."
+            ],
+            [
+                "Your browser controls",
+                "You can block cookies and third-party content or clear this site’s stored data in your browser settings. Clearing data removes the language preference and review cache. Maps or videos may not work when external content is blocked. This site does not display an analytics-consent banner."
+            ]
         ],
-        "updated": "Last updated: " + LAST_UPDATED,
+        "updated": "Last updated: 18 September 2026"
     },
     "ru": {
         "h1": "Политика cookie",
-        "intro": "Мы используем минимальный набор cookie и аналогичных технологий хранения. Эта страница объясняет какие, зачем и как ими управлять. Используя сайт, вы можете принять или отклонить неосновные cookie через баннер согласия.",
+        "intro": "Эта страница описывает хранение данных в браузере, внешние сервисы сайта и способы управления ими.",
         "sections": [
-            ("Основные (всегда активны)", "Используются самим cookie-баннером (ключ localStorage icm-consent) для запоминания выбора и для языковой настройки. Без трекинга."),
-            ("Аналитика (только после согласия)", "Google Analytics 4 (G-D15BLYEKBN) для измерения трафика и улучшения сайта. Cookie: _ga, _gid, _ga_<id>. Хранятся до 2 лет. Данные анонимизированы где возможно."),
-            ("Маркетинг (только после согласия)", "Meta Pixel (1708697916976439) — сейчас неактивен (оставлен для будущих кампаний). Когда активен, ставит _fbp и подобные cookie для атрибуции рекламы."),
-            ("Виджет отзывов", "Блок отзывов получает Google-отзывы через Cloudflare Worker (icm-reviews.vg-ab6.workers.dev). Worker может ставить заголовки кеширования — личных cookie нет."),
-            ("Встроенная Google-карта", "При просмотре встроенной карты на странице контактов Google может ставить свои cookie. Мы не контролируем их — см. политику конфиденциальности Google."),
-            ("Как изменить выбор", "Очистите данные сайта ironcustommotors.com в браузере — баннер появится снова при следующем визите и вы сможете выбрать иначе."),
+            [
+                "Языковая настройка",
+                "При выборе языка сайт сохраняет настройку в браузере до очистки данных сайта. Отображаемый язык определяется адресом страницы."
+            ],
+            [
+                "Кеш отзывов",
+                "Общедоступные отзывы Google кешируются в браузере, чтобы сократить повторные запросы. Кеш используется до 12 часов и может храниться до замены или очистки. Он не идентифицирует посетителей."
+            ],
+            [
+                "Посещаемость и обращения",
+                "Cloudflare Web Analytics измеряет сводную посещаемость и производительность без аналитических cookie и цифрового отпечатка браузера. Отдельные счётчики обращений считают нажатия WhatsApp и телефона, открытия и отправки формы без cookie и постоянных идентификаторов посетителей. Сайт не загружает Google Analytics, Google Tag Manager и Meta Pixel."
+            ],
+            [
+                "Хостинг и защита",
+                "Cloudflare обеспечивает доставку и защиту сайта. Защитные функции при необходимости могут использовать cookie; они отделены от Web Analytics."
+            ],
+            [
+                "Внешний контент и связь",
+                "Google Maps и встроенные видео YouTube при загрузке могут обрабатывать запросы или использовать собственные cookie. Google Fonts также получает запросы на шрифты. Отправка формы использует FormSubmit, переход по ссылке WhatsApp — WhatsApp. У этих поставщиков действуют собственные политики конфиденциальности и хранения данных."
+            ],
+            [
+                "Настройки браузера",
+                "В настройках браузера можно блокировать cookie и сторонний контент или очистить сохранённые данные сайта. Очистка удалит языковую настройку и кеш отзывов. При блокировке внешнего контента карты или видео могут не работать. Баннер согласия на аналитику на сайте не отображается."
+            ]
         ],
-        "updated": "Последнее обновление: " + LAST_UPDATED,
+        "updated": "Последнее обновление: 18 сентября 2026 года"
     },
     "uk": {
         "h1": "Політика cookie",
-        "intro": "Ми використовуємо мінімальний набір cookie та подібних технологій зберігання. Ця сторінка пояснює які, навіщо і як ними керувати. Використовуючи сайт, ви можете прийняти або відхилити неосновні cookie через банер.",
+        "intro": "Ця сторінка описує зберігання даних у браузері, зовнішні сервіси сайту та способи керування ними.",
         "sections": [
-            ("Основні (завжди активні)", "Використовуються самим cookie-банером (ключ localStorage icm-consent) для запам'ятовування вибору і для мовної настройки. Без трекінгу."),
-            ("Аналітика (тільки після згоди)", "Google Analytics 4 (G-D15BLYEKBN) для вимірювання трафіку і покращення сайту. Cookie: _ga, _gid, _ga_<id>. Зберігаються до 2 років. Дані анонімізовані де можливо."),
-            ("Маркетинг (тільки після згоди)", "Meta Pixel (1708697916976439) — наразі неактивний (залишений для майбутніх кампаній). Коли активний, ставить _fbp і подібні cookie для атрибуції реклами."),
-            ("Віджет відгуків", "Блок відгуків отримує Google-відгуки через Cloudflare Worker (icm-reviews.vg-ab6.workers.dev). Worker може ставити заголовки кешування — особистих cookie немає."),
-            ("Вбудована Google-мапа", "При перегляді вбудованої мапи на сторінці контактів Google може ставити свої cookie. Ми їх не контролюємо — див. політику конфіденційності Google."),
-            ("Як змінити вибір", "Очистіть дані сайту ironcustommotors.com у браузері — банер з'явиться знову при наступному візиті і ви зможете обрати інакше."),
+            [
+                "Мовна настройка",
+                "Коли ви обираєте мову, сайт зберігає цю настройку в браузері до очищення даних сайту. Мова відображення визначається адресою сторінки."
+            ],
+            [
+                "Кеш відгуків",
+                "Загальнодоступні відгуки Google кешуються в браузері, щоб зменшити повторні запити. Кеш використовується до 12 годин і може зберігатися до заміни або очищення. Він не ідентифікує відвідувачів."
+            ],
+            [
+                "Відвідуваність і звернення",
+                "Cloudflare Web Analytics вимірює зведену відвідуваність і продуктивність без аналітичних cookie та цифрового відбитка браузера. Окремі лічильники звернень рахують натискання WhatsApp і телефону, відкриття та надсилання форми без cookie й постійних ідентифікаторів відвідувачів. Сайт не завантажує Google Analytics, Google Tag Manager і Meta Pixel."
+            ],
+            [
+                "Хостинг і захист",
+                "Cloudflare забезпечує доставку та захист сайту. Захисні функції за потреби можуть використовувати cookie; вони відокремлені від Web Analytics."
+            ],
+            [
+                "Зовнішній вміст і зв’язок",
+                "Google Maps і вбудовані відео YouTube під час завантаження можуть обробляти запити або використовувати власні cookie. Google Fonts також отримує запити на шрифти. Надсилання форми використовує FormSubmit, перехід за посиланням WhatsApp — WhatsApp. Ці постачальники мають власні політики конфіденційності та зберігання даних."
+            ],
+            [
+                "Налаштування браузера",
+                "У налаштуваннях браузера можна блокувати cookie й сторонній вміст або очистити збережені дані сайту. Очищення видалить мовну настройку та кеш відгуків. Якщо зовнішній вміст заблоковано, карти або відео можуть не працювати. Банер згоди на аналітику на сайті не відображається."
+            ]
         ],
-        "updated": "Останнє оновлення: " + LAST_UPDATED,
+        "updated": "Останнє оновлення: 18 вересня 2026 року"
     },
     "pt": {
         "h1": "Política de Cookies",
-        "intro": "Usamos um conjunto mínimo de cookies e tecnologias de armazenamento semelhantes. Esta página explica quais, porquê e como controlá-los. Ao usar o site pode aceitar ou rejeitar cookies não essenciais via o banner.",
+        "intro": "Esta página explica o armazenamento no navegador, os serviços externos usados pelo site e como os pode controlar.",
         "sections": [
-            ("Essenciais (sempre ativos)", "Usados pelo próprio banner de cookies (chave localStorage icm-consent) para guardar a sua escolha, e pela preferência de idioma. Sem rastreamento."),
-            ("Analítica (apenas após consentimento)", "Google Analytics 4 (G-D15BLYEKBN) para medir tráfego e melhorar o conteúdo. Cookies: _ga, _gid, _ga_<id>. Retenção até 2 anos. Dados anonimizados sempre que possível."),
-            ("Marketing (apenas após consentimento)", "Meta Pixel (1708697916976439) — atualmente inativo (mantido para futuras campanhas). Quando ativo, define _fbp e cookies semelhantes para atribuição de anúncios."),
-            ("Widget de avaliações", "O bloco de avaliações vai buscar avaliações Google através de um Cloudflare Worker (icm-reviews.vg-ab6.workers.dev). O Worker pode definir cabeçalhos de cache — sem cookies pessoais."),
-            ("Mapa Google incorporado", "Ao ver o mapa na página de contactos, a Google pode definir os seus próprios cookies. Não os controlamos — consulte a política de privacidade da Google."),
-            ("Como mudar a escolha", "Limpe os dados do site ironcustommotors.com no browser — o banner aparecerá de novo na próxima visita e poderá escolher diferentemente."),
+            [
+                "Preferência de idioma",
+                "Ao selecionar um idioma, o site guarda essa preferência no navegador até limpar os dados do site. O endereço da página determina o idioma apresentado."
+            ],
+            [
+                "Cache de avaliações",
+                "Os dados públicos das avaliações Google são guardados em cache no navegador para reduzir pedidos repetidos. A cache é reutilizada durante até 12 horas e pode permanecer guardada até ser substituída ou apagada. Não identifica os visitantes."
+            ],
+            [
+                "Medição de tráfego e contactos",
+                "O Cloudflare Web Analytics mede tráfego e desempenho agregados sem cookies de analítica nem impressão digital do navegador. Os contadores separados de ações de contacto contam cliques no WhatsApp e no telefone, aberturas e envios do formulário sem cookies nem identificadores persistentes de visitantes. O site não carrega Google Analytics, Google Tag Manager ou Meta Pixel."
+            ],
+            [
+                "Alojamento e segurança",
+                "A Cloudflare distribui e protege o site. As funcionalidades de segurança podem usar cookies quando necessário; são distintas do Web Analytics."
+            ],
+            [
+                "Conteúdos externos e comunicação",
+                "O Google Maps e os vídeos YouTube incorporados podem tratar pedidos ou usar os seus próprios cookies quando carregados. O Google Fonts também recebe pedidos de tipos de letra. O envio de formulários usa FormSubmit; seguir uma ligação WhatsApp usa WhatsApp. Estes fornecedores aplicam as suas próprias políticas de privacidade e armazenamento."
+            ],
+            [
+                "Controlos do navegador",
+                "Pode bloquear cookies e conteúdos de terceiros ou limpar os dados guardados pelo site nas definições do navegador. A limpeza remove a preferência de idioma e a cache de avaliações. Os mapas ou vídeos podem não funcionar quando os conteúdos externos estão bloqueados. O site não apresenta um banner de consentimento para analítica."
+            ]
         ],
-        "updated": "Última atualização: " + LAST_UPDATED,
-    },
+        "updated": "Última atualização: 18 de setembro de 2026"
+    }
 }
 
 # ============================================================

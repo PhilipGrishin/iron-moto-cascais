@@ -29,8 +29,8 @@ TEMPLATE_PATH = SITE_ROOT / "projects/joker/index.html"
 LANGS = ["en", "ru", "uk", "pt"]
 HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 CACHE_BUST = {
-    "/assets/main.css": "20260907c",
-    "/assets/main.js": "20260907c",
+    "/assets/main.css": "20260918a",
+    "/assets/main.js": "20260918a",
     "/assets/projects.css": "20260801a",
     "/assets/projects.js": "20260710b",
 }
@@ -545,7 +545,7 @@ def render_redirects() -> None:
 <p>{labels["message"]} <a href="{target_path}">{labels["target_name"]}</a>&hellip;</p>
 </body>
 </html>'''
-            relative = Path("projects") / old_slug / "index.html"
+            relative = Path(config.get("source_path", f"projects/{old_slug}")) / "index.html"
             if lang != "en":
                 relative = Path(lang) / relative
             output = SITE_ROOT / relative

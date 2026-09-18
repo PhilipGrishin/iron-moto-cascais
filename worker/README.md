@@ -10,10 +10,15 @@ Browser → Cloudflare Worker (cached 24h) → Google Places API
          Returns JSON: rating, total, reviews[]
 ```
 
-- **Cache:** Cloudflare edge cache, `s-maxage=86400` (24h) + `stale-while-revalidate=90000` (25h).
-- **Real Google API hits:** ≤2/day per Cloudflare region (well under your 10–20/day budget).
-- **Cost protection:** if cache miss + Google fails, returns last cached body (SWR).
-- **Field mask:** explicit list (`displayName, rating, userRatingCount, reviews.*`) — no `*` wildcard, no extra billed fields.
+- **Cache:** a deterministic `caches.default` key, with response headers
+  `max-age=86400` (24 hours) and `stale-while-revalidate=90000`.
+- **Failure behavior:** a cache hit returns the cached response. A cache miss
+  calls Google; a network or upstream API failure returns HTTP 502. The Worker
+  does not implement stale-body recovery or background revalidation. The
+  website separately retains static review cards and a committed snapshot.
+- **Field mask:** the explicit fields in `reviews.js` request the aggregate
+  and Google-provided reviews. Billing depends on the current Google SKU and
+  account configuration; this repository does not enforce a daily budget.
 
 ## One-time setup
 
@@ -100,27 +105,20 @@ wrangler secret put GOOGLE_API_KEY
 # paste new key
 ```
 
-No re-deploy needed — secrets reload automatically.
+The secret command creates and deploys an updated Worker version. Verify the
+public endpoint after the update; never print the secret value.
 
-## Force cache refresh (testing)
+## Cache refresh and request volume
 
-The Worker only caches successful 200 responses. To force a refresh, re-deploy:
+A new Google request is made when the regional Cache API lookup misses.
+The cache can be evicted, regions maintain separate entries, and simultaneous
+misses can issue concurrent requests. Redeploying does not guarantee that this
+fixed cache key is purged. There is no force-refresh endpoint.
 
-```bash
-wrangler deploy
-```
-
-Or call from a different Cloudflare region to bypass the cached edge node.
-
-## Daily request budget
-
-| Cache state | Google API hit |
-|---|---|
-| Edge cache hit (almost all visits) | 0 |
-| Edge cache miss after 24h | 1 per region |
-| Cold worker boot | 1 |
-
-With ≤6 Cloudflare regions serving your audience, you'll see **2–10 Google API calls/day** — within the documented free Places API quota.
+Use the Google Cloud usage, quota and billing controls to measure and constrain
+actual API usage. Do not infer a fixed daily request count or free allowance
+from the cache TTL. Wait for expiry for an ordinary content refresh; change
+cache behavior only as an explicitly reviewed Worker change.
 
 ## Response shape
 
@@ -152,5 +150,5 @@ With ≤6 Cloudflare regions serving your audience, you'll see **2–10 Google A
 cd worker
 wrangler dev
 # opens http://localhost:8787
-# uses production Google API key set via `wrangler secret put`
+# local mode needs GOOGLE_API_KEY in gitignored .dev.vars or an approved secret source
 ```

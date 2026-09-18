@@ -5,8 +5,10 @@ from __future__ import annotations
 
 import html
 import json
+import re
 from pathlib import Path
 
+from build_output import write_html_if_changed
 from w3_shared_data import TRUST_LABELS
 
 
@@ -25,6 +27,41 @@ def snapshot_rating() -> float:
 def format_rating(rating: float, lang: str) -> str:
     value = f"{rating:.1f}"
     return value if lang == "en" else value.replace(".", ",")
+
+
+def refresh_snapshot_consumers() -> int:
+    """Refresh only rating hooks and their runtime translations on managed pages."""
+    # Import after the snapshot has been saved: registry imports can read it.
+    from build_sitemap import PAGES, LANGS, html_file_for
+
+    rating = snapshot_rating()
+    changed = 0
+    for page, _, _ in PAGES:
+        for lang in LANGS:
+            path = html_file_for(lang, page)
+            original = path.read_text(encoding="utf-8")
+            if "data-icm-rating" not in original:
+                continue
+            updated = re.sub(
+                r'(<span\b[^>]*\bdata-icm-rating\b[^>]*>)[^<]*(</span>)',
+                lambda match: match[1] + format_rating(rating, lang) + match[2],
+                original,
+            )
+
+            def update_translations(match: re.Match[str]) -> str:
+                translations = json.loads(match[2])
+                for code, values in translations.items():
+                    if "trust.rating" in values:
+                        values["trust.rating"] = format_rating(rating, code)
+                return match[1] + json.dumps(translations, ensure_ascii=False) + match[3]
+
+            updated = re.sub(
+                r'(window\.ICM_I18N_PAGE\s*=\s*)(\{.*?\})(;?\s*</script>)',
+                update_translations, updated, flags=re.DOTALL,
+            )
+            if write_html_if_changed(path, updated):
+                changed += 1
+    return changed
 
 
 def trust_i18n(lang: str) -> dict[str, str]:

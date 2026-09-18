@@ -274,7 +274,7 @@ Ownership:
   `content/projects/`; the 10 migrated project pages use
   `content/projects/legacy_projects_4lang.json`, which preserves their reviewed
   localized main content and media structure.
-- `build_project_pages.py` renders every indexable project variant and all 8
+- `build_project_pages.py` renders every indexable project variant and all registered
   localized noindex redirects directly. Project details are not outputs of the
   generic `build_i18n.py` flow.
 - `import_project_images.py` owns newly approved data-driven project media.
@@ -333,8 +333,12 @@ Stable rules:
   localized BreadcrumbList graph. Article publisher and author use an `@id`
   reference to the complete LocalBusiness entity with maintained name and
   logo. Dates are full ISO-8601 values with timezone.
-- The old `nezlamniy` and `quanta` paths are localized noindex redirects in all
-  four languages and stay out of the sitemap.
+- The old `nezlamniy` and `quanta` project paths and legacy `proekty/first`
+  path are localized noindex redirects in all four languages and stay out of
+  the sitemap. `REDIRECT_CONFIGS.source_path` optionally overrides the default
+  `projects/<slug>` source; the destination must be an existing project.
+  GitHub Pages serves static redirect stubs (meta refresh, JavaScript and a
+  fallback link), not HTTP 301 rules. Add aliases only for matching content.
 - No `Product`/`Offer` is emitted without approved commerce data.
 
 Commands: `scripts/build/README.md`, **Project workflow**.
@@ -380,6 +384,12 @@ Do not hand-maintain separate desktop and mobile menu inventories. Shared
 rendering must preserve parent-link behavior, dropdown/accordion children,
 language locality and footer parity.
 
+Lead-form placeholders use `form.vehiclePlaceholder` and
+`form.messagePlaceholder` in the same global dictionary. `site_chrome.py`
+applies them to copied modals; generic i18n and runtime language application
+recognize `data-i18n-placeholder`. Homepage counter targets are rendered as
+static text before optional animation.
+
 Commands: `scripts/build/README.md`, **Shared chrome and translation workflow**.
 
 ## AI Discovery Index
@@ -404,7 +414,11 @@ Ownership:
 - Live aggregate snapshot: `assets/reviews-snapshot.json`.
 - Editorial visible cards: `assets/reviews-curated.json`, including
   `displayCount`.
-- Renderer/schema updater: `build_reviews_schema.py`.
+- Renderer/schema updater: `build_reviews_schema.py`, with `--offline` for
+  reproducible snapshot-only rendering.
+- Commercial snapshot consumers: `trust_strip.py` updates rating hooks and
+  inline runtime translations during the same refresh. All consumers and
+  changed sitemap dates are validated and committed together.
 - Runtime source: public Cloudflare Worker configured in `assets/main.js`.
 - Worker implementation and cache behavior: `worker/reviews.js` and
   `worker/README.md`.

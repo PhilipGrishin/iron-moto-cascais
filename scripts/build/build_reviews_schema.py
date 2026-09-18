@@ -12,7 +12,9 @@ Run locally: python3 scripts/build/build_reviews_schema.py
 Idempotent: re-running with no changes leaves files identical.
 """
 
+import argparse
 import json
+import math
 import re
 import sys
 import urllib.request
@@ -21,6 +23,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 
 from build_output import write_html_if_changed, write_text_if_changed
+from trust_strip import refresh_snapshot_consumers
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 
@@ -279,14 +282,14 @@ def inject_static_review_fallback(
         new_html,
         count=1,
     )
-    new_html = re.sub(
+    new_html, row_count = re.subn(
         r'(<div class="reviews-row reveal-stagger" id="reviewsRow">\n)(.*?)(\n</div>\n<div class="reviews-foot")',
         rf"\g<1>{cards}\g<3>",
         new_html,
         count=1,
         flags=re.DOTALL,
     )
-    return new_html, new_html != html
+    return new_html, row_count == 1
 
 
 def inject_into_business_graph(html: str, agg: dict, reviews: list[dict]) -> tuple[str, bool]:
@@ -332,16 +335,25 @@ def inject_into_business_graph(html: str, agg: dict, reviews: list[dict]) -> tup
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--offline", action="store_true", help="Render from the committed snapshot without a network request")
+    args = parser.parse_args()
     try:
-        data = fetch_reviews()
+        data = json.loads(SNAPSHOT_PATH.read_text(encoding="utf-8")) if args.offline else fetch_reviews()
     except Exception as e:
-        print(f"ERROR fetching reviews: {e}", file=sys.stderr)
-        print("Run this script on your local machine (sandbox has no outbound network).")
+        print(f"ERROR loading reviews: {e}", file=sys.stderr)
+        print("The existing snapshot is retained. Check the source and retry.")
         sys.exit(1)
 
-    if not data.get("rating") or not data.get("total"):
-        print("Worker response missing rating/total — aborting.", file=sys.stderr)
+    rating, total = data.get("rating"), data.get("total")
+    if (type(rating) not in (int, float) or not math.isfinite(rating)
+            or not 1 <= rating <= 5 or type(total) is not int or total < 1):
+        print("Invalid review rating/total — existing snapshot retained.", file=sys.stderr)
         sys.exit(1)
+
+    for path, _ in PAGES:
+        if not path.is_file():
+            raise FileNotFoundError(f"Required homepage missing: {path}")
 
     try:
         curated = load_curated_reviews()
@@ -367,9 +379,6 @@ def main():
     patched = 0
     last_review_count = 0
     for p, page_lang in PAGES:
-        if not p.exists():
-            print(f"  SKIP missing: {p}")
-            continue
         page_reviews = _selected_curated_reviews(curated, page_lang)
         reviews = build_review_items(page_reviews)
         last_review_count = len(reviews)
@@ -383,13 +392,16 @@ def main():
             page_reviews,
             "en",
         )
-        if (ok or fallback_ok) and write_html_if_changed(p, new_html):
+        if not (ok and fallback_ok):
+            raise ValueError(f"Missing required review graph or fallback in {p}")
+        if write_html_if_changed(p, new_html):
             patched += 1
             print(f"  patched: {p.relative_to(SITE_ROOT)} ({len(reviews)} curated reviews)")
         elif ok:
             print(f"  unchanged: {p.relative_to(SITE_ROOT)}")
-        else:
-            print(f"  no LocalBusiness graph found in {p.relative_to(SITE_ROOT)} — SKIP")
+
+    trust_changed = refresh_snapshot_consumers()
+    print(f"  commercial trust ratings: {trust_changed} pages updated")
 
     print(f"\nDone. Aggregate {agg['ratingValue']}★ from {agg['reviewCount']} reviews, "
           f"{last_review_count} curated Review items injected into {patched} home pages.")

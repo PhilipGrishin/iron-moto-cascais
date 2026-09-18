@@ -14,6 +14,40 @@ Format:
 - Notes: ...
 ```
 
+## Audit note: 2026-09-18 maintenance readiness
+
+Analysis/documentation only; no implementation commit or deployment. Audited
+local baseline `67d27b24` and upstream `7d9e482d`, preserving the existing
+uncommitted SEO audit. The evidence, including failed release gates, is in
+`docs/reports/MAINTENANCE_READINESS_2026_09_18.md`. Updated current-state
+corrections and open risks without changing public files. Verified all live
+sitemap URLs, local source/assets, focused validators, Worker tests, isolated
+full rebuild, production assets, representative browser behavior and existing
+GitHub/Cloudflare/Google access. The pre-existing 8 September commit-hash
+validation failure remains explicitly open; this is an audit note rather than
+an implementation entry with a fabricated commit reference.
+
+## Audit note: 2026-09-08 SEO, local search and GEO analytical audit
+
+- Commit: none; analysis/documentation only, no site deployment or account edit.
+- Changed: Added `docs/reports/SEO_GEO_AUDIT_2026_09_08.md`, recorded owner
+  planning facts in `BUSINESS_FACTS.md`, documented account/data and factual-copy
+  follow-ups, and corrected the stale documented review count from 25 to 26.
+- Verified: Live HTTP/HTML crawl of all 236 sitemap URLs; existing broad SEO
+  validator; mobile homepage/contact inspection; one public PageSpeed mobile
+  run; authenticated GSC performance exports, indexing, five priority PT URL
+  inspections, sitemap, manual actions, security, links and AI report; GBP
+  information, services, reviews and performance; four historical deep-link
+  checks found three new-domain 404 destinations and one working blog route.
+  Report limitations distinguish
+  lab observations, incomplete query disclosure and the unresolved Portugal
+  chart/page discrepancy from confirmed business outcomes.
+- Notes: Public website and Google account settings were unchanged. Raw
+  account/crawl evidence is retained under gitignored
+  `.secrets/seo-audit-2026-09-08/`. Prioritized recommendations require a
+  separately requested implementation task; no messages to third parties were
+  sent and no paid tools were purchased.
+
 ## 2026-09-07 - Homepage Pricing eyebrow year
 
 - Commit: `ff7c7e11`

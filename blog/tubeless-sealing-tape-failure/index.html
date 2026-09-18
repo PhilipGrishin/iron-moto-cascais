@@ -29,7 +29,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link as="image" href="/photos/optimized/blog-blog-tubeless-sealing-tape-failure-hero-1280.avif" imagesizes="100vw" imagesrcset="/photos/optimized/blog-blog-tubeless-sealing-tape-failure-hero-768.avif 768w, /photos/optimized/blog-blog-tubeless-sealing-tape-failure-hero-1280.avif 1280w, /photos/optimized/blog-blog-tubeless-sealing-tape-failure-hero-1920.avif 1920w" rel="preload" type="image/avif"/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="/assets/main.css?v=20260907c" rel="stylesheet"/>
+<link href="/assets/main.css?v=20260918a" rel="stylesheet"/>
 <style>
 .subpage{padding:160px 0 100px;background:#0a0a0a;position:relative;overflow:hidden;isolation:isolate}
 .subpage::before{content:"";position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,87,34,.20),transparent 60%);pointer-events:none;z-index:1}
@@ -522,7 +522,7 @@
 </div>
 <div class="field">
 <label data-i18n="form.vehicle">Motorcycle (brand · model · year)</label>
-<input name="vehicle" placeholder="e.g. BMW R nineT 2020" type="text"/>
+<input data-i18n-placeholder="form.vehiclePlaceholder" name="vehicle" placeholder="e.g. BMW R nineT 2020" type="text"/>
 </div>
 <div class="field">
 <label data-i18n="form.service">Request type</label>
@@ -536,7 +536,7 @@
 </div>
 <div class="field full">
 <label data-i18n="form.message">Tell us about the job</label>
-<textarea name="message" placeholder="Symptoms, history, anything that helps us prepare."></textarea>
+<textarea data-i18n-placeholder="form.messagePlaceholder" name="message" placeholder="Symptoms, history, anything that helps us prepare."></textarea>
 </div>
 </div>
 <div class="form-actions">
@@ -551,7 +551,7 @@
 </div>
 </div>
 </div>
-<script defer="" src="/assets/main.js?v=20260907c"></script>
+<script defer="" src="/assets/main.js?v=20260918a"></script>
 <script>
 document.querySelectorAll('video[data-deferred-video]').forEach(function(video) {
   video.addEventListener('click', function activateDeferredVideo() {
