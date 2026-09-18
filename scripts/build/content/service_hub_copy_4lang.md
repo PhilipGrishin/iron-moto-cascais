@@ -25,7 +25,7 @@ Prices are from our [price list](/pricing/). "From" means the exact figure is co
 **4. Oil and filter.** Liqui Moly partner oils — as part of a scheduled service or on its own, priced in the estimate first.
 **5. Brakes.** Brake fluid change 100 € (non-ABS) or from 150 € (ABS). Pads, discs and callipers are quoted per bike.
 **6. Suspension.** Fork seals from 150 €. Fork oil, sag, rebound and compression set for your weight and the way you ride.
-**7. Valve clearances** (check / check and adjust): BMW Boxer 150 / 300 €, Moto Guzzi and vintage 100 / 150 €, Japanese inline-2 250 / 300 €, Japanese inline-4 400 / 650 €, KTM / Japanese 350–450 / 550–750 €, Ducati Desmo 550 / 1 200 €.
+**7. Valve clearances** (check / check and adjust, prices from): BMW Boxer 150 / 300 €, Moto Guzzi and vintage 100 / 150 €, Japanese inline-2 250 / 300 €, Japanese inline-4 400 / 650 €, KTM / Japanese 350–450 / 550–750 €, Ducati Desmo 550 / 1 200 €. The exact figure depends on the model and the engine's condition and goes into the written estimate first.
 **8. Carburettors.** One from 75 €, two from 150 €, four from 200 €.
 **9. Battery, charging and air filter.** Battery from 20 €; charging-system check; air-filter clean and oil 45 €, air-filter replacement from 20 €.
 **10. Electrics, drive and general repair.** Electrical fault-finding and wiring repairs, chain and sprockets (belt-drive bikes too), cooling, fuel system, clutch, gearbox and engine. Diagnosed first, quoted in writing.
@@ -90,7 +90,7 @@ Valores da nossa [tabela de preços](/pt/pricing/). «Desde» quer dizer que o n
 **4. Óleo e filtro.** Óleos Liqui Moly, de quem somos parceiros — numa revisão ou à parte, com o valor no orçamento antes de arrancarmos.
 **5. Travões.** Substituição do líquido de travões 100 € (sem ABS) ou desde 150 € (com ABS). Pastilhas, discos e pinças: orçamento mota a mota.
 **6. Suspensão.** Retentores da forquilha desde 150 €. Óleo, sag, extensão e compressão afinados ao seu peso e à sua condução.
-**7. Regulação de válvulas** (verificação / verificação + regulação): BMW Boxer 150 / 300 €, Moto Guzzi e clássicas 100 / 150 €, japonesas 2 cilindros em linha 250 / 300 €, 4 cilindros em linha 400 / 650 €, KTM / japonesas 350–450 / 550–750 €, Ducati Desmo 550 / 1 200 €.
+**7. Regulação de válvulas** (verificação / verificação + regulação, preços a partir de): BMW Boxer 150 / 300 €, Moto Guzzi e clássicas 100 / 150 €, japonesas 2 cilindros em linha 250 / 300 €, 4 cilindros em linha 400 / 650 €, KTM / japonesas 350–450 / 550–750 €, Ducati Desmo 550 / 1 200 €. O valor exato depende do modelo e do estado do motor e fica no orçamento escrito antes de começarmos.
 **8. Carburadores.** Um desde 75 €, dois desde 150 €, quatro desde 200 €.
 **9. Bateria, carga e filtro de ar.** Bateria desde 20 €; verificação do sistema de carga; limpeza e óleo do filtro de ar 45 €, substituição do filtro de ar desde 20 €.
 **10. Elétrica, transmissão e reparação geral.** Diagnóstico elétrico e reparação de cablagens, corrente e cremalheiras (motas de correia também), arrefecimento, alimentação, embraiagem, caixa e motor. Primeiro o diagnóstico, depois o orçamento escrito.
@@ -155,7 +155,7 @@ Iron Custom Motors — независимая мультибрендовая м�
 **4. Масло и фильтр.** Масла Liqui Moly, нашего партнёра, — в составе ТО или отдельно; сумма попадает в смету до начала работ.
 **5. Тормоза.** Замена тормозной жидкости 100 € (без ABS) или от 150 € (с ABS). Колодки, диски и суппорты считаем под конкретный мотоцикл.
 **6. Подвеска.** Сальники вилки от 150 €. Масло в вилке, sag, отбой и сжатие — под ваш вес и вашу манеру езды.
-**7. Клапанные зазоры** (проверка / проверка + регулировка): BMW Boxer 150 / 300 €, Moto Guzzi и классика 100 / 150 €, японские рядные двухцилиндровые 250 / 300 €, рядные четырёхцилиндровые 400 / 650 €, KTM / японские 350–450 / 550–750 €, Ducati Desmo 550 / 1 200 €.
+**7. Клапанные зазоры** (проверка / проверка + регулировка, цены от): BMW Boxer 150 / 300 €, Moto Guzzi и классика 100 / 150 €, японские рядные двухцилиндровые 250 / 300 €, рядные четырёхцилиндровые 400 / 650 €, KTM / японские 350–450 / 550–750 €, Ducati Desmo 550 / 1 200 €. Точная сумма зависит от модели и состояния двигателя и сначала фиксируется в письменной смете.
 **8. Карбюраторы.** Один от 75 €, два от 150 €, четыре от 200 €.
 **9. Аккумулятор, зарядка и воздушный фильтр.** Аккумулятор от 20 €; проверка системы зарядки; чистка и пропитка воздушного фильтра 45 €, замена воздушного фильтра от 20 €.
 **10. Электрика, привод и общий ремонт.** Поиск неисправностей в электрике и ремонт проводки, цепь и звёзды (ременные мотоциклы тоже), охлаждение, топливная система, сцепление, коробка, двигатель. Сначала диагностика, потом письменная смета.
@@ -220,7 +220,7 @@ Iron Custom Motors — незалежна мультибрендова мото�
 **4. Олива й фільтр.** Оливи Liqui Moly, нашого партнера, — у складі ТО або окремо; сума потрапляє в кошторис до початку робіт.
 **5. Гальма.** Заміна гальмівної рідини 100 € (без ABS) або від 150 € (з ABS). Колодки, диски й супорти рахуємо під конкретний мотоцикл.
 **6. Підвіска.** Сальники вилки від 150 €. Олива у вилці, sag, відбій і стиснення — під вашу вагу та манеру їзди.
-**7. Клапанні зазори** (перевірка / перевірка + регулювання): BMW Boxer 150 / 300 €, Moto Guzzi та класика 100 / 150 €, японські рядні двоциліндрові 250 / 300 €, рядні чотирициліндрові 400 / 650 €, KTM / японські 350–450 / 550–750 €, Ducati Desmo 550 / 1 200 €.
+**7. Клапанні зазори** (перевірка / перевірка + регулювання, ціни від): BMW Boxer 150 / 300 €, Moto Guzzi та класика 100 / 150 €, японські рядні двоциліндрові 250 / 300 €, рядні чотирициліндрові 400 / 650 €, KTM / японські 350–450 / 550–750 €, Ducati Desmo 550 / 1 200 €. Точна сума залежить від моделі та стану двигуна і спершу фіксується в письмовому кошторисі.
 **8. Карбюратори.** Один від 75 €, два від 150 €, чотири від 200 €.
 **9. Акумулятор, зарядка й повітряний фільтр.** Акумулятор від 20 €; перевірка системи зарядки; чищення і просочення повітряного фільтра 45 €, заміна повітряного фільтра від 20 €.
 **10. Електрика, привід і загальний ремонт.** Пошук несправностей в електриці та ремонт проводки, ланцюг і зірочки (пасові мотоцикли теж), охолодження, паливна система, зчеплення, коробка, двигун. Спершу діагностика, потім письмовий кошторис.

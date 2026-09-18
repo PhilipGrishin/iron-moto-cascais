@@ -24,7 +24,7 @@ DOMAIN = "https://ironcustommotors.com"
 LANGS = ("en", "ru", "uk", "pt")
 HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 EXPECTED_SOURCE_SHA256 = {
-    "motorcycle-service": "c16a33ae3c204084a9e5356c2bd0a3b7c9d99dcfd44b30752565cea49f38d28c",
+    "motorcycle-service": "08627850a90a2307a8e78ccae7ba85141911bb6919ebc0dc324e84af1d6e522a",
     "custom": "10790be1dab936791dd01b47bcfa9c3f1c73e12cc495275d2195a025a14f4292",
     "parts": "86687081e07eb74377e9d15aa0c81aca3a2beec138dfc7677ebb4ace5272538e",
     "upgrades-tuning": "1385731f4051d2d1bf32885f5c9decdc802f602b90de507189d7883d07c7ebfc",

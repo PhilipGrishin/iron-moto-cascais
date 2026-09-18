@@ -366,6 +366,14 @@ refer to those records through `BRAND_PRICING`; preserve IDs when editing copy
 or display order, and regenerate both pricing outputs and brand pages after a
 price change.
 
+Valve-clearance table cells express starting prices with a trailing `+` on
+each amount; ranges retain their bounds and place `+` after the upper bound.
+Prose uses the localized starting-price wording (`from`, `desde`, `от`, `від`).
+The pricing-table note explains the convention and written-estimate process.
+Brand tables inherit the same cells; the approved hub, brand FAQ and metadata
+sources must stay aligned. This convention does not change scheduled-service
+groups or brand-specific full-service cards.
+
 Commands: `scripts/build/README.md`, **Pricing workflow**.
 
 ## Shared Navigation And I18N

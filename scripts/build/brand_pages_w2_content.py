@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 CONTENT_PATH = Path(__file__).with_name("content") / "brand_pages_w2_copy_4lang.md"
-EXPECTED_SHA256 = "a53853ed90ce9317dc61adb13cf8178ae6fad81e341d3769204453c604eb8af6"
+EXPECTED_SHA256 = "f08554168fddc38d43c0aad73917a3342d4f317b402381571d808cf57b8ed2d2"
 SLUGS = (
     "harley-service",
     "bmw-service",

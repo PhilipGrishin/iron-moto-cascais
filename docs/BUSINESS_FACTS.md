@@ -79,11 +79,11 @@ that parser.
     },
     {
       "name": "Ducati Desmo valve-clearance check",
-      "price": "550 EUR"
+      "price": "from 550 EUR"
     },
     {
       "name": "Ducati Desmo valve-clearance check and adjustment",
-      "price": "1,200 EUR"
+      "price": "from 1,200 EUR"
     },
     {
       "name": "Harley-Davidson scheduled maintenance",
@@ -107,11 +107,11 @@ that parser.
     },
     {
       "name": "Triumph / Royal Enfield twin valve-clearance check",
-      "price": "250 EUR"
+      "price": "from 250 EUR"
     },
     {
       "name": "Triumph / Royal Enfield twin valve-clearance check and adjustment",
-      "price": "300 EUR"
+      "price": "from 300 EUR"
     },
     {
       "name": "Tubeless conversion of one spoked wheel",
