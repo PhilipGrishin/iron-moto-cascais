@@ -1,8 +1,19 @@
 {
   "name": "Iron Custom Motors",
   "rating": 4.9,
-  "total": 29,
+  "total": 31,
   "reviews": [
+    {
+      "author": "Anton Rudov",
+      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjXRUm1XrcNg8IvabZDKxV5ILUZlAz-rNDd5ZkDyCZXZK_UKDXg=s128-c0x00000000-cc-rp-mo",
+      "profileUrl": "https://www.google.com/maps/contrib/101983877553474730723/reviews",
+      "rating": 5,
+      "text": "Had my Triumph Speedmaster in for a regular service and had a really good experience. Great communication throughout, everything was explained clearly, and they kept me updated on the work. They even gave me a discount and, most importantly, treated the bike like it was their own\n\nAlso really appreciated the little things — friendly guys, a great atmosphere, and they even offered me a coffee while I was there. The bike came back in perfect shape. Definitely coming back. Highly recommended!",
+      "lang": "en",
+      "when": "a month ago",
+      "publishedAt": "2026-08-22T07:09:34.605416441Z",
+      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2t0Tk9XcHRXWHBaVFMxb1VITkhNVlJ4ZFdGT1VtYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
+    },
     {
       "author": "Vlad Gvozdyk",
       "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjVQ4I3XZyNIzyVyEBdmPTGJrqjP108dxezxMQKwhUkPVo6AXiuw=s128-c0x00000000-cc-rp-mo-ba2",
@@ -10,7 +21,7 @@
       "rating": 5,
       "text": "Thanks, guys! I stopped by today to have my Yamaha XSR700 serviced, and everything was great. We also chatted about a future Royal Enfield custom project, had a coffee and just enjoyed talking bikes.\n\nIron Custom Motors is a fantastic multi-brand workshop where you can not only get your bike properly looked after, but also bring your ideas to life and build something truly unique.\n\nGreat people, great atmosphere and quality work. Definitely my new go-to workshop. Highly recommended — five stars! ⭐️⭐️⭐️⭐️⭐️",
       "lang": "en",
-      "when": "3 weeks ago",
+      "when": "a month ago",
       "publishedAt": "2026-08-21T14:37:18.672536827Z",
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25WRGFteGxkSHBqVm0xTGExaG1iV2swWWpaS1RtYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     },
@@ -46,18 +57,7 @@
       "when": "2 months ago",
       "publishedAt": "2026-06-25T13:43:56.825839689Z",
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2s1VFdUaDROVmg2UzNkR1RqTnBRbFl0UldKeVdsRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
-    },
-    {
-      "author": "Yurii Adam",
-      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjWYKmM6zrhqZRYk-lhNvuttcMN31fmjGu4azT3BDbwnVCBzfE1z=s128-c0x00000000-cc-rp-mo",
-      "profileUrl": "https://www.google.com/maps/contrib/100875129844700188336/reviews",
-      "rating": 5,
-      "text": "Finally, I found a motorcycle service I can trust 100% with my bike!\n\nThe team not only fixed the issue I originally came in for, but also thoroughly inspected all the related components and systems. They performed a complete service, identified potential problems before they became serious, and made sure everything was in perfect condition.\n\nNow I have total confidence in my motorcycle and can ride with complete peace of mind. Professional, knowledgeable, honest, and genuinely passionate about what they do.\n\nHighly recommended to anyone looking for a trustworthy motorcycle workshop!",
-      "lang": "en",
-      "when": "2 months ago",
-      "publishedAt": "2026-06-21T14:27:42.557465443Z",
-      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2prMGNXaEtaMnRUTldRemQwODNiblEyUlZGVFltYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     }
   ],
-  "fetchedAt": "2026-09-14T12:55:01.475Z"
+  "fetchedAt": "2026-09-21T12:54:38.783Z"
 }
