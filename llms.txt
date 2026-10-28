@@ -87,6 +87,7 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 ## News
 
 - [News](https://ironcustommotors.com/news/): Latest news from Iron Custom Motors workshop in Cascais — openings, events, custom builds, community rides and announcements from our motorcycle workshop in Greater Lisbon.
+- [A new project on the site: Spaniard](https://ironcustommotors.com/news/spaniard-v-rod-2002-rebuild/): Our newest project page is live: Spaniard, a first-year Harley-Davidson V-Rod stripped to the frame and rebuilt black on black in Cascais. Photos, the full build list and what it means for your bike.
 - [A Saturday BBQ with friends of the workshop](https://ironcustommotors.com/news/workshop-bbq-party-august-2026/): On Saturday, 22 August 2026, Iron Custom Motors hosted a BBQ for friends and clients at the Cascais workshop. Grill, bikes, music and good company.
 - [Ericeira Kustom Fest 2026](https://ironcustommotors.com/news/ericeira-kustom-fest-2026/): Iron Custom Motors took part in Ericeira Kustom Fest 2026 — our first major custom competition in Portugal — and won 1st place for Hell Boy and 2nd place for Sturmvogel.
 - [New workshop](https://ironcustommotors.com/news/opens-new-workshop-in-cascais/): Iron Custom Motors opens a new motorcycle workshop in Cascais, Greater Lisbon. Premium service, tuning, custom projects, parts, a rider lounge and a growing motorcycle community in Portugal.
@@ -109,6 +110,7 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 - [Cocktail](https://ironcustommotors.com/projects/cocktail/): A 2008 Street Glide FLHX turned custom bagger: 26" front wheel, chrome Twin Cam 96, Legend Air Ride and onboard sound. The story of Cocktail, built 2013.
 - [Fetish](https://ironcustommotors.com/projects/fetish/): A Harley-Davidson Rocker C turned personal chopper: air ride, B-17 fork, 26" solid wheels, nitrous. Fetish — the first Ukrainian custom at the AMD Worlds.
 - [The First](https://ironcustommotors.com/projects/the-first/): A 2009 Night Rod Special rebuilt in 2012: air suspension front and rear, a ride-height computer we built ourselves, 2 to 12 cm of clearance.
+- [Spaniard](https://ironcustommotors.com/projects/spaniard/): A first-year V-Rod stripped to the last bolt in Cascais: matte black on black, 240 rear, Alcantara seat, Kellermann, Galfer — and a full service underneath.
 
 ## Hubs and information
 
@@ -138,7 +140,7 @@ All pages are available in 4 languages with reciprocal hreflang annotations:
 ## Sitemap
 
 Full machine-readable sitemap: [sitemap.xml](https://ironcustommotors.com/sitemap.xml)
-Generated coverage: 59 English paths across 4 language variants (236 sitemap URLs).
+Generated coverage: 61 English paths across 4 language variants (244 sitemap URLs).
 
 ## Citation guidance
 

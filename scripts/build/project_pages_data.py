@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import html
 import json
 import re
@@ -545,6 +546,143 @@ MARKDOWN_PROJECT_CONFIGS = {
     },
 }
 
+MARKDOWN_PROJECT_CONFIGS["spaniard"] = {
+    "source": SITE_ROOT / "content/projects/spaniard_4lang.md",
+    "source_sha256": "a790f356917ad14509d339f2cf8dcb28e77fcb460d026baf4816c7a545c40408",
+    "year": "2026",
+    "published_iso": "2026-10-28T21:43:06+00:00",
+    "hero_base": "/photos/projects/spaniard",
+    "hero_source": "Spaniard_HERO.jpg",
+    "jpeg_fallback": True,
+    "gallery_base": "/photos/projects/gallery/spaniard/spaniard",
+    "gallery_sources": [
+        "spaniard-01-side-profile.jpg",
+        "spaniard-02-front-three-quarter.jpg",
+        "spaniard-03-rear-three-quarter-240.jpg",
+        "spaniard-04-at-the-workshop.jpg",
+        "spaniard-05-chin-spoiler-engine.jpg",
+        "spaniard-06-seat-alcantara-carbon.jpg",
+        "spaniard-07-rear-wheel-shock-silencer.jpg",
+        "spaniard-08-front-brake-galfer.jpg",
+        "spaniard-09-tank-gauges-risers.jpg",
+        "spaniard-10-bar-end-mirror-grips.jpg"
+    ],
+    "integrations": {
+        "custom": True,
+        "harley_custom": True,
+        "reciprocal_projects": [
+            "cocktail",
+            "fetish",
+            "the-first"
+        ]
+    },
+    "ui": {
+        "en": {
+            "home": "Home",
+            "projects": "Projects",
+            "badge": "Power Cruiser · Full Rebuild",
+            "year_label": "Year",
+            "category_label": "Category",
+            "category": "Power Cruiser · Full Rebuild",
+            "where_label": "Where",
+            "where": "Built in Cascais, Portugal",
+            "gallery": "Gallery",
+            "gallery_title": "<em>Spaniard</em> — in detail."
+        },
+        "pt": {
+            "home": "Início",
+            "projects": "Projetos",
+            "badge": "Power Cruiser · Reconstrução Completa",
+            "year_label": "Ano",
+            "category_label": "Categoria",
+            "category": "Power Cruiser · Reconstrução Completa",
+            "where_label": "Local",
+            "where": "Construído em Cascais, Portugal",
+            "gallery": "Galeria",
+            "gallery_title": "<em>Spaniard</em> — ao pormenor."
+        },
+        "ru": {
+            "home": "Главная",
+            "projects": "Проекты",
+            "badge": "Пауэр-круизер · Полная пересборка",
+            "year_label": "Год",
+            "category_label": "Категория",
+            "category": "Пауэр-круизер · Полная пересборка",
+            "where_label": "Где",
+            "where": "Построен в Кашкайше, Португалия",
+            "gallery": "Галерея",
+            "gallery_title": "<em>Spaniard</em> — в деталях."
+        },
+        "uk": {
+            "home": "Головна",
+            "projects": "Проєкти",
+            "badge": "Пауер-крузер · Повна перебудова",
+            "year_label": "Рік",
+            "category_label": "Категорія",
+            "category": "Пауер-крузер · Повна перебудова",
+            "where_label": "Де",
+            "where": "Збудовано в Кашкайші, Португалія",
+            "gallery": "Галерея",
+            "gallery_title": "<em>Spaniard</em> — у деталях."
+        }
+    },
+    "gallery_alts": {
+        "en": [
+            "Spaniard — Harley-Davidson V-Rod 2002 rebuilt by Iron Custom Motors, side profile",
+            "Spaniard, front three-quarter view: adapted chin spoiler and 19-inch front wheel",
+            "Spaniard from the rear: 240 Metzeler Cruisetec tyre and Galfer wave disc",
+            "Spaniard outside the Iron Custom Motors workshop in Cascais",
+            "Lower body kit with new mesh, heat-wrapped headers and the Revolution engine",
+            "Seat re-upholstered in Alcantara with carbon-pattern leather sides",
+            "Rear wheel with Progressive Suspension shock, Galfer disc and the Iron Custom Motors silencer",
+            "Front brake: Galfer wave disc and painted caliper on the 120/70 R19 wheel",
+            "Matte black airbox cover, V-Rod gauges and taller handlebar risers",
+            "Bar-end mirror, new grip and black lever on the Spaniard handlebar"
+        ],
+        "pt": [
+            "Spaniard — Harley-Davidson V-Rod 2002 reconstruída pela Iron Custom Motors, vista lateral",
+            "Spaniard a três quartos de frente: spoiler de queixo adaptado e roda dianteira de 19 polegadas",
+            "Spaniard vista de trás: pneu Metzeler Cruisetec 240 e disco ondulado Galfer",
+            "Spaniard à porta da oficina Iron Custom Motors em Cascais",
+            "Body kit inferior com redes novas, coletores com fita térmica e o motor Revolution",
+            "Banco forrado em Alcantara com laterais em pele de padrão carbono",
+            "Roda traseira com amortecedor Progressive Suspension, disco Galfer e a ponteira Iron Custom Motors",
+            "Travão dianteiro: disco ondulado Galfer e pinça pintada na roda 120/70 R19",
+            "Tampa da caixa de ar em preto mate, mostradores V-Rod e risers mais altos",
+            "Espelho de ponta de guiador, punho novo e manete preta no guiador da Spaniard"
+        ],
+        "ru": [
+            "Spaniard — Harley-Davidson V-Rod 2002, пересобранный Iron Custom Motors, вид сбоку",
+            "Spaniard в три четверти спереди: адаптированный нижний обвес и 19-дюймовое переднее колесо",
+            "Spaniard сзади: шина Metzeler Cruisetec 240 и волновой диск Galfer",
+            "Spaniard у ворот мастерской Iron Custom Motors в Кашкайше",
+            "Нижний обвес с новыми сетками, коллекторы в термоленте и мотор Revolution",
+            "Сиденье, перешитое в Alcantara с боковинами из кожи под карбон",
+            "Заднее колесо с амортизатором Progressive Suspension, диском Galfer и глушителем с клеймом Iron Custom Motors",
+            "Передний тормоз: волновой диск Galfer и окрашенный суппорт на колесе 120/70 R19",
+            "Матово-чёрная крышка воздушного фильтра, приборы V-Rod и удлинённые райзеры",
+            "Зеркало на конце руля, новая грипса и чёрный рычаг на руле Spaniard"
+        ],
+        "uk": [
+            "Spaniard — Harley-Davidson V-Rod 2002, перебудований Iron Custom Motors, вигляд збоку",
+            "Spaniard у три чверті спереду: адаптований нижній обвіс і 19-дюймове переднє колесо",
+            "Spaniard ззаду: шина Metzeler Cruisetec 240 і хвилястий диск Galfer",
+            "Spaniard біля воріт майстерні Iron Custom Motors у Кашкайші",
+            "Нижній обвіс з новими сітками, колектори в термострічці та мотор Revolution",
+            "Сидіння, перешите в Alcantara з боковинами зі шкіри під карбон",
+            "Заднє колесо з амортизатором Progressive Suspension, диском Galfer і глушником з тавром Iron Custom Motors",
+            "Переднє гальмо: хвилястий диск Galfer і пофарбований супорт на колесі 120/70 R19",
+            "Матово-чорна кришка повітряного фільтра, прилади V-Rod і подовжені райзери",
+            "Дзеркало на кінці керма, нова грипса і чорний важіль на кермі Spaniard"
+        ]
+    }
+}
+
+for _related_slug in ("cocktail", "fetish", "the-first"):
+    _related = MARKDOWN_PROJECT_CONFIGS[_related_slug]
+    _related["integrations"].setdefault("reciprocal_projects", []).append("spaniard")
+    _related["modified_iso"] = MARKDOWN_PROJECT_CONFIGS["spaniard"]["published_iso"]
+
 LEGACY_PROJECT_DATA_PATH = SITE_ROOT / "content/projects/legacy_projects_4lang.json"
 LEGACY_PROJECT_ORDER = [
     "inspirium",
@@ -627,24 +765,23 @@ PROJECT_CONFIGS["fighter"]["visible_text_sha256"] = {
     "uk": "d5e061959c0d98b0e59681f50a53fdcbaf64aa2f621ef17b634ebbbf32df9d78",
     "pt": "3f8cc1b58b14eea3dd0155cb717dd5a61b473e3e451b2a4ff0103a66fef21f6c",
 }
-PROJECT_CONFIGS["cocktail"]["visible_text_sha256"] = {
-    "en": "aeb808131a6434feb5cf470eae6860386a25f21438b054d649c55400bfab5788",
-    "pt": "108c29f63c0312314c3edcf6f31986201d76a778914fb6d359b6343a16972850",
-    "ru": "eace9e88de511dae1e34d3939139926db7fe23a2a9f450293a52ceb0d1ac5616",
-    "uk": "a68f14e92058f1afc811e1106c753ba47be815432d090a08325688fb49f9e9e1",
-}
-PROJECT_CONFIGS["fetish"]["visible_text_sha256"] = {
-    "en": "feeabfa58cf00f614015d82657016d988b3ad5a8ca34bc8ad92512e800afa76d",
-    "pt": "b85999b3bf7e9cca0084b237612e0929aaabb97f3507fb45bb3e2912a91cfaff",
-    "ru": "156db88c9c22f6fa9e0d43a5dfd01036625bd606bf1a5615333cf3f5433105f3",
-    "uk": "60b81d6d0e66c3f85a96b1855052013d88f18c801c44ed09a4464297f5634b0c",
-}
-PROJECT_CONFIGS["the-first"]["visible_text_sha256"] = {
-    "en": "6d8b844eb09df82698c3ee6c134350b69e0f892d7de51998e3bd6d549c3c764d",
-    "pt": "0d6d46fedf310bb46f6970e18e362c1b5c71b4248e8725222ea477d9aa2655dd",
-    "ru": "20217f22e09aa31c2664471c2b2178f1d3902951e02de507c12f3471f65701fa",
-    "uk": "1dda45d82a1787335a5a53cf0bfc1ca918e32a2183b34859adb1f3b9a5e0a87f",
-}
+PROJECT_CONFIGS["cocktail"]["visible_text_sha256"] = {'en': '14a67da8dd093c5da45ad7d4b50fd7f718813ccbf723e98b08769538670a6ad8',
+ 'pt': '59326cc7a24f0487cd9d79ad46f459cab62b1273ec7eb811f3e04caac7615bcc',
+ 'ru': 'b6ea613b56142e16848ab5b69cc56e13dcade31caeba8c98826af1514cf18e6b',
+ 'uk': '3957b494dd0be4bc68e4be92e86026a2a9ee344f4e423a9c17496e087b6033bc'}
+PROJECT_CONFIGS["fetish"]["visible_text_sha256"] = {'en': '490b326573ce809a36588b162dd019dba7cd602b7bd2f54b5e8eb67f0d372ece',
+ 'pt': 'a7a9efe0d7c54ca11d0dd30f5d92890cf345bdf77ff0b57b6da31606538178cf',
+ 'ru': 'c9a95a322753242b6513f4f7481db8baf0d48a2337ff1a81021967ad0d1de91f',
+ 'uk': 'cf6afb1e573ce20da03859eb11ad41f13a5fc604984ab3edfdb40eb9ee57bb4b'}
+PROJECT_CONFIGS["the-first"]["visible_text_sha256"] = {'en': '446cda4672eb2567b44ce6f2583f2b8369416e3efff70884c58c96fc45f5b7ab',
+ 'pt': '9f9b53f6c72b6121d2c16e065a987408ac1d4a526ff9de50a220bb50fb383f1f',
+ 'ru': '0dc8cf384522608f75c8d5fcf0a81d8f1232d64c1c14c46f7b607c1ae1abd52e',
+ 'uk': '5b11c88f57869646af0f2ef960dd8e7a95ebef7b42017e0d6010aa8c7116513e'}
+
+PROJECT_CONFIGS["spaniard"]["visible_text_sha256"] = {'en': '8dcea809970cdc4f803fd83f6b28871762122c821a44f1c57d58f708b967ff4b',
+ 'pt': 'a28c0bb9a31f6588051b36668d1707f67569dccee1a75125c3bc1b7c101df6ed',
+ 'ru': '525b274193c5564be0da1eef9e5afeb16c8a033abe87ce75793af1d5892e5cc3',
+ 'uk': '7751d2f24bbdb1108d50fce6cc1ade2135d1a7242c8a401291096f9c7848da6d'}
 
 REDIRECT_CONFIGS = {
     "first": {
@@ -811,6 +948,9 @@ def load_project(slug: str) -> dict:
     if config["source_format"] == "localized_html":
         content = _LEGACY_PROJECT_DATA[slug]["languages"]
     else:
+        expected_hash = config.get("source_sha256")
+        if expected_hash and hashlib.sha256(config["source"].read_bytes()).hexdigest() != expected_hash:
+            raise ValueError(f"Project {slug} approved source checksum mismatch")
         content = parse_project_source(config["source"])
     return {**config, "slug": slug, "content": content}
 

@@ -1,13 +1,15 @@
 # Open Tasks, Risks And Watchlist
 
-Last updated: 2026-09-18
+Last updated: 2026-10-28
 
 This file owns unresolved work, external dependencies and access requirements.
 Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
 
-None.
+- **P-SPANIARD:** local implementation and acceptance checks passed. Clean-clone
+  rebuild, deployment and live Rich Results verification remain in progress.
+  Scope and evidence: [delivery record](reports/P_SPANIARD_REPORT.md).
 
 ## Valve Pricing External Handoff
 

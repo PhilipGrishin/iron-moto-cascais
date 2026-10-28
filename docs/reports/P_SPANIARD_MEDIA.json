@@ -1,0 +1,752 @@
+{
+  "source_photos": [
+    {
+      "file": "Spaniard_HERO.jpg",
+      "bytes": 534301,
+      "sha256": "1748dc584c7357374b7d667f5d7ff5b7bd4203fa3cfaaf97ef4844b77ffc1447"
+    },
+    {
+      "file": "spaniard-01-side-profile.jpg",
+      "bytes": 1176538,
+      "sha256": "0490352025431f287227598a1d18e1d37b1c9507716d03b021cce6d2eda45c00"
+    },
+    {
+      "file": "spaniard-02-front-three-quarter.jpg",
+      "bytes": 1036562,
+      "sha256": "363389b1e347eb53cee8e5fcfcffc60556cac43d95e0faa52a6afe4a490466b6"
+    },
+    {
+      "file": "spaniard-03-rear-three-quarter-240.jpg",
+      "bytes": 996415,
+      "sha256": "3752e969aa4e6246761faa4693978b896ff0c98fba6fb9176821142d82c9039e"
+    },
+    {
+      "file": "spaniard-04-at-the-workshop.jpg",
+      "bytes": 1170774,
+      "sha256": "7507c2701969a72079e3ad50af07a812530d4c7ea15d6b33f26713b58d74645e"
+    },
+    {
+      "file": "spaniard-05-chin-spoiler-engine.jpg",
+      "bytes": 1176098,
+      "sha256": "f6d0f3c5786b0ae9e1751087c23731d7d0da3f49c491024b7431b0da51d51792"
+    },
+    {
+      "file": "spaniard-06-seat-alcantara-carbon.jpg",
+      "bytes": 735113,
+      "sha256": "339e7410ff08990833215508495efc4649280d345969de3be818f9cc596a079b"
+    },
+    {
+      "file": "spaniard-07-rear-wheel-shock-silencer.jpg",
+      "bytes": 1115567,
+      "sha256": "4489c246ca65afc838defe758dfc720101d26f9045264e21a07e7e370c5a5e3c"
+    },
+    {
+      "file": "spaniard-08-front-brake-galfer.jpg",
+      "bytes": 999529,
+      "sha256": "bda1d97094ae5f1d8db077c0fa20ddaf9e09d0d8b476edff067dd09e132cd61c"
+    },
+    {
+      "file": "spaniard-09-tank-gauges-risers.jpg",
+      "bytes": 879707,
+      "sha256": "e427476247ae9a6bd3002ee59a0fd9bbe1cef075e345c46a8739dc226aa2803f"
+    },
+    {
+      "file": "spaniard-10-bar-end-mirror-grips.jpg",
+      "bytes": 736318,
+      "sha256": "9c7db951d78fa6e29e3bab292e99b4c8aff16159fda9a4639b27cec9b2766760"
+    }
+  ],
+  "output_files": [
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-01-1600.avif",
+      "bytes": 297314,
+      "sha256": "0fb564977ebd1ecc5a35c43c96c116bcf7c14d942000a2bc8969e3d6c537590a",
+      "dimensions": [
+        1600,
+        1201
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-01-1600.jpg",
+      "bytes": 485226,
+      "sha256": "74f73caaf7e1cd07b7ae9ea8126a033c3dd683f5b2d641afb0612143fe8a2be9",
+      "dimensions": [
+        1600,
+        1201
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-01-1600.webp",
+      "bytes": 362856,
+      "sha256": "32d3e9376bb914522b90907f3864fde3e511706a5359971c79e8b0c7e14de7d0",
+      "dimensions": [
+        1600,
+        1201
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-01-800.avif",
+      "bytes": 90230,
+      "sha256": "1d8634356603f6cb0f0ff490ea2717e37ace2c901bb0dace8b2f4aa5271e15b6",
+      "dimensions": [
+        800,
+        601
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-01-800.jpg",
+      "bytes": 132117,
+      "sha256": "ad86e3992c631601fce83116a9a54de1a2d025709bd7c1e8c9d39dd101888cbe",
+      "dimensions": [
+        800,
+        601
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-01-800.webp",
+      "bytes": 101526,
+      "sha256": "c482b4e02b2cd933fc75d19d55d360135a45ae5542b051209ad48260e8e2f0b4",
+      "dimensions": [
+        800,
+        601
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-02-1600.avif",
+      "bytes": 363650,
+      "sha256": "d9f6ffb243118ea4105260bfb67c464fe581f2f0721b28d73f722f724224cd8f",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-02-1600.jpg",
+      "bytes": 716303,
+      "sha256": "96243c4225aef44cc88136adeba5f2dc5f92459fe3b7bbb0ddc7d95a1152de93",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-02-1600.webp",
+      "bytes": 473234,
+      "sha256": "45bd24af6cd8b5ab1f0aa52183e5f490f7dfb3b76ed4b621e9af69833490d354",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-02-800.avif",
+      "bytes": 120259,
+      "sha256": "c8b4d86a4237ee526bb721cae5e873b1a9916ef90a858f67ea50d39811a4e01c",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-02-800.jpg",
+      "bytes": 201550,
+      "sha256": "97816fea8b73a7dff6e11279e51afe7df995c4186414d29515ae535c4b3e4db8",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-02-800.webp",
+      "bytes": 143764,
+      "sha256": "fcd091a5fa8522ce931750003fe1b36661620672db3b1daf0ab04171617d3fbb",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-03-1600.avif",
+      "bytes": 346865,
+      "sha256": "9b4774182b25c38bcde879f345308968a5dff6eafc555e9f1de2665d7bd3d9e6",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-03-1600.jpg",
+      "bytes": 690389,
+      "sha256": "f11f92889a3c92fcce0384b381f1e033eda4121d471a6abbbb2eae19ec8f862a",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-03-1600.webp",
+      "bytes": 456342,
+      "sha256": "74068da8f477376d6bd3230b7880bb516810bf04d7ee4b24b0063f862fa92a74",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-03-800.avif",
+      "bytes": 117470,
+      "sha256": "4e3cc4533c251a26d9e6ad65f28c08ccfb7f2505769d59c75c7fae594238c9fa",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-03-800.jpg",
+      "bytes": 195434,
+      "sha256": "3ad42b05da5dbab7ce1e5c3fc7839d85271bc601df951eb845c58cbe29afb92a",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-03-800.webp",
+      "bytes": 138942,
+      "sha256": "8193fd046f0bca5776f4fd55e4845023da4611c3416e9799faf83f21fc1b0f74",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-04-1600.avif",
+      "bytes": 296961,
+      "sha256": "fe856c65b56ff77918d2d202397007c17359618ac3b01ba5023526ca94069c7b",
+      "dimensions": [
+        1600,
+        1201
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-04-1600.jpg",
+      "bytes": 487599,
+      "sha256": "b51641bbfb418ea0dd33cd05c03cd827a5be2ea5bcbd704f2034cdfc6c20a216",
+      "dimensions": [
+        1600,
+        1201
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-04-1600.webp",
+      "bytes": 365416,
+      "sha256": "92faa77908821e6c1cfe25d089f04dcfbe3fc54de64c19ae0063a662d45679e4",
+      "dimensions": [
+        1600,
+        1201
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-04-800.avif",
+      "bytes": 93647,
+      "sha256": "84bf3913c7d6e6b802b28f1b66c9dc7dc529f4f25907d8eb96ccd8d46d84292e",
+      "dimensions": [
+        800,
+        601
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-04-800.jpg",
+      "bytes": 137070,
+      "sha256": "0c9567840d56945ff0fd92ce927bb35a140df1908b90391b2093766bce3d1b12",
+      "dimensions": [
+        800,
+        601
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-04-800.webp",
+      "bytes": 106644,
+      "sha256": "a0a362dca8f4eb735898f8f7cfaab1055b5c2a6db303a69a9795d09673b7f482",
+      "dimensions": [
+        800,
+        601
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-05-1600.avif",
+      "bytes": 443853,
+      "sha256": "d391e9860dbde6b942d9b729825401e077fc2340c45bff899187886bb408a68d",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-05-1600.jpg",
+      "bytes": 812135,
+      "sha256": "7cc22fe6d898e54c7fed926b7437451e909696d95627fe214d1d4092adeed8aa",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-05-1600.webp",
+      "bytes": 580198,
+      "sha256": "519d3cb20121e63c3993afd50e9ded4da9e71a7d9b3ac4b3108c446766ca5ef3",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-05-800.avif",
+      "bytes": 146651,
+      "sha256": "5ff845e196f276252317fcd19cb5180df73f52a31bc973e707a46d143f3f2b6c",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-05-800.jpg",
+      "bytes": 238291,
+      "sha256": "e7e2685944c4f2835c4b435322b264cdfe9a6a29933ad860b99e7b06ef806957",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-05-800.webp",
+      "bytes": 179592,
+      "sha256": "f9c9fc8b01c93381e6424098d5b40d7027554d2d9f8d1bf7107e3889d30e46d5",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-06-1600.avif",
+      "bytes": 200797,
+      "sha256": "c09a3d285502d24875903bd8994cd3796e8bf50f94871b9b722c95adf64ad902",
+      "dimensions": [
+        1600,
+        1928
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-06-1600.jpg",
+      "bytes": 518687,
+      "sha256": "ee2a98c2d74cfec59c9d3c89bd4a1af58fa377c0d94ec249a92c53bcc66f9738",
+      "dimensions": [
+        1600,
+        1928
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-06-1600.webp",
+      "bytes": 286424,
+      "sha256": "089328924a457a83bf0031239cb4759083be39236591ae121d435b8d46fe9d41",
+      "dimensions": [
+        1600,
+        1928
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-06-800.avif",
+      "bytes": 83193,
+      "sha256": "f4c9fef1fdc116d16b648c9b77561fd7a1d421bc20e4a299eee0f2275d307f10",
+      "dimensions": [
+        800,
+        964
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-06-800.jpg",
+      "bytes": 166349,
+      "sha256": "1a7b8a1f5b9863e6cfc8e910ee52601755337b9b5d69ae54f70967272c1d8562",
+      "dimensions": [
+        800,
+        964
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-06-800.webp",
+      "bytes": 114478,
+      "sha256": "ce14267283267d33933ac2eb3a860a6dca7f75e061ef237516e840c46f55ec88",
+      "dimensions": [
+        800,
+        964
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-07-1600.avif",
+      "bytes": 406454,
+      "sha256": "e4b259f7f01277567a9bf20881456b625c3147dd74f39eea89aa57056ecec559",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-07-1600.jpg",
+      "bytes": 772573,
+      "sha256": "f05762b0018e0ca550c6a363f5935c43cc5fba6f69410843168a4eb7cb891d1e",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-07-1600.webp",
+      "bytes": 541168,
+      "sha256": "31dcf954e8fd3be9faea99a19afc69d63fdaf68aa75b6626656c7397967e0785",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-07-800.avif",
+      "bytes": 131258,
+      "sha256": "0f51c7578f92ec2d6d00d03f565796eaa0b70b6758d8ae613c9c0d3945accfec",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-07-800.jpg",
+      "bytes": 222764,
+      "sha256": "023bb75f833c3e3f9680fa54c35d4a7bf708d6148f722a919cb2398daf99b63e",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-07-800.webp",
+      "bytes": 169846,
+      "sha256": "f4d05d80ca0b76944b7a90544eefb16f3e4beb03e06a79eaffebef3780115a84",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-08-1600.avif",
+      "bytes": 333086,
+      "sha256": "c5a296f5c7faeba7d23d5f21cf368ee71b1fd997dfe4e23adcb306161956c166",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-08-1600.jpg",
+      "bytes": 699950,
+      "sha256": "d21efd5478341c5c906d755e0b704029438a16f95a53a4a1051682ac3751ac7f",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-08-1600.webp",
+      "bytes": 433266,
+      "sha256": "dbdce461372f896b420ddf20188630a93068aa27f617497510584fbb92053cb2",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-08-800.avif",
+      "bytes": 115721,
+      "sha256": "6b5cb5390439d3c18d13a24bc1285e0163574a6f10f720800acf76dac1fa1aaf",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-08-800.jpg",
+      "bytes": 213002,
+      "sha256": "791f142eb058b36dcabeef2c35df5376925564df61397eb2c9733e9ec70ce4c6",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-08-800.webp",
+      "bytes": 144324,
+      "sha256": "b6a610868b33e29e20ea43adc7cce6388e208e040a422ffdc760809926c62ff1",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-09-1600.avif",
+      "bytes": 291258,
+      "sha256": "354ddec4ab4bd4418d815ca38eddb7149c1383fd632ca49c78e912810c900cb1",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-09-1600.jpg",
+      "bytes": 623777,
+      "sha256": "701c5e9a71b1d33fd0233bada6a41fb641f2415f0b476784c377b73adc48d5b3",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-09-1600.webp",
+      "bytes": 384726,
+      "sha256": "3c764bcf6088938672293359ad08020edd5277ea92de1373b369418f7cbfa765",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-09-800.avif",
+      "bytes": 117348,
+      "sha256": "460fd9f0983531e9a27967f8a1a04d73a9e896900de783adcb2226fdff641639",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-09-800.jpg",
+      "bytes": 200372,
+      "sha256": "216f99e54c6e43cb4da6917213865e9631b3cb557f47714b0fcca681654fb9b9",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-09-800.webp",
+      "bytes": 142324,
+      "sha256": "1200fb5e918c4fc7f4104941f03469a7346cee996b880596fd8f9397852e9bd4",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-10-1600.avif",
+      "bytes": 196875,
+      "sha256": "0d32fac6744754e3374ee2089da7c4193476561a3d1eb40553cc38fdd108984f",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-10-1600.jpg",
+      "bytes": 539760,
+      "sha256": "bff8ead7b0ff95cb505410d66cd9b8e2579154281c5dfff37cd4afdabf380231",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-10-1600.webp",
+      "bytes": 292456,
+      "sha256": "2906723eac8c1c3ccbe71d1265720fc56acea6a3037907e71455c86828a85b2f",
+      "dimensions": [
+        1600,
+        2131
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-10-800.avif",
+      "bytes": 89671,
+      "sha256": "26b08e8c9837cd3d52ef94094e2a75b8822fd340422958a9693d2ad01c24d365",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-10-800.jpg",
+      "bytes": 185235,
+      "sha256": "9b75c0ade05588808771affbc1c41b544230289e575c2e65517b93802e395d86",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/gallery/spaniard/spaniard-10-800.webp",
+      "bytes": 122300,
+      "sha256": "b64938253630575d7b839f5373a70aace5f253cd9cedec05cbae6ff1694b2dcb",
+      "dimensions": [
+        800,
+        1066
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/spaniard-1600.avif",
+      "bytes": 102178,
+      "sha256": "d908ed5a495b1845e77efeeca692c95c122c1b69121257ce477bbd684f271fd5",
+      "dimensions": [
+        1600,
+        881
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/spaniard-1600.jpg",
+      "bytes": 229719,
+      "sha256": "ae5f481f770b0fd7b83dcc84de96b983d55671843a32f33ebdd34003938df5e4",
+      "dimensions": [
+        1600,
+        881
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/spaniard-1600.webp",
+      "bytes": 129024,
+      "sha256": "69f8263066950dbd901c4e22c341fd82d6eb5d087ac11c85332e0bd5bec1e463",
+      "dimensions": [
+        1600,
+        881
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/spaniard-2400.avif",
+      "bytes": 173661,
+      "sha256": "6b19b224d4d8f2ae13a2eb10f91d490567e5daf5ccce3563c77acd60a5e5cea0",
+      "dimensions": [
+        2400,
+        1321
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/spaniard-2400.jpg",
+      "bytes": 461926,
+      "sha256": "1455aa9f7d5a21da37c698ca5d14000a1da040a3289f2afaca6b49eb9a656947",
+      "dimensions": [
+        2400,
+        1321
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/spaniard-2400.webp",
+      "bytes": 237282,
+      "sha256": "e81d4505ab2a016215119845ad84f68199de13df1915a58515834f5c9c96aca8",
+      "dimensions": [
+        2400,
+        1321
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/spaniard-800.avif",
+      "bytes": 36684,
+      "sha256": "2b107b9acbec44ddaa7b765ea0f59d0184beed06c502ed3f0f493d8ad643687b",
+      "dimensions": [
+        800,
+        440
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/spaniard-800.jpg",
+      "bytes": 66393,
+      "sha256": "e5c43968187063b1a5fd9b341f6f835ba3d25206c4e5cadd456d0a03ab890bef",
+      "dimensions": [
+        800,
+        440
+      ],
+      "exif": false
+    },
+    {
+      "file": "photos/projects/spaniard-800.webp",
+      "bytes": 42852,
+      "sha256": "e96800c3aa013fd7ee11da082b5558f382fb90f88324c2940278f5b4aaa89333",
+      "dimensions": [
+        800,
+        440
+      ],
+      "exif": false
+    }
+  ],
+  "total_bytes": 19540689
+}

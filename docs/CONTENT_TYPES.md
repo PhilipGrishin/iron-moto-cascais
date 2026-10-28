@@ -247,8 +247,10 @@ Ownership:
 - `news_data.py` `NEWS_ARTICLES`.
 - `build_news.py` renders the hub and articles.
 
-News articles currently use the responsive CSS-background hero pattern, not
-the Blog `<picture>` pattern. Keep their preload and CSS candidates aligned
+News articles normally use responsive CSS-background heroes. An article with
+`projectMedia` reuses its project's existing AVIF/WebP/JPEG variants through
+`responsive_images.py`, with one responsive AVIF preload matching its picture
+and one high-priority hero image. Keep preload and rendered candidates aligned
 through `hero_images.py` and `apply_seo_meta.py`. Other stable rules mirror
 Blog for responsive local media, real dates, localized links and
 schema-to-visible-content alignment. `NewsArticle` is used for event and
@@ -260,8 +262,20 @@ and are parsed by the registered article data rather than copied into generated
 HTML by hand. When a delivery includes a gallery, register its source order,
 dimensions and localized ALT pattern in `NEWS_ARTICLES`; the common renderer
 owns the responsive AVIF/WebP/JPEG `<picture>` markup and the contained
-horizontal scroll-snap layout. Import registered hero and gallery sources with
-`import_news_images.py`, then use the complete News Workflow.
+horizontal scroll-snap layout. Project-backed galleries preserve the full
+photo within each slide, including portrait photos, and read each image's real
+dimensions. Import ordinary News sources with `import_news_images.py`; for
+`projectMedia`, use `import_project_images.py` once and reuse the files.
+
+The BBQ and Spaniard approved Markdown deliveries are byte-checksum pinned.
+The shared parser accepts explicit `[LINK: path — label]` tokens and standard
+same-language Markdown links, and requires one H1, one lead, four sections and
+the gallery after section two. `validate_news.py` protects complete parsed
+copy and gallery contracts in all languages. Publication labels for new
+deliveries derive from their registered timestamp. `relatedSlugs` pins an
+article's editorial selection; preserve existing selections when a new story
+must not change older content or dates. Unpinned selections include all other
+registered articles.
 
 Commands: `scripts/build/README.md`, **News workflow**.
 
@@ -270,7 +284,7 @@ Commands: `scripts/build/README.md`, **News workflow**.
 Ownership:
 
 - `project_pages_data.py` is the complete project and redirect registry.
-- Fighter, Cocktail, Fetish and The First use approved Markdown under
+- Fighter, Cocktail, Fetish, The First and Spaniard use approved Markdown under
   `content/projects/`; the 10 migrated project pages use
   `content/projects/legacy_projects_4lang.json`, which preserves their reviewed
   localized main content and media structure.
@@ -298,11 +312,15 @@ Stable rules:
   declared Custom and Harley integrations.
 - Contextual project-to-project relationships belong in
   `reciprocal_projects`. The project validator requires same-language links in
-  both directions without duplicating visible copy in generated HTML.
+  both directions without duplicating visible copy in generated HTML. The
+  Markdown renderer appends a named link only when the approved body/closing
+  does not already link to the target. Register both directions and update the
+  affected modified dates and visible-text pins. Approved Markdown can declare
+  `source_sha256`; a mismatch stops the build before rendering.
 - The four generic related rows on the 10 legacy projects are rewritten at
   render time from the combined 19-target related-description registry. Their
   frozen `main_html` remains unchanged; only `visible_text_sha256` pins move
-  when the registry produces new visible copy. The four Markdown-backed
+  when the registry produces new visible copy. Markdown-backed
   projects do not receive legacy related rows.
 - Generated project HTML must not contain `window.ICM_I18N_PAGE`; localized
   project copy belongs in the registered source data.

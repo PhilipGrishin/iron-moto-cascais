@@ -9,9 +9,9 @@ import re
 from pathlib import Path
 
 from bs4 import BeautifulSoup
-from PIL import Image
 
 from build_output import write_html_if_changed, write_text_if_changed
+from responsive_images import image_dimensions, picture_html
 from page_meta import OG_LOCALES
 from project_pages_data import (
     PROJECT_CONFIGS,
@@ -80,11 +80,6 @@ def apply_cache_bust(soup: BeautifulSoup) -> None:
         raise ValueError(f"Project template is missing cache-busted assets: {sorted(missing)}")
 
 
-def image_dimensions(path: str) -> tuple[int, int]:
-    with Image.open(SITE_ROOT / path.lstrip("/")) as image:
-        return image.size
-
-
 def localized_path(slug: str, lang: str) -> str:
     prefix = "" if lang == "en" else f"{lang}/"
     return f"{prefix}projects/{slug}/"
@@ -113,43 +108,6 @@ def replace_hreflangs(soup: BeautifulSoup, slug: str) -> None:
     x_default["hreflang"] = "x-default"
     x_default["href"] = page_url(slug, "en")
     anchor.insert_after(x_default)
-
-
-def picture_html(
-    base: str,
-    widths: list[int],
-    *,
-    alt: str,
-    hero: bool = False,
-    sizes: str | None = None,
-) -> str:
-    candidates = []
-    for width in widths:
-        dimensions = image_dimensions(f"{base}-{width}.webp")
-        candidates.append((width, dimensions))
-    largest_width, (largest_w, largest_h) = candidates[-1]
-    srcset_avif = ", ".join(f"{base}-{width}.avif {width}w" for width, _ in candidates)
-    srcset_webp = ", ".join(f"{base}-{width}.webp {width}w" for width, _ in candidates)
-    has_jpeg_fallback = all(
-        (SITE_ROOT / f"{base.lstrip('/')}-{width}.jpg").exists()
-        for width, _ in candidates
-    )
-    fallback_extension = "jpg" if has_jpeg_fallback else "webp"
-    fallback_srcset = ", ".join(
-        f"{base}-{width}.{fallback_extension} {width}w" for width, _ in candidates
-    )
-    sizes = sizes or ("100vw" if hero else "(max-width:760px) 50vw, 25vw")
-    picture_class = ' class="bg"' if hero else ""
-    image_attrs = (
-        ' decoding="async" fetchpriority="high"'
-        if hero
-        else ' decoding="async" loading="lazy"'
-    )
-    return f'''<picture{picture_class}>
-<source srcset="{srcset_avif}" sizes="{sizes}" type="image/avif"/>
-<source srcset="{srcset_webp}" sizes="{sizes}" type="image/webp"/>
-<img alt="{html.escape(alt, quote=True)}"{image_attrs} height="{largest_h}" sizes="{sizes}" src="{base}-{largest_width}.{fallback_extension}" srcset="{fallback_srcset}" width="{largest_w}"/>
-</picture>'''
 
 
 def apply_exhibition_media(project: dict, lang: str, main) -> None:
@@ -205,6 +163,17 @@ def render_markdown_project_main(project: dict, lang: str) -> str:
         )
         gallery.append(f'<div class="gtile">{image}</div>')
 
+    # Existing contextual prose stays unchanged; append only missing reciprocal links.
+    source = BeautifulSoup(content["body_html"] + content["closing_html"], "html.parser")
+    related_links = []
+    for related_slug in project.get("integrations", {}).get("reciprocal_projects", []):
+        target = f"{prefix}/projects/{related_slug}/"
+        if source.find("a", href=target) is not None:
+            continue
+        name = load_project(related_slug)["content"][lang]["h1"]
+        related_links.append(f'<a class="btn btn-ghost" href="{target}">{html.escape(name)}</a>')
+    related = '<div class="btns">' + "".join(related_links) + '</div>' if related_links else ""
+
     return f'''<main>
 <section class="subpage">
 {hero}
@@ -239,6 +208,7 @@ def render_markdown_project_main(project: dict, lang: str) -> str:
 <section class="cta-back generated-project-closing">
 <div class="container">
 <div class="lead">{content["closing_html"]}</div>
+{related}
 </div>
 </section>
 </main>'''

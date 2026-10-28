@@ -92,6 +92,7 @@ PORTFOLIO_ORDER = (
     "cocktail",
     "fetish",
     "the-first",
+    "spaniard",
 )
 
 PORTFOLIO = {
@@ -172,4 +173,18 @@ PORTFOLIO = {
             "uk": "The First — повністю кастомний проєкт 2012 року на базі Harley-Davidson Night Rod Special ABS 2009 року. Пневмопідвіска спереду й ззаду та власна комп'ютерна система регулюють кліренс від 2 до 12 см.",
         },
     },
+}
+
+
+PORTFOLIO["spaniard"] = {
+    "name": "Spaniard",
+    "projectMedia": "/photos/projects/spaniard",
+    "image": "/photos/projects/spaniard-2400.jpg",
+    "dims": (2400, 1321),
+    "copy": {
+        "en": "Spaniard — «Испанец» to the Russian-speaking half of our workshop — is a Harley-Davidson V-Rod from 2002, the very first year of the Revolution engine, the liquid-cooled 1,130 cc V-twin Harley developed together with Porsche.",
+        "pt": "A Spaniard — «Испанец», o Espanhol, para a metade russófona da nossa oficina — é uma Harley-Davidson V-Rod de 2002, o primeiríssimo ano do motor Revolution, o V-twin de 1 130 cc com refrigeração líquida que a Harley desenvolveu com a Porsche.",
+        "ru": "Spaniard — для нас просто «Испанец» — это Harley-Davidson V-Rod 2002 года, самого первого года мотора Revolution, V-образной «двойки» объёмом 1 130 см³ с жидкостным охлаждением, которую Harley делала вместе с Porsche.",
+        "uk": "Spaniard — для нас просто «Іспанець» — це Harley-Davidson V-Rod 2002 року, найпершого року мотора Revolution, V-подібної «двійки» об'ємом 1 130 см³ з рідинним охолодженням, яку Harley створювала разом із Porsche."
+    }
 }

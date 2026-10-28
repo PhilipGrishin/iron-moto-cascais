@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-09-18
+Last updated: 2026-10-28
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -8,6 +8,11 @@ deployed public identifiers and cache-bust values. Operating rules live in
 `scripts/build/README.md`.
 
 ## Status And Evidence
+
+- P-SPANIARD, **implemented and locally verified**, 2026-10-28; production
+  verification pending. The approved project and News delivery are registered
+  in all languages with one shared photo set, catalog/hub/menu integrations and
+  reciprocal links. See the [delivery record](reports/P_SPANIARD_REPORT.md).
 
 - S-PRICE-VALVES-FROM, **deployed and production-verified** 2026-09-18:
   implementation/artifact `108684b3`, Pages run `35333451302`. Approved
@@ -33,7 +38,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
   and limits. The initial audit's failed gates are corrected;
   [the readiness audit](reports/MAINTENANCE_READINESS_2026_09_18.md) remains
   historical evidence. Private intake originals were preserved.
-- Current local/production sitemap SHA-256:
+- S-PRICE-VALVES-FROM historical sitemap SHA-256 (2026-09-18):
   `30bba88f734b189177f0d54f9b558e8d0f0f491829b40434d8141fc5ab3a5492`.
 - Historical delivery evidence below remains dated evidence, not a claim that
   the current checkout passes every release gate.
@@ -198,18 +203,18 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | Inventory | Current value | Canonical evidence |
 |---|---:|---|
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
-| English path patterns | 59 | `build_sitemap.py` `PAGES` |
-| Indexable sitemap URLs | 236 | parsed `sitemap.xml` `<url>` entries |
-| Tracked HTML files | 253 | git ls-files enumeration; four added legacy aliases |
-| Indexable HTML files | 236 | sitemap-to-file resolution |
+| English path patterns | 61 | `build_sitemap.py` `PAGES` |
+| Indexable sitemap URLs | 244 | parsed `sitemap.xml` `<url>` entries |
+| Tracked HTML files | 261 | tracked inventory plus eight new P-SPANIARD pages |
+| Indexable HTML files | 244 | sitemap-to-file resolution |
 | Non-indexed HTML files | 17 | `404.html`, 12 localized project redirect stubs and 4 `thank-you` pages |
-| Sitemap lastmod tags | 236 | parsed `sitemap.xml` |
-| Unique sitemap lastmod values | 64 | parsed rebuilt `sitemap.xml`, 2026-09-18; valve-price task: 32 content changes, 204 unchanged dates |
+| Sitemap lastmod tags | 244 | parsed `sitemap.xml` |
+| Unique sitemap lastmod values | 66 | parsed sitemap, 2026-10-28; P-SPANIARD: 8 new URLs, 28 changed dates, 208 unchanged |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
-| Project detail pages | 14 | `PROJECT_TILES` |
-| Data-driven project definitions | 14 | `PROJECT_CONFIGS` |
+| Project detail pages | 15 | `PROJECT_TILES` |
+| Data-driven project definitions | 15 | `PROJECT_CONFIGS` |
 | Blog posts | 9 | `BLOG_POSTS` |
-| News articles | 4 | `NEWS_ARTICLES` |
+| News articles | 5 | `NEWS_ARTICLES` |
 | Harley Hub English page patterns | 3 | `harley_hub_data.py` `PAGE_CONFIG` |
 | Generated general/utility localized entries | 7 | `build_new_pages.py` / `new_pages_data.py` |
 | Authorized Dealer English page patterns | 2 | `build_authorized_dealer.py` |
@@ -229,10 +234,10 @@ Registry alignment on the evidence date:
 
 | Registry | Entries | Relationship |
 |---|---:|---|
-| `build_sitemap.py` `PAGES` | 59 | canonical English indexable paths |
-| `localize_internal_links.py` `LOCALIZED_PATHS` | 59 | matches `PAGES` after normalization |
-| `build_i18n.py` `MAIN_PAGES` | 31 | English sources localized by the generic i18n flow |
-| `project_pages_data.py` `PROJECT_CONFIGS` | 14 | project details rendered directly in four languages |
+| `build_sitemap.py` `PAGES` | 61 | canonical English indexable paths |
+| `localize_internal_links.py` `LOCALIZED_PATHS` | 61 | matches `PAGES` after normalization |
+| `build_i18n.py` `MAIN_PAGES` | 32 | English sources localized by the generic i18n flow |
+| `project_pages_data.py` `PROJECT_CONFIGS` | 15 | project details rendered directly in four languages |
 
 There is no active `EN_PAGES` registry. The canonical English page registry is
 `build_sitemap.py` `PAGES`.
@@ -270,7 +275,7 @@ families owned by
 `scripts/build/content/upgrades_hub_copy_4lang.md` and the shared
 `build_service_custom_hubs.py` renderer. Their current pages use distinct
 search-intent H1s, six source-matched FAQ items, localized lead CTAs and the
-`Service`/`FAQPage`/`BreadcrumbList` graph. The Custom hub lists all 14
+`Service`/`FAQPage`/`BreadcrumbList` graph. The Custom hub lists all 15
 registered projects in `PROJECT_TILES` order. Parts and Upgrades no longer use
 the legacy generic-i18n source path.
 
@@ -348,9 +353,10 @@ release size.
 - `/projects/cocktail/`
 - `/projects/fetish/`
 - `/projects/the-first/`
+- `/projects/spaniard/`
 
-All 14 project details are data-driven and rendered through
-`build_project_pages.py`. Fighter, Cocktail, Fetish and The First use approved
+All 15 project details are data-driven and rendered through
+`build_project_pages.py`. Fighter, Cocktail, Fetish, The First and Spaniard use approved
 Markdown; the 10
 migrated projects use the versioned localized source at
 `content/projects/legacy_projects_4lang.json`. Generated project HTML contains
@@ -384,6 +390,7 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 
 ### News
 
+- `/news/spaniard-v-rod-2002-rebuild/`
 - `/news/workshop-bbq-party-august-2026/`
 - `/news/ericeira-kustom-fest-2026/`
 - `/news/opens-new-workshop-in-cascais/`
@@ -409,8 +416,11 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 - The four home pages render 9 curated Google-review cards and the matching
   9 JSON-LD `Review` items from `assets/reviews-curated.json`. Their
   `AggregateRating` remains independently sourced from the Worker snapshot and
-  is currently **confirmed** `4.9` from `29` reviews: upstream and production
-  snapshot dated 2026-09-14 plus live Worker verification on 2026-09-18.
+  is **confirmed in the synchronized snapshot** as `4.9` from `31` reviews.
+  Correction, 2026-10-28: the previous current-state claim of 29 was superseded
+  by automated refresh `660c65b3` (2026-09-21). Verified by reading that commit
+  and `assets/reviews-snapshot.json`; P-SPANIARD does not refresh reviews or
+  claim a new live Worker/account check.
   The local checkout was synchronized before stabilization; it no longer has
   the older `5.0` from `26` aggregate.
   All 52 commercial trust strips and their runtime translations now derive
@@ -442,14 +452,15 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   contract with a centered portrait `9 / 16` player. The four new pages have
   five localized FAQ items, and the preceding tubeless-conversion article
   links back to the case in every language.
-- News article heroes remain in the CSS-background family protected by the
-  responsive CSS hero contract; they are not `<picture>` heroes.
+- Existing News heroes retain the responsive CSS-background contract. Spaniard
+  News uses the project's existing responsive picture variants and one aligned
+  AVIF preload. The shared hero validator covers this delivery path.
 - Registered News galleries use AVIF/WebP/JPEG candidates with explicit
   dimensions and native lazy loading inside a contained horizontal scroll-snap
-  region. The BBQ article is the first registered News page using this shared
-  gallery path.
+  region. The BBQ and Spaniard approved-source articles use this shared
+  gallery path; Spaniard reuses its project files and preserves portrait framing.
 - Project heroes retain responsive `<picture>` delivery. Migrated projects,
-  Cocktail, Fetish and The First use AVIF/WebP sources with a JPEG fallback;
+  Cocktail, Fetish, The First and Spaniard use AVIF/WebP sources with a JPEG fallback;
   Fighter retains its registered AVIF/WebP media set. Every project page has one responsive AVIF
   preload and exactly one `fetchpriority="high"` hero image.
 - Registered project exhibition media is rendered through the common project
@@ -460,7 +471,7 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   booking, WhatsApp, header/mobile and footer chrome strings against that
   same-language baseline.
 - The desktop and mobile Projects menus derive from `PROJECT_TILES`, the same
-  ordered registry as `/projects/`. Sitemap-wide validation protects all 14
+  ordered registry as `/projects/`. Sitemap-wide validation protects all 15
   localized project links on every indexable page.
 - `llms.txt` is generated from the English page registry, maintained page-name
   sources, metadata and `docs/BUSINESS_FACTS.md`.

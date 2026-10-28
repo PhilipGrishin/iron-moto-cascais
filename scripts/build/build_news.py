@@ -24,6 +24,7 @@ from hero_images import (
     hero_preload_links,
     responsive_hero_background_style,
 )
+from responsive_images import image_dimensions, picture_html
 from build_output import write_html_if_changed
 from news_data import (
     NEWS_HUB_META, NEWS_HUB_BODY,
@@ -74,6 +75,30 @@ def format_gallery_alt(pattern, number):
     if pattern.endswith(" N"):
         return f"{pattern[:-1]}{number}"
     raise ValueError(f"Gallery ALT pattern is missing N: {pattern}")
+
+
+def article_hero_path(article):
+    if article.get("projectMedia"):
+        return f"{article['imageBase']}-2400.jpg"
+    return f"{article['imageBase']}-{article['imageHero']:02d}-1600.jpg"
+
+
+def article_card_background(article):
+    if article.get("projectMedia"):
+        base = article["imageBase"]
+        return (
+            f"background-image:url('{base}-800.jpg');background-image:image-set("
+            f"url('{base}-800.avif') type('image/avif'), "
+            f"url('{base}-800.webp') type('image/webp'), "
+            f"url('{base}-800.jpg') type('image/jpeg'))"
+        )
+    return hero_background_css(article_hero_path(article), 768)
+
+
+def related_article_items(slug, article):
+    allowed = article.get("relatedSlugs", NEWS_ARTICLES)
+    return [(key, data) for key, data in NEWS_ARTICLES.items() if key != slug and key in allowed]
+
 
 NEWS_RELATED_I18N = {
     "en": {
@@ -277,7 +302,6 @@ def render_hub():
     for i, (slug, data) in enumerate(articles_sorted, start=1):
         ameta = data["meta"]["en"]
         abody = data["body"]["en"]
-        hero_img = f"{data['imageBase']}-{data['imageHero']:02d}-1600.jpg"
         article_url = f"{DOMAIN}/news/{slug}/"
         item_list.append({
             "@type": "ListItem",
@@ -287,7 +311,7 @@ def render_hub():
         })
         articles_html += f'''
 <a class="news-card" href="/news/{slug}/">
-<div class="img" style="{hero_background_css(hero_img, 768)}"></div>
+<div class="img" style="{article_card_background(data)}"></div>
 <div class="body">
 <div class="date">{abody["publishedLabel"]}</div>
 <h3>{abody["h1Crumb"]}</h3>
@@ -350,10 +374,9 @@ def render_hub():
     for i, (slug, data) in enumerate(articles_sorted, start=1):
         ameta = data["meta"]["en"]
         abody = data["body"]["en"]
-        hero_img = f"{data['imageBase']}-{data['imageHero']:02d}-1600.jpg"
         articles_html_i18n += f'''
 <a class="news-card" href="/news/{slug}/">
-<div class="img" style="{hero_background_css(hero_img, 768)}"></div>
+<div class="img" style="{article_card_background(data)}"></div>
 <div class="body">
 <div class="date" data-i18n="newsHub.{slug}.date">{abody["publishedLabel"]}</div>
 <h3 data-i18n="newsHub.{slug}.title">{abody["h1Crumb"]}</h3>
@@ -399,13 +422,15 @@ def render_article(slug, article):
     en_meta = article["meta"]["en"]
     en_body = article["body"]["en"]
     n_img = article["imageCount"]
-    hero_img_path = f"{article['imageBase']}-{article['imageHero']:02d}-1600.jpg"
+    hero_img_path = article_hero_path(article)
     hero_img_url = f"{DOMAIN}{hero_img_path}"
 
     page_url = f"{DOMAIN}/news/{slug}/"
 
     # JSON-LD: NewsArticle + BreadcrumbList
     images = [f"{DOMAIN}{article['imageBase']}-{i:02d}-1600.jpg" for i in range(1, n_img+1)]
+    if article.get("projectMedia"):
+        images = [hero_img_url]
     if article.get("galleryBase"):
         images.extend(
             f"{DOMAIN}{article['galleryBase']}-{i:02d}-1600.jpg"
@@ -482,15 +507,19 @@ def render_article(slug, article):
                 ab["gallery.altPattern"], img_num
             )
         inline_i18n[lang][f"{pre}.related.readMore"] = NEWS_HUB_BODY[lang]["readMore"]
-        for other_slug, other_data in NEWS_ARTICLES.items():
-            if other_slug == slug:
-                continue
+        for other_slug, other_data in related_article_items(slug, article):
             inline_i18n[lang][f"{pre}.related.{other_slug}.title"] = other_data["body"][lang]["h1Crumb"]
             inline_i18n[lang][f"{pre}.related.{other_slug}.excerpt"] = other_data["meta"][lang]["excerpt"]
         inline_i18n[lang].update(NEWS_RELATED_I18N[lang])
 
     # Compose head + override the ICM_I18N_PAGE
-    hero_source = f"{article['imageBase']}-01-1600.jpg"
+    hero_source = hero_img_path
+    if article.get("projectMedia"):
+        base = article["imageBase"]
+        srcset = ", ".join(f"{base}-{width}.avif {width}w" for width in (800, 1600, 2400))
+        preload = f'<link rel="preload" as="image" href="{base}-1600.avif" type="image/avif" imagesrcset="{srcset}" imagesizes="100vw"/>'
+    else:
+        preload = hero_preload_links(hero_source)
     head_html = head(
         f"news/{slug}",
         "en",
@@ -498,15 +527,26 @@ def render_article(slug, article):
         en_body,
         json_ld_blocks,
         og_image=hero_img_url,
-        preload_html=hero_preload_links(hero_source),
+        preload_html=preload,
     ).replace(
         "window.ICM_I18N_PAGE = {};", f"window.ICM_I18N_PAGE = {json.dumps(inline_i18n, ensure_ascii=False)};"
     )
-    responsive_style = responsive_hero_background_style(hero_image_slug(hero_source))
-    head_html = head_html.replace(
-        "</head>",
-        f'<style {RESPONSIVE_HERO_STYLE_ATTR}="">{responsive_style}</style></head>',
-    )
+    if article.get("projectMedia"):
+        responsive_style = (
+            ".news-article picture.bg{display:block}"
+            ".news-article picture.bg img{width:100%;height:100%;object-fit:cover;object-position:center}"
+            ".news-gallery.project-media img{object-fit:contain}"
+        )
+        head_html = head_html.replace("</head>", f"<style>{responsive_style}</style></head>")
+        width, height = image_dimensions(hero_source)
+        head_html = head_html.replace('content="1200" property="og:image:width"', f'content="{width}" property="og:image:width"')
+        head_html = head_html.replace('content="630" property="og:image:height"', f'content="{height}" property="og:image:height"')
+    else:
+        responsive_style = responsive_hero_background_style(hero_image_slug(hero_source))
+        head_html = head_html.replace(
+            "</head>",
+            f'<style {RESPONSIVE_HERO_STYLE_ATTR}="">{responsive_style}</style></head>',
+        )
 
     # Body: hero (full-bleed photo + title), then sections with inline figures.
     # Sections and image placement are driven by article data:
@@ -544,6 +584,8 @@ def render_article(slug, article):
         width, height = article.get("galleryDims", (1600, 1200))
         figures = []
         for img_num in range(1, article["galleryCount"] + 1):
+            if article.get("projectMedia"):
+                width, height = image_dimensions(f"{gallery_base}-{img_num:02d}-1600.jpg")
             alt = format_gallery_alt(en_body["gallery.altPattern"], img_num)
             figures.append(f'''<figure>
 <picture>
@@ -552,8 +594,9 @@ def render_article(slug, article):
 <img alt="{alt}" data-i18n-alt="{pre}.gallery.img{img_num}.alt" decoding="async" height="{height}" loading="lazy" sizes="(max-width: 840px) 86vw, 680px" src="{gallery_base}-{img_num:02d}-1600.jpg" srcset="{gallery_base}-{img_num:02d}-800.jpg 800w, {gallery_base}-{img_num:02d}-1600.jpg 1600w" width="{width}"/>
 </picture>
 </figure>''')
+        gallery_class = "news-gallery project-media" if article.get("projectMedia") else "news-gallery"
         return f'''<div class="news-gallery-shell">
-<div aria-label="{en_body['galleryLabel']}" class="news-gallery" data-i18n-aria-label="{pre}.galleryLabel" role="region" tabindex="0">
+<div aria-label="{en_body['galleryLabel']}" class="{gallery_class}" data-i18n-aria-label="{pre}.galleryLabel" role="region" tabindex="0">
 {"".join(figures)}
 </div>
 </div>'''
@@ -571,7 +614,7 @@ def render_article(slug, article):
 
     related_news_cards = ""
     related_articles = sorted(
-        ((other_slug, other_data) for other_slug, other_data in NEWS_ARTICLES.items() if other_slug != slug),
+        related_article_items(slug, article),
         key=lambda x: x[1]["publishedISO"],
         reverse=True,
     )
@@ -609,10 +652,20 @@ def render_article(slug, article):
             f' aria-label="{en_body["heroAlt"]}" data-i18n-aria-label="{pre}.heroAlt" role="img"'
         )
 
+    if article.get("projectMedia"):
+        hero_markup = BeautifulSoup(picture_html(
+            article["imageBase"], [800, 1600, 2400], alt=plain_html(en_body["heroAlt"]), hero=True,
+        ), "html.parser")
+        hero_markup.picture["class"] = ["bg", "hero-media"]
+        hero_markup.img["data-i18n-alt"] = f"{pre}.heroAlt"
+        hero_html = str(hero_markup)
+    else:
+        hero_html = f'<div class="bg" {RESPONSIVE_HERO_ATTR}=""{hero_accessibility} style="{hero_background_css(hero_source)}"></div>'
+
     body = f'''<main>
 <article>
 <section class="subpage news-article">
-<div class="bg" {RESPONSIVE_HERO_ATTR}=""{hero_accessibility} style="{hero_background_css(hero_source)}"></div>
+{hero_html}
 <div aria-hidden="true" class="scrim"></div>
 <div class="container">
 <div class="crumb"><a data-i18n="{pre}.breadHome" href="/">Home</a><span class="sep">→</span><a data-i18n="{pre}.breadNews" href="/news/">News</a><span class="sep">→</span><span data-i18n="{pre}.h1Crumb">{en_body["h1Crumb"]}</span></div>

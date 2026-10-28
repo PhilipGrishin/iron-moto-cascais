@@ -165,8 +165,8 @@ def _srcset_candidate_for_viewport(
 
 
 def picture_hero_preload_alignment(soup):
-    """Compare a Blog picture hero with its responsive preload contract."""
-    picture = soup.select_one(".blog-article picture.hero-media")
+    """Compare Blog/News picture heroes with their responsive preload contract."""
+    picture = soup.select_one(".blog-article picture.hero-media, .news-article picture.hero-media")
     if picture is None:
         return None, []
 

@@ -8,13 +8,16 @@ Article slugs are keyed in NEWS_ARTICLES and rendered in registry order.
 import hashlib
 import html
 import re
+from datetime import datetime
 from pathlib import Path
+
+from project_pages_data import PROJECT_CONFIGS
 
 
 _BBQ_SLUG = "workshop-bbq-party-august-2026"
 _BBQ_SOURCE = Path(__file__).resolve().parent / "content" / "workshop_bbq_party_news_4lang.md"
 _BBQ_SOURCE_SHA256 = "e6f7f3745c53b704832aad44e1a2bebbd1f9dc6c71f749360fb5df9cf6e76a16"
-_BBQ_LANGUAGE_HEADINGS = {
+_NEWS_LANGUAGE_HEADINGS = {
     "en": "EN",
     "pt": "PT",
     "ru": "RU",
@@ -896,16 +899,25 @@ ARTICLE_ERICEIRA_BODY = {
 
 
 def _render_delivery_links(value):
-    """Render the delivery file's explicit [LINK: path — label] tokens."""
+    """Render approved delivery tokens and standard Markdown links safely."""
     tokens = []
 
-    def replace_link(match):
-        href = html.escape(match.group(1).strip(), quote=True)
-        label = html.escape(match.group(2).strip(), quote=False)
+    def link_token(href, label):
+        href = html.escape(href.strip(), quote=True)
+        label = html.escape(label.strip(), quote=False)
         tokens.append(f'<a href="{href}">{label}</a>')
         return f"@@ICM_NEWS_LINK_{len(tokens) - 1}@@"
 
-    rendered = re.sub(r"\[LINK:\s*([^\]]+?)\s+—\s+([^\]]+?)\]", replace_link, value)
+    rendered = re.sub(
+        r"\[LINK:\s*([^\]]+?)\s+—\s+([^\]]+?)\]",
+        lambda match: link_token(match.group(1), match.group(2)),
+        value,
+    )
+    rendered = re.sub(
+        r"\[([^\]]+)\]\((/[^\s)]+)\)",
+        lambda match: link_token(match.group(2), match.group(1)),
+        rendered,
+    )
     rendered = html.escape(rendered, quote=False)
     return re.sub(
         r"@@ICM_NEWS_LINK_(\d+)@@",
@@ -916,10 +928,10 @@ def _render_delivery_links(value):
 
 def _split_delivery_languages(source):
     matches = []
-    for code, heading in _BBQ_LANGUAGE_HEADINGS.items():
+    for code, heading in _NEWS_LANGUAGE_HEADINGS.items():
         match = re.search(rf"^## {re.escape(heading)}\s*$", source, re.MULTILINE)
         if not match:
-            raise ValueError(f"Missing BBQ news language heading: {heading}")
+            raise ValueError(f"Missing news language heading: {heading}")
         matches.append((match.start(), match.end(), code))
     matches.sort()
     sections = {}
@@ -945,7 +957,7 @@ def _paragraphs(lines):
     return paragraphs
 
 
-def _parse_bbq_language(raw, code):
+def _parse_news_language(raw, code, labels):
     seo_title = re.search(r"^\*\*SEO title:\*\*\s*(.+)$", raw, re.MULTILINE)
     description = re.search(r"^\*\*Meta description:\*\*\s*(.+)$", raw, re.MULTILINE)
     h1 = re.search(r"^# (.+)$", raw, re.MULTILINE)
@@ -960,12 +972,17 @@ def _parse_bbq_language(raw, code):
         re.MULTILINE,
     )
     if not all((seo_title, description, h1, hero_slot, gallery_slot)):
-        raise ValueError(f"Incomplete BBQ news delivery content for {code}")
+        raise ValueError(f"Incomplete news delivery content for {code}")
+    if len(re.findall(r"^# ", raw, re.MULTILINE)) != 1:
+        raise ValueError(f"Expected one news H1 for {code}")
+    preceding_sections = re.findall(r"^## ", raw[hero_slot.end():gallery_slot.start()], re.MULTILINE)
+    if len(preceding_sections) != 2:
+        raise ValueError(f"Expected news gallery after section two for {code}")
 
     lead_source = raw[h1.end():hero_slot.start()].strip()
     lead_paragraphs = _paragraphs(lead_source.splitlines())
     if len(lead_paragraphs) != 1:
-        raise ValueError(f"Expected one BBQ news lead paragraph for {code}")
+        raise ValueError(f"Expected one news lead paragraph for {code}")
 
     body_source = raw[hero_slot.end():].strip()
     body_source = body_source.replace(gallery_slot.group(0), "").strip()
@@ -977,17 +994,17 @@ def _parse_bbq_language(raw, code):
             continue
         lines = chunk.splitlines()
         if not lines[0].startswith("## "):
-            raise ValueError(f"Unexpected BBQ news body content for {code}: {lines[0]}")
+            raise ValueError(f"Unexpected news body content for {code}: {lines[0]}")
         title = html.escape(lines[0][3:].strip(), quote=False)
         section_paragraphs = _paragraphs(
             [line for line in lines[1:] if line.strip() != "---"]
         )
         sections.append((title, section_paragraphs))
     if len(sections) != 4:
-        raise ValueError(f"Expected four BBQ news sections for {code}, got {len(sections)}")
+        raise ValueError(f"Expected four news sections for {code}, got {len(sections)}")
 
     body = {
-        **_BBQ_LABELS[code],
+        **labels[code],
         "h1": html.escape(h1.group(1).strip(), quote=False),
         "h1Crumb": html.escape(h1.group(1).strip(), quote=False),
         "lede": lead_paragraphs[0],
@@ -1019,7 +1036,7 @@ def _load_bbq_article():
         )
     source = source_bytes.decode("utf-8")
     localized = {
-        code: _parse_bbq_language(raw, code)
+        code: _parse_news_language(raw, code, _BBQ_LABELS)
         for code, raw in _split_delivery_languages(source).items()
     }
     return {
@@ -1054,10 +1071,71 @@ def _load_bbq_article():
     }
 
 
+_SPANIARD_SLUG = "spaniard-v-rod-2002-rebuild"
+_SPANIARD_SOURCE = Path(__file__).resolve().parent / "content" / "spaniard_news_4lang.md"
+_SPANIARD_SOURCE_SHA256 = "49aa8aeb58990720fbd3daf26014bcc6c579642f81bc15055d4959dad6053714"
+
+
+def _publication_labels(published_iso, gallery_labels):
+    """Localize publication labels from the registered content timestamp."""
+    date = datetime.fromisoformat(published_iso)
+    months = {
+        "en": "January February March April May June July August September October November December".split(),
+        "pt": "janeiro fevereiro março abril maio junho julho agosto setembro outubro novembro dezembro".split(),
+        "ru": "января февраля марта апреля мая июня июля августа сентября октября ноября декабря".split(),
+        "uk": "січня лютого березня квітня травня червня липня серпня вересня жовтня листопада грудня".split(),
+    }
+    prefixes = {"en": "Published ", "pt": "Publicado a ", "ru": "Опубликовано ", "uk": "Опубліковано "}
+    labels = {}
+    for code in _NEWS_LANGUAGE_HEADINGS:
+        month = months[code][date.month - 1]
+        text = f"{date.day} de {month} de {date.year}" if code == "pt" else f"{date.day} {month} {date.year}"
+        labels[code] = {
+            **{key: _BBQ_LABELS[code][key] for key in ("breadHome", "breadNews", "btnBack")},
+            "eyebrow": f"{_BBQ_LABELS[code]['breadNews']} · {text}",
+            "publishedLabel": prefixes[code] + text,
+            "galleryLabel": gallery_labels[code],
+        }
+    return labels
+
+
+def _load_spaniard_article():
+    source_bytes = _SPANIARD_SOURCE.read_bytes()
+    if hashlib.sha256(source_bytes).hexdigest() != _SPANIARD_SOURCE_SHA256:
+        raise ValueError("Spaniard news delivery source checksum mismatch")
+    project = PROJECT_CONFIGS["spaniard"]
+    published = project["published_iso"]
+    labels = _publication_labels(
+        published, {code: "Spaniard — " + ui["gallery"] for code, ui in project["ui"].items()}
+    )
+    localized = {
+        code: _parse_news_language(raw, code, labels)
+        for code, raw in _split_delivery_languages(source_bytes.decode("utf-8")).items()
+    }
+    return {
+        "publishedISO": published,
+        "modifiedISO": published,
+        "projectMedia": "spaniard",
+        "imageBase": project["hero_base"],
+        "imageCount": 1,
+        "imageHero": 1,
+        "galleryBase": project["gallery_base"],
+        "galleryCount": len(project["gallery_sources"]),
+        "galleryAfterSection": 2,
+        "sectionCount": 4,
+        "sitemapOrder": -10,
+        "sourceBacked": True,
+        "meta": {code: item["meta"] for code, item in localized.items()},
+        "body": {code: item["body"] for code, item in localized.items()},
+    }
+
+
 # Article metadata (slug → meta + body)
 NEWS_ARTICLES = {
-    _BBQ_SLUG: _load_bbq_article(),
+    _BBQ_SLUG: {**_load_bbq_article(), "relatedSlugs": ['ericeira-kustom-fest-2026', 'lisbon-motorcycle-film-fest-2026-beckman', 'opens-new-workshop-in-cascais']},
+    _SPANIARD_SLUG: _load_spaniard_article(),
     "ericeira-kustom-fest-2026": {
+        "relatedSlugs": ['workshop-bbq-party-august-2026', 'lisbon-motorcycle-film-fest-2026-beckman', 'opens-new-workshop-in-cascais'],
         "publishedISO": "2026-06-07",
         "modifiedISO": "2026-08-23T10:00:00+01:00",
         "imageBase": "/photos/news/news-ericeira-kustom-fest-2026",
@@ -1071,6 +1149,7 @@ NEWS_ARTICLES = {
         "imageDims": {1: (1600, 1200), 2: (1600, 1200), 3: (1600, 1200), 4: (1200, 1600), 5: (1200, 1600)},
     },
     "lisbon-motorcycle-film-fest-2026-beckman": {
+        "relatedSlugs": ['workshop-bbq-party-august-2026', 'ericeira-kustom-fest-2026', 'opens-new-workshop-in-cascais'],
         "publishedISO": "2026-05-23",
         "modifiedISO": "2026-08-23T10:00:00+01:00",
         "imageBase": "/photos/news/news-lmff2026",
@@ -1083,6 +1162,7 @@ NEWS_ARTICLES = {
         "imageMap": [(2, 2), (4, 4), (3, 5), (5, 5)],  # (img_num, after_section) — flexible placement
     },
     "opens-new-workshop-in-cascais": {
+        "relatedSlugs": ['workshop-bbq-party-august-2026', 'ericeira-kustom-fest-2026', 'lisbon-motorcycle-film-fest-2026-beckman'],
         "publishedISO": "2026-05-02",
         "modifiedISO": "2026-08-23T10:00:00+01:00",
         "imageBase": "/photos/news/news-opening",

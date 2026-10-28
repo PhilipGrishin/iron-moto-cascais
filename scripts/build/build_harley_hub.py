@@ -10,6 +10,7 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup
 
+from responsive_images import picture_html
 from build_output import write_html_if_changed
 from blog_data import BLOG_POSTS
 from harley_hub_data import (
@@ -476,12 +477,18 @@ def render_portfolio(lang: str) -> str:
     for slug in PORTFOLIO_ORDER:
         item = PORTFOLIO[slug]
         href = localized_href(f"/projects/{slug}/", lang)
-        picture = render_picture(
-            item["image"],
-            item["dims"],
-            item["name"],
-            sizes="(max-width: 900px) 100vw, 54vw",
-        )
+        if item.get("projectMedia"):
+            picture = picture_html(
+                item["projectMedia"], [800, 1600, 2400], alt=item["name"],
+                sizes="(max-width: 900px) 100vw, 54vw",
+            )
+        else:
+            picture = render_picture(
+                item["image"],
+                item["dims"],
+                item["name"],
+                sizes="(max-width: 900px) 100vw, 54vw",
+            )
         rows.append(
             f'''<article class="portfolio-row">
 {picture}

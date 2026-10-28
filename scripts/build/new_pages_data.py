@@ -521,6 +521,27 @@ PROJECT_TILES = [
     {"slug": "the-first", "img": "/photos/projects/the-first-800.jpg", "img_webp": "/photos/projects/the-first-800.webp", "img_avif": "/photos/projects/the-first-800.avif", "img_width": 800, "img_height": 533, "year": "2012",
      "label": {"en": "The First", "ru": "The First", "uk": "The First", "pt": "The First"},
      "tag":   {"en": "Power Cruiser · Full Custom", "ru": "Пауэр-круизер · Full Custom", "uk": "Пауер-круїзер · Full Custom", "pt": "Power Cruiser · Full Custom"}},
+    {
+        "slug": "spaniard",
+        "img": "/photos/projects/spaniard-800.jpg",
+        "img_webp": "/photos/projects/spaniard-800.webp",
+        "img_avif": "/photos/projects/spaniard-800.avif",
+        "img_width": 800,
+        "img_height": 440,
+        "year": "2026",
+        "label": {
+            "en": "Spaniard",
+            "pt": "Spaniard",
+            "ru": "Spaniard",
+            "uk": "Spaniard"
+        },
+        "tag": {
+            "en": "Power Cruiser · Full Rebuild",
+            "pt": "Power Cruiser · Reconstrução Completa",
+            "ru": "Пауэр-круизер · Полная пересборка",
+            "uk": "Пауер-крузер · Повна перебудова"
+        }
+    },
 ]
 
 # =========================================================================

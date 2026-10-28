@@ -12,6 +12,7 @@ python3 -m py_compile scripts/build/*.py
 python3 scripts/build/validate_seo.py
 python3 scripts/build/validate_brand_pages.py
 python3 scripts/build/validate_harley_hub.py
+python3 scripts/build/validate_news.py
 python3 scripts/build/validate_service_custom_hubs.py
 python3 scripts/build/validate_w4_routing.py
 for slug in $(python3 -c "import sys; sys.path.insert(0, 'scripts/build'); from project_pages_data import PROJECT_CONFIGS; print(' '.join(sorted(PROJECT_CONFIGS)))"); do

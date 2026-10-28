@@ -1,0 +1,591 @@
+[
+  {
+    "path": "projects/spaniard/",
+    "width": 390,
+    "dpr": 2,
+    "before": {
+      "width": 390,
+      "dpr": 2,
+      "overflow": 0,
+      "h1": "Spaniard",
+      "hero": "http://127.0.0.1:8765/photos/projects/spaniard-800.avif",
+      "lazy": [
+        {
+          "src": "",
+          "complete": false,
+          "top": 3845
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 3845
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 3966
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 3966
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 4087
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 4087
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 4209
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 4209
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 4330
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 4330
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:8765/photos/projects/spaniard-800.avif",
+          "bytes": 36984
+        },
+        {
+          "url": "http://127.0.0.1:8765/photos/favicon.ico",
+          "bytes": 1410
+        }
+      ]
+    },
+    "after": {
+      "overflow": 0,
+      "loaded": 10
+    },
+    "heroRequests": [
+      {
+        "url": "http://127.0.0.1:8765/photos/projects/spaniard-800.avif",
+        "status": 200
+      }
+    ],
+    "galleryRequestsBeforeScroll": [],
+    "errors": [],
+    "failures": []
+  },
+  {
+    "path": "news/spaniard-v-rod-2002-rebuild/",
+    "width": 390,
+    "dpr": 2,
+    "before": {
+      "width": 390,
+      "dpr": 2,
+      "overflow": 0,
+      "h1": "Um novo projeto no site: Spaniard",
+      "hero": "http://127.0.0.1:8765/photos/projects/spaniard-800.avif",
+      "lazy": [
+        {
+          "src": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-01-800.avif",
+          "complete": true,
+          "top": 1776
+        },
+        {
+          "src": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-02-800.avif",
+          "complete": true,
+          "top": 1776
+        },
+        {
+          "src": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-03-800.avif",
+          "complete": true,
+          "top": 1776
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1776
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1776
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1776
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1776
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1776
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1776
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1776
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:8765/photos/projects/spaniard-800.avif",
+          "bytes": 36984
+        },
+        {
+          "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-01-800.avif",
+          "bytes": 90530
+        },
+        {
+          "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-02-800.avif",
+          "bytes": 120559
+        },
+        {
+          "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-03-800.avif",
+          "bytes": 117770
+        },
+        {
+          "url": "http://127.0.0.1:8765/photos/favicon.ico",
+          "bytes": 1410
+        }
+      ]
+    },
+    "after": {
+      "overflow": 0,
+      "loaded": 3
+    },
+    "heroRequests": [
+      {
+        "url": "http://127.0.0.1:8765/photos/projects/spaniard-800.avif",
+        "status": 200
+      }
+    ],
+    "galleryRequestsBeforeScroll": [
+      {
+        "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-01-800.avif",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-02-800.avif",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-03-800.avif",
+        "status": 200
+      }
+    ],
+    "errors": [],
+    "failures": []
+  },
+  {
+    "path": "projects/spaniard/",
+    "width": 390,
+    "dpr": 3,
+    "before": {
+      "width": 390,
+      "dpr": 3,
+      "overflow": 0,
+      "h1": "Spaniard",
+      "hero": "http://127.0.0.1:8765/photos/projects/spaniard-1600.avif",
+      "lazy": [
+        {
+          "src": "",
+          "complete": false,
+          "top": 3845
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 3845
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 3966
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 3966
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 4087
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 4087
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 4209
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 4209
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 4330
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 4330
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:8765/photos/projects/spaniard-1600.avif",
+          "bytes": 102478
+        },
+        {
+          "url": "http://127.0.0.1:8765/photos/favicon.ico",
+          "bytes": 1410
+        }
+      ]
+    },
+    "after": {
+      "overflow": 0,
+      "loaded": 10
+    },
+    "heroRequests": [
+      {
+        "url": "http://127.0.0.1:8765/photos/projects/spaniard-1600.avif",
+        "status": 200
+      }
+    ],
+    "galleryRequestsBeforeScroll": [],
+    "errors": [],
+    "failures": []
+  },
+  {
+    "path": "news/spaniard-v-rod-2002-rebuild/",
+    "width": 390,
+    "dpr": 3,
+    "before": {
+      "width": 390,
+      "dpr": 3,
+      "overflow": 0,
+      "h1": "Um novo projeto no site: Spaniard",
+      "hero": "http://127.0.0.1:8765/photos/projects/spaniard-1600.avif",
+      "lazy": [
+        {
+          "src": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-01-1600.avif",
+          "complete": true,
+          "top": 1776
+        },
+        {
+          "src": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-02-1600.avif",
+          "complete": true,
+          "top": 1776
+        },
+        {
+          "src": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-03-1600.avif",
+          "complete": true,
+          "top": 1776
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1776
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1776
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1776
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1776
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1776
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1776
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1776
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:8765/photos/projects/spaniard-1600.avif",
+          "bytes": 102478
+        },
+        {
+          "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-01-1600.avif",
+          "bytes": 297614
+        },
+        {
+          "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-02-1600.avif",
+          "bytes": 363950
+        },
+        {
+          "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-03-1600.avif",
+          "bytes": 347165
+        },
+        {
+          "url": "http://127.0.0.1:8765/photos/favicon.ico",
+          "bytes": 1410
+        }
+      ]
+    },
+    "after": {
+      "overflow": 0,
+      "loaded": 3
+    },
+    "heroRequests": [
+      {
+        "url": "http://127.0.0.1:8765/photos/projects/spaniard-1600.avif",
+        "status": 200
+      }
+    ],
+    "galleryRequestsBeforeScroll": [
+      {
+        "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-01-1600.avif",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-02-1600.avif",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-03-1600.avif",
+        "status": 200
+      }
+    ],
+    "errors": [],
+    "failures": []
+  },
+  {
+    "path": "projects/spaniard/",
+    "width": 1440,
+    "dpr": 1,
+    "before": {
+      "width": 1440,
+      "dpr": 1,
+      "overflow": 0,
+      "h1": "Spaniard",
+      "hero": "http://127.0.0.1:8765/photos/projects/spaniard-1600.avif",
+      "lazy": [
+        {
+          "src": "",
+          "complete": false,
+          "top": 2970
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 2970
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 2970
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 2970
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 3169
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 3169
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 3169
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 3169
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 3369
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 3369
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:8765/photos/projects/spaniard-1600.avif",
+          "bytes": 102478
+        },
+        {
+          "url": "http://127.0.0.1:8765/photos/favicon.ico",
+          "bytes": 1410
+        }
+      ]
+    },
+    "after": {
+      "overflow": 0,
+      "loaded": 10
+    },
+    "heroRequests": [
+      {
+        "url": "http://127.0.0.1:8765/photos/projects/spaniard-1600.avif",
+        "status": 200
+      }
+    ],
+    "galleryRequestsBeforeScroll": [],
+    "errors": [],
+    "failures": []
+  },
+  {
+    "path": "news/spaniard-v-rod-2002-rebuild/",
+    "width": 1440,
+    "dpr": 1,
+    "before": {
+      "width": 1440,
+      "dpr": 1,
+      "overflow": 0,
+      "h1": "Um novo projeto no site: Spaniard",
+      "hero": "http://127.0.0.1:8765/photos/projects/spaniard-1600.avif",
+      "lazy": [
+        {
+          "src": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-01-800.avif",
+          "complete": true,
+          "top": 1697
+        },
+        {
+          "src": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-02-800.avif",
+          "complete": true,
+          "top": 1697
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1697
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1697
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1697
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1697
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1697
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1697
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1697
+        },
+        {
+          "src": "",
+          "complete": false,
+          "top": 1697
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:8765/photos/projects/spaniard-1600.avif",
+          "bytes": 102478
+        },
+        {
+          "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-01-800.avif",
+          "bytes": 90530
+        },
+        {
+          "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-02-800.avif",
+          "bytes": 120559
+        },
+        {
+          "url": "http://127.0.0.1:8765/photos/favicon.ico",
+          "bytes": 1410
+        }
+      ]
+    },
+    "after": {
+      "overflow": 0,
+      "loaded": 2
+    },
+    "heroRequests": [
+      {
+        "url": "http://127.0.0.1:8765/photos/projects/spaniard-1600.avif",
+        "status": 200
+      }
+    ],
+    "galleryRequestsBeforeScroll": [
+      {
+        "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-01-800.avif",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:8765/photos/projects/gallery/spaniard/spaniard-02-800.avif",
+        "status": 200
+      }
+    ],
+    "errors": [],
+    "failures": []
+  }
+]

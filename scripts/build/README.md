@@ -44,7 +44,7 @@ copy or business-semantic validation.
 | `build_authorized_dealer.py` | `authorized_dealer_data.py`, existing chrome | localized Authorized Dealer family | broad SEO; no dedicated validator |
 | `build_brand_pages.py` | `brand_pages_data.py`, checked Wave 2 copy, `pricing_data.py` | English registered brand pages | `validate_brand_pages.py` |
 | `build_legal_pages.py` | `legal_pages_data.py`, service chrome | localized legal pages | broad SEO; no legal-copy validator |
-| `build_news.py` | `news_data.py` | English news hub/articles | broad SEO and focused CSS-hero mode; no exact-copy validator |
+| `build_news.py` | `news_data.py` | English news hub/articles | broad SEO, responsive hero checks and `validate_news.py` |
 | `build_blog.py` | `blog_data.py`, approved content files, Wave 4 routing source | English blog hub/articles | broad SEO, focused picture-hero mode and `validate_w4_routing.py` |
 | `build_project_pages.py` | `project_pages_data.py`, approved project Markdown and localized project data | all localized project pages and noindex legacy redirects | `validate_project_pages.py` |
 | `build_service_custom_hubs.py` | approved Service, Custom, Parts and Upgrades hub Markdown | four localized copy-driven hub families | `validate_service_custom_hubs.py` |
@@ -72,6 +72,7 @@ copy or business-semantic validation.
 | `optimize_hero_images.py` | a registered brand slug or local source image | responsive hero variants | family asset checks where implemented |
 | `optimize_tyre_service_images.py` | tyre media sources and checksum manifest | tyre responsive variants and manifest | source checksum/idempotence logic |
 | `import_project_images.py` | registered project config and source directory | responsive project hero/gallery media | project validator |
+| `import_news_images.py` | registered standalone News media delivery | responsive News hero/gallery media | News and broad SEO validators |
 | `optimize_project_exhibition_images.py` | registered exhibition media config and one approved source image | responsive exhibition AVIF/WebP/JPEG variants | project validator |
 
 Binary media tools are intentionally outside the full rebuild. Codec versions
@@ -95,6 +96,7 @@ source media changes and review the binary diff.
 | `project_pages_data.py` | complete project/redirect registry, localized legacy data and Markdown parser |
 | `build_output.py` | semantic/idempotent file writers |
 | `hero_images.py` | hero discovery, responsive rendering and alignment helpers |
+| `responsive_images.py` | dimensioned project pictures reused by project, News and Harley portfolio renderers |
 | `seo_meta.py` | shared SEO meta constants/helpers |
 | `site_chrome.py` | canonical desktop/mobile navigation and footer renderer |
 | `trust_strip.py` | shared commercial trust strip and snapshot-derived localized rating fallback |
@@ -115,6 +117,7 @@ module is named above or in `docs/CONTENT_TYPES.md`.
 | `validate_harley_hub.py` | exact maintained copy; visual tokens; hero media; schema families; language-local links; feed/portfolio and required integrations | live browser behavior; external RRT; performance benefit |
 | `validate_service_custom_hubs.py` | exact four-language copy-driven hub output; Wave 3 source checksums; pricing anchors; WhatsApp/form CTAs; trust-strip inventory and labels; related-description registry use; retired filler/key absence; approved head trims and price-head parity | external Rich Results UI; measured network performance |
 | `validate_project_pages.py` | every registered project: exact source copy; media; schema graph/dates/references; cache-bust; redirects; listing/sitemap and optional Custom/Harley integration | browser rendering; external RRT |
+| `validate_news.py` | approved Markdown News copy/order, metadata, gallery ALTs/placement, dates, shared project hero and explicit related selections | legacy article copy; live browser/network behavior; external RRT |
 | `validate_w4_routing.py` | Wave 4 source checksum; homepage intent anchors; 19-target registry; complete 9-post related mapping; localized card order/copy/placement; orphan anchors; legacy project rows; Blog dates | visual overflow; external Rich Results UI |
 
 Scripts or data families without a dedicated validator rely on broad SEO plus
@@ -154,6 +157,7 @@ python3 scripts/build/build_llms.py
 python3 scripts/build/validate_seo.py
 python3 scripts/build/validate_brand_pages.py
 python3 scripts/build/validate_harley_hub.py
+python3 scripts/build/validate_news.py
 python3 scripts/build/validate_service_custom_hubs.py
 python3 scripts/build/validate_w4_routing.py
 for slug in $(python3 -c "import sys; sys.path.insert(0, 'scripts/build'); from project_pages_data import PROJECT_CONFIGS; print(' '.join(sorted(PROJECT_CONFIGS)))"); do
@@ -416,6 +420,13 @@ python3 scripts/build/import_news_images.py \
   "/absolute/path/to/source-media"
 ```
 
+For an article with `projectMedia`, import the project once instead; the News
+renderer reuses those files and reads their dimensions. For example:
+
+```bash
+python3 scripts/build/import_project_images.py spaniard "/absolute/path/to/source-media"
+```
+
 Then run the canonical generated-page sequence:
 
 ```bash
@@ -433,6 +444,9 @@ New article content, media and `NEWS_ARTICLES` data must exist before this
 sequence. Source-backed multilingual copy belongs in
 `scripts/build/content/`; preserve the supplied file byte-for-byte and parse
 placeholders into maintained renderer elements.
+
+After the sequence, run `python3 scripts/build/validate_news.py` for complete
+approved-source copy, gallery and related-card checks.
 
 ## Project Workflow
 
