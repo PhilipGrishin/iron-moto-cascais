@@ -1116,6 +1116,7 @@ def _load_spaniard_article():
         "publishedISO": published,
         "modifiedISO": published,
         "projectMedia": "spaniard",
+        "author": {"@id": "https://ironcustommotors.com/#business"},
         "imageBase": project["hero_base"],
         "imageCount": 1,
         "imageHero": 1,

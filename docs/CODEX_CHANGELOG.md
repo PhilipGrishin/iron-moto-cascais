@@ -14,6 +14,18 @@ Format:
 - Notes: ...
 ```
 
+## 2026-10-28 - Spaniard project and workshop news
+
+- Commit: `a78463f1`
+- Changed: Registered the checksum-pinned project and news deliveries in four
+  languages, imported one shared media set, added catalog/Custom/Harley/menu
+  integrations and reciprocal links, and preserved old News selections.
+- Verified: Full Safe Rebuild and all existing validators; approved-copy and
+  News gallery checks; 390/1440 browser checks and mobile DPR 2/3; both negative
+  source-checksum tests; EXIF absence and exact photo-06 source reproduction.
+- Notes: Shared assets and cache keys are unchanged. Deployment/clean-clone/RRT
+  evidence will be finalized in `docs/reports/P_SPANIARD_REPORT.md`.
+
 ## 2026-09-18 - Valve-clearance starting prices in all languages
 
 - Commit: `108684b3`

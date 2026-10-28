@@ -275,7 +275,10 @@ copy and gallery contracts in all languages. Publication labels for new
 deliveries derive from their registered timestamp. `relatedSlugs` pins an
 article's editorial selection; preserve existing selections when a new story
 must not change older content or dates. Unpinned selections include all other
-registered articles.
+registered articles. New project-backed News uses an author `@id` reference to
+its complete business entity without adding a second `url` to that entity.
+An explicit article `author` is authoritative: the News writer does not retain
+removed author properties through downstream-head enrichment.
 
 Commands: `scripts/build/README.md`, **News workflow**.
 

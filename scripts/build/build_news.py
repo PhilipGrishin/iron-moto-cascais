@@ -446,7 +446,7 @@ def render_article(slug, article):
             "image": images,
             "datePublished": schema_datetime(article["publishedISO"]),
             "dateModified": schema_datetime(article.get("modifiedISO", article["publishedISO"])),
-            "author": schema_author(),
+            "author": article.get("author", schema_author()),
             "publisher": {"@id": BUSINESS_ID},
             "mainEntityOfPage": {
                 "@type": "WebPage",
@@ -727,7 +727,12 @@ def render_article(slug, article):
 
     out = SITE_ROOT / "news" / slug / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
+    # An explicit author owns its complete schema; do not retain a removed URL
+    # as downstream enrichment of that same business entity.
+    write_html_if_changed(
+        out, html, preserve_body_shell=True, merge_page_i18n=True,
+        preserve_downstream_head="author" not in article,
+    )
     return out
 
 

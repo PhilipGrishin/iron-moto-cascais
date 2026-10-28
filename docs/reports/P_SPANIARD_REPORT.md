@@ -1,6 +1,6 @@
 # P-SPANIARD delivery record
 
-Date: 2026-10-28. Status: local acceptance passed; clean-clone and production checks pending.
+Date: 2026-10-28. Status: local acceptance and clean-clone rebuild passed; production checks pending.
 
 ## Scope and decisions
 
@@ -83,7 +83,9 @@ remains deferred.
   content pages changed. All other existing page-body/head semantics stayed
   unchanged. Navigation changed through the required registry-driven menus.
 - Link audit: 45616 local asset/link destinations across
-  all 261 HTML files, zero missing destinations.
+  all 261 HTML files, zero missing destinations. Fragment-target verification
+  checked 616 fragment links: 580 static targets and 36 existing `data-cta=book`
+  modal actions, each with its matching `#modal` and shared click handler.
 - Playwright 1.64.1 with installed Chrome: PT project and PT News at 390 × 844
   / DPR 2, 390 × 844 / DPR 3 and 1440 × 1000 / DPR 1. All six profiles had zero
   horizontal overflow, zero JavaScript errors and zero failed HTTP responses.
@@ -179,8 +181,37 @@ Exactly 28 existing URLs advance; the other 208 existing dates remain unchanged.
 
 ## Deployment and external acceptance
 
-Pending: implementation SHA, clean-clone rebuild, Pages run, production parity
-and the two live Google Rich Results reports. These are not yet claimed passed.
+Implementation: `a78463f19f25bc6590d72505bd240e5012536395`.
+
+Full Safe Rebuild passed in a fresh full-history clone of `a78463f1`,
+including PDFs and every validator; `git status --porcelain` returned zero bytes.
+The implementation was pushed to `origin/main`.
+
+Pages run [40775026013](https://github.com/PhilipGrishin/iron-moto-cascais/actions/runs/40775026013)
+succeeded for `a78463f1`, completing at 2026-10-28T21:51:24Z. A cache-bypass
+production audit matched main content, schema, metadata, canonical/hreflang,
+image references and shared cache keys across all 244 URLs. All 76 checked
+files (69 new images plus discovery/shared assets/snapshot) matched repository
+bytes. Cloudflare email obfuscation was decoded and adjacent text nodes were
+coalesced before the text comparison; the initial apparent Privacy difference
+was only punctuation-node separation, not different published copy.
+[Production evidence](P_SPANIARD_PRODUCTION.json) records every URL and file.
+
+The first project RRT passed without errors or warnings. The first News RRT
+identified the optional warning described below; final correction acceptance
+is pending.
 
 Rollback: revert this task's implementation and evidence commits only; no
 external service state needs rollback.
+
+### External-test correction
+
+The first live News report (`8tnobDugTo0BrqiZU3rrpw`) found four valid items and
+zero errors, but flagged one optional Organization warning: the author reference
+added `/pt/about/` as a second `url` for the same business whose complete entity
+already supplied `/pt/`. The project report (`obVbZCVP1trY592dA1KCFA`) was clean.
+The new News entry now owns its author schema as a pure business `@id` reference.
+The writer must not preserve the removed author URL as downstream enrichment.
+This changes only the four new News schema blocks; copy, old articles, assets,
+publication timestamps and sitemap dates are preserved. A repeat live News test
+will verify the correction before handoff.

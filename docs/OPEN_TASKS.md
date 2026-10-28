@@ -126,6 +126,17 @@ measure representative page families under a stated profile.
 
 ## Build And Environment Risks
 
+### GitHub Actions runtime notices
+
+- **Confirmed non-blocking**, 2026-10-28: successful Pages run `40775026013`
+  reports that `actions/setup-node@v4` targets the deprecated Node 20 action
+  runtime and is being forced onto Node 24. It also announces the upcoming
+  `ubuntu-latest` image migration. The site's configured Node version remains
+  separate from an action's own runtime.
+- Review supported action versions and runner compatibility in a dedicated
+  maintenance change. P-SPANIARD leaves workflow configuration unchanged.
+
+
 ### Pricing PDF generator is macOS-only
 
 - Status: **confirmed**, open.

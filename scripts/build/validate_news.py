@@ -76,6 +76,7 @@ def validate():
             check(news["dateModified"] == article["modifiedISO"], "modified date mismatch")
             check(len(news["image"]) == 1 + article["galleryCount"], "schema image inventory mismatch")
             if article.get("projectMedia"):
+                check(news["author"] == {"@id": DOMAIN + "/#business"}, "author must reference the complete business without a conflicting URL")
                 picture, issues = picture_hero_preload_alignment(soup)
                 check(picture is not None and not issues, f"responsive hero alignment: {issues}")
                 check(len(soup.select('[fetchpriority="high"]')) == 1, "expected one high-priority hero")
