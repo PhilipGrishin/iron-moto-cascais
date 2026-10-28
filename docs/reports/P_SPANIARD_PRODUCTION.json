@@ -629,5 +629,69 @@
     }
   ],
   "errors": [],
-  "artifact_commit": "a78463f19f25bc6590d72505bd240e5012536395"
+  "artifact_commit": "a78463f19f25bc6590d72505bd240e5012536395",
+  "pages_runs": [
+    {
+      "id": 40775026013,
+      "commit": "a78463f19f25bc6590d72505bd240e5012536395",
+      "conclusion": "success",
+      "completed_at": "2026-10-28T21:51:24Z"
+    },
+    {
+      "id": 40777040962,
+      "commit": "2b017d3a3962efbd7458f2a8c8f966fde79020b1",
+      "conclusion": "success",
+      "completed_at": "2026-10-28T22:06:11Z"
+    }
+  ],
+  "final_schema_correction": {
+    "checked_at": "2026-10-28T22:06:34Z",
+    "urls": [
+      "https://ironcustommotors.com/news/spaniard-v-rod-2002-rebuild/",
+      "https://ironcustommotors.com/ru/news/spaniard-v-rod-2002-rebuild/",
+      "https://ironcustommotors.com/uk/news/spaniard-v-rod-2002-rebuild/",
+      "https://ironcustommotors.com/pt/news/spaniard-v-rod-2002-rebuild/"
+    ],
+    "files": [
+      {
+        "path": "sitemap.xml",
+        "bytes": 182350,
+        "sha256": "66f4cd6367539dd8f111c50fdb87b1454462d46efeceacae10b992b4e310fd99"
+      }
+    ],
+    "errors": [],
+    "artifact_commit": "2b017d3a3962efbd7458f2a8c8f966fde79020b1"
+  },
+  "final_clean_rebuild": {
+    "commit": "2b017d3a3962efbd7458f2a8c8f966fde79020b1",
+    "method": "Full Safe Rebuild in a clean full-history clone; all validators passed",
+    "git_status_porcelain_bytes": 0
+  },
+  "rich_results": [
+    {
+      "page": "https://ironcustommotors.com/pt/projects/spaniard/",
+      "report": "https://search.google.com/test/rich-results/result?id=obVbZCVP1trY592dA1KCFA",
+      "valid_items": 4,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "page": "https://ironcustommotors.com/pt/news/spaniard-v-rod-2002-rebuild/",
+      "report": "https://search.google.com/test/rich-results/result?id=xQduVbzdRlzHVKko7ZTdEg",
+      "crawl_time": "2026-10-28T22:06:48+00:00",
+      "valid_items": 4,
+      "errors": 0,
+      "warnings": 0
+    }
+  ],
+  "published_project_browser": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "device_pixel_ratio": 1,
+    "horizontal_overflow_px": 0,
+    "javascript_errors": 0,
+    "hero": "/photos/projects/spaniard-1600.avif"
+  }
 }

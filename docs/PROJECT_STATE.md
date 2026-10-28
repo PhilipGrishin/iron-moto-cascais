@@ -9,10 +9,18 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
-- P-SPANIARD, **implemented and locally verified**, 2026-10-28; production
-  verification pending. The approved project and News delivery are registered
-  in all languages with one shared photo set, catalog/hub/menu integrations and
-  reciprocal links. See the [delivery record](reports/P_SPANIARD_REPORT.md).
+- P-SPANIARD, **deployed and production-verified**, 2026-10-28:
+  implementation `a78463f1`, final site artifact `2b017d3a`, Pages runs
+  `40775026013` and `40777040962`. The approved project and News delivery are
+  registered in all languages with one shared photo set, catalog/hub/menu
+  integrations and reciprocal links. All sitemap URLs and checked media/assets
+  matched production; the four News schemas were rechecked after the targeted
+  author correction. Full Safe Rebuild of the final artifact left the clean
+  full-history clone unchanged. Both PT Rich Results tests found four valid
+  items with no errors or warnings. See the
+  [delivery record](reports/P_SPANIARD_REPORT.md).
+- Current production `sitemap.xml` SHA-256, confirmed 2026-10-28:
+  `66f4cd6367539dd8f111c50fdb87b1454462d46efeceacae10b992b4e310fd99`.
 
 - S-PRICE-VALVES-FROM, **deployed and production-verified** 2026-09-18:
   implementation/artifact `108684b3`, Pages run `35333451302`. Approved
@@ -205,7 +213,7 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
 | English path patterns | 61 | `build_sitemap.py` `PAGES` |
 | Indexable sitemap URLs | 244 | parsed `sitemap.xml` `<url>` entries |
-| Tracked HTML files | 261 | tracked inventory plus eight new P-SPANIARD pages |
+| Tracked HTML files | 261 | `git ls-files` HTML inventory |
 | Indexable HTML files | 244 | sitemap-to-file resolution |
 | Non-indexed HTML files | 17 | `404.html`, 12 localized project redirect stubs and 4 `thank-you` pages |
 | Sitemap lastmod tags | 244 | parsed `sitemap.xml` |

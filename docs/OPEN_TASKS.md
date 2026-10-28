@@ -7,9 +7,9 @@ Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
 
-- **P-SPANIARD:** local implementation and acceptance checks passed. Clean-clone
-  rebuild, deployment and live Rich Results verification remain in progress.
-  Scope and evidence: [delivery record](reports/P_SPANIARD_REPORT.md).
+- None. **P-SPANIARD completed and production-verified**, 2026-10-28. The final
+  artifact passed the clean-clone rebuild and both requested live Rich Results
+  tests. Scope and evidence: [delivery record](reports/P_SPANIARD_REPORT.md).
 
 ## Valve Pricing External Handoff
 
@@ -130,8 +130,8 @@ measure representative page families under a stated profile.
 
 - **Confirmed non-blocking**, 2026-10-28: successful Pages run `40775026013`
   reports that `actions/setup-node@v4` targets the deprecated Node 20 action
-  runtime and is being forced onto Node 24. It also announces the upcoming
-  `ubuntu-latest` image migration. The site's configured Node version remains
+  runtime and is being forced onto Node 24. It also carries an
+  `ubuntu-latest` image migration notice. The site's configured Node version remains
   separate from an action's own runtime.
 - Review supported action versions and runner compatibility in a dedicated
   maintenance change. P-SPANIARD leaves workflow configuration unchanged.

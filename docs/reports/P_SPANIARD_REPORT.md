@@ -1,6 +1,6 @@
 # P-SPANIARD delivery record
 
-Date: 2026-10-28. Status: local acceptance and clean-clone rebuild passed; production checks pending.
+Date: 2026-10-28. Status: deployed and production-verified; all requested acceptance checks passed.
 
 ## Scope and decisions
 
@@ -116,7 +116,7 @@ and carry no EXIF. Project, News and integrations reuse the same files.
 
 ## Content dates and URL accounting
 
-Publication timestamp for the new project and News: `2026-10-28T21:43:06+00:00`
+Publication timestamp recorded at release preparation for the new project and News: `2026-10-28T21:43:06+00:00`
 (Europe/Lisbon; winter offset +00:00). Existing listing dates derive from actual
 content changes using the existing sitemap generator; chrome-only changes do
 not advance dates. No URL was renamed or redirected.
@@ -181,7 +181,8 @@ Exactly 28 existing URLs advance; the other 208 existing dates remain unchanged.
 
 ## Deployment and external acceptance
 
-Implementation: `a78463f19f25bc6590d72505bd240e5012536395`.
+Initial implementation: `a78463f19f25bc6590d72505bd240e5012536395`.
+Final site artifact / schema correction: `2b017d3a3962efbd7458f2a8c8f966fde79020b1`.
 
 Full Safe Rebuild passed in a fresh full-history clone of `a78463f1`,
 including PDFs and every validator; `git status --porcelain` returned zero bytes.
@@ -197,9 +198,27 @@ coalesced before the text comparison; the initial apparent Privacy difference
 was only punctuation-node separation, not different published copy.
 [Production evidence](P_SPANIARD_PRODUCTION.json) records every URL and file.
 
-The first project RRT passed without errors or warnings. The first News RRT
-identified the optional warning described below; final correction acceptance
-is pending.
+Final Pages run [40777040962](https://github.com/PhilipGrishin/iron-moto-cascais/actions/runs/40777040962)
+succeeded for `2b017d3a`; its deployment job completed at 2026-10-28T22:06:11Z.
+Full Safe Rebuild was repeated from that exact commit in the clean full-history
+clone: every validator passed and `git status --porcelain` again returned zero
+bytes. Only the four new News HTML files differ from the first site artifact;
+all four were compared against production again at 22:06:34Z. Main content,
+schema, metadata, canonical/hreflang, image references and cache keys matched.
+The production sitemap remained byte-identical. Both commits are on `origin/main`.
+
+Google Rich Results Test on the actual public PT URLs:
+
+- [Project result](https://search.google.com/test/rich-results/result?id=obVbZCVP1trY592dA1KCFA):
+  four valid items, no errors or warnings.
+- [Final News result](https://search.google.com/test/rich-results/result?id=xQduVbzdRlzHVKko7ZTdEg),
+  crawled 2026-10-28 at 22:06:48: four valid items, no errors or warnings.
+
+A final published-project browser check at 1440 × 1000 / DPR 1 found zero
+horizontal overflow, zero JavaScript errors and the expected 1600 AVIF hero.
+The public URLs are verified; future Google indexing/appearance is not measured
+by Rich Results Test. No blocking P-SPANIARD acceptance issue remains. Existing
+operational risks and non-blocking CI runtime notices remain in `OPEN_TASKS.md`.
 
 Rollback: revert this task's implementation and evidence commits only; no
 external service state needs rollback.
@@ -213,5 +232,5 @@ already supplied `/pt/`. The project report (`obVbZCVP1trY592dA1KCFA`) was clean
 The new News entry now owns its author schema as a pure business `@id` reference.
 The writer must not preserve the removed author URL as downstream enrichment.
 This changes only the four new News schema blocks; copy, old articles, assets,
-publication timestamps and sitemap dates are preserved. A repeat live News test
-will verify the correction before handoff.
+publication timestamps and sitemap dates are preserved. The repeat live News
+result linked above confirmed that the optional warning is resolved.

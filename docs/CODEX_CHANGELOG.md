@@ -23,8 +23,15 @@ Format:
 - Verified: Full Safe Rebuild and all existing validators; approved-copy and
   News gallery checks; 390/1440 browser checks and mobile DPR 2/3; both negative
   source-checksum tests; EXIF absence and exact photo-06 source reproduction.
-- Notes: Shared assets and cache keys are unchanged. Deployment/clean-clone/RRT
-  evidence will be finalized in `docs/reports/P_SPANIARD_REPORT.md`.
+  Final artifact `2b017d3a` passed Full Safe Rebuild in a clean full-history
+  clone with empty Git status. Pages runs `40775026013` and `40777040962`
+  succeeded; all 244 URLs and 76 media/discovery/shared files matched production,
+  followed by exact verification of the four corrected News pages. Both PT
+  Rich Results tests found four valid items without errors or warnings.
+- Notes: Follow-up `2b017d3a` removes a duplicate business URL from the new News
+  author reference and prevents downstream enrichment from restoring it.
+  Existing articles, shared assets, cache keys and dates are unchanged by that
+  correction. Evidence: `docs/reports/P_SPANIARD_REPORT.md`.
 
 ## 2026-09-18 - Valve-clearance starting prices in all languages
 
