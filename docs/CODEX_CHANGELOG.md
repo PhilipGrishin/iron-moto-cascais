@@ -14,6 +14,20 @@ Format:
 - Notes: ...
 ```
 
+## 2026-10-31 - Fuel-system price wording revision 3
+
+- Commit: `17871619`
+- Changed: Applied the exact approved 17-line source revision and updated the
+  checksum pin. Four Fuel System pages now state that removal, refitting and
+  synchronisation are quoted separately; their hourly-rate wording is removed.
+  Prices, media, shared assets and all other pages remain unchanged.
+- Verified: Complete copy and FAQ/schema parity, exact four-page/four-lastmod
+  scope, every release validator, all four languages at 390/1440 px, and Full
+  Safe Rebuild in a fresh full-history clone with empty Git status.
+- Notes: Pages `41239283490` deployed the exact artifact. All four public pages
+  and 12 discovery/shared/PDF files matched; live PT mobile and RU desktop
+  checks passed. Evidence: `docs/reports/F_FUEL_FIX_REPORT.md`.
+
 ## 2026-10-31 - Fuel-system service page and process video
 
 - Commit: `3d890157`

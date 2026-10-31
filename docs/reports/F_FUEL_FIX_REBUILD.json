@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-10-31T20:31:13.880332+00:00",
+  "commit": "17871619f0051fcd39e87196008e08afed8a879a",
+  "clone_type": "fresh full-history local clone; no hardlinks",
+  "shallow": false,
+  "command": "Full Safe Rebuild from scripts/build/README.md",
+  "exit_code": 0,
+  "git_status_short": "",
+  "pricing_pdfs_included": true,
+  "project_validators_passed": 15,
+  "log_sha256": "b22850f77f1df0f46e66242958bf2453fcc7482061926106e6c21f238aeee42a",
+  "log_summary": [
+    "SEO validation passed: 248 sitemap URL(s)",
+    "Brand page validation passed: 7 brand page set(s).",
+    "Harley Hub validation passed: 12 pages and all required integrations",
+    "News validation passed: 8 approved-source variants and all related selections.",
+    "Commercial hub validation passed: 20 hub pages, 56 trust strips, related descriptions and head trims.",
+    "S-REBUILD Wave 4 validation passed: approved source 0fe5adbd58e585c1292768cd93bb39de9a4e494e04381a29f347aaee8e079438, 4 homes, 20 registry targets, 36 blog related blocks and 40 legacy-project row sets."
+  ]
+}

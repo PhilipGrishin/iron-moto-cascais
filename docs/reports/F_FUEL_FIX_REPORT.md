@@ -1,6 +1,6 @@
 # F-FUEL-FIX delivery record
 
-Date: 2026-10-31. Status: implementation in progress; deployment pending.
+Date: 2026-10-31. Status: deployed and production-verified; all requested acceptance checks passed.
 
 ## Scope and decisions
 
@@ -44,7 +44,7 @@ Date: 2026-10-31. Status: implementation in progress; deployment pending.
   item 4 and FAQ answer render; the first FAQ opens. Zero horizontal overflow,
   JavaScript errors or HTTP failures. PT mobile and RU desktop section captures
   were visually inspected; lead events were intercepted and no form submitted.
-- `git diff --check` passed. Clean-clone rebuild and deployment are pending.
+- `git diff --check` passed. Clean-clone and production acceptance passed.
 
 ## Exact sitemap accounting
 
@@ -63,3 +63,35 @@ All 248 URLs are unchanged. Exactly these four content dates move; the other
 - Google Rich Results was not rerun for this text-only revision. Visible FAQ
   and FAQPage parity were verified directly; the prior F-FUEL test remains
   historical evidence and is not claimed as a fresh test.
+
+## Reproducibility and implementation identity
+
+- Implementation/artifact commit: `17871619f0051fcd39e87196008e08afed8a879a`.
+- Exact first parent: `8c07ec88c513d89d1adeaa4f512ee72671e049c3`. Upstream
+  still matched the requested baseline before the push; no rebase was needed.
+- [Clean-clone evidence](F_FUEL_FIX_REBUILD.json): canonical Full Safe Rebuild
+  passed in a fresh full-history clone of this artifact, including PDFs and all
+  15 project validators; `git status --short` remained empty.
+- Pushed to origin/main. Exact-commit Pages
+  [run 41239283490](https://github.com/PhilipGrishin/iron-moto-cascais/actions/runs/41239283490)
+  succeeded at `2026-10-31T20:33:31Z`.
+
+## Production acceptance
+
+- [HTTP parity evidence](F_FUEL_FIX_PRODUCTION.json), 2026-10-31: all four
+  public Fuel System URLs returned HTTP 200 and match repository main text,
+  JSON-LD, title/description, canonical/hreflang, image/video references and
+  cache keys. Cloudflare email obfuscation was decoded before text comparison.
+  This confirms the new PT section 01 introduction and all four revised FAQs.
+- Twelve public files match repository bytes: sitemap, llms, robots, shared
+  main/project assets, review snapshot and all four pricing PDFs. Requests use
+  a unique cache-bypass query and no-cache headers. The current production
+  sitemap hash is recorded in PROJECT_STATE.md.
+- [Browser evidence](F_FUEL_FIX_BROWSER_PRODUCTION.json): live PT at 390 px
+  and RU at 1440 px show the revised text, have no horizontal overflow,
+  JavaScript errors or failed HTTP responses, and open FAQ answer 1 correctly.
+  Section 01 screenshots were visually inspected. No form was submitted and
+  lead-event requests were intercepted.
+- No task blocker or unverified acceptance criterion remains. Media objects
+  were not uploaded again; their markup and complete VideoObject are unchanged
+  from the already verified F-FUEL artifact.

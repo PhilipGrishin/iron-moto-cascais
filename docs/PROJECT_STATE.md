@@ -9,8 +9,10 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
-- F-FUEL-FIX, **local verification passed; deployment pending**, 2026-10-31:
-  owner-approved revision 3 changes the price wording on the four Fuel System
+- F-FUEL-FIX, **deployed and production-verified**, 2026-10-31:
+  implementation `17871619`, Pages run `41239283490`; clean-clone Full Safe
+  Rebuild and public acceptance passed.
+  Owner-approved revision 3 changes the price wording on the four Fuel System
   pages only. Source SHA-256:
   `8d4fbb1bf4d027d72d583d41e2d9a3f83a8227d97b79667fc9f0a037c0f4c6b2`.
   Removal, refitting, synchronisation, kits and parts are quoted separately;
@@ -24,7 +26,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
   pages matched production; media, responsive playback and Google Rich Results
   checks passed. See the [delivery record](reports/F_FUEL_REPORT.md).
 - Last verified production `sitemap.xml` SHA-256, confirmed 2026-10-31:
-  `d8b3f19af4d90604af25f7587d319073699c81b8f1109d09e7cabc17de6d8dac`.
+  `6261e243b48df2e1dd569cf665f76fdb75b7a3bc431c3553a1f102b2e3d974e2`.
 
 - P-SPANIARD, **deployed and production-verified**, 2026-10-28:
   implementation `a78463f1`, final site artifact `2b017d3a`, Pages runs
