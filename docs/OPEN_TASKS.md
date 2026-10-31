@@ -7,11 +7,9 @@ Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
 
-- **F-FUEL publication acceptance pending:** media upload, local video
-  playback checks and release validation passed. Finish clean-clone
-  reproducibility, deployment and public-page/Google Rich Results acceptance.
-  Evidence: [delivery record](reports/F_FUEL_REPORT.md).
-
+No active F-FUEL work remains. The four pages, two media uploads, link
+integrations and all requested acceptance checks are complete and verified in
+production on 2026-10-31. Evidence: [delivery record](reports/F_FUEL_REPORT.md).
 
 ## Valve Pricing External Handoff
 

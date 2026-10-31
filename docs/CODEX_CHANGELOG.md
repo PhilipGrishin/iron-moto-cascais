@@ -14,6 +14,25 @@ Format:
 - Notes: ...
 ```
 
+## 2026-10-31 - Fuel-system service page and process video
+
+- Commit: `3d890157`
+- Changed: Added the checksum-pinned Fuel System service family in four
+  languages through the shared hub renderer, one deferred native process
+  video, localized footer links and the two approved contextual integrations.
+  Published only two new objects to the existing media bucket. Shared native
+  player code now serves Blog and commercial hubs.
+- Verified: Full Safe Rebuild, all release validators, unchanged existing
+  schemas/headers/forms and four pricing PDFs, exact source copy and checksum
+  failure checks, all local destinations, responsive 390/1440 playback with
+  no initial MP4 transfer. Clean-clone Full Safe Rebuild left empty Git status.
+  Pages `41237540946` succeeded; all 248 indexable and four utility pages and
+  12 discovery/shared/PDF files matched production. Live responsive playback
+  passed, and PT Rich Results found four valid items without errors or warnings.
+- Notes: Uses the approved existing service hero. Repaired utility-footer
+  propagation without changing utility headers or forms. Current scope and
+  media evidence: `docs/reports/F_FUEL_REPORT.md`.
+
 ## 2026-10-28 - Spaniard project and workshop news
 
 - Commit: `a78463f1`

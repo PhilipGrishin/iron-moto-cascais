@@ -1,0 +1,8 @@
+{
+  "commit": "3d89015758fd25ea5c40077909252d7879f7dcc8",
+  "parent": "acc06dce942cfe8d89d6310ec3a449d816b6c04b",
+  "full_history": true,
+  "full_safe_rebuild_exit_code": 0,
+  "git_status_short": "",
+  "method": "Local full-history clone, canonical Full Safe Rebuild from scripts/build/README.md on macOS"
+}

@@ -9,10 +9,15 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
-- F-FUEL, **implemented; publication acceptance pending**, 2026-10-31: the approved standalone
-  service page and three link integrations are being added through the shared
-  commercial renderer. The process video and poster are live on the existing R2 media host; local acceptance passed. Clean-clone and production acceptance remain pending. See the
-  [delivery record](reports/F_FUEL_REPORT.md).
+- F-FUEL, **deployed and production-verified**, 2026-10-31: implementation
+  `3d890157`, Pages run `41237540946`. Four approved service pages and the
+  three requested link integrations are live. The process video and poster
+  are uploaded to the existing media host. Full Safe Rebuild in a clean
+  full-history clone left empty Git status. All sitemap pages plus four utility
+  pages matched production; media, responsive playback and Google Rich Results
+  checks passed. See the [delivery record](reports/F_FUEL_REPORT.md).
+- Last verified production `sitemap.xml` SHA-256, confirmed 2026-10-31:
+  `d8b3f19af4d90604af25f7587d319073699c81b8f1109d09e7cabc17de6d8dac`.
 
 - P-SPANIARD, **deployed and production-verified**, 2026-10-28:
   implementation `a78463f1`, final site artifact `2b017d3a`, Pages runs
@@ -24,7 +29,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
   full-history clone unchanged. Both PT Rich Results tests found four valid
   items with no errors or warnings. See the
   [delivery record](reports/P_SPANIARD_REPORT.md).
-- Last verified production `sitemap.xml` SHA-256, confirmed 2026-10-28:
+- Historical P-SPANIARD production `sitemap.xml` SHA-256, 2026-10-28:
   `66f4cd6367539dd8f111c50fdb87b1454462d46efeceacae10b992b4e310fd99`.
 
 - S-PRICE-VALVES-FROM, **deployed and production-verified** 2026-09-18:

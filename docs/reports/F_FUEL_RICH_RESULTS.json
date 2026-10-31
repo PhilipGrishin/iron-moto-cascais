@@ -1,0 +1,23 @@
+{
+  "url": "https://ironcustommotors.com/pt/fuel-system-service/",
+  "result_url": "https://search.google.com/test/rich-results/result?id=SlWCPwScILmbIJkGpBgfRQ",
+  "crawled_at": "2026-10-31T20:11:07+00:00",
+  "user_agent": "Google Inspection Tool smartphone",
+  "valid_items": {
+    "Breadcrumb": 1,
+    "LocalBusiness": 1,
+    "Organization": 1,
+    "Video": 1
+  },
+  "errors": 0,
+  "warnings_shown": 0,
+  "video_fields_confirmed": [
+    "name",
+    "description",
+    "thumbnailUrl",
+    "contentUrl",
+    "uploadDate",
+    "duration"
+  ],
+  "faq_contract": "Verified directly against visible answers; Google has retired FAQ rich results."
+}

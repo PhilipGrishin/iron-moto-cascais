@@ -1,0 +1,102 @@
+{
+  "results": [
+    {
+      "width": 390,
+      "before": {
+        "src": "",
+        "source": null,
+        "dataSrc": "https://media.ironcustommotors.com/fuel-system-service.mp4",
+        "readyState": 0,
+        "preload": "none",
+        "title": "Limpeza de carburadores por ultrassons e sincronização na Iron Custom Motors, Cascais",
+        "width": 348,
+        "height": 620.21875,
+        "overflow": 0
+      },
+      "after": {
+        "src": "https://media.ironcustommotors.com/fuel-system-service.mp4",
+        "currentTime": 0.521172,
+        "paused": false,
+        "duration": 49.941,
+        "videoWidth": 720,
+        "videoHeight": 1280,
+        "error": null
+      },
+      "mp4Before": [],
+      "mp4RequestsAfter": [
+        "https://media.ironcustommotors.com/fuel-system-service.mp4"
+      ],
+      "modal": {
+        "visible": "flex",
+        "action": "https://formsubmit.co/c29ab5a6818b2926388e8978888304a2",
+        "next": "https://ironcustommotors.com/pt/thank-you/"
+      },
+      "errors": [],
+      "failures": []
+    },
+    {
+      "width": 1440,
+      "before": {
+        "src": "",
+        "source": null,
+        "dataSrc": "https://media.ironcustommotors.com/fuel-system-service.mp4",
+        "readyState": 0,
+        "preload": "none",
+        "title": "Limpeza de carburadores por ultrassons e sincronização na Iron Custom Motors, Cascais",
+        "width": 418,
+        "height": 744.65625,
+        "overflow": 0
+      },
+      "after": {
+        "src": "https://media.ironcustommotors.com/fuel-system-service.mp4",
+        "currentTime": 0.51102,
+        "paused": false,
+        "duration": 49.941,
+        "videoWidth": 720,
+        "videoHeight": 1280,
+        "error": null
+      },
+      "mp4Before": [],
+      "mp4RequestsAfter": [
+        "https://media.ironcustommotors.com/fuel-system-service.mp4"
+      ],
+      "modal": {
+        "visible": "flex",
+        "action": "https://formsubmit.co/c29ab5a6818b2926388e8978888304a2",
+        "next": "https://ironcustommotors.com/pt/thank-you/"
+      },
+      "errors": [],
+      "failures": []
+    }
+  ],
+  "parity": [
+    {
+      "lang": "en",
+      "h1": "Carburettor and fuel system service in Cascais: ultrasonic cleaning, rebuild and electronic synchronisation",
+      "title": "Carburettor ultrasonic cleaning and synchronisation at Iron Custom Motors, Cascais",
+      "footer": "Carburettors & fuel system",
+      "footerHref": "/fuel-system-service/"
+    },
+    {
+      "lang": "pt",
+      "h1": "Carburadores e sistema de alimentação em Cascais: limpeza por ultrassons, reconstrução e sincronização eletrónica",
+      "title": "Limpeza de carburadores por ultrassons e sincronização na Iron Custom Motors, Cascais",
+      "footer": "Carburadores e alimentação",
+      "footerHref": "/pt/fuel-system-service/"
+    },
+    {
+      "lang": "ru",
+      "h1": "Карбюраторы и топливная система мотоцикла в Кашкайше: ультразвуковая чистка, переборка и электронная синхронизация",
+      "title": "Ультразвуковая чистка и синхронизация карбюраторов в Iron Custom Motors, Кашкайш",
+      "footer": "Карбюраторы и топливная система",
+      "footerHref": "/ru/fuel-system-service/"
+    },
+    {
+      "lang": "uk",
+      "h1": "Карбюратори та паливна система мотоцикла в Кашкайші: ультразвукове чищення, перебирання та електронна синхронізація",
+      "title": "Ультразвукове чищення та синхронізація карбюраторів в Iron Custom Motors, Кашкайш",
+      "footer": "Карбюратори та паливна система",
+      "footerHref": "/uk/fuel-system-service/"
+    }
+  ]
+}

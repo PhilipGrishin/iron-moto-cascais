@@ -1,6 +1,6 @@
 # F-FUEL delivery record
 
-Date: 2026-10-31. Status: implemented and locally verified; clean-clone/deployment acceptance pending.
+Date: 2026-10-31. Status: deployed and production-verified; all requested acceptance checks passed.
 
 ## Scope and implementation plan
 
@@ -48,7 +48,7 @@ Date: 2026-10-31. Status: implemented and locally verified; clean-clone/deployme
 
 ## Verification and deployment
 
-Local acceptance and production checks are in progress.
+Local and production acceptance passed; detailed evidence follows below.
 
 ## Upload evidence
 
@@ -137,3 +137,52 @@ All other 236 existing dates stay unchanged. Exact before/after timestamps and
 reasons are preserved in `F_FUEL_SCOPE.json`; shared-footer/cache-only changes
 never advance those dates. Main assets use the canonical stamp recorded in
 `PROJECT_STATE.md`; project asset stamps remain unchanged.
+
+## Reproducibility and implementation identity
+
+- Implementation/artifact commit: `3d89015758fd25ea5c40077909252d7879f7dcc8`.
+- Exact first parent: `acc06dce942cfe8d89d6310ec3a449d816b6c04b`; upstream had
+  not moved from the requested baseline.
+- The canonical Full Safe Rebuild passed in a fresh full-history local clone
+  of this commit, including PDFs and every registered project validator;
+  `git status --short` was empty. Evidence: `F_FUEL_REBUILD.json`.
+- Push confirmed to `origin/main`; Pages workflow `41237540946` succeeded.
+  The connected GitHub tool returned no runs, so the existing authenticated
+  GitHub CLI supplied the exact commit/run status.
+
+## Production acceptance
+
+- Pages [run 41237540946](https://github.com/PhilipGrishin/iron-moto-cascais/actions/runs/41237540946)
+  deployed the exact implementation commit and completed successfully at
+  `2026-10-31T20:10:52Z`.
+- [Production audit](F_FUEL_PRODUCTION.json): all 248 sitemap URLs and four
+  noindex thank-you pages returned HTTP 200 and matched repository main text,
+  JSON-LD, title/description, canonical/hreflang, hero/video references, asset
+  cache keys and the new footer route. Cloudflare email obfuscation was decoded
+  before comparison. Twelve public files (discovery/shared assets and all four
+  pricing PDFs) matched repository bytes through cache-bypass requests.
+- [Live browser evidence](F_FUEL_BROWSER_PRODUCTION.json): the PT page passed
+  both 390/1440 profiles with zero overflow, JavaScript errors or HTTP failures;
+  no MP4 before click and actual playback after click. All four language page
+  titles and footer routes were checked. No lead form was submitted.
+- [Google Rich Results](https://search.google.com/test/rich-results/result?id=SlWCPwScILmbIJkGpBgfRQ)
+  crawled the public PT URL at `2026-10-31T20:11:07+00:00`, detecting four
+  valid supported items: Breadcrumb, LocalBusiness, Organization and Video.
+  No errors or warnings were shown. The Video detail confirms localized copy,
+  both public URLs, actual upload time and `PT49.942S`. Machine-readable
+  evidence: `F_FUEL_RICH_RESULTS.json`. FAQ parity was checked directly; Google
+  no longer supports FAQ rich results, as recorded in `OPEN_TASKS.md`.
+- No task blocker remains. The supplied hero was absent, so the explicitly
+  allowed service-photo fallback is used. Video is published and enabled;
+  no later enablement step is needed. Existing account/runtime maintenance
+  notices remain separately recorded in `OPEN_TASKS.md`.
+
+## Media preparation method
+
+FFmpeg 7.1 converted the owner file using libx264 High / level 4.0, CRF 20,
+medium preset, yuv420p, AAC 48 kHz / 128 kbit/s, stripped metadata and
+`+faststart`. HLG/BT.2020 → SDR BT.709 used
+`zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p`.
+The MP4 movie-header timescale supplied exact duration; a frame at 10 seconds
+supplied the JPEG poster. Temporary codec tooling was installed outside the
+repository; no project or runtime dependency was introduced.
