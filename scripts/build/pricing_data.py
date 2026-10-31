@@ -375,6 +375,21 @@ SEC_03 = {
         },
         {
             "label": {"en":"Carburettor service","ru":"Сервис карбюраторов","uk":"Сервіс карбюраторів","pt":"Serviço de carburadores"},
+            "link_note": {
+                "text": {
+                    "en": "How we do it:",
+                    "pt": "Como fazemos:",
+                    "ru": "Как мы это делаем:",
+                    "uk": "Як ми це робимо:"
+                },
+                "href": "/fuel-system-service/",
+                "link_text": {
+                    "en": "complete strip-down, ultrasonic cleaning, rebuild and electronic synchronisation",
+                    "pt": "desmontagem completa, limpeza por ultrassons, reconstrução e sincronização eletrónica",
+                    "ru": "полная разборка, ультразвуковая чистка, переборка и электронная синхронизация",
+                    "uk": "повне розбирання, ультразвукове чищення, перебирання та електронна синхронізація"
+                }
+            },
             "items": [
                 {"name": {"en":"1 carburettor","ru":"1 карбюратор","uk":"1 карбюратор","pt":"1 carburador"}, "price": "75 EUR", "price_from": True},
                 {"name": {"en":"2 carburettors","ru":"2 карбюратора","uk":"2 карбюратори","pt":"2 carburadores"}, "price": "150 EUR", "price_from": True},

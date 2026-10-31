@@ -179,11 +179,21 @@ def _parse_orphan_sentences(source: str) -> dict[str, dict[str, dict[str, str]]]
 _SOURCE = _approved_source()
 HOME_LINK_COPY = _parse_home_links(_SOURCE)
 W4_RELATED_DESCRIPTIONS = _parse_registry_additions(_SOURCE)
-RELATED_DESCRIPTIONS = {**W3_RELATED_DESCRIPTIONS, **W4_RELATED_DESCRIPTIONS}
+# Approved supplemental strings: content/fuel_system_integrations_4lang.md, Part B.
+FUEL_RELATED_DESCRIPTIONS = {
+    "/fuel-system-service/": {
+        "en": "Carburettors stripped, cleaned in a professional ultrasonic bath, rebuilt and synchronised electronically; injectors bench-tested. From 75 € per carb.",
+        "pt": "Carburadores desmontados, limpos em cuba de ultrassons profissional, reconstruídos e sincronizados eletronicamente; injetores testados. Desde 75 € por carburador.",
+        "ru": "Карбюраторы: полная разборка, профессиональная ультразвуковая ванна, переборка и электронная синхронизация; форсунки — на стенде. От 75 € за карбюратор.",
+        "uk": "Карбюратори: повне розбирання, професійна ультразвукова ванна, перебирання та електронна синхронізація; форсунки — на стенді. Від 75 € за карбюратор."
+    }
+}
+RELATED_DESCRIPTIONS = {**W3_RELATED_DESCRIPTIONS, **W4_RELATED_DESCRIPTIONS, **FUEL_RELATED_DESCRIPTIONS}
 BLOG_RELATED_COPY, BLOG_RELATED_TARGETS = _parse_blog_related(_SOURCE)
 ORPHAN_SENTENCES = _parse_orphan_sentences(_SOURCE)
 
 RELATED_TITLE_KEYS = {
+    "/fuel-system-service/": "nav.fuelServ",
     "/motorcycle-service/": "services.s1.title",
     "/upgrades-tuning/": "services.s3.title",
     "/parts/": "services.s2.title",
@@ -205,10 +215,10 @@ RELATED_TITLE_KEYS = {
     "/contact/": "nav.contact",
 }
 
-if len(RELATED_DESCRIPTIONS) != 19:
-    raise ValueError(f"Expected 19 combined routing targets, got {len(RELATED_DESCRIPTIONS)}")
+if len(RELATED_DESCRIPTIONS) != 20:
+    raise ValueError(f"Expected 20 combined routing targets, got {len(RELATED_DESCRIPTIONS)}")
 if set(RELATED_TITLE_KEYS) != set(RELATED_DESCRIPTIONS):
-    raise ValueError("Wave 4 title-key registry differs from the 19 routing targets")
+    raise ValueError("Wave 4 title-key registry differs from the 20 routing targets")
 for slug, targets in BLOG_RELATED_TARGETS.items():
     unknown = set(targets) - set(RELATED_DESCRIPTIONS)
     if unknown:

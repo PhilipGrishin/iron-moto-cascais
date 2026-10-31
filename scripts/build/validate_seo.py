@@ -76,6 +76,7 @@ except FeatureNotFound:
 LOCALIZED_PATHS = {
     "/",
     "/motorcycle-service/",
+    "/fuel-system-service/",
     "/parts/",
     "/upgrades-tuning/",
     "/custom/",

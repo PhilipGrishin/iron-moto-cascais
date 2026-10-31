@@ -43,6 +43,7 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 ## Services
 
 - [Motorcycle service & repair](https://ironcustommotors.com/motorcycle-service/): Motorcycle service, diagnostics and repair in Cascais. Maintenance from 150 €, diagnostics 50–350 €, estimate in writing first. Tue–Sat, 4 languages.
+- [Carburettors & fuel system](https://ironcustommotors.com/fuel-system-service/): Motorcycle carburettor service in Cascais: full strip-down, ultrasonic cleaning, new seals, electronic synchronisation, injector tests. From 75 € per carb.
 - [Parts & consumables](https://ironcustommotors.com/parts/): Motorcycle parts in Cascais: OEM and aftermarket sourced by model and VIN, quoted in writing, fitted here or collected. Fitting 50 €/hour. Tue–Sat.
 - [Upgrades & tuning](https://ironcustommotors.com/upgrades-tuning/): Motorcycle upgrades and tuning in Cascais: suspension, brakes, lighting, touring and ECU maps chosen for how you ride. Labour 50 €/hour, written estimate.
 - [Custom & special projects](https://ironcustommotors.com/custom/): Custom motorcycles built in Cascais, near Lisbon: from the idea to a documented project. AMD World Championship winner, BMW Motorrad Customizing 2023.
@@ -140,7 +141,7 @@ All pages are available in 4 languages with reciprocal hreflang annotations:
 ## Sitemap
 
 Full machine-readable sitemap: [sitemap.xml](https://ironcustommotors.com/sitemap.xml)
-Generated coverage: 61 English paths across 4 language variants (244 sitemap URLs).
+Generated coverage: 62 English paths across 4 language variants (248 sitemap URLs).
 
 ## Citation guidance
 

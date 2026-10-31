@@ -1,0 +1,77 @@
+{
+  "baseline": "acc06dce942cfe8d89d6310ec3a449d816b6c04b",
+  "sitemap_urls": 248,
+  "new_urls": [
+    "https://ironcustommotors.com/fuel-system-service/",
+    "https://ironcustommotors.com/pt/fuel-system-service/",
+    "https://ironcustommotors.com/ru/fuel-system-service/",
+    "https://ironcustommotors.com/uk/fuel-system-service/"
+  ],
+  "moved_urls": {
+    "https://ironcustommotors.com/motorcycle-service/": {
+      "before": "2026-09-18T11:04:56+01:00",
+      "after": "2026-10-31T19:52:49+00:00",
+      "reason": "Service section 01 item 8 contextual link"
+    },
+    "https://ironcustommotors.com/pricing/": {
+      "before": "2026-09-18T11:05:17+01:00",
+      "after": "2026-10-31T20:04:38+00:00",
+      "reason": "Web-only carburettor subgroup note"
+    },
+    "https://ironcustommotors.com/pt/motorcycle-service/": {
+      "before": "2026-09-18T11:04:57+01:00",
+      "after": "2026-10-31T19:52:50+00:00",
+      "reason": "Service section 01 item 8 contextual link"
+    },
+    "https://ironcustommotors.com/pt/pricing/": {
+      "before": "2026-09-18T11:05:20+01:00",
+      "after": "2026-10-31T20:04:42+00:00",
+      "reason": "Web-only carburettor subgroup note"
+    },
+    "https://ironcustommotors.com/ru/motorcycle-service/": {
+      "before": "2026-09-18T11:04:56+01:00",
+      "after": "2026-10-31T19:52:49+00:00",
+      "reason": "Service section 01 item 8 contextual link"
+    },
+    "https://ironcustommotors.com/ru/pricing/": {
+      "before": "2026-09-18T11:05:25+01:00",
+      "after": "2026-10-31T20:04:45+00:00",
+      "reason": "Web-only carburettor subgroup note"
+    },
+    "https://ironcustommotors.com/uk/motorcycle-service/": {
+      "before": "2026-09-18T11:04:57+01:00",
+      "after": "2026-10-31T19:52:50+00:00",
+      "reason": "Service section 01 item 8 contextual link"
+    },
+    "https://ironcustommotors.com/uk/pricing/": {
+      "before": "2026-09-18T11:05:30+01:00",
+      "after": "2026-10-31T20:04:50+00:00",
+      "reason": "Web-only carburettor subgroup note"
+    }
+  },
+  "unchanged_existing_dates": 236,
+  "unique_lastmod_values": 67,
+  "changed_existing_main_content": [
+    "https://ironcustommotors.com/motorcycle-service/",
+    "https://ironcustommotors.com/pricing/",
+    "https://ironcustommotors.com/pt/motorcycle-service/",
+    "https://ironcustommotors.com/pt/pricing/",
+    "https://ironcustommotors.com/ru/motorcycle-service/",
+    "https://ironcustommotors.com/ru/pricing/",
+    "https://ironcustommotors.com/uk/motorcycle-service/",
+    "https://ironcustommotors.com/uk/pricing/"
+  ],
+  "unchanged_existing_headers": 244,
+  "footer_pages_checked": 252,
+  "html_files_checked": 265,
+  "local_destinations_checked": 42956,
+  "missing_destinations": [],
+  "static_fragment_targets": 588,
+  "existing_booking_modal_actions": 44,
+  "changed_service_source_lines": [
+    29,
+    94,
+    159,
+    224
+  ]
+}

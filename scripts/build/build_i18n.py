@@ -62,7 +62,7 @@ except FeatureNotFound:
 MAIN_PAGES = [
     ("index.html", ""),
     ("authorized-dealer/index.html", "authorized-dealer"),
-    # motorcycle-service, custom, parts and upgrades-tuning are rendered
+    # motorcycle-service, custom, parts, upgrades-tuning and fuel-system-service are rendered
     # directly in four languages by
     # build_service_custom_hubs.py from their approved multilingual copy files.
     # pre-purchase-inspection is generated directly in four languages by

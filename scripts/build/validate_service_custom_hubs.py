@@ -25,7 +25,7 @@ from build_service_custom_hubs import (
 )
 from new_pages_data import PROJECT_TILES
 from brand_pages_data import BRAND_ORDER
-from pricing_data import LABELS
+from pricing_data import LABELS, SEC_03
 from site_chrome import THANK_YOU_URLS, localized_href
 from trust_strip import format_rating, snapshot_rating
 from w3_shared_data import HEAD_TRIMS, TRUST_LABELS
@@ -53,7 +53,7 @@ PRICING_NUMBERS = {
     )
     if value.replace(" ", "").isdigit()
 }
-EXPECTED_HUBS = {"motorcycle-service", "custom", "parts", "upgrades-tuning"}
+EXPECTED_HUBS = {"motorcycle-service", "custom", "parts", "upgrades-tuning", "fuel-system-service"}
 FILLER_SENTENCES = (
     "Open the related page for details, process, pricing context and booking options.",
     "Откройте связанную страницу, чтобы увидеть детали, процесс, контекст цены и варианты записи.",
@@ -73,7 +73,8 @@ FILLER_SENTENCES = (
 
 def clean_text(value: str) -> str:
     value = re.sub(r"\s+", " ", value).strip()
-    return re.sub(r"\s+([.,;:!?])", r"\1", value)
+    value = re.sub(r"([([])\s+", r"\1", value)
+    return re.sub(r"\s+([.,;:!?)\]])", r"\1", value)
 
 
 def text_of(node) -> str:
@@ -104,11 +105,15 @@ def nodes_of_type(nodes: list[dict], schema_type: str) -> list[dict]:
 
 def assert_copy_lines(container, source: str, context: str, issues: list[str]) -> None:
     rendered = text_of(container)
+    if "fuel-system-service/" in context:
+        expected = clean_text(" ".join(markdown_plain(line.strip().removeprefix("- ")) for line in source.splitlines() if line.strip()))
+        if rendered != expected:
+            issues.append(f"{context}: complete ordered copy differs from approved source")
     for raw in source.splitlines():
         line = raw.strip()
         if not line or line == "{{PROJECT_CUSTOM_LINKS}}":
             continue
-        expected = markdown_plain(line.removeprefix("- "))
+        expected = clean_text(markdown_plain(line.removeprefix("- ")))
         if expected not in rendered:
             issues.append(f"{context}: copy line missing: {expected}")
 
@@ -196,6 +201,9 @@ def validate_hub(slug: str, lang: str, content: dict, issues: list[str]) -> None
         if len(next_inputs) != 1 or next_inputs[0].get("value") != THANK_YOU_URLS[lang]:
             issues.append(f"{label}: lead form has no exact localized _next destination")
 
+    numbered = [node.get("data-copy-section") for node in main.select("[data-copy-section]") if node.get("data-copy-section", "").isdigit()]
+    if numbered != [section["number"] for section in content["sections"]]:
+        issues.append(f"{label}: numbered section count/order differs from approved copy")
     for section in content["sections"]:
         node = main.select_one(f'[data-copy-section="{section["number"]}"]')
         if not node:
@@ -260,6 +268,39 @@ def validate_hub(slug: str, lang: str, content: dict, issues: list[str]) -> None
         if schema_faq != expected_faq:
             issues.append(f"{label}: FAQPage does not match visible FAQ 1:1")
 
+    video = HUBS[slug].get("video")
+    players = main.select("video")
+    videos = nodes_of_type(nodes, "VideoObject")
+    if not video:
+        if players or videos or main.select("[data-hub-video]"):
+            issues.append(f"{label}: unconfigured video markup/schema was emitted")
+    elif len(players) != 1 or len(videos) != 1:
+        issues.append(f"{label}: expected one configured native player and VideoObject")
+    else:
+        player, schema = players[0], videos[0]
+        source = player.find("source")
+        expected_video = {
+            "name": content["video_title"], "description": content["video_description"],
+            "thumbnailUrl": video["poster"], "contentUrl": video["content_url"],
+            "uploadDate": video["upload_date"], "duration": video["duration"],
+        }
+        if any(schema.get(key) != value for key, value in expected_video.items()) or "inLanguage" in schema:
+            issues.append(f"{label}: VideoObject differs from approved/localized media metadata")
+        if not source or source.get("data-src") != video["content_url"] or source.has_attr("src") or player.has_attr("src"):
+            issues.append(f"{label}: video source is not deferred")
+        if player.get("preload") != "none" or not all(player.has_attr(attr) for attr in ("controls", "playsinline", "data-deferred-video")):
+            issues.append(f"{label}: video loading/controls contract mismatch")
+        for attr, expected in (("poster", video["poster"]), ("title", content["video_title"]), ("width", str(video["width"])), ("height", str(video["height"]))):
+            if player.get(attr) != expected:
+                issues.append(f"{label}: video {attr} mismatch")
+        wrapper = main.select_one("[data-hub-video]")
+        previous = wrapper.find_previous_sibling() if wrapper else None
+        following = wrapper.find_next_sibling() if wrapper else None
+        if not previous or not following or previous.get("data-copy-section") != "04" or following.get("data-copy-section") != "05":
+            issues.append(f"{label}: video must sit between sections 04 and 05")
+        if "activateDeferredVideo" not in str(soup):
+            issues.append(f"{label}: deferred activation script missing")
+
     if slug == "custom":
         projects = main.select("[data-project-custom-links] a")
         expected_projects = [
@@ -267,7 +308,7 @@ def validate_hub(slug: str, lang: str, content: dict, issues: list[str]) -> None
             for tile in PROJECT_TILES
         ]
         if [(text_of(item), item.get("href")) for item in projects] != expected_projects:
-            issues.append(f"{label}: custom project list is not all 14 projects in registry order")
+            issues.append(f"{label}: custom project list is not all registered projects in registry order")
         if "€" in text_of(main):
             issues.append(f"{label}: custom hub must not publish custom-build prices")
     else:
@@ -309,6 +350,17 @@ def validate_pricing_and_tyre(issues: list[str]) -> None:
             issues.append(f"{label}: 2025 remains in pricing title/H1")
         if expected["page_title"] not in head_text or expected["page_description"] not in head_text:
             issues.append(f"{label}: derived head fields do not use pricing title/meta")
+
+        carburettor_group = next(group for group in SEC_03["subgroups"] if group["label"]["en"] == "Carburettor service")
+        note = carburettor_group["link_note"]
+        heading = next((h for h in soup.select("h3.subgroup-title") if text_of(h) == carburettor_group["label"][lang]), None)
+        price_rows = heading.find_next_sibling("div", class_="price-list") if heading else None
+        note_node = price_rows.find_next_sibling() if price_rows else None
+        expected_note = clean_text(note["text"][lang] + " " + note["link_text"][lang] + ".")
+        if not note_node or text_of(note_node) != expected_note:
+            issues.append(f"{label}: carburettor contextual note differs from approved source")
+        elif not note_node.find("a", href=localized_href(note["href"], lang)):
+            issues.append(f"{label}: carburettor contextual link is not language-local")
 
         tyre_path = SITE_ROOT / TYRE_PATHS[lang]
         tyre_soup = BeautifulSoup(tyre_path.read_text(encoding="utf-8"), "lxml")
@@ -361,8 +413,8 @@ def validate_trust_strip(
 
 def validate_commercial_trust_and_related(issues: list[str]) -> None:
     expected_files = expected_commercial_files()
-    if len(expected_files) != 52:
-        issues.append(f"commercial trust inventory is {len(expected_files)}, expected 52")
+    if len(expected_files) != 56:
+        issues.append(f"commercial trust inventory is {len(expected_files)}, expected 56")
         return
 
     actual_files: set[Path] = set()
@@ -380,7 +432,7 @@ def validate_commercial_trust_and_related(issues: list[str]) -> None:
         for path in sorted(expected_set - actual_files):
             issues.append(f"{path.relative_to(SITE_ROOT)}: trust strip missing")
         for path in sorted(actual_files - expected_set):
-            issues.append(f"{path.relative_to(SITE_ROOT)}: trust strip outside the 52-page inventory")
+            issues.append(f"{path.relative_to(SITE_ROOT)}: trust strip outside the 56-page inventory")
 
     for path, lang in expected_files.items():
         soup = BeautifulSoup(path.read_text(encoding="utf-8"), "lxml")
@@ -454,7 +506,7 @@ def main() -> int:
         for issue in issues:
             print(f"- {issue}")
         return 1
-    print("Commercial hub validation passed: 16 hub pages, 52 trust strips, related descriptions and head trims.")
+    print("Commercial hub validation passed: 20 hub pages, 56 trust strips, related descriptions and head trims.")
     return 0
 
 

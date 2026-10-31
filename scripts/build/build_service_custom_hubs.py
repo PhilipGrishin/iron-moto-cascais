@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the copy-driven Motorcycle Service and Custom hubs in four languages."""
+"""Build the registered copy-driven commercial hubs in four languages."""
 
 from __future__ import annotations
 
@@ -12,6 +12,7 @@ from urllib.parse import quote, urlsplit
 
 from build_output import write_html_if_changed
 from hero_images import hero_background_css, hero_preload_links
+from native_video import DEFERRED_VIDEO_SCRIPT, render_native_video
 from new_pages_data import PROJECT_TILES
 from project_pages_data import PROJECT_CONFIGS
 from site_chrome import chrome_fragments, localized_href
@@ -24,13 +25,34 @@ DOMAIN = "https://ironcustommotors.com"
 LANGS = ("en", "ru", "uk", "pt")
 HREFLANG_CODES = {"en": "en", "ru": "ru", "uk": "uk", "pt": "pt-PT"}
 EXPECTED_SOURCE_SHA256 = {
-    "motorcycle-service": "08627850a90a2307a8e78ccae7ba85141911bb6919ebc0dc324e84af1d6e522a",
+    "fuel-system-service": "0981b316c80d262e51bd806a99497e969eeeb210265b27f3b2bd8757037a315c",
+    "motorcycle-service": "95c584b5770659c04a90e462e2f120938caafb7a19c3030a21ac95fbd08b21bb",
     "custom": "10790be1dab936791dd01b47bcfa9c3f1c73e12cc495275d2195a025a14f4292",
     "parts": "86687081e07eb74377e9d15aa0c81aca3a2beec138dfc7677ebb4ace5272538e",
     "upgrades-tuning": "1385731f4051d2d1bf32885f5c9decdc802f602b90de507189d7883d07c7ebfc",
 }
 
 HUBS = {
+    "fuel-system-service": {
+        "copy": BUILD_DIR / "content" / "fuel_system_copy_4lang.md",
+        "hero": "/photos/service-action-1600.jpg",
+        "section_count": 8,
+        "breadcrumb_services": True,
+        "video": {
+            "content_url": "https://media.ironcustommotors.com/fuel-system-service.mp4",
+            "poster": "https://media.ironcustommotors.com/fuel-system-service-poster.jpg",
+            "upload_date": "2026-10-31T20:03:29+00:00",
+            "duration": "PT49.942S",
+            "width": 720,
+            "height": 1280,
+        },
+        "service_type": {
+            "en": "Carburettor and fuel-system service",
+            "pt": "Serviço de carburadores e sistema de alimentação",
+            "ru": "Сервис карбюраторов и топливной системы",
+            "uk": "Сервіс карбюраторів і паливної системи",
+        },
+    },
     "motorcycle-service": {
         "copy": BUILD_DIR / "content" / "service_hub_copy_4lang.md",
         "hero": "/photos/service-action-1600.jpg",
@@ -88,7 +110,7 @@ UI = {
 def detect_cache_bust() -> str:
     source = (SITE_ROOT / "index.html").read_text(encoding="utf-8")
     match = re.search(r"/assets/main\.css\?v=([a-zA-Z0-9]+)", source)
-    return match.group(1) if match else "20260918a"
+    return match.group(1) if match else "20261031a"
 
 
 def canonical_path(slug: str, lang: str) -> str:
@@ -125,13 +147,15 @@ def split_language_blocks(markdown: str) -> dict[str, str]:
     return blocks
 
 
-def extract_field(block: str, label: str) -> str:
+def extract_field(block: str, label: str, required: bool = True) -> str:
     match = re.search(
         rf"^\*\*{re.escape(label)}:\*\*\s*(.*?)\s*$",
         block,
         flags=re.MULTILINE,
     )
     if not match:
+        if not required:
+            return ""
         raise ValueError(f"Missing field: {label}")
     return match.group(1).strip().strip("`")
 
@@ -215,6 +239,8 @@ def parse_copy(slug: str) -> dict[str, dict]:
             "h1": extract_field(block, "H1"),
             "whatsapp_prefill": extract_field(block, "WhatsApp prefill").rstrip(),
             "hero": heading_slice(block, "Hero intro", r"^###\s+01\s+·"),
+            "video_title": extract_field(block, "Video title", required=False),
+            "video_description": extract_field(block, "Video description", required=False),
             "sections": extract_sections(block, config["section_count"]),
             "cta": cta,
             "related": related,
@@ -487,10 +513,21 @@ def schema_graph(slug: str, content: dict, lang: str) -> dict:
             },
         ],
     }
-    return {
-        "@context": "https://schema.org",
-        "@graph": [business_entity(lang), webpage, service, faq, breadcrumbs],
-    }
+    if HUBS[slug].get("breadcrumb_services"):
+        breadcrumbs["itemListElement"].insert(1, {
+            "@type": "ListItem", "position": 2, "name": UI[lang]["services"],
+            "item": DOMAIN + localized_href("/services/", lang),
+        })
+        breadcrumbs["itemListElement"][-1]["position"] = 3
+    nodes = [business_entity(lang), webpage, service, faq, breadcrumbs]
+    if video := HUBS[slug].get("video"):
+        nodes.append({
+            "@type": "VideoObject", "@id": canonical + "#video",
+            "name": content["video_title"], "description": content["video_description"],
+            "thumbnailUrl": video["poster"], "contentUrl": video["content_url"],
+            "uploadDate": video["upload_date"], "duration": video["duration"],
+        })
+    return {"@context": "https://schema.org", "@graph": nodes}
 
 
 def head_html(slug: str, content: dict, lang: str) -> str:
@@ -536,7 +573,7 @@ def head_html(slug: str, content: dict, lang: str) -> str:
 {hero_preload_links(hero_url)}
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="/assets/main.css?v={cache_bust}" rel="stylesheet"/>
-<style>{page_css(hero_url)}</style>
+<style>{page_css(hero_url)}{HUB_VIDEO_CSS if config.get("video") else ""}</style>
 <script type="application/ld+json">{graph}</script>
 </head>"""
 
@@ -565,6 +602,28 @@ def page_css(hero_url: str) -> str:
 """
 
 
+HUB_VIDEO_CSS = """
+.hub-video .hub-native-video{position:relative;max-width:420px;margin:0 auto;overflow:hidden;border:1px solid var(--border);border-radius:var(--radius);background:#111}
+.hub-native-video video{display:block;width:100%;height:100%;object-fit:contain}
+"""
+
+
+def render_hub_video(config: dict, content: dict) -> str:
+    video = config.get("video")
+    if not video:
+        return ""
+    if not content["video_title"] or not content["video_description"]:
+        raise ValueError("A hub video requires localized title and description")
+    native = {
+        "contentUrl": video["content_url"], "poster": video["poster"],
+        "width": video["width"], "height": video["height"],
+        "playerAspectRatio": f'{video["width"]}/{video["height"]}',
+        "deferUntilPlay": True,
+    }
+    player = render_native_video(native, content["video_title"], "hub.videoTitle", "hub-native-video")
+    return f'<section class="hub-section hub-video" data-hub-video=""><div class="container">{player}</div></section>'
+
+
 def render_page(slug: str, content: dict, lang: str) -> str:
     before, after = chrome_fragments(lang, detect_cache_bust())
     hero_body, hero_actions = split_hero_actions(content["hero"])
@@ -581,9 +640,13 @@ def render_page(slug: str, content: dict, lang: str) -> str:
 <div class="hub-heading"><h2><span class="num">{section['number']} ·</span> {html.escape(section['title'], quote=False)}</h2></div>
 <div class="hub-copy">{render_flow(section['body'], lang, content['whatsapp_prefill'])}</div>
 </div>
-</section>"""
+</section>""" + (render_hub_video(HUBS[slug], content) if section["number"] == "04" else "")
         for section in content["sections"]
     )
+    video_script = ""
+    if HUBS[slug].get("video"):
+        titles = {lang: {"hub.videoTitle": content["video_title"]}}
+        video_script = '<script>window.ICM_I18N_PAGE = ' + json.dumps(titles, ensure_ascii=False) + ';</script>' + DEFERRED_VIDEO_SCRIPT
     return head_html(slug, content, lang) + f"""
 <body>
 {before}
@@ -609,7 +672,7 @@ def render_page(slug: str, content: dict, lang: str) -> str:
 {render_related(content['related'], lang, content['whatsapp_prefill'])}
 {render_faq(content['faq'], lang, content['whatsapp_prefill'])}
 </main>
-{after}
+{after}{video_script}
 </body>
 </html>"""
 

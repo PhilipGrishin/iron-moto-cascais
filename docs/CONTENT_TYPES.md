@@ -82,7 +82,8 @@ Ownership:
   `content/service_hub_copy_4lang.md` and
   `content/custom_hub_copy_4lang.md`,
   `content/parts_hub_copy_4lang.md` and
-  `content/upgrades_hub_copy_4lang.md` +
+  `content/upgrades_hub_copy_4lang.md`,
+  `content/fuel_system_copy_4lang.md` +
   `build_service_custom_hubs.py`; exact family checks live in
   `validate_service_custom_hubs.py`.
 - Pre-purchase inspection:
@@ -105,7 +106,7 @@ Ownership:
 
 Stable copy-driven commercial hub rules:
 
-- Service, Custom, Parts and Upgrades use the same parser and renderer and are
+- Service, Custom, Parts, Upgrades and Fuel System use the same parser and renderer and are
   rendered directly in all four languages. They are not outputs of the generic
   `build_i18n.py` flow.
 - The approved copy owns each hub's local-area and related-path sections.
@@ -116,8 +117,9 @@ Stable copy-driven commercial hub rules:
   `integrations.custom`, in `PROJECT_TILES` order and with same-language URLs.
 - Related and other-brand card descriptions come from the checked shared
   registry and are selected by target path, never from a generic filler key.
-  The combined registry has 19 targets and both approved inputs are
-  SHA-256-pinned by their owning modules.
+  The combined registry includes the approved Fuel System descriptions from
+  `content/fuel_system_integrations_4lang.md`. The original Wave 3 and Wave 4
+  inputs remain SHA-256-pinned; the supplemental integration source is not pinned.
 - The trust strip sits directly after the hero on the copy-driven commercial
   hubs, registered brand-service pages, tyre-service family and pre-purchase
   inspection family. Its build-time rating comes from
@@ -127,6 +129,28 @@ Stable copy-driven commercial hub rules:
 - The confirmed custom-build policy is maintained in
   [BUSINESS_FACTS.md](BUSINESS_FACTS.md#custom-build-policy); do not duplicate
   it as a second documentation source.
+
+Fuel System is a standalone service page registered in the same `HUBS` family.
+It has eight numbered sections; the shared related/FAQ contracts remain five
+and six items. Its incoming links belong only in the Services footer column,
+Service section 01 item 8 and the web Pricing carburettor subgroup note.
+Do not infer a header menu item, home card or general Services card from its
+registration. Optional subgroup `link_note` data is HTML-only; PDFs ignore it.
+
+Optional hub header fields `Video title` and `Video description` are parsed
+without changing older copy. A hub `video` config supplies `content_url`,
+`poster`, `upload_date`, `duration`, `width` and `height`. When configured, one
+native player follows section 04, before section 05, and one localized
+`VideoObject` joins the schema graph. With no video config, neither is emitted.
+Verify both public media URLs before enabling the config. Dimensions and
+ISO duration come from the actual published file; upload time records the real
+media publication. Do not infer video `inLanguage` from page language.
+
+`native_video.py` shares the existing Blog player markup and activation script
+with commercial pages. The MP4 remains in `data-src` until deliberate playback;
+`preload="none"`, a poster and real aspect ratio prevent initial video transfer
+and layout movement. Native video/poster files stay on the existing media host,
+not in Git. A change to the shared helper requires old Blog output comparison.
 
 Schema normally follows `Service` + `FAQPage` + `BreadcrumbList`; collection
 hubs use the established collection pattern. Use the actual source family as
@@ -195,7 +219,8 @@ Ownership:
   media and schema inputs.
 - Long approved copy may live under `scripts/build/content/` and be parsed by
   `blog_data.py`.
-- `build_blog.py`: hub and article rendering.
+- `build_blog.py`: hub and article rendering; `native_video.py` owns shared
+  native-player markup and deferred activation.
 - `build_i18n.py`, `build_sitemap.py` and `localize_internal_links.py` derive
   Blog article membership from `BLOG_POSTS`; a new registered post must not
   require a second hand-maintained slug list.
@@ -321,7 +346,7 @@ Stable rules:
   affected modified dates and visible-text pins. Approved Markdown can declare
   `source_sha256`; a mismatch stops the build before rendering.
 - The four generic related rows on the 10 legacy projects are rewritten at
-  render time from the combined 19-target related-description registry. Their
+  render time from the combined related-description registry. Their
   frozen `main_html` remains unchanged; only `visible_text_sha256` pins move
   when the registry produces new visible copy. Markdown-backed
   projects do not receive legacy related rows.

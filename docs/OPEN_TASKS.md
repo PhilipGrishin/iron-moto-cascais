@@ -1,15 +1,17 @@
 # Open Tasks, Risks And Watchlist
 
-Last updated: 2026-10-28
+Last updated: 2026-10-31
 
 This file owns unresolved work, external dependencies and access requirements.
 Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
 
-- None. **P-SPANIARD completed and production-verified**, 2026-10-28. The final
-  artifact passed the clean-clone rebuild and both requested live Rich Results
-  tests. Scope and evidence: [delivery record](reports/P_SPANIARD_REPORT.md).
+- **F-FUEL publication acceptance pending:** media upload, local video
+  playback checks and release validation passed. Finish clean-clone
+  reproducibility, deployment and public-page/Google Rich Results acceptance.
+  Evidence: [delivery record](reports/F_FUEL_REPORT.md).
+
 
 ## Valve Pricing External Handoff
 

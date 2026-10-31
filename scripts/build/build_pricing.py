@@ -16,7 +16,7 @@ from build_output import write_html_if_changed
 from localize_internal_links import rewrite_href
 from pricing_data import LABELS, SECTIONS, LANGS
 from seo_meta import upsert_robots_image_preview
-from site_chrome import apply_navigation_footer
+from site_chrome import apply_navigation_footer, localized_href
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 TEMPLATE = SITE_ROOT / "motorcycle-service" / "index.html"
@@ -227,6 +227,9 @@ def build_pricing_main(lang: str) -> str:
         <div class="row-price">{from_html}<span class="amount">{price}</span></div>
       </div>''')
                 parts.append('    </div>')
+                if note := sg.get("link_note"):
+                    href = localized_href(note["href"], lang)
+                    parts.append(f'    <p class="section-note">{esc(note["text"][lang])} <a href="{esc(href)}">{esc(note["link_text"][lang])}</a>.</p>')
 
         elif num == "04":
             # Tables for valves + tyres + chain card

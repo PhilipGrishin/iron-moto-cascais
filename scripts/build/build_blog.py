@@ -15,6 +15,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 
 from build_output import write_html_if_changed
+from native_video import DEFERRED_VIDEO_SCRIPT, render_native_video
 from blog_data import BLOG_HUB_BODY, BLOG_HUB_META, BLOG_POSTS
 from build_news import (
     ARROW_SVG,
@@ -650,20 +651,7 @@ def render_article(slug, article):
         if block["type"] == "video":
             if not article.get("nativeVideo"):
                 raise ValueError(f"Article {slug} has a video slot without nativeVideo data")
-            video = article["nativeVideo"]
-            layout_style = ""
-            player_aspect_ratio = video.get("playerAspectRatio")
-            if player_aspect_ratio:
-                layout_style = f' style="aspect-ratio:{a(player_aspect_ratio)};width:100%"'
-            elif video["width"] > video["height"]:
-                layout_style = f' style="aspect-ratio:{video["width"]}/{video["height"]};width:100%"'
-            deferred_attr = ' data-deferred-video=""' if video.get("deferUntilPlay") else ""
-            source_attr = "data-src" if video.get("deferUntilPlay") else "src"
-            return f'''<div class="blog-native-video"{layout_style}>
-<video controls{deferred_attr} height="{video["height"]}" playsinline poster="{a(video["poster"])}" preload="none" title="{a(en_body["videoTitle"])}" data-i18n-title="{pre}.videoTitle" width="{video["width"]}">
-<source {source_attr}="{a(video["contentUrl"])}" type="video/mp4"/>
-</video>
-</div>'''
+            return render_native_video(article["nativeVideo"], en_body["videoTitle"], f"{pre}.videoTitle")
         raise ValueError(f"Unsupported blog content block type: {block['type']}")
 
     def render_content_sections(indexed_sections=None):
@@ -822,21 +810,7 @@ def render_article(slug, article):
 </article>
 </main>'''
 
-    deferred_video_script = ""
-    if article.get("nativeVideo", {}).get("deferUntilPlay"):
-        deferred_video_script = '''
-<script>
-document.querySelectorAll('video[data-deferred-video]').forEach(function(video) {
-  video.addEventListener('click', function activateDeferredVideo() {
-    var source = video.querySelector('source[data-src]');
-    if (!source) return;
-    source.src = source.dataset.src;
-    source.removeAttribute('data-src');
-    video.load();
-    video.play();
-  }, { once: true });
-});
-</script>'''
+    deferred_video_script = DEFERRED_VIDEO_SCRIPT if article.get("nativeVideo", {}).get("deferUntilPlay") else ""
 
     html = (
         head_html

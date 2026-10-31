@@ -99,6 +99,7 @@ FOOTER_SERVICES_LINKS = [
     ("services.s4.title", "/custom/", "Custom &amp; special projects"),
     ("nav.tyreServ", "/motorcycle-tyre-service/", "Tyre fitting &amp; wheel balancing"),
     ("nav.preInsp", "/pre-purchase-inspection/", "Pre-purchase inspection"),
+    ("nav.fuelServ", "/fuel-system-service/", "Carburettors &amp; fuel system"),
     ("nav.authorizedDealer", "/authorized-dealer/", "Authorized Dealer"),
     ("nav.expatWorkshop", "/english-speaking-motorcycle-workshop/", "For expats"),
     *BRAND_NAV_LINKS,
@@ -287,6 +288,19 @@ def apply_navigation_footer(soup, lang: str) -> None:
     apply_form_next(soup, lang)
 
 
+def patch_footer_links(html_text: str, lang: str) -> str:
+    """Refresh managed footer columns without changing other page regions."""
+    for key, renderer in (("col1", render_footer_services), ("col2", render_footer_company)):
+        html_text, count = re.subn(
+            rf'(<h5 data-i18n="footer\.{key}">[^<]*</h5>\s*)<ul>.*?</ul>',
+            lambda match: match.group(1) + renderer(lang),
+            html_text, count=1, flags=re.DOTALL,
+        )
+        if count != 1:
+            raise ValueError(f"Expected one managed footer column: {key}")
+    return html_text
+
+
 def patch_navigation_footer(html_text: str, lang: str) -> str:
     """Patch only managed chrome substrings, preserving every byte outside them."""
     replacements = (
@@ -298,16 +312,8 @@ def patch_navigation_footer(html_text: str, lang: str) -> str:
             r'<nav class="nav-mobile">.*?</nav>',
             render_mobile_nav(lang),
         ),
-        (
-            r'(<h5 data-i18n="footer\.col1">[^<]*</h5>\s*)<ul>.*?</ul>',
-            lambda match: match.group(1) + render_footer_services(lang),
-        ),
-        (
-            r'(<h5 data-i18n="footer\.col2">[^<]*</h5>\s*)<ul>.*?</ul>',
-            lambda match: match.group(1) + render_footer_company(lang),
-        ),
     )
-    patched = html_text
+    patched = patch_footer_links(html_text, lang)
     for pattern, replacement in replacements:
         patched, count = re.subn(
             pattern,

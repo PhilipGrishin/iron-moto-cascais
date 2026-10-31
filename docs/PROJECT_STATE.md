@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-10-28
+Last updated: 2026-10-31
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -8,6 +8,11 @@ deployed public identifiers and cache-bust values. Operating rules live in
 `scripts/build/README.md`.
 
 ## Status And Evidence
+
+- F-FUEL, **implemented; publication acceptance pending**, 2026-10-31: the approved standalone
+  service page and three link integrations are being added through the shared
+  commercial renderer. The process video and poster are live on the existing R2 media host; local acceptance passed. Clean-clone and production acceptance remain pending. See the
+  [delivery record](reports/F_FUEL_REPORT.md).
 
 - P-SPANIARD, **deployed and production-verified**, 2026-10-28:
   implementation `a78463f1`, final site artifact `2b017d3a`, Pages runs
@@ -19,7 +24,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
   full-history clone unchanged. Both PT Rich Results tests found four valid
   items with no errors or warnings. See the
   [delivery record](reports/P_SPANIARD_REPORT.md).
-- Current production `sitemap.xml` SHA-256, confirmed 2026-10-28:
+- Last verified production `sitemap.xml` SHA-256, confirmed 2026-10-28:
   `66f4cd6367539dd8f111c50fdb87b1454462d46efeceacae10b992b4e310fd99`.
 
 - S-PRICE-VALVES-FROM, **deployed and production-verified** 2026-09-18:
@@ -211,13 +216,13 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | Inventory | Current value | Canonical evidence |
 |---|---:|---|
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
-| English path patterns | 61 | `build_sitemap.py` `PAGES` |
-| Indexable sitemap URLs | 244 | parsed `sitemap.xml` `<url>` entries |
-| Tracked HTML files | 261 | `git ls-files` HTML inventory |
-| Indexable HTML files | 244 | sitemap-to-file resolution |
+| English path patterns | 62 | `build_sitemap.py` `PAGES` |
+| Indexable sitemap URLs | 248 | parsed `sitemap.xml` `<url>` entries |
+| HTML files | 265 | tracked inventory plus four F-FUEL pages |
+| Indexable HTML files | 248 | sitemap-to-file resolution |
 | Non-indexed HTML files | 17 | `404.html`, 12 localized project redirect stubs and 4 `thank-you` pages |
-| Sitemap lastmod tags | 244 | parsed `sitemap.xml` |
-| Unique sitemap lastmod values | 66 | parsed sitemap, 2026-10-28; P-SPANIARD: 8 new URLs, 28 changed dates, 208 unchanged |
+| Sitemap lastmod tags | 248 | parsed `sitemap.xml` |
+| Unique sitemap lastmod values | 67 | parsed sitemap, 2026-10-31; F-FUEL: 4 new URLs, 8 changed dates, 236 unchanged |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
 | Project detail pages | 15 | `PROJECT_TILES` |
 | Data-driven project definitions | 15 | `PROJECT_CONFIGS` |
@@ -242,8 +247,8 @@ Registry alignment on the evidence date:
 
 | Registry | Entries | Relationship |
 |---|---:|---|
-| `build_sitemap.py` `PAGES` | 61 | canonical English indexable paths |
-| `localize_internal_links.py` `LOCALIZED_PATHS` | 61 | matches `PAGES` after normalization |
+| `build_sitemap.py` `PAGES` | 62 | canonical English indexable paths |
+| `localize_internal_links.py` `LOCALIZED_PATHS` | 62 | matches `PAGES` after normalization |
 | `build_i18n.py` `MAIN_PAGES` | 32 | English sources localized by the generic i18n flow |
 | `project_pages_data.py` `PROJECT_CONFIGS` | 15 | project details rendered directly in four languages |
 
@@ -254,7 +259,7 @@ There is no active `EN_PAGES` registry. The canonical English page registry is
 
 | Assets | Value | Scope |
 |---|---|---|
-| `assets/main.css`, `assets/main.js` | `20260918a` | every sitemap page |
+| `assets/main.css`, `assets/main.js` | `20261031a` | every sitemap page |
 | `assets/projects.css` | `20260801a` | project detail pages |
 | `assets/projects.js` | `20260710b` | project detail pages |
 
@@ -265,7 +270,7 @@ asset must use one value site-wide. Change a value only when that asset changes.
 
 ### General And Commercial Pages
 
-`/`, `/services/`, `/motorcycle-service/`, `/parts/`,
+`/`, `/services/`, `/motorcycle-service/`, `/fuel-system-service/`, `/parts/`,
 `/upgrades-tuning/`, `/custom/`, `/pre-purchase-inspection/`,
 `/motorcycle-tyre-service/`, `/pricing/`, `/projects/`, `/about/`,
 `/community/`, `/contact/`, `/faq/`,
@@ -275,12 +280,13 @@ asset must use one value site-wide. Change a value only when that asset changes.
 The expat workshop page is intentionally footer-only and contextual-link-only;
 it is not a top-navigation item.
 
-The Service, Custom, Parts and Upgrades hubs are copy-driven four-language
+The Service, Custom, Parts, Upgrades and Fuel System pages are copy-driven four-language
 families owned by
 `scripts/build/content/service_hub_copy_4lang.md`,
 `scripts/build/content/custom_hub_copy_4lang.md`,
 `scripts/build/content/parts_hub_copy_4lang.md`,
-`scripts/build/content/upgrades_hub_copy_4lang.md` and the shared
+`scripts/build/content/upgrades_hub_copy_4lang.md`,
+`scripts/build/content/fuel_system_copy_4lang.md` and the shared
 `build_service_custom_hubs.py` renderer. Their current pages use distinct
 search-intent H1s, six source-matched FAQ items, localized lead CTAs and the
 `Service`/`FAQPage`/`BreadcrumbList` graph. The Custom hub lists all 15
@@ -288,13 +294,13 @@ registered projects in `PROJECT_TILES` order. Parts and Upgrades no longer use
 the legacy generic-i18n source path.
 
 The checked Wave 3 and Wave 4 sources jointly own localized descriptions for
-19 related targets; Wave 3 also owns the exact shared trust-strip labels. The
+20 related targets; Wave 3 also owns the exact shared trust-strip labels. The
 homepage uses Wave 4's distinct intent anchors for its four primary service
 cards, tyre/PPI cards and Pricing CTA. Every registered Blog post has exactly
 three mapped related-service cards and resolves its author/publisher
 `#business` reference to one complete `LocalBusiness` entity. The 10 legacy
 projects render their four generic related rows from the same registry. The
-trust strip is present on 52 commercial pages: the four copy-driven hubs,
+trust strip is present on 56 commercial pages: the five copy-driven hubs,
 seven brand-service families, tyre service and pre-purchase inspection in four
 languages. Its static rating is read from `assets/reviews-snapshot.json`;
 `assets/main.js` updates the
@@ -406,12 +412,16 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 
 ## Current Delivery And Discovery State
 
-- All 136 pages that contain the lead form submit to FormSubmit through the
+- All 152 pages that contain the lead form submit to FormSubmit through the
   activated private action alias. No built HTML exposes the delivery inbox in
   a FormSubmit action, and the SEO validator enforces this contract across all
-  built HTML files, including non-sitemap output. The 132 indexable form pages
+  built HTML files, including non-sitemap output. The 148 indexable form pages
   redirect to their language-local noindex `thank-you` page; those four utility
   pages contain the same shared modal and remain outside `sitemap.xml`.
+  Correction, 2026-10-31: the previous 136/132 counts were stale. A complete
+  HTML scan at baseline `acc06dce` found 148 total/144 indexable form pages;
+  F-FUEL adds four. Existing 261 HTML files retain identical form markup.
+  Evidence: baseline-versus-working-tree BeautifulSoup comparison.
 - A-MEASURE's checked-in client sends only four anonymous lead-intent types:
   `whatsapp`, `tel`, `form_submit` and `form_view`. The payload contains the
   query-free path, path-derived language and a sanitized referrer hostname;
@@ -431,7 +441,7 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   claim a new live Worker/account check.
   The local checkout was synchronized before stabilization; it no longer has
   the older `5.0` from `26` aggregate.
-  All 52 commercial trust strips and their runtime translations now derive
+  All 56 commercial trust strips and their runtime translations now derive
   from the same snapshot. The earlier audit documented stale deployed strips;
   the repaired refresh pipeline prevents independent snapshot publication.
   Historical correction recorded 2026-09-08:
@@ -442,7 +452,7 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   `aaad7c6c40839b4174653524fcc7749e17714792b033b861e011d57cdf708190`.
 - Every sitemap page has canonical, mutual hreflang and Schema.org JSON-LD with
   at least `BreadcrumbList`.
-- All 44 `VideoObject` entities across sitemap pages have a non-empty
+- All 48 `VideoObject` entities across sitemap pages have a non-empty
   `uploadDate`. The SEO validator checks this required field recursively in
   every JSON-LD graph.
 - Every sitemap page has an early hero discovery hint.
@@ -456,6 +466,10 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   is attached only on the first player click. Its visible price, the four
   pricing pages, `OfferCatalog` entries and four generated PDFs all state
   `100 EUR` per wheel.
+- Fuel System uses the shared deferred player between sections 04 and 05.
+  Its MP4 and poster are served by the existing `icm-media` R2 bucket at
+  `https://media.ironcustommotors.com/`. Media hashes and actual publication
+  timestamps are recorded in the F-FUEL delivery evidence.
 - The sealing-tape failure case uses the same deferred self-hosted media
   contract with a centered portrait `9 / 16` player. The four new pages have
   five localized FAQ items, and the preceding tubeless-conversion article
