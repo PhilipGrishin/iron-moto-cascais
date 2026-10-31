@@ -268,7 +268,7 @@ Approved hub source SHA-256 values are enforced by `EXPECTED_SOURCE_SHA256` in
 | `custom_hub_copy_4lang.md` | `10790be1dab936791dd01b47bcfa9c3f1c73e12cc495275d2195a025a14f4292` |
 | `parts_hub_copy_4lang.md` | `86687081e07eb74377e9d15aa0c81aca3a2beec138dfc7677ebb4ace5272538e` |
 | `upgrades_hub_copy_4lang.md` | `1385731f4051d2d1bf32885f5c9decdc802f602b90de507189d7883d07c7ebfc` |
-| `fuel_system_copy_4lang.md` | `0981b316c80d262e51bd806a99497e969eeeb210265b27f3b2bd8757037a315c` |
+| `fuel_system_copy_4lang.md` | `8d4fbb1bf4d027d72d583d41e2d9a3f83a8227d97b79667fc9f0a037c0f4c6b2` |
 
 Fuel System uses the existing service hero when no approved separate image is
 supplied. Optional video/poster assets are uploaded to the existing media host

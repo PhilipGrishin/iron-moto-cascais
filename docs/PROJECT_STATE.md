@@ -9,6 +9,13 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
+- F-FUEL-FIX, **local verification passed; deployment pending**, 2026-10-31:
+  owner-approved revision 3 changes the price wording on the four Fuel System
+  pages only. Source SHA-256:
+  `8d4fbb1bf4d027d72d583d41e2d9a3f83a8227d97b79667fc9f0a037c0f4c6b2`.
+  Removal, refitting, synchronisation, kits and parts are quoted separately;
+  this page family no longer names an hourly rate. Other published prices are
+  unchanged. See the [delivery record](reports/F_FUEL_FIX_REPORT.md).
 - F-FUEL, **deployed and production-verified**, 2026-10-31: implementation
   `3d890157`, Pages run `41237540946`. Four approved service pages and the
   three requested link integrations are live. The process video and poster
@@ -227,7 +234,7 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | Indexable HTML files | 248 | sitemap-to-file resolution |
 | Non-indexed HTML files | 17 | `404.html`, 12 localized project redirect stubs and 4 `thank-you` pages |
 | Sitemap lastmod tags | 248 | parsed `sitemap.xml` |
-| Unique sitemap lastmod values | 67 | parsed sitemap, 2026-10-31; F-FUEL: 4 new URLs, 8 changed dates, 236 unchanged |
+| Unique sitemap lastmod values | 67 | parsed sitemap, 2026-10-31; F-FUEL-FIX: 4 changed dates, 244 unchanged |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
 | Project detail pages | 15 | `PROJECT_TILES` |
 | Data-driven project definitions | 15 | `PROJECT_CONFIGS` |

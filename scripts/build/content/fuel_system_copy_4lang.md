@@ -1,6 +1,6 @@
 # Carburettor & fuel-system service page — approved copy (EN / PT-pt / RU / UK)
 Iron Custom Motors · for `/fuel-system-service/` (+ `/pt/`, `/ru/`, `/uk/`). Task F-FUEL, 2026-10-31. Written from the owner's brief of 2026-10-31 (professional ultrasonic bath with professional cleaning agents; complete disassembly → bath → reassembly → sealing rubbers and failed parts replaced → refit → electronic synchronisation; more than ten bench checks per fuel injector; process video), the price list (`pricing_data.py` §03 «Carburettor service») and the U-CLEAN niche analysis of 2026-08-24. Same field/section contract as the W1 hub copies (`service_hub_copy_4lang.md`, `upgrades_hub_copy_4lang.md`), plus two new header fields for the video slot (`Video title`, `Video description`). Placement (owner, 2026-10-31): a standalone page — no new site section, no menu item, no services-hub card; reached from the footer services column and from contextual links on the service hub and the price list (Parts C–E). Draft for review.
-Facts: independent multi-brand workshop · R. António José da Silva 100 B, São Domingos de Rana, Cascais · Tue–Sat 10:00–18:00 · WhatsApp +351 917 961 230 · EN/PT/RU/UK · prices used on this page are the published labour prices only: 1 carburettor from 75 €, 2 from 150 €, 4 from 200 € = the work on the carburettor itself (owner, 2026-10-31: removal from the bike, refitting and synchronisation are labour at the published 50 €/hour; sealing kits and parts separate), fault diagnostics 50–350 €, pre-purchase inspection 150 € fixed · fuel injectors have no list price → written estimate, never a number · video: self-hosted on media.ironcustommotors.com (file names in the Codex task).
+Facts: independent multi-brand workshop · R. António José da Silva 100 B, São Domingos de Rana, Cascais · Tue–Sat 10:00–18:00 · WhatsApp +351 917 961 230 · EN/PT/RU/UK · prices used on this page are the published labour prices only: 1 carburettor from 75 €, 2 from 150 €, 4 from 200 € = the work on the carburettor itself (owner, 2026-10-31: removal from the bike, refitting and synchronisation are quoted separately, as are sealing kits and parts; rev. 3 — no hourly rate anywhere on the page), fault diagnostics 50–350 €, pre-purchase inspection 150 € fixed · fuel injectors have no list price → written estimate, never a number · video: self-hosted on media.ironcustommotors.com (file names in the Codex task).
 Rules: no turnaround promises (a date is given once the carburettors are on the bench) · no absolute claims («like new», «guaranteed», «forever») · no third-party workshop or dealer names; carburettor makers (Keihin, Mikuni, Dell'Orto, Bing, S&S) and motorcycle makes are named only as what we work on · independent workshop · no scooters · no Google rating hard-coded · visible FAQ = FAQPage schema 1:1 (6 items) · exactly 5 related paths · same-language links only.
 
 ---
@@ -20,11 +20,11 @@ Iron Custom Motors services motorcycle carburettors and fuel-injection systems i
 [WhatsApp +351 917 961 230](https://wa.me/351917961230) · [Call](tel:+351917961230) · [Send a request](/contact/)
 
 ### 01 · What we do and what it costs
-One page for everything between the fuel tap and the combustion chamber: carburettors, fuel injectors, throttle bodies, fuel lines and filters. The prices below are labour, taken from the 2026 price list, and cover the work on the carburettor itself; taking the carburettors off the motorcycle, refitting them and synchronising is labour at 50 €/hour in the same written estimate; sealing kits, jets, needles and other parts are quoted in writing and approved by you before they are ordered.
+One page for everything between the fuel tap and the combustion chamber: carburettors, fuel injectors, throttle bodies, fuel lines and filters. The prices below are labour, taken from the 2026 price list, and cover the work on the carburettor itself; taking the carburettors off the motorcycle, refitting them and synchronising are quoted separately in the same written estimate, as are sealing kits, jets, needles and other parts — approved by you before anything is ordered.
 **1. One carburettor — from 75 €.** The work on the carburettor itself: complete strip-down, ultrasonic cleaning, inspection, reassembly to specification with new sealing rubbers (the kit is priced separately).
 **2. Two carburettors — from 150 €. Four — from 200 €.** The same bench work for every carburettor in the bank.
 **3. Sealing rubbers, diaphragms and parts.** O-rings, float-bowl gaskets, float needles and seats, diaphragms, jets and needles are replaced when worn or damaged — listed per carburettor, approved before ordering.
-**4. Removal, refitting and electronic synchronisation.** Taking the carburettors off the motorcycle and putting them back, idle and mixture set, carburettors or throttle bodies set to open identically with electronic vacuum gauges — labour at 50 €/hour in the same written estimate. Synchronisation also as a stand-alone job on a bike that idles unevenly.
+**4. Removal, refitting and electronic synchronisation — quoted separately.** Taking the carburettors off the motorcycle and putting them back, idle and mixture set, carburettors or throttle bodies set to open identically with electronic vacuum gauges — each step in the same written estimate. Synchronisation also as a stand-alone job on a bike that idles unevenly.
 **5. Fuel injectors.** Removal, ultrasonic cleaning, more than ten checks on the test bench, new filters and seals where needed — written estimate by model.
 **6. Diagnosis first when the cause isn't obvious.** Fault diagnostics 50–350 €. If the fault turns out to be ignition, a vacuum leak or a tired fuel pump, you hear that before anyone opens a carburettor.
 
@@ -80,13 +80,13 @@ WhatsApp first: [+351 917 961 230](https://wa.me/351917961230) — model, year, 
 
 ### Related paths
 - [Motorcycle service and repair in Cascais: diagnostics 50–350 €, brakes, suspension, estimate in writing first](/motorcycle-service/)
-- [Full 2026 price list: carburettors from 75 €, labour 50 €/hour, diagnostics 50–350 €, pre-season check](/pricing/)
+- [Full 2026 price list: carburettors from 75 €, diagnostics 50–350 €, pre-season check, brakes and tyres](/pricing/)
 - [Pre-purchase inspection: compression test, videoscope inside the cylinder, written report — 150 € fixed](/pre-purchase-inspection/)
 - [Harley-Davidson service in Cascais: carburetted and injected models, from scheduled service to full rebuilds](/harley-service/)
 - [Parts and consumables: sealing kits, jets, needles and diaphragms sourced by model and fitted here](/parts/)
 
 ### FAQ
-- **How much does carburettor cleaning cost?** One carburettor from 75 €, two from 150 €, four from 200 € — the work on the carburettor itself: strip-down, ultrasonic cleaning, inspection, reassembly. Removal from the bike, refitting and synchronisation are labour at 50 €/hour; sealing kits and any worn parts are listed per carburettor — all in one written estimate you approve before anything is ordered. Fuel injectors: written estimate by model.
+- **How much does carburettor cleaning cost?** One carburettor from 75 €, two from 150 €, four from 200 € — the work on the carburettor itself: strip-down, ultrasonic cleaning, inspection, reassembly. Removal from the bike, refitting and synchronisation are quoted separately, and so are sealing kits and any worn parts, per carburettor — all in one written estimate you approve before anything is ordered. Fuel injectors: written estimate by model.
 - **How long does it take?** It depends on the number of carburettors, their condition and which parts have to be ordered. We don't quote a turnaround before the carburettors are on the bench; once they are open, you get a date together with the estimate.
 - **Can I bring just the carburettors?** Yes, for cleaning and rebuilding. Synchronisation and the final setting need the engine running, so the last step happens with the bike here — or you refit them yourself and come in for synchronisation alone.
 - **Is ultrasonic cleaning safe for a carburettor?** For the bare aluminium body and the brass parts, yes: cavitation is non-abrasive, and the bath runs with professional agents meant for these alloys. Rubber, diaphragms, floats, plastics and anything electrical never go in — which is why we disassemble completely first.
@@ -110,11 +110,11 @@ A Iron Custom Motors faz o serviço de carburadores e de sistemas de injeção d
 [WhatsApp +351 917 961 230](https://wa.me/351917961230) · [Ligar](tel:+351917961230) · [Enviar pedido](/pt/contact/)
 
 ### 01 · O que fazemos e quanto custa
-Uma página para tudo o que fica entre a torneira de combustível e a câmara de combustão: carburadores, injetores, corpos de borboleta, tubos e filtros de combustível. Os preços abaixo são de mão de obra, da tabela de 2026, e referem-se ao trabalho no próprio carburador; tirar os carburadores da mota, voltar a montá-los e sincronizar é mão de obra a 50 €/hora, no mesmo orçamento escrito; kits de vedantes, gicleurs, agulhas e outras peças são orçamentados por escrito e aprovados por si antes de serem encomendados.
+Uma página para tudo o que fica entre a torneira de combustível e a câmara de combustão: carburadores, injetores, corpos de borboleta, tubos e filtros de combustível. Os preços abaixo são de mão de obra, da tabela de 2026, e referem-se ao trabalho no próprio carburador; tirar os carburadores da mota, voltar a montá-los e sincronizar são orçamentados à parte, no mesmo orçamento escrito, tal como kits de vedantes, gicleurs, agulhas e outras peças — tudo aprovado por si antes de se encomendar o que quer que seja.
 **1. Um carburador — desde 75 €.** O trabalho no próprio carburador: desmontagem completa, limpeza por ultrassons, inspeção, montagem segundo a especificação com vedantes novos (kit orçamentado à parte).
 **2. Dois carburadores — desde 150 €. Quatro — desde 200 €.** O mesmo trabalho de bancada para cada carburador da bateria.
 **3. Vedantes, membranas e peças.** O-rings, juntas da cuba, agulhas e sedes da boia, membranas, gicleurs e agulhas substituídos quando estão gastos ou danificados, listados por carburador e aprovados antes da encomenda.
-**4. Tirar, voltar a montar e sincronizar.** Tirar os carburadores da mota e voltar a colocá-los, afinar ralenti e mistura, acertar carburadores ou corpos de borboleta para abrirem exatamente por igual com vacuómetros eletrónicos: mão de obra a 50 €/hora, no mesmo orçamento escrito. A sincronização também como serviço isolado numa mota com ralenti irregular.
+**4. Tirar, voltar a montar e sincronizar — orçamentados à parte.** Tirar os carburadores da mota e voltar a colocá-los, afinar ralenti e mistura, acertar carburadores ou corpos de borboleta para abrirem exatamente por igual com vacuómetros eletrónicos: cada passo no mesmo orçamento escrito. A sincronização também como serviço isolado numa mota com ralenti irregular.
 **5. Injetores.** Remoção, limpeza por ultrassons, mais de dez testes na bancada, filtros e vedantes novos quando necessário; orçamento escrito por modelo.
 **6. Diagnóstico primeiro quando a causa não é óbvia.** Diagnóstico de avarias 50–350 €. Se a causa for a ignição, uma entrada de ar falsa ou uma bomba de combustível cansada, fica a sabê-lo antes de alguém abrir um carburador.
 
@@ -170,13 +170,13 @@ WhatsApp primeiro: [+351 917 961 230](https://wa.me/351917961230) — modelo, an
 
 ### Caminhos relacionados
 - [Revisão e reparação de motas em Cascais: diagnóstico 50–350 €, travões, suspensão, orçamento escrito primeiro](/pt/motorcycle-service/)
-- [Tabela de preços 2026 completa: carburadores desde 75 €, mão de obra 50 €/hora, diagnóstico 50–350 €, verificação pré-época](/pt/pricing/)
+- [Tabela de preços 2026 completa: carburadores desde 75 €, diagnóstico 50–350 €, verificação pré-época, travões e pneus](/pt/pricing/)
 - [Inspeção pré-compra: teste de compressão, videoscópio dentro do cilindro, relatório escrito — 150 € fixos](/pt/pre-purchase-inspection/)
 - [Serviço Harley-Davidson em Cascais: modelos de carburador e de injeção, da revisão programada à reconstrução completa](/pt/harley-service/)
 - [Peças e consumíveis: kits de vedantes, gicleurs, agulhas e membranas encomendados pelo modelo e montados cá](/pt/parts/)
 
 ### FAQ
-- **Quanto custa a limpeza de carburadores?** Um carburador desde 75 €, dois desde 150 €, quatro desde 200 €: o trabalho no próprio carburador, com desmontagem, limpeza por ultrassons, inspeção e montagem. Tirar da mota, voltar a montar e sincronizar é mão de obra a 50 €/hora; kits de vedantes e peças gastas entram por carburador — tudo num único orçamento escrito, aprovado por si antes de se encomendar o que quer que seja. Injetores: orçamento escrito por modelo.
+- **Quanto custa a limpeza de carburadores?** Um carburador desde 75 €, dois desde 150 €, quatro desde 200 €: o trabalho no próprio carburador, com desmontagem, limpeza por ultrassons, inspeção e montagem. Tirar da mota, voltar a montar e sincronizar são orçamentados à parte, tal como os kits de vedantes e as peças gastas, por carburador — tudo num único orçamento escrito, aprovado por si antes de se encomendar o que quer que seja. Injetores: orçamento escrito por modelo.
 - **Quanto tempo demora?** Depende do número de carburadores, do estado em que estão e das peças que for preciso encomendar. Não damos prazo antes de os carburadores estarem na bancada; assim que estão abertos, recebe uma data junto com o orçamento.
 - **Posso trazer só os carburadores?** Pode, para limpeza e reconstrução. A sincronização e a afinação final precisam do motor a trabalhar, por isso o último passo faz-se com a mota cá, ou monta-os você e vem só para a sincronização.
 - **A limpeza por ultrassons é segura para um carburador?** Para o corpo de alumínio nu e para as peças de latão, sim: a cavitação não é abrasiva e a cuba trabalha com produtos profissionais próprios para estas ligas. Borracha, membranas, boias, plásticos e tudo o que seja elétrico nunca vão à cuba; é por isso que desmontamos tudo primeiro.
@@ -200,11 +200,11 @@ Iron Custom Motors обслуживает карбюраторы и систем
 [WhatsApp +351 917 961 230](https://wa.me/351917961230) · [Позвонить](tel:+351917961230) · [Отправить заявку](/ru/contact/)
 
 ### 01 · Что делаем и сколько это стоит
-Одна страница обо всём, что находится между краном бензобака и камерой сгорания: карбюраторы, форсунки, дроссельные заслонки, топливные шланги и фильтры. Цены ниже — за работу, из прайс-листа 2026 года, и относятся к работе с самим карбюратором; снятие карбюраторов с мотоцикла, установка и синхронизация — работа по 50 €/час в той же письменной смете; ремкомплекты уплотнений, жиклёры, иглы и другие детали считаются письменно и согласовываются с вами до заказа.
+Одна страница обо всём, что находится между краном бензобака и камерой сгорания: карбюраторы, форсунки, дроссельные заслонки, топливные шланги и фильтры. Цены ниже — за работу, из прайс-листа 2026 года, и относятся к работе с самим карбюратором; снятие карбюраторов с мотоцикла, установка и синхронизация считаются отдельно, в той же письменной смете, как и ремкомплекты уплотнений, жиклёры, иглы и другие детали, — всё согласовывается с вами до заказа.
 **1. Один карбюратор — от 75 €.** Работа с самим карбюратором: полная разборка, ультразвуковая чистка, дефектовка, сборка по спецификации с новыми уплотнительными резинками (ремкомплект считается отдельно).
 **2. Два карбюратора — от 150 €. Четыре — от 200 €.** Та же стендовая работа для каждого карбюратора в блоке.
 **3. Уплотнения, мембраны и детали.** Кольца, прокладки поплавковых камер, игольчатые клапаны с сёдлами, мембраны, жиклёры и иглы меняются, если изношены или повреждены, — списком по каждому карбюратору, с согласованием до заказа.
-**4. Снятие, установка и синхронизация.** Снять карбюраторы с мотоцикла и поставить обратно, настроить холостой ход и смесь, выставить карбюраторы или дроссельные заслонки так, чтобы они открывались одинаково, — по электронным вакуумметрам; работа по 50 €/час в той же письменной смете. Синхронизация — и как самостоятельная работа на мотоцикле с неровным холостым ходом.
+**4. Снятие, установка и синхронизация — считаются отдельно.** Снять карбюраторы с мотоцикла и поставить обратно, настроить холостой ход и смесь, выставить карбюраторы или дроссельные заслонки так, чтобы они открывались одинаково, — по электронным вакуумметрам; каждый шаг в той же письменной смете. Синхронизация — и как самостоятельная работа на мотоцикле с неровным холостым ходом.
 **5. Форсунки.** Снятие, ультразвуковая чистка, больше десяти проверок на стенде, новые фильтры и уплотнения по необходимости — письменная смета по модели.
 **6. Сначала диагностика, если причина неочевидна.** Поиск неисправности 50–350 €. Если дело окажется в зажигании, подсосе воздуха или уставшем бензонасосе, вы узнаете об этом раньше, чем кто-то откроет карбюратор.
 
@@ -260,13 +260,13 @@ Iron Custom Motors обслуживает карбюраторы и систем
 
 ### Смежные страницы
 - [Сервис и ремонт мотоциклов в Кашкайше: диагностика 50–350 €, тормоза, подвеска, сначала письменная смета](/ru/motorcycle-service/)
-- [Полный прайс-лист 2026: карбюраторы от 75 €, работа 50 €/час, диагностика 50–350 €, диагностика перед сезоном](/ru/pricing/)
+- [Полный прайс-лист 2026: карбюраторы от 75 €, диагностика 50–350 €, диагностика перед сезоном, тормоза и шины](/ru/pricing/)
 - [Предпокупочная инспекция: компрессия, видеоскоп в цилиндре, письменный отчёт — фиксированная цена 150 €](/ru/pre-purchase-inspection/)
 - [Сервис Harley-Davidson в Кашкайше: карбюраторные и инжекторные модели, от планового ТО до полной переборки](/ru/harley-service/)
 - [Запчасти и расходники: ремкомплекты уплотнений, жиклёры, иглы и мембраны под заказ по модели, установка у нас](/ru/parts/)
 
 ### FAQ
-- **Сколько стоит чистка карбюраторов?** Один карбюратор от 75 €, два от 150 €, четыре от 200 € — это работа с самим карбюратором: разборка, ультразвуковая чистка, дефектовка, сборка. Снятие с мотоцикла, установка и синхронизация — работа по 50 €/час; ремкомплекты уплотнений и изношенные детали — по каждому карбюратору; всё в одной письменной смете, которую вы согласовываете до заказа. Форсунки — письменная смета по модели.
+- **Сколько стоит чистка карбюраторов?** Один карбюратор от 75 €, два от 150 €, четыре от 200 € — это работа с самим карбюратором: разборка, ультразвуковая чистка, дефектовка, сборка. Снятие с мотоцикла, установка и синхронизация считаются отдельно, как и ремкомплекты уплотнений и изношенные детали — по каждому карбюратору; всё в одной письменной смете, которую вы согласовываете до заказа. Форсунки — письменная смета по модели.
 - **Сколько времени это занимает?** Зависит от количества карбюраторов, их состояния и того, какие детали придётся заказывать. Срок мы не называем, пока карбюраторы не на столе; как только они открыты, вы получаете дату вместе со сметой.
 - **Можно привезти только карбюраторы?** Да — на чистку и переборку. Синхронизации и финальной настройке нужен работающий двигатель, поэтому последний шаг делается с мотоциклом у нас, либо вы ставите карбюраторы сами и приезжаете только на синхронизацию.
 - **Ультразвук безопасен для карбюратора?** Для голого алюминиевого корпуса и латунных деталей — да: кавитация не абразивна, а ванна работает на профессиональных средствах, рассчитанных на эти сплавы. Резина, мембраны, поплавки, пластик и всё электрическое в ванну не попадают никогда — поэтому сначала полная разборка.
@@ -290,11 +290,11 @@ Iron Custom Motors обслуговує карбюратори та систем
 [WhatsApp +351 917 961 230](https://wa.me/351917961230) · [Зателефонувати](tel:+351917961230) · [Надіслати заявку](/uk/contact/)
 
 ### 01 · Що робимо і скільки це коштує
-Одна сторінка про все, що стоїть між краном бензобака й камерою згоряння: карбюратори, форсунки, дросельні заслінки, паливні шланги та фільтри. Ціни нижче — за роботу, з прайс-листа 2026 року, і стосуються роботи із самим карбюратором; зняття карбюраторів з мотоцикла, встановлення та синхронізація — робота по 50 €/год у тому ж письмовому кошторисі; ремкомплекти ущільнень, жиклери, голки та інші деталі рахуються письмово й погоджуються з вами до замовлення.
+Одна сторінка про все, що стоїть між краном бензобака й камерою згоряння: карбюратори, форсунки, дросельні заслінки, паливні шланги та фільтри. Ціни нижче — за роботу, з прайс-листа 2026 року, і стосуються роботи із самим карбюратором; зняття карбюраторів з мотоцикла, встановлення та синхронізація рахуються окремо, у тому ж письмовому кошторисі, як і ремкомплекти ущільнень, жиклери, голки та інші деталі, — усе погоджується з вами до замовлення.
 **1. Один карбюратор — від 75 €.** Робота із самим карбюратором: повне розбирання, ультразвукове чищення, дефектування, складання за специфікацією з новими ущільнювальними гумками (ремкомплект рахується окремо).
 **2. Два карбюратори — від 150 €. Чотири — від 200 €.** Та сама стендова робота для кожного карбюратора в блоці.
 **3. Ущільнення, мембрани та деталі.** Кільця, прокладки поплавцевих камер, голчасті клапани із сідлами, мембрани, жиклери та голки міняються, якщо зношені чи пошкоджені, — списком по кожному карбюратору, з погодженням до замовлення.
-**4. Зняття, встановлення та синхронізація.** Зняти карбюратори з мотоцикла й поставити назад, налаштувати холостий хід і суміш, виставити карбюратори або дросельні заслінки так, щоб вони відкривалися однаково, — за електронними вакуумметрами; робота по 50 €/год у тому ж письмовому кошторисі. Синхронізація — і як самостійна робота на мотоциклі з нерівним холостим ходом.
+**4. Зняття, встановлення та синхронізація — рахуються окремо.** Зняти карбюратори з мотоцикла й поставити назад, налаштувати холостий хід і суміш, виставити карбюратори або дросельні заслінки так, щоб вони відкривалися однаково, — за електронними вакуумметрами; кожен крок у тому ж письмовому кошторисі. Синхронізація — і як самостійна робота на мотоциклі з нерівним холостим ходом.
 **5. Форсунки.** Зняття, ультразвукове чищення, понад десять перевірок на стенді, нові фільтри та ущільнення за потреби — письмовий кошторис за моделлю.
 **6. Спершу діагностика, якщо причина неочевидна.** Пошук несправності 50–350 €. Якщо справа виявиться в запалюванні, підсмоктуванні повітря чи втомленому бензонасосі, ви дізнаєтеся про це раніше, ніж хтось відкриє карбюратор.
 
@@ -350,13 +350,13 @@ Iron Custom Motors обслуговує карбюратори та систем
 
 ### Суміжні сторінки
 - [Сервіс і ремонт мотоциклів у Кашкайші: діагностика 50–350 €, гальма, підвіска, спершу письмовий кошторис](/uk/motorcycle-service/)
-- [Повний прайс-лист 2026: карбюратори від 75 €, робота 50 €/год, діагностика 50–350 €, діагностика перед сезоном](/uk/pricing/)
+- [Повний прайс-лист 2026: карбюратори від 75 €, діагностика 50–350 €, діагностика перед сезоном, гальма та шини](/uk/pricing/)
 - [Передкупівельна інспекція: компресія, відеоскоп у циліндрі, письмовий звіт — фіксована ціна 150 €](/uk/pre-purchase-inspection/)
 - [Сервіс Harley-Davidson у Кашкайші: карбюраторні та інжекторні моделі, від планового ТО до повного перебирання](/uk/harley-service/)
 - [Запчастини та витратники: ремкомплекти ущільнень, жиклери, голки та мембрани під замовлення за моделлю, встановлення в нас](/uk/parts/)
 
 ### FAQ
-- **Скільки коштує чищення карбюраторів?** Один карбюратор від 75 €, два від 150 €, чотири від 200 € — це робота із самим карбюратором: розбирання, ультразвукове чищення, дефектування, складання. Зняття з мотоцикла, встановлення та синхронізація — робота по 50 €/год; ремкомплекти ущільнень і зношені деталі — по кожному карбюратору; усе в одному письмовому кошторисі, який ви погоджуєте до замовлення. Форсунки — письмовий кошторис за моделлю.
+- **Скільки коштує чищення карбюраторів?** Один карбюратор від 75 €, два від 150 €, чотири від 200 € — це робота із самим карбюратором: розбирання, ультразвукове чищення, дефектування, складання. Зняття з мотоцикла, встановлення та синхронізація рахуються окремо, як і ремкомплекти ущільнень та зношені деталі — по кожному карбюратору; усе в одному письмовому кошторисі, який ви погоджуєте до замовлення. Форсунки — письмовий кошторис за моделлю.
 - **Скільки часу це займає?** Залежить від кількості карбюраторів, їхнього стану й того, які деталі доведеться замовляти. Термін ми не називаємо, доки карбюратори не на столі; щойно вони відкриті, ви отримуєте дату разом із кошторисом.
 - **Можна привезти лише карбюратори?** Так — на чищення та перебирання. Синхронізації та фінальному налаштуванню потрібен працюючий двигун, тому останній крок робиться з мотоциклом у нас, або ви ставите карбюратори самі й приїжджаєте лише на синхронізацію.
 - **Ультразвук безпечний для карбюратора?** Для голого алюмінієвого корпусу та латунних деталей — так: кавітація не абразивна, а ванна працює на професійних засобах, розрахованих на ці сплави. Гума, мембрани, поплавці, пластик і все електричне у ванну не потрапляють ніколи — тому спершу повне розбирання.

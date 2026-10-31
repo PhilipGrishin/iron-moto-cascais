@@ -1,0 +1,129 @@
+{
+  "checked_at": "2026-10-31T20:28:32.924764+00:00",
+  "baseline": "8c07ec88c513d89d1adeaa4f512ee72671e049c3",
+  "source_sha256": "8d4fbb1bf4d027d72d583d41e2d9a3f83a8227d97b79667fc9f0a037c0f4c6b2",
+  "source_changed_lines": [
+    3,
+    23,
+    27,
+    83,
+    89,
+    113,
+    117,
+    173,
+    179,
+    203,
+    207,
+    263,
+    269,
+    293,
+    297,
+    353,
+    359
+  ],
+  "pages": [
+    {
+      "path": "fuel-system-service/index.html",
+      "new_html_sha256": "16beb71676234666a1d21e9682f5debf55d76702e63aeab955ece5a2a8e13ff9",
+      "allowed_amounts": [
+        "150 €",
+        "200 €",
+        "50–350 €",
+        "75 €"
+      ],
+      "changed_visible_units": 4,
+      "faq_count": 6,
+      "related_count": 5,
+      "h1_count": 1,
+      "hreflang_count": 5,
+      "remainder_dom_and_video_unchanged": true
+    },
+    {
+      "path": "pt/fuel-system-service/index.html",
+      "new_html_sha256": "31ff1df885f71b41eb6c9ad14e4f1f3a84f6a2fc3f3d4f1960330d347b1d86c0",
+      "allowed_amounts": [
+        "150 €",
+        "200 €",
+        "50–350 €",
+        "75 €"
+      ],
+      "changed_visible_units": 4,
+      "faq_count": 6,
+      "related_count": 5,
+      "h1_count": 1,
+      "hreflang_count": 5,
+      "remainder_dom_and_video_unchanged": true
+    },
+    {
+      "path": "ru/fuel-system-service/index.html",
+      "new_html_sha256": "125f3c42d14ce218840a61e55b31450352bcd407fa3676dc40988961affba5ec",
+      "allowed_amounts": [
+        "150 €",
+        "200 €",
+        "50–350 €",
+        "75 €"
+      ],
+      "changed_visible_units": 4,
+      "faq_count": 6,
+      "related_count": 5,
+      "h1_count": 1,
+      "hreflang_count": 5,
+      "remainder_dom_and_video_unchanged": true
+    },
+    {
+      "path": "uk/fuel-system-service/index.html",
+      "new_html_sha256": "61ebab807449336d1df15033ae582d2336443e3f57836ac66976fbe9f42a1820",
+      "allowed_amounts": [
+        "150 €",
+        "200 €",
+        "50–350 €",
+        "75 €"
+      ],
+      "changed_visible_units": 4,
+      "faq_count": 6,
+      "related_count": 5,
+      "h1_count": 1,
+      "hreflang_count": 5,
+      "remainder_dom_and_video_unchanged": true
+    }
+  ],
+  "other_html_byte_identical": 261,
+  "sitemap_urls": 248,
+  "moved_lastmod": [
+    {
+      "url": "https://ironcustommotors.com/fuel-system-service/",
+      "before": "2026-10-31T20:04:21+00:00",
+      "after": "2026-10-31T20:27:41+00:00"
+    },
+    {
+      "url": "https://ironcustommotors.com/ru/fuel-system-service/",
+      "before": "2026-10-31T20:04:21+00:00",
+      "after": "2026-10-31T20:27:41+00:00"
+    },
+    {
+      "url": "https://ironcustommotors.com/uk/fuel-system-service/",
+      "before": "2026-10-31T20:04:21+00:00",
+      "after": "2026-10-31T20:27:41+00:00"
+    },
+    {
+      "url": "https://ironcustommotors.com/pt/fuel-system-service/",
+      "before": "2026-10-31T20:04:21+00:00",
+      "after": "2026-10-31T20:27:41+00:00"
+    }
+  ],
+  "unchanged_lastmod": 244,
+  "unique_lastmod_values": 67,
+  "sitemap_sha256": "6261e243b48df2e1dd569cf665f76fdb75b7a3bc431c3553a1f102b2e3d974e2",
+  "tracked_changes": [
+    "fuel-system-service/index.html",
+    "pt/fuel-system-service/index.html",
+    "ru/fuel-system-service/index.html",
+    "scripts/build/README.md",
+    "scripts/build/build_service_custom_hubs.py",
+    "scripts/build/content/fuel_system_copy_4lang.md",
+    "sitemap.xml",
+    "uk/fuel-system-service/index.html"
+  ],
+  "unexpected_tracked_changes": [],
+  "llms_byte_identical": true
+}

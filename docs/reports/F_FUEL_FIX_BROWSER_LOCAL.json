@@ -1,0 +1,94 @@
+{
+  "checked_at": "2026-10-31T20:29:28.738Z",
+  "base": "http://127.0.0.1:8765",
+  "results": [
+    {
+      "lang": "en",
+      "width": 390,
+      "overflow": 0,
+      "section01_intro": "One page for everything between the fuel tap and the combustion chamber: carburettors, fuel injectors, throttle bodies, fuel lines and filters. The prices below are labour, taken from the 2026 price list, and cover the work on the carburettor itself; taking the carburettors off the motorcycle, refitting them and synchronising are quoted separately in the same written estimate, as are sealing kits, jets, needles and other parts — approved by you before anything is ordered.",
+      "section01_card4": "4. Removal, refitting and electronic synchronisation — quoted separately. Taking the carburettors off the motorcycle and putting them back, idle and mixture set, carburettors or throttle bodies set to open identically with electronic vacuum gauges — each step in the same written estimate. Synchronisation also as a stand-alone job on a bike that idles unevenly.",
+      "faq1": "One carburettor from 75 €, two from 150 €, four from 200 € — the work on the carburettor itself: strip-down, ultrasonic cleaning, inspection, reassembly. Removal from the bike, refitting and synchronisation are quoted separately, and so are sealing kits and any worn parts, per carburettor — all in one written estimate you approve before anything is ordered. Fuel injectors: written estimate by model.",
+      "faq_opens": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "section01_intro": "One page for everything between the fuel tap and the combustion chamber: carburettors, fuel injectors, throttle bodies, fuel lines and filters. The prices below are labour, taken from the 2026 price list, and cover the work on the carburettor itself; taking the carburettors off the motorcycle, refitting them and synchronising are quoted separately in the same written estimate, as are sealing kits, jets, needles and other parts — approved by you before anything is ordered.",
+      "section01_card4": "4. Removal, refitting and electronic synchronisation — quoted separately. Taking the carburettors off the motorcycle and putting them back, idle and mixture set, carburettors or throttle bodies set to open identically with electronic vacuum gauges — each step in the same written estimate. Synchronisation also as a stand-alone job on a bike that idles unevenly.",
+      "faq1": "One carburettor from 75 €, two from 150 €, four from 200 € — the work on the carburettor itself: strip-down, ultrasonic cleaning, inspection, reassembly. Removal from the bike, refitting and synchronisation are quoted separately, and so are sealing kits and any worn parts, per carburettor — all in one written estimate you approve before anything is ordered. Fuel injectors: written estimate by model.",
+      "faq_opens": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "lang": "pt",
+      "width": 390,
+      "overflow": 0,
+      "section01_intro": "Uma página para tudo o que fica entre a torneira de combustível e a câmara de combustão: carburadores, injetores, corpos de borboleta, tubos e filtros de combustível. Os preços abaixo são de mão de obra, da tabela de 2026, e referem-se ao trabalho no próprio carburador; tirar os carburadores da mota, voltar a montá-los e sincronizar são orçamentados à parte, no mesmo orçamento escrito, tal como kits de vedantes, gicleurs, agulhas e outras peças — tudo aprovado por si antes de se encomendar o que quer que seja.",
+      "section01_card4": "4. Tirar, voltar a montar e sincronizar — orçamentados à parte. Tirar os carburadores da mota e voltar a colocá-los, afinar ralenti e mistura, acertar carburadores ou corpos de borboleta para abrirem exatamente por igual com vacuómetros eletrónicos: cada passo no mesmo orçamento escrito. A sincronização também como serviço isolado numa mota com ralenti irregular.",
+      "faq1": "Um carburador desde 75 €, dois desde 150 €, quatro desde 200 €: o trabalho no próprio carburador, com desmontagem, limpeza por ultrassons, inspeção e montagem. Tirar da mota, voltar a montar e sincronizar são orçamentados à parte, tal como os kits de vedantes e as peças gastas, por carburador — tudo num único orçamento escrito, aprovado por si antes de se encomendar o que quer que seja. Injetores: orçamento escrito por modelo.",
+      "faq_opens": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "lang": "pt",
+      "width": 1440,
+      "overflow": 0,
+      "section01_intro": "Uma página para tudo o que fica entre a torneira de combustível e a câmara de combustão: carburadores, injetores, corpos de borboleta, tubos e filtros de combustível. Os preços abaixo são de mão de obra, da tabela de 2026, e referem-se ao trabalho no próprio carburador; tirar os carburadores da mota, voltar a montá-los e sincronizar são orçamentados à parte, no mesmo orçamento escrito, tal como kits de vedantes, gicleurs, agulhas e outras peças — tudo aprovado por si antes de se encomendar o que quer que seja.",
+      "section01_card4": "4. Tirar, voltar a montar e sincronizar — orçamentados à parte. Tirar os carburadores da mota e voltar a colocá-los, afinar ralenti e mistura, acertar carburadores ou corpos de borboleta para abrirem exatamente por igual com vacuómetros eletrónicos: cada passo no mesmo orçamento escrito. A sincronização também como serviço isolado numa mota com ralenti irregular.",
+      "faq1": "Um carburador desde 75 €, dois desde 150 €, quatro desde 200 €: o trabalho no próprio carburador, com desmontagem, limpeza por ultrassons, inspeção e montagem. Tirar da mota, voltar a montar e sincronizar são orçamentados à parte, tal como os kits de vedantes e as peças gastas, por carburador — tudo num único orçamento escrito, aprovado por si antes de se encomendar o que quer que seja. Injetores: orçamento escrito por modelo.",
+      "faq_opens": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "lang": "ru",
+      "width": 390,
+      "overflow": 0,
+      "section01_intro": "Одна страница обо всём, что находится между краном бензобака и камерой сгорания: карбюраторы, форсунки, дроссельные заслонки, топливные шланги и фильтры. Цены ниже — за работу, из прайс-листа 2026 года, и относятся к работе с самим карбюратором; снятие карбюраторов с мотоцикла, установка и синхронизация считаются отдельно, в той же письменной смете, как и ремкомплекты уплотнений, жиклёры, иглы и другие детали, — всё согласовывается с вами до заказа.",
+      "section01_card4": "4. Снятие, установка и синхронизация — считаются отдельно. Снять карбюраторы с мотоцикла и поставить обратно, настроить холостой ход и смесь, выставить карбюраторы или дроссельные заслонки так, чтобы они открывались одинаково, — по электронным вакуумметрам; каждый шаг в той же письменной смете. Синхронизация — и как самостоятельная работа на мотоцикле с неровным холостым ходом.",
+      "faq1": "Один карбюратор от 75 €, два от 150 €, четыре от 200 € — это работа с самим карбюратором: разборка, ультразвуковая чистка, дефектовка, сборка. Снятие с мотоцикла, установка и синхронизация считаются отдельно, как и ремкомплекты уплотнений и изношенные детали — по каждому карбюратору; всё в одной письменной смете, которую вы согласовываете до заказа. Форсунки — письменная смета по модели.",
+      "faq_opens": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "lang": "ru",
+      "width": 1440,
+      "overflow": 0,
+      "section01_intro": "Одна страница обо всём, что находится между краном бензобака и камерой сгорания: карбюраторы, форсунки, дроссельные заслонки, топливные шланги и фильтры. Цены ниже — за работу, из прайс-листа 2026 года, и относятся к работе с самим карбюратором; снятие карбюраторов с мотоцикла, установка и синхронизация считаются отдельно, в той же письменной смете, как и ремкомплекты уплотнений, жиклёры, иглы и другие детали, — всё согласовывается с вами до заказа.",
+      "section01_card4": "4. Снятие, установка и синхронизация — считаются отдельно. Снять карбюраторы с мотоцикла и поставить обратно, настроить холостой ход и смесь, выставить карбюраторы или дроссельные заслонки так, чтобы они открывались одинаково, — по электронным вакуумметрам; каждый шаг в той же письменной смете. Синхронизация — и как самостоятельная работа на мотоцикле с неровным холостым ходом.",
+      "faq1": "Один карбюратор от 75 €, два от 150 €, четыре от 200 € — это работа с самим карбюратором: разборка, ультразвуковая чистка, дефектовка, сборка. Снятие с мотоцикла, установка и синхронизация считаются отдельно, как и ремкомплекты уплотнений и изношенные детали — по каждому карбюратору; всё в одной письменной смете, которую вы согласовываете до заказа. Форсунки — письменная смета по модели.",
+      "faq_opens": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "lang": "uk",
+      "width": 390,
+      "overflow": 0,
+      "section01_intro": "Одна сторінка про все, що стоїть між краном бензобака й камерою згоряння: карбюратори, форсунки, дросельні заслінки, паливні шланги та фільтри. Ціни нижче — за роботу, з прайс-листа 2026 року, і стосуються роботи із самим карбюратором; зняття карбюраторів з мотоцикла, встановлення та синхронізація рахуються окремо, у тому ж письмовому кошторисі, як і ремкомплекти ущільнень, жиклери, голки та інші деталі, — усе погоджується з вами до замовлення.",
+      "section01_card4": "4. Зняття, встановлення та синхронізація — рахуються окремо. Зняти карбюратори з мотоцикла й поставити назад, налаштувати холостий хід і суміш, виставити карбюратори або дросельні заслінки так, щоб вони відкривалися однаково, — за електронними вакуумметрами; кожен крок у тому ж письмовому кошторисі. Синхронізація — і як самостійна робота на мотоциклі з нерівним холостим ходом.",
+      "faq1": "Один карбюратор від 75 €, два від 150 €, чотири від 200 € — це робота із самим карбюратором: розбирання, ультразвукове чищення, дефектування, складання. Зняття з мотоцикла, встановлення та синхронізація рахуються окремо, як і ремкомплекти ущільнень та зношені деталі — по кожному карбюратору; усе в одному письмовому кошторисі, який ви погоджуєте до замовлення. Форсунки — письмовий кошторис за моделлю.",
+      "faq_opens": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "lang": "uk",
+      "width": 1440,
+      "overflow": 0,
+      "section01_intro": "Одна сторінка про все, що стоїть між краном бензобака й камерою згоряння: карбюратори, форсунки, дросельні заслінки, паливні шланги та фільтри. Ціни нижче — за роботу, з прайс-листа 2026 року, і стосуються роботи із самим карбюратором; зняття карбюраторів з мотоцикла, встановлення та синхронізація рахуються окремо, у тому ж письмовому кошторисі, як і ремкомплекти ущільнень, жиклери, голки та інші деталі, — усе погоджується з вами до замовлення.",
+      "section01_card4": "4. Зняття, встановлення та синхронізація — рахуються окремо. Зняти карбюратори з мотоцикла й поставити назад, налаштувати холостий хід і суміш, виставити карбюратори або дросельні заслінки так, щоб вони відкривалися однаково, — за електронними вакуумметрами; кожен крок у тому ж письмовому кошторисі. Синхронізація — і як самостійна робота на мотоциклі з нерівним холостим ходом.",
+      "faq1": "Один карбюратор від 75 €, два від 150 €, чотири від 200 € — це робота із самим карбюратором: розбирання, ультразвукове чищення, дефектування, складання. Зняття з мотоцикла, встановлення та синхронізація рахуються окремо, як і ремкомплекти ущільнень та зношені деталі — по кожному карбюратору; усе в одному письмовому кошторисі, який ви погоджуєте до замовлення. Форсунки — письмовий кошторис за моделлю.",
+      "faq_opens": true,
+      "errors": [],
+      "failures": []
+    }
+  ]
+}

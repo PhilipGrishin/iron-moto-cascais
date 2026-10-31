@@ -7,6 +7,10 @@ Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
 
+F-FUEL-FIX: local source/scope and release validation passed. Clean-clone
+rebuild and production acceptance remain pending. Evidence and scope:
+[delivery record](reports/F_FUEL_FIX_REPORT.md).
+
 No active F-FUEL work remains. The four pages, two media uploads, link
 integrations and all requested acceptance checks are complete and verified in
 production on 2026-10-31. Evidence: [delivery record](reports/F_FUEL_REPORT.md).
