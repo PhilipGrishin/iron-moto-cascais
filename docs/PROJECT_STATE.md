@@ -9,9 +9,13 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
-- N-DCF, **implementation in progress**, 2026-11-01: approved dealership News
-  article in four languages, optional gallery support and existing hero reuse.
-  Baseline `95eaf7a8`; acceptance pending. See [delivery record](reports/N_DCF_REPORT.md).
+- N-DCF, **deployed and production-verified**, 2026-11-01: implementation
+  `cadd1a5a`, Pages run `41352957214`. Approved dealership announcement is live
+  in four languages and first on every News hub. Gallery is optional; existing
+  dealer photos are reused without added media. Previous articles/home pages
+  are byte-identical. Clean-clone Full Safe Rebuild, every release validator,
+  all public-page/file comparisons, responsive checks and PT Rich Results
+  passed (four valid items). See [delivery record](reports/N_DCF_REPORT.md).
 
 - D-DCF, **deployed and production-verified**, 2026-11-01: implementation
   `5d01bd43`, Pages run `41347446338`. Second Authorized Dealer partner and
@@ -38,7 +42,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
   pages matched production; media, responsive playback and Google Rich Results
   checks passed. See the [delivery record](reports/F_FUEL_REPORT.md).
 - Last verified production `sitemap.xml` SHA-256, confirmed 2026-11-01:
-  `29547baa58527e788b80f3a0c68c1c1e66e6a73b47dc0aa2018bcddb1503fcf5`.
+  `abf2e63b9709fa95974da6776c15e2bb1b34ef2192b59c7e6b9c5b7537ff24c8`.
 
 - P-SPANIARD, **deployed and production-verified**, 2026-10-28:
   implementation `a78463f1`, final site artifact `2b017d3a`, Pages runs

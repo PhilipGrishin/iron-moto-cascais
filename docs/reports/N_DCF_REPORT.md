@@ -1,6 +1,6 @@
 # N-DCF delivery record
 
-Date: 2026-11-01. Status: implementation in progress.
+Date: 2026-11-01. Status: deployed and production-verified.
 
 ## Intake and decisions
 
@@ -30,6 +30,16 @@ Date: 2026-11-01. Status: implementation in progress.
   checksum rejection, unchanged previous articles and protected files, precise
   sitemap scope, all validators, PT responsive checks, fresh full-history clone
   Full Safe Rebuild, publication verification and PT Google Rich Results Test.
+
+## Implementation identity
+
+- Implementation/artifact commit: `cadd1a5abfc5e35b7ff683945605ee3d566acd63`.
+- Actual first parent: `95eaf7a82b95af311218dec0a026e4cf4f84975b`, matching
+  the requested baseline. Origin was fetched again before publication.
+- Fresh full-history `--no-hardlinks` clone of the exact implementation commit:
+  Full Safe Rebuild passed, including PDFs and every validator family, with
+  empty Git status and identical sitemap bytes. [Evidence](N_DCF_REBUILD.json).
+  Production acceptance passed as recorded below.
 
 ## Local acceptance
 
@@ -102,3 +112,30 @@ and language roots. No manual deployment allowlist or route duplication is neede
 - Shared JavaScript/CSS did not change, so no cache-bust bump is needed.
 - The owner's approved equipment photograph retains its printed marks. No
   equipment-brand name is introduced in News copy, ALT text or asset filenames.
+
+## Deployment and public acceptance
+
+- Confirmed: [Pages run 41352957214](https://github.com/PhilipGrishin/iron-moto-cascais/actions/runs/41352957214)
+  validated and deployed exact commit `cadd1a5abfc5e35b7ff683945605ee3d566acd63`;
+  conclusion `success`, completed 2026-11-01T21:39:04Z.
+- [Production comparison](N_DCF_PRODUCTION.json): all 256 sitemap URLs plus four
+  utility pages returned successfully and matched normalized local main copy,
+  JSON-LD, metadata, canonical/hreflang, asset references, DCF navigation,
+  in-copy News links, ordered hub cards and gallery presence. Cloudflare contact
+  email obfuscation was normalized before comparing text.
+- All 22 checked files matched local bytes: sitemap, llms, robots, four shared
+  CSS/JS assets, review snapshot, four pricing PDFs and ten reused DCF media/
+  manifest files. Production sitemap SHA-256:
+  `abf2e63b9709fa95974da6776c15e2bb1b34ef2192b59c7e6b9c5b7537ff24c8`.
+- [Live browser acceptance](N_DCF_BROWSER_PRODUCTION.json): PT 390/DPR2 and
+  1440/DPR1 passed with one initial hero request, zero overflow, JavaScript
+  errors or HTTP failures, four body sections and no gallery. Dealer-link and
+  first-card navigation passed. Production hero/hub captures were inspected.
+- [Google PT Rich Results report](https://search.google.com/test/rich-results/result?id=u7YxrjCW93CAx9oaHVKiVg)
+  shows four valid items (Article, Breadcrumb, Local business, Organization),
+  no errors and no displayed warnings. [Recorded result](N_DCF_RICH_RESULTS.json).
+- Existing non-blocking action-runtime/runner notices remain in the operating
+  watchlist; no workflow or external-account configuration changed.
+- All N-DCF acceptance criteria are closed. The documentation-only closeout
+  commit preserves the verified site artifact; its SHA is available in Git
+  history. Search-engine recrawl timing remains external to deployment.

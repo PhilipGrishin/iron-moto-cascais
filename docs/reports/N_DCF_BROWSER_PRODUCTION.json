@@ -1,0 +1,56 @@
+{
+  "checked_at": "2026-11-01T21:39:27.668Z",
+  "base": "https://ironcustommotors.com",
+  "results": [
+    {
+      "width": 390,
+      "dpr": 2,
+      "hero": {
+        "src": "https://ironcustommotors.com/photos/authorized-dealer/dcf-performance-hero-1280.avif",
+        "complete": true,
+        "width": 390,
+        "height": 520
+      },
+      "hero_requests": [
+        "https://ironcustommotors.com/photos/authorized-dealer/dcf-performance-hero-1280.avif"
+      ],
+      "overflow": 0,
+      "hub_overflow": 0,
+      "gallery_count": 0,
+      "sections": 4,
+      "copy_links": [
+        "/pt/authorized-dealer/dcf-performance/",
+        "/pt/authorized-dealer/dcf-performance/"
+      ],
+      "dealer_link_navigation": true,
+      "first_hub_card_navigation": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "width": 1440,
+      "dpr": 1,
+      "hero": {
+        "src": "https://ironcustommotors.com/photos/authorized-dealer/dcf-performance-hero-1536.avif",
+        "complete": true,
+        "width": 1439,
+        "height": 1919
+      },
+      "hero_requests": [
+        "https://ironcustommotors.com/photos/authorized-dealer/dcf-performance-hero-1536.avif"
+      ],
+      "overflow": 0,
+      "hub_overflow": 0,
+      "gallery_count": 0,
+      "sections": 4,
+      "copy_links": [
+        "/pt/authorized-dealer/dcf-performance/",
+        "/pt/authorized-dealer/dcf-performance/"
+      ],
+      "dealer_link_navigation": true,
+      "first_hub_card_navigation": true,
+      "errors": [],
+      "failures": []
+    }
+  ]
+}

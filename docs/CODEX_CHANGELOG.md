@@ -14,6 +14,23 @@ Format:
 - Notes: ...
 ```
 
+## 2026-11-01 - DCF-Performance dealer announcement
+
+- Commit: `cadd1a5a`
+- Changed: Added the checksum-pinned News article in four languages and first
+  card on each News hub. Made galleries optional across the existing parser,
+  renderer, importer and validator. Reused the dealer hero through registered
+  picture widths; no binary media or shared runtime asset changes.
+- Verified: Complete approved copy/links, checksum rejection, optional-gallery
+  parsing, isolated real importer smoke check, all release validators, exact
+  four-existing-page/four-new-page scope and 44,684 local references. All 20
+  previous News variants and home pages are byte-identical. Fresh full-history
+  clone Full Safe Rebuild passed with empty Git status.
+- Notes: Pages `41352957214` published the exact commit. All 260 public pages
+  and 22 files matched; live PT 390/1440 checks passed. Google Rich Results
+  found four valid items without errors or displayed warnings. Actual parent
+  `95eaf7a8`; all acceptance evidence is in `docs/reports/N_DCF_REPORT.md`.
+
 ## 2026-11-01 - DCF-Performance Authorized Dealer page
 
 - Commit: `5d01bd43`

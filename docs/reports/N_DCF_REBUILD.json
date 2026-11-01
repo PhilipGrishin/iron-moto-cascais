@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-11-01T21:37:19.709414+00:00",
+  "commit": "cadd1a5abfc5e35b7ff683945605ee3d566acd63",
+  "parent": "95eaf7a82b95af311218dec0a026e4cf4f84975b",
+  "method": "Fresh local --no-hardlinks clone with full history; canonical Full Safe Rebuild including PDFs and all validators",
+  "exit_code": 0,
+  "git_status_short": "",
+  "is_shallow": false,
+  "sitemap_sha256": "abf2e63b9709fa95974da6776c15e2bb1b34ef2192b59c7e6b9c5b7537ff24c8",
+  "log_sha256": "271e58917d355ae79fe7db51cd2cbc5aa92c3d72b14ddbd539a4576343b62f1d"
+}

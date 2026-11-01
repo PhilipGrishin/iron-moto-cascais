@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-11-01T21:39:23+00:00",
+  "tested_url": "https://ironcustommotors.com/pt/news/dcf-performance-dealer-portugal/",
+  "report_url": "https://search.google.com/test/rich-results/result?id=u7YxrjCW93CAx9oaHVKiVg",
+  "method": "Google Rich Results Test UI, live URL, smartphone agent",
+  "valid_items": 4,
+  "types": {
+    "Article": 1,
+    "Breadcrumbs": 1,
+    "Local business": 1,
+    "Organization": 1
+  },
+  "errors": 0,
+  "warnings_displayed": 0
+}

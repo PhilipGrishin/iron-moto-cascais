@@ -7,9 +7,10 @@ Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
 
-N-DCF: implementation in progress. Source and existing hero are available;
-local, clean-clone, public and PT Rich Results acceptance remain pending.
-Evidence: [delivery record](reports/N_DCF_REPORT.md).
+No active N-DCF work remains. The four News variants and hub cards are deployed
+and verified on 2026-11-01. All local, clean-clone, public, responsive and PT
+Rich Results acceptance checks passed. Existing articles and protected site
+content are preserved. Evidence: [delivery record](reports/N_DCF_REPORT.md).
 
 No active D-DCF work remains. Four partner pages and all approved integrations
 are deployed and production-verified on 2026-11-01. Local, clean-clone, public
