@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-11-01T20:36:15+00:00",
+  "tested_url": "https://ironcustommotors.com/pt/authorized-dealer/dcf-performance/",
+  "report_url": "https://search.google.com/test/rich-results/result?id=zoA5ZcFluy9R9idHHXCt3Q",
+  "method": "Google Rich Results Test UI, smartphone agent, live URL",
+  "valid_items": 3,
+  "types": {
+    "Breadcrumbs": 1,
+    "Local business": 1,
+    "Organization": 1
+  },
+  "errors": 0,
+  "warnings_displayed": 0,
+  "faq_note": "FAQPage and Service/ImageObject contracts verified directly; no unsupported rich-result eligibility claim."
+}

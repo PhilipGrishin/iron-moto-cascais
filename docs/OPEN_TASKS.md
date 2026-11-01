@@ -7,9 +7,10 @@ Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
 
-D-DCF: implementation and local acceptance in progress. The missing hero was
-resolved by the owner; clean-clone and production acceptance remain pending.
-Scope and evidence: [delivery record](reports/D_DCF_REPORT.md).
+No active D-DCF work remains. Four partner pages and all approved integrations
+are deployed and production-verified on 2026-11-01. Local, clean-clone, public
+parity, responsive browser and PT Rich Results checks passed. The missing hero
+was resolved by the owner. Evidence: [delivery record](reports/D_DCF_REPORT.md).
 
 No active F-FUEL-FIX work remains. The approved copy revision is deployed;
 local, clean-clone and production checks passed on 2026-10-31. Evidence:
@@ -142,7 +143,8 @@ measure representative page families under a stated profile.
   `ubuntu-latest` image migration notice. The site's configured Node version remains
   separate from an action's own runtime.
 - Review supported action versions and runner compatibility in a dedicated
-  maintenance change. P-SPANIARD leaves workflow configuration unchanged.
+  maintenance change. D-DCF run `41347446338` reconfirmed these notices on
+  2026-11-01 and leaves workflow configuration unchanged.
 
 
 ### Pricing PDF generator is macOS-only

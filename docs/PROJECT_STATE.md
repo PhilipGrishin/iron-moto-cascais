@@ -9,9 +9,13 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
-- D-DCF, **implementation in progress**, 2026-11-01: second Authorized Dealer
-  partner registered in four languages, with approved hub/menu/Upgrades links.
-  Local and browser checks passed; clean-clone/publication pending. See [delivery record](reports/D_DCF_REPORT.md).
+- D-DCF, **deployed and production-verified**, 2026-11-01: implementation
+  `5d01bd43`, Pages run `41347446338`. Second Authorized Dealer partner and
+  approved hub/menu/Upgrades integrations are live in four languages.
+  Full Safe Rebuild of the exact commit in a fresh full-history clone left
+  empty Git status. All public pages and checked assets matched; responsive
+  browser checks and PT Google Rich Results passed (three valid items).
+  See [delivery record](reports/D_DCF_REPORT.md).
 
 - F-FUEL-FIX, **deployed and production-verified**, 2026-10-31:
   implementation `17871619`, Pages run `41239283490`; clean-clone Full Safe
@@ -29,8 +33,8 @@ deployed public identifiers and cache-bust values. Operating rules live in
   full-history clone left empty Git status. All sitemap pages plus four utility
   pages matched production; media, responsive playback and Google Rich Results
   checks passed. See the [delivery record](reports/F_FUEL_REPORT.md).
-- Last verified production `sitemap.xml` SHA-256, confirmed 2026-10-31:
-  `6261e243b48df2e1dd569cf665f76fdb75b7a3bc431c3553a1f102b2e3d974e2`.
+- Last verified production `sitemap.xml` SHA-256, confirmed 2026-11-01:
+  `29547baa58527e788b80f3a0c68c1c1e66e6a73b47dc0aa2018bcddb1503fcf5`.
 
 - P-SPANIARD, **deployed and production-verified**, 2026-10-28:
   implementation `a78463f1`, final site artifact `2b017d3a`, Pages runs
@@ -236,7 +240,7 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
 | English path patterns | 63 | `build_sitemap.py` `PAGES` |
 | Indexable sitemap URLs | 252 | parsed `sitemap.xml` `<url>` entries |
-| HTML files | 269 | tracked inventory plus four D-DCF pages |
+| HTML files | 269 | tracked `*.html` inventory |
 | Indexable HTML files | 252 | sitemap-to-file resolution |
 | Non-indexed HTML files | 17 | `404.html`, 12 localized project redirect stubs and 4 `thank-you` pages |
 | Sitemap lastmod tags | 252 | parsed `sitemap.xml` |

@@ -63,7 +63,7 @@ copy or business-semantic validation.
 
 | Script | Maintained input | Direct output | Focused protection |
 |---|---|---|---|
-| `nav_patch.py` | `site_chrome.py`, sitemap registry | navigation/footer on sitemap HTML and managed footer columns on noindex thank-you pages | broad SEO chrome parity |
+| `nav_patch.py` | `site_chrome.py`, sitemap registry | navigation/footer on sitemap HTML; partner menus and managed footer columns on noindex thank-you pages | broad SEO chrome parity |
 | `enhance_money_pages.py` | compatibility page map, checked Wave 3 related-description registry | related/local blocks in pages still owned by the compatibility path; current page map is empty | broad SEO and commercial-hub checks |
 | `localize_internal_links.py` | `LOCALIZED_PATHS` | same-language links in localized HTML | broad SEO locality |
 | `add_image_dims.py` | local image files | width/height on HTML images | broad SEO asset checks |

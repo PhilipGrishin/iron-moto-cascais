@@ -14,6 +14,23 @@ Format:
 - Notes: ...
 ```
 
+## 2026-11-01 - DCF-Performance Authorized Dealer page
+
+- Commit: `5d01bd43`
+- Changed: Added the second partner in four languages using a reusable
+  checksum-checked Markdown parser and the existing dealer renderer. Imported
+  the owner hero, added the hub card, shared submenu, Upgrades contextual link,
+  registry target and approved hub widening. Approved source bytes are retained.
+- Verified: Complete copy/schema/media checks and checksum rejection, all
+  validators, exact eight existing body/lastmod changes and four new URLs,
+  unchanged protected content, no broken local targets. Fresh full-history
+  clone Full Safe Rebuild left empty Git status. Pages `41347446338` succeeded;
+  256 public URLs and 22 files matched; live PT 390/1440 checks passed. PT Google
+  Rich Results found three valid items without errors or displayed warnings.
+- Notes: All D-DCF acceptance criteria are closed. C-Way content, forms,
+  prices/PDFs, Fuel, reviews and Workers are preserved. Evidence:
+  `docs/reports/D_DCF_REPORT.md`.
+
 ## 2026-10-31 - Fuel-system price wording revision 3
 
 - Commit: `17871619`

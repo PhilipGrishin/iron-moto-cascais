@@ -1,6 +1,6 @@
 # D-DCF delivery record
 
-Date: 2026-11-01. Status: implementation in progress.
+Date: 2026-11-01. Status: deployed and production-verified.
 
 ## Intake and decisions
 
@@ -30,6 +30,16 @@ Date: 2026-11-01. Status: implementation in progress.
   the requested PT Google Rich Results Test.
 - Research dossier remains an input/reference, not public copy: its private
   GSC figures are not copied into the repository.
+
+## Implementation identity
+
+- Implementation/artifact commit: `5d01bd438090d39a01c66d35b120a3ccc893022a`.
+- Actual first parent: `457093b32cf4f5932ba5ed4ee0091045b7b33834`, matching
+  the requested baseline. Origin was fetched again before publication.
+- Fresh full-history `--no-hardlinks` clone of the exact implementation commit:
+  documented Full Safe Rebuild completed with exit 0 and empty Git status.
+  All PDF outputs and validator families were included. The generated sitemap
+  remained byte-identical. Evidence: [clean rebuild](D_DCF_REBUILD.json).
 
 ## Implementation and local acceptance
 
@@ -135,4 +145,30 @@ all formats/sizes. The hub uses the 768 variant with explicit dimensions.
 - Territorial exclusivity is not claimed. Existing dyno-availability work
   stays deferred; the approved page attributes dyno testing to DCF.
 - Google no longer supports FAQ rich results; visible FAQ/schema parity is
-  verified directly. The requested supported-item Rich Results check is pending.
+  verified directly. The supported-item test passed as recorded below.
+
+## Deployment and public acceptance
+
+- Confirmed: [Pages run 41347446338](https://github.com/PhilipGrishin/iron-moto-cascais/actions/runs/41347446338)
+  validated and published exact commit `5d01bd438090d39a01c66d35b120a3ccc893022a`;
+  conclusion `success`, completed 2026-11-01T20:35:43Z.
+- [Production comparison](D_DCF_PRODUCTION.json): 252 sitemap URLs plus four
+  utility URLs returned successfully and matched local normalized main text,
+  JSON-LD, title/description, canonical/hreflang, image references, asset cache
+  keys and both DCF menu links. Cloudflare email obfuscation was normalized.
+- All 22 checked files match local bytes: sitemap, llms, robots, four shared
+  CSS/JS files, review snapshot, four PDFs and ten DCF media/manifest files.
+  Sitemap SHA-256:
+  `29547baa58527e788b80f3a0c68c1c1e66e6a73b47dc0aa2018bcddb1503fcf5`.
+- [Live browser checks](D_DCF_BROWSER_PRODUCTION.json): PT 390/DPR2 and
+  1440/DPR1 each request one AVIF hero; no overflow, JavaScript errors or HTTP
+  failures. WhatsApp prefill, process scrolling, FAQ and respective mobile/
+  desktop menu passed. Both live hero screenshots were visually inspected.
+- [PT Google Rich Results Test](https://search.google.com/test/rich-results/result?id=zoA5ZcFluy9R9idHHXCt3Q)
+  found three valid items (Breadcrumb, Local business, Organization), no errors
+  and no displayed warnings. [Machine-readable record](D_DCF_RICH_RESULTS.json).
+- Existing GitHub action-runtime/runner migration notices remain non-blocking
+  and tracked in `docs/OPEN_TASKS.md`; this task did not alter CI configuration.
+- No remaining D-DCF implementation dependency. Search-engine recrawl timing
+  is external to deployment. The documentation-only closeout commit preserves
+  the verified public artifact; its identity is available in Git history.

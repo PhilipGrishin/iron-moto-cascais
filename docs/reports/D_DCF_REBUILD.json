@@ -1,0 +1,12 @@
+{
+  "checked_at": "2026-11-01T20:33:12.336626+00:00",
+  "commit": "5d01bd438090d39a01c66d35b120a3ccc893022a",
+  "parent": "457093b32cf4f5932ba5ed4ee0091045b7b33834",
+  "clone": "fresh local clone --no-hardlinks, complete history",
+  "full_safe_rebuild": "scripts/build/README.md canonical sequence, including PDFs and all validator families",
+  "exit_code": 0,
+  "is_shallow": false,
+  "git_status_short": "",
+  "sitemap_sha256": "29547baa58527e788b80f3a0c68c1c1e66e6a73b47dc0aa2018bcddb1503fcf5",
+  "build_log_sha256": "61d65861c4828727bc8dbee035b4374bf58089a2bcb8452941f43dea417f91ec"
+}
