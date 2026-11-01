@@ -1,0 +1,2 @@
+# Preserve byte-identical approved Markdown, including its four field-ending spaces.
+scripts/build/content/dcf_dealer_copy_4lang.md whitespace=-blank-at-eol

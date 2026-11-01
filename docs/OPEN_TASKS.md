@@ -1,11 +1,15 @@
 # Open Tasks, Risks And Watchlist
 
-Last updated: 2026-10-31
+Last updated: 2026-11-01
 
 This file owns unresolved work, external dependencies and access requirements.
 Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
+
+D-DCF: implementation and local acceptance in progress. The missing hero was
+resolved by the owner; clean-clone and production acceptance remain pending.
+Scope and evidence: [delivery record](reports/D_DCF_REPORT.md).
 
 No active F-FUEL-FIX work remains. The approved copy revision is deployed;
 local, clean-clone and production checks passed on 2026-10-31. Evidence:

@@ -69,8 +69,9 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 
 ## Authorized dealer
 
-- [Authorized Dealer](https://ironcustommotors.com/authorized-dealer/): Iron Custom Motors is now an authorized dealer of leading motorcycle parts brands in Cascais. Order genuine parts with official warranty plus expert fitment.
+- [Authorized Dealer](https://ironcustommotors.com/authorized-dealer/): Authorized dealer in Cascais: genuine parts from leading motorcycle brands with official warranty and expert fitment — and DCF-Performance ECU tuning.
 - [C-Way authorized dealer](https://ironcustommotors.com/authorized-dealer/c-way/): Iron Custom Motors — exclusive official C-Way dealer in Portugal. Genuine Honda Gold Wing luggage systems, racks and accessories, manufacturer warranty, pro installation in Cascais.
+- [DCF-Performance authorized dealer](https://ironcustommotors.com/authorized-dealer/dcf-performance/): Official DCF-Performance dealer in Portugal: motorcycle ECU remapping and chip tuning in Cascais — Stage 1 and 2, dyno-developed files, original map kept.
 
 ## Workshop blog
 
@@ -141,7 +142,7 @@ All pages are available in 4 languages with reciprocal hreflang annotations:
 ## Sitemap
 
 Full machine-readable sitemap: [sitemap.xml](https://ironcustommotors.com/sitemap.xml)
-Generated coverage: 62 English paths across 4 language variants (248 sitemap URLs).
+Generated coverage: 63 English paths across 4 language variants (252 sitemap URLs).
 
 ## Citation guidance
 

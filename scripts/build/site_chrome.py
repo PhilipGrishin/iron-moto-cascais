@@ -81,6 +81,7 @@ ABOUT_NAV_LINKS = [
 AUTHORIZED_DEALER_NAV_LINKS = [
     ("nav.authorizedDealerHub", "/authorized-dealer/", "Dealer hub"),
     ("nav.dealerCway", "/authorized-dealer/c-way/", "C-Way"),
+    ("nav.dealerDcf", "/authorized-dealer/dcf-performance/", "DCF-Performance"),
 ]
 
 DROPDOWN_NAV_LINKS = {
@@ -483,3 +484,17 @@ def chrome_fragments(lang: str, cache_bust: str) -> tuple[str, str]:
     after = "\n".join((render_site_footer(lang), render_contact_modal(lang)))
     after += f'\n<script defer="" src="/assets/main.js?v={cache_bust}"></script>'
     return before, after
+
+
+def patch_dealer_menus(html_text: str, lang: str) -> str:
+    """Refresh partner menus on utility pages without replacing their shell."""
+    soup = BeautifulSoup(html_text, HTML_PARSER)
+    for anchor in soup.select('a[data-i18n="nav.authorizedDealerHub"]'):
+        parent = anchor.parent
+        if not parent.select_one('a[data-i18n="nav.dealerCway"]'):
+            continue
+        parent.clear()
+        for key, href, fallback in AUTHORIZED_DEALER_NAV_LINKS:
+            fragment = BeautifulSoup(render_nav_link(key, href, fallback, lang), HTML_PARSER)
+            parent.append(fragment.a)
+    return str(soup)

@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-10-31
+Last updated: 2026-11-01
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -8,6 +8,10 @@ deployed public identifiers and cache-bust values. Operating rules live in
 `scripts/build/README.md`.
 
 ## Status And Evidence
+
+- D-DCF, **implementation in progress**, 2026-11-01: second Authorized Dealer
+  partner registered in four languages, with approved hub/menu/Upgrades links.
+  Local and browser checks passed; clean-clone/publication pending. See [delivery record](reports/D_DCF_REPORT.md).
 
 - F-FUEL-FIX, **deployed and production-verified**, 2026-10-31:
   implementation `17871619`, Pages run `41239283490`; clean-clone Full Safe
@@ -230,13 +234,13 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | Inventory | Current value | Canonical evidence |
 |---|---:|---|
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
-| English path patterns | 62 | `build_sitemap.py` `PAGES` |
-| Indexable sitemap URLs | 248 | parsed `sitemap.xml` `<url>` entries |
-| HTML files | 265 | tracked inventory plus four F-FUEL pages |
-| Indexable HTML files | 248 | sitemap-to-file resolution |
+| English path patterns | 63 | `build_sitemap.py` `PAGES` |
+| Indexable sitemap URLs | 252 | parsed `sitemap.xml` `<url>` entries |
+| HTML files | 269 | tracked inventory plus four D-DCF pages |
+| Indexable HTML files | 252 | sitemap-to-file resolution |
 | Non-indexed HTML files | 17 | `404.html`, 12 localized project redirect stubs and 4 `thank-you` pages |
-| Sitemap lastmod tags | 248 | parsed `sitemap.xml` |
-| Unique sitemap lastmod values | 67 | parsed sitemap, 2026-10-31; F-FUEL-FIX: 4 changed dates, 244 unchanged |
+| Sitemap lastmod tags | 252 | parsed `sitemap.xml` |
+| Unique sitemap lastmod values | 69 | parsed sitemap, 2026-11-01; D-DCF: 4 new URLs, 8 changed dates, 240 unchanged |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
 | Project detail pages | 15 | `PROJECT_TILES` |
 | Data-driven project definitions | 15 | `PROJECT_CONFIGS` |
@@ -244,7 +248,7 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | News articles | 5 | `NEWS_ARTICLES` |
 | Harley Hub English page patterns | 3 | `harley_hub_data.py` `PAGE_CONFIG` |
 | Generated general/utility localized entries | 7 | `build_new_pages.py` / `new_pages_data.py` |
-| Authorized Dealer English page patterns | 2 | `build_authorized_dealer.py` |
+| Authorized Dealer English page patterns | 3 | `build_authorized_dealer.py` |
 | Legal English page patterns | 3 | `LEGAL_PAGES` |
 
 Language roots:
@@ -261,8 +265,8 @@ Registry alignment on the evidence date:
 
 | Registry | Entries | Relationship |
 |---|---:|---|
-| `build_sitemap.py` `PAGES` | 62 | canonical English indexable paths |
-| `localize_internal_links.py` `LOCALIZED_PATHS` | 62 | matches `PAGES` after normalization |
+| `build_sitemap.py` `PAGES` | 63 | canonical English indexable paths |
+| `localize_internal_links.py` `LOCALIZED_PATHS` | 63 | matches `PAGES` after normalization |
 | `build_i18n.py` `MAIN_PAGES` | 32 | English sources localized by the generic i18n flow |
 | `project_pages_data.py` `PROJECT_CONFIGS` | 15 | project details rendered directly in four languages |
 
@@ -273,7 +277,7 @@ There is no active `EN_PAGES` registry. The canonical English page registry is
 
 | Assets | Value | Scope |
 |---|---|---|
-| `assets/main.css`, `assets/main.js` | `20261031a` | every sitemap page |
+| `assets/main.css`, `assets/main.js` | `20261101a` | every sitemap page |
 | `assets/projects.css` | `20260801a` | project detail pages |
 | `assets/projects.js` | `20260710b` | project detail pages |
 
@@ -308,7 +312,7 @@ registered projects in `PROJECT_TILES` order. Parts and Upgrades no longer use
 the legacy generic-i18n source path.
 
 The checked Wave 3 and Wave 4 sources jointly own localized descriptions for
-20 related targets; Wave 3 also owns the exact shared trust-strip labels. The
+21 related targets; Wave 3 also owns the exact shared trust-strip labels. The
 homepage uses Wave 4's distinct intent anchors for its four primary service
 cards, tyre/PPI cards and Pricing CTA. Every registered Blog post has exactly
 three mapped related-service cards and resolves its author/publisher
@@ -356,8 +360,13 @@ and verification are recorded in the S-PRICE-VALVES-FROM report above.
 
 - `/authorized-dealer/`
 - `/authorized-dealer/c-way/`
+- `/authorized-dealer/dcf-performance/`
 
-This is a separate official parts/accessories channel. The C-Way page currently
+This is a separate official parts/accessories and tuning-technology channel.
+DCF-Performance uses checksum-approved Markdown and the generic unpriced
+partner contract; C-Way retains its priced catalog. The hub has two partner
+cards. The approved source hashes live in the build README table.
+ The C-Way page currently
 contains 6 visible priced configurations and 6 matching `Product`/`Offer`
 entities, with no partial duplicate products. Each visible configuration price
 repeats the existing VAT-exclusion wording in the page language; the summary
@@ -426,15 +435,17 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 
 ## Current Delivery And Discovery State
 
-- All 152 pages that contain the lead form submit to FormSubmit through the
+- All 156 pages that contain the lead form submit to FormSubmit through the
   activated private action alias. No built HTML exposes the delivery inbox in
   a FormSubmit action, and the SEO validator enforces this contract across all
-  built HTML files, including non-sitemap output. The 148 indexable form pages
+  built HTML files, including non-sitemap output. The 152 indexable form pages
   redirect to their language-local noindex `thank-you` page; those four utility
   pages contain the same shared modal and remain outside `sitemap.xml`.
   Correction, 2026-10-31: the previous 136/132 counts were stale. A complete
   HTML scan at baseline `acc06dce` found 148 total/144 indexable form pages;
   F-FUEL adds four. Existing 261 HTML files retain identical form markup.
+  D-DCF adds four more on 2026-11-01; all 152 preceding form pages retain
+  identical form markup, confirmed by the D-DCF scope audit.
   Evidence: baseline-versus-working-tree BeautifulSoup comparison.
 - A-MEASURE's checked-in client sends only four anonymous lead-intent types:
   `whatsapp`, `tel`, `form_submit` and `form_view`. The payload contains the

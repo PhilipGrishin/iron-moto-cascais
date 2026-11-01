@@ -1,0 +1,109 @@
+{
+  "checked_at": "2026-11-01T20:27:42.121518+00:00",
+  "baseline": "457093b32cf4f5932ba5ed4ee0091045b7b33834",
+  "existing_html": 265,
+  "changed_main_pages": [
+    "authorized-dealer/index.html",
+    "pt/authorized-dealer/index.html",
+    "pt/upgrades-tuning/index.html",
+    "ru/authorized-dealer/index.html",
+    "ru/upgrades-tuning/index.html",
+    "uk/authorized-dealer/index.html",
+    "uk/upgrades-tuning/index.html",
+    "upgrades-tuning/index.html"
+  ],
+  "changed_existing_schema_pages": [
+    "authorized-dealer/index.html",
+    "pt/authorized-dealer/index.html",
+    "ru/authorized-dealer/index.html",
+    "uk/authorized-dealer/index.html"
+  ],
+  "preserved_form_pages": 152,
+  "preserved_headers_except_new_dealer_entry": 252,
+  "protected_files_byte_identical": 63,
+  "upgrades_changed_source_lines": [
+    28,
+    93,
+    158,
+    223
+  ],
+  "added_urls": [
+    {
+      "url": "https://ironcustommotors.com/authorized-dealer/dcf-performance/",
+      "after": "2026-11-01T20:26:02+00:00",
+      "reason": "New approved partner page"
+    },
+    {
+      "url": "https://ironcustommotors.com/ru/authorized-dealer/dcf-performance/",
+      "after": "2026-11-01T20:26:02+00:00",
+      "reason": "New approved partner page"
+    },
+    {
+      "url": "https://ironcustommotors.com/uk/authorized-dealer/dcf-performance/",
+      "after": "2026-11-01T20:26:02+00:00",
+      "reason": "New approved partner page"
+    },
+    {
+      "url": "https://ironcustommotors.com/pt/authorized-dealer/dcf-performance/",
+      "after": "2026-11-01T20:26:02+00:00",
+      "reason": "New approved partner page"
+    }
+  ],
+  "moved_lastmod": [
+    {
+      "url": "https://ironcustommotors.com/upgrades-tuning/",
+      "before": "2026-09-18T10:40:58+01:00",
+      "after": "2026-11-01T20:22:59+00:00",
+      "reason": "Upgrades section 01 item 7 link"
+    },
+    {
+      "url": "https://ironcustommotors.com/ru/upgrades-tuning/",
+      "before": "2026-09-18T10:40:58+01:00",
+      "after": "2026-11-01T20:22:59+00:00",
+      "reason": "Upgrades section 01 item 7 link"
+    },
+    {
+      "url": "https://ironcustommotors.com/uk/upgrades-tuning/",
+      "before": "2026-09-18T10:40:58+01:00",
+      "after": "2026-11-01T20:22:59+00:00",
+      "reason": "Upgrades section 01 item 7 link"
+    },
+    {
+      "url": "https://ironcustommotors.com/pt/upgrades-tuning/",
+      "before": "2026-09-18T10:40:58+01:00",
+      "after": "2026-11-01T20:22:59+00:00",
+      "reason": "Upgrades section 01 item 7 link"
+    },
+    {
+      "url": "https://ironcustommotors.com/authorized-dealer/",
+      "before": "2026-07-03T21:09:09+01:00",
+      "after": "2026-11-01T20:26:24+00:00",
+      "reason": "Hub card, introduction and description"
+    },
+    {
+      "url": "https://ironcustommotors.com/ru/authorized-dealer/",
+      "before": "2026-07-03T21:15:04+01:00",
+      "after": "2026-11-01T20:26:30+00:00",
+      "reason": "Hub card, introduction and description"
+    },
+    {
+      "url": "https://ironcustommotors.com/uk/authorized-dealer/",
+      "before": "2026-07-03T21:15:05+01:00",
+      "after": "2026-11-01T20:26:34+00:00",
+      "reason": "Hub card, introduction and description"
+    },
+    {
+      "url": "https://ironcustommotors.com/pt/authorized-dealer/",
+      "before": "2026-07-03T21:15:06+01:00",
+      "after": "2026-11-01T20:26:27+00:00",
+      "reason": "Hub card, introduction and description"
+    }
+  ],
+  "unchanged_existing_lastmod": 240,
+  "sitemap_urls": 252,
+  "unique_lastmod_values": 69,
+  "local_references_checked": 39160,
+  "fragment_targets_checked": 592,
+  "added_image_bytes": 4254075,
+  "sitemap_sha256": "29547baa58527e788b80f3a0c68c1c1e66e6a73b47dc0aa2018bcddb1503fcf5"
+}

@@ -25,7 +25,7 @@ Ten areas, one rule: each change has to make sense for your riding, your routes 
 **4. Protection.** Crash bars, sliders, sump guards, hand guards, frame protectors.
 **5. Touring and comfort.** Panniers, top boxes, taller screens, comfort seats, heated grips.
 **6. Functional custom.** One-off comfort or ergonomic solutions built around your fit.
-**7. Tuning parts.** ECU maps, intake, exhaust, fuel control, throttle response — matched to each other, not bolted on one by one.
+**7. Tuning parts.** ECU maps, intake, exhaust, fuel control, throttle response — matched to each other, not bolted on one by one. ECU remapping runs through our [DCF-Performance dealership](/authorized-dealer/dcf-performance/).
 **8. Performance upgrades.** Engine and ride-quality improvements within reasonable scope; we say what's worth it on your bike and what isn't.
 **9. Suspension.** Premium fork cartridges and shocks, sag and damping set for your weight and your riding. Fork seals from 150 €.
 **10. Brake upgrades.** Callipers, master cylinders, lines, pads — race-grade or touring-tuned. Brake fluid change 100 € (non-ABS) or from 150 € (ABS).
@@ -90,7 +90,7 @@ Dez áreas e uma regra: cada alteração tem de fazer sentido para a sua conduç
 **4. Proteções.** Crash bars, sliders, protetores de cárter, protetores de mãos, protetores de quadro.
 **5. Touring e conforto.** Malas laterais, top cases, para-brisas mais altos, assentos de conforto, punhos aquecidos.
 **6. Custom funcional.** Soluções únicas de conforto ou ergonomia à medida da sua posição.
-**7. Peças de tuning.** Mapas de ECU, admissão, escape, controlo de combustível, resposta do acelerador, pensados em conjunto e não aparafusados um a um.
+**7. Peças de tuning.** Mapas de ECU, admissão, escape, controlo de combustível, resposta do acelerador, pensados em conjunto e não aparafusados um a um. A reprogramação de centralina passa pela nossa [representação DCF-Performance](/pt/authorized-dealer/dcf-performance/).
 **8. Upgrades de performance.** Melhorias de motor e de qualidade de condução dentro de um âmbito razoável; dizemos o que vale a pena na sua mota e o que não vale.
 **9. Suspensão.** Cartuchos de forquilha e amortecedores premium, sag e amortecimento afinados ao seu peso e à sua condução. Retentores da forquilha desde 150 €.
 **10. Travões.** Pinças, bombas, tubos, pastilhas, em versão race ou afinados para touring. Substituição do líquido de travões 100 € (sem ABS) ou desde 150 € (com ABS).
@@ -155,7 +155,7 @@ Iron Custom Motors планирует, подбирает и ставит апг
 **4. Защита.** Дуги, слайдеры, защита картера, защита рук, защита рамы.
 **5. Туринг и комфорт.** Кофры, центральные кофры, ветровики повыше, комфортные сиденья, подогрев ручек.
 **6. Функциональный кастом.** Штучные решения по комфорту и эргономике под вашу посадку.
-**7. Тюнинг-компоненты.** ECU-карты, впуск, выпуск, топливная коррекция, отклик на газ — согласованные между собой, а не прикрученные по одному.
+**7. Тюнинг-компоненты.** ECU-карты, впуск, выпуск, топливная коррекция, отклик на газ — согласованные между собой, а не прикрученные по одному. Прошивку ЭБУ делаем через наше [дилерство DCF-Performance](/ru/authorized-dealer/dcf-performance/).
 **8. Performance-апгрейды.** Улучшения двигателя и качества езды в разумных пределах; говорим, что на вашем мотоцикле того стоит, а что нет.
 **9. Подвеска.** Премиальные картриджи вилки и амортизаторы, sag и демпфирование под ваш вес и манеру езды. Сальники вилки — от 150 €.
 **10. Тормоза.** Суппорты, главные цилиндры, тормозные магистрали, колодки — гоночного уровня или под туринг. Замена тормозной жидкости 100 € (без ABS) или от 150 € (с ABS).
@@ -220,7 +220,7 @@ Iron Custom Motors планує, підбирає і ставить апгрей
 **4. Захист.** Дуги, слайдери, захист картера, захист рук, захист рами.
 **5. Туринг і комфорт.** Кофри, центральні кофри, вищі вітровики, комфортні сидіння, підігрів ручок.
 **6. Функціональний кастом.** Штучні рішення з комфорту та ергономіки під вашу посадку.
-**7. Тюнінг-компоненти.** ECU-мапи, впуск, вихлоп, паливна корекція, відгук на газ — узгоджені між собою, а не прикручені по одному.
+**7. Тюнінг-компоненти.** ECU-мапи, впуск, вихлоп, паливна корекція, відгук на газ — узгоджені між собою, а не прикручені по одному. Прошивку ЕБК робимо через наше [дилерство DCF-Performance](/uk/authorized-dealer/dcf-performance/).
 **8. Performance-апгрейди.** Покращення двигуна та якості їзди в розумних межах; кажемо, що на вашому мотоциклі того варте, а що ні.
 **9. Підвіска.** Преміальні картриджі вилки й амортизатори, sag і демпфування під вашу вагу та манеру їзди. Сальники вилки — від 150 €.
 **10. Гальма.** Супорти, головні циліндри, гальмівні магістралі, колодки — гоночного рівня або під туринг. Заміна гальмівної рідини 100 € (без ABS) або від 150 € (з ABS).

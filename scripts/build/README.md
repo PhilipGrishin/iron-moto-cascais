@@ -41,7 +41,7 @@ copy or business-semantic validation.
 | Script | Maintained input | Direct output | Focused protection |
 |---|---|---|---|
 | `build_new_pages.py` | `new_pages_data.py`, existing chrome | English general hub pages | broad SEO |
-| `build_authorized_dealer.py` | `authorized_dealer_data.py`, existing chrome | localized Authorized Dealer family | broad SEO; no dedicated validator |
+| `build_authorized_dealer.py` | `authorized_dealer_data.py`, approved partner Markdown, existing chrome | localized Authorized Dealer family | `validate_authorized_dealer.py` and broad SEO |
 | `build_brand_pages.py` | `brand_pages_data.py`, checked Wave 2 copy, `pricing_data.py` | English registered brand pages | `validate_brand_pages.py` |
 | `build_legal_pages.py` | `legal_pages_data.py`, service chrome | localized legal pages | broad SEO; no legal-copy validator |
 | `build_news.py` | `news_data.py` | English news hub/articles | broad SEO, responsive hero checks and `validate_news.py` |
@@ -71,6 +71,7 @@ copy or business-semantic validation.
 | `extract_i18n.js` | `assets/main.js` `I18N` | `i18n.json` | consumers and broad SEO pre-render checks |
 | `optimize_hero_images.py` | a registered brand slug or local source image | responsive hero variants | family asset checks where implemented |
 | `optimize_tyre_service_images.py` | tyre media sources and checksum manifest | tyre responsive variants and manifest | source checksum/idempotence logic |
+| `import_dealer_images.py` | registered partner hero and supplied image | 768/1280/1536 AVIF/WebP/JPEG and media hash manifest | partner media validator |
 | `import_project_images.py` | registered project config and source directory | responsive project hero/gallery media | project validator |
 | `import_news_images.py` | registered standalone News media delivery | responsive News hero/gallery media | News and broad SEO validators |
 | `optimize_project_exhibition_images.py` | registered exhibition media config and one approved source image | responsive exhibition AVIF/WebP/JPEG variants | project validator |
@@ -83,7 +84,8 @@ source media changes and review the binary diff.
 
 | Module | Owner / consumers |
 |---|---|
-| `authorized_dealer_data.py` | Authorized Dealer copy, hero and partner registry |
+| `authorized_dealer_data.py` | Authorized Dealer hub, priced catalogs and `COPY_DEALER_PAGES` registry |
+| `dealer_copy.py` | checksum validation and labelled multilingual partner-copy parser |
 | `blog_data.py` | blog registry, localized article content and media/schema inputs |
 | `brand_pages_data.py` | brand registry, metadata and localized page content |
 | `brand_pages_w2_content.py` | checksum validation and parsing for the approved Wave 2 brand copy |
@@ -118,8 +120,9 @@ module is named above or in `docs/CONTENT_TYPES.md`.
 | `validate_harley_hub.py` | exact maintained copy; visual tokens; hero media; schema families; language-local links; feed/portfolio and required integrations | live browser behavior; external RRT; performance benefit |
 | `validate_service_custom_hubs.py` | exact four-language copy-driven hub output; Wave 3 source checksums; optional deferred video/schema/placement; carburettor note; pricing anchors; WhatsApp/form CTAs; trust-strip inventory and labels; related-description registry use; retired filler/key absence; approved head trims and price-head parity | external Rich Results UI; measured network performance |
 | `validate_project_pages.py` | every registered project: exact source copy; media; schema graph/dates/references; cache-bust; redirects; listing/sitemap and optional Custom/Harley integration | browser rendering; external RRT |
+| `validate_authorized_dealer.py` | exact approved partner copy, section/card counts, metadata, FAQ/Service/image schema, responsive hero selection, media/EXIF, local links, hub card/intro and all partner menus | live browser network behavior; external Rich Results |
 | `validate_news.py` | approved Markdown News copy/order, metadata, gallery ALTs/placement, dates, shared project hero and explicit related selections | legacy article copy; live browser/network behavior; external RRT |
-| `validate_w4_routing.py` | Wave 4 source checksum; homepage intent anchors; 20-target registry; complete 9-post related mapping; localized card order/copy/placement; orphan anchors; legacy project rows; Blog dates | visual overflow; external Rich Results UI |
+| `validate_w4_routing.py` | Wave 4 source checksum; homepage intent anchors; 21-target registry; complete 9-post related mapping; localized card order/copy/placement; orphan anchors; legacy project rows; Blog dates | visual overflow; external Rich Results UI |
 
 Scripts or data families without a dedicated validator rely on broad SEO plus
 manual/source review. This is a known coverage boundary, not proof of failure.
@@ -159,6 +162,7 @@ python3 scripts/build/validate_seo.py
 python3 scripts/build/validate_brand_pages.py
 python3 scripts/build/validate_harley_hub.py
 python3 scripts/build/validate_news.py
+python3 scripts/build/validate_authorized_dealer.py
 python3 scripts/build/validate_service_custom_hubs.py
 python3 scripts/build/validate_w4_routing.py
 for slug in $(python3 -c "import sys; sys.path.insert(0, 'scripts/build'); from project_pages_data import PROJECT_CONFIGS; print(' '.join(sorted(PROJECT_CONFIGS)))"); do
@@ -267,7 +271,7 @@ Approved hub source SHA-256 values are enforced by `EXPECTED_SOURCE_SHA256` in
 | `service_hub_copy_4lang.md` | `95c584b5770659c04a90e462e2f120938caafb7a19c3030a21ac95fbd08b21bb` |
 | `custom_hub_copy_4lang.md` | `10790be1dab936791dd01b47bcfa9c3f1c73e12cc495275d2195a025a14f4292` |
 | `parts_hub_copy_4lang.md` | `86687081e07eb74377e9d15aa0c81aca3a2beec138dfc7677ebb4ace5272538e` |
-| `upgrades_hub_copy_4lang.md` | `1385731f4051d2d1bf32885f5c9decdc802f602b90de507189d7883d07c7ebfc` |
+| `upgrades_hub_copy_4lang.md` | `08a055bcf4823eb92bfd1a59937401ed4413f3c0f0dc522a4e2e0d1a72359c9b` |
 | `fuel_system_copy_4lang.md` | `8d4fbb1bf4d027d72d583d41e2d9a3f83a8227d97b79667fc9f0a037c0f4c6b2` |
 
 Fuel System uses the existing service hero when no approved separate image is
@@ -382,7 +386,35 @@ before the page sequence.
 
 ## Authorized Dealer Workflow
 
+The hub and priced C-Way catalog remain in `authorized_dealer_data.py`.
+Unpriced partners register in `COPY_DEALER_PAGES` and use `dealer_copy.py` plus
+the same generator. New page copy is rendered directly in all four languages;
+new hub-card description keys also survive the hub's generic i18n pass.
+
+| Approved partner source | SHA-256 |
+|---|---|
+| `content/dcf_dealer_copy_4lang.md` | `3d3bd77bd92a71a3403ef6905025c8f3def1d30f08f1b63ca46098d9862e2aff` |
+
+Import an owner-approved image once; use the supplied source path:
+
 ```bash
+python3 scripts/build/import_dealer_images.py dcf-performance /path/to/dcf_HERO.jpg
+```
+
+The shared project encoder writes registered widths in AVIF/WebP/JPEG under
+`photos/authorized-dealer/` and a source/output hash manifest. Portrait ratio is
+preserved, orientation normalized, EXIF removed. Media import is intentionally
+outside Full Safe Rebuild; the source image must be supplied again to re-encode.
+The hero AVIF preload and picture share identical `srcset`/`sizes`; the hub uses
+768 px. Never copy the older C-Way viewport-only preloads for a new picture.
+
+The supplied Markdown has four intentional trailing spaces in WhatsApp fields.
+A path-specific `.gitattributes` whitespace rule preserves its exact approved
+bytes; it does not exempt other files. Runtime values trim surrounding spaces.
+
+
+```bash
+node scripts/build/extract_i18n.js
 python3 scripts/build/build_authorized_dealer.py
 python3 scripts/build/build_new_pages.py
 python3 scripts/build/build_i18n.py
@@ -391,6 +423,7 @@ python3 scripts/build/localize_internal_links.py
 python3 scripts/build/apply_seo_meta.py
 python3 scripts/build/build_sitemap.py
 python3 scripts/build/build_llms.py
+python3 scripts/build/validate_authorized_dealer.py
 python3 scripts/build/validate_seo.py
 ```
 

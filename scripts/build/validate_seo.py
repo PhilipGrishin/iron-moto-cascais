@@ -82,6 +82,7 @@ LOCALIZED_PATHS = {
     "/custom/",
     "/authorized-dealer/",
     "/authorized-dealer/c-way/",
+    "/authorized-dealer/dcf-performance/",
     "/english-speaking-motorcycle-workshop/",
     "/pre-purchase-inspection/",
     "/pricing/",

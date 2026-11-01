@@ -29,7 +29,7 @@ EXPECTED_SOURCE_SHA256 = {
     "motorcycle-service": "95c584b5770659c04a90e462e2f120938caafb7a19c3030a21ac95fbd08b21bb",
     "custom": "10790be1dab936791dd01b47bcfa9c3f1c73e12cc495275d2195a025a14f4292",
     "parts": "86687081e07eb74377e9d15aa0c81aca3a2beec138dfc7677ebb4ace5272538e",
-    "upgrades-tuning": "1385731f4051d2d1bf32885f5c9decdc802f602b90de507189d7883d07c7ebfc",
+    "upgrades-tuning": "08a055bcf4823eb92bfd1a59937401ed4413f3c0f0dc522a4e2e0d1a72359c9b",
 }
 
 HUBS = {
@@ -110,7 +110,7 @@ UI = {
 def detect_cache_bust() -> str:
     source = (SITE_ROOT / "index.html").read_text(encoding="utf-8")
     match = re.search(r"/assets/main\.css\?v=([a-zA-Z0-9]+)", source)
-    return match.group(1) if match else "20261031a"
+    return match.group(1) if match else "20261101a"
 
 
 def canonical_path(slug: str, lang: str) -> str:

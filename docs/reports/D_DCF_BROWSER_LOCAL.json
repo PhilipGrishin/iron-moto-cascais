@@ -1,0 +1,46 @@
+{
+  "checked_at": "2026-11-01T20:25:32.721Z",
+  "base": "http://127.0.0.1:8765",
+  "results": [
+    {
+      "width": 390,
+      "dpr": 2,
+      "hero": {
+        "src": "http://127.0.0.1:8765/photos/authorized-dealer/dcf-performance-hero-1280.avif",
+        "complete": true,
+        "width": 390,
+        "height": 520
+      },
+      "hero_requests": [
+        "http://127.0.0.1:8765/photos/authorized-dealer/dcf-performance-hero-1280.avif"
+      ],
+      "overflow": 0,
+      "prefill": "Olá Iron Custom Motors! Queria saber sobre reprogramação de centralina para a minha mota (modelo, ano, escape/filtro se alterados):",
+      "faq_opens": true,
+      "process_anchor": true,
+      "dealer_menu_visible": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "width": 1440,
+      "dpr": 1,
+      "hero": {
+        "src": "http://127.0.0.1:8765/photos/authorized-dealer/dcf-performance-hero-1536.avif",
+        "complete": true,
+        "width": 1439,
+        "height": 1919
+      },
+      "hero_requests": [
+        "http://127.0.0.1:8765/photos/authorized-dealer/dcf-performance-hero-1536.avif"
+      ],
+      "overflow": 0,
+      "prefill": "Olá Iron Custom Motors! Queria saber sobre reprogramação de centralina para a minha mota (modelo, ano, escape/filtro se alterados):",
+      "faq_opens": true,
+      "process_anchor": true,
+      "dealer_menu_visible": true,
+      "errors": [],
+      "failures": []
+    }
+  ]
+}

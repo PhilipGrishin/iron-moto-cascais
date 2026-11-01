@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Generate the Authorized Dealer hub source page.
+"""Render the Authorized Dealer hub, priced catalogs and approved-copy partners.
 
-The English page is the canonical source; build_i18n.py creates /ru/, /uk/
-and /pt/ copies with localized visible text, metadata, hreflang and JSON-LD
-URL adjustments. Future dealer-brand cards are added in
-authorized_dealer_data.AUTHORIZED_DEALER_BRANDS.
+Partners render directly in four languages. The hub also participates in the
+generic i18n flow; registry card labels therefore use page translation keys.
 """
 
 from __future__ import annotations
 
 import json
 from html import escape
+from urllib.parse import quote
+from dealer_copy import inline, plain
 from pathlib import Path
 
 from bs4 import BeautifulSoup, FeatureNotFound
@@ -21,6 +21,7 @@ from authorized_dealer_data import (
     AUTHORIZED_DEALER_HEAD,
     AUTHORIZED_DEALER_HERO,
     AUTHORIZED_DEALER_I18N,
+    COPY_DEALER_PAGES,
     CWAY_DEALER_HEAD,
     CWAY_DEALER_I18N,
     CWAY_MEDIA,
@@ -123,7 +124,7 @@ def apply_static_translations(html: str, lang: str, page_dict: dict[str, str]) -
 
 
 def asset_url(base: str, ext: str = "webp") -> str:
-    return f"{ASSET_BASE}/{base}.{ext}"
+    return f"{base}.{ext}" if base.startswith("/") else f"{ASSET_BASE}/{base}.{ext}"
 
 
 def image_picture(image: dict, alt: str, class_name: str = "", *, loading: str = "lazy", fetchpriority: str | None = None, sizes: str = "100vw") -> str:
@@ -176,7 +177,8 @@ def render_brand_cards(lang: str) -> str:
     for brand in AUTHORIZED_DEALER_BRANDS:
         name = brand["name"][lang]
         url = localized_brand_url(brand["url"], lang)
-        description = brand.get("description", {}).get("en", "")
+        description = brand.get("description", {}).get(lang if brand.get("copy_slug") else "en", "")
+        description_attr = f' data-i18n="ad.brand.{brand["slug"]}.description"' if brand.get("copy_slug") else ""
         image = brand.get("image")
         if image:
             media_html = image_picture(
@@ -193,7 +195,7 @@ def render_brand_cards(lang: str) -> str:
   {media_html}
   <span class="dealer-brand-content">
     <span class="dealer-brand-name">{escape(name)}</span>
-    <span class="dealer-brand-desc">{escape(description)}</span>
+    <span class="dealer-brand-desc"{description_attr}>{escape(description)}</span>
     <span class="dealer-brand-arrow" aria-hidden="true">{ARROW_SVG}</span>
   </span>
 </a>
@@ -272,7 +274,7 @@ def cway_faq_items(lang: str) -> list[dict[str, str]]:
     return CWAY_DEALER_I18N[lang]["faq"]
 
 
-def cway_business_reference(*, with_logo: bool = False) -> dict:
+def dealer_business_reference(*, with_logo: bool = False) -> dict:
     reference = {
         "@type": "LocalBusiness",
         "@id": f"{DOMAIN}/#business",
@@ -339,7 +341,7 @@ def cway_schema_blocks(lang: str) -> list[dict]:
                         "priceCurrency": "EUR",
                         "valueAddedTaxIncluded": False,
                     },
-                    "seller": cway_business_reference(),
+                    "seller": dealer_business_reference(),
                 },
             }
         )
@@ -356,7 +358,7 @@ def cway_schema_blocks(lang: str) -> list[dict]:
             "description": meta["description"],
             "serviceType": "Honda Gold Wing luggage system supply and installation",
             "brand": {"@type": "Brand", "name": "C-Way"},
-            "provider": cway_business_reference(),
+            "provider": dealer_business_reference(),
             "areaServed": ["Portugal", "Cascais", "Lisbon", "Greater Lisbon"],
             "mainEntityOfPage": {"@id": url},
             "hasOfferCatalog": {
@@ -377,7 +379,7 @@ def cway_schema_blocks(lang: str) -> list[dict]:
             "uploadDate": video_main["upload_date"],
             "duration": video_main["duration"],
             "inLanguage": HREFLANG_CODES[lang],
-            "publisher": cway_business_reference(with_logo=True),
+            "publisher": dealer_business_reference(with_logo=True),
         },
         {
             "@context": "https://schema.org",
@@ -390,7 +392,7 @@ def cway_schema_blocks(lang: str) -> list[dict]:
             "uploadDate": video_review["upload_date"],
             "duration": video_review["duration"],
             "inLanguage": HREFLANG_CODES[lang],
-            "publisher": cway_business_reference(with_logo=True),
+            "publisher": dealer_business_reference(with_logo=True),
         },
         {
             "@context": "https://schema.org",
@@ -426,6 +428,74 @@ def cway_hreflang_html() -> str:
     )
     html += f'<link rel="alternate" hreflang="x-default" href="{cway_url("en")}"/>'
     return html
+
+
+DEALER_PARTNER_STYLES = """
+.cway-hero{position:relative;min-height:calc(100vh - 34px);display:flex;align-items:flex-end;overflow:hidden;padding:142px 0 84px;background:#050505}
+.cway-hero-media{position:absolute;inset:0;z-index:0}
+.cway-hero-media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.cway-hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,5,5,.92) 0%,rgba(5,5,5,.68) 46%,rgba(5,5,5,.24) 100%),linear-gradient(180deg,rgba(5,5,5,.22) 0%,rgba(5,5,5,.88) 100%)}
+.cway-hero .container{position:relative;z-index:2}
+.cway-hero h1{max-width:min(760px,76vw);font-size:clamp(34px,4.2vw,60px);line-height:.92}
+.cway-hero .lead{max-width:62ch;font-size:clamp(17px,1.35vw,22px)}
+.cway-section{padding:clamp(34px,4vw,48px) 0;border-top:1px solid rgba(255,255,255,.08);background:#070707}
+.cway-section.alt{background:#0d0d10}
+.cway-heading{display:grid;grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr);gap:clamp(18px,3vw,44px);align-items:end;margin-bottom:24px}
+.cway-heading h2{margin:0;color:#fff;font-family:var(--font-display);font-size:clamp(24px,3.2vw,50px);line-height:.98;text-transform:uppercase}
+.cway-heading .lead{margin:0;color:var(--text-dim);font-size:clamp(16px,1.15vw,19px);line-height:1.58}
+.cway-copy{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(22px,3.6vw,52px);align-items:start}
+.cway-copy p{margin:0 0 18px;color:var(--text-dim);font-size:clamp(17px,1.25vw,21px);line-height:1.68}
+.cway-video-title{margin:0 0 14px;color:#fff;font-family:var(--font-display);font-size:clamp(18px,1.6vw,24px);font-weight:800;line-height:1;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html[lang="ru"] .cway-video-title,html[lang="uk"] .cway-video-title{font-size:clamp(14px,1.05vw,18px)}
+.cway-video-wrap{display:grid;gap:10px}
+.cway-video{width:100%;aspect-ratio:16/9;border:1px solid rgba(255,255,255,.16);border-radius:8px;background:#000;display:block}
+.cway-caption{margin:0;color:var(--text-muted);font-size:15px}
+.cway-why-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.cway-why-card{border:1px solid var(--border);background:linear-gradient(135deg,rgba(255,87,34,.09),rgba(18,18,24,.94));border-radius:8px;padding:20px;min-height:170px}
+.cway-why-card .num{font-family:var(--font-display);font-size:30px;font-weight:900;color:var(--accent);line-height:1}
+.cway-why-card h3{margin:14px 0 10px;color:#fff;font-family:var(--font-display);font-size:clamp(20px,1.4vw,25px);line-height:1;text-transform:uppercase}
+.cway-why-card p{margin:0;color:var(--text-dim);line-height:1.55}
+.cway-price-note{margin:0 0 24px;color:var(--text-muted);font-family:var(--font-ui);font-size:13px;font-weight:700;text-transform:uppercase}
+.cway-product-groups{display:grid;gap:34px}
+.cway-product-group{display:grid;gap:14px}
+.cway-product-group-head{display:flex;align-items:center;gap:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.14)}
+.cway-product-group-head h3{margin:0;color:#fff;font-family:var(--font-display);font-size:clamp(24px,2.3vw,36px);font-weight:800;line-height:1;text-transform:uppercase}
+.cway-products{display:grid;gap:12px}
+.cway-product{display:grid;grid-template-columns:220px minmax(0,1fr);gap:22px;border:1px solid var(--border);background:#111116;border-radius:8px;padding:12px;align-items:center}
+.cway-product picture{display:block;width:100%;aspect-ratio:1;background:#fff;border-radius:6px;overflow:hidden}
+.cway-product img{display:block;width:100%;height:100%;object-fit:contain}
+.cway-product-body{display:flex;min-width:0;min-height:100%;flex-direction:column;justify-content:center;padding:8px 12px 8px 0}
+.cway-product h4{margin:0 0 10px;color:#fff;font-family:var(--font-display);font-size:clamp(22px,1.8vw,31px);font-weight:800;line-height:1.08;text-transform:uppercase}
+.cway-product p{margin:0 0 18px;color:var(--text-dim);font-size:clamp(15px,1.05vw,18px);line-height:1.55}
+.cway-product-meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:auto}
+.cway-price{color:#fff;font-family:var(--font-display);font-size:clamp(24px,2vw,32px);font-weight:800;line-height:1}
+.cway-price-vat{color:var(--text-dim);font-family:var(--font-ui);font-size:17px;font-weight:400;line-height:1.2;white-space:nowrap}
+.cway-stock{display:inline-flex;align-items:center;gap:7px;color:#48d67a;font-family:var(--font-ui);font-size:13px;font-weight:800}
+.cway-stock::before{content:"";width:8px;height:8px;border-radius:50%;background:#48d67a;box-shadow:0 0 0 4px rgba(72,214,122,.12)}
+.cway-studio-scroll{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,360px);gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:10px}
+.cway-studio-scroll picture{scroll-snap-align:start;background:#fff;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
+.cway-studio-scroll img{display:block;width:100%;height:auto}
+.cway-studio-note{margin:0 0 18px;color:var(--text-dim);font-size:clamp(16px,1.1vw,18px);line-height:1.55}
+.cway-world picture{display:block;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
+.cway-world img{display:block;width:100%;height:auto}
+.cway-review{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:28px;align-items:center}
+.cway-quote{border-left:3px solid var(--accent);padding-left:24px;color:#fff;font-size:clamp(18px,1.45vw,24px);line-height:1.42}
+.cway-quote cite{display:block;margin-top:18px;color:var(--accent);font-family:var(--font-ui);font-size:14px;font-style:normal;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.cway-compat{max-width:980px}
+.cway-compat p{font-size:clamp(17px,1.25vw,21px);line-height:1.58;color:#fff;margin:0}
+.cway-compat .cway-install{margin-top:12px;color:var(--accent);font-weight:700}
+.cway-faq-list{display:grid;gap:12px;max-width:980px;margin:0 auto}
+.cway-faq-list details{border:1px solid var(--border);border-radius:8px;background:var(--surface);padding:0 22px}
+.cway-faq-list summary{cursor:pointer;list-style:none;padding:22px 0;font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:#fff;font-size:clamp(18px,1.4vw,24px)}
+.cway-faq-list summary::-webkit-details-marker{display:none}
+.cway-faq-list p{margin:0 0 22px;color:var(--text-dim);line-height:1.6}
+.cway-cta-links{display:flex;flex-wrap:nowrap;gap:10px;margin-top:18px;overflow-x:auto;white-space:nowrap;scrollbar-width:thin}
+.cway-cta-links a{flex:0 0 auto;color:#fff;border:1px solid var(--border);border-radius:999px;padding:9px 12px;text-decoration:none;font-family:var(--font-ui);font-size:12px;font-weight:800;text-transform:uppercase}
+.cway-cta-links a:hover{border-color:var(--accent);color:var(--accent)}
+@media (max-width:1100px){.cway-why-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:820px){.cway-hero{min-height:auto;padding:124px 0 62px}.cway-hero h1{max-width:calc(100vw - 40px);font-size:clamp(30px,8vw,40px)}.cway-heading,.cway-copy,.cway-review{grid-template-columns:1fr}.cway-why-grid{grid-template-columns:1fr}}
+@media (max-width:640px){.cway-product{grid-template-columns:1fr;gap:16px;padding:10px}.cway-product-body{padding:2px 4px 6px}.cway-product-group-head{justify-content:space-between}.cway-product h4{font-size:24px}}
+"""
 
 
 def cway_head(lang: str) -> str:
@@ -477,70 +547,7 @@ def cway_head(lang: str) -> str:
 <link href="/assets/main.css?v={CACHE_BUST}" rel="stylesheet"/>
 <style>
 {SHARED_STYLES}
-.cway-hero{{position:relative;min-height:calc(100vh - 34px);display:flex;align-items:flex-end;overflow:hidden;padding:142px 0 84px;background:#050505}}
-.cway-hero-media{{position:absolute;inset:0;z-index:0}}
-.cway-hero-media img{{width:100%;height:100%;object-fit:cover;object-position:center;display:block}}
-.cway-hero::after{{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,5,5,.92) 0%,rgba(5,5,5,.68) 46%,rgba(5,5,5,.24) 100%),linear-gradient(180deg,rgba(5,5,5,.22) 0%,rgba(5,5,5,.88) 100%)}}
-.cway-hero .container{{position:relative;z-index:2}}
-.cway-hero h1{{max-width:min(760px,76vw);font-size:clamp(34px,4.2vw,60px);line-height:.92}}
-.cway-hero .lead{{max-width:62ch;font-size:clamp(17px,1.35vw,22px)}}
-.cway-section{{padding:clamp(34px,4vw,48px) 0;border-top:1px solid rgba(255,255,255,.08);background:#070707}}
-.cway-section.alt{{background:#0d0d10}}
-.cway-heading{{display:grid;grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr);gap:clamp(18px,3vw,44px);align-items:end;margin-bottom:24px}}
-.cway-heading h2{{margin:0;color:#fff;font-family:var(--font-display);font-size:clamp(24px,3.2vw,50px);line-height:.98;text-transform:uppercase}}
-.cway-heading .lead{{margin:0;color:var(--text-dim);font-size:clamp(16px,1.15vw,19px);line-height:1.58}}
-.cway-copy{{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(22px,3.6vw,52px);align-items:start}}
-.cway-copy p{{margin:0 0 18px;color:var(--text-dim);font-size:clamp(17px,1.25vw,21px);line-height:1.68}}
-.cway-video-title{{margin:0 0 14px;color:#fff;font-family:var(--font-display);font-size:clamp(18px,1.6vw,24px);font-weight:800;line-height:1;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
-html[lang="ru"] .cway-video-title,html[lang="uk"] .cway-video-title{{font-size:clamp(14px,1.05vw,18px)}}
-.cway-video-wrap{{display:grid;gap:10px}}
-.cway-video{{width:100%;aspect-ratio:16/9;border:1px solid rgba(255,255,255,.16);border-radius:8px;background:#000;display:block}}
-.cway-caption{{margin:0;color:var(--text-muted);font-size:15px}}
-.cway-why-grid{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
-.cway-why-card{{border:1px solid var(--border);background:linear-gradient(135deg,rgba(255,87,34,.09),rgba(18,18,24,.94));border-radius:8px;padding:20px;min-height:170px}}
-.cway-why-card .num{{font-family:var(--font-display);font-size:30px;font-weight:900;color:var(--accent);line-height:1}}
-.cway-why-card h3{{margin:14px 0 10px;color:#fff;font-family:var(--font-display);font-size:clamp(20px,1.4vw,25px);line-height:1;text-transform:uppercase}}
-.cway-why-card p{{margin:0;color:var(--text-dim);line-height:1.55}}
-.cway-price-note{{margin:0 0 24px;color:var(--text-muted);font-family:var(--font-ui);font-size:13px;font-weight:700;text-transform:uppercase}}
-.cway-product-groups{{display:grid;gap:34px}}
-.cway-product-group{{display:grid;gap:14px}}
-.cway-product-group-head{{display:flex;align-items:center;gap:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.14)}}
-.cway-product-group-head h3{{margin:0;color:#fff;font-family:var(--font-display);font-size:clamp(24px,2.3vw,36px);font-weight:800;line-height:1;text-transform:uppercase}}
-.cway-products{{display:grid;gap:12px}}
-.cway-product{{display:grid;grid-template-columns:220px minmax(0,1fr);gap:22px;border:1px solid var(--border);background:#111116;border-radius:8px;padding:12px;align-items:center}}
-.cway-product picture{{display:block;width:100%;aspect-ratio:1;background:#fff;border-radius:6px;overflow:hidden}}
-.cway-product img{{display:block;width:100%;height:100%;object-fit:contain}}
-.cway-product-body{{display:flex;min-width:0;min-height:100%;flex-direction:column;justify-content:center;padding:8px 12px 8px 0}}
-.cway-product h4{{margin:0 0 10px;color:#fff;font-family:var(--font-display);font-size:clamp(22px,1.8vw,31px);font-weight:800;line-height:1.08;text-transform:uppercase}}
-.cway-product p{{margin:0 0 18px;color:var(--text-dim);font-size:clamp(15px,1.05vw,18px);line-height:1.55}}
-.cway-product-meta{{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:auto}}
-.cway-price{{color:#fff;font-family:var(--font-display);font-size:clamp(24px,2vw,32px);font-weight:800;line-height:1}}
-.cway-price-vat{{color:var(--text-dim);font-family:var(--font-ui);font-size:17px;font-weight:400;line-height:1.2;white-space:nowrap}}
-.cway-stock{{display:inline-flex;align-items:center;gap:7px;color:#48d67a;font-family:var(--font-ui);font-size:13px;font-weight:800}}
-.cway-stock::before{{content:"";width:8px;height:8px;border-radius:50%;background:#48d67a;box-shadow:0 0 0 4px rgba(72,214,122,.12)}}
-.cway-studio-scroll{{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,360px);gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:10px}}
-.cway-studio-scroll picture{{scroll-snap-align:start;background:#fff;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}}
-.cway-studio-scroll img{{display:block;width:100%;height:auto}}
-.cway-studio-note{{margin:0 0 18px;color:var(--text-dim);font-size:clamp(16px,1.1vw,18px);line-height:1.55}}
-.cway-world picture{{display:block;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}}
-.cway-world img{{display:block;width:100%;height:auto}}
-.cway-review{{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:28px;align-items:center}}
-.cway-quote{{border-left:3px solid var(--accent);padding-left:24px;color:#fff;font-size:clamp(18px,1.45vw,24px);line-height:1.42}}
-.cway-quote cite{{display:block;margin-top:18px;color:var(--accent);font-family:var(--font-ui);font-size:14px;font-style:normal;font-weight:800;text-transform:uppercase;letter-spacing:.08em}}
-.cway-compat{{max-width:980px}}
-.cway-compat p{{font-size:clamp(17px,1.25vw,21px);line-height:1.58;color:#fff;margin:0}}
-.cway-compat .cway-install{{margin-top:12px;color:var(--accent);font-weight:700}}
-.cway-faq-list{{display:grid;gap:12px;max-width:980px;margin:0 auto}}
-.cway-faq-list details{{border:1px solid var(--border);border-radius:8px;background:var(--surface);padding:0 22px}}
-.cway-faq-list summary{{cursor:pointer;list-style:none;padding:22px 0;font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:#fff;font-size:clamp(18px,1.4vw,24px)}}
-.cway-faq-list summary::-webkit-details-marker{{display:none}}
-.cway-faq-list p{{margin:0 0 22px;color:var(--text-dim);line-height:1.6}}
-.cway-cta-links{{display:flex;flex-wrap:nowrap;gap:10px;margin-top:18px;overflow-x:auto;white-space:nowrap;scrollbar-width:thin}}
-.cway-cta-links a{{flex:0 0 auto;color:#fff;border:1px solid var(--border);border-radius:999px;padding:9px 12px;text-decoration:none;font-family:var(--font-ui);font-size:12px;font-weight:800;text-transform:uppercase}}
-.cway-cta-links a:hover{{border-color:var(--accent);color:var(--accent)}}
-@media (max-width:1100px){{.cway-why-grid{{grid-template-columns:repeat(2,minmax(0,1fr))}}}}
-@media (max-width:820px){{.cway-hero{{min-height:auto;padding:124px 0 62px}}.cway-hero h1{{max-width:calc(100vw - 40px);font-size:clamp(30px,8vw,40px)}}.cway-heading,.cway-copy,.cway-review{{grid-template-columns:1fr}}.cway-why-grid{{grid-template-columns:1fr}}}}
-@media (max-width:640px){{.cway-product{{grid-template-columns:1fr;gap:16px;padding:10px}}.cway-product-body{{padding:2px 4px 6px}}.cway-product-group-head{{justify-content:space-between}}.cway-product h4{{font-size:24px}}}}
+{DEALER_PARTNER_STYLES}
 </style>
 {json_ld_html}
 <script>window.ICM_I18N_PAGE = {cway_payload()};</script>
@@ -1044,6 +1051,98 @@ def render_page(lang: str = "en") -> str:
     return apply_static_translations(raw, lang, AUTHORIZED_DEALER_I18N[lang])
 
 
+def partner_srcset(media: dict, ext: str) -> str:
+    return ', '.join(f'{media["base"]}-{width}.{ext} {width}w' for width in media['widths'])
+
+
+def copy_dealer_schema(config: dict, lang: str) -> dict:
+    content = config['content'][lang]
+    fields = content['fields']
+    url = DOMAIN + fields['Slug']
+    media = config['hero']
+    faq = next(s for s in content['sections'] if s['key']=='faq')
+    crumbs = fields['Breadcrumb'].split(' → ')
+    urls = [DOMAIN + localize_path('/',lang), localized_url(lang), url]
+    hero = {'@type':'ImageObject','@id':url+'#hero','url':DOMAIN+media['base']+'-1280.jpg','width':1280,'height':round(media['height']*1280/media['width']),'caption':fields['Hero alt']}
+    return {'@context':'https://schema.org','@graph':[
+        dealer_business_reference(with_logo=True), hero,
+        {'@type':'Service','@id':url+'#service','url':url,'name':fields['H1'],'description':fields['Meta'],'serviceType':config['service_type'][lang],
+         'provider':{'@id':DOMAIN+'/#business'},'brand':{'@type':'Brand',**config['brand']},'image':{'@id':hero['@id']},'areaServed':{'@type':'Country','name':'Portugal'}},
+        {'@type':'FAQPage','@id':url+'#faq','mainEntity':[{'@type':'Question','name':plain(item['title']),'acceptedAnswer':{'@type':'Answer','text':plain(item['text'])}} for item in faq['items']]},
+        {'@type':'BreadcrumbList','@id':url+'#breadcrumbs','itemListElement':[{'@type':'ListItem','position':i+1,'name':label,'item':urls[i]} for i,label in enumerate(crumbs)]},
+    ]}
+
+
+def copy_dealer_head(config: dict, lang: str) -> str:
+    fields=config['content'][lang]['fields'];media=config['hero'];url=DOMAIN+fields['Slug']
+    alternates=''.join(f'<link rel="alternate" hreflang="{HREFLANG_CODES[l]}" href="{DOMAIN}{config["content"][l]["fields"]["Slug"]}"/>' for l in LANGS)
+    alternates+=f'<link rel="alternate" hreflang="x-default" href="{DOMAIN}/{config["path"]}"/>'
+    og=DOMAIN+media['base']+'-1280.jpg'
+    return f'''<!DOCTYPE html>
+<html lang="{lang}" data-lang="{lang}"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="theme-color" content="#0a0a0a"/><meta name="robots" content="max-image-preview:large"/>
+<title>{escape(fields['SEO Title'])}</title><meta name="description" content="{escape(fields['Meta'])}"/>
+<link rel="canonical" href="{url}"/>{alternates}
+<meta property="og:type" content="website"/><meta property="og:site_name" content="Iron Custom Motors"/>
+<meta property="og:title" content="{escape(fields['SEO Title'])}"/><meta property="og:description" content="{escape(fields['Meta'])}"/>
+<meta property="og:url" content="{url}"/><meta property="og:image" content="{og}"/><meta property="og:locale" content="{OG_LOCALES[lang]}"/>
+<meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="{escape(fields['SEO Title'])}"/><meta name="twitter:description" content="{escape(fields['Meta'])}"/><meta name="twitter:image" content="{og}"/>
+<link rel="icon" href="/photos/favicon.ico" sizes="any"/><link rel="apple-touch-icon" href="/photos/apple-touch-icon.png"/><link rel="manifest" href="/photos/site.webmanifest"/>
+<link rel="preload" as="image" type="image/avif" href="{media['base']}-1536.avif" imagesrcset="{partner_srcset(media,'avif')}" imagesizes="100vw"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/main.css?v={CACHE_BUST}"/>
+<style>{SHARED_STYLES}
+{DEALER_PARTNER_STYLES}
+.dealer-copy-page .cway-hero-media img{{object-position:center 62%}}
+.dealer-copy-page .cway-heading{{display:block;max-width:1000px}}
+.dealer-copy-page .cway-heading .lead{{margin-top:22px}}
+.dealer-prose{{max-width:85ch;color:var(--text-dim);font-size:clamp(16px,1.2vw,20px);line-height:1.65}}
+.dealer-prose p{{margin:0 0 18px}}
+.dealer-copy-page a:not(.btn){{color:var(--accent)}}
+.dealer-card-grid{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+.dealer-copy-page .cway-why-card{{min-height:0}}
+.dealer-copy-page .cway-why-card h3{{margin-top:0}}
+.dealer-stat-grid{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
+.dealer-stat-grid .num{{display:block;font-size:clamp(26px,2.5vw,38px);margin-bottom:12px}}
+.dealer-copy-page .cway-cta-links{{flex-wrap:wrap;white-space:normal;overflow:visible}}
+.dealer-copy-page .cway-cta-links a{{max-width:100%;overflow-wrap:anywhere}}
+.dealer-copy-page section{{scroll-margin-top:90px}}
+@media(max-width:820px){{.dealer-card-grid,.dealer-stat-grid{{grid-template-columns:1fr}}.dealer-copy-page .subpage-cta{{display:grid;grid-template-columns:1fr}}.dealer-copy-page .subpage-cta .btn{{justify-content:center}}}}
+</style><script type="application/ld+json">{json.dumps(copy_dealer_schema(config,lang),ensure_ascii=False)}</script>
+</head>'''
+
+
+def render_copy_dealer_page(slug: str, config: dict, lang: str) -> str:
+    content=config['content'][lang];fields=content['fields'];media=config['hero'];prefill=fields['WhatsApp prefill']
+    buttons=fields['Buttons'].split(' · ');crumbs=fields['Breadcrumb'].split(' → ')
+    picture=f'''<picture class="cway-hero-media"><source type="image/avif" srcset="{partner_srcset(media,'avif')}" sizes="100vw"/><source type="image/webp" srcset="{partner_srcset(media,'webp')}" sizes="100vw"/><img src="{media['base']}-1536.jpg" width="{media['width']}" height="{media['height']}" alt="{escape(fields['Hero alt'])}" loading="eager" decoding="async" fetchpriority="high" sizes="100vw"/></picture>'''
+    sections=[]
+    for section in content['sections']:
+        key,kind=section['key'],section['kind']
+        heading=(f'<p class="eyebrow">{escape(section["eyebrow"])}</p>' if section['eyebrow'] else '')+f'<h2>{escape(section["title"])}</h2>'
+        if section['lead']: heading+=f'<p class="lead">{inline(section["lead"],prefill)}</p>'
+        if kind=='prose':
+            body='<div class="dealer-prose">'+''.join(f'<p>{inline(item,prefill)}</p>' for item in section['items'])+'</div>'
+        elif kind in {'cards','steps'}:
+            body='<div class="dealer-card-grid">'+''.join(f'<article class="cway-why-card"><h3>{inline(item["title"],prefill)}</h3><p>{inline(item["text"],prefill)}</p></article>' for item in section['items'])+'</div>'
+        elif kind=='stats':
+            body='<div class="dealer-stat-grid">'+''.join(f'<article class="cway-why-card"><strong class="num">{escape(item["title"])}</strong><p>{escape(item["text"])}</p></article>' for item in section['items'])+'</div>'
+        elif kind=='faq':
+            body='<div class="cway-faq-list">'+''.join(f'<details><summary>{inline(item["title"],prefill)}</summary><p>{inline(item["text"],prefill)}</p></details>' for item in section['items'])+'</div>'
+        else:
+            body='<div class="cway-cta-links">'+''.join(f'<a href="{escape(item["href"])}">{escape(item["title"])}</a>' for item in section['items'])+'</div>'
+        sections.append(f'<section class="cway-section{ " alt" if len(sections)%2 else ""}" id="{key}" data-dealer-section="{key}"><div class="container"><div class="cway-heading">{heading}</div>{body}</div></section>')
+    raw=f'''{copy_dealer_head(config,lang)}<body>{header_html()}
+<main class="dealer-copy-page" data-dealer="{slug}"><section class="cway-hero">{picture}<div class="container">
+<nav class="crumb" aria-label="Breadcrumb"><a href="{localize_path('/',lang)}">{escape(crumbs[0])}</a><span class="sep">→</span><a href="{localize_path('/authorized-dealer/',lang)}">{escape(crumbs[1])}</a><span class="sep">→</span><span>{escape(crumbs[2])}</span></nav>
+<p class="eyebrow">{escape(fields['Eyebrow'])}</p><h1>{escape(fields['H1'])}</h1><p class="lead">{escape(fields['Hero offer'])}</p>
+<div class="subpage-cta"><a class="btn btn-primary" data-wa="" href="https://wa.me/351917961230?text={quote(prefill,safe='')}" rel="noopener" target="_blank">{escape(buttons[0])} {ARROW_SVG}</a><a class="btn btn-ghost" href="#process">{escape(buttons[1])} {ARROW_SVG}</a></div></div></section>
+{''.join(sections)}</main>{footer_html()}{end_html()}'''
+    return apply_static_translations(patch_navigation_footer(raw,lang),lang,{})
+
+
 def main() -> None:
     hub_path = PAGE_PATH.strip("/")
     for lang in LANGS:
@@ -1057,6 +1156,13 @@ def main() -> None:
             preserve_downstream_head=True,
         )
         print(f"Wrote {out_path.relative_to(SITE_ROOT)}")
+
+    for slug, config in COPY_DEALER_PAGES.items():
+        for lang in LANGS:
+            out = local_output_path(config["path"], lang)
+            out.parent.mkdir(parents=True, exist_ok=True)
+            write_html_if_changed(out, render_copy_dealer_page(slug, config, lang), preserve_body_shell=True, preserve_downstream_head=True)
+            print(f"Wrote {out.relative_to(SITE_ROOT)}")
 
     cway_path = CWAY_PAGE_PATH.strip("/")
     for lang in LANGS:

@@ -10,19 +10,19 @@ AUTHORIZED_DEALER_HERO = "/photos/authorized-dealer-main-1600.jpg"
 AUTHORIZED_DEALER_HEAD = {
     "en": {
         "title": "Authorized Dealer — Genuine Moto Parts | Cascais",
-        "description": "Iron Custom Motors is now an authorized dealer of leading motorcycle parts brands in Cascais. Order genuine parts with official warranty plus expert fitment.",
+        "description": "Authorized dealer in Cascais: genuine parts from leading motorcycle brands with official warranty and expert fitment — and DCF-Performance ECU tuning.",
     },
     "pt": {
         "title": "Revendedor Oficial — Peças Moto Genuínas | Cascais",
-        "description": "A Iron Custom Motors é agora revendedora oficial das principais marcas de peças moto em Cascais. Encomende peças genuínas com garantia oficial e montagem profissional.",
+        "description": "Revendedor oficial em Cascais: peças genuínas das principais marcas para mota, garantia oficial, montagem profissional — e reprogramação DCF-Performance.",
     },
     "ru": {
         "title": "Официальный дилер — оригинальные мотозапчасти | Кашкайш",
-        "description": "Iron Custom Motors — теперь официальный дилер ведущих брендов мотозапчастей в Кашкайше. Заказывайте оригинал с гарантией производителя и профессиональной установкой.",
+        "description": "Официальный дилер в Кашкайше: оригинальные запчасти ведущих мотобрендов с гарантией производителя и установкой — и чип-тюнинг DCF-Performance.",
     },
     "uk": {
         "title": "Офіційний дилер — оригінальні мотозапчастини | Кашкайш",
-        "description": "Iron Custom Motors — тепер офіційний дилер провідних брендів мотозапчастин у Кашкайші. Замовляйте оригінал із гарантією виробника та професійним встановленням.",
+        "description": "Офіційний дилер у Кашкайші: оригінальні запчастини провідних мотобрендів із гарантією виробника та встановленням — і чип-тюнінг DCF-Performance.",
     },
 }
 
@@ -34,7 +34,7 @@ AUTHORIZED_DEALER_I18N = {
         "ad.eyebrow": "Authorized Dealer · Greater Lisbon",
         "ad.h1": "Authorized Dealer in Cascais & Greater Lisbon",
         "ad.heroAlt": "Iron Custom Motors authorized dealer counter with genuine motorcycle parts in Cascais",
-        "ad.intro": "Iron Custom Motors is now an authorized dealer and official representative of leading aftermarket motorcycle parts and accessories brands. You can order every product from these brands directly through us — always genuine, always with the official manufacturer warranty. We also handle professional fitment in our São Domingos de Rana workshop and back the installation with our own workmanship guarantee.",
+        "ad.intro": "Iron Custom Motors is an authorized dealer and official representative of leading aftermarket motorcycle parts and accessories brands — and, through DCF-Performance, of professional ECU tuning for motorcycles. You can order every product from these brands directly through us — always genuine, always with the official manufacturer warranty. We also handle professional fitment in our São Domingos de Rana workshop and back the installation with our own workmanship guarantee.",
         "ad.whyEyebrow": "Official supply",
         "ad.whyTitle": "Why buy from an authorized dealer",
         "ad.w1Title": "Genuine parts only.",
@@ -71,7 +71,7 @@ AUTHORIZED_DEALER_I18N = {
         "ad.eyebrow": "Revendedor Oficial · Grande Lisboa",
         "ad.h1": "Revendedor Oficial em Cascais e na Grande Lisboa",
         "ad.heroAlt": "Balcão de revendedor oficial da Iron Custom Motors com peças moto genuínas em Cascais",
-        "ad.intro": "A Iron Custom Motors é agora revendedora oficial e representante autorizada das principais marcas de peças e acessórios para mota. Pode encomendar todos os produtos destas marcas diretamente connosco — sempre genuínos e sempre com a garantia oficial do fabricante. Tratamos também da montagem profissional na nossa oficina em São Domingos de Rana, com garantia própria sobre a instalação.",
+        "ad.intro": "A Iron Custom Motors é revendedora oficial e representante autorizada das principais marcas de peças e acessórios para mota e, através da DCF-Performance, de reprogramação profissional de centralinas de mota. Pode encomendar todos os produtos destas marcas diretamente connosco — sempre genuínos e sempre com a garantia oficial do fabricante. Tratamos também da montagem profissional na nossa oficina em São Domingos de Rana, com garantia própria sobre a instalação.",
         "ad.whyEyebrow": "Fornecimento oficial",
         "ad.whyTitle": "Porquê comprar a um revendedor oficial",
         "ad.w1Title": "Apenas peças genuínas.",
@@ -108,7 +108,7 @@ AUTHORIZED_DEALER_I18N = {
         "ad.eyebrow": "Официальный дилер · Большой Лиссабон",
         "ad.h1": "Официальный дилер в Кашкайше и Большом Лиссабоне",
         "ad.heroAlt": "Стойка официального дилера Iron Custom Motors с оригинальными мотозапчастями в Кашкайше",
-        "ad.intro": "Iron Custom Motors теперь официальный дилер и представитель ведущих брендов мотозапчастей и аксессуаров. Все товары этих брендов можно заказать напрямую у нас — всегда оригинал и всегда с официальной гарантией производителя. Мы также выполняем профессиональную установку в нашей мастерской в Сан-Домингуш-де-Рана и даём собственную гарантию на работы.",
+        "ad.intro": "Iron Custom Motors — официальный дилер и представитель ведущих брендов мотозапчастей и аксессуаров, а через DCF-Performance — профессионального чип-тюнинга мотоциклов. Все товары этих брендов можно заказать напрямую у нас — всегда оригинал и всегда с официальной гарантией производителя. Мы также выполняем профессиональную установку в нашей мастерской в Сан-Домингуш-де-Рана и даём собственную гарантию на работы.",
         "ad.whyEyebrow": "Официальная поставка",
         "ad.whyTitle": "Почему выгодно покупать у официального дилера",
         "ad.w1Title": "Только оригинальные запчасти.",
@@ -145,7 +145,7 @@ AUTHORIZED_DEALER_I18N = {
         "ad.eyebrow": "Офіційний дилер · Великий Лісабон",
         "ad.h1": "Офіційний дилер у Кашкайші та Великому Лісабоні",
         "ad.heroAlt": "Стійка офіційного дилера Iron Custom Motors з оригінальними мотозапчастинами в Кашкайші",
-        "ad.intro": "Iron Custom Motors тепер офіційний дилер і представник провідних брендів мотозапчастин та аксесуарів. Усі товари цих брендів можна замовити безпосередньо в нас — завжди оригінал і завжди з офіційною гарантією виробника. Ми також виконуємо професійне встановлення у нашій майстерні в Сан-Домінгуш-де-Рана й надаємо власну гарантію на роботи.",
+        "ad.intro": "Iron Custom Motors — офіційний дилер і представник провідних брендів мотозапчастин та аксесуарів, а через DCF-Performance — професійного чип-тюнінгу мотоциклів. Усі товари цих брендів можна замовити безпосередньо в нас — завжди оригінал і завжди з офіційною гарантією виробника. Ми також виконуємо професійне встановлення у нашій майстерні в Сан-Домінгуш-де-Рана й надаємо власну гарантію на роботи.",
         "ad.whyEyebrow": "Офіційне постачання",
         "ad.whyTitle": "Чому варто купувати в офіційного дилера",
         "ad.w1Title": "Лише оригінальні запчастини.",
@@ -682,3 +682,38 @@ CWAY_DEALER_I18N = {
         },
     },
 }
+
+
+# Approved unpriced partners use the common labelled-copy contract.
+from pathlib import Path
+from dealer_copy import parse_dealer_copy
+
+COPY_DEALER_PAGES = {
+    "dcf-performance": {
+        "source": Path(__file__).resolve().parent / "content/dcf_dealer_copy_4lang.md",
+        "sha256": "3d3bd77bd92a71a3403ef6905025c8f3def1d30f08f1b63ca46098d9862e2aff",
+        "path": "authorized-dealer/dcf-performance/",
+        "brand": {"name": "DCF-Performance", "url": "https://dcf-performance.com/"},
+        "hero": {"base": "/photos/authorized-dealer/dcf-performance-hero", "widths": [768, 1280, 1536], "width": 1536, "height": 2048},
+        "service_type": {
+            "en": "Motorcycle ECU remapping and chip tuning",
+            "pt": "Reprogramação de centralina e chip tuning de motos",
+            "ru": "Прошивка ЭБУ и чип-тюнинг мотоциклов",
+            "uk": "Прошивка ЕБК і чип-тюнінг мотоциклів",
+        },
+    },
+}
+for _config in COPY_DEALER_PAGES.values():
+    _config["content"] = parse_dealer_copy(_config["source"], _config["sha256"], _config["path"])
+
+AUTHORIZED_DEALER_BRANDS.append({
+    "slug": "dcf-performance", "copy_slug": "dcf-performance",
+    "name": {lang: "DCF-Performance" for lang in ("en", "pt", "ru", "uk")},
+    "url": "/authorized-dealer/dcf-performance/",
+    "image": {"base": "/photos/authorized-dealer/dcf-performance-hero-768", "width": 768, "height": 1024},
+    "description": {'en': 'Official DCF-Performance dealer in Portugal: motorcycle ECU remapping and chip tuning with dyno-developed files, original map kept, written estimate, Cascais.', 'pt': 'Revendedor oficial DCF-Performance em Portugal: reprogramação de centralina e chip tuning de motos com ficheiros testados em banco, mapa original guardado, orçamento escrito, Cascais.', 'ru': 'Официальный дилер DCF-Performance в Португалии: прошивка ЭБУ и чип-тюнинг мотоциклов на калибровках со стенда, оригинальная прошивка сохраняется, смета письменно, Кашкайш.', 'uk': 'Офіційний дилер DCF-Performance у Португалії: прошивка ЕБК і чип-тюнінг мотоциклів на калібруваннях зі стенда, оригінальна прошивка зберігається, кошторис письмово, Кашкайш.'},
+})
+for _brand in AUTHORIZED_DEALER_BRANDS:
+    if _brand.get("copy_slug"):
+        for _lang in AUTHORIZED_DEALER_I18N:
+            AUTHORIZED_DEALER_I18N[_lang][f"ad.brand.{_brand['slug']}.description"] = _brand["description"][_lang]

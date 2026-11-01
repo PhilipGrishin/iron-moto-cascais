@@ -1,0 +1,87 @@
+{
+  "source_filename": "dcf_HERO.jpg",
+  "source_sha256": "bda3e71bd379690ca32e89a76861bba66d2e047ebedf8ef83c8f497cbc892810",
+  "files": [
+    {
+      "path": "photos/authorized-dealer/dcf-performance-hero-768.avif",
+      "bytes": 142659,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "sha256": "2a0cb44663d1092f68461200ee620aa8a21b4fc8ed9662bca95cb306981ceec0"
+    },
+    {
+      "path": "photos/authorized-dealer/dcf-performance-hero-768.webp",
+      "bytes": 178170,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "sha256": "f63fd25c5264c7b35422ac7d333a334759b4a25803ff59cb41b073bd03426047"
+    },
+    {
+      "path": "photos/authorized-dealer/dcf-performance-hero-768.jpg",
+      "bytes": 222942,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "sha256": "4f4e5e679bb4fc4271c3ed85fc5b53df672c17d9c0034c28ab358c4dd13c9aac"
+    },
+    {
+      "path": "photos/authorized-dealer/dcf-performance-hero-1280.avif",
+      "bytes": 403554,
+      "dimensions": [
+        1280,
+        1707
+      ],
+      "sha256": "4b0b7a9ef6f5a338fee03dd8c49e9a90381130d0742f9c81ad9a4ab10a680b7e"
+    },
+    {
+      "path": "photos/authorized-dealer/dcf-performance-hero-1280.webp",
+      "bytes": 501692,
+      "dimensions": [
+        1280,
+        1707
+      ],
+      "sha256": "a735bf5edd552512f8204cc5de296a6f9fee7f337173f5d0fa0ecd6ef8905126"
+    },
+    {
+      "path": "photos/authorized-dealer/dcf-performance-hero-1280.jpg",
+      "bytes": 614776,
+      "dimensions": [
+        1280,
+        1707
+      ],
+      "sha256": "6b19746586107c7c9006e2364778bbac71f990621d1bac4bc0b6860fe686f8cc"
+    },
+    {
+      "path": "photos/authorized-dealer/dcf-performance-hero-1536.avif",
+      "bytes": 582274,
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "sha256": "e6678eab963da3c6f86ce77ecb302c991386ad4fd444009e83ce4e3a7bab5a81"
+    },
+    {
+      "path": "photos/authorized-dealer/dcf-performance-hero-1536.webp",
+      "bytes": 725550,
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "sha256": "7a1f520fcae6a4d9dfb95b77ce79e595b1e22f2f489aa72bb266480bbcde310e"
+    },
+    {
+      "path": "photos/authorized-dealer/dcf-performance-hero-1536.jpg",
+      "bytes": 882458,
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "sha256": "62f57200e3b89f6e18a89e842f2c6348151a1142254d536f5da4ed65faacd5e6"
+    }
+  ]
+}

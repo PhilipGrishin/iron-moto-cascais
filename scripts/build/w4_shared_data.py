@@ -188,11 +188,14 @@ FUEL_RELATED_DESCRIPTIONS = {
         "uk": "Карбюратори: повне розбирання, професійна ультразвукова ванна, перебирання та електронна синхронізація; форсунки — на стенді. Від 75 € за карбюратор."
     }
 }
-RELATED_DESCRIPTIONS = {**W3_RELATED_DESCRIPTIONS, **W4_RELATED_DESCRIPTIONS, **FUEL_RELATED_DESCRIPTIONS}
+# Approved supplemental source: content/dcf_integrations_4lang.md, Part D.
+DCF_RELATED_DESCRIPTIONS = {'/authorized-dealer/dcf-performance/': {'en': 'Official DCF-Performance dealer: motorcycle ECU remapping with dyno-developed files, Stage 1 and 2, original map kept, written estimate.', 'pt': 'Revendedor oficial DCF-Performance: reprogramação de centralina de mota com ficheiros testados em banco, Stage 1 e 2, mapa original guardado, orçamento escrito.', 'ru': 'Официальный дилер DCF-Performance: прошивка ЭБУ мотоцикла на калибровках со стенда, Stage 1 и 2, оригинал сохраняется, смета письменно.', 'uk': 'Офіційний дилер DCF-Performance: прошивка ЕБК мотоцикла на калібруваннях зі стенда, Stage 1 і 2, оригінал зберігається, кошторис письмово.'}}
+RELATED_DESCRIPTIONS = {**W3_RELATED_DESCRIPTIONS, **W4_RELATED_DESCRIPTIONS, **FUEL_RELATED_DESCRIPTIONS, **DCF_RELATED_DESCRIPTIONS}
 BLOG_RELATED_COPY, BLOG_RELATED_TARGETS = _parse_blog_related(_SOURCE)
 ORPHAN_SENTENCES = _parse_orphan_sentences(_SOURCE)
 
 RELATED_TITLE_KEYS = {
+    "/authorized-dealer/dcf-performance/": "nav.dealerDcf",
     "/fuel-system-service/": "nav.fuelServ",
     "/motorcycle-service/": "services.s1.title",
     "/upgrades-tuning/": "services.s3.title",
@@ -215,10 +218,10 @@ RELATED_TITLE_KEYS = {
     "/contact/": "nav.contact",
 }
 
-if len(RELATED_DESCRIPTIONS) != 20:
-    raise ValueError(f"Expected 20 combined routing targets, got {len(RELATED_DESCRIPTIONS)}")
+if len(RELATED_DESCRIPTIONS) != 21:
+    raise ValueError(f"Expected 21 combined routing targets, got {len(RELATED_DESCRIPTIONS)}")
 if set(RELATED_TITLE_KEYS) != set(RELATED_DESCRIPTIONS):
-    raise ValueError("Wave 4 title-key registry differs from the 20 routing targets")
+    raise ValueError("Wave 4 title-key registry differs from the 21 routing targets")
 for slug, targets in BLOG_RELATED_TARGETS.items():
     unknown = set(targets) - set(RELATED_DESCRIPTIONS)
     if unknown:

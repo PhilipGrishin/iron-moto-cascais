@@ -191,12 +191,13 @@ Commands: `scripts/build/README.md`, **Harley Hub workflow**.
 
 Ownership:
 
-- `authorized_dealer_data.py` owns the hub and future partner registry.
+- `authorized_dealer_data.py` owns the hub, C-Way catalog, partner cards and
+  `COPY_DEALER_PAGES` (DCF-Performance is the first unpriced copy-driven partner).
 - `build_authorized_dealer.py` renders the hub and maintained direct partner
   subpages.
 - `site_chrome.py` owns shared navigation and footer placement.
 
-This family is an official parts/accessories channel and must stay separate
+This family is an official parts/accessories and tuning-technology channel and must stay separate
 from independent motorcycle-brand service pages.
 
 For C-Way and future priced partner catalogs:
@@ -206,6 +207,25 @@ For C-Way and future priced partner catalogs:
   catalog graph. Cross-references use the canonical product `@id`.
 - Visible names, prices, currency, availability and schema must remain aligned.
 - Product media stays local and responsive.
+
+Unpriced partner copy uses `dealer_copy.py`: four language blocks, required
+header fields and eleven ordered labelled sections (intro, changes, offer,
+process, why, honest, bikes, numbers, faq, cta, links). The parser checks the
+approved SHA before parsing, exact section/card counts and localized slugs.
+`build_authorized_dealer.py` renders this reusable contract directly in every
+language; C-Way's catalog data/render path is preserved. Shared partner CSS
+serves both paths. New hub descriptions use registry-derived page i18n keys.
+`validate_authorized_dealer.py` checks complete copy, FAQ/schema parity, media,
+links, hub integration and desktop/mobile dealer-menu order including utilities.
+
+Partner service schemas use Service + Brand + FAQPage + BreadcrumbList and an
+ImageObject, with one resolving LocalBusiness provider; do not invent Offers
+for work priced only by written estimate. C-Way retains Product/Offer entities.
+Images use registered dimensions, a single aligned responsive AVIF preload and
+AVIF/WebP/JPEG sources. Import via `import_dealer_images.py`; keep source/output
+hashes and actual weights in its manifest. Never infer hero images when a task
+requires an owner-supplied photo. Utility-page partner menus refresh through the
+shared registry while their forms and the rest of their header remain preserved.
 
 Current partner inventory belongs only in `docs/PROJECT_STATE.md`.
 
