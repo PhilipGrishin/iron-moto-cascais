@@ -45,7 +45,7 @@ def save_gallery_variants(image: Image.Image, base_path: Path) -> None:
 
 def import_news_images(slug: str, source_dir: Path) -> None:
     article = NEWS_ARTICLES[slug]
-    if not article.get("heroSource") or not article.get("gallerySources"):
+    if not article.get("heroSource"):
         raise ValueError(f"News article has no registered media delivery: {slug}")
 
     hero_source = source_dir / article["heroSource"]
@@ -63,6 +63,8 @@ def import_news_images(slug: str, source_dir: Path) -> None:
     for message in hero_messages:
         print(message)
 
+    if not article.get("gallerySources"):
+        return
     gallery_base = SITE_ROOT / article["galleryBase"].lstrip("/")
     for index, filename in enumerate(article["gallerySources"], start=1):
         source = source_dir / filename
@@ -80,7 +82,7 @@ def main() -> None:
         "slug",
         choices=sorted(
             slug for slug, article in NEWS_ARTICLES.items()
-            if article.get("heroSource") and article.get("gallerySources")
+            if article.get("heroSource")
         ),
     )
     parser.add_argument("source_dir", type=Path)

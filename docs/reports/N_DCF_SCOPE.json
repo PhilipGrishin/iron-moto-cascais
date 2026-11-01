@@ -1,0 +1,70 @@
+{
+  "checked_at": "2026-11-01T21:35:10.961778+00:00",
+  "baseline": "95eaf7a82b95af311218dec0a026e4cf4f84975b",
+  "existing_html": 269,
+  "changed_existing_html": [
+    "news/index.html",
+    "pt/news/index.html",
+    "ru/news/index.html",
+    "uk/news/index.html"
+  ],
+  "byte_identical_existing_html": 265,
+  "preserved_form_pages": 156,
+  "home_latest_news_feed": false,
+  "existing_news_articles_byte_identical": 20,
+  "added_urls": [
+    {
+      "url": "https://ironcustommotors.com/news/dcf-performance-dealer-portugal/",
+      "after": "2026-11-01T21:29:06+00:00",
+      "reason": "New approved DCF dealer announcement"
+    },
+    {
+      "url": "https://ironcustommotors.com/ru/news/dcf-performance-dealer-portugal/",
+      "after": "2026-11-01T21:29:06+00:00",
+      "reason": "New approved DCF dealer announcement"
+    },
+    {
+      "url": "https://ironcustommotors.com/uk/news/dcf-performance-dealer-portugal/",
+      "after": "2026-11-01T21:29:06+00:00",
+      "reason": "New approved DCF dealer announcement"
+    },
+    {
+      "url": "https://ironcustommotors.com/pt/news/dcf-performance-dealer-portugal/",
+      "after": "2026-11-01T21:29:06+00:00",
+      "reason": "New approved DCF dealer announcement"
+    }
+  ],
+  "moved_lastmod": [
+    {
+      "url": "https://ironcustommotors.com/news/",
+      "before": "2026-10-28T21:43:06+00:00",
+      "after": "2026-11-01T21:29:06+00:00",
+      "reason": "New first News card"
+    },
+    {
+      "url": "https://ironcustommotors.com/ru/news/",
+      "before": "2026-10-28T21:43:06+00:00",
+      "after": "2026-11-01T21:29:06+00:00",
+      "reason": "New first News card"
+    },
+    {
+      "url": "https://ironcustommotors.com/uk/news/",
+      "before": "2026-10-28T21:43:06+00:00",
+      "after": "2026-11-01T21:29:06+00:00",
+      "reason": "New first News card"
+    },
+    {
+      "url": "https://ironcustommotors.com/pt/news/",
+      "before": "2026-10-28T21:43:06+00:00",
+      "after": "2026-11-01T21:29:06+00:00",
+      "reason": "New first News card"
+    }
+  ],
+  "unchanged_existing_lastmod": 248,
+  "sitemap_urls": 256,
+  "unique_lastmod_values": 70,
+  "local_references_checked": 44684,
+  "fragment_targets_checked": 600,
+  "added_image_bytes": 0,
+  "sitemap_sha256": "abf2e63b9709fa95974da6776c15e2bb1b34ef2192b59c7e6b9c5b7537ff24c8"
+}

@@ -971,13 +971,17 @@ def _parse_news_language(raw, code, labels):
         raw,
         re.MULTILINE,
     )
-    if not all((seo_title, description, h1, hero_slot, gallery_slot)):
+    if not all((seo_title, description, h1, hero_slot)):
         raise ValueError(f"Incomplete news delivery content for {code}")
     if len(re.findall(r"^# ", raw, re.MULTILINE)) != 1:
         raise ValueError(f"Expected one news H1 for {code}")
-    preceding_sections = re.findall(r"^## ", raw[hero_slot.end():gallery_slot.start()], re.MULTILINE)
-    if len(preceding_sections) != 2:
-        raise ValueError(f"Expected news gallery after section two for {code}")
+    gallery_count = len(re.findall(r"^\[GALLERY:", raw, re.MULTILINE))
+    if gallery_count != int(gallery_slot is not None):
+        raise ValueError(f"Malformed or repeated news gallery slot for {code}")
+    if gallery_slot:
+        preceding_sections = re.findall(r"^## ", raw[hero_slot.end():gallery_slot.start()], re.MULTILINE)
+        if len(preceding_sections) != 2:
+            raise ValueError(f"Expected news gallery after section two for {code}")
 
     lead_source = raw[h1.end():hero_slot.start()].strip()
     lead_paragraphs = _paragraphs(lead_source.splitlines())
@@ -985,7 +989,8 @@ def _parse_news_language(raw, code, labels):
         raise ValueError(f"Expected one news lead paragraph for {code}")
 
     body_source = raw[hero_slot.end():].strip()
-    body_source = body_source.replace(gallery_slot.group(0), "").strip()
+    if gallery_slot:
+        body_source = body_source.replace(gallery_slot.group(0), "").strip()
     section_chunks = re.split(r"\n(?=## )", body_source)
     sections = []
     for chunk in section_chunks:
@@ -1009,8 +1014,11 @@ def _parse_news_language(raw, code, labels):
         "h1Crumb": html.escape(h1.group(1).strip(), quote=False),
         "lede": lead_paragraphs[0],
         "heroAlt": html.escape(hero_slot.group(1).strip(), quote=False),
-        "gallery.altPattern": html.escape(gallery_slot.group(1).strip(), quote=False),
     }
+    if gallery_slot:
+        body["gallery.altPattern"] = html.escape(gallery_slot.group(1).strip(), quote=False)
+    else:
+        body.pop("galleryLabel", None)
     for section_index, (title, section_paragraphs) in enumerate(sections, start=1):
         body[f"s{section_index}.h2"] = title
         for paragraph_index, paragraph in enumerate(section_paragraphs, start=1):
@@ -1076,7 +1084,7 @@ _SPANIARD_SOURCE = Path(__file__).resolve().parent / "content" / "spaniard_news_
 _SPANIARD_SOURCE_SHA256 = "49aa8aeb58990720fbd3daf26014bcc6c579642f81bc15055d4959dad6053714"
 
 
-def _publication_labels(published_iso, gallery_labels):
+def _publication_labels(published_iso, gallery_labels=None):
     """Localize publication labels from the registered content timestamp."""
     date = datetime.fromisoformat(published_iso)
     months = {
@@ -1094,8 +1102,9 @@ def _publication_labels(published_iso, gallery_labels):
             **{key: _BBQ_LABELS[code][key] for key in ("breadHome", "breadNews", "btnBack")},
             "eyebrow": f"{_BBQ_LABELS[code]['breadNews']} · {text}",
             "publishedLabel": prefixes[code] + text,
-            "galleryLabel": gallery_labels[code],
         }
+        if gallery_labels:
+            labels[code]["galleryLabel"] = gallery_labels[code]
     return labels
 
 
@@ -1131,10 +1140,42 @@ def _load_spaniard_article():
     }
 
 
+_DCF_SLUG = "dcf-performance-dealer-portugal"
+_DCF_SOURCE = Path(__file__).resolve().parent / "content" / "dcf_dealer_news_4lang.md"
+_DCF_SOURCE_SHA256 = "1421651ee33ec8eb1f0664ca470235ec1b185ce44568bd4ef237ae8d174c5f94"
+
+
+def _load_dcf_article():
+    source_bytes = _DCF_SOURCE.read_bytes()
+    if hashlib.sha256(source_bytes).hexdigest() != _DCF_SOURCE_SHA256:
+        raise ValueError("DCF news delivery source checksum mismatch")
+    published = "2026-11-01T21:29:06+00:00"
+    labels = _publication_labels(published)
+    localized = {
+        code: _parse_news_language(raw, code, labels)
+        for code, raw in _split_delivery_languages(source_bytes.decode("utf-8")).items()
+    }
+    return {
+        "publishedISO": published,
+        "modifiedISO": published,
+        "author": {"@id": "https://ironcustommotors.com/#business"},
+        "imageBase": "/photos/authorized-dealer/dcf-performance-hero",
+        "heroWidths": [768, 1280, 1536],
+        "imageCount": 1,
+        "imageHero": 1,
+        "sectionCount": 4,
+        "sitemapOrder": -20,
+        "sourceBacked": True,
+        "meta": {code: item["meta"] for code, item in localized.items()},
+        "body": {code: item["body"] for code, item in localized.items()},
+    }
+
+
 # Article metadata (slug → meta + body)
 NEWS_ARTICLES = {
     _BBQ_SLUG: {**_load_bbq_article(), "relatedSlugs": ['ericeira-kustom-fest-2026', 'lisbon-motorcycle-film-fest-2026-beckman', 'opens-new-workshop-in-cascais']},
-    _SPANIARD_SLUG: _load_spaniard_article(),
+    _SPANIARD_SLUG: {**_load_spaniard_article(), "relatedSlugs": [_BBQ_SLUG, "ericeira-kustom-fest-2026", "lisbon-motorcycle-film-fest-2026-beckman", "opens-new-workshop-in-cascais"]},
+    _DCF_SLUG: _load_dcf_article(),
     "ericeira-kustom-fest-2026": {
         "relatedSlugs": ['workshop-bbq-party-august-2026', 'lisbon-motorcycle-film-fest-2026-beckman', 'opens-new-workshop-in-cascais'],
         "publishedISO": "2026-06-07",

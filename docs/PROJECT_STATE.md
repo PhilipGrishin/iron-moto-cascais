@@ -9,6 +9,10 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
+- N-DCF, **implementation in progress**, 2026-11-01: approved dealership News
+  article in four languages, optional gallery support and existing hero reuse.
+  Baseline `95eaf7a8`; acceptance pending. See [delivery record](reports/N_DCF_REPORT.md).
+
 - D-DCF, **deployed and production-verified**, 2026-11-01: implementation
   `5d01bd43`, Pages run `41347446338`. Second Authorized Dealer partner and
   approved hub/menu/Upgrades integrations are live in four languages.
@@ -238,18 +242,19 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | Inventory | Current value | Canonical evidence |
 |---|---:|---|
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
-| English path patterns | 63 | `build_sitemap.py` `PAGES` |
-| Indexable sitemap URLs | 252 | parsed `sitemap.xml` `<url>` entries |
-| HTML files | 269 | tracked `*.html` inventory |
-| Indexable HTML files | 252 | sitemap-to-file resolution |
+| English path patterns | 64 | `build_sitemap.py` `PAGES` |
+| Indexable sitemap URLs | 256 | parsed `sitemap.xml` `<url>` entries |
+| HTML files | 273 | tracked `*.html` inventory |
+| Indexable HTML files | 256 | sitemap-to-file resolution |
 | Non-indexed HTML files | 17 | `404.html`, 12 localized project redirect stubs and 4 `thank-you` pages |
-| Sitemap lastmod tags | 252 | parsed `sitemap.xml` |
-| Unique sitemap lastmod values | 69 | parsed sitemap, 2026-11-01; D-DCF: 4 new URLs, 8 changed dates, 240 unchanged |
+| Sitemap lastmod tags | 256 | parsed `sitemap.xml` |
+| Unique sitemap lastmod values | 70 | parsed sitemap, 2026-11-01; N-DCF: 4 new URLs, 4 changed dates, 248 unchanged |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
 | Project detail pages | 15 | `PROJECT_TILES` |
 | Data-driven project definitions | 15 | `PROJECT_CONFIGS` |
 | Blog posts | 9 | `BLOG_POSTS` |
-| News articles | 5 | `NEWS_ARTICLES` |
+| News articles | 6 | `NEWS_ARTICLES` |
+| Approved-source News articles | 3 | `NEWS_ARTICLES[*].sourceBacked` |
 | Harley Hub English page patterns | 3 | `harley_hub_data.py` `PAGE_CONFIG` |
 | Generated general/utility localized entries | 7 | `build_new_pages.py` / `new_pages_data.py` |
 | Authorized Dealer English page patterns | 3 | `build_authorized_dealer.py` |
@@ -269,9 +274,9 @@ Registry alignment on the evidence date:
 
 | Registry | Entries | Relationship |
 |---|---:|---|
-| `build_sitemap.py` `PAGES` | 63 | canonical English indexable paths |
-| `localize_internal_links.py` `LOCALIZED_PATHS` | 63 | matches `PAGES` after normalization |
-| `build_i18n.py` `MAIN_PAGES` | 32 | English sources localized by the generic i18n flow |
+| `build_sitemap.py` `PAGES` | 64 | canonical English indexable paths |
+| `localize_internal_links.py` `LOCALIZED_PATHS` | 64 | matches `PAGES` after normalization |
+| `build_i18n.py` `MAIN_PAGES` | 33 | English sources localized by the generic i18n flow |
 | `project_pages_data.py` `PROJECT_CONFIGS` | 15 | project details rendered directly in four languages |
 
 There is no active `EN_PAGES` registry. The canonical English page registry is
@@ -431,6 +436,7 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 
 ### News
 
+- `/news/dcf-performance-dealer-portugal/`
 - `/news/spaniard-v-rod-2002-rebuild/`
 - `/news/workshop-bbq-party-august-2026/`
 - `/news/ericeira-kustom-fest-2026/`
@@ -439,10 +445,10 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 
 ## Current Delivery And Discovery State
 
-- All 156 pages that contain the lead form submit to FormSubmit through the
+- All 160 pages that contain the lead form submit to FormSubmit through the
   activated private action alias. No built HTML exposes the delivery inbox in
   a FormSubmit action, and the SEO validator enforces this contract across all
-  built HTML files, including non-sitemap output. The 152 indexable form pages
+  built HTML files, including non-sitemap output. The 156 indexable form pages
   redirect to their language-local noindex `thank-you` page; those four utility
   pages contain the same shared modal and remain outside `sitemap.xml`.
   Correction, 2026-10-31: the previous 136/132 counts were stale. A complete
@@ -450,6 +456,8 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   F-FUEL adds four. Existing 261 HTML files retain identical form markup.
   D-DCF adds four more on 2026-11-01; all 152 preceding form pages retain
   identical form markup, confirmed by the D-DCF scope audit.
+  N-DCF adds four on 2026-11-01 and preserves all 156 preceding form pages.
+  Scope evidence: `docs/reports/N_DCF_SCOPE.json`.
   Evidence: baseline-versus-working-tree BeautifulSoup comparison.
 - A-MEASURE's checked-in client sends only four anonymous lead-intent types:
   `whatsapp`, `tel`, `form_submit` and `form_view`. The payload contains the
@@ -504,12 +512,14 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   five localized FAQ items, and the preceding tubeless-conversion article
   links back to the case in every language.
 - Existing News heroes retain the responsive CSS-background contract. Spaniard
-  News uses the project's existing responsive picture variants and one aligned
-  AVIF preload. The shared hero validator covers this delivery path.
+  reuses project picture variants; DCF News reuses the dealer's portrait variants
+  with registered widths. Each uses one aligned AVIF preload and one high-
+  priority image. The shared hero validator covers this delivery path.
 - Registered News galleries use AVIF/WebP/JPEG candidates with explicit
   dimensions and native lazy loading inside a contained horizontal scroll-snap
   region. The BBQ and Spaniard approved-source articles use this shared
   gallery path; Spaniard reuses its project files and preserves portrait framing.
+  DCF News has no gallery, corresponding images or gallery translation keys.
 - Project heroes retain responsive `<picture>` delivery. Migrated projects,
   Cocktail, Fetish, The First and Spaniard use AVIF/WebP sources with a JPEG fallback;
   Fighter retains its registered AVIF/WebP media set. Every project page has one responsive AVIF

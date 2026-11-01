@@ -77,20 +77,28 @@ def format_gallery_alt(pattern, number):
     raise ValueError(f"Gallery ALT pattern is missing N: {pattern}")
 
 
+def article_hero_widths(article):
+    """Existing shared pictures may register their own responsive widths."""
+    return article.get("heroWidths", [800, 1600, 2400] if article.get("projectMedia") else [])
+
+
 def article_hero_path(article):
-    if article.get("projectMedia"):
-        return f"{article['imageBase']}-2400.jpg"
+    widths = article_hero_widths(article)
+    if widths:
+        return f"{article['imageBase']}-{widths[-1]}.jpg"
     return f"{article['imageBase']}-{article['imageHero']:02d}-1600.jpg"
 
 
 def article_card_background(article):
-    if article.get("projectMedia"):
+    widths = article_hero_widths(article)
+    if widths:
         base = article["imageBase"]
+        width = widths[0]
         return (
-            f"background-image:url('{base}-800.jpg');background-image:image-set("
-            f"url('{base}-800.avif') type('image/avif'), "
-            f"url('{base}-800.webp') type('image/webp'), "
-            f"url('{base}-800.jpg') type('image/jpeg'))"
+            f"background-image:url('{base}-{width}.jpg');background-image:image-set("
+            f"url('{base}-{width}.avif') type('image/avif'), "
+            f"url('{base}-{width}.webp') type('image/webp'), "
+            f"url('{base}-{width}.jpg') type('image/jpeg'))"
         )
     return hero_background_css(article_hero_path(article), 768)
 
@@ -423,13 +431,14 @@ def render_article(slug, article):
     en_body = article["body"]["en"]
     n_img = article["imageCount"]
     hero_img_path = article_hero_path(article)
+    hero_widths = article_hero_widths(article)
     hero_img_url = f"{DOMAIN}{hero_img_path}"
 
     page_url = f"{DOMAIN}/news/{slug}/"
 
     # JSON-LD: NewsArticle + BreadcrumbList
     images = [f"{DOMAIN}{article['imageBase']}-{i:02d}-1600.jpg" for i in range(1, n_img+1)]
-    if article.get("projectMedia"):
+    if hero_widths:
         images = [hero_img_url]
     if article.get("galleryBase"):
         images.extend(
@@ -514,10 +523,11 @@ def render_article(slug, article):
 
     # Compose head + override the ICM_I18N_PAGE
     hero_source = hero_img_path
-    if article.get("projectMedia"):
+    if hero_widths:
         base = article["imageBase"]
-        srcset = ", ".join(f"{base}-{width}.avif {width}w" for width in (800, 1600, 2400))
-        preload = f'<link rel="preload" as="image" href="{base}-1600.avif" type="image/avif" imagesrcset="{srcset}" imagesizes="100vw"/>'
+        srcset = ", ".join(f"{base}-{width}.avif {width}w" for width in hero_widths)
+        preload_width = hero_widths[len(hero_widths) // 2]
+        preload = f'<link rel="preload" as="image" href="{base}-{preload_width}.avif" type="image/avif" imagesrcset="{srcset}" imagesizes="100vw"/>'
     else:
         preload = hero_preload_links(hero_source)
     head_html = head(
@@ -531,12 +541,13 @@ def render_article(slug, article):
     ).replace(
         "window.ICM_I18N_PAGE = {};", f"window.ICM_I18N_PAGE = {json.dumps(inline_i18n, ensure_ascii=False)};"
     )
-    if article.get("projectMedia"):
+    if hero_widths:
         responsive_style = (
             ".news-article picture.bg{display:block}"
             ".news-article picture.bg img{width:100%;height:100%;object-fit:cover;object-position:center}"
-            ".news-gallery.project-media img{object-fit:contain}"
         )
+        if article.get("projectMedia"):
+            responsive_style += ".news-gallery.project-media img{object-fit:contain}"
         head_html = head_html.replace("</head>", f"<style>{responsive_style}</style></head>")
         width, height = image_dimensions(hero_source)
         head_html = head_html.replace('content="1200" property="og:image:width"', f'content="{width}" property="og:image:width"')
@@ -604,7 +615,7 @@ def render_article(slug, article):
     sections_html_parts = []
     for sec in range(1, section_count + 1):
         sections_html_parts.append(render_section(sec))
-        if sec == article.get("galleryAfterSection"):
+        if article.get("galleryCount", 0) and sec == article.get("galleryAfterSection"):
             sections_html_parts.append(render_gallery())
         if sec in images_after:
             for img_num in images_after[sec]:
@@ -652,9 +663,9 @@ def render_article(slug, article):
             f' aria-label="{en_body["heroAlt"]}" data-i18n-aria-label="{pre}.heroAlt" role="img"'
         )
 
-    if article.get("projectMedia"):
+    if hero_widths:
         hero_markup = BeautifulSoup(picture_html(
-            article["imageBase"], [800, 1600, 2400], alt=plain_html(en_body["heroAlt"]), hero=True,
+            article["imageBase"], hero_widths, alt=plain_html(en_body["heroAlt"]), hero=True,
         ), "html.parser")
         hero_markup.picture["class"] = ["bg", "hero-media"]
         hero_markup.img["data-i18n-alt"] = f"{pre}.heroAlt"

@@ -89,6 +89,7 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 ## News
 
 - [News](https://ironcustommotors.com/news/): Latest news from Iron Custom Motors workshop in Cascais — openings, events, custom builds, community rides and announcements from our motorcycle workshop in Greater Lisbon.
+- [Becomes the official DCF-Performance dealer in Portugal](https://ironcustommotors.com/news/dcf-performance-dealer-portugal/): Iron Custom Motors in Cascais is now the official DCF-Performance dealer in Portugal: dyno-developed ECU tuning files for motorcycles, fitted and tested.
 - [A new project on the site: Spaniard](https://ironcustommotors.com/news/spaniard-v-rod-2002-rebuild/): Our newest project page is live: Spaniard, a first-year Harley-Davidson V-Rod stripped to the frame and rebuilt black on black in Cascais. Photos, the full build list and what it means for your bike.
 - [A Saturday BBQ with friends of the workshop](https://ironcustommotors.com/news/workshop-bbq-party-august-2026/): On Saturday, 22 August 2026, Iron Custom Motors hosted a BBQ for friends and clients at the Cascais workshop. Grill, bikes, music and good company.
 - [Ericeira Kustom Fest 2026](https://ironcustommotors.com/news/ericeira-kustom-fest-2026/): Iron Custom Motors took part in Ericeira Kustom Fest 2026 — our first major custom competition in Portugal — and won 1st place for Hell Boy and 2nd place for Sturmvogel.
@@ -142,7 +143,7 @@ All pages are available in 4 languages with reciprocal hreflang annotations:
 ## Sitemap
 
 Full machine-readable sitemap: [sitemap.xml](https://ironcustommotors.com/sitemap.xml)
-Generated coverage: 63 English paths across 4 language variants (252 sitemap URLs).
+Generated coverage: 64 English paths across 4 language variants (256 sitemap URLs).
 
 ## Citation guidance
 

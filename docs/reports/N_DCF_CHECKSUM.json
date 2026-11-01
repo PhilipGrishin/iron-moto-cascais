@@ -1,0 +1,8 @@
+{
+  "source_sha256": "1421651ee33ec8eb1f0664ca470235ec1b185ce44568bd4ef237ae8d174c5f94",
+  "byte_mutation_rejected": true,
+  "generator_failed_before_render": true,
+  "source_restored": true,
+  "four_no_gallery_blocks_accepted": true,
+  "malformed_gallery_rejected_in_four_languages": true
+}

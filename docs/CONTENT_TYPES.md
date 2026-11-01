@@ -312,11 +312,14 @@ photo within each slide, including portrait photos, and read each image's real
 dimensions. Import ordinary News sources with `import_news_images.py`; for
 `projectMedia`, use `import_project_images.py` once and reuse the files.
 
-The BBQ and Spaniard approved Markdown deliveries are byte-checksum pinned.
-The shared parser accepts explicit `[LINK: path — label]` tokens and standard
-same-language Markdown links, and requires one H1, one lead, four sections and
-the gallery after section two. `validate_news.py` protects complete parsed
-copy and gallery contracts in all languages. Publication labels for new
+Approved Markdown deliveries are byte-checksum pinned. The shared parser
+accepts explicit `[LINK: path — label]` tokens and standard same-language
+Markdown links, and requires one H1, one lead and four sections. A gallery slot
+is optional; when present it must follow section two. Without a slot, omit
+all gallery configuration and copy keys: no gallery block, images or i18n keys
+are rendered. The ordinary News importer also accepts a hero-only delivery.
+`validate_news.py` protects complete parsed copy, in-copy links, optional gallery
+contracts and publication-sorted hub cards in every language. Publication labels for new
 deliveries derive from their registered timestamp. `relatedSlugs` pins an
 article's editorial selection; preserve existing selections when a new story
 must not change older content or dates. Unpinned selections include all other
@@ -324,6 +327,14 @@ registered articles. New project-backed News uses an author `@id` reference to
 its complete business entity without adding a second `url` to that entity.
 An explicit article `author` is authoritative: the News writer does not retain
 removed author properties through downstream-head enrichment.
+
+An article can reuse an existing responsive picture with `imageBase` and
+`heroWidths`; `projectMedia` retains its existing default width set. The common
+renderer uses those widths for the hero, aligned AVIF preload and hub card,
+and reads actual image dimensions. The hero container accepts portrait media
+through its existing centered `object-fit:cover` behavior, so another crop or
+media import is unnecessary when approved existing variants are sufficient.
+Current article/source-backed counts belong in `docs/PROJECT_STATE.md`.
 
 Commands: `scripts/build/README.md`, **News workflow**.
 

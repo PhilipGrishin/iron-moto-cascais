@@ -462,6 +462,19 @@ contract as well as the visible routing block.
 
 ## News Workflow
 
+| Approved News source | SHA-256 |
+|---|---|
+| `content/workshop_bbq_party_news_4lang.md` | `e6f7f3745c53b704832aad44e1a2bebbd1f9dc6c71f749360fb5df9cf6e76a16` |
+| `content/spaniard_news_4lang.md` | `49aa8aeb58990720fbd3daf26014bcc6c579642f81bc15055d4959dad6053714` |
+| `content/dcf_dealer_news_4lang.md` | `1421651ee33ec8eb1f0664ca470235ec1b185ce44568bd4ef237ae8d174c5f94` |
+
+The common parser permits no gallery slot. When omitted, register no gallery
+fields; the generated article has no gallery copy keys, block or images.
+Ordinary media imports may contain a hero alone. To reuse existing media,
+register `imageBase` and `heroWidths`; DCF News reuses its dealer variants with
+no import command and no new binary assets. Gallery-bearing articles retain
+the required placement after section two.
+
 For a registered article with supplied hero and gallery sources, import the
 media first. The importer reads filenames, order and dimensions from
 `NEWS_ARTICLES`, creates the maintained responsive AVIF/WebP/JPEG candidates,
