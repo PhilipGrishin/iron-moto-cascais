@@ -14,6 +14,21 @@ Format:
 - Notes: ...
 ```
 
+## 2026-11-11 - Stage 1 verification corrections
+
+- Commit: `de166847`
+- Changed: homepage-owned discovery summary and page order; Stage catalogue
+  presentation and localized Service names; approved Stage/DCF link headings;
+  normal trust rating spacing; current registry values in all brand payloads.
+  Added guards against stale descriptions and the discovered regressions.
+- Verified: exact allowed scope, unchanged protected assets/PDFs, all release
+  validators, 28 responsive cases, trust spacing in four languages, and six
+  visual captures. Full Safe Rebuild plus release gate passed in a fresh
+  full-history clone with empty Git status.
+- Notes: production verification pending. See
+  `docs/reports/S_STAGE1_FIX_REPORT.md`; F7's homepage strip does not exist,
+  so its existing review widget is preserved and verified.
+
 ## 2026-11-11 - Stage 1 service and navigation launch
 
 - Commit: `c7fbbb5c`

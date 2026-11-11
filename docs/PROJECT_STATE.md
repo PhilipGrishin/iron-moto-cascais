@@ -9,11 +9,13 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
-- S-STAGE1-FIX, **local acceptance passed**, 2026-11-11. Baseline `abd63a24`
+- S-STAGE1-FIX, **local and clean-clone acceptance passed**, 2026-11-11. Baseline `abd63a24`
   confirmed. Discovery summary/order, Stage presentation/localized schema,
   approved link headings, trust spacing and stale brand translations are being
   corrected. Full rebuild, release validators, 28 browser cases and the exact
-  allowed-scope comparison passed. Deployment remains pending.
+  allowed-scope comparison passed. Implementation `de166847` reproduces with
+  empty Git status after Full Safe Rebuild in a fresh full-history clone.
+  Deployment remains pending.
   See [delivery record](reports/S_STAGE1_FIX_REPORT.md).
 
 - S-STAGE1 / S-STAGE1-NAV, **deployed and production-verified**, 2026-11-11:

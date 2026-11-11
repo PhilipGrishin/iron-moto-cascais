@@ -1,6 +1,6 @@
 # S-STAGE1-FIX delivery record
 
-Date: 2026-11-11. Status: local acceptance passed; not yet deployed.
+Date: 2026-11-11. Status: local and clean-clone acceptance passed; not yet deployed.
 Baseline: `abd63a24ba009929cd838a33dafd382f691626a6`, clean `main`; upstream
 confirmed identical before editing.
 
@@ -51,7 +51,9 @@ confirmed identical before editing.
 - Exact approved copy-unit parity passes with only the explicitly requested
   layout separators removed. The four localized Service names match rev. 2;
   FAQ, Offers, provider, ImageObject and breadcrumbs are preserved.
-- Clean-clone reproduction, commit identifiers and production checks pending.
+- Implementation `de166847` passed the documented Full Safe Rebuild and
+  `verify_site.sh` in a fresh non-shallow clone, leaving empty Git status.
+  Production verification remains pending publication.
 
 ## Requested screenshots
 
