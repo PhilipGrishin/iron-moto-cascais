@@ -1,6 +1,6 @@
 # S-STAGE1 delivery record
 
-Date: 2026-11-11. Status: **implementation in progress**; not yet published.
+Date: 2026-11-11. Status: **local and clean-clone acceptance passed**; not yet published.
 Baseline: `8c760d835cf83c6aaceed5700965edf3714f9229`, clean `main` after a
 fast-forward that preserved the two upstream review refresh commits.
 
@@ -117,6 +117,10 @@ named as related titles rather than navigation keys.
 
 ## Release evidence
 
-Local build/release checks, clean-clone reproduction, commit identifiers,
-production comparisons and optional Google Rich Results evidence are pending
-final release checks. No deployment success is claimed by this draft record.
+- Implementation: `c7fbbb5c693092d397207e7b38a8a7755efcf9f5`.
+- **Confirmed:** documented Full Safe Rebuild and `verify_site.sh` passed in a
+  fresh non-shallow clone of that commit. All four service PDFs and generated
+  output reproduced exactly; `git status --short` was empty.
+- Local release validators, Worker tests and syntax checks passed.
+- Production comparisons, Pages identifier and Google Rich Results evidence
+  are pending deployment. No deployment success is claimed yet.

@@ -14,6 +14,20 @@ Format:
 - Notes: ...
 ```
 
+## 2026-11-11 - Stage 1 service and navigation launch
+
+- Commit: `c7fbbb5c`
+- Changed: registry-driven Stage family, approved News and DCF revision 2,
+  shared fixed pricing, four immutable catalogues and regenerated service PDFs,
+  contextual Upgrades/Harley links. Stage replaces the dealer header group;
+  dealer pages remain discoverable from footer and content. Registry-only
+  unused brand translations no longer propagate unrelated new prices.
+- Verified: exact multilingual copy/FAQ/schema, hashes and rejection tests,
+  24-case header matrix with unchanged chrome CSS, responsive layout and PDF
+  visuals. Full Safe Rebuild and the release gate passed in a fresh full-history clone
+  with empty Git status. Production verification is pending.
+- Notes: [delivery record](reports/S_STAGE1_REPORT.md) owns acceptance evidence.
+
 ## 2026-11-01 - DCF-Performance dealer announcement
 
 - Commit: `cadd1a5a`

@@ -9,11 +9,13 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
-- S-STAGE1 / S-STAGE1-NAV, **implemented; release verification in progress**,
+- S-STAGE1 / S-STAGE1-NAV, **implemented; local and clean-clone verification passed**,
   2026-11-11. Four Stage pages, four News articles, shared pricing/PDF and DCF
   updates are built. Stage replaces Authorized Dealer in the eight-item header;
   the dealer family remains footer/contextual-only and indexable. Local exact
-  copy/schema/media checks and the 24-case header matrix passed. Current checkout
+  copy/schema/media checks and the 24-case header matrix passed. Full Safe Rebuild
+  plus the release gate passed for `c7fbbb5c` in a fresh full-history clone with
+  empty Git status. Current checkout
   inventories below include this delivery; deployment is not yet claimed.
   See [delivery record](reports/S_STAGE1_REPORT.md).
 
@@ -260,7 +262,7 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | Indexable HTML files | 264 | sitemap-to-file resolution |
 | Non-indexed HTML files | 17 | `404.html`, 12 localized project redirect stubs and 4 `thank-you` pages |
 | Sitemap lastmod tags | 264 | parsed `sitemap.xml` |
-| Unique sitemap lastmod values | 71 | parsed sitemap, 2026-11-11; S-STAGE1: 8 new URLs, 24 changed dates, 232 unchanged |
+| Unique sitemap lastmod values | 70 | parsed sitemap, 2026-11-11; S-STAGE1: 8 new URLs, 24 changed dates, 232 unchanged |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
 | Project detail pages | 15 | `PROJECT_TILES` |
 | Data-driven project definitions | 15 | `PROJECT_CONFIGS` |

@@ -7,8 +7,8 @@ Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
 
-S-STAGE1 / S-STAGE1-NAV: implementation and local acceptance complete; clean-clone
-rebuild and deployment/production verification are pending. The earlier ninth
+S-STAGE1 / S-STAGE1-NAV: implementation, local acceptance and clean-clone
+rebuild complete; deployment/production verification is pending. The earlier ninth
 header item plan is **CANCELED** by the owner addendum: Stage replaces the dealer
 group. No new external account access is required. See
 [delivery record](reports/S_STAGE1_REPORT.md).
