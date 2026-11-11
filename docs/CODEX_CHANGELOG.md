@@ -24,9 +24,11 @@ Format:
   unused brand translations no longer propagate unrelated new prices.
 - Verified: exact multilingual copy/FAQ/schema, hashes and rejection tests,
   24-case header matrix with unchanged chrome CSS, responsive layout and PDF
-  visuals. Full Safe Rebuild and the release gate passed in a fresh full-history clone
-  with empty Git status. Production verification is pending.
-- Notes: [delivery record](reports/S_STAGE1_REPORT.md) owns acceptance evidence.
+  visuals. Full Safe Rebuild and the release gate passed in a fresh full-history
+  clone with empty Git status. All 268 public pages and 26 files matched; live
+  responsive checks and both PT Google Rich Results tests passed.
+- Notes: Pages `43061911928` deployed artifact `4ddabb8b`; no shared chrome CSS
+  change was needed. [Delivery record](reports/S_STAGE1_REPORT.md) owns evidence.
 
 ## 2026-11-01 - DCF-Performance dealer announcement
 

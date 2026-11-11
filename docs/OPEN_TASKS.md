@@ -7,11 +7,11 @@ Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
 
-S-STAGE1 / S-STAGE1-NAV: implementation, local acceptance and clean-clone
-rebuild complete; deployment/production verification is pending. The earlier ninth
-header item plan is **CANCELED** by the owner addendum: Stage replaces the dealer
-group. No new external account access is required. See
-[delivery record](reports/S_STAGE1_REPORT.md).
+No active S-STAGE1 / S-STAGE1-NAV work remains. Implementation, local and
+clean-clone acceptance, deployment, public parity, responsive checks and both
+PT Rich Results tests passed on 2026-11-11. The earlier ninth header item plan
+is **CANCELED** by the owner addendum; the resulting navigation norm is in
+`docs/CONTENT_TYPES.md`. See [delivery record](reports/S_STAGE1_REPORT.md).
 
 No active N-DCF work remains. The four News variants and hub cards are deployed
 and verified on 2026-11-01. All local, clean-clone, public, responsive and PT
@@ -155,7 +155,8 @@ measure representative page families under a stated profile.
   separate from an action's own runtime.
 - Review supported action versions and runner compatibility in a dedicated
   maintenance change. D-DCF run `41347446338` reconfirmed these notices on
-  2026-11-01 and leaves workflow configuration unchanged.
+  2026-11-01; S-STAGE1 run `43061911928` reconfirmed them on 2026-11-11.
+  Action versions remain unchanged.
 
 
 ### Pricing PDF generator is macOS-only
@@ -163,12 +164,12 @@ measure representative page families under a stated profile.
 - Status: **confirmed**, open.
 - Evidence: `scripts/build/build_pricing_pdfs.py` hardcodes Arial files under
   `/System/Library/Fonts/Supplemental/`; source inspection 2026-07-31.
-- Current artifact status: **confirmed current** for S-PRICE-VALVES-FROM on
-  2026-09-18. All four PDFs were regenerated from `pricing_data.py`, remained
-  byte-identical during the clean-clone rebuild, passed text comparisons
-  across all seven pages and visual inspection of the changed table/note in
-  all four files. Production downloads match their repository bytes.
-  This does not resolve portability.
+- Current artifact status: **confirmed current**, S-STAGE1, 2026-11-11. All four
+  generated service PDFs reproduce in the clean-clone rebuild, pass the Stage
+  rows/note checks and visual inspection of changed pages, and match public
+  downloads byte-for-byte. See [delivery evidence](reports/S_STAGE1_REPORT.md).
+  This does not resolve portability; prior S-PRICE-VALVES-FROM evidence remains
+  in its dated report.
 - Impact: the documented full build currently succeeds only on macOS with those
   fonts installed. HTML-only generators are not blocked by this specific issue.
 - Next action: in a separately scoped build-portability task, vendor approved

@@ -1,0 +1,4694 @@
+{
+  "pages": [
+    {
+      "path": "/pt/stage-1/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/stage-1/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/stage-1/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/stage-1/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/motorcycle-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/motorcycle-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/motorcycle-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/motorcycle-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/fuel-system-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/fuel-system-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/fuel-system-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/parts/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/fuel-system-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/parts/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/parts/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/parts/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/upgrades-tuning/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/upgrades-tuning/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/upgrades-tuning/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/upgrades-tuning/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/custom/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/custom/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/custom/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/custom/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/harley/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/harley/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/harley/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/harley/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/harley-tuning/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/harley-tuning/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/harley-tuning/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/harley-custom/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/harley-custom/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/harley-tuning/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/harley-custom/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/harley-custom/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pre-purchase-inspection/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/pre-purchase-inspection/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/pre-purchase-inspection/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/pre-purchase-inspection/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/english-speaking-motorcycle-workshop/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/english-speaking-motorcycle-workshop/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/english-speaking-motorcycle-workshop/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/english-speaking-motorcycle-workshop/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/authorized-dealer/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/authorized-dealer/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/authorized-dealer/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/authorized-dealer/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/authorized-dealer/c-way/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/authorized-dealer/c-way/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/authorized-dealer/c-way/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/authorized-dealer/c-way/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/authorized-dealer/dcf-performance/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/authorized-dealer/dcf-performance/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/authorized-dealer/dcf-performance/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/authorized-dealer/dcf-performance/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pricing/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/pricing/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/pricing/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/pricing/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/services/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/services/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/services/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/services/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/about/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/about/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/about/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/about/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/community/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/community/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/community/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/community/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/contact/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/contact/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/contact/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/contact/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/faq/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/faq/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/faq/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/privacy/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/faq/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/privacy/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/privacy/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/privacy/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/cookies/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/cookies/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/terms/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/cookies/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/terms/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/cookies/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/terms/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/terms/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/harley-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/harley-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/harley-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/harley-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/bmw-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/bmw-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/bmw-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/bmw-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ducati-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/ducati-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/ducati-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/ducati-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/suzuki-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/suzuki-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/suzuki-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/suzuki-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/honda-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/honda-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/honda-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/honda-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/royal-enfield-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/royal-enfield-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/royal-enfield-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/royal-enfield-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/triumph-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/triumph-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/triumph-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/triumph-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/shinomontazh-mototsiklov/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/shynomontazh-mototsykliv/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/motorcycle-tyre-service/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/montagem-de-pneus-mota/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/blog/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/blog/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/blog/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/blog/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/blog/revtech-110-oil-service-engine-gearbox-drive/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/blog/revtech-110-oil-service-engine-gearbox-drive/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/blog/revtech-110-oil-service-engine-gearbox-drive/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/blog/revtech-110-oil-service-engine-gearbox-drive/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/blog/motorcycle-brake-pad-replacement-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/blog/motorcycle-brake-pad-replacement-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/blog/motorcycle-brake-pad-replacement-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/blog/motorcycle-brake-pad-replacement-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/blog/front-fork-service-motorcycle-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/blog/front-fork-service-motorcycle-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/blog/front-fork-service-motorcycle-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/blog/front-fork-service-motorcycle-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/blog/motorcycle-tyre-fitting-specialist-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/blog/motorcycle-tyre-fitting-specialist-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/blog/motorcycle-tyre-fitting-specialist-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/blog/motorcycle-tyre-fitting-specialist-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/blog/royal-enfield-bear-650-fork-oil-case-study/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/blog/royal-enfield-bear-650-fork-oil-case-study/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/blog/royal-enfield-bear-650-fork-oil-case-study/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/blog/royal-enfield-bear-650-fork-oil-case-study/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/blog/harley-davidson-full-service-done-right/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/blog/harley-davidson-full-service-done-right/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/blog/harley-davidson-full-service-done-right/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/blog/harley-davidson-full-service-done-right/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/blog/royal-enfield-bear-650-scrambler-build/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/blog/royal-enfield-bear-650-scrambler-build/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/blog/royal-enfield-bear-650-scrambler-build/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/blog/royal-enfield-bear-650-scrambler-build/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/blog/tubeless-conversion-spoked-wheels/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/blog/tubeless-conversion-spoked-wheels/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/blog/tubeless-conversion-spoked-wheels/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/blog/tubeless-conversion-spoked-wheels/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/blog/tubeless-sealing-tape-failure/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/blog/tubeless-sealing-tape-failure/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/blog/tubeless-sealing-tape-failure/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/blog/tubeless-sealing-tape-failure/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/news/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/news/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/news/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/news/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/news/stage-1-ecu-remap-fixed-price/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/news/stage-1-ecu-remap-fixed-price/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/news/stage-1-ecu-remap-fixed-price/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/news/stage-1-ecu-remap-fixed-price/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/news/dcf-performance-dealer-portugal/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/news/dcf-performance-dealer-portugal/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/news/dcf-performance-dealer-portugal/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/news/dcf-performance-dealer-portugal/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/news/spaniard-v-rod-2002-rebuild/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/news/spaniard-v-rod-2002-rebuild/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/news/spaniard-v-rod-2002-rebuild/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/news/spaniard-v-rod-2002-rebuild/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/news/workshop-bbq-party-august-2026/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/news/workshop-bbq-party-august-2026/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/news/workshop-bbq-party-august-2026/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/news/workshop-bbq-party-august-2026/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/news/ericeira-kustom-fest-2026/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/news/ericeira-kustom-fest-2026/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/news/ericeira-kustom-fest-2026/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/news/ericeira-kustom-fest-2026/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/news/opens-new-workshop-in-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/news/opens-new-workshop-in-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/news/opens-new-workshop-in-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/news/lisbon-motorcycle-film-fest-2026-beckman/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/news/opens-new-workshop-in-cascais/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/news/lisbon-motorcycle-film-fest-2026-beckman/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/news/lisbon-motorcycle-film-fest-2026-beckman/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/news/lisbon-motorcycle-film-fest-2026-beckman/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/inspirium/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/inspirium/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/inspirium/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/beckman/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/inspirium/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/beckman/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/beckman/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/beckman/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/unbreakable/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/unbreakable/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/unbreakable/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/unbreakable/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/quanta-r/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/quanta-r/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/quanta-r/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/quanta-r/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/burly/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/burly/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/burly/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/sturmvogel/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/burly/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/sturmvogel/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/sturmvogel/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/sturmvogel/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/geometric/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/geometric/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/geometric/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/geometric/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/joker/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/joker/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/joker/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/joker/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/hellboy/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/hellboy/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/hellboy/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/hellboy/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/true-religion/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/true-religion/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/true-religion/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/true-religion/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/fighter/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/fighter/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/fighter/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/fighter/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/cocktail/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/cocktail/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/cocktail/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/cocktail/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/fetish/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/fetish/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/fetish/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/fetish/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/the-first/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/the-first/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/the-first/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/the-first/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/projects/spaniard/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/projects/spaniard/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/projects/spaniard/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/thank-you/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/thank-you/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/pt/projects/spaniard/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/ru/thank-you/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    },
+    {
+      "path": "/uk/thank-you/",
+      "status": 200,
+      "verified": [
+        "main",
+        "schema",
+        "title",
+        "description",
+        "canonical",
+        "hreflang",
+        "nav.nav",
+        ".nav-mobile",
+        "footer.site-footer",
+        "link[href^=\"/assets/main.css\"]",
+        "script[src^=\"/assets/main.js\"]"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "path": "/sitemap.xml",
+      "bytes": 198035,
+      "sha256": "94a811b4d684c2e2f12b359e7091c89266d373182ca343b330d476c8bc9e3898"
+    },
+    {
+      "path": "/llms.txt",
+      "bytes": 19497,
+      "sha256": "e96e099406ab841c1a618af8b56d85a09c33661db8b5b83a6aeeaaaccb5f2dbb"
+    },
+    {
+      "path": "/assets/main.js",
+      "bytes": 120460,
+      "sha256": "15557d7939ab2e0e5f7be79fa8547fd4215c0518f2529fa553eb6e565d7e7b80"
+    },
+    {
+      "path": "/robots.txt",
+      "bytes": 157,
+      "sha256": "b63f9c56b44f7a36cacaa581279b7c3c1144ccd5ad335a56bd332dd0a9bca85a"
+    },
+    {
+      "path": "/assets/main.css",
+      "bytes": 52776,
+      "sha256": "54899977ef983f32fb6c07c94c6e2d5dcc92f163ff9387fd1cdac359989d6e86"
+    },
+    {
+      "path": "/assets/reviews-snapshot.json",
+      "bytes": 6880,
+      "sha256": "1c0df91a0df637f9021e4ad3cd24684bf288a0f4d03e2174bd9832fe390429d0"
+    },
+    {
+      "path": "/photos/stage/dcf-performance-logo.svg",
+      "bytes": 4703,
+      "sha256": "c0e98ee95454394fd05ab782aba04717bc2d66a2b1ef8a73132d986801069b34"
+    },
+    {
+      "path": "/assets/stage.css",
+      "bytes": 7018,
+      "sha256": "e3dcd620c54f8016b43bb8e9a895a9ceb4daf31a710c6a060665801d736b8833"
+    },
+    {
+      "path": "/photos/stage/stage-1-hero-1280.jpg",
+      "bytes": 318876,
+      "sha256": "17f682318fb844f311ff7b43f5fe411ce15d16ce02a1f1ee881c72e7fcbb1e22"
+    },
+    {
+      "path": "/photos/stage/stage-1-hero-768.jpg",
+      "bytes": 129498,
+      "sha256": "74be764e667a4efa3ab9759449860f3badd6625e2d627d0502a1d66d78023804"
+    },
+    {
+      "path": "/photos/stage/stage-1-hero-1280.webp",
+      "bytes": 231218,
+      "sha256": "0b5eb6a072f5a9fb9e11da9a809695f7d00bbe2151162f544a83215ca6e72025"
+    },
+    {
+      "path": "/photos/stage/stage-1-media.json",
+      "bytes": 2210,
+      "sha256": "1347b1f098143c37b2287bb0346f89dc41b86b93676213b7b3ee7286b9060e37"
+    },
+    {
+      "path": "/photos/stage/stage-1-hero-768.avif",
+      "bytes": 83888,
+      "sha256": "9945454bff469bf0e7d073bcf684c2337cfb126f7c207b2bae49e0077f3b10b3"
+    },
+    {
+      "path": "/photos/stage/stage-1-hero-768.webp",
+      "bytes": 96140,
+      "sha256": "93baff2a92c10dd9f5c2c396ce2012810938640192152982501d87ecb806d40b"
+    },
+    {
+      "path": "/photos/stage/stage-1-hero-1504.webp",
+      "bytes": 312106,
+      "sha256": "c4250f21d5215bb0ee91c2a3b63cb653d9bd2cb4a6347ceebaf00f8f6c0f759c"
+    },
+    {
+      "path": "/photos/stage/stage-1-hero-1504.avif",
+      "bytes": 266614,
+      "sha256": "8ce337feb2124b2c73b46ea1036a234da07510b3442d62ac1f7d7a5ae0543dab"
+    },
+    {
+      "path": "/photos/stage/stage-1-hero-1280.avif",
+      "bytes": 199014,
+      "sha256": "7547e9a3b1d2447b19562aee9662ea95d5eb071eba7e76a9b499f14afd99038c"
+    },
+    {
+      "path": "/photos/stage/stage-1-hero-1504.jpg",
+      "bytes": 440514,
+      "sha256": "286af1b8f13f52cb1ab1d24a2fe566d0d5d62f8470ba00e4266375bc7a2bb5bb"
+    },
+    {
+      "path": "/pricing/files/ICM_price-list_2025_EN.pdf",
+      "bytes": 107832,
+      "sha256": "ede4bbb79cb99df028cda0eeb8986f8a481c26c6b7a58b57850f835ab7a3dec2"
+    },
+    {
+      "path": "/pricing/files/ICM_\u043f\u0440\u0430\u0439\u0441-\u043b\u0438\u0441\u0442_2025_UA.pdf",
+      "bytes": 136595,
+      "sha256": "101664e65af2557e16572bef0e56723295eba7fe713b5e5e1413de8968b6d582"
+    },
+    {
+      "path": "/pricing/files/ICM_tabela-precos_2025_PT.pdf",
+      "bytes": 111339,
+      "sha256": "44f63bae07952c2ad294cee02d7e2c6bbcb869d0a78c02514e37389b158e0e86"
+    },
+    {
+      "path": "/pricing/files/ICM_\u043f\u0440\u0430\u0439\u0441-\u043b\u0438\u0441\u0442_2025_RU.pdf",
+      "bytes": 137090,
+      "sha256": "2a74c1c719984d352fcf20222916f2ca48201de9d484d364fc0138dc9de9fe67"
+    },
+    {
+      "path": "/pricing/files/ICM_Stage-1_DCF-Performance_UK.pdf",
+      "bytes": 528956,
+      "sha256": "f5ee76ba61f1c40e1c60748bf9b391007270232ec74474d3c44b5be1f53ced91"
+    },
+    {
+      "path": "/pricing/files/ICM_Stage-1_DCF-Performance_RU.pdf",
+      "bytes": 527859,
+      "sha256": "7135bb0eb45be8c49106e468c7066c172ff1a4b02f98a636dbc39dbd3ef8eaef"
+    },
+    {
+      "path": "/pricing/files/ICM_Stage-1_DCF-Performance_PT.pdf",
+      "bytes": 476593,
+      "sha256": "c3ddfd286f7c271a61dea6f645a768f8fbda710ea18a220a16c4f56c98b67e47"
+    },
+    {
+      "path": "/pricing/files/ICM_Stage-1_DCF-Performance_EN.pdf",
+      "bytes": 474792,
+      "sha256": "2a0aaafe627e81225a5ff7c8f030e101523431fd8ef7f56d44bcb46949a012b8"
+    }
+  ],
+  "failures": [],
+  "checkedAt": "2026-11-11T16:51:45Z"
+}

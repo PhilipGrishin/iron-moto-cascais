@@ -9,15 +9,17 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
-- S-STAGE1 / S-STAGE1-NAV, **implemented; local and clean-clone verification passed**,
-  2026-11-11. Four Stage pages, four News articles, shared pricing/PDF and DCF
-  updates are built. Stage replaces Authorized Dealer in the eight-item header;
-  the dealer family remains footer/contextual-only and indexable. Local exact
-  copy/schema/media checks and the 24-case header matrix passed. Full Safe Rebuild
-  plus the release gate passed for `c7fbbb5c` in a fresh full-history clone with
-  empty Git status. Current checkout
-  inventories below include this delivery; deployment is not yet claimed.
+- S-STAGE1 / S-STAGE1-NAV, **deployed and production-verified**, 2026-11-11:
+  implementation `c7fbbb5c`, published artifact `4ddabb8b`, Pages run
+  `43061911928`. Approved Stage/News content, shared pricing/PDF and DCF updates
+  are live in four languages. Stage replaces Authorized Dealer in the eight-item
+  header; dealer pages remain footer/contextual-only and indexable. Fresh
+  full-history clone Full Safe Rebuild and the release gate passed with empty
+  Git status. All 268 public pages and 26 assets matched production, local and
+  live responsive checks passed, and both PT Google Rich Results tests passed.
   See [delivery record](reports/S_STAGE1_REPORT.md).
+- Last verified production `sitemap.xml` SHA-256, confirmed 2026-11-11:
+  `94a811b4d684c2e2f12b359e7091c89266d373182ca343b330d476c8bc9e3898`.
 
 - N-DCF, **deployed and production-verified**, 2026-11-01: implementation
   `cadd1a5a`, Pages run `41352957214`. Approved dealership announcement is live
@@ -51,7 +53,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
   full-history clone left empty Git status. All sitemap pages plus four utility
   pages matched production; media, responsive playback and Google Rich Results
   checks passed. See the [delivery record](reports/F_FUEL_REPORT.md).
-- Last verified production `sitemap.xml` SHA-256, confirmed 2026-11-01:
+- Historical N-DCF production `sitemap.xml` SHA-256, 2026-11-01:
   `abf2e63b9709fa95974da6776c15e2bb1b34ef2192b59c7e6b9c5b7537ff24c8`.
 
 - P-SPANIARD, **deployed and production-verified**, 2026-10-28:

@@ -1,6 +1,6 @@
 # S-STAGE1 delivery record
 
-Date: 2026-11-11. Status: **local and clean-clone acceptance passed**; not yet published.
+Date: 2026-11-11. Status: **deployed and production-verified**.
 Baseline: `8c760d835cf83c6aaceed5700965edf3714f9229`, clean `main` after a
 fast-forward that preserved the two upstream review refresh commits.
 
@@ -122,5 +122,88 @@ named as related titles rather than navigation keys.
   fresh non-shallow clone of that commit. All four service PDFs and generated
   output reproduced exactly; `git status --short` was empty.
 - Local release validators, Worker tests and syntax checks passed.
-- Production comparisons, Pages identifier and Google Rich Results evidence
-  are pending deployment. No deployment success is claimed yet.
+- Published artifact: `4ddabb8b7b7b4baefd5242caa7595bf8a7fccb0d`, containing the
+  implementation and acceptance documentation. [Pages run 43061911928](https://github.com/PhilipGrishin/iron-moto-cascais/actions/runs/43061911928)
+  passed every validation/packaging/deployment step, completed 16:50:28 UTC.
+- **Confirmed production, 2026-11-11:** all 264 sitemap URLs and four thank-you
+  pages returned 200 and matched local main content, JSON-LD, title/description,
+  canonical/hreflang, desktop/mobile navigation, footer and cache keys. All 26
+  checked discovery/shared/media/PDF assets match repository bytes. These checks
+  include the twelve dealer URLs and all eight downloadable PDFs.
+  [Raw evidence](S_STAGE1_PRODUCTION.json).
+- Initial comparison reported twelve email-bearing pages because Cloudflare's
+  email-obfuscation wrapper split a text node. The comparison now decodes the
+  known wrapper and merges adjacent text nodes on both sides; no site edit was
+  needed. The complete rerun passed, with no remaining differences.
+- **Data-backed production browser:** four languages at 360/768/1200/1280,
+  height 900; sixteen cases, loaded fonts/images, no horizontal overflow or
+  dealer header links. The eight desktop labels stay on one line with no
+  logo/menu/control overlap. Price and footnote fit all initial viewports.
+  Native in-app-browser measurements include its 10 px vertical scrollbar;
+  local Chromium baseline measurements above remain the direct before/after
+  comparison. [Compact production measurements](S_STAGE1_LIVE_BROWSER.json).
+  PT desktop/mobile hero views were visually inspected. Mobile Stage expands
+  to Stage 1, and the process link finishes at 69.875 px below the viewport top.
+  No page errors were reported; no contact message or form was sent.
+- **Confirmed Google Rich Results, mobile agent:** [PT Stage 1](https://search.google.com/test/rich-results/result?id=EQ1-gOf6KxdiCkxjOfbLEg)
+  returned three valid supported items (Breadcrumb, Local business,
+  Organization) at 16:50:44. [PT News](https://search.google.com/test/rich-results/result?id=4Gi_YwNazfHLQSuqX8TICg)
+  returned four (Article plus those three) at 16:51:22. Neither summary showed
+  errors or warnings. FAQ/Service Offer parity is protected by the local
+  validator, independently of Google's supported rich-result types.
+- All requested acceptance criteria are closed within the documented scope.
+  The thirteen pre-existing bare utility documents have no chrome to replace;
+  all four utility pages with chrome are included in the 268-page verification.
+  No approved visible copy required rewording. Existing workflow runtime
+  notices and macOS PDF portability remain separate maintenance risks, as
+  recorded in `docs/OPEN_TASKS.md`.
+- Final closeout is documentation-only and uses `[skip ci]`; it does not change
+  this verified public artifact.
+
+## Changed source and configuration inventory
+
+Confirmed by `git diff --name-only 8c760d8 c7fbbb5c`; generated HTML, discovery
+files, binary media/PDFs and documentation evidence are omitted from this source
+list. The extracted `i18n.json` snapshot is included because builders consume it.
+
+- `.gitattributes`
+- `.github/workflows/pages.yml`
+- `assets/main.js`
+- `assets/stage.css`
+- `scripts/build/authorized_dealer_data.py`
+- `scripts/build/build_brand_pages.py`
+- `scripts/build/build_harley_hub.py`
+- `scripts/build/build_legal_pages.py`
+- `scripts/build/build_llms.py`
+- `scripts/build/build_new_pages.py`
+- `scripts/build/build_news.py`
+- `scripts/build/build_pricing.py`
+- `scripts/build/build_pricing_pdfs.py`
+- `scripts/build/build_project_pages.py`
+- `scripts/build/build_service_custom_hubs.py`
+- `scripts/build/build_sitemap.py`
+- `scripts/build/build_stage_pages.py`
+- `scripts/build/content/dcf_dealer_copy_4lang.md`
+- `scripts/build/content/harley_hub_phase1_4lang.md`
+- `scripts/build/content/stage1_copy_4lang.md`
+- `scripts/build/content/stage1_integrations_4lang.md`
+- `scripts/build/content/stage1_news_4lang.md`
+- `scripts/build/content/upgrades_hub_copy_4lang.md`
+- `scripts/build/dealer_copy.py`
+- `scripts/build/extract_i18n.js`
+- `scripts/build/i18n.json`
+- `scripts/build/import_dealer_images.py`
+- `scripts/build/localize_internal_links.py`
+- `scripts/build/nav_patch.py`
+- `scripts/build/news_data.py`
+- `scripts/build/pricing_data.py`
+- `scripts/build/site_chrome.py`
+- `scripts/build/stage_copy.py`
+- `scripts/build/stage_pages_data.py`
+- `scripts/build/validate_authorized_dealer.py`
+- `scripts/build/validate_seo.py`
+- `scripts/build/validate_service_custom_hubs.py`
+- `scripts/build/validate_stage_pages.py`
+- `scripts/build/validate_w4_routing.py`
+- `scripts/build/verify_site.sh`
+- `scripts/build/w4_shared_data.py`

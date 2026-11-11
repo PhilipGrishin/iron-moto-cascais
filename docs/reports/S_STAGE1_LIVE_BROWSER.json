@@ -1,0 +1,137 @@
+{
+  "date": "2026-11-11",
+  "method": "In-app browser, live Stage pages, CSS pixels, 900 px height; 10 px vertical scrollbar",
+  "cases": [
+    {
+      "lang": "en",
+      "width": 360,
+      "footnoteBottom": 722.0546875,
+      "menuWidth": 0,
+      "controlsRight": 340.0234375
+    },
+    {
+      "lang": "en",
+      "width": 768,
+      "footnoteBottom": 609.9375,
+      "menuWidth": 0,
+      "controlsRight": 717.2734375
+    },
+    {
+      "lang": "en",
+      "width": 1200,
+      "footnoteBottom": 656.1484375,
+      "menuWidth": 572.671875,
+      "controlsRight": 1143.6015625
+    },
+    {
+      "lang": "en",
+      "width": 1280,
+      "footnoteBottom": 668.46875,
+      "menuWidth": 572.671875,
+      "controlsRight": 1221.7265625
+    },
+    {
+      "lang": "pt",
+      "width": 360,
+      "footnoteBottom": 749.3515625,
+      "menuWidth": 0,
+      "controlsRight": 346.8515625
+    },
+    {
+      "lang": "pt",
+      "width": 768,
+      "footnoteBottom": 637.1328125,
+      "menuWidth": 0,
+      "controlsRight": 709.4296875
+    },
+    {
+      "lang": "pt",
+      "width": 1200,
+      "footnoteBottom": 733.7421875,
+      "menuWidth": 582.8515625,
+      "controlsRight": 1142.8984375
+    },
+    {
+      "lang": "pt",
+      "width": 1280,
+      "footnoteBottom": 749.421875,
+      "menuWidth": 582.8515625,
+      "controlsRight": 1222.8984375
+    },
+    {
+      "lang": "ru",
+      "width": 360,
+      "footnoteBottom": 825.640625,
+      "menuWidth": 0,
+      "controlsRight": 334.890625
+    },
+    {
+      "lang": "ru",
+      "width": 768,
+      "footnoteBottom": 715.3203125,
+      "menuWidth": 0,
+      "controlsRight": 720.6171875
+    },
+    {
+      "lang": "ru",
+      "width": 1200,
+      "footnoteBottom": 754.140625,
+      "menuWidth": 518.0390625,
+      "controlsRight": 1151.7109375
+    },
+    {
+      "lang": "ru",
+      "width": 1280,
+      "footnoteBottom": 823.578125,
+      "menuWidth": 518.0390625,
+      "controlsRight": 1230.7265625
+    },
+    {
+      "lang": "uk",
+      "width": 360,
+      "footnoteBottom": 776.6484375,
+      "menuWidth": 0,
+      "controlsRight": 345.5703125
+    },
+    {
+      "lang": "uk",
+      "width": 768,
+      "footnoteBottom": 672.828125,
+      "menuWidth": 0,
+      "controlsRight": 709.4453125
+    },
+    {
+      "lang": "uk",
+      "width": 1200,
+      "footnoteBottom": 733.7421875,
+      "menuWidth": 534.6484375,
+      "controlsRight": 1142.9453125
+    },
+    {
+      "lang": "uk",
+      "width": 1280,
+      "footnoteBottom": 749.421875,
+      "menuWidth": 534.6484375,
+      "controlsRight": 1222.8671875
+    }
+  ],
+  "allCases": {
+    "imagesLoaded": true,
+    "fontsLoaded": true,
+    "horizontalOverflow": false,
+    "dealerHeaderLinks": 0,
+    "priceAndFootnoteInitiallyVisible": true
+  },
+  "desktopCases": {
+    "primaryItems": 8,
+    "wrappedLabels": 0,
+    "logoMenuControlOverlaps": 0,
+    "viewportEscapes": 0
+  },
+  "ptInteraction": {
+    "mobileStageItemVisible": true,
+    "processTopAfterScroll": 69.875,
+    "pageErrors": []
+  },
+  "failures": []
+}
