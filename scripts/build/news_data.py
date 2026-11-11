@@ -1171,11 +1171,44 @@ def _load_dcf_article():
     }
 
 
+from pricing_data import resolve_stage_prices
+from stage_pages_data import STAGE_PAGES
+_STAGE_SLUG = 'stage-1-ecu-remap-fixed-price'
+_STAGE_SOURCE = Path(__file__).resolve().parent / 'content/stage1_news_4lang.md'
+_STAGE_SOURCE_SHA256 = '1e1e728c0be79fd34f3513d7561473cea025d28a4d79dee48d7e4bf4006ea9c8'
+
+def _load_stage_article():
+    source_bytes = _STAGE_SOURCE.read_bytes()
+    if hashlib.sha256(source_bytes).hexdigest() != _STAGE_SOURCE_SHA256:
+        raise ValueError("Stage news delivery source checksum mismatch")
+    published = "2026-11-11T16:37:40+00:00"
+    labels = _publication_labels(published)
+    localized = {
+        code: _parse_news_language(raw, code, labels)
+        for code, raw in _split_delivery_languages(resolve_stage_prices(source_bytes.decode("utf-8"))).items()
+    }
+    return {
+        "publishedISO": published,
+        "modifiedISO": published,
+        "author": {"@id": "https://ironcustommotors.com/#business"},
+        "imageBase": STAGE_PAGES["stage-1"]["hero"]["base"],
+        "heroWidths": STAGE_PAGES["stage-1"]["hero"]["widths"],
+        "imageCount": 1,
+        "imageHero": 1,
+        "sectionCount": 4,
+        "sitemapOrder": -30,
+        "sourceBacked": True,
+        "meta": {code: item["meta"] for code, item in localized.items()},
+        "body": {code: item["body"] for code, item in localized.items()},
+    }
+
+
 # Article metadata (slug → meta + body)
 NEWS_ARTICLES = {
+    _STAGE_SLUG: _load_stage_article(),
     _BBQ_SLUG: {**_load_bbq_article(), "relatedSlugs": ['ericeira-kustom-fest-2026', 'lisbon-motorcycle-film-fest-2026-beckman', 'opens-new-workshop-in-cascais']},
     _SPANIARD_SLUG: {**_load_spaniard_article(), "relatedSlugs": [_BBQ_SLUG, "ericeira-kustom-fest-2026", "lisbon-motorcycle-film-fest-2026-beckman", "opens-new-workshop-in-cascais"]},
-    _DCF_SLUG: _load_dcf_article(),
+    _DCF_SLUG: {**_load_dcf_article(), "relatedSlugs": [_BBQ_SLUG, _SPANIARD_SLUG, "ericeira-kustom-fest-2026", "lisbon-motorcycle-film-fest-2026-beckman", "opens-new-workshop-in-cascais"]},
     "ericeira-kustom-fest-2026": {
         "relatedSlugs": ['workshop-bbq-party-august-2026', 'lisbon-motorcycle-film-fest-2026-beckman', 'opens-new-workshop-in-cascais'],
         "publishedISO": "2026-06-07",

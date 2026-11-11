@@ -46,12 +46,13 @@ def inline(value: str, prefill: str) -> str:
     return ''.join(parts)
 
 
-def parse_dealer_copy(path: Path, expected_sha256: str, page_path: str) -> dict:
+def parse_dealer_copy(path: Path, expected_sha256: str, page_path: str, *, price_resolver=None) -> dict:
     data = path.read_bytes()
     actual = hashlib.sha256(data).hexdigest()
     if actual != expected_sha256:
         raise ValueError(f'{path.name}: SHA-256 {actual} != approved {expected_sha256}')
     text = data.decode('utf-8')
+    if price_resolver: text = price_resolver(text)
     headings = list(re.finditer(r'^## (.+)$', text, re.M))
     result = {}
     for i, match in enumerate(headings):

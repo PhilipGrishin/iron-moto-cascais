@@ -16,11 +16,12 @@ from build_expat_hub import PATHS as EXPAT_HUB_PATHS
 from build_expat_hub import UI as EXPAT_HUB_UI
 from build_pre_purchase_inspection import LLMS_DESCRIPTION_EN
 from build_sitemap import DOMAIN, LANGS, PAGES
+from stage_pages_data import STAGE_PAGES, STAGE_I18N
+from authorized_dealer_data import AUTHORIZED_DEALER_BRANDS
 from legal_pages_data import LEGAL_PAGES
 from new_pages_data import PROJECT_TILES
 from site_chrome import (
     ABOUT_NAV_LINKS,
-    AUTHORIZED_DEALER_NAV_LINKS,
     FOOTER_COMPANY_LINKS,
     FOOTER_SERVICES_LINKS,
     HARLEY_NAV_LINKS,
@@ -105,13 +106,12 @@ def page_path_from_href(href: str) -> str | None:
 
 
 def navigation_page_labels() -> dict[str, tuple[str, str]]:
-    i18n = load_english_i18n()
+    i18n = {**load_english_i18n(), **STAGE_I18N["en"]}
     labels = {}
     link_groups = (
         PRIMARY_NAV_LINKS,
         SERVICE_NAV_LINKS,
         HARLEY_NAV_LINKS,
-        AUTHORIZED_DEALER_NAV_LINKS,
         ABOUT_NAV_LINKS,
         FOOTER_SERVICES_LINKS,
         FOOTER_COMPANY_LINKS,
@@ -145,21 +145,12 @@ def navigation_page_labels() -> dict[str, tuple[str, str]]:
                 ),
             )
 
-    authorized_parent_key, authorized_parent_href, _label = next(
-        item for item in PRIMARY_NAV_LINKS
-        if item[0] == "nav.authorizedDealer"
-    )
-    authorized_parent_path = page_path_from_href(authorized_parent_href)
-    for key, href, _fallback_label in AUTHORIZED_DEALER_NAV_LINKS:
-        page_path = page_path_from_href(href)
-        if page_path != authorized_parent_path:
-            labels[page_path] = (
-                f"{i18n[key]} {i18n[authorized_parent_key].lower()}",
-                (
-                    f"assets/main.js I18N[{key}] + "
-                    f"I18N[{authorized_parent_key}] via nav_patch.py"
-                ),
-            )
+    for brand in AUTHORIZED_DEALER_BRANDS:
+        labels[page_path_from_href(brand['url'])] = (
+            brand['name']['en'] + ' authorized dealer',
+            'authorized_dealer_data.AUTHORIZED_DEALER_BRANDS',
+        )
+
     return labels
 
 
@@ -230,6 +221,9 @@ def page_labels(
             clean_label(body["en"]["h1"]),
             f"legal_pages_data.LEGAL_PAGES[{slug}].body.en.h1",
         )
+
+    for config in STAGE_PAGES.values():
+        labels[config["path"]] = (config["name"], "stage_pages_data.STAGE_PAGES")
 
     missing = sorted(page_paths - labels.keys())
     if missing:
@@ -326,6 +320,7 @@ def page_record(
 
 def registered_paths() -> dict[str, set[str]]:
     return {
+        "stages": {c["path"] for c in STAGE_PAGES.values()},
         "brands": {f"{slug}/" for slug in BRAND_ORDER},
         "blog": {f"blog/{slug}/" for slug in BLOG_POSTS},
         "news": {f"news/{slug}/" for slug in NEWS_ARTICLES},
@@ -420,7 +415,11 @@ def group_records(records: list[dict], registries: dict[str, set[str]]) -> Order
 
 def markdown_entry(record: dict) -> str:
     label = record["label"].replace("[", r"\[").replace("]", r"\]")
-    return f"- [{label}]({record['url']}): {record['description']}"
+    entry = f"- [{label}]({record['url']}): {record['description']}"
+    path = record['url'].removeprefix(DOMAIN).lstrip('/')
+    if path.startswith('authorized-dealer/') or path in {c['path'] for c in STAGE_PAGES.values()}:
+        entry += ' ' + ' · '.join(f"[{lang.upper()}]({DOMAIN}/{lang}/{path})" for lang in ('pt','ru','uk'))
+    return entry
 
 
 def existing_generated_date() -> str:

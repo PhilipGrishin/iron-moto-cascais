@@ -12,6 +12,7 @@ from brand_pages_data import BRAND_ORDER
 from blog_data import BLOG_POSTS
 from news_data import NEWS_ARTICLES
 from project_pages_data import PROJECT_CONFIGS
+from stage_pages_data import STAGE_PAGES
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 TARGET_LANGS = ["ru", "uk", "pt"]
@@ -24,6 +25,7 @@ except FeatureNotFound:
 
 # All page paths that have localized versions (must match generator)
 LOCALIZED_PATHS = {
+    *["/" + config["path"] for config in STAGE_PAGES.values()],
     "/",
     "/motorcycle-service/",
     "/fuel-system-service/",

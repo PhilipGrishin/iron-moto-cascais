@@ -9,7 +9,8 @@ from bs4 import BeautifulSoup
 from PIL import Image
 from authorized_dealer_data import COPY_DEALER_PAGES, AUTHORIZED_DEALER_BRANDS, AUTHORIZED_DEALER_HEAD, AUTHORIZED_DEALER_I18N
 from dealer_copy import plain
-from site_chrome import AUTHORIZED_DEALER_NAV_LINKS,localized_href
+from site_chrome import localized_href
+from pricing_data import STAGE_PRICES
 
 ROOT=Path(__file__).resolve().parents[2]
 DOMAIN='https://ironcustommotors.com'
@@ -93,7 +94,7 @@ def main():
             check(preload['imagesrcset']==hero.select_one('source[type="image/avif"]')['srcset'] and preload['imagesizes']=='100vw',label+': hero selection')
             check(hero.img['alt']==fields['Hero alt'],label+': hero ALT')
             check(not re.search(r'KESS|Alientech|Autotuner|MagicMotorsport',str(main),re.I),label+': tool brand')
-            check(set(re.findall(r'\d+(?:–\d+)?\s*€',str(main))) <= {'50–350 €'},label+': price subset')
+            check(set(re.findall(r'\d+(?:–\d+)?\s*€',str(main))) <= {value+' €' for value in STAGE_PRICES.values()},label+': price subset')
             hubpath=ROOT/('' if lang=='en' else lang)/'authorized-dealer/index.html'
             hub=BeautifulSoup(hubpath.read_text(),'html.parser');cards=hub.select('a.dealer-brand-card')
             check([a['href'] for a in cards]==[localized_href(b['url'],lang) for b in AUTHORIZED_DEALER_BRANDS],label+': hub cards')
@@ -101,14 +102,6 @@ def main():
             check(text(hub.select_one('[data-i18n="ad.intro"]'))==norm(AUTHORIZED_DEALER_I18N[lang]['ad.intro']),label+': hub intro')
             check(hub.select_one('meta[name="description"]')['content']==AUTHORIZED_DEALER_HEAD[lang]['description'],label+': hub metadata')
             pages+=1
-    for path in ROOT.rglob('*.html'):
-        if '.git' in path.parts or '.venv' in path.parts:continue
-        raw=path.read_text()
-        if 'nav.dealerCway' not in raw:continue
-        soup=BeautifulSoup(raw,'html.parser');lang=soup.html.get('lang','en')
-        expected=[localized_href(href,lang) for _,href,_ in AUTHORIZED_DEALER_NAV_LINKS]
-        for a in soup.select('a[data-i18n="nav.dealerCway"]'):
-            check([n['href'] for n in a.parent.select('a[href]')]==expected,str(path)+': dealer menu order')
     print(f'Authorized Dealer validation passed: {pages} approved partner variants, source copy, media, schema, hub and menus.')
 
 

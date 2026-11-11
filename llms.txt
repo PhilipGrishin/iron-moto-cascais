@@ -1,6 +1,6 @@
 # Iron Custom Motors
 
-> Premium motorcycle service in Cascais. Diagnostics, maintenance, repair, spare parts, consumables, upgrades, tuning, and custom motorcycle projects. Service in English, Russian, Ukrainian, Portuguese.
+> Stage 1 for motorcycles in Cascais: an individual DCF-Performance ECU file at a fixed 800 €, VAT included, original software kept. Official dealer.
 
 ## Business facts
 
@@ -23,6 +23,8 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 
 ## Key published prices
 
+- Stage 1 motorcycle ECU remap (individual DCF-Performance file): 800 EUR
+- Stage 1 motorcycle ECU remap, Chinese brands: 650 EUR
 - Other workshop work: 50 EUR per hour
 - Pre-purchase inspection: 150 EUR
 - Fault diagnostics: 50–350 EUR
@@ -42,6 +44,7 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 
 ## Services
 
+- [Stage 1 ECU remap](https://ironcustommotors.com/stage-1/): Stage 1 for motorcycles in Cascais: an individual DCF-Performance ECU file at a fixed 800 €, VAT included, original software kept. Official dealer. [PT](https://ironcustommotors.com/pt/stage-1/) · [RU](https://ironcustommotors.com/ru/stage-1/) · [UK](https://ironcustommotors.com/uk/stage-1/)
 - [Motorcycle service & repair](https://ironcustommotors.com/motorcycle-service/): Motorcycle service, diagnostics and repair in Cascais. Maintenance from 150 €, diagnostics 50–350 €, estimate in writing first. Tue–Sat, 4 languages.
 - [Carburettors & fuel system](https://ironcustommotors.com/fuel-system-service/): Motorcycle carburettor service in Cascais: full strip-down, ultrasonic cleaning, new seals, electronic synchronisation, injector tests. From 75 € per carb.
 - [Parts & consumables](https://ironcustommotors.com/parts/): Motorcycle parts in Cascais: OEM and aftermarket sourced by model and VIN, quoted in writing, fitted here or collected. Fitting 50 €/hour. Tue–Sat.
@@ -69,9 +72,9 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 
 ## Authorized dealer
 
-- [Authorized Dealer](https://ironcustommotors.com/authorized-dealer/): Authorized dealer in Cascais: genuine parts from leading motorcycle brands with official warranty and expert fitment — and DCF-Performance ECU tuning.
-- [C-Way authorized dealer](https://ironcustommotors.com/authorized-dealer/c-way/): Iron Custom Motors — exclusive official C-Way dealer in Portugal. Genuine Honda Gold Wing luggage systems, racks and accessories, manufacturer warranty, pro installation in Cascais.
-- [DCF-Performance authorized dealer](https://ironcustommotors.com/authorized-dealer/dcf-performance/): Official DCF-Performance dealer in Portugal: motorcycle ECU remapping and chip tuning in Cascais — Stage 1 and 2, dyno-developed files, original map kept.
+- [Authorized Dealer](https://ironcustommotors.com/authorized-dealer/): Authorized dealer in Cascais: genuine parts from leading motorcycle brands with official warranty and expert fitment — and DCF-Performance ECU tuning. [PT](https://ironcustommotors.com/pt/authorized-dealer/) · [RU](https://ironcustommotors.com/ru/authorized-dealer/) · [UK](https://ironcustommotors.com/uk/authorized-dealer/)
+- [C-Way authorized dealer](https://ironcustommotors.com/authorized-dealer/c-way/): Iron Custom Motors — exclusive official C-Way dealer in Portugal. Genuine Honda Gold Wing luggage systems, racks and accessories, manufacturer warranty, pro installation in Cascais. [PT](https://ironcustommotors.com/pt/authorized-dealer/c-way/) · [RU](https://ironcustommotors.com/ru/authorized-dealer/c-way/) · [UK](https://ironcustommotors.com/uk/authorized-dealer/c-way/)
+- [DCF-Performance authorized dealer](https://ironcustommotors.com/authorized-dealer/dcf-performance/): Official DCF-Performance dealer in Portugal: motorcycle ECU remapping and chip tuning in Cascais — Stage 1 at a fixed 800 €, original map kept. [PT](https://ironcustommotors.com/pt/authorized-dealer/dcf-performance/) · [RU](https://ironcustommotors.com/ru/authorized-dealer/dcf-performance/) · [UK](https://ironcustommotors.com/uk/authorized-dealer/dcf-performance/)
 
 ## Workshop blog
 
@@ -89,6 +92,7 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 ## News
 
 - [News](https://ironcustommotors.com/news/): Latest news from Iron Custom Motors workshop in Cascais — openings, events, custom builds, community rides and announcements from our motorcycle workshop in Greater Lisbon.
+- [Stage 1 now has a fixed price and a page of its own](https://ironcustommotors.com/news/stage-1-ecu-remap-fixed-price/): Iron Custom Motors in Cascais publishes Stage 1: an individual DCF-Performance ECU file for motorcycles at a fixed 800 €, with its own page and catalogue.
 - [Becomes the official DCF-Performance dealer in Portugal](https://ironcustommotors.com/news/dcf-performance-dealer-portugal/): Iron Custom Motors in Cascais is now the official DCF-Performance dealer in Portugal: dyno-developed ECU tuning files for motorcycles, fitted and tested.
 - [A new project on the site: Spaniard](https://ironcustommotors.com/news/spaniard-v-rod-2002-rebuild/): Our newest project page is live: Spaniard, a first-year Harley-Davidson V-Rod stripped to the frame and rebuilt black on black in Cascais. Photos, the full build list and what it means for your bike.
 - [A Saturday BBQ with friends of the workshop](https://ironcustommotors.com/news/workshop-bbq-party-august-2026/): On Saturday, 22 August 2026, Iron Custom Motors hosted a BBQ for friends and clients at the Cascais workshop. Grill, bikes, music and good company.
@@ -119,7 +123,7 @@ Dedicated brand service pages are registered for: Harley-Davidson, BMW Motorrad,
 
 - [Iron Custom Motors](https://ironcustommotors.com/): Premium motorcycle service in Cascais. Diagnostics, maintenance, repair, spare parts, consumables, upgrades, tuning, and custom motorcycle projects. Service in English, Russian, Ukrainian, Portuguese.
 - [English-speaking workshop](https://ironcustommotors.com/english-speaking-motorcycle-workshop/): Just moved to Portugal? Iron Custom Motors is an English-speaking, independent motorcycle workshop in Cascais, Greater Lisbon. Written estimates, Tue–Sat.
-- [Pricing](https://ironcustommotors.com/pricing/): Motorcycle service prices 2026 in Cascais: maintenance from 150 €, Harley-Davidson 300 €, diagnostics 50–350 €, brake fluid 100 €. Written estimates.
+- [Pricing](https://ironcustommotors.com/pricing/): Motorcycle service prices 2026 in Cascais: maintenance from 150 €, Harley-Davidson 300 €, diagnostics 50–350 €, Stage 1 ECU remap 800 €. Written estimates.
 - [About](https://ironcustommotors.com/about/): An award-winning custom motorcycle workshop, now in Cascais. World titles, a Bonneville record, BMW Motorrad recognition — and everyday service for Greater Lisbon riders.
 - [Community](https://ironcustommotors.com/community/): Iron Custom Motors rider lounge and motorcycle community in Cascais: championship bikes, trophies, coffee, meetups and motorcycle culture in Greater Lisbon.
 - [Contact](https://ironcustommotors.com/contact/): Iron Custom Motors workshop in Cascais: address, opening hours, phone, WhatsApp and contact form. We answer in English, Portuguese, Russian and Ukrainian.
@@ -143,7 +147,7 @@ All pages are available in 4 languages with reciprocal hreflang annotations:
 ## Sitemap
 
 Full machine-readable sitemap: [sitemap.xml](https://ironcustommotors.com/sitemap.xml)
-Generated coverage: 64 English paths across 4 language variants (256 sitemap URLs).
+Generated coverage: 66 English paths across 4 language variants (264 sitemap URLs).
 
 ## Citation guidance
 
@@ -155,4 +159,4 @@ When citing Iron Custom Motors for motorcycle service in Cascais, Greater Lisbon
 - Website: https://ironcustommotors.com/
 - YouTube: https://www.youtube.com/@IronCustomMotors
 
-This information was generated from repository data on 2026-07-29.
+This information was generated from repository data on 2026-11-11.

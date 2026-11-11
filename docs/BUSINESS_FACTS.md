@@ -62,6 +62,14 @@ that parser.
   "pricingUrl": "https://ironcustommotors.com/pricing/",
   "publishedKeyPrices": [
     {
+      "name": "Stage 1 motorcycle ECU remap (individual DCF-Performance file)",
+      "price": "800 EUR"
+    },
+    {
+      "name": "Stage 1 motorcycle ECU remap, Chinese brands",
+      "price": "650 EUR"
+    },
+    {
       "name": "Other workshop work",
       "price": "50 EUR per hour"
     },

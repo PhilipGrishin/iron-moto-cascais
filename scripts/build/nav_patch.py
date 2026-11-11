@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from build_output import write_html_if_changed
 from build_sitemap import LANGS, PAGES, html_file_for
-from site_chrome import THANK_YOU_URLS, patch_dealer_menus, patch_footer_links, patch_navigation_footer
+from site_chrome import THANK_YOU_URLS, patch_navigation_footer
 
 
 def patch_file(path, lang: str) -> bool:
@@ -37,9 +37,9 @@ def main() -> int:
             missing.append(path)
             continue
         original = path.read_text(encoding="utf-8")
-        write_html_if_changed(path, patch_dealer_menus(patch_footer_links(original, lang), lang))
+        write_html_if_changed(path, patch_navigation_footer(original, lang, preserve_form=True))
 
-    print(f"\nDone. {changed}/{total} sitemap page(s) updated; utility footers synchronized.")
+    print(f"\nDone. {changed}/{total} sitemap page(s) updated; utility chrome synchronized.")
     if missing:
         print(f"Missing {len(missing)} sitemap page(s).")
         return 1

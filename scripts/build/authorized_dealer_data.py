@@ -687,11 +687,13 @@ CWAY_DEALER_I18N = {
 # Approved unpriced partners use the common labelled-copy contract.
 from pathlib import Path
 from dealer_copy import parse_dealer_copy
+from pricing_data import resolve_stage_prices
+from stage_copy import language_lines
 
 COPY_DEALER_PAGES = {
     "dcf-performance": {
         "source": Path(__file__).resolve().parent / "content/dcf_dealer_copy_4lang.md",
-        "sha256": "3d3bd77bd92a71a3403ef6905025c8f3def1d30f08f1b63ca46098d9862e2aff",
+        "sha256": "33ab00ec732367c157faa10000eb91eadf019db190e5d1043fb129b87185d99e",
         "path": "authorized-dealer/dcf-performance/",
         "brand": {"name": "DCF-Performance", "url": "https://dcf-performance.com/"},
         "hero": {"base": "/photos/authorized-dealer/dcf-performance-hero", "widths": [768, 1280, 1536], "width": 1536, "height": 2048},
@@ -704,14 +706,14 @@ COPY_DEALER_PAGES = {
     },
 }
 for _config in COPY_DEALER_PAGES.values():
-    _config["content"] = parse_dealer_copy(_config["source"], _config["sha256"], _config["path"])
+    _config["content"] = parse_dealer_copy(_config["source"], _config["sha256"], _config["path"], price_resolver=resolve_stage_prices)
 
 AUTHORIZED_DEALER_BRANDS.append({
     "slug": "dcf-performance", "copy_slug": "dcf-performance",
     "name": {lang: "DCF-Performance" for lang in ("en", "pt", "ru", "uk")},
     "url": "/authorized-dealer/dcf-performance/",
     "image": {"base": "/photos/authorized-dealer/dcf-performance-hero-768", "width": 768, "height": 1024},
-    "description": {'en': 'Official DCF-Performance dealer in Portugal: motorcycle ECU remapping and chip tuning with dyno-developed files, original map kept, written estimate, Cascais.', 'pt': 'Revendedor oficial DCF-Performance em Portugal: reprogramação de centralina e chip tuning de motos com ficheiros testados em banco, mapa original guardado, orçamento escrito, Cascais.', 'ru': 'Официальный дилер DCF-Performance в Португалии: прошивка ЭБУ и чип-тюнинг мотоциклов на калибровках со стенда, оригинальная прошивка сохраняется, смета письменно, Кашкайш.', 'uk': 'Офіційний дилер DCF-Performance у Португалії: прошивка ЕБК і чип-тюнінг мотоциклів на калібруваннях зі стенда, оригінальна прошивка зберігається, кошторис письмово, Кашкайш.'},
+    "description": {lang:resolve_stage_prices(value) for lang,value in language_lines("D").items()},
 })
 for _brand in AUTHORIZED_DEALER_BRANDS:
     if _brand.get("copy_slug"):

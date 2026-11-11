@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 from brand_pages_data import BRAND_NAME, BRAND_NAV_KEYS, BRAND_ORDER
 from localize_internal_links import rewrite_href
 from new_pages_data import PROJECT_TILES
+from stage_pages_data import STAGE_PAGES, STAGE_I18N
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 BUILD_DIR = Path(__file__).resolve().parent
@@ -33,7 +34,7 @@ PRIMARY_NAV_LINKS = [
     ("nav.services", "/services/", "Services"),
     ("nav.brands", "/#brands", "Brands"),
     ("nav.harleyHub", "/harley/", "Harley Hub"),
-    ("nav.authorizedDealer", "/authorized-dealer/", "Authorized Dealer"),
+    ("nav.stage", "/" + next(iter(STAGE_PAGES.values()))["path"], "Stage"),
     ("nav.projects", "/projects/", "Projects"),
     ("nav.about", "/about/", "About"),
     ("nav.pricing", "/pricing/", "Pricing"),
@@ -78,17 +79,17 @@ ABOUT_NAV_LINKS = [
     ("nav.faq", "/faq/", "FAQ"),
 ]
 
-AUTHORIZED_DEALER_NAV_LINKS = [
-    ("nav.authorizedDealerHub", "/authorized-dealer/", "Dealer hub"),
-    ("nav.dealerCway", "/authorized-dealer/c-way/", "C-Way"),
-    ("nav.dealerDcf", "/authorized-dealer/dcf-performance/", "DCF-Performance"),
+STAGE_NAV_LINKS = [
+    (config['nav_key'], '/' + config['path'], config['nav_labels']['en'])
+    for config in STAGE_PAGES.values() if config.get('nav_key')
 ]
+
 
 DROPDOWN_NAV_LINKS = {
     "nav.services": SERVICE_NAV_LINKS,
     "nav.brands": BRAND_NAV_LINKS,
     "nav.harleyHub": HARLEY_NAV_LINKS,
-    "nav.authorizedDealer": AUTHORIZED_DEALER_NAV_LINKS,
+    "nav.stage": STAGE_NAV_LINKS,
     "nav.projects": PROJECT_NAV_LINKS,
     "nav.about": ABOUT_NAV_LINKS,
 }
@@ -101,6 +102,8 @@ FOOTER_SERVICES_LINKS = [
     ("nav.tyreServ", "/motorcycle-tyre-service/", "Tyre fitting &amp; wheel balancing"),
     ("nav.preInsp", "/pre-purchase-inspection/", "Pre-purchase inspection"),
     ("nav.fuelServ", "/fuel-system-service/", "Carburettors &amp; fuel system"),
+    *[(config['footer_key'], '/' + config['path'], config['footer_labels']['en'])
+      for config in STAGE_PAGES.values() if config.get('footer_key')],
     ("nav.authorizedDealer", "/authorized-dealer/", "Authorized Dealer"),
     ("nav.expatWorkshop", "/english-speaking-motorcycle-workshop/", "For expats"),
     *BRAND_NAV_LINKS,
@@ -142,7 +145,8 @@ def label_for(key: str | None, lang: str, fallback: str) -> str:
     if not key:
         return fallback
     return (
-        GLOBAL_I18N.get(lang, {}).get(key)
+        STAGE_I18N.get(lang, {}).get(key)
+        or GLOBAL_I18N.get(lang, {}).get(key)
         or GLOBAL_I18N["en"].get(key)
         or fallback
     )
@@ -302,7 +306,7 @@ def patch_footer_links(html_text: str, lang: str) -> str:
     return html_text
 
 
-def patch_navigation_footer(html_text: str, lang: str) -> str:
+def patch_navigation_footer(html_text: str, lang: str, *, preserve_form: bool = False) -> str:
     """Patch only managed chrome substrings, preserving every byte outside them."""
     replacements = (
         (
@@ -372,6 +376,8 @@ def patch_navigation_footer(html_text: str, lang: str) -> str:
     if count != 1:
         raise ValueError("Expected one current-language label")
 
+    if preserve_form:
+        return patched
     next_url = THANK_YOU_URLS[lang]
 
     def set_form_next(match: re.Match[str]) -> str:
@@ -484,17 +490,3 @@ def chrome_fragments(lang: str, cache_bust: str) -> tuple[str, str]:
     after = "\n".join((render_site_footer(lang), render_contact_modal(lang)))
     after += f'\n<script defer="" src="/assets/main.js?v={cache_bust}"></script>'
     return before, after
-
-
-def patch_dealer_menus(html_text: str, lang: str) -> str:
-    """Refresh partner menus on utility pages without replacing their shell."""
-    soup = BeautifulSoup(html_text, HTML_PARSER)
-    for anchor in soup.select('a[data-i18n="nav.authorizedDealerHub"]'):
-        parent = anchor.parent
-        if not parent.select_one('a[data-i18n="nav.dealerCway"]'):
-            continue
-        parent.clear()
-        for key, href, fallback in AUTHORIZED_DEALER_NAV_LINKS:
-            fragment = BeautifulSoup(render_nav_link(key, href, fallback, lang), HTML_PARSER)
-            parent.append(fragment.a)
-    return str(soup)

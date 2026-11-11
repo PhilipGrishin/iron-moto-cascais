@@ -1,0 +1,77 @@
+/* Approved Stage catalogue layouts; shared site chrome remains unchanged. */
+.stage-page{overflow-wrap:break-word}
+.stage-page p,.stage-page li,.stage-page article,.stage-page aside{font-size:16px;line-height:1.7;color:var(--text-dim)}
+.stage-page strong{color:var(--text)}
+.stage-page a:not(.btn){color:var(--accent)}
+.stage-page .eyebrow{color:var(--accent);font-family:var(--font-ui);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 16px}
+.stage-page h2{font:800 clamp(29px,3.6vw,48px)/1.08 var(--font-display);text-transform:uppercase;margin:0 0 30px;max-width:26ch}
+.stage-page h3{font:700 21px/1.25 var(--font-display);text-transform:uppercase;margin:0 0 18px}
+.stage-page section{scroll-margin-top:95px}
+.stage-hero{position:relative;isolation:isolate;padding:130px 0 55px;min-height:850px;background:#0a0a0a}
+.stage-hero-media{position:absolute;inset:0;z-index:-2}
+.stage-hero-media img{width:100%;height:100%;object-fit:cover;object-position:65% 48%}
+.stage-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,10,10,.96),rgba(10,10,10,.72) 51%,rgba(10,10,10,.12)),linear-gradient(0deg,#0a0a0a,transparent 65%)}
+.stage-hero .crumb{margin-bottom:28px}
+.stage-page .stage-hero h1{font:800 clamp(34px,4.8vw,68px)/1.05 var(--font-display);text-transform:uppercase;max-width:19ch;margin:0 0 22px}
+.stage-hero-offer{max-width:64ch;margin:0 0 24px}
+.stage-lockup{display:flex;align-items:center;gap:22px;margin:26px 0;max-width:640px}
+.stage-lockup p{font:700 12px/1.5 var(--font-ui);text-transform:uppercase;letter-spacing:.1em;border-left:1px solid var(--border);padding-left:22px;max-width:29ch}
+.stage-dcf-logo{width:160px;height:auto;flex-shrink:0}
+.stage-page .stage-price{display:block;font:800 clamp(62px,7vw,96px)/1 var(--font-display);color:var(--accent);white-space:nowrap}
+.stage-hero-price{display:flex;align-items:center;gap:28px;max-width:720px}
+.stage-hero-price p{max-width:38ch;font-size:14px}
+.stage-page .stage-price-note{font-size:13px;max-width:86ch;margin:16px 0 26px}
+.stage-buttons{display:flex;flex-wrap:wrap;gap:12px}
+.stage-buttons .btn{white-space:normal;text-align:center;max-width:100%}
+.stage-section{padding:65px 0}
+.stage-section:nth-of-type(even){background:#101013}
+.stage-section>.container>p:not(.eyebrow){max-width:88ch}
+.stage-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.stage-card{padding:26px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.stage-card>strong:first-child{display:block;color:var(--accent);font:700 22px/1.25 var(--font-display);margin-bottom:12px}
+.stage-three{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:28px}
+.stage-facts{grid-template-columns:repeat(5,minmax(0,1fr))}
+.stage-facts .stage-card{padding:20px;font-size:14px}
+.stage-page .stage-figure{font:800 clamp(38px,5vw,64px)/1.2 var(--font-display);color:var(--accent);margin:0 0 22px}
+.stage-section--max>.container{border:1px solid var(--accent);padding:32px;border-radius:14px}
+.stage-list{list-style:none;padding:0;margin:0;display:grid;gap:18px}
+.stage-list li{position:relative;padding-left:21px}
+.stage-list li::before{content:"";position:absolute;left:0;top:10px;width:7px;height:7px;background:var(--accent);border-radius:1px}
+.stage-list strong{color:var(--text)}
+.stage-steps .stage-card{position:relative;padding-left:28px}
+.stage-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:25px}
+.stage-note{padding:20px;background:var(--surface);border-left:3px solid var(--accent)}
+.stage-included{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px}
+.stage-included>.stage-list{padding:28px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.stage-price-box{background:var(--accent);border-radius:14px;color:#0a0a0a;padding:30px;font-size:17px;line-height:1.8;margin-bottom:20px}
+.stage-page .stage-price-box strong,.stage-page .stage-price-box .stage-price{color:#0a0a0a}
+.stage-price-box .stage-price{margin:20px 0}
+.stage-option-group{margin-top:20px}
+.stage-option-group h3{color:var(--accent)}
+.stage-option-group .stage-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.stage-terms{counter-reset:terms;list-style:none;padding:0;max-width:95ch}
+.stage-terms li{counter-increment:terms;position:relative;padding-left:42px;margin-bottom:24px}
+.stage-terms li::before{content:counter(terms,decimal-leading-zero);position:absolute;left:0;top:0;color:var(--accent);font-weight:700}
+.stage-section--dcf .stage-dcf-logo{margin-bottom:20px}
+.stage-faq{max-width:1000px}
+.stage-faq details{border-bottom:1px solid var(--border);padding:21px 0}
+.stage-faq summary{font-weight:600;font-size:18px;cursor:pointer}
+.stage-faq details p{margin-bottom:0}
+.stage-related{display:flex;flex-wrap:wrap;gap:14px 26px}
+.stage-related a{border-bottom:1px solid var(--border);padding:10px 0}
+@media(max-width:1000px){.stage-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.stage-hero::before{background:linear-gradient(90deg,rgba(10,10,10,.94),rgba(10,10,10,.62)),linear-gradient(0deg,#0a0a0a,transparent)}.stage-included{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.stage-hero{padding:100px 0 36px;min-height:0}.stage-hero .crumb{margin-bottom:20px}.stage-page .stage-hero h1{font-size:30px;max-width:none;margin-bottom:18px}.stage-hero-offer{font-size:14px!important;line-height:1.55!important}.stage-page .eyebrow{font-size:11px}.stage-lockup{gap:16px;margin:20px 0}.stage-dcf-logo{width:125px}.stage-lockup p{font-size:10px;padding-left:16px}.stage-hero-price{gap:18px;align-items:flex-start}.stage-page .stage-price{font-size:60px}.stage-hero-price p{font-size:12px;margin:0}.stage-page .stage-price-note{font-size:12px}.stage-buttons{display:grid}.stage-buttons .btn{justify-content:center}.stage-section{padding:42px 0}.stage-grid,.stage-three,.stage-included,.stage-notes,.stage-option-group .stage-list{grid-template-columns:1fr}.stage-facts{grid-template-columns:1fr}.stage-facts .stage-card{padding:18px}.stage-card{padding:22px}.stage-section--max>.container{width:calc(100% - 2 * var(--pad-x));padding:24px}.stage-page h2{font-size:30px}.stage-page p,.stage-page li,.stage-page article,.stage-page aside{font-size:15px}.stage-price-box{padding:24px}}
+/* Keep the approved long multilingual heading and price together at first load. */
+.stage-page .stage-hero h1{max-width:900px;font-size:clamp(34px,4vw,56px)}
+.stage-page .stage-lockup p{font-size:12px;line-height:1.5}
+.stage-page .stage-hero-price p{font-size:14px;line-height:1.6}
+@media(max-width:760px){
+  .stage-page .stage-hero h1{font-size:26px;max-width:none}
+  .stage-page .stage-lockup p{font-size:10px;line-height:1.45}
+  .stage-hero-price{display:block}
+  .stage-page .stage-hero-price p{font-size:13px;line-height:1.5;max-width:none;margin:12px 0 0}
+  .stage-lockup{margin:18px 0}
+}
+
+.stage-amount{white-space:nowrap}
+.stage-notes > :only-child{grid-column:1/-1}

@@ -6,10 +6,10 @@
     "nav.harleyService": "Service",
     "nav.harleyTuning": "Tuning",
     "nav.harleyCustom": "Custom",
+    "nav.stage": "Stage",
     "nav.authorizedDealer": "Authorized Dealer",
-    "nav.authorizedDealerHub": "Dealer hub",
-    "nav.dealerCway": "C-Way",
-    "nav.dealerDcf": "DCF-Performance",
+    "related.title.authorizedDealer": "Dealer hub",
+    "related.title.dcfPerformance": "DCF-Performance",
     "nav.projects": "Projects",
     "nav.pricing": "Pricing",
     "nav.about": "About",
@@ -278,7 +278,9 @@
     "form.note": "By sending you agree to be contacted about this request. No spam, ever.",
     "form.submit": "Send request",
     "form.successT": "Request received",
-    "form.successP": "We'll reply via WhatsApp or email within business hours. Talk soon."
+    "form.successP": "We'll reply via WhatsApp or email within business hours. Talk soon.",
+    "nav.stage1": "Stage 1",
+    "nav.stage1Footer": "Stage 1 ECU remap"
   },
   "ru": {
     "nav.services": "Услуги",
@@ -287,10 +289,10 @@
     "nav.harleyService": "Сервис",
     "nav.harleyTuning": "Тюнинг",
     "nav.harleyCustom": "Кастом",
+    "nav.stage": "Stage",
     "nav.authorizedDealer": "Официальный дилер",
-    "nav.authorizedDealerHub": "Дилерский хаб",
-    "nav.dealerCway": "C-Way",
-    "nav.dealerDcf": "DCF-Performance",
+    "related.title.authorizedDealer": "Дилерский хаб",
+    "related.title.dcfPerformance": "DCF-Performance",
     "nav.projects": "Проекты",
     "nav.pricing": "Цены",
     "nav.about": "О нас",
@@ -559,7 +561,9 @@
     "form.note": "Отправляя, вы соглашаетесь, что мы свяжемся с вами по данному запросу. Без спама.",
     "form.submit": "Отправить заявку",
     "form.successT": "Заявка получена",
-    "form.successP": "Ответим в WhatsApp или на email в рабочее время. До связи."
+    "form.successP": "Ответим в WhatsApp или на email в рабочее время. До связи.",
+    "nav.stage1": "Stage 1",
+    "nav.stage1Footer": "Stage 1 · прошивка ЭБУ"
   },
   "uk": {
     "nav.services": "Послуги",
@@ -568,10 +572,10 @@
     "nav.harleyService": "Сервіс",
     "nav.harleyTuning": "Тюнінг",
     "nav.harleyCustom": "Кастом",
+    "nav.stage": "Stage",
     "nav.authorizedDealer": "Офіційний дилер",
-    "nav.authorizedDealerHub": "Дилерський хаб",
-    "nav.dealerCway": "C-Way",
-    "nav.dealerDcf": "DCF-Performance",
+    "related.title.authorizedDealer": "Дилерський хаб",
+    "related.title.dcfPerformance": "DCF-Performance",
     "nav.projects": "Проєкти",
     "nav.pricing": "Ціни",
     "nav.about": "Про нас",
@@ -840,7 +844,9 @@
     "form.note": "Надсилаючи, ви погоджуєтесь, що ми зв'яжемося з вами щодо цього запиту. Жодного спаму.",
     "form.submit": "Надіслати заявку",
     "form.successT": "Заявку отримано",
-    "form.successP": "Відповімо у WhatsApp або на email у робочий час. До зв'язку."
+    "form.successP": "Відповімо у WhatsApp або на email у робочий час. До зв'язку.",
+    "nav.stage1": "Stage 1",
+    "nav.stage1Footer": "Stage 1 · прошивка ЕБК"
   },
   "pt": {
     "nav.services": "Serviços",
@@ -849,10 +855,10 @@
     "nav.harleyService": "Serviço",
     "nav.harleyTuning": "Tuning",
     "nav.harleyCustom": "Custom",
+    "nav.stage": "Stage",
     "nav.authorizedDealer": "Revendedor Oficial",
-    "nav.authorizedDealerHub": "Hub revendedor",
-    "nav.dealerCway": "C-Way",
-    "nav.dealerDcf": "DCF-Performance",
+    "related.title.authorizedDealer": "Hub revendedor",
+    "related.title.dcfPerformance": "DCF-Performance",
     "nav.projects": "Projetos",
     "nav.pricing": "Preços",
     "nav.about": "Sobre",
@@ -1121,6 +1127,8 @@
     "form.note": "Ao enviar concorda em ser contactado sobre este pedido. Sem spam.",
     "form.submit": "Enviar pedido",
     "form.successT": "Pedido recebido",
-    "form.successP": "Respondemos via WhatsApp ou email em horário de trabalho. Até já."
+    "form.successP": "Respondemos via WhatsApp ou email em horário de trabalho. Até já.",
+    "nav.stage1": "Stage 1",
+    "nav.stage1Footer": "Stage 1 · reprogramação"
   }
 }

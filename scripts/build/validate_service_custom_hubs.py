@@ -7,6 +7,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from stage_pages_data import STAGE_PAGES
 from urllib.parse import parse_qs, urlsplit
 
 from bs4 import BeautifulSoup
@@ -380,6 +381,8 @@ def expected_commercial_files() -> dict[Path, str]:
         files[SITE_ROOT / TYRE_PATHS[lang]] = lang
         prefix = "" if lang == "en" else f"{lang}/"
         files[SITE_ROOT / prefix / "pre-purchase-inspection/index.html"] = lang
+        for config in STAGE_PAGES.values():
+            files[SITE_ROOT / prefix / config["path"] / "index.html"] = lang
     return files
 
 
@@ -413,8 +416,8 @@ def validate_trust_strip(
 
 def validate_commercial_trust_and_related(issues: list[str]) -> None:
     expected_files = expected_commercial_files()
-    if len(expected_files) != 56:
-        issues.append(f"commercial trust inventory is {len(expected_files)}, expected 56")
+    if len(expected_files) != 56 + 4 * len(STAGE_PAGES):
+        issues.append(f"commercial trust inventory is {len(expected_files)}, expected 60")
         return
 
     actual_files: set[Path] = set()
@@ -432,7 +435,7 @@ def validate_commercial_trust_and_related(issues: list[str]) -> None:
         for path in sorted(expected_set - actual_files):
             issues.append(f"{path.relative_to(SITE_ROOT)}: trust strip missing")
         for path in sorted(actual_files - expected_set):
-            issues.append(f"{path.relative_to(SITE_ROOT)}: trust strip outside the 56-page inventory")
+            issues.append(f"{path.relative_to(SITE_ROOT)}: trust strip outside the 60-page inventory")
 
     for path, lang in expected_files.items():
         soup = BeautifulSoup(path.read_text(encoding="utf-8"), "lxml")
@@ -441,6 +444,7 @@ def validate_commercial_trust_and_related(issues: list[str]) -> None:
             hero_selector = (
                 ".tyre-hero" if path.as_posix().endswith(TYRE_PATHS[lang])
                 else ".ppi-hero" if path.parent.name == "pre-purchase-inspection"
+                else ".stage-hero" if path.parent.name in STAGE_PAGES
                 else ".subpage.brand"
             )
             validate_trust_strip(soup, lang, label, hero_selector, issues)
@@ -506,7 +510,7 @@ def main() -> int:
         for issue in issues:
             print(f"- {issue}")
         return 1
-    print("Commercial hub validation passed: 20 hub pages, 56 trust strips, related descriptions and head trims.")
+    print("Commercial hub validation passed: 20 hub pages, 60 trust strips, related descriptions and head trims.")
     return 0
 
 

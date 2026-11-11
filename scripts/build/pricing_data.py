@@ -668,3 +668,60 @@ SEC_07 = {
 
 
 SECTIONS = [SEC_01, SEC_02, SEC_03, SEC_04, SEC_05, SEC_06, SEC_07]
+
+
+# Stage service amounts are authoritative for all approved delivery consumers.
+STAGE_PRICES = {'stage1': '800', 'stage1_chinese_brands': '650'}
+
+
+def resolve_stage_prices(text, *, price_ids=None):
+    """Verify approved currency tokens, then serialize their registry amounts.
+
+    Approved Markdown remains byte-identical on disk. A price change requires
+    approved copy and registry to change together; mismatches fail the build.
+    """
+    import re
+    ids = tuple(price_ids or STAGE_PRICES)
+    amounts = {STAGE_PRICES[key]: key for key in ids}
+    def replace(match):
+        amount, spacing, currency = match.groups()
+        if amount not in amounts:
+            raise ValueError(f'Approved Stage amount {amount} {currency} differs from pricing registry')
+        return STAGE_PRICES[amounts[amount]] + spacing + currency
+    return re.sub(r'(?<![\d–])([0-9]+)(\s*)(€|EUR)', replace, text)
+
+
+from stage_copy import integration_section, table_rows, language_lines
+from dealer_copy import inline as _stage_inline
+
+_stage_rows = table_rows(integration_section('B1'))
+_stage_langs = ('en', 'pt', 'ru', 'uk')
+_stage_fields = {row[0]:dict(zip(_stage_langs,row[1:])) for row in _stage_rows if row[0] in ('Section title','H2')}
+_stage_prose = [row for row in _stage_rows if row[0] in ('EN','PT','RU','UK')]
+_stage_buttons = {row[0]:dict(zip(_stage_langs,row[1:])) for row in _stage_rows if row[0] in ('Page link → `/stage-1/','PDF') or row[0].startswith('Page link')}
+STAGE_CATALOGUES = {lang:f'/pricing/files/ICM_Stage-1_DCF-Performance_{lang.upper()}.pdf' for lang in LANGS}
+STAGE_SECTION = {
+    'num':'07', 'anchor':'stage-1', 'html_id':'stage-1', 'kind':'fixed_services',
+    'title':_stage_fields['Section title'], 'h2':_stage_fields['H2'],
+    'intro':{row[0].lower():_stage_inline(row[1], '') for row in _stage_prose[:4]},
+    'note':{row[0].lower():row[1] for row in _stage_prose[4:]},
+    'cards':[], 'page_button':next(v for k,v in _stage_buttons.items() if k.startswith('Page link')),
+    'pdf_button':_stage_buttons['PDF'],
+}
+for _row in _stage_rows:
+    if _row[0] not in (*STAGE_PRICES,'stage1_options'): continue
+    _names={};_descs={}
+    for _lang,_value in zip(_stage_langs,_row[2:]):
+        _names[_lang],_descs[_lang]=_value.rsplit(' — ',1)
+    STAGE_SECTION['cards'].append({'id':_row[0], 'name':_names,'desc':_descs,
+        **({'price':STAGE_PRICES[_row[0]]+' EUR'} if _row[0] in STAGE_PRICES else {'price':{'en':'on request','pt':'sob consulta','ru':'по запросу','uk':'за запитом'}})})
+SEC_07['num']='08'
+SECTIONS.insert(-1,STAGE_SECTION)
+_stage_downloads=table_rows(integration_section('B2'))
+for _lang in LANGS:
+    LABELS[_lang]['page_description']=language_lines('B3')[_lang]
+    # Other existing prices in metadata remain owned by their original rows.
+    for _amount in STAGE_PRICES.values():
+        LABELS[_lang]['page_description']=LABELS[_lang]['page_description'].replace(_amount+' €',resolve_stage_prices(_amount+' €'))
+    LABELS[_lang]['download_pdf']=next(row[1+_stage_langs.index(_lang)] for row in _stage_downloads if row[0].startswith('1 —'))
+    LABELS[_lang]['download_stage_pdf']=STAGE_SECTION['pdf_button'][_lang]

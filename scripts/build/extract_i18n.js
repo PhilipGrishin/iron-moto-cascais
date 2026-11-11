@@ -35,6 +35,11 @@ for (; i < content.length; i++) {
 }
 const literal = content.slice(startIdx + 'const I18N = '.length, i);
 const I18N = eval('(' + literal + ')');
+// Registry-owned stage labels also serve static chrome in every language.
+const { execFileSync } = require('child_process');
+const stage = JSON.parse(execFileSync(process.env.PYTHON || 'python3', ['-c',
+  "import sys,json;sys.path.insert(0,sys.argv[1]);from stage_pages_data import STAGE_I18N;print(json.dumps(STAGE_I18N))", BUILD_DIR], {encoding:'utf8'}));
+for (const lang of Object.keys(I18N)) Object.assign(I18N[lang], stage[lang]);
 
 fs.writeFileSync(path.join(BUILD_DIR, 'i18n.json'), JSON.stringify(I18N, null, 2));
 console.log('Saved i18n.json with languages:', Object.keys(I18N).join(', '));

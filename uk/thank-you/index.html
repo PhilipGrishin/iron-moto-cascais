@@ -29,7 +29,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="/assets/main.css?v=20261101a" rel="stylesheet"/>
+<link href="/assets/main.css?v=20261111a" rel="stylesheet"/>
 <style>
 .subpage{padding:160px 0 100px;background:#0a0a0a;position:relative;overflow:hidden;isolation:isolate}
 .subpage::before{content:"";position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,87,34,.20),transparent 60%);pointer-events:none;z-index:1}
@@ -96,7 +96,7 @@
 <nav aria-label="Primary" class="nav">
 <div class="nav-dropdown">
 <a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.services" href="/uk/services/">Послуги</a>
-<div aria-label="Services" class="nav-dropdown-menu">
+<div aria-label="Послуги" class="nav-dropdown-menu">
 <a data-i18n="nav.allServices" href="/uk/services/">Усі послуги</a>
 <a data-i18n="services.s1.title" href="/uk/motorcycle-service/">Сервіс і ремонт</a>
 <a data-i18n="services.s2.title" href="/uk/parts/">Запчастини та витратники</a>
@@ -108,7 +108,7 @@
 </div>
 <div class="nav-dropdown">
 <a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.brands" href="/uk/#brands">Бренди</a>
-<div aria-label="Brands" class="nav-dropdown-menu">
+<div aria-label="Бренди" class="nav-dropdown-menu">
 <a data-i18n="nav.brandHarley" href="/uk/harley-service/">Harley-Davidson</a>
 <a data-i18n="nav.brandBmw" href="/uk/bmw-service/">BMW Motorrad</a>
 <a data-i18n="nav.brandDucati" href="/uk/ducati-service/">Ducati</a>
@@ -128,12 +128,14 @@
 </div>
 </div>
 <div class="nav-dropdown">
-<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.authorizedDealer" href="/uk/authorized-dealer/">Офіційний дилер</a>
-<div aria-label="Authorized Dealer" class="nav-dropdown-menu"><a data-i18n="nav.authorizedDealerHub" href="/uk/authorized-dealer/">Дилерський хаб</a><a data-i18n="nav.dealerCway" href="/uk/authorized-dealer/c-way/">C-Way</a><a data-i18n="nav.dealerDcf" href="/uk/authorized-dealer/dcf-performance/">DCF-Performance</a></div>
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.stage" href="/uk/stage-1/">Stage</a>
+<div aria-label="Stage" class="nav-dropdown-menu">
+<a data-i18n="nav.stage1" href="/uk/stage-1/">Stage 1</a>
+</div>
 </div>
 <div class="nav-dropdown">
 <a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.projects" href="/uk/projects/">Проєкти</a>
-<div aria-label="Projects" class="nav-dropdown-menu">
+<div aria-label="Проєкти" class="nav-dropdown-menu">
 <a data-i18n="nav.allProjects" href="/uk/projects/">Усі проєкти</a>
 <a href="/uk/projects/inspirium/">Inspirium</a>
 <a href="/uk/projects/beckman/">Beckman</a>
@@ -149,11 +151,12 @@
 <a href="/uk/projects/cocktail/">Cocktail</a>
 <a href="/uk/projects/fetish/">Fetish</a>
 <a href="/uk/projects/the-first/">The First</a>
+<a href="/uk/projects/spaniard/">Spaniard</a>
 </div>
 </div>
 <div class="nav-dropdown">
 <a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.about" href="/uk/about/">Про нас</a>
-<div aria-label="About" class="nav-dropdown-menu">
+<div aria-label="Про нас" class="nav-dropdown-menu">
 <a data-i18n="nav.aboutUs" href="/uk/about/">Про нас</a>
 <a data-i18n="nav.blog" href="/uk/blog/">Блог</a>
 <a data-i18n="nav.news" href="/uk/news/">Новини</a>
@@ -167,13 +170,13 @@
 <div class="header-actions">
 <div class="lang-switcher">
 <button aria-expanded="false" aria-haspopup="true" class="lang-current" id="langBtn">
-<span id="langCurrent">EN</span>
+<span id="langCurrent">UK</span>
 <svg fill="none" height="10" stroke="currentColor" stroke-width="1.6" viewbox="0 0 12 12" width="10"><path d="M3 5l3 3 3-3"></path></svg>
 </button>
 <div class="lang-menu" id="langMenu" role="menu">
-<button aria-current="true" data-lang="en">EN · English</button>
+<button data-lang="en">EN · English</button>
 <button data-lang="ru">RU · Русский</button>
-<button data-lang="uk">UK · Українська</button>
+<button data-lang="uk" aria-current="true">UK · Українська</button>
 <button data-lang="pt">PT · Português</button>
 </div>
 </div>
@@ -217,8 +220,10 @@
 </div>
 </details>
 <details class="mobile-nav-group">
-<summary class="mobile-nav-summary"><span data-i18n="nav.authorizedDealer">Офіційний дилер</span></summary>
-<div class="mobile-subnav"><a data-i18n="nav.authorizedDealerHub" href="/uk/authorized-dealer/">Дилерський хаб</a><a data-i18n="nav.dealerCway" href="/uk/authorized-dealer/c-way/">C-Way</a><a data-i18n="nav.dealerDcf" href="/uk/authorized-dealer/dcf-performance/">DCF-Performance</a></div>
+<summary class="mobile-nav-summary"><span data-i18n="nav.stage">Stage</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.stage1" href="/uk/stage-1/">Stage 1</a>
+</div>
 </details>
 <details class="mobile-nav-group">
 <summary class="mobile-nav-summary"><span data-i18n="nav.projects">Проєкти</span></summary>
@@ -238,6 +243,7 @@
 <a href="/uk/projects/cocktail/">Cocktail</a>
 <a href="/uk/projects/fetish/">Fetish</a>
 <a href="/uk/projects/the-first/">The First</a>
+<a href="/uk/projects/spaniard/">Spaniard</a>
 </div>
 </details>
 <details class="mobile-nav-group">
@@ -257,9 +263,9 @@
 <a class="btn btn-primary" data-i18n="cta.bookHeader" href="/uk/contact/">Записатися</a>
 <a class="btn btn-ghost" data-i18n="cta.whatsapp" data-wa="" href="https://wa.me/351917961230" rel="noopener" target="_blank">Написати в WhatsApp</a>
 <div class="mobile-langs">
-<button aria-current="true" data-lang="en">EN</button>
+<button data-lang="en">EN</button>
 <button data-lang="ru">RU</button>
-<button data-lang="uk">UK</button>
+<button data-lang="uk" aria-current="true">UK</button>
 <button data-lang="pt">PT</button>
 </div>
 </div>
@@ -299,6 +305,7 @@
 <li><a data-i18n="nav.tyreServ" href="/uk/shynomontazh-mototsykliv/">Шиномонтаж і балансування</a></li>
 <li><a data-i18n="nav.preInsp" href="/uk/pre-purchase-inspection/">Інспекція перед купівлею</a></li>
 <li><a data-i18n="nav.fuelServ" href="/uk/fuel-system-service/">Карбюратори та паливна система</a></li>
+<li><a data-i18n="nav.stage1Footer" href="/uk/stage-1/">Stage 1 · прошивка ЕБК</a></li>
 <li><a data-i18n="nav.authorizedDealer" href="/uk/authorized-dealer/">Офіційний дилер</a></li>
 <li><a data-i18n="nav.expatWorkshop" href="/uk/english-speaking-motorcycle-workshop/">Для експатів</a></li>
 <li><a data-i18n="nav.brandHarley" href="/uk/harley-service/">Harley-Davidson</a></li>
@@ -401,6 +408,6 @@
 </div>
 </div>
 </div>
-<script defer="" src="/assets/main.js?v=20261101a"></script>
+<script defer="" src="/assets/main.js?v=20261111a"></script>
 </body>
 </html>

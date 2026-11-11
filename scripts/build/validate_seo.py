@@ -2,6 +2,7 @@
 """Validate core static SEO invariants across sitemap URLs."""
 
 from __future__ import annotations
+from stage_pages_data import STAGE_PAGES
 
 import json
 import re
@@ -74,6 +75,7 @@ except FeatureNotFound:
     HTML_PARSER = "html.parser"
 
 LOCALIZED_PATHS = {
+    *["/" + config["path"] for config in STAGE_PAGES.values()],
     "/",
     "/motorcycle-service/",
     "/fuel-system-service/",

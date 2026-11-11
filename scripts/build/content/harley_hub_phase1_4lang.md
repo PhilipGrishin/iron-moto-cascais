@@ -25,7 +25,7 @@ Iron Custom Motors is an independent Harley-Davidson specialist in Cascais, near
 
 ## Stage upgrades, explained
 
-**Stage 1** is the foundation: intake, exhaust and calibration working as one system. Done properly, the engine breathes better and responds cleaner everywhere — it is the upgrade almost every Harley benefits from first.
+**Stage 1** is the foundation: intake, exhaust and calibration working as one system. Done properly, the engine breathes better and responds cleaner everywhere — it is the upgrade almost every Harley benefits from first. The calibration is our [Stage 1](/stage-1/): an individual DCF-Performance file at a fixed 800 €; intake and exhaust are quoted separately.
 
 **Stage 2** adds camshafts on top of Stage 1. This is where the character of the engine changes: how torque arrives, where the bike pulls hardest. Cam choice depends on how you ride, and we choose it with you.
 
@@ -88,7 +88,7 @@ A Iron Custom Motors é uma oficina independente especialista em Harley-Davidson
 
 ## Os stages, explicados
 
-**Stage 1** é a base: admissão, escape e calibração a funcionar como um sistema único. Bem feito, o motor respira melhor e responde com mais limpeza em todo o regime — é o upgrade por onde quase todas as Harley devem começar.
+**Stage 1** é a base: admissão, escape e calibração a funcionar como um sistema único. Bem feito, o motor respira melhor e responde com mais limpeza em todo o regime — é o upgrade por onde quase todas as Harley devem começar. A calibração é o nosso [Stage 1](/pt/stage-1/): um ficheiro individual DCF-Performance a preço fixo de 800 €; a admissão e o escape são orçamentados à parte.
 
 **Stage 2** acrescenta árvores de cames ao Stage 1. É aqui que o carácter do motor muda: como o binário chega, onde a mota puxa com mais força. A escolha das cames depende de como conduz — e é feita consigo.
 
@@ -151,7 +151,7 @@ Iron Custom Motors — независимая мастерская по Harley-D
 
 ## Что такое стейджи
 
-**Stage 1** — фундамент: впуск, выпуск и калибровка, работающие как единая система. Сделанный как следует, он даёт мотору свободное дыхание и чистый отклик во всём диапазоне. С него стоит начинать почти любому Harley.
+**Stage 1** — фундамент: впуск, выпуск и калибровка, работающие как единая система. Сделанный как следует, он даёт мотору свободное дыхание и чистый отклик во всём диапазоне. С него стоит начинать почти любому Harley. Калибровка — это наш [Stage 1](/ru/stage-1/): индивидуальный файл DCF-Performance по фиксированной цене 800 €; впуск и выпуск считаются отдельно.
 
 **Stage 2** — распредвалы поверх Stage 1. Здесь меняется характер мотора: как приходит тяга, где мотоцикл тянет сильнее всего. Валы подбираются под вашу манеру езды — и вместе с вами.
 
@@ -214,7 +214,7 @@ Iron Custom Motors — незалежна майстерня, що спеціа�
 
 ## Стейджі — простими словами
 
-**Stage 1** — фундамент: впуск, випуск і калібрування як єдина система. Зроблений як слід, він дає мотору вільне дихання і чистий відгук у всьому діапазоні. Саме з нього варто починати майже кожному Harley.
+**Stage 1** — фундамент: впуск, випуск і калібрування як єдина система. Зроблений як слід, він дає мотору вільне дихання і чистий відгук у всьому діапазоні. Саме з нього варто починати майже кожному Harley. Калібрування — це наш [Stage 1](/uk/stage-1/): індивідуальний файл DCF-Performance за фіксованою ціною 800 €; впуск і випуск рахуються окремо.
 
 **Stage 2** — розподільні вали поверх Stage 1. Тут змінюється характер мотора: як приходить тяга, де мотоцикл тягне найдужче. Вали добираються під вашу манеру їзди — і разом з вами.
 

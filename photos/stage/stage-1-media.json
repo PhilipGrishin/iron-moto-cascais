@@ -1,0 +1,87 @@
+{
+  "source_filename": "stage1-hero_source.jpg",
+  "source_sha256": "ea8fd9054c624d28627c03993be9d900db1c4d1590d0ca915f1a6ff788d0574f",
+  "files": [
+    {
+      "path": "photos/stage/stage-1-hero-768.avif",
+      "bytes": 83888,
+      "dimensions": [
+        768,
+        613
+      ],
+      "sha256": "9945454bff469bf0e7d073bcf684c2337cfb126f7c207b2bae49e0077f3b10b3"
+    },
+    {
+      "path": "photos/stage/stage-1-hero-768.webp",
+      "bytes": 96140,
+      "dimensions": [
+        768,
+        613
+      ],
+      "sha256": "93baff2a92c10dd9f5c2c396ce2012810938640192152982501d87ecb806d40b"
+    },
+    {
+      "path": "photos/stage/stage-1-hero-768.jpg",
+      "bytes": 129498,
+      "dimensions": [
+        768,
+        613
+      ],
+      "sha256": "74be764e667a4efa3ab9759449860f3badd6625e2d627d0502a1d66d78023804"
+    },
+    {
+      "path": "photos/stage/stage-1-hero-1280.avif",
+      "bytes": 199014,
+      "dimensions": [
+        1280,
+        1021
+      ],
+      "sha256": "7547e9a3b1d2447b19562aee9662ea95d5eb071eba7e76a9b499f14afd99038c"
+    },
+    {
+      "path": "photos/stage/stage-1-hero-1280.webp",
+      "bytes": 231218,
+      "dimensions": [
+        1280,
+        1021
+      ],
+      "sha256": "0b5eb6a072f5a9fb9e11da9a809695f7d00bbe2151162f544a83215ca6e72025"
+    },
+    {
+      "path": "photos/stage/stage-1-hero-1280.jpg",
+      "bytes": 318876,
+      "dimensions": [
+        1280,
+        1021
+      ],
+      "sha256": "17f682318fb844f311ff7b43f5fe411ce15d16ce02a1f1ee881c72e7fcbb1e22"
+    },
+    {
+      "path": "photos/stage/stage-1-hero-1504.avif",
+      "bytes": 266614,
+      "dimensions": [
+        1504,
+        1200
+      ],
+      "sha256": "8ce337feb2124b2c73b46ea1036a234da07510b3442d62ac1f7d7a5ae0543dab"
+    },
+    {
+      "path": "photos/stage/stage-1-hero-1504.webp",
+      "bytes": 312106,
+      "dimensions": [
+        1504,
+        1200
+      ],
+      "sha256": "c4250f21d5215bb0ee91c2a3b63cb653d9bd2cb4a6347ceebaf00f8f6c0f759c"
+    },
+    {
+      "path": "photos/stage/stage-1-hero-1504.jpg",
+      "bytes": 440514,
+      "dimensions": [
+        1504,
+        1200
+      ],
+      "sha256": "286af1b8f13f52cb1ab1d24a2fe566d0d5d62f8470ba00e4266375bc7a2bb5bb"
+    }
+  ]
+}

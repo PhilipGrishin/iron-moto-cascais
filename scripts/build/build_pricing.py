@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup, FeatureNotFound
 from hero_images import hero_background_css
 from build_output import write_html_if_changed
 from localize_internal_links import rewrite_href
-from pricing_data import LABELS, SECTIONS, LANGS
+from pricing_data import LABELS, SECTIONS, LANGS, STAGE_CATALOGUES, STAGE_SECTION
 from seo_meta import upsert_robots_image_preview
 from site_chrome import apply_navigation_footer, localized_href
 
@@ -113,6 +113,7 @@ def build_pricing_main(lang: str) -> str:
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
         {L["download_pdf"]}
       </a>
+      <a href="{STAGE_CATALOGUES[lang]}" class="btn btn-ghost pdf-dl" target="_blank" rel="noopener" data-cta="pdf">{L["download_stage_pdf"]}</a>
     </div>
     <p class="tax-note">{L["all_prices_include"]}</p>
   </div>
@@ -127,7 +128,7 @@ def build_pricing_main(lang: str) -> str:
         intro = section["intro"][lang]
 
         parts.append(f'''
-<section class="sub-section price-section" id="sec-{anchor}">
+<section class="sub-section price-section" id="{section.get("html_id", "sec-" + anchor)}">
   <div class="container">
     <div class="section-eyebrow">{num} · <span>{sec_title}</span></div>
     <div class="heading reveal">
@@ -143,6 +144,7 @@ def build_pricing_main(lang: str) -> str:
                 name = card["name"][lang]
                 desc = card["desc"][lang]
                 price = card["price"]
+                if isinstance(price, dict): price = price[lang]
                 price_from = card.get("price_from")
                 price_suffix = card.get("price_suffix")
 
@@ -198,6 +200,7 @@ def build_pricing_main(lang: str) -> str:
                 from_html = f'<span class="from">{LABELS[lang]["from"]}</span> ' if card.get("price_from") else ""
                 suffix = card.get("price_suffix", "")
                 price = card["price"]
+                if isinstance(price, dict): price = price[lang]
                 display_price = price[:-4] + suffix + " €" if price.endswith(" EUR") else price + suffix
                 parts.append(f'''      <div class="price-card" data-price-id="{esc(card["id"])}">
         <div class="card-head">
@@ -293,7 +296,7 @@ def build_pricing_main(lang: str) -> str:
             parts.append(f'    <p class="section-note">{esc(section["note_install"][lang])}</p>')
             parts.append(f'    <p class="section-note section-note-alt">{esc(section["note_sourcing"][lang])}</p>')
 
-        elif num == "07":
+        elif "custom_title" in section:
             # Customizing & community
             parts.append(f'''    <div class="custom-block">
       <h3>{esc(section["custom_title"][lang])}</h3>
@@ -309,6 +312,8 @@ def build_pricing_main(lang: str) -> str:
             parts.append('    </div>')
             parts.append(f'    <p class="section-slogan">{esc(section["slogan"][lang])}</p>')
 
+        if section.get('kind') == 'fixed_services':
+            parts.append(f'<div class="subpage-cta"><a class="btn btn-primary" href="{localized_href("/stage-1/", lang)}">{section["page_button"][lang]}</a><a class="btn btn-ghost" data-cta="pdf" target="_blank" rel="noopener" href="{STAGE_CATALOGUES[lang]}">{section["pdf_button"][lang]}</a></div>')
         parts.append('  </div>')
         parts.append('</section>')
 
@@ -463,10 +468,10 @@ def build_jsonld(lang: str) -> dict:
 
     offers = []
     for section in SECTIONS:
-        if section["num"] == "07":
+        if "custom_title" in section:
             continue
         # Skip table-only and column-style sections in JSON-LD (only push card-style)
-        if section["num"] in ("01", "02", "06"):
+        if section["num"] in ("01", "02", "06") or section.get("kind") == "fixed_services":
             items = list(section.get("cards") or section.get("groups", []))
             items.extend(section.get("brand_specific_cards", []))
             for it in items:
@@ -476,6 +481,7 @@ def build_jsonld(lang: str) -> dict:
                 else:
                     name = name_dict
                 price = it.get("price", "")
+                if isinstance(price, dict): continue
                 # Parse price number
                 m = re.search(r"(\d+)", price)
                 if not m: continue
@@ -485,7 +491,7 @@ def build_jsonld(lang: str) -> dict:
                     "name": name,
                     "price": amount,
                     "priceCurrency": "EUR",
-                    "url": f"{page_url}#sec-{section['anchor']}",
+                    "url": f"{page_url}#{section.get('html_id', 'sec-' + section['anchor'])}",
                 }
                 offers.append(offer)
 
@@ -495,7 +501,7 @@ def build_jsonld(lang: str) -> dict:
                 "name": it["name"][lang],
                 "price": it["schema_price"],
                 "priceCurrency": "EUR",
-                "url": f"{page_url}#sec-{section['anchor']}",
+                "url": f"{page_url}#{section.get('html_id', 'sec-' + section['anchor'])}",
             })
 
     return {

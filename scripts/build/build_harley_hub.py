@@ -118,7 +118,7 @@ PAGE_CSS = """
 def detect_cache_bust() -> str:
     text = (SITE_ROOT / "index.html").read_text(encoding="utf-8")
     match = re.search(r"/assets/main\.css\?v=([a-zA-Z0-9]+)", text)
-    return match.group(1) if match else "20261101a"
+    return match.group(1) if match else "20261111a"
 
 
 def canonical_path(slug: str, lang: str) -> str:
@@ -336,6 +336,8 @@ def parse_language(block: str, lang: str) -> dict:
 
 def load_copy() -> dict[str, dict[str, dict]]:
     source = COPY_FILE.read_text(encoding="utf-8")
+    from pricing_data import resolve_stage_prices
+    source = re.sub(r'^\*\*Stage 1\*\*.+?$', lambda m: resolve_stage_prices(m[0]), source, flags=re.M)
     parsed = {}
     for page_code, page_source in split_pages(source).items():
         config = PAGE_CONFIG[page_code]

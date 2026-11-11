@@ -8,6 +8,7 @@ and generated boilerplate that should not trigger crawler recrawl priority.
 """
 
 from __future__ import annotations
+from stage_pages_data import STAGE_PAGES
 
 from datetime import datetime, time
 import re
@@ -57,6 +58,7 @@ NEWS_PRIORITIES = {
 
 # (path, changefreq, priority)
 PAGES = [
+    *[(config["path"], "monthly", "0.9") for config in STAGE_PAGES.values()],
     ("", "weekly", "1.0"),
     ("motorcycle-service/", "monthly", "0.9"),
     ("fuel-system-service/", "monthly", "0.9"),

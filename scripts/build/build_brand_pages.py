@@ -39,7 +39,7 @@ from w4_shared_data import RELATED_DESCRIPTIONS, related_description_key
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
 DOMAIN = "https://ironcustommotors.com"
-CACHE_BUST = "20261101a"
+CACHE_BUST = "20261111a"
 
 SEO_I18N = {
     "en": {
@@ -190,6 +190,8 @@ BRAND_SERVICE_LABELS = {
 
 def page_i18n_for(slug):
     pages = {}
+    related_paths = {href for _key, href, _label in BRAND_RELATED_LINKS[slug]}
+    related_paths.update(f"/{other}/" for other in BRAND_ORDER if other != slug)
     for lang, values in PAGE_I18N[slug].items():
         merged = {**values, **SEO_I18N[lang]}
         # W3 retired the generic related-card filler stored in legacy page data.
@@ -233,7 +235,7 @@ def page_i18n_for(slug):
         merged.update(trust_i18n(lang))
         merged.update({
             related_description_key(path): descriptions[lang]
-            for path, descriptions in RELATED_DESCRIPTIONS.items()
+            for path, descriptions in RELATED_DESCRIPTIONS.items() if path in related_paths
         })
         for key, value in values.items():
             if key.startswith("seo.") and not key.startswith(("seo.related", "seo.otherBrand")):
@@ -871,7 +873,7 @@ def render(slug):
     # This renderer owns the complete brand-page dictionary. Writing it as a
     # replacement (rather than merging) lets retired keys disappear instead of
     # surviving forever in generated HTML.
-    write_html_if_changed(out, html, preserve_body_shell=True, preserve_downstream_head=True)
+    write_html_if_changed(out, html, preserve_body_shell=True, merge_page_i18n=True, preserve_downstream_head=True)
     return out
 
 

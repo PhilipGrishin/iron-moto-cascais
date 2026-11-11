@@ -74,7 +74,7 @@ def price_text(item: dict[str, Any], lang: str) -> str:
     bits = []
     if item.get("price_from"):
         bits.append(LABELS[lang]["from"])
-    bits.append(item["price"])
+    bits.append(t(item["price"], lang))
     if item.get("price_suffix") == "per_hour":
         bits.append(LABELS[lang]["per_hour"])
     elif item.get("price_suffix"):
@@ -442,7 +442,7 @@ def build_story(lang: str, styles: dict[str, ParagraphStyle]) -> list[Any]:
         if index:
             flow.append(Spacer(1, 4))
         flow.extend(section_header(section, lang, styles))
-        if section["num"] in {"01", "06"}:
+        if section["num"] in {"01", "06"} or section.get("kind") == "fixed_services":
             flow.extend(price_cards(section, lang, styles))
         elif section["num"] == "02":
             flow.extend(scheduled_section(section, lang, styles))
@@ -452,7 +452,7 @@ def build_story(lang: str, styles: dict[str, ParagraphStyle]) -> list[Any]:
             flow.extend(valves_wheels_section(section, lang, styles))
         elif section["num"] == "05":
             flow.extend(accessories_section(section, lang, styles))
-        elif section["num"] == "07":
+        elif "custom_title" in section:
             flow.extend(custom_section(section, lang, styles))
 
     flow.extend(

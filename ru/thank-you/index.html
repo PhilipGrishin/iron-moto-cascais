@@ -29,7 +29,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="/assets/main.css?v=20261101a" rel="stylesheet"/>
+<link href="/assets/main.css?v=20261111a" rel="stylesheet"/>
 <style>
 .subpage{padding:160px 0 100px;background:#0a0a0a;position:relative;overflow:hidden;isolation:isolate}
 .subpage::before{content:"";position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,87,34,.20),transparent 60%);pointer-events:none;z-index:1}
@@ -96,7 +96,7 @@
 <nav aria-label="Primary" class="nav">
 <div class="nav-dropdown">
 <a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.services" href="/ru/services/">Услуги</a>
-<div aria-label="Services" class="nav-dropdown-menu">
+<div aria-label="Услуги" class="nav-dropdown-menu">
 <a data-i18n="nav.allServices" href="/ru/services/">Все услуги</a>
 <a data-i18n="services.s1.title" href="/ru/motorcycle-service/">Сервис и ремонт</a>
 <a data-i18n="services.s2.title" href="/ru/parts/">Запчасти и расходники</a>
@@ -108,7 +108,7 @@
 </div>
 <div class="nav-dropdown">
 <a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.brands" href="/ru/#brands">Бренды</a>
-<div aria-label="Brands" class="nav-dropdown-menu">
+<div aria-label="Бренды" class="nav-dropdown-menu">
 <a data-i18n="nav.brandHarley" href="/ru/harley-service/">Harley-Davidson</a>
 <a data-i18n="nav.brandBmw" href="/ru/bmw-service/">BMW Motorrad</a>
 <a data-i18n="nav.brandDucati" href="/ru/ducati-service/">Ducati</a>
@@ -128,12 +128,14 @@
 </div>
 </div>
 <div class="nav-dropdown">
-<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.authorizedDealer" href="/ru/authorized-dealer/">Официальный дилер</a>
-<div aria-label="Authorized Dealer" class="nav-dropdown-menu"><a data-i18n="nav.authorizedDealerHub" href="/ru/authorized-dealer/">Дилерский хаб</a><a data-i18n="nav.dealerCway" href="/ru/authorized-dealer/c-way/">C-Way</a><a data-i18n="nav.dealerDcf" href="/ru/authorized-dealer/dcf-performance/">DCF-Performance</a></div>
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.stage" href="/ru/stage-1/">Stage</a>
+<div aria-label="Stage" class="nav-dropdown-menu">
+<a data-i18n="nav.stage1" href="/ru/stage-1/">Stage 1</a>
+</div>
 </div>
 <div class="nav-dropdown">
 <a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.projects" href="/ru/projects/">Проекты</a>
-<div aria-label="Projects" class="nav-dropdown-menu">
+<div aria-label="Проекты" class="nav-dropdown-menu">
 <a data-i18n="nav.allProjects" href="/ru/projects/">Все проекты</a>
 <a href="/ru/projects/inspirium/">Inspirium</a>
 <a href="/ru/projects/beckman/">Beckman</a>
@@ -149,11 +151,12 @@
 <a href="/ru/projects/cocktail/">Cocktail</a>
 <a href="/ru/projects/fetish/">Fetish</a>
 <a href="/ru/projects/the-first/">The First</a>
+<a href="/ru/projects/spaniard/">Spaniard</a>
 </div>
 </div>
 <div class="nav-dropdown">
 <a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.about" href="/ru/about/">О нас</a>
-<div aria-label="About" class="nav-dropdown-menu">
+<div aria-label="О нас" class="nav-dropdown-menu">
 <a data-i18n="nav.aboutUs" href="/ru/about/">О нас</a>
 <a data-i18n="nav.blog" href="/ru/blog/">Блог</a>
 <a data-i18n="nav.news" href="/ru/news/">Новости</a>
@@ -167,12 +170,12 @@
 <div class="header-actions">
 <div class="lang-switcher">
 <button aria-expanded="false" aria-haspopup="true" class="lang-current" id="langBtn">
-<span id="langCurrent">EN</span>
+<span id="langCurrent">RU</span>
 <svg fill="none" height="10" stroke="currentColor" stroke-width="1.6" viewbox="0 0 12 12" width="10"><path d="M3 5l3 3 3-3"></path></svg>
 </button>
 <div class="lang-menu" id="langMenu" role="menu">
-<button aria-current="true" data-lang="en">EN · English</button>
-<button data-lang="ru">RU · Русский</button>
+<button data-lang="en">EN · English</button>
+<button data-lang="ru" aria-current="true">RU · Русский</button>
 <button data-lang="uk">UK · Українська</button>
 <button data-lang="pt">PT · Português</button>
 </div>
@@ -217,8 +220,10 @@
 </div>
 </details>
 <details class="mobile-nav-group">
-<summary class="mobile-nav-summary"><span data-i18n="nav.authorizedDealer">Официальный дилер</span></summary>
-<div class="mobile-subnav"><a data-i18n="nav.authorizedDealerHub" href="/ru/authorized-dealer/">Дилерский хаб</a><a data-i18n="nav.dealerCway" href="/ru/authorized-dealer/c-way/">C-Way</a><a data-i18n="nav.dealerDcf" href="/ru/authorized-dealer/dcf-performance/">DCF-Performance</a></div>
+<summary class="mobile-nav-summary"><span data-i18n="nav.stage">Stage</span></summary>
+<div class="mobile-subnav">
+<a data-i18n="nav.stage1" href="/ru/stage-1/">Stage 1</a>
+</div>
 </details>
 <details class="mobile-nav-group">
 <summary class="mobile-nav-summary"><span data-i18n="nav.projects">Проекты</span></summary>
@@ -238,6 +243,7 @@
 <a href="/ru/projects/cocktail/">Cocktail</a>
 <a href="/ru/projects/fetish/">Fetish</a>
 <a href="/ru/projects/the-first/">The First</a>
+<a href="/ru/projects/spaniard/">Spaniard</a>
 </div>
 </details>
 <details class="mobile-nav-group">
@@ -257,8 +263,8 @@
 <a class="btn btn-primary" data-i18n="cta.bookHeader" href="/ru/contact/">Записаться</a>
 <a class="btn btn-ghost" data-i18n="cta.whatsapp" data-wa="" href="https://wa.me/351917961230" rel="noopener" target="_blank">Написать в WhatsApp</a>
 <div class="mobile-langs">
-<button aria-current="true" data-lang="en">EN</button>
-<button data-lang="ru">RU</button>
+<button data-lang="en">EN</button>
+<button data-lang="ru" aria-current="true">RU</button>
 <button data-lang="uk">UK</button>
 <button data-lang="pt">PT</button>
 </div>
@@ -299,6 +305,7 @@
 <li><a data-i18n="nav.tyreServ" href="/ru/shinomontazh-mototsiklov/">Шиномонтаж и балансировка</a></li>
 <li><a data-i18n="nav.preInsp" href="/ru/pre-purchase-inspection/">Инспекция перед покупкой</a></li>
 <li><a data-i18n="nav.fuelServ" href="/ru/fuel-system-service/">Карбюраторы и топливная система</a></li>
+<li><a data-i18n="nav.stage1Footer" href="/ru/stage-1/">Stage 1 · прошивка ЭБУ</a></li>
 <li><a data-i18n="nav.authorizedDealer" href="/ru/authorized-dealer/">Официальный дилер</a></li>
 <li><a data-i18n="nav.expatWorkshop" href="/ru/english-speaking-motorcycle-workshop/">Для экспатов</a></li>
 <li><a data-i18n="nav.brandHarley" href="/ru/harley-service/">Harley-Davidson</a></li>
@@ -401,6 +408,6 @@
 </div>
 </div>
 </div>
-<script defer="" src="/assets/main.js?v=20261101a"></script>
+<script defer="" src="/assets/main.js?v=20261111a"></script>
 </body>
 </html>

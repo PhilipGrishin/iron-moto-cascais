@@ -41,6 +41,7 @@ copy or business-semantic validation.
 | Script | Maintained input | Direct output | Focused protection |
 |---|---|---|---|
 | `build_new_pages.py` | `new_pages_data.py`, existing chrome | English general hub pages | broad SEO |
+| `build_stage_pages.py` | `stage_pages_data.py`, checksum-approved Stage Markdown | all four Stage variants | `validate_stage_pages.py` |
 | `build_authorized_dealer.py` | `authorized_dealer_data.py`, approved partner Markdown, existing chrome | localized Authorized Dealer family | `validate_authorized_dealer.py` and broad SEO |
 | `build_brand_pages.py` | `brand_pages_data.py`, checked Wave 2 copy, `pricing_data.py` | English registered brand pages | `validate_brand_pages.py` |
 | `build_legal_pages.py` | `legal_pages_data.py`, service chrome | localized legal pages | broad SEO; no legal-copy validator |
@@ -63,15 +64,15 @@ copy or business-semantic validation.
 
 | Script | Maintained input | Direct output | Focused protection |
 |---|---|---|---|
-| `nav_patch.py` | `site_chrome.py`, sitemap registry | navigation/footer on sitemap HTML; partner menus and managed footer columns on noindex thank-you pages | broad SEO chrome parity |
+| `nav_patch.py` | `site_chrome.py`, sitemap registry | navigation/footer on sitemap HTML; canonical desktop/mobile menus and managed footer columns on noindex thank-you pages | broad SEO chrome parity |
 | `enhance_money_pages.py` | compatibility page map, checked Wave 3 related-description registry | related/local blocks in pages still owned by the compatibility path; current page map is empty | broad SEO and commercial-hub checks |
 | `localize_internal_links.py` | `LOCALIZED_PATHS` | same-language links in localized HTML | broad SEO locality |
 | `add_image_dims.py` | local image files | width/height on HTML images | broad SEO asset checks |
 | `apply_seo_meta.py` | sitemap HTML, `seo_meta.py`, `hero_images.py` | robots/LCP/preload normalization and canonical-byte restoration when the final DOM matches tracked output | broad SEO and focused hero modes |
-| `extract_i18n.js` | `assets/main.js` `I18N` | `i18n.json` | consumers and broad SEO pre-render checks |
+| `extract_i18n.js` | `assets/main.js` `I18N` plus registry-derived Stage labels | `i18n.json` | consumers and broad SEO pre-render checks |
 | `optimize_hero_images.py` | a registered brand slug or local source image | responsive hero variants | family asset checks where implemented |
 | `optimize_tyre_service_images.py` | tyre media sources and checksum manifest | tyre responsive variants and manifest | source checksum/idempotence logic |
-| `import_dealer_images.py` | registered partner hero and supplied image | 768/1280/1536 AVIF/WebP/JPEG and media hash manifest | partner media validator |
+| `import_dealer_images.py` | registered dealer/Stage hero and approved supplied image | registered non-upscaled AVIF/WebP/JPEG and media hash manifest | partner media validator |
 | `import_project_images.py` | registered project config and source directory | responsive project hero/gallery media | project validator |
 | `import_news_images.py` | registered standalone News media delivery | responsive News hero/gallery media | News and broad SEO validators |
 | `optimize_project_exhibition_images.py` | registered exhibition media config and one approved source image | responsive exhibition AVIF/WebP/JPEG variants | project validator |
@@ -85,6 +86,8 @@ source media changes and review the binary diff.
 | Module | Owner / consumers |
 |---|---|
 | `authorized_dealer_data.py` | Authorized Dealer hub, priced catalogs and `COPY_DEALER_PAGES` registry |
+| `stage_pages_data.py` | Stage registry, media, navigation/footer labels and discovery names |
+| `stage_copy.py` | checksum-checked Stage copy and supplemental integration tables |
 | `dealer_copy.py` | checksum validation and labelled multilingual partner-copy parser |
 | `blog_data.py` | blog registry, localized article content and media/schema inputs |
 | `brand_pages_data.py` | brand registry, metadata and localized page content |
@@ -120,9 +123,10 @@ module is named above or in `docs/CONTENT_TYPES.md`.
 | `validate_harley_hub.py` | exact maintained copy; visual tokens; hero media; schema families; language-local links; feed/portfolio and required integrations | live browser behavior; external RRT; performance benefit |
 | `validate_service_custom_hubs.py` | exact four-language copy-driven hub output; Wave 3 source checksums; optional deferred video/schema/placement; carburettor note; pricing anchors; WhatsApp/form CTAs; trust-strip inventory and labels; related-description registry use; retired filler/key absence; approved head trims and price-head parity | external Rich Results UI; measured network performance |
 | `validate_project_pages.py` | every registered project: exact source copy; media; schema graph/dates/references; cache-bust; redirects; listing/sitemap and optional Custom/Harley integration | browser rendering; external RRT |
-| `validate_authorized_dealer.py` | exact approved partner copy, section/card counts, metadata, FAQ/Service/image schema, responsive hero selection, media/EXIF, local links, hub card/intro and all partner menus | live browser network behavior; external Rich Results |
+| `validate_authorized_dealer.py` | exact approved partner copy, section/card counts, metadata, FAQ/Service/image schema, responsive hero selection, media/EXIF, local links, hub card/intro and footer discovery and partner integration | live browser network behavior; external Rich Results |
+| `validate_stage_pages.py` | exact Stage copy/order, prices/Offers, FAQ, links, catalogue/media hashes and all managed desktop/mobile/footer menus | external browser/Rich Results |
 | `validate_news.py` | approved Markdown News copy/order, metadata, gallery ALTs/placement, dates, shared project hero and explicit related selections | legacy article copy; live browser/network behavior; external RRT |
-| `validate_w4_routing.py` | Wave 4 source checksum; homepage intent anchors; 21-target registry; complete 9-post related mapping; localized card order/copy/placement; orphan anchors; legacy project rows; Blog dates | visual overflow; external Rich Results UI |
+| `validate_w4_routing.py` | Wave 4 source checksum; homepage intent anchors; 22-target registry; complete 9-post related mapping; localized card order/copy/placement; orphan anchors; legacy project rows; Blog dates | visual overflow; external Rich Results UI |
 
 Scripts or data families without a dedicated validator rely on broad SEO plus
 manual/source review. This is a known coverage boundary, not proof of failure.
@@ -137,6 +141,7 @@ and excludes binary media optimization.
 node scripts/build/extract_i18n.js
 python3 scripts/build/build_new_pages.py
 python3 scripts/build/build_authorized_dealer.py
+python3 scripts/build/build_stage_pages.py
 python3 scripts/build/build_brand_pages.py
 python3 scripts/build/build_legal_pages.py
 python3 scripts/build/build_news.py
@@ -163,6 +168,7 @@ python3 scripts/build/validate_brand_pages.py
 python3 scripts/build/validate_harley_hub.py
 python3 scripts/build/validate_news.py
 python3 scripts/build/validate_authorized_dealer.py
+python3 scripts/build/validate_stage_pages.py
 python3 scripts/build/validate_service_custom_hubs.py
 python3 scripts/build/validate_w4_routing.py
 for slug in $(python3 -c "import sys; sys.path.insert(0, 'scripts/build'); from project_pages_data import PROJECT_CONFIGS; print(' '.join(sorted(PROJECT_CONFIGS)))"); do
@@ -271,7 +277,7 @@ Approved hub source SHA-256 values are enforced by `EXPECTED_SOURCE_SHA256` in
 | `service_hub_copy_4lang.md` | `95c584b5770659c04a90e462e2f120938caafb7a19c3030a21ac95fbd08b21bb` |
 | `custom_hub_copy_4lang.md` | `10790be1dab936791dd01b47bcfa9c3f1c73e12cc495275d2195a025a14f4292` |
 | `parts_hub_copy_4lang.md` | `86687081e07eb74377e9d15aa0c81aca3a2beec138dfc7677ebb4ace5272538e` |
-| `upgrades_hub_copy_4lang.md` | `08a055bcf4823eb92bfd1a59937401ed4413f3c0f0dc522a4e2e0d1a72359c9b` |
+| `upgrades_hub_copy_4lang.md` | `bc92baf500066b095fb2dae6c58d014572f1eb8fde0297fa5e7d6c25895fe727` |
 | `fuel_system_copy_4lang.md` | `8d4fbb1bf4d027d72d583d41e2d9a3f83a8227d97b79667fc9f0a037c0f4c6b2` |
 
 Fuel System uses the existing service hero when no approved separate image is
@@ -387,13 +393,13 @@ before the page sequence.
 ## Authorized Dealer Workflow
 
 The hub and priced C-Way catalog remain in `authorized_dealer_data.py`.
-Unpriced partners register in `COPY_DEALER_PAGES` and use `dealer_copy.py` plus
+Copy-driven partners register in `COPY_DEALER_PAGES` and use `dealer_copy.py` plus
 the same generator. New page copy is rendered directly in all four languages;
 new hub-card description keys also survive the hub's generic i18n pass.
 
 | Approved partner source | SHA-256 |
 |---|---|
-| `content/dcf_dealer_copy_4lang.md` | `3d3bd77bd92a71a3403ef6905025c8f3def1d30f08f1b63ca46098d9862e2aff` |
+| `content/dcf_dealer_copy_4lang.md` | `33ab00ec732367c157faa10000eb91eadf019db190e5d1043fb129b87185d99e` |
 
 Import an owner-approved image once; use the supplied source path:
 
@@ -569,6 +575,40 @@ The 10 legacy projects keep frozen localized `main_html`. Their four generic
 related rows (`/projects/`, `/custom/`, `/community/`, `/contact/`) are replaced
 at render time from the combined Wave 3 + Wave 4 description registry; update
 the 40 `visible_text_sha256` pins after an approved registry-copy change.
+
+## Stage Workflow
+
+`stage_pages_data.py` is the only page registry. Each entry supplies its approved
+source/checksum, price IDs, image widths, navigation/footer labels and machine
+name. `stage_copy.py` checks the complete four-language, thirteen-section contract
+before rendering. `pricing_data.resolve_stage_prices` rejects a currency amount
+that differs from the shared pricing IDs, then emits the registered value.
+Stage pages render directly; do not add them to generic `MAIN_PAGES`.
+
+| Approved input | SHA-256 |
+|---|---|
+| `content/stage1_copy_4lang.md` | `07b8736d102143bee2fb19c0b2cb7c808e494e1acc998728bc32ee7f9cb3e900` |
+| `content/stage1_integrations_4lang.md` | `96ca56e284774ac80837f72ab7fb854f951760844351c8e25cf31312df07f5a8` |
+| `content/stage1_news_4lang.md` | `1e1e728c0be79fd34f3513d7561473cea025d28a4d79dee48d7e4bf4006ea9c8` |
+
+For a changed approved hero only:
+
+```bash
+python3 scripts/build/import_dealer_images.py --family stage stage-1 \
+  "/absolute/path/to/stage1-hero_source.jpg"
+```
+
+The existing encoder rejects upscaling, validates a registered source checksum
+and records output dimensions, sizes and SHA-256. Binary imports are outside
+Full Safe Rebuild. Copy approved catalogues byte-identically; the four existing
+service price lists remain generated by `build_pricing_pdfs.py`.
+
+Run **Full Safe Rebuild**, then `bash scripts/build/verify_site.sh`. It includes
+Stage and all affected news/pricing/dealer/contextual generators. Verify header
+widths 1200/1280/1366/1440/1536/1920 in every language and Stage at 360/768/1280.
+Stage labels are added to `i18n.json` by the extractor from the registry; the
+runtime group label stays in `assets/main.js`. The registry also supplies
+sitemap paths, localized-link paths, llms names and Pages artifact directories.
 
 ## Pricing Workflow
 

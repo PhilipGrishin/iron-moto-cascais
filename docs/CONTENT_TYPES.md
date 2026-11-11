@@ -192,7 +192,7 @@ Commands: `scripts/build/README.md`, **Harley Hub workflow**.
 Ownership:
 
 - `authorized_dealer_data.py` owns the hub, C-Way catalog, partner cards and
-  `COPY_DEALER_PAGES` (DCF-Performance is the first unpriced copy-driven partner).
+  `COPY_DEALER_PAGES` (DCF-Performance is the first copy-driven tuning partner).
 - `build_authorized_dealer.py` renders the hub and maintained direct partner
   subpages.
 - `site_chrome.py` owns shared navigation and footer placement.
@@ -208,7 +208,7 @@ For C-Way and future priced partner catalogs:
 - Visible names, prices, currency, availability and schema must remain aligned.
 - Product media stays local and responsive.
 
-Unpriced partner copy uses `dealer_copy.py`: four language blocks, required
+Approved partner copy uses `dealer_copy.py`: four language blocks, required
 header fields and eleven ordered labelled sections (intro, changes, offer,
 process, why, honest, bikes, numbers, faq, cta, links). The parser checks the
 approved SHA before parsing, exact section/card counts and localized slugs.
@@ -216,7 +216,7 @@ approved SHA before parsing, exact section/card counts and localized slugs.
 language; C-Way's catalog data/render path is preserved. Shared partner CSS
 serves both paths. New hub descriptions use registry-derived page i18n keys.
 `validate_authorized_dealer.py` checks complete copy, FAQ/schema parity, media,
-links, hub integration and desktop/mobile dealer-menu order including utilities.
+links, hub integration and partner links. Stage validation protects the new shared menu including utilities.
 
 Partner service schemas use Service + Brand + FAQPage + BreadcrumbList and an
 ImageObject, with one resolving LocalBusiness provider; do not invent Offers
@@ -224,8 +224,11 @@ for work priced only by written estimate. C-Way retains Product/Offer entities.
 Images use registered dimensions, a single aligned responsive AVIF preload and
 AVIF/WebP/JPEG sources. Import via `import_dealer_images.py`; keep source/output
 hashes and actual weights in its manifest. Never infer hero images when a task
-requires an owner-supplied photo. Utility-page partner menus refresh through the
-shared registry while their forms and the rest of their header remain preserved.
+requires an owner-supplied photo. Authorized Dealer is footer/contextual-only by the owner decision of 2026-11-11.
+Do not restore its desktop or mobile header group without an explicit owner
+decision. Utility menus use the complete shared registry; utility forms stay
+untouched. The DCF source now describes a fixed-price service whose Offers live
+on the Stage page; its own dealer Service graph remains unpriced.
 
 Current partner inventory belongs only in `docs/PROJECT_STATE.md`.
 
@@ -420,6 +423,34 @@ Stable rules:
 
 Commands: `scripts/build/README.md`, **Project workflow**.
 
+## Stage Family
+
+Ownership: `stage_pages_data.py` registry, `stage_copy.py` parser,
+`build_stage_pages.py` renderer, `assets/stage.css` and
+`validate_stage_pages.py`. Approved source files remain byte-identical under
+`content/`; SHA-256 and the thirteen-section contract are checked before parsing.
+Pages render directly in all four languages. A new approved source plus one
+registry record drives navigation/footer membership, sitemap, hreflang,
+localization, discovery names and deployment directories. The group parent
+links to the first registered page; there is no separate Stage overview URL.
+
+Visible amounts, metadata and Service Offers resolve through `pricing_data.py`;
+source copy is required to agree with those amounts. Pricing HTML, OfferCatalog
+and generated service PDFs use the same rows. Additional options carry no
+numeric Offer. The client catalogues are immutable supplied PDFs, separate from
+generated service price lists. Media reuse is shared with News through
+`imageBase`/`heroWidths`; use the existing image encoder and retain provenance.
+
+The hero is followed by the shared snapshot-backed commercial trust strip.
+FAQPage mirrors the eight visible questions. Service has exactly the registered
+fixed-price Offers, a resolving business provider, Brand and hero ImageObject.
+Stage styling is confined to its family; it does not change shared chrome.
+
+The S-STAGE1-NAV owner addendum overrides Part A1 of the preserved integration
+source: Stage replaces Authorized Dealer after Harley Hub. Footer order is
+Fuel System, Stage 1, Authorized Dealer. Do not publish or link unlaunched pages.
+Commands and source checksums: `scripts/build/README.md`, **Stage Workflow**.
+
 ## Pricing
 
 Ownership:
@@ -447,6 +478,10 @@ Valve-clearance table cells express starting prices with a trailing `+` on
 each amount; ranges retain their bounds and place `+` after the upper bound.
 Prose uses the localized starting-price wording (`from`, `desde`, `от`, `від`).
 The pricing-table note explains the convention and written-estimate process.
+Brand renderers emit translations only for the related paths they display;
+the shared writer preserves historical unused payload entries on existing pages
+so an unrelated registry addition does not change protected brand output.
+
 Brand tables inherit the same cells; the approved hub, brand FAQ and metadata
 sources must stay aligned. This convention does not change scheduled-service
 groups or brand-specific full-service cards.
@@ -464,6 +499,10 @@ Ownership:
 - Sitemap-wide application: `nav_patch.py`.
 - Generic localized output: `build_i18n.py`.
 - Same-language link rewriting: `localize_internal_links.py`.
+
+The primary menu has Services, Brands, Harley Hub, Stage, Projects, About,
+Pricing and Contact, in that order. Authorized Dealer is reached through the
+footer and in-content links; its pages remain indexable.
 
 Do not hand-maintain separate desktop and mobile menu inventories. Shared
 rendering must preserve parent-link behavior, dropdown/accordion children,

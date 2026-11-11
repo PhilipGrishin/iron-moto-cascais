@@ -1,0 +1,317 @@
+{
+  "results": [
+    {
+      "lang": "en",
+      "w": 360,
+      "overflow": 0,
+      "price": {
+        "x": 20,
+        "y": 514.296875,
+        "right": 340,
+        "bottom": 644.796875,
+        "height": 130.5
+      },
+      "note": {
+        "x": 20,
+        "y": 660.796875,
+        "right": 340,
+        "bottom": 701.578125,
+        "height": 40.78125
+      },
+      "hero": "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif",
+      "heroResources": [
+        "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif"
+      ],
+      "images": true,
+      "mobile": true,
+      "processTop": 74.703125
+    },
+    {
+      "lang": "en",
+      "w": 768,
+      "overflow": 0,
+      "price": {
+        "x": 30.71875,
+        "y": 504.59375,
+        "right": 737.28125,
+        "bottom": 571.765625,
+        "height": 67.171875
+      },
+      "note": {
+        "x": 30.71875,
+        "y": 587.765625,
+        "right": 736.015625,
+        "bottom": 609.859375,
+        "height": 22.09375
+      },
+      "hero": "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif",
+      "heroResources": [
+        "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif"
+      ],
+      "images": true,
+      "mobile": true,
+      "processTop": 70.15625
+    },
+    {
+      "lang": "en",
+      "w": 1280,
+      "overflow": 0,
+      "price": {
+        "x": 51.1875,
+        "y": 540.71875,
+        "right": 771.1875,
+        "bottom": 630.3125,
+        "height": 89.59375
+      },
+      "note": {
+        "x": 51.1875,
+        "y": 646.3125,
+        "right": 756.484375,
+        "bottom": 668.40625,
+        "height": 22.09375
+      },
+      "hero": "http://127.0.0.1:8765/photos/stage/stage-1-hero-1280.avif",
+      "heroResources": [
+        "http://127.0.0.1:8765/photos/stage/stage-1-hero-1280.avif"
+      ],
+      "images": true,
+      "dropdown": true,
+      "processTop": 69.84375
+    },
+    {
+      "lang": "pt",
+      "w": 360,
+      "overflow": 0,
+      "price": {
+        "x": 20,
+        "y": 541.59375,
+        "right": 340,
+        "bottom": 672.09375,
+        "height": 130.5
+      },
+      "note": {
+        "x": 20,
+        "y": 688.09375,
+        "right": 340,
+        "bottom": 749.265625,
+        "height": 61.171875
+      },
+      "hero": "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif",
+      "heroResources": [
+        "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif"
+      ],
+      "images": true,
+      "mobile": true,
+      "processTop": 80.1875
+    },
+    {
+      "lang": "pt",
+      "w": 768,
+      "overflow": 0,
+      "price": {
+        "x": 30.71875,
+        "y": 531.78125,
+        "right": 737.28125,
+        "bottom": 598.953125,
+        "height": 67.171875
+      },
+      "note": {
+        "x": 30.71875,
+        "y": 614.953125,
+        "right": 736.015625,
+        "bottom": 637.046875,
+        "height": 22.09375
+      },
+      "hero": "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif",
+      "heroResources": [
+        "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif"
+      ],
+      "images": true,
+      "mobile": true,
+      "processTop": 70.34375
+    },
+    {
+      "lang": "pt",
+      "w": 1280,
+      "overflow": 0,
+      "price": {
+        "x": 51.1875,
+        "y": 621.65625,
+        "right": 771.1875,
+        "bottom": 711.25,
+        "height": 89.59375
+      },
+      "note": {
+        "x": 51.1875,
+        "y": 727.25,
+        "right": 756.484375,
+        "bottom": 749.34375,
+        "height": 22.09375
+      },
+      "hero": "http://127.0.0.1:8765/photos/stage/stage-1-hero-1280.avif",
+      "heroResources": [
+        "http://127.0.0.1:8765/photos/stage/stage-1-hero-1280.avif"
+      ],
+      "images": true,
+      "dropdown": true,
+      "processTop": 69.5625
+    },
+    {
+      "lang": "ru",
+      "w": 360,
+      "overflow": 0,
+      "price": {
+        "x": 20,
+        "y": 617.875,
+        "right": 340,
+        "bottom": 748.375,
+        "height": 130.5
+      },
+      "note": {
+        "x": 20,
+        "y": 764.375,
+        "right": 340,
+        "bottom": 825.546875,
+        "height": 61.171875
+      },
+      "hero": "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif",
+      "heroResources": [
+        "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif"
+      ],
+      "images": true,
+      "mobile": true,
+      "processTop": 76.65625
+    },
+    {
+      "lang": "ru",
+      "w": 768,
+      "overflow": 0,
+      "price": {
+        "x": 30.71875,
+        "y": 587.859375,
+        "right": 737.28125,
+        "bottom": 655.03125,
+        "height": 67.171875
+      },
+      "note": {
+        "x": 30.71875,
+        "y": 671.03125,
+        "right": 736.015625,
+        "bottom": 693.125,
+        "height": 22.09375
+      },
+      "hero": "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif",
+      "heroResources": [
+        "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif"
+      ],
+      "images": true,
+      "mobile": true,
+      "processTop": 70.125
+    },
+    {
+      "lang": "ru",
+      "w": 1280,
+      "overflow": 0,
+      "price": {
+        "x": 51.1875,
+        "y": 695.796875,
+        "right": 771.1875,
+        "bottom": 785.390625,
+        "height": 89.59375
+      },
+      "note": {
+        "x": 51.1875,
+        "y": 801.390625,
+        "right": 756.484375,
+        "bottom": 823.484375,
+        "height": 22.09375
+      },
+      "hero": "http://127.0.0.1:8765/photos/stage/stage-1-hero-1280.avif",
+      "heroResources": [
+        "http://127.0.0.1:8765/photos/stage/stage-1-hero-1280.avif"
+      ],
+      "images": true,
+      "dropdown": true,
+      "processTop": 69.71875
+    },
+    {
+      "lang": "uk",
+      "w": 360,
+      "overflow": 0,
+      "price": {
+        "x": 20,
+        "y": 568.890625,
+        "right": 340,
+        "bottom": 699.390625,
+        "height": 130.5
+      },
+      "note": {
+        "x": 20,
+        "y": 715.390625,
+        "right": 340,
+        "bottom": 756.171875,
+        "height": 40.78125
+      },
+      "hero": "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif",
+      "heroResources": [
+        "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif"
+      ],
+      "images": true,
+      "mobile": true,
+      "processTop": 76.078125
+    },
+    {
+      "lang": "uk",
+      "w": 768,
+      "overflow": 0,
+      "price": {
+        "x": 30.71875,
+        "y": 567.46875,
+        "right": 737.28125,
+        "bottom": 634.640625,
+        "height": 67.171875
+      },
+      "note": {
+        "x": 30.71875,
+        "y": 650.640625,
+        "right": 736.015625,
+        "bottom": 672.734375,
+        "height": 22.09375
+      },
+      "hero": "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif",
+      "heroResources": [
+        "http://127.0.0.1:8765/photos/stage/stage-1-hero-768.avif"
+      ],
+      "images": true,
+      "mobile": true,
+      "processTop": 70.453125
+    },
+    {
+      "lang": "uk",
+      "w": 1280,
+      "overflow": 0,
+      "price": {
+        "x": 51.1875,
+        "y": 621.65625,
+        "right": 771.1875,
+        "bottom": 711.25,
+        "height": 89.59375
+      },
+      "note": {
+        "x": 51.1875,
+        "y": 727.25,
+        "right": 756.484375,
+        "bottom": 749.34375,
+        "height": 22.09375
+      },
+      "hero": "http://127.0.0.1:8765/photos/stage/stage-1-hero-1280.avif",
+      "heroResources": [
+        "http://127.0.0.1:8765/photos/stage/stage-1-hero-1280.avif"
+      ],
+      "images": true,
+      "dropdown": true,
+      "processTop": 70.484375
+    }
+  ],
+  "errors": []
+}

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html data-lang="uk" lang="uk">
 <head>
 <meta charset="utf-8"/>
@@ -32,13 +31,13 @@
 <link href="/photos/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/photos/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="/photos/site.webmanifest" rel="manifest"/>
-<link as="image" fetchpriority="high" href="/photos/optimized/harley-harley-tuning-hero-768.avif" media="(max-width: 767px)" rel="preload" type="image/avif"/>
-<link as="image" fetchpriority="high" href="/photos/optimized/harley-harley-tuning-hero-1280.avif" media="(min-width: 768px) and (max-width: 1279px)" rel="preload" type="image/avif"/>
-<link as="image" fetchpriority="high" href="/photos/optimized/harley-harley-tuning-hero-1920.avif" media="(min-width: 1280px)" rel="preload" type="image/avif"/>
+<link rel="preload" as="image" href="/photos/optimized/harley-harley-tuning-hero-768.avif" type="image/avif" media="(max-width: 767px)" fetchpriority="high"/>
+<link rel="preload" as="image" href="/photos/optimized/harley-harley-tuning-hero-1280.avif" type="image/avif" media="(min-width: 768px) and (max-width: 1279px)" fetchpriority="high"/>
+<link rel="preload" as="image" href="/photos/optimized/harley-harley-tuning-hero-1920.avif" type="image/avif" media="(min-width: 1280px)" fetchpriority="high"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="/assets/main.css?v=20261101a" rel="stylesheet"/>
+<link href="/assets/main.css?v=20261111a" rel="stylesheet"/>
 <style>
 .harley-hero{position:relative;display:grid;min-height:min(620px,68vh);align-items:end;overflow:hidden;border-bottom:1px solid var(--border);background:#050505}
 .harley-hero-media,.harley-hero-media img,.harley-hero-shade{position:absolute;inset:0;width:100%;height:100%}
@@ -206,11 +205,9 @@
 </div>
 </div>
 <div class="nav-dropdown">
-<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.authorizedDealer" href="/uk/authorized-dealer/">Офіційний дилер</a>
-<div aria-label="Офіційний дилер" class="nav-dropdown-menu">
-<a data-i18n="nav.authorizedDealerHub" href="/uk/authorized-dealer/">Дилерський хаб</a>
-<a data-i18n="nav.dealerCway" href="/uk/authorized-dealer/c-way/">C-Way</a>
-<a data-i18n="nav.dealerDcf" href="/uk/authorized-dealer/dcf-performance/">DCF-Performance</a>
+<a aria-haspopup="true" class="nav-dropdown-trigger" data-i18n="nav.stage" href="/uk/stage-1/">Stage</a>
+<div aria-label="Stage" class="nav-dropdown-menu">
+<a data-i18n="nav.stage1" href="/uk/stage-1/">Stage 1</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -300,11 +297,9 @@
 </div>
 </details>
 <details class="mobile-nav-group">
-<summary class="mobile-nav-summary"><span data-i18n="nav.authorizedDealer">Офіційний дилер</span></summary>
+<summary class="mobile-nav-summary"><span data-i18n="nav.stage">Stage</span></summary>
 <div class="mobile-subnav">
-<a data-i18n="nav.authorizedDealerHub" href="/uk/authorized-dealer/">Дилерський хаб</a>
-<a data-i18n="nav.dealerCway" href="/uk/authorized-dealer/c-way/">C-Way</a>
-<a data-i18n="nav.dealerDcf" href="/uk/authorized-dealer/dcf-performance/">DCF-Performance</a>
+<a data-i18n="nav.stage1" href="/uk/stage-1/">Stage 1</a>
 </div>
 </details>
 <details class="mobile-nav-group">
@@ -371,7 +366,7 @@
 <section class="harley-section">
 <div class="container">
 <div class="section-heading"><h2>Стейджі — простими словами</h2></div>
-<div class="harley-copy"><p><strong>Stage 1</strong> — фундамент: впуск, випуск і калібрування як єдина система. Зроблений як слід, він дає мотору вільне дихання і чистий відгук у всьому діапазоні. Саме з нього варто починати майже кожному Harley.</p>
+<div class="harley-copy"><p><strong>Stage 1</strong> — фундамент: впуск, випуск і калібрування як єдина система. Зроблений як слід, він дає мотору вільне дихання і чистий відгук у всьому діапазоні. Саме з нього варто починати майже кожному Harley. Калібрування — це наш <a href="/uk/stage-1/">Stage 1</a>: індивідуальний файл DCF-Performance за фіксованою ціною 800 €; впуск і випуск рахуються окремо.</p>
 <p><strong>Stage 2</strong> — розподільні вали поверх Stage 1. Тут змінюється характер мотора: як приходить тяга, де мотоцикл тягне найдужче. Вали добираються під вашу манеру їзди — і разом з вами.</p>
 <p><strong>Stage 3</strong> — збільшення робочого об'єму, big-bore. Мотор розбирається. Це серйозна робота, яка вимагає серйозного планування: кожен компонент має відповідати новому об'єму.</p>
 <p><strong>Stage 4</strong> — повна performance-збірка: головки, поршні та вали добираються як один узгоджений комплект і калібруються разом.</p>
@@ -457,6 +452,7 @@
 <li><a data-i18n="nav.tyreServ" href="/uk/shynomontazh-mototsykliv/">Шиномонтаж і балансування</a></li>
 <li><a data-i18n="nav.preInsp" href="/uk/pre-purchase-inspection/">Інспекція перед купівлею</a></li>
 <li><a data-i18n="nav.fuelServ" href="/uk/fuel-system-service/">Карбюратори та паливна система</a></li>
+<li><a data-i18n="nav.stage1Footer" href="/uk/stage-1/">Stage 1 · прошивка ЕБК</a></li>
 <li><a data-i18n="nav.authorizedDealer" href="/uk/authorized-dealer/">Офіційний дилер</a></li>
 <li><a data-i18n="nav.expatWorkshop" href="/uk/english-speaking-motorcycle-workshop/">Для експатів</a></li>
 <li><a data-i18n="nav.brandHarley" href="/uk/harley-service/">Harley-Davidson</a></li>
@@ -503,6 +499,6 @@
 </div>
 </div>
 </footer>
-<script defer="" src="/assets/main.js?v=20261101a"></script>
+<script defer="" src="/assets/main.js?v=20261111a"></script>
 </body>
 </html>

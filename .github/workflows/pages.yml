@@ -108,6 +108,14 @@ jobs:
             upgrades-tuning \
             _site/
 
+          python - <<'PY'
+          import sys, shutil
+          sys.path.insert(0, "scripts/build")
+          from stage_pages_data import STAGE_PAGES
+          for config in STAGE_PAGES.values():
+              shutil.copytree(config["path"], "_site/" + config["path"], dirs_exist_ok=True)
+          PY
+
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:

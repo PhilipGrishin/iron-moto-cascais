@@ -229,8 +229,8 @@ def main() -> int:
     validate_home(issues)
     validate_blog(issues)
     validate_projects(issues)
-    if len(RELATED_DESCRIPTIONS) != 21:
-        issues.append("Wave 4 combined registry does not contain 21 targets")
+    if len(RELATED_DESCRIPTIONS) != 22:
+        issues.append("Wave 4 combined registry does not contain 22 targets")
     if issues:
         print("S-REBUILD Wave 4 validation failed:")
         for issue in issues:
@@ -238,7 +238,7 @@ def main() -> int:
         return 1
     print(
         "S-REBUILD Wave 4 validation passed: approved source "
-        f"{EXPECTED_SOURCE_SHA256}, 4 homes, 21 registry targets, "
+        f"{EXPECTED_SOURCE_SHA256}, 4 homes, 22 registry targets, "
         "36 blog related blocks and 40 legacy-project row sets."
     )
     return 0

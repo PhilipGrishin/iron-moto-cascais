@@ -1,6 +1,6 @@
 # Iron Custom Motors Website: Project State
 
-Last updated: 2026-11-01
+Last updated: 2026-11-11
 
 This is the only documentation file that owns current inventories, counts,
 deployed public identifiers and cache-bust values. Operating rules live in
@@ -8,6 +8,14 @@ deployed public identifiers and cache-bust values. Operating rules live in
 `scripts/build/README.md`.
 
 ## Status And Evidence
+
+- S-STAGE1 / S-STAGE1-NAV, **implemented; release verification in progress**,
+  2026-11-11. Four Stage pages, four News articles, shared pricing/PDF and DCF
+  updates are built. Stage replaces Authorized Dealer in the eight-item header;
+  the dealer family remains footer/contextual-only and indexable. Local exact
+  copy/schema/media checks and the 24-case header matrix passed. Current checkout
+  inventories below include this delivery; deployment is not yet claimed.
+  See [delivery record](reports/S_STAGE1_REPORT.md).
 
 - N-DCF, **deployed and production-verified**, 2026-11-01: implementation
   `cadd1a5a`, Pages run `41352957214`. Approved dealership announcement is live
@@ -246,21 +254,22 @@ repository URL currently redirects, but it is not a supported canonical URL.
 | Inventory | Current value | Canonical evidence |
 |---|---:|---|
 | Supported languages | 4 | `build_sitemap.py` `LANGS` |
-| English path patterns | 64 | `build_sitemap.py` `PAGES` |
-| Indexable sitemap URLs | 256 | parsed `sitemap.xml` `<url>` entries |
-| HTML files | 273 | tracked `*.html` inventory |
-| Indexable HTML files | 256 | sitemap-to-file resolution |
+| English path patterns | 66 | `build_sitemap.py` `PAGES` |
+| Indexable sitemap URLs | 264 | parsed `sitemap.xml` `<url>` entries |
+| HTML files | 281 | tracked `*.html` inventory |
+| Indexable HTML files | 264 | sitemap-to-file resolution |
 | Non-indexed HTML files | 17 | `404.html`, 12 localized project redirect stubs and 4 `thank-you` pages |
-| Sitemap lastmod tags | 256 | parsed `sitemap.xml` |
-| Unique sitemap lastmod values | 70 | parsed sitemap, 2026-11-01; N-DCF: 4 new URLs, 4 changed dates, 248 unchanged |
+| Sitemap lastmod tags | 264 | parsed `sitemap.xml` |
+| Unique sitemap lastmod values | 71 | parsed sitemap, 2026-11-11; S-STAGE1: 8 new URLs, 24 changed dates, 232 unchanged |
 | Registered brand service pages | 7 | `BRAND_ORDER` / `BRAND_CONFIG` |
 | Project detail pages | 15 | `PROJECT_TILES` |
 | Data-driven project definitions | 15 | `PROJECT_CONFIGS` |
 | Blog posts | 9 | `BLOG_POSTS` |
-| News articles | 6 | `NEWS_ARTICLES` |
-| Approved-source News articles | 3 | `NEWS_ARTICLES[*].sourceBacked` |
+| News articles | 7 | `NEWS_ARTICLES` |
+| Approved-source News articles | 4 | `NEWS_ARTICLES[*].sourceBacked` |
 | Harley Hub English page patterns | 3 | `harley_hub_data.py` `PAGE_CONFIG` |
 | Generated general/utility localized entries | 7 | `build_new_pages.py` / `new_pages_data.py` |
+| Stage English page patterns | 1 | `STAGE_PAGES` |
 | Authorized Dealer English page patterns | 3 | `build_authorized_dealer.py` |
 | Legal English page patterns | 3 | `LEGAL_PAGES` |
 
@@ -278,9 +287,9 @@ Registry alignment on the evidence date:
 
 | Registry | Entries | Relationship |
 |---|---:|---|
-| `build_sitemap.py` `PAGES` | 64 | canonical English indexable paths |
-| `localize_internal_links.py` `LOCALIZED_PATHS` | 64 | matches `PAGES` after normalization |
-| `build_i18n.py` `MAIN_PAGES` | 33 | English sources localized by the generic i18n flow |
+| `build_sitemap.py` `PAGES` | 66 | canonical English indexable paths |
+| `localize_internal_links.py` `LOCALIZED_PATHS` | 66 | matches `PAGES` after normalization |
+| `build_i18n.py` `MAIN_PAGES` | 34 | English sources localized by the generic i18n flow |
 | `project_pages_data.py` `PROJECT_CONFIGS` | 15 | project details rendered directly in four languages |
 
 There is no active `EN_PAGES` registry. The canonical English page registry is
@@ -290,7 +299,8 @@ There is no active `EN_PAGES` registry. The canonical English page registry is
 
 | Assets | Value | Scope |
 |---|---|---|
-| `assets/main.css`, `assets/main.js` | `20261101a` | every sitemap page |
+| `assets/main.css`, `assets/main.js` | `20261111a` | every sitemap page |
+| `assets/stage.css` | `20261111a` | Stage pages |
 | `assets/projects.css` | `20260801a` | project detail pages |
 | `assets/projects.js` | `20260710b` | project detail pages |
 
@@ -302,7 +312,7 @@ asset must use one value site-wide. Change a value only when that asset changes.
 ### General And Commercial Pages
 
 `/`, `/services/`, `/motorcycle-service/`, `/fuel-system-service/`, `/parts/`,
-`/upgrades-tuning/`, `/custom/`, `/pre-purchase-inspection/`,
+`/upgrades-tuning/`, `/stage-1/`, `/custom/`, `/pre-purchase-inspection/`,
 `/motorcycle-tyre-service/`, `/pricing/`, `/projects/`, `/about/`,
 `/community/`, `/contact/`, `/faq/`,
 `/english-speaking-motorcycle-workshop/`, `/authorized-dealer/`,
@@ -325,13 +335,13 @@ registered projects in `PROJECT_TILES` order. Parts and Upgrades no longer use
 the legacy generic-i18n source path.
 
 The checked Wave 3 and Wave 4 sources jointly own localized descriptions for
-21 related targets; Wave 3 also owns the exact shared trust-strip labels. The
+22 related targets; Wave 3 also owns the exact shared trust-strip labels. The
 homepage uses Wave 4's distinct intent anchors for its four primary service
 cards, tyre/PPI cards and Pricing CTA. Every registered Blog post has exactly
 three mapped related-service cards and resolves its author/publisher
 `#business` reference to one complete `LocalBusiness` entity. The 10 legacy
 projects render their four generic related rows from the same registry. The
-trust strip is present on 56 commercial pages: the five copy-driven hubs,
+trust strip is present on 60 commercial pages: Stage, the five copy-driven hubs,
 seven brand-service families, tyre service and pre-purchase inspection in four
 languages. Its static rating is read from `assets/reviews-snapshot.json`;
 `assets/main.js` updates the
@@ -376,9 +386,10 @@ and verification are recorded in the S-PRICE-VALVES-FROM report above.
 - `/authorized-dealer/dcf-performance/`
 
 This is a separate official parts/accessories and tuning-technology channel.
-DCF-Performance uses checksum-approved Markdown and the generic unpriced
+DCF-Performance uses checksum-approved Markdown and the generic copy-driven
 partner contract; C-Way retains its priced catalog. The hub has two partner
-cards. The approved source hashes live in the build README table.
+cards. Authorized Dealer has no top-menu group; all twelve localized URLs
+remain in sitemap and llms discovery. The approved source hashes live in the build README table.
  The C-Way page currently
 contains 6 visible priced configurations and 6 matching `Product`/`Offer`
 entities, with no partial duplicate products. Each visible configuration price
@@ -449,10 +460,10 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 
 ## Current Delivery And Discovery State
 
-- All 160 pages that contain the lead form submit to FormSubmit through the
+- All 168 pages that contain the lead form submit to FormSubmit through the
   activated private action alias. No built HTML exposes the delivery inbox in
   a FormSubmit action, and the SEO validator enforces this contract across all
-  built HTML files, including non-sitemap output. The 156 indexable form pages
+  built HTML files, including non-sitemap output. The 164 indexable form pages
   redirect to their language-local noindex `thank-you` page; those four utility
   pages contain the same shared modal and remain outside `sitemap.xml`.
   Correction, 2026-10-31: the previous 136/132 counts were stale. A complete
@@ -461,7 +472,9 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
   D-DCF adds four more on 2026-11-01; all 152 preceding form pages retain
   identical form markup, confirmed by the D-DCF scope audit.
   N-DCF adds four on 2026-11-01 and preserves all 156 preceding form pages.
-  Scope evidence: `docs/reports/N_DCF_SCOPE.json`.
+  S-STAGE1 adds eight forms on 2026-11-11 and preserves the previous form
+  markup, including utility forms. Scope evidence: the S-STAGE1 delivery report.
+  Earlier scope evidence: `docs/reports/N_DCF_SCOPE.json`.
   Evidence: baseline-versus-working-tree BeautifulSoup comparison.
 - A-MEASURE's checked-in client sends only four anonymous lead-intent types:
   `whatsapp`, `tel`, `form_submit` and `form_view`. The payload contains the
@@ -475,14 +488,17 @@ The same redirect relationship exists under `/ru/`, `/uk/` and `/pt/`.
 - The four home pages render 9 curated Google-review cards and the matching
   9 JSON-LD `Review` items from `assets/reviews-curated.json`. Their
   `AggregateRating` remains independently sourced from the Worker snapshot and
-  is **confirmed in the synchronized snapshot** as `4.9` from `31` reviews.
+  is **confirmed in the synchronized snapshot** as `4.9` from `34` reviews.
+  Correction, 2026-11-11: the previous current count of 31 was stale; the
+  baseline automated refresh `8c760d83` contains 34. Verified from the checked-in
+  snapshot; S-STAGE1 does not claim a new Worker or account check.
   Correction, 2026-10-28: the previous current-state claim of 29 was superseded
   by automated refresh `660c65b3` (2026-09-21). Verified by reading that commit
   and `assets/reviews-snapshot.json`; P-SPANIARD does not refresh reviews or
   claim a new live Worker/account check.
   The local checkout was synchronized before stabilization; it no longer has
   the older `5.0` from `26` aggregate.
-  All 56 commercial trust strips and their runtime translations now derive
+  All 60 commercial trust strips and their runtime translations now derive
   from the same snapshot. The earlier audit documented stale deployed strips;
   the repaired refresh pipeline prevents independent snapshot publication.
   Historical correction recorded 2026-09-08:
