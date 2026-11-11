@@ -1,0 +1,362 @@
+[
+  {
+    "amount": {
+      "bottom": 699.953125,
+      "height": 14.5,
+      "left": 20,
+      "right": 58.421875,
+      "top": 685.453125,
+      "width": 38.421875,
+      "x": 20,
+      "y": 685.453125
+    },
+    "covered": false,
+    "lang": "en",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 360
+  },
+  {
+    "amount": {
+      "bottom": 699.953125,
+      "height": 14.5,
+      "left": 20,
+      "right": 58.421875,
+      "top": 685.453125,
+      "width": 38.421875,
+      "x": 20,
+      "y": 685.453125
+    },
+    "covered": false,
+    "lang": "en",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 375
+  },
+  {
+    "amount": {
+      "bottom": 658.7578125,
+      "height": 14.5,
+      "left": 20,
+      "right": 58.421875,
+      "top": 644.2578125,
+      "width": 38.421875,
+      "x": 20,
+      "y": 644.2578125
+    },
+    "covered": false,
+    "lang": "en",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 390
+  },
+  {
+    "amount": {
+      "bottom": 641.9609375,
+      "height": 14.5,
+      "left": 259.3984375,
+      "right": 297.8203125,
+      "top": 627.4609375,
+      "width": 38.421875,
+      "x": 259.3984375,
+      "y": 627.4609375
+    },
+    "covered": false,
+    "lang": "en",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 414
+  },
+  {
+    "amount": {
+      "bottom": 623.265625,
+      "height": 14.5,
+      "left": 259.3984375,
+      "right": 297.8203125,
+      "top": 608.765625,
+      "width": 38.421875,
+      "x": 259.3984375,
+      "y": 608.765625
+    },
+    "covered": false,
+    "lang": "en",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 430
+  },
+  {
+    "amount": {
+      "bottom": 727.25,
+      "height": 14.5,
+      "left": 20,
+      "right": 58.421875,
+      "top": 712.75,
+      "width": 38.421875,
+      "x": 20,
+      "y": 712.75
+    },
+    "covered": false,
+    "lang": "pt",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 360
+  },
+  {
+    "amount": {
+      "bottom": 727.25,
+      "height": 14.5,
+      "left": 20,
+      "right": 58.421875,
+      "top": 712.75,
+      "width": 38.421875,
+      "x": 20,
+      "y": 712.75
+    },
+    "covered": false,
+    "lang": "pt",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 375
+  },
+  {
+    "amount": {
+      "bottom": 699.953125,
+      "height": 14.5,
+      "left": 20,
+      "right": 58.421875,
+      "top": 685.453125,
+      "width": 38.421875,
+      "x": 20,
+      "y": 685.453125
+    },
+    "covered": false,
+    "lang": "pt",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 390
+  },
+  {
+    "amount": {
+      "bottom": 623.265625,
+      "height": 14.5,
+      "left": 269.1015625,
+      "right": 307.5234375,
+      "top": 608.765625,
+      "width": 38.421875,
+      "x": 269.1015625,
+      "y": 608.765625
+    },
+    "covered": false,
+    "lang": "pt",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 414
+  },
+  {
+    "amount": {
+      "bottom": 623.265625,
+      "height": 14.5,
+      "left": 269.1015625,
+      "right": 307.5234375,
+      "top": 608.765625,
+      "width": 38.421875,
+      "x": 269.1015625,
+      "y": 608.765625
+    },
+    "covered": false,
+    "lang": "pt",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 430
+  },
+  {
+    "amount": {
+      "bottom": 803.5390625,
+      "height": 14.5,
+      "left": 20,
+      "right": 58.421875,
+      "top": 789.0390625,
+      "width": 38.421875,
+      "x": 20,
+      "y": 789.0390625
+    },
+    "covered": false,
+    "lang": "ru",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 360
+  },
+  {
+    "amount": {
+      "bottom": 803.5390625,
+      "height": 14.5,
+      "left": 20,
+      "right": 58.421875,
+      "top": 789.0390625,
+      "width": 38.421875,
+      "x": 20,
+      "y": 789.0390625
+    },
+    "covered": false,
+    "lang": "ru",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 375
+  },
+  {
+    "amount": {
+      "bottom": 754.546875,
+      "height": 14.5,
+      "left": 20,
+      "right": 58.421875,
+      "top": 740.046875,
+      "width": 38.421875,
+      "x": 20,
+      "y": 740.046875
+    },
+    "covered": false,
+    "lang": "ru",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 390
+  },
+  {
+    "amount": {
+      "bottom": 718.25,
+      "height": 14.5,
+      "left": 273.3984375,
+      "right": 311.8203125,
+      "top": 703.75,
+      "width": 38.421875,
+      "x": 273.3984375,
+      "y": 703.75
+    },
+    "covered": false,
+    "lang": "ru",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 414
+  },
+  {
+    "amount": {
+      "bottom": 718.25,
+      "height": 14.5,
+      "left": 273.3984375,
+      "right": 311.8203125,
+      "top": 703.75,
+      "width": 38.421875,
+      "x": 273.3984375,
+      "y": 703.75
+    },
+    "covered": false,
+    "lang": "ru",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 430
+  },
+  {
+    "amount": {
+      "bottom": 754.546875,
+      "height": 14.5,
+      "left": 20,
+      "right": 58.421875,
+      "top": 740.046875,
+      "width": 38.421875,
+      "x": 20,
+      "y": 740.046875
+    },
+    "covered": false,
+    "lang": "uk",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 360
+  },
+  {
+    "amount": {
+      "bottom": 727.25,
+      "height": 14.5,
+      "left": 20,
+      "right": 58.421875,
+      "top": 712.75,
+      "width": 38.421875,
+      "x": 20,
+      "y": 712.75
+    },
+    "covered": false,
+    "lang": "uk",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 375
+  },
+  {
+    "amount": {
+      "bottom": 710.453125,
+      "height": 14.5,
+      "left": 252.09375,
+      "right": 290.515625,
+      "top": 695.953125,
+      "width": 38.421875,
+      "x": 252.09375,
+      "y": 695.953125
+    },
+    "covered": false,
+    "lang": "uk",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 390
+  },
+  {
+    "amount": {
+      "bottom": 650.5625,
+      "height": 14.5,
+      "left": 236.390625,
+      "right": 274.8125,
+      "top": 636.0625,
+      "width": 38.421875,
+      "x": 236.390625,
+      "y": 636.0625
+    },
+    "covered": false,
+    "lang": "uk",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 414
+  },
+  {
+    "amount": {
+      "bottom": 650.5625,
+      "height": 14.5,
+      "left": 236.390625,
+      "right": 274.8125,
+      "top": 636.0625,
+      "width": 38.421875,
+      "x": 236.390625,
+      "y": 636.0625
+    },
+    "covered": false,
+    "lang": "uk",
+    "onFirstScreen": true,
+    "overflow": -10,
+    "text": "650 €.",
+    "width": 430
+  }
+]

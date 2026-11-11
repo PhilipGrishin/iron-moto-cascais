@@ -127,7 +127,7 @@ def heading_html(value):
 def render_page(slug,config,lang):
     content=config['content'][lang];f=content['fields'];m=config['hero'];buttons=f['Buttons'].split(' · ');crumbs=f['Breadcrumb'].split(' → ')
     logo=f'<img class="stage-dcf-logo" src="{config["logo"]}" width="190" height="78" alt="DCF-Performance"/>'
-    price_note=re.sub(r'(\d+\s+€)', r'<span class="stage-amount">\1</span>', inline(f['Hero price note'],''))
+    price_note=re.sub(r'(\d+\s+€[.,]?)', r'<span class="stage-amount">\1</span>', inline(f['Hero price note'],''))
     raw=f'''{head(config,lang)}<body>{header_html()}<main class="stage-page" data-stage="{slug}">
 <section class="stage-hero"><picture class="stage-hero-media"><source type="image/avif" srcset="{partner_srcset(m,'avif')}" sizes="100vw"/><source type="image/webp" srcset="{partner_srcset(m,'webp')}" sizes="100vw"/><img src="{m['base']}-{m['width']}.jpg" width="{m['width']}" height="{m['height']}" alt="{escape(f['Hero alt'])}" loading="eager" fetchpriority="high" decoding="async" sizes="100vw"/></picture>
 <div class="container"><nav class="crumb" aria-label="Breadcrumb"><a href="{'/' if lang=='en' else '/'+lang+'/'}">{escape(crumbs[0])}</a><span class="sep">→</span><span>{escape(crumbs[1])}</span></nav>
