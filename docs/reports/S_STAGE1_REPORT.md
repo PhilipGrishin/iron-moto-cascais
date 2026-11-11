@@ -207,3 +207,13 @@ list. The extracted `i18n.json` snapshot is included because builders consume it
 - `scripts/build/validate_w4_routing.py`
 - `scripts/build/verify_site.sh`
 - `scripts/build/w4_shared_data.py`
+
+## Follow-up correction, 2026-11-11
+
+Owner verification accepted the launch in substance but identified the Stage
+summary/order regression, presentation defects, nonlocalized Service names,
+editorial headings and two older shared issues (trust word spacing and stale
+unused brand translations). The original verification did not cover those
+contracts. [S-STAGE1-FIX](S_STAGE1_FIX_REPORT.md) records the corrections and
+new regression guards; its brand-data policy supersedes this report's retained
+unused translations. Historical evidence above is unchanged.

@@ -32,7 +32,10 @@
 .stage-three{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:28px}
 .stage-facts{grid-template-columns:repeat(5,minmax(0,1fr))}
 .stage-facts .stage-card{padding:20px;font-size:14px}
-.stage-page .stage-figure{font:800 clamp(38px,5vw,64px)/1.2 var(--font-display);color:var(--accent);margin:0 0 22px}
+.stage-page .stage-figure{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 18px;margin:0 0 22px}
+.stage-figure-value{font:800 clamp(38px,5vw,64px)/1.2 var(--font-display);color:var(--accent)}
+.stage-figure-caption{font-size:16px;line-height:1.7;color:var(--text-dim)}
+.stage-section--what>.container>p[data-copy-unit]+p[data-copy-unit]{margin-top:1em}
 .stage-section--max>.container{border:1px solid var(--accent);padding:32px;border-radius:14px}
 .stage-list{list-style:none;padding:0;margin:0;display:grid;gap:18px}
 .stage-list li{position:relative;padding-left:21px}
@@ -46,6 +49,8 @@
 .stage-price-box{background:var(--accent);border-radius:14px;color:#0a0a0a;padding:30px;font-size:17px;line-height:1.8;margin-bottom:20px}
 .stage-page .stage-price-box strong,.stage-page .stage-price-box .stage-price{color:#0a0a0a}
 .stage-price-box .stage-price{margin:20px 0}
+.stage-page .stage-price-box p{color:inherit;margin:0}
+.stage-page .stage-price-box .stage-price-footnote{font-size:13px;line-height:1.6;margin-top:18px}
 .stage-option-group{margin-top:20px}
 .stage-option-group h3{color:var(--accent)}
 .stage-option-group .stage-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
@@ -75,3 +80,8 @@
 
 .stage-amount{white-space:nowrap}
 .stage-notes > :only-child{grid-column:1/-1}
+/* Reserve space after the exception amount for the floating contact button. */
+@media(max-width:430px){
+  .stage-page .stage-price-note{line-height:1.4;margin-top:6px}
+  .stage-price-note .stage-amount{display:inline-block;padding-right:64px}
+}

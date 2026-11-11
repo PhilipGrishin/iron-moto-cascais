@@ -1,0 +1,102 @@
+[
+  {
+    "display": "inline",
+    "lang": "en",
+    "slug": "stage-1/",
+    "space": " ",
+    "spaceWidth": 5.25,
+    "text": "4.9 on Google",
+    "trustStrip": true
+  },
+  {
+    "display": "inline",
+    "lang": "en",
+    "slug": "bmw-service/",
+    "space": " ",
+    "spaceWidth": 3.9375,
+    "text": "4.9 on Google",
+    "trustStrip": true
+  },
+  {
+    "homepageCount": "34",
+    "homepageRating": "4.9",
+    "lang": "en",
+    "slug": "",
+    "trustStrip": false
+  },
+  {
+    "display": "inline",
+    "lang": "pt",
+    "slug": "stage-1/",
+    "space": " ",
+    "spaceWidth": 5.25,
+    "text": "4,9 no Google",
+    "trustStrip": true
+  },
+  {
+    "display": "inline",
+    "lang": "pt",
+    "slug": "bmw-service/",
+    "space": " ",
+    "spaceWidth": 3.9375,
+    "text": "4,9 no Google",
+    "trustStrip": true
+  },
+  {
+    "homepageCount": "34",
+    "homepageRating": "4.9",
+    "lang": "pt",
+    "slug": "",
+    "trustStrip": false
+  },
+  {
+    "display": "inline",
+    "lang": "ru",
+    "slug": "stage-1/",
+    "space": " ",
+    "spaceWidth": 4.890625,
+    "text": "4,9 в Google",
+    "trustStrip": true
+  },
+  {
+    "display": "inline",
+    "lang": "ru",
+    "slug": "bmw-service/",
+    "space": " ",
+    "spaceWidth": 3.671875,
+    "text": "4,9 в Google",
+    "trustStrip": true
+  },
+  {
+    "homepageCount": "34",
+    "homepageRating": "4.9",
+    "lang": "ru",
+    "slug": "",
+    "trustStrip": false
+  },
+  {
+    "display": "inline",
+    "lang": "uk",
+    "slug": "stage-1/",
+    "space": " ",
+    "spaceWidth": 4.890625,
+    "text": "4,9 у Google",
+    "trustStrip": true
+  },
+  {
+    "display": "inline",
+    "lang": "uk",
+    "slug": "bmw-service/",
+    "space": " ",
+    "spaceWidth": 3.671875,
+    "text": "4,9 у Google",
+    "trustStrip": true
+  },
+  {
+    "homepageCount": "34",
+    "homepageRating": "4.9",
+    "lang": "uk",
+    "slug": "",
+    "trustStrip": false
+  }
+]

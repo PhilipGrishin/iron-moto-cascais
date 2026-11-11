@@ -190,8 +190,6 @@ BRAND_SERVICE_LABELS = {
 
 def page_i18n_for(slug):
     pages = {}
-    related_paths = {href for _key, href, _label in BRAND_RELATED_LINKS[slug]}
-    related_paths.update(f"/{other}/" for other in BRAND_ORDER if other != slug)
     for lang, values in PAGE_I18N[slug].items():
         merged = {**values, **SEO_I18N[lang]}
         # W3 retired the generic related-card filler stored in legacy page data.
@@ -235,7 +233,7 @@ def page_i18n_for(slug):
         merged.update(trust_i18n(lang))
         merged.update({
             related_description_key(path): descriptions[lang]
-            for path, descriptions in RELATED_DESCRIPTIONS.items() if path in related_paths
+            for path, descriptions in RELATED_DESCRIPTIONS.items()
         })
         for key, value in values.items():
             if key.startswith("seo.") and not key.startswith(("seo.related", "seo.otherBrand")):

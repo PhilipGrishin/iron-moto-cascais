@@ -412,6 +412,11 @@ def validate_trust_strip(
         issues.append(f"{label}: trust labels/rating differ from approved Wave 3 source")
     if len(strip.select("[data-icm-rating]")) != 1:
         issues.append(f"{label}: trust strip requires one live-rating hook")
+    rating_text = strip.select_one('.icm-trust-rating-text')
+    if rating_text is None or len(rating_text.select(':scope > span')) != 3:
+        issues.append(f"{label}: rating words must share one inline formatting context")
+    elif not rating_text.select(':scope > span')[-1].get_text().startswith(' '):
+        issues.append(f"{label}: missing normal word space after rating")
 
 
 def validate_commercial_trust_and_related(issues: list[str]) -> None:

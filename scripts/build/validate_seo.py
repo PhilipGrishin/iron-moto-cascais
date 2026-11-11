@@ -329,6 +329,16 @@ def check_llms_sitemap_coverage(urls: list[str]) -> list[str]:
     ]
 
 
+def check_llms_summary() -> list[str]:
+    """The business introduction belongs to the homepage, regardless of order."""
+    home = BeautifulSoup((SITE_ROOT / 'index.html').read_text(), HTML_PARSER)
+    expected = home.select_one('meta[name="description"]')['content']
+    match = re.search(r'^> (.+)$', (SITE_ROOT / 'llms.txt').read_text(), re.M)
+    if not match or clean_text(match[1]) != clean_text(expected):
+        return ['llms.txt summary must equal the homepage description']
+    return []
+
+
 def check_codex_changelog() -> list[str]:
     changelog_path = SITE_ROOT / "docs" / "CODEX_CHANGELOG.md"
     if not changelog_path.exists():
@@ -629,6 +639,19 @@ def translation_dict_for_soup(soup, lang: str) -> dict:
     i18n_path = SITE_ROOT / "scripts" / "build" / "i18n.json"
     main_i18n = json.loads(i18n_path.read_text(encoding="utf-8"))
     return {**main_i18n.get(lang, {}), **extract_inline_i18n(soup, lang)}
+
+
+def check_related_description_values(soup) -> list[str]:
+    from w4_shared_data import RELATED_DESCRIPTIONS, related_description_key
+    expected = {related_description_key(path): values for path, values in RELATED_DESCRIPTIONS.items()}
+    issues = []
+    for code in LANGS:
+        for key, value in extract_inline_i18n(soup, code).items():
+            if key.startswith('related.description.') and (
+                key not in expected or value != expected[key][code]
+            ):
+                issues.append(f'Stale related-description translation: {code}/{key}')
+    return issues
 
 
 def html_fragment_text(fragment: str) -> str:
@@ -1010,6 +1033,7 @@ def validate_page(url: str) -> list[str]:
     issues.extend(check_review_output(soup, jsonld_blocks, lang, canonical_path == "/"))
 
     issues.extend(check_i18n_html_prerender(soup, lang))
+    issues.extend(check_related_description_values(soup))
     issues.extend(check_internal_links(soup, lang))
     issues.extend(check_local_assets(soup, html_path))
     issues.extend(check_asset_cache_bust_presence(soup))
@@ -1105,6 +1129,9 @@ def main() -> int:
     for url in urls:
         issues.extend(validate_page(url))
     issues.extend(check_llms_sitemap_coverage(urls))
+    issues.extend(check_llms_summary())
+    if not urls or urls[0] != DOMAIN + '/':
+        issues.append('The homepage must be the first sitemap URL')
     issues.extend(check_codex_changelog())
     issues.extend(check_formsubmit_action_privacy())
     issues.extend(check_lead_measurement_contract())

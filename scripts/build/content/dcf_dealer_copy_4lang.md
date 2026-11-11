@@ -1,5 +1,5 @@
 # DCF-Performance dealer page — approved copy (EN / PT-pt / RU / UK)
-Iron Custom Motors · for `/authorized-dealer/dcf-performance/` (+ `/pt/`, `/ru/`, `/uk/`). Task D-DCF, 2026-11-01; **rev. 2, 2026-11-11 (task S-STAGE1)** — aligned with the Stage 1 product page `/stage-1/`: 19 units per language changed, the eleven-section contract and every card count are unchanged. Written from `2026-11-01_dcf-performance_research-dossier.md` (DCF's own pages read 2026-11-01, the owner's answers of 2026-11-01, GSC pulls). Family: Authorized Dealer brand page, sibling of `/authorized-dealer/c-way/` — the labelled blocks below map onto a `DCF_DEALER_*` data set the way the C-Way page is driven (`CWAY_DEALER_HEAD`, `CWAY_DEALER_I18N`); section keys are given in square brackets.
+Iron Custom Motors · for `/authorized-dealer/dcf-performance/` (+ `/pt/`, `/ru/`, `/uk/`). Task D-DCF, 2026-11-01; **rev. 2, 2026-11-11 (task S-STAGE1)** — aligned with the Stage 1 product page `/stage-1/`: 19 units per language changed, the eleven-section contract and every card count are unchanged; **rev. 3, 2026-11-11 (task S-STAGE1-FIX)** — only the heading of [links] changed in each language, to a visitor-facing label. Written from `2026-11-01_dcf-performance_research-dossier.md` (DCF's own pages read 2026-11-01, the owner's answers of 2026-11-01, GSC pulls). Family: Authorized Dealer brand page, sibling of `/authorized-dealer/c-way/` — the labelled blocks below map onto a `DCF_DEALER_*` data set the way the C-Way page is driven (`CWAY_DEALER_HEAD`, `CWAY_DEALER_I18N`); section keys are given in square brackets.
 Facts: Iron Custom Motors = official DCF-Performance dealer, the only one in Portugal on DCF's dealer list (47 dealers, 21 countries, 2026-11-01); DCF = Dutch tuning-file developer and dealer network, ATM-Chiptuning since 2008, Dyno-ChiptuningFiles.com since 2010, DCF-Performance since 2019; «500,000+ dyno-tested ECU files», «300+ ECUs», motorcycle brands named by DCF: BMW Motorrad, Yamaha, Honda, Ducati, Kawasaki, KTM, Triumph, Suzuki («nearly every motorcycle brand»); files developed and dyno-tested by DCF's EFI engineers, ICM reads/writes the ECU and keeps the original file · no own dyno · no flash-tool brand names on the page (owner) · rev. 2: Stage 1 has a fixed price — 800 € with VAT, Chinese brands 650 € — and its scope, steps and terms live on `/stage-1/`; this page no longer promises a written estimate, a test ride with data logging or a note of changes, and no longer cites fault diagnostics · owner's decision: the full option set is listed, including decat / lambda-off and overrun pops, each framed for track and competition use with the road-legality sentence · R. António José da Silva 100 B, São Domingos de Rana, Cascais · Tue–Sat 10:00–18:00 · WhatsApp +351 917 961 230.
 Rules: no power or torque figures other than «about 10 % on average with a High Flow filter and a replaced exhaust» (owner, 2026-11-11); no turnaround promise beyond the owner's «from two days» (DCF's «15 minutes» is their file delivery, not our job time); no «exclusive» until the contract wording is confirmed — «official» and «the only dealer in Portugal» are used; no «guaranteed / like new»; independent workshop — the dealership is for DCF tuning files and equipment, never for a motorcycle make; Harley-Davidson is covered by Stage 1 (owner, 2026-11-11), the hardware side of Harley stages stays on `/harley-tuning/`; no Stage 2 is described until that service is launched; no scooters; visible FAQ = FAQPage 1:1 (6 items); same-language links; pt-PT; RU/UK native.
 Outbound link (all languages, once, in the intro): `https://dcf-performance.com/dealers/iron-custom-motors` — anchor text per language below; normal link (`rel="noopener"`, new tab as the family does for external links).
@@ -84,7 +84,7 @@ DCF-Performance publishes files for BMW Motorrad, Yamaha, Honda, Ducati, Kawasak
 ### [cta] Eyebrow: Ask about ECU tuning · Title: Tell us the bike, we check the coverage.
 WhatsApp first: [+351 917 961 230](https://wa.me/351917961230) — model, year, exhaust and filter if changed, and what you want from the bike. We confirm DCF coverage for your ECU and agree the date. Tuesday to Saturday, 10:00–18:00, São Domingos de Rana, Cascais.
 
-### [links] Internal links
+### [links] Related pages
 - Authorized Dealer hub → `/authorized-dealer/`
 - Upgrades & tuning → `/upgrades-tuning/`
 - Harley-Davidson tuning → `/harley-tuning/`
@@ -171,7 +171,7 @@ A DCF-Performance publica ficheiros para BMW Motorrad, Yamaha, Honda, Ducati, Ka
 ### [cta] Eyebrow: Fale connosco sobre reprogramação · Title: Diga-nos a mota, nós verificamos a cobertura.
 WhatsApp primeiro: [+351 917 961 230](https://wa.me/351917961230) — modelo, ano, escape e filtro se alterados, e o que quer da mota. Confirmamos a cobertura DCF para a sua centralina e combinamos a data. De terça a sábado, das 10h00 às 18h00, em São Domingos de Rana, Cascais.
 
-### [links] Ligações internas
+### [links] Páginas relacionadas
 - Hub Revendedor Oficial → `/pt/authorized-dealer/`
 - Upgrades e tuning → `/pt/upgrades-tuning/`
 - Tuning Harley-Davidson → `/pt/harley-tuning/`
@@ -258,7 +258,7 @@ DCF-Performance публикует файлы для BMW Motorrad, Yamaha, Honda
 ### [cta] Eyebrow: Спросить про чип-тюнинг · Title: Назовите мотоцикл — покрытие проверим мы.
 Сначала WhatsApp: [+351 917 961 230](https://wa.me/351917961230) — модель, год, выхлоп и фильтр, если менялись, и чего вы хотите от мотоцикла. Подтверждаем покрытие DCF для вашего ЭБУ и договариваемся о дате. Вторник–суббота, 10:00–18:00, São Domingos de Rana, Кашкайш.
 
-### [links] Внутренние ссылки
+### [links] Смотрите также
 - Хаб официального дилера → `/ru/authorized-dealer/`
 - Апгрейды и тюнинг → `/ru/upgrades-tuning/`
 - Тюнинг Harley-Davidson → `/ru/harley-tuning/`
@@ -345,7 +345,7 @@ DCF-Performance публікує файли для BMW Motorrad, Yamaha, Honda, 
 ### [cta] Eyebrow: Запитати про чип-тюнінг · Title: Назвіть мотоцикл — покриття перевіримо ми.
 Спершу WhatsApp: [+351 917 961 230](https://wa.me/351917961230) — модель, рік, вихлоп і фільтр, якщо мінялися, і чого ви хочете від мотоцикла. Підтверджуємо покриття DCF для вашого ЕБК і домовляємося про дату. Вівторок–субота, 10:00–18:00, São Domingos de Rana, Кашкайш.
 
-### [links] Внутрішні посилання
+### [links] Дивіться також
 - Хаб офіційного дилера → `/uk/authorized-dealer/`
 - Апґрейди та тюнінг → `/uk/upgrades-tuning/`
 - Тюнінг Harley-Davidson → `/uk/harley-tuning/`

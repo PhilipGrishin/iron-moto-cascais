@@ -477,7 +477,7 @@ def render_llms() -> str:
     lines = [
         f"# {facts['tradingName']}",
         "",
-        f"> {records[0]['description']}",
+        f"> {next(record for record in records if record['path'] == '')['description']}",
         "",
         "## Business facts",
         "",

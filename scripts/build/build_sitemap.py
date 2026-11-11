@@ -58,12 +58,12 @@ NEWS_PRIORITIES = {
 
 # (path, changefreq, priority)
 PAGES = [
-    *[(config["path"], "monthly", "0.9") for config in STAGE_PAGES.values()],
     ("", "weekly", "1.0"),
     ("motorcycle-service/", "monthly", "0.9"),
     ("fuel-system-service/", "monthly", "0.9"),
     ("parts/", "monthly", "0.9"),
     ("upgrades-tuning/", "monthly", "0.85"),
+    *[(config["path"], "monthly", "0.9") for config in STAGE_PAGES.values()],
     ("custom/", "monthly", "0.8"),
     ("harley/", "weekly", "0.95"),
     ("harley-tuning/", "monthly", "0.9"),

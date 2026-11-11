@@ -31,6 +31,20 @@ def unit_text(line):
     return re.sub(r'^\*\*(?:Figure|Valor|Цифра|Price box|Caixa de preço|Блок цены|Блок ціни):\*\* ','',line)
 
 
+def presentation_parts(key, line):
+    """Split only catalogue notation that becomes separate visual lines."""
+    value = unit_text(line)
+    patterns = {
+        'facts': r'\*\*(.+?)\*\* — (.+)',
+        'max': r'(~\d+\s*%) — (.+)',
+        'included': r'(.+?) — (\d+\s*€\*) · (.+?) · (.+?) · (\* .+)',
+    }
+    match = re.fullmatch(patterns[key], value)
+    if not match:
+        raise ValueError(f'Invalid {key} presentation notation: {line}')
+    return match.groups()
+
+
 def stage_schema(config,lang):
     copy=config['content'][lang];f=copy['fields'];url=DOMAIN+f['Slug'];media=config['hero']
     faq=next(s for s in copy['sections'] if s['key']=='faq')
@@ -38,7 +52,7 @@ def stage_schema(config,lang):
     return {'@context':'https://schema.org','@graph':[
         dealer_business_reference(with_logo=True),
         {'@type':'ImageObject','@id':url+'#hero','url':DOMAIN+media['base']+f'-{media["width"]}.jpg','width':media['width'],'height':media['height'],'caption':f['Hero alt']},
-        {'@type':'Service','@id':url+'#service','url':url,'name':config['service_name'],'description':f['Meta'],
+        {'@type':'Service','@id':url+'#service','url':url,'name':f['Schema name'],'description':f['Meta'],
          'provider':{'@id':DOMAIN+'/#business'},'brand':{'@type':'Brand',**config['brand']},'image':{'@id':url+'#hero'},'areaServed':{'@type':'Country','name':'Portugal'},
          'offers':[{'@type':'Offer','name':rows[key]['name'][lang],'description':rows[key]['desc'][lang], 'price':STAGE_PRICES[key],'priceCurrency':'EUR',
                     'priceSpecification':{'@type':'PriceSpecification','price':STAGE_PRICES[key],'priceCurrency':'EUR','valueAddedTaxIncluded':True},'url':url}
@@ -64,7 +78,7 @@ def head(config,lang):
 <link rel="preload" as="image" type="image/avif" href="{m['base']}-{m['width']}.avif" imagesrcset="{partner_srcset(m,'avif')}" imagesizes="100vw"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&amp;family=Saira+Condensed:wght@400;600;700;800;900&amp;family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/assets/main.css?v={CACHE_BUST}"/><link rel="stylesheet" href="/assets/stage.css?v=20261111a"/>
+<link rel="stylesheet" href="/assets/main.css?v={CACHE_BUST}"/><link rel="stylesheet" href="/assets/stage.css?v=20261111b"/>
 <style>{SHARED_STYLES}{TRUST_STRIP_CSS}</style>
 <script type="application/ld+json">{json.dumps(stage_schema(config,lang),ensure_ascii=False)}</script></head>'''
 
@@ -77,13 +91,19 @@ def render_section(section, config, lang):
         return f'<div class="stage-grid {cls}">'+''.join(unit(line,'article','stage-card') for line in items)+'</div>'
     def listing(items): return '<ul class="stage-list">'+''.join(unit(line,'li') for line in items)+'</ul>'
     def notes(items): return '<div class="stage-notes">'+''.join(unit(line,'aside','stage-note') for line in items)+'</div>'
-    if key=='facts': body=cards(lines,'stage-facts')
+    if key=='facts':
+        body='<div class="stage-grid stage-facts">'+''.join(
+            f'<article data-copy-unit="" class="stage-card"><strong>{inline(label,prefill)}</strong><span class="stage-fact-value">{inline(value,prefill)}</span></article>'
+            for label,value in (presentation_parts(key,line) for line in lines))+'</div>'
     elif key=='what': body=''.join(unit(line) for line in lines[:2])+cards(lines[2:],'stage-three')
-    elif key=='max': body=unit(lines[0],'p','stage-figure')+unit(lines[1])
+    elif key=='max':
+        figure,caption=presentation_parts(key,lines[0])
+        body=f'<p data-copy-unit="" class="stage-figure"><span class="stage-figure-value">{escape(figure.replace(" ",""))}</span><span class="stage-figure-caption">{inline(caption,prefill)}</span></p>'+unit(lines[1])
     elif key=='changes': body='<div class="stage-grid">'+''.join('<div>'+unit(lines[i],'h3')+listing(lines[i+1:i+5])+'</div>' for i in (0,5))+'</div>'
     elif key=='process': body=cards(lines[:6],'stage-steps')+notes(lines[6:])
     elif key=='included':
-        box=unit_text(lines[7]);box=re.sub(r'(\d+\s*€\*)',r'<span class="stage-price">\1</span>',inline(box,prefill))
+        label,price,tax,method,note=presentation_parts(key,lines[7])
+        box=f'<div class="stage-price-label">{inline(label,prefill)}</div><span class="stage-price">{escape(price)}</span><p class="stage-price-detail">{inline(tax,prefill)}</p><p class="stage-price-detail">{inline(method,prefill)}</p><p class="stage-price-footnote">{inline(note,prefill)}</p>'
         body='<div class="stage-included">'+listing(lines[:7])+'<div><div class="stage-price-box" data-copy-unit="">'+box+'</div><div class="stage-card">'+unit(lines[8],'h3')+listing(lines[9:11])+'</div></div></div>'+notes(lines[11:])
     elif key=='options': body=unit(lines[0])+''.join('<div class="stage-card stage-option-group">'+unit(lines[i],'h3')+listing(lines[i+1:i+1+count])+'</div>' for i,count in ((1,4),(6,7),(14,1)))+notes(lines[-1:])
     elif key=='terms': body='<ol class="stage-terms">'+''.join(unit(line,'li') for line in lines)+'</ol>'
@@ -107,12 +127,13 @@ def heading_html(value):
 def render_page(slug,config,lang):
     content=config['content'][lang];f=content['fields'];m=config['hero'];buttons=f['Buttons'].split(' · ');crumbs=f['Breadcrumb'].split(' → ')
     logo=f'<img class="stage-dcf-logo" src="{config["logo"]}" width="190" height="78" alt="DCF-Performance"/>'
+    price_note=re.sub(r'(\d+\s+€)', r'<span class="stage-amount">\1</span>', inline(f['Hero price note'],''))
     raw=f'''{head(config,lang)}<body>{header_html()}<main class="stage-page" data-stage="{slug}">
 <section class="stage-hero"><picture class="stage-hero-media"><source type="image/avif" srcset="{partner_srcset(m,'avif')}" sizes="100vw"/><source type="image/webp" srcset="{partner_srcset(m,'webp')}" sizes="100vw"/><img src="{m['base']}-{m['width']}.jpg" width="{m['width']}" height="{m['height']}" alt="{escape(f['Hero alt'])}" loading="eager" fetchpriority="high" decoding="async" sizes="100vw"/></picture>
 <div class="container"><nav class="crumb" aria-label="Breadcrumb"><a href="{'/' if lang=='en' else '/'+lang+'/'}">{escape(crumbs[0])}</a><span class="sep">→</span><span>{escape(crumbs[1])}</span></nav>
 <p class="eyebrow">{escape(f['Eyebrow'])}</p><h1>{heading_html(f['H1'])}</h1><p class="stage-hero-offer">{escape(f['Hero offer'])}</p>
 <div class="stage-lockup">{logo}<p>{escape(f['Hero badge'])}</p></div>
-<div class="stage-hero-price"><strong class="stage-price">{escape(f['Hero price'])}</strong><p>{inline(f['Hero price facts'],'')}</p></div><p class="stage-price-note">{inline(f['Hero price note'],'')}</p>
+<div class="stage-hero-price"><strong class="stage-price">{escape(f['Hero price'])}</strong><p>{inline(f['Hero price facts'],'')}</p></div><p class="stage-price-note">{price_note}</p>
 <div class="stage-buttons"><a class="btn btn-primary" data-wa="" href="https://wa.me/351917961230?text={quote(f['WhatsApp prefill'],safe='')}" target="_blank" rel="noopener">{escape(buttons[0])}</a><a class="btn btn-ghost" data-cta="pdf" href="{f['PDF']}" target="_blank" rel="noopener">{escape(buttons[1])}</a><a class="btn btn-ghost" href="#process">{escape(buttons[2])}</a></div>
 </div></section>{render_trust_strip(lang)}
 {''.join(render_section(section,config,lang) for section in content['sections'])}</main>{footer_html()}{end_html()}'''

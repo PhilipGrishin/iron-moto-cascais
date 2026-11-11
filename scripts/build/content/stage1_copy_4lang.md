@@ -1,9 +1,9 @@
 # Stage 1 page — approved copy (EN / PT-pt / RU / UK)
-Iron Custom Motors · for `/stage-1/` (+ `/pt/stage-1/`, `/ru/stage-1/`, `/uk/stage-1/`). Task S-STAGE1, 2026-11-11. First page of the new «Stage» family; Stage 2, 3 and 4 will be added later as `/stage-2/` … with the same contract — nothing about them is published now (owner, 2026-11-11).
+Iron Custom Motors · for `/stage-1/` (+ `/pt/stage-1/`, `/ru/stage-1/`, `/uk/stage-1/`). Task S-STAGE1, 2026-11-11; **rev. 2, 2026-11-11 (task S-STAGE1-FIX)** — three things changed and nothing else: the title of [changes], the heading of [links], and a new header field «Schema name». First page of the new «Stage» family; Stage 2, 3 and 4 will be added later as `/stage-2/` … with the same contract — nothing about them is published now (owner, 2026-11-11).
 Source: the owner-approved client catalogue (`ICM_Stage-1_DCF-Performance_{EN,PT,RU,UK}.pdf`, RU text approved 2026-11-11; EN/PT/UK follow it sentence by sentence). The sections [what] … [terms] repeat the catalogue verbatim; the header, [facts], [bikes] links, [dcf] link, three FAQ items, [cta] and [links] are written for the web page.
 Facts (owner, 2026-11-11): Stage 1 = an individual DCF-Performance ECU file · **800 € with VAT for all makes except Chinese brands; Chinese brands (CFMoto, Voge, Benelli, Zontes and others) 650 € with VAT** · the price does not depend on how the ECU is read · included: coverage check with DCF, computer diagnostics before and after, visual inspection, ECU read, original software archived, the individual file incl. throttle response, write and check · NOT included: High Flow air filter, exhaust system, additional options (priced on request) · lead time «from two days» · return to factory settings «possible at any time», no conditions stated · the motorcycle must be technically ready — «we need a motorcycle in good working order», and nothing is said about what happens if a fault is found · maximum efficiency with a High Flow filter + replaced exhaust: power gain «about 10 % on average» — the only figure allowed · Harley-Davidson is covered by Stage 1 (owner, 2026-11-11) · Iron Custom Motors = official DCF-Performance dealer, the only one in Portugal.
 Rules: no «exclusive»; no tool or equipment brand names; no own dyno; no power or torque figure other than «about 10 % on average» with its condition; no free file correction, no test ride with data logging, no written estimate, no payment terms, no turnaround promise beyond «from two days»; no guarantee of a result; independent workshop — the dealership is for DCF-Performance, never for a motorcycle make; no scooters; visible FAQ = FAQPage 1:1 (8 items); same-language links; pt-PT; RU/UK native. Both prices must exist in `pricing_data.py` and be referenced from there, never typed a second time in generated HTML.
-Contract per language: header fields, then 13 labelled sections in this order — facts (5) · what (2 paragraphs + 3 cards) · max (figure + 1 paragraph) · changes (4 + 4) · process (6 steps + 2 notes) · included (7 items + price box + 2 not-included + 2 notes) — notes are the lines that start with `>` · bikes (1 paragraph) · options (intro + groups of 4 / 7 / 1 + legality note) · terms (7) · dcf (1 paragraph) · faq (8) · cta · links (5).
+Contract per language: header fields (now including «Schema name» — the localised `name` of the page's Service in structured data, not shown on the page), then 13 labelled sections in this order — facts (5) · what (2 paragraphs + 3 cards) · max (figure + 1 paragraph) · changes (4 + 4) · process (6 steps + 2 notes) · included (7 items + price box + 2 not-included + 2 notes) — notes are the lines that start with `>` · bikes (1 paragraph) · options (intro + groups of 4 / 7 / 1 + legality note) · terms (7) · dcf (1 paragraph) · faq (8) · cta · links (5).
 
 ---
 
@@ -23,6 +23,7 @@ Contract per language: header fields, then 13 labelled sections in this order �
 **Buttons:** WhatsApp +351 917 961 230 · Download Stage 1 (PDF) · How it works
 **WhatsApp prefill:** Hello, Iron Custom Motors! I'm interested in Stage 1 for my motorcycle (model, year, what is fitted): 
 **PDF:** `/pricing/files/ICM_Stage-1_DCF-Performance_EN.pdf`
+**Schema name:** Stage 1 motorcycle ECU remap
 
 ### [facts] Title: Stage 1 at a glance
 - **Price** — 800 €, VAT included; Chinese brands 650 €
@@ -42,7 +43,7 @@ A motorcycle leaves the factory with software written for every market at once: 
 **Figure:** ~10% — more power on average
 It is reached when the motorcycle has its air filter replaced with a **High Flow** filter and its **exhaust system** replaced as well. In that case the power gain averages about 10%.
 
-### [changes] Eyebrow: What a file changes · Title: What changes in the software · What you feel
+### [changes] Eyebrow: What a file changes · Title: In the software — and on the road
 **What changes in the software**
 - **Air–fuel mixture** — across the whole rev and load range.
 - **Ignition timing** — for the fuel you really use and the way the engine breathes.
@@ -126,7 +127,7 @@ A Dutch group that has been developing engine software since 2008. The calibrati
 ### [cta] Eyebrow: Booking and questions · Title: Name your motorcycle — we will check the coverage
 WhatsApp [+351 917 961 230](https://wa.me/351917961230) — model, year, what is fitted and what you want from the motorcycle: that is enough for a first answer. Tuesday to Saturday, 10:00–18:00, R. António José da Silva 100 B, São Domingos de Rana, Cascais.
 
-### [links] Internal links
+### [links] Related pages
 - DCF-Performance dealer → `/authorized-dealer/dcf-performance/`
 - Pricing → `/pricing/#stage-1`
 - Upgrades & tuning → `/upgrades-tuning/`
@@ -151,6 +152,7 @@ WhatsApp [+351 917 961 230](https://wa.me/351917961230) — model, year, what is
 **Buttons:** WhatsApp +351 917 961 230 · Descarregar Stage 1 (PDF) · Como funciona
 **WhatsApp prefill:** Olá, Iron Custom Motors! Tenho interesse no Stage 1 para a minha mota (modelo, ano, o que está montado): 
 **PDF:** `/pricing/files/ICM_Stage-1_DCF-Performance_PT.pdf`
+**Schema name:** Stage 1 — reprogramação de centralina de mota
 
 ### [facts] Title: Stage 1 em resumo
 - **Preço** — 800 €, IVA incluído; marcas chinesas 650 €
@@ -170,7 +172,7 @@ Uma mota sai da fábrica com software escrito para todos os mercados ao mesmo te
 **Valor:** ~10 % — de potência em média
 É atingida quando, na mota, o filtro de ar foi substituído por um filtro **High Flow** e o **sistema de escape** também foi substituído. Nesse caso, o ganho de potência é, em média, de cerca de 10 %.
 
-### [changes] Eyebrow: O que muda um ficheiro · Title: O que muda no software · O que sente
+### [changes] Eyebrow: O que muda um ficheiro · Title: No software — e na estrada
 **O que muda no software**
 - **Mistura ar-combustível** — em toda a gama de rotações e de carga.
 - **Avanço da ignição** — para o combustível que realmente usa e para a forma como o motor respira.
@@ -254,7 +256,7 @@ Um grupo holandês que desenvolve software de motor desde 2008. As calibrações
 ### [cta] Eyebrow: Marcação e perguntas · Title: Diga-nos qual é a mota — a cobertura verificamos nós
 WhatsApp [+351 917 961 230](https://wa.me/351917961230) — modelo, ano, o que está montado e o que pretende da mota: é o suficiente para uma primeira resposta. De terça a sábado, das 10h00 às 18h00, R. António José da Silva 100 B, São Domingos de Rana, Cascais.
 
-### [links] Ligações internas
+### [links] Páginas relacionadas
 - Revendedor DCF-Performance → `/pt/authorized-dealer/dcf-performance/`
 - Preços → `/pt/pricing/#stage-1`
 - Upgrades e tuning → `/pt/upgrades-tuning/`
@@ -279,6 +281,7 @@ WhatsApp [+351 917 961 230](https://wa.me/351917961230) — modelo, ano, o que e
 **Buttons:** WhatsApp +351 917 961 230 · Скачать Stage 1 (PDF) · Как это работает
 **WhatsApp prefill:** Здравствуйте, Iron Custom Motors! Интересует Stage 1 для моего мотоцикла (модель, год, что установлено): 
 **PDF:** `/pricing/files/ICM_Stage-1_DCF-Performance_RU.pdf`
+**Schema name:** Stage 1 — прошивка ЭБУ мотоцикла
 
 ### [facts] Title: Stage 1 коротко
 - **Цена** — 800 €, IVA включён; китайские бренды — 650 €
@@ -298,7 +301,7 @@ WhatsApp [+351 917 961 230](https://wa.me/351917961230) — modelo, ano, o que e
 **Цифра:** ~10 % — мощности в среднем
 Достигается, когда на мотоцикле воздушный фильтр заменён на **High Flow** фильтр, а также заменена **выпускная система**. В этом случае прирост мощности в среднем составляет порядка 10 %.
 
-### [changes] Eyebrow: Что меняет файл · Title: Что меняется в прошивке · Что вы чувствуете
+### [changes] Eyebrow: Что меняет файл · Title: В прошивке — и на дороге
 **Что меняется в прошивке**
 - **Топливно-воздушная смесь** — по всему диапазону оборотов и нагрузки.
 - **Угол опережения зажигания** — под реальное топливо и то, как дышит мотор.
@@ -382,7 +385,7 @@ WhatsApp [+351 917 961 230](https://wa.me/351917961230) — modelo, ano, o que e
 ### [cta] Eyebrow: Запись и вопросы · Title: Назовите мотоцикл — покрытие проверим мы
 WhatsApp [+351 917 961 230](https://wa.me/351917961230) — модель, год, что установлено и чего вы хотите от мотоцикла: этого достаточно для первого ответа. Вторник–суббота, 10:00–18:00, R. António José da Silva 100 B, São Domingos de Rana, Кашкайш.
 
-### [links] Внутренние ссылки
+### [links] Смотрите также
 - Дилер DCF-Performance → `/ru/authorized-dealer/dcf-performance/`
 - Цены → `/ru/pricing/#stage-1`
 - Апгрейды и тюнинг → `/ru/upgrades-tuning/`
@@ -407,6 +410,7 @@ WhatsApp [+351 917 961 230](https://wa.me/351917961230) — модель, год
 **Buttons:** WhatsApp +351 917 961 230 · Завантажити Stage 1 (PDF) · Як це працює
 **WhatsApp prefill:** Добрий день, Iron Custom Motors! Цікавить Stage 1 для мого мотоцикла (модель, рік, що встановлено): 
 **PDF:** `/pricing/files/ICM_Stage-1_DCF-Performance_UK.pdf`
+**Schema name:** Stage 1 — прошивка ЕБК мотоцикла
 
 ### [facts] Title: Stage 1 коротко
 - **Ціна** — 800 €, ПДВ включено; китайські бренди — 650 €
@@ -426,7 +430,7 @@ WhatsApp [+351 917 961 230](https://wa.me/351917961230) — модель, год
 **Цифра:** ~10 % — потужності в середньому
 Досягається, коли на мотоциклі повітряний фільтр замінено на **High Flow** фільтр, а також замінено **вихлопну систему**. У цьому разі приріст потужності в середньому становить близько 10 %.
 
-### [changes] Eyebrow: Що змінює файл · Title: Що змінюється в прошивці · Що ви відчуваєте
+### [changes] Eyebrow: Що змінює файл · Title: У прошивці — і на дорозі
 **Що змінюється в прошивці**
 - **Паливно-повітряна суміш** — по всьому діапазону обертів і навантаження.
 - **Кут випередження запалювання** — під реальне пальне й те, як дихає мотор.
@@ -510,7 +514,7 @@ WhatsApp [+351 917 961 230](https://wa.me/351917961230) — модель, год
 ### [cta] Eyebrow: Запис і запитання · Title: Назвіть мотоцикл — покриття перевіримо ми
 WhatsApp [+351 917 961 230](https://wa.me/351917961230) — модель, рік, що встановлено і чого ви хочете від мотоцикла: цього досить для першої відповіді. Вівторок–субота, 10:00–18:00, R. António José da Silva 100 B, São Domingos de Rana, Кашкайш.
 
-### [links] Внутрішні посилання
+### [links] Дивіться також
 - Дилер DCF-Performance → `/uk/authorized-dealer/dcf-performance/`
 - Ціни → `/uk/pricing/#stage-1`
 - Апґрейди та тюнінг → `/uk/upgrades-tuning/`

@@ -445,6 +445,9 @@ The hero is followed by the shared snapshot-backed commercial trust strip.
 FAQPage mirrors the eight visible questions. Service has exactly the registered
 fixed-price Offers, a resolving business provider, Brand and hero ImageObject.
 Stage styling is confined to its family; it does not change shared chrome.
+`Service.name` comes from each language's approved `Schema name` header field.
+Catalogue separators between separate fact/figure/price lines are notation,
+not visible copy; parity retains every word and all other punctuation.
 
 The S-STAGE1-NAV owner addendum overrides Part A1 of the preserved integration
 source: Stage replaces Authorized Dealer after Harley Hub. Footer order is
@@ -478,9 +481,11 @@ Valve-clearance table cells express starting prices with a trailing `+` on
 each amount; ranges retain their bounds and place `+` after the upper bound.
 Prose uses the localized starting-price wording (`from`, `desde`, `от`, `від`).
 The pricing-table note explains the convention and written-estimate process.
-Brand renderers emit translations only for the related paths they display;
-the shared writer preserves historical unused payload entries on existing pages
-so an unrelated registry addition does not change protected brand output.
+Correction, 2026-11-11 (S-STAGE1-FIX): retaining unused related translations
+also retained stale DCF claims. Brand renderers now refresh every related
+description from the current registry in every language, including unused keys.
+The broad validator rejects any built related-description value that differs
+from that registry. Visible brand content remains unchanged.
 
 Brand tables inherit the same cells; the approved hub, brand FAQ and metadata
 sources must stay aligned. This convention does not change scheduled-service
@@ -527,11 +532,16 @@ Ownership:
 
 Every English sitemap URL must appear once in the generated index. Link names
 are stable human page names, not marketing H1 text. Business facts remain
-machine-readable and source-backed.
+machine-readable and source-backed. The discovery introduction is selected by
+the homepage path, never by registry position. The homepage leads the sitemap,
+and Stage follows Upgrades in the Services discovery group.
 
 Commands: `scripts/build/README.md`, **Discovery index workflow**.
 
 ## Reviews
+
+Rating text spans share one inline formatting context inside the trust-strip
+flex item, preserving the normal space after the number.
 
 Ownership:
 

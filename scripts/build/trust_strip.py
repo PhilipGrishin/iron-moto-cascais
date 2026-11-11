@@ -81,9 +81,11 @@ def render_trust_strip(lang: str, *, i18n: bool = False) -> str:
     items = [
         '<li class="icm-trust-item icm-trust-rating">'
         '<span aria-hidden="true" class="icm-trust-star">★</span>'
+        '<span class="icm-trust-rating-text">'
         f'<span{key("trust.ratingPrefix")}>{html.escape(values["trust.ratingPrefix"])}</span>'
         f'<span data-icm-rating=""{key("trust.rating")}>{html.escape(values["trust.rating"])}</span>'
         f'<span{key("trust.ratingSuffix")}>{html.escape(values["trust.ratingSuffix"])}</span>'
+        '</span>'
         "</li>"
     ]
     items.extend(

@@ -9,6 +9,13 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
+- S-STAGE1-FIX, **local acceptance passed**, 2026-11-11. Baseline `abd63a24`
+  confirmed. Discovery summary/order, Stage presentation/localized schema,
+  approved link headings, trust spacing and stale brand translations are being
+  corrected. Full rebuild, release validators, 28 browser cases and the exact
+  allowed-scope comparison passed. Deployment remains pending.
+  See [delivery record](reports/S_STAGE1_FIX_REPORT.md).
+
 - S-STAGE1 / S-STAGE1-NAV, **deployed and production-verified**, 2026-11-11:
   implementation `c7fbbb5c`, published artifact `4ddabb8b`, Pages run
   `43061911928`. Approved Stage/News content, shared pricing/PDF and DCF updates
@@ -304,7 +311,7 @@ There is no active `EN_PAGES` registry. The canonical English page registry is
 | Assets | Value | Scope |
 |---|---|---|
 | `assets/main.css`, `assets/main.js` | `20261111a` | every sitemap page |
-| `assets/stage.css` | `20261111a` | Stage pages |
+| `assets/stage.css` | `20261111b` | Stage pages |
 | `assets/projects.css` | `20260801a` | project detail pages |
 | `assets/projects.js` | `20260710b` | project detail pages |
 

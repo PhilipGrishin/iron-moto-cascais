@@ -693,7 +693,7 @@ from stage_copy import language_lines
 COPY_DEALER_PAGES = {
     "dcf-performance": {
         "source": Path(__file__).resolve().parent / "content/dcf_dealer_copy_4lang.md",
-        "sha256": "33ab00ec732367c157faa10000eb91eadf019db190e5d1043fb129b87185d99e",
+        "sha256": "4ca8c646e5045bd1a9aee4702c446b693160462762183ed77a55625c6f08082b",
         "path": "authorized-dealer/dcf-performance/",
         "brand": {"name": "DCF-Performance", "url": "https://dcf-performance.com/"},
         "hero": {"base": "/photos/authorized-dealer/dcf-performance-hero", "widths": [768, 1280, 1536], "width": 1536, "height": 2048},

@@ -7,7 +7,7 @@ from dealer_copy import LANG_HEADERS
 
 CONTENT = Path(__file__).resolve().parent / 'content'
 INTEGRATION_SHA256 = '96ca56e284774ac80837f72ab7fb854f951760844351c8e25cf31312df07f5a8'
-FIELDS = ('SEO Title', 'Meta', 'Slug', 'Breadcrumb', 'Eyebrow', 'H1', 'Hero offer', 'Hero badge', 'Hero price', 'Hero price facts', 'Hero price note', 'Hero alt', 'Buttons', 'WhatsApp prefill', 'PDF')
+FIELDS = ('SEO Title', 'Meta', 'Slug', 'Breadcrumb', 'Eyebrow', 'H1', 'Hero offer', 'Hero badge', 'Hero price', 'Hero price facts', 'Hero price note', 'Hero alt', 'Buttons', 'WhatsApp prefill', 'PDF', 'Schema name')
 COUNTS = {'facts':5, 'what':5, 'max':2, 'changes':10, 'process':8, 'included':13, 'bikes':1, 'options':17, 'terms':7, 'dcf':1, 'faq':8, 'cta':1, 'links':5}
 
 

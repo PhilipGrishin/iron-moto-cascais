@@ -7,6 +7,11 @@ Statuses use the labels defined in the `AGENTS.md` documentation protocol.
 
 ## Active Implementation
 
+S-STAGE1-FIX: local build, browser and scope checks passed; clean-clone
+reproduction and publication pending. The homepage has no trust strip; its existing reviews
+block will be checked without adding a strip. See
+[delivery record](reports/S_STAGE1_FIX_REPORT.md).
+
 No active S-STAGE1 / S-STAGE1-NAV work remains. Implementation, local and
 clean-clone acceptance, deployment, public parity, responsive checks and both
 PT Rich Results tests passed on 2026-11-11. The earlier ninth header item plan

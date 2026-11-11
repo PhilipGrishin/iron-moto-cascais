@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 from PIL import Image
 from pypdf import PdfReader
 from stage_pages_data import STAGE_PAGES, LANGS
-from build_stage_pages import unit_text
+from build_stage_pages import unit_text, presentation_parts
 from dealer_copy import plain
 from pricing_data import STAGE_PRICES, STAGE_SECTION, STAGE_CATALOGUES, LABELS
 from site_chrome import PRIMARY_NAV_LINKS, DROPDOWN_NAV_LINKS, localized_href, label_for
@@ -53,7 +53,9 @@ def validate_navigation():
     check(all(DROPDOWN_NAV_LINKS.values()),'Empty dropdown registry')
     for path in ROOT.rglob('*.html'):
         if any(part.startswith('.') for part in path.relative_to(ROOT).parts):continue
-        soup=BeautifulSoup(path.read_text(),'html.parser');nav=soup.select_one('nav.nav')
+        raw=path.read_text();soup=BeautifulSoup(raw,'html.parser');nav=soup.select_one('nav.nav')
+        check(not any(value in raw for value in ('Stage 1 and 2','Stage 1 e 2','Stage 1 и 2','Stage 1 і 2')),f'{path}: obsolete DCF description')
+        check(not any(text(h) in ('Internal links','Ligações internas','Внутренние ссылки','Внутрішні посилання') for h in soup.select('h1,h2,h3,h4,h5,h6')),f'{path}: internal editorial heading')
         # Bare 404/legacy redirects have no managed site header; thank-you pages do.
         if not nav:continue
         count+=1;lang=soup.html.get('lang','en');mobile=soup.select_one('.nav-mobile')
@@ -95,17 +97,29 @@ def main():
                 check(text(node.h2)==section['title'],f'{path}/{section["key"]}: heading')
                 if section['eyebrow']:check(text(node.select_one('.eyebrow'))==section['eyebrow'],f'{path}: eyebrow')
                 expected=[norm(plain(unit_text(line))) for line in section['lines']]
+                if section['key']=='facts':
+                    expected=[plain(' '.join(presentation_parts('facts',line))) for line in section['lines']]
+                    check(len(node.select('.stage-fact-value'))==5 and not any(text(v).startswith('—') for v in node.select('.stage-fact-value')),f'{path}: fact label/value formatting')
+                if section['key']=='max':
+                    expected[0]=plain(' '.join(presentation_parts('max',section['lines'][0])))
+                    check(text(node.select_one('.stage-figure-value'))=='~10%' and node.select_one('.stage-figure-caption') is not None,f'{path}: figure/caption formatting')
+                if section['key']=='included':
+                    expected[7]=plain(' '.join(presentation_parts('included',section['lines'][7])))
+                    box=node.select_one('.stage-price-box')
+                    check([n.get('class',[None])[0] for n in box.find_all(recursive=False)]==['stage-price-label','stage-price','stage-price-detail','stage-price-detail','stage-price-footnote'],f'{path}: price box line structure')
+                    check(text(box.select_one('.stage-price-footnote')).startswith('* ') and box.select_one('.stage-price-footnote strong') is not None,f'{path}: price box footnote')
                 if section['key']=='links':expected=[re.fullmatch(r'- (.+?) → `([^`]+)`',line)[1] for line in section['lines']]
                 check([re.sub(r'\s+','',text(n)) for n in node.select('[data-copy-unit]')]==[re.sub(r'\s+','',value) for value in expected],f'{path}/{section["key"]}: full copy/order/count')
             hero=main.select_one('.stage-hero')
             for key,selector in [('Eyebrow','.eyebrow'),('Hero offer','.stage-hero-offer'),('Hero badge','.stage-lockup p'),('Hero price','.stage-hero-price .stage-price'),('Hero price facts','.stage-hero-price p'),('Hero price note','.stage-price-note')]:
-                check(text(hero.select_one(selector))==norm(plain(f[key])),f'{path}: {key}')
+                check(re.sub(r'\s+','',text(hero.select_one(selector)))==re.sub(r'\s+','',plain(f[key])),f'{path}: {key}')
             buttons=hero.select('.stage-buttons a');check([text(a) for a in buttons]==f['Buttons'].split(' · '),f'{path}: buttons')
             check(parse_qs(urlsplit(buttons[0]['href']).query)['text']==[f['WhatsApp prefill']],f'{path}: WhatsApp')
             check(buttons[1]['href']==f['PDF'] and buttons[1]['target']=='_blank' and buttons[2]['href']=='#process',f'{path}: CTA targets')
             check(hashlib.sha256((ROOT/f['PDF'].lstrip('/')).read_bytes()).hexdigest()==PDF_HASHES[lang],f'{path}: catalogue hash')
             check_links(soup,lang,path)
             nodes=graph(soup);service=next(n for n in nodes if n['@type']=='Service');faq=next(n for n in nodes if n['@type']=='FAQPage')
+            check(service['name']==f['Schema name'],f'{path}: localized Service name')
             check([o['price'] for o in service['offers']]==[STAGE_PRICES[key] for key in config['price_ids']],f'{path}: offers')
             check(all(o['priceCurrency']=='EUR' and o['priceSpecification']['valueAddedTaxIncluded'] for o in service['offers']),f'{path}: VAT')
             visible=[(text(d.summary),text(d.p)) for d in main.select('#faq details')]

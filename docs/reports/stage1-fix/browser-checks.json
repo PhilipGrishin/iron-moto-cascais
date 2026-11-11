@@ -1,0 +1,3978 @@
+[
+  {
+    "amount": {
+      "bottom": 699.953125,
+      "height": 14.5,
+      "left": 20,
+      "right": 54.4140625,
+      "top": 685.453125,
+      "width": 34.4140625,
+      "x": 20,
+      "y": 685.453125
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1276.34375,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1248.84375,
+          "width": 272,
+          "x": 39,
+          "y": 1248.84375
+        },
+        "text": "800 €, VAT included; Chinese brands 650 €",
+        "value": {
+          "bottom": 1332.140625,
+          "height": 40.796875,
+          "left": 39,
+          "right": 285.265625,
+          "top": 1291.34375,
+          "width": 246.265625,
+          "x": 39,
+          "y": 1291.34375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1419.4375,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1391.9375,
+          "width": 272,
+          "x": 39,
+          "y": 1391.9375
+        },
+        "text": "an individual DCF-Performance ECU file for your motorcycle",
+        "value": {
+          "bottom": 1475.234375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 303.8203125,
+          "top": 1434.4375,
+          "width": 264.8203125,
+          "x": 39,
+          "y": 1434.4375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1562.53125,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1535.03125,
+          "width": 272,
+          "x": 39,
+          "y": 1535.03125
+        },
+        "text": "from two days",
+        "value": {
+          "bottom": 1594.53125,
+          "height": 17,
+          "left": 39,
+          "right": 133.625,
+          "top": 1577.53125,
+          "width": 94.625,
+          "x": 39,
+          "y": 1577.53125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1681.828125,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1654.328125,
+          "width": 272,
+          "x": 39,
+          "y": 1654.328125
+        },
+        "text": "kept in our archive; a return to factory settings is possible at any time",
+        "value": {
+          "bottom": 1737.625,
+          "height": 40.796875,
+          "left": 39,
+          "right": 288.9375,
+          "top": 1696.828125,
+          "width": 249.9375,
+          "x": 39,
+          "y": 1696.828125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1824.921875,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1797.421875,
+          "width": 272,
+          "x": 39,
+          "y": 1797.421875
+        },
+        "text": "Cascais, near Lisbon; official DCF-Performance dealer, the only one in Portugal",
+        "value": {
+          "bottom": 1904.515625,
+          "height": 64.59375,
+          "left": 39,
+          "right": 274.640625,
+          "top": 1839.921875,
+          "width": 235.640625,
+          "x": 39,
+          "y": 1839.921875
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "In the software — and on the road",
+    "lang": "en",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 360
+  },
+  {
+    "amount": {
+      "bottom": 699.953125,
+      "height": 14.5,
+      "left": 20,
+      "right": 54.4140625,
+      "top": 685.453125,
+      "width": 34.4140625,
+      "x": 20,
+      "y": 685.453125
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1276.34375,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1248.84375,
+          "width": 287,
+          "x": 39,
+          "y": 1248.84375
+        },
+        "text": "800 €, VAT included; Chinese brands 650 €",
+        "value": {
+          "bottom": 1332.140625,
+          "height": 40.796875,
+          "left": 39,
+          "right": 315.0234375,
+          "top": 1291.34375,
+          "width": 276.0234375,
+          "x": 39,
+          "y": 1291.34375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1419.4375,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1391.9375,
+          "width": 287,
+          "x": 39,
+          "y": 1391.9375
+        },
+        "text": "an individual DCF-Performance ECU file for your motorcycle",
+        "value": {
+          "bottom": 1475.234375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 303.8203125,
+          "top": 1434.4375,
+          "width": 264.8203125,
+          "x": 39,
+          "y": 1434.4375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1562.53125,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1535.03125,
+          "width": 287,
+          "x": 39,
+          "y": 1535.03125
+        },
+        "text": "from two days",
+        "value": {
+          "bottom": 1594.53125,
+          "height": 17,
+          "left": 39,
+          "right": 133.625,
+          "top": 1577.53125,
+          "width": 94.625,
+          "x": 39,
+          "y": 1577.53125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1681.828125,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1654.328125,
+          "width": 287,
+          "x": 39,
+          "y": 1654.328125
+        },
+        "text": "kept in our archive; a return to factory settings is possible at any time",
+        "value": {
+          "bottom": 1737.625,
+          "height": 40.796875,
+          "left": 39,
+          "right": 288.9375,
+          "top": 1696.828125,
+          "width": 249.9375,
+          "x": 39,
+          "y": 1696.828125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1824.921875,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1797.421875,
+          "width": 287,
+          "x": 39,
+          "y": 1797.421875
+        },
+        "text": "Cascais, near Lisbon; official DCF-Performance dealer, the only one in Portugal",
+        "value": {
+          "bottom": 1904.515625,
+          "height": 64.59375,
+          "left": 39,
+          "right": 274.640625,
+          "top": 1839.921875,
+          "width": 235.640625,
+          "x": 39,
+          "y": 1839.921875
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "In the software — and on the road",
+    "lang": "en",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 375
+  },
+  {
+    "amount": {
+      "bottom": 658.7578125,
+      "height": 14.5,
+      "left": 20,
+      "right": 54.4140625,
+      "top": 644.2578125,
+      "width": 34.4140625,
+      "x": 20,
+      "y": 644.2578125
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1235.1484375,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1207.6484375,
+          "width": 302,
+          "x": 39,
+          "y": 1207.6484375
+        },
+        "text": "800 €, VAT included; Chinese brands 650 €",
+        "value": {
+          "bottom": 1267.1484375,
+          "height": 17,
+          "left": 39,
+          "right": 328.296875,
+          "top": 1250.1484375,
+          "width": 289.296875,
+          "x": 39,
+          "y": 1250.1484375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1354.4453125,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1326.9453125,
+          "width": 302,
+          "x": 39,
+          "y": 1326.9453125
+        },
+        "text": "an individual DCF-Performance ECU file for your motorcycle",
+        "value": {
+          "bottom": 1410.2421875,
+          "height": 40.796875,
+          "left": 39,
+          "right": 326.1953125,
+          "top": 1369.4453125,
+          "width": 287.1953125,
+          "x": 39,
+          "y": 1369.4453125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1497.5390625,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1470.0390625,
+          "width": 302,
+          "x": 39,
+          "y": 1470.0390625
+        },
+        "text": "from two days",
+        "value": {
+          "bottom": 1529.5390625,
+          "height": 17,
+          "left": 39,
+          "right": 133.625,
+          "top": 1512.5390625,
+          "width": 94.625,
+          "x": 39,
+          "y": 1512.5390625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1616.8359375,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1589.3359375,
+          "width": 302,
+          "x": 39,
+          "y": 1589.3359375
+        },
+        "text": "kept in our archive; a return to factory settings is possible at any time",
+        "value": {
+          "bottom": 1672.6328125,
+          "height": 40.796875,
+          "left": 39,
+          "right": 288.9375,
+          "top": 1631.8359375,
+          "width": 249.9375,
+          "x": 39,
+          "y": 1631.8359375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1759.9296875,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1732.4296875,
+          "width": 302,
+          "x": 39,
+          "y": 1732.4296875
+        },
+        "text": "Cascais, near Lisbon; official DCF-Performance dealer, the only one in Portugal",
+        "value": {
+          "bottom": 1815.7265625,
+          "height": 40.796875,
+          "left": 39,
+          "right": 334.0234375,
+          "top": 1774.9296875,
+          "width": 295.0234375,
+          "x": 39,
+          "y": 1774.9296875
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "In the software — and on the road",
+    "lang": "en",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 390
+  },
+  {
+    "amount": {
+      "bottom": 641.9609375,
+      "height": 14.5,
+      "left": 259.3984375,
+      "right": 293.8125,
+      "top": 627.4609375,
+      "width": 34.4140625,
+      "x": 259.3984375,
+      "y": 627.4609375
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1218.3515625,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1190.8515625,
+          "width": 326,
+          "x": 39,
+          "y": 1190.8515625
+        },
+        "text": "800 €, VAT included; Chinese brands 650 €",
+        "value": {
+          "bottom": 1250.3515625,
+          "height": 17,
+          "left": 39,
+          "right": 328.296875,
+          "top": 1233.3515625,
+          "width": 289.296875,
+          "x": 39,
+          "y": 1233.3515625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1337.6484375,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1310.1484375,
+          "width": 326,
+          "x": 39,
+          "y": 1310.1484375
+        },
+        "text": "an individual DCF-Performance ECU file for your motorcycle",
+        "value": {
+          "bottom": 1393.4453125,
+          "height": 40.796875,
+          "left": 39,
+          "right": 359.671875,
+          "top": 1352.6484375,
+          "width": 320.671875,
+          "x": 39,
+          "y": 1352.6484375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1480.7421875,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1453.2421875,
+          "width": 326,
+          "x": 39,
+          "y": 1453.2421875
+        },
+        "text": "from two days",
+        "value": {
+          "bottom": 1512.7421875,
+          "height": 17,
+          "left": 39,
+          "right": 133.625,
+          "top": 1495.7421875,
+          "width": 94.625,
+          "x": 39,
+          "y": 1495.7421875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1600.0390625,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1572.5390625,
+          "width": 326,
+          "x": 39,
+          "y": 1572.5390625
+        },
+        "text": "kept in our archive; a return to factory settings is possible at any time",
+        "value": {
+          "bottom": 1655.8359375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 359.9453125,
+          "top": 1615.0390625,
+          "width": 320.9453125,
+          "x": 39,
+          "y": 1615.0390625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1743.1328125,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1715.6328125,
+          "width": 326,
+          "x": 39,
+          "y": 1715.6328125
+        },
+        "text": "Cascais, near Lisbon; official DCF-Performance dealer, the only one in Portugal",
+        "value": {
+          "bottom": 1798.9296875,
+          "height": 40.796875,
+          "left": 39,
+          "right": 353.90625,
+          "top": 1758.1328125,
+          "width": 314.90625,
+          "x": 39,
+          "y": 1758.1328125
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "In the software — and on the road",
+    "lang": "en",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 414
+  },
+  {
+    "amount": {
+      "bottom": 623.265625,
+      "height": 14.5,
+      "left": 259.3984375,
+      "right": 293.8125,
+      "top": 608.765625,
+      "width": 34.4140625,
+      "x": 259.3984375,
+      "y": 608.765625
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1199.65625,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1172.15625,
+          "width": 342,
+          "x": 39,
+          "y": 1172.15625
+        },
+        "text": "800 €, VAT included; Chinese brands 650 €",
+        "value": {
+          "bottom": 1231.65625,
+          "height": 17,
+          "left": 39,
+          "right": 328.296875,
+          "top": 1214.65625,
+          "width": 289.296875,
+          "x": 39,
+          "y": 1214.65625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1318.953125,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1291.453125,
+          "width": 342,
+          "x": 39,
+          "y": 1291.453125
+        },
+        "text": "an individual DCF-Performance ECU file for your motorcycle",
+        "value": {
+          "bottom": 1374.75,
+          "height": 40.796875,
+          "left": 39,
+          "right": 359.671875,
+          "top": 1333.953125,
+          "width": 320.671875,
+          "x": 39,
+          "y": 1333.953125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1462.046875,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1434.546875,
+          "width": 342,
+          "x": 39,
+          "y": 1434.546875
+        },
+        "text": "from two days",
+        "value": {
+          "bottom": 1494.046875,
+          "height": 17,
+          "left": 39,
+          "right": 133.625,
+          "top": 1477.046875,
+          "width": 94.625,
+          "x": 39,
+          "y": 1477.046875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1581.34375,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1553.84375,
+          "width": 342,
+          "x": 39,
+          "y": 1553.84375
+        },
+        "text": "kept in our archive; a return to factory settings is possible at any time",
+        "value": {
+          "bottom": 1637.140625,
+          "height": 40.796875,
+          "left": 39,
+          "right": 359.9453125,
+          "top": 1596.34375,
+          "width": 320.9453125,
+          "x": 39,
+          "y": 1596.34375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1724.4375,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1696.9375,
+          "width": 342,
+          "x": 39,
+          "y": 1696.9375
+        },
+        "text": "Cascais, near Lisbon; official DCF-Performance dealer, the only one in Portugal",
+        "value": {
+          "bottom": 1780.234375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 353.90625,
+          "top": 1739.4375,
+          "width": 314.90625,
+          "x": 39,
+          "y": 1739.4375
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "In the software — and on the road",
+    "lang": "en",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 430
+  },
+  {
+    "amount": {
+      "bottom": 606.34375,
+      "height": 15.5,
+      "left": 666.234375,
+      "right": 703.515625,
+      "top": 590.84375,
+      "width": 37.28125,
+      "x": 666.234375,
+      "y": 590.84375
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1121.203125,
+          "height": 27.5,
+          "left": 51.71875,
+          "right": 349,
+          "top": 1093.703125,
+          "width": 297.28125,
+          "x": 51.71875,
+          "y": 1093.703125
+        },
+        "text": "800 €, VAT included; Chinese brands 650 €",
+        "value": {
+          "bottom": 1153.203125,
+          "height": 17,
+          "left": 51.71875,
+          "right": 341.015625,
+          "top": 1136.203125,
+          "width": 289.296875,
+          "x": 51.71875,
+          "y": 1136.203125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1121.203125,
+          "height": 27.5,
+          "left": 409,
+          "right": 706.28125,
+          "top": 1093.703125,
+          "width": 297.28125,
+          "x": 409,
+          "y": 1093.703125
+        },
+        "text": "an individual DCF-Performance ECU file for your motorcycle",
+        "value": {
+          "bottom": 1177,
+          "height": 40.796875,
+          "left": 409,
+          "right": 696.1953125,
+          "top": 1136.203125,
+          "width": 287.1953125,
+          "x": 409,
+          "y": 1136.203125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1268.296875,
+          "height": 27.5,
+          "left": 51.71875,
+          "right": 349,
+          "top": 1240.796875,
+          "width": 297.28125,
+          "x": 51.71875,
+          "y": 1240.796875
+        },
+        "text": "from two days",
+        "value": {
+          "bottom": 1300.296875,
+          "height": 17,
+          "left": 51.71875,
+          "right": 146.34375,
+          "top": 1283.296875,
+          "width": 94.625,
+          "x": 51.71875,
+          "y": 1283.296875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1268.296875,
+          "height": 27.5,
+          "left": 409,
+          "right": 706.28125,
+          "top": 1240.796875,
+          "width": 297.28125,
+          "x": 409,
+          "y": 1240.796875
+        },
+        "text": "kept in our archive; a return to factory settings is possible at any time",
+        "value": {
+          "bottom": 1324.09375,
+          "height": 40.796875,
+          "left": 409,
+          "right": 658.9375,
+          "top": 1283.296875,
+          "width": 249.9375,
+          "x": 409,
+          "y": 1283.296875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1415.390625,
+          "height": 27.5,
+          "left": 51.71875,
+          "right": 349,
+          "top": 1387.890625,
+          "width": 297.28125,
+          "x": 51.71875,
+          "y": 1387.890625
+        },
+        "text": "Cascais, near Lisbon; official DCF-Performance dealer, the only one in Portugal",
+        "value": {
+          "bottom": 1471.1875,
+          "height": 40.796875,
+          "left": 51.71875,
+          "right": 346.7421875,
+          "top": 1430.390625,
+          "width": 295.0234375,
+          "x": 51.71875,
+          "y": 1430.390625
+        }
+      }
+    ],
+    "figureSize": "38.4px",
+    "heading": "In the software — and on the road",
+    "lang": "en",
+    "overflow": -10,
+    "paragraphGap": 16,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 768
+  },
+  {
+    "amount": {
+      "bottom": 664.875,
+      "height": 15.5,
+      "left": 686.7109375,
+      "right": 723.9921875,
+      "top": 649.375,
+      "width": 37.28125,
+      "x": 686.7109375,
+      "y": 649.375
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1102.453125,
+          "height": 27.5,
+          "left": 72.1953125,
+          "right": 249.3125,
+          "top": 1074.953125,
+          "width": 177.1171875,
+          "x": 72.1953125,
+          "y": 1074.953125
+        },
+        "text": "800 €, VAT included; Chinese brands 650 €",
+        "value": {
+          "bottom": 1158.25,
+          "height": 40.796875,
+          "left": 72.1953125,
+          "right": 218.9765625,
+          "top": 1117.453125,
+          "width": 146.78125,
+          "x": 72.1953125,
+          "y": 1117.453125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1102.453125,
+          "height": 27.5,
+          "left": 309.3125,
+          "right": 486.4375,
+          "top": 1074.953125,
+          "width": 177.125,
+          "x": 309.3125,
+          "y": 1074.953125
+        },
+        "text": "an individual DCF-Performance ECU file for your motorcycle",
+        "value": {
+          "bottom": 1182.046875,
+          "height": 64.59375,
+          "left": 309.3125,
+          "right": 474.4765625,
+          "top": 1117.453125,
+          "width": 165.1640625,
+          "x": 309.3125,
+          "y": 1117.453125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1102.453125,
+          "height": 27.5,
+          "left": 546.4375,
+          "right": 723.5546875,
+          "top": 1074.953125,
+          "width": 177.1171875,
+          "x": 546.4375,
+          "y": 1074.953125
+        },
+        "text": "from two days",
+        "value": {
+          "bottom": 1134.453125,
+          "height": 17,
+          "left": 546.4375,
+          "right": 641.0625,
+          "top": 1117.453125,
+          "width": 94.625,
+          "x": 546.4375,
+          "y": 1117.453125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1102.453125,
+          "height": 27.5,
+          "left": 783.5546875,
+          "right": 960.6796875,
+          "top": 1074.953125,
+          "width": 177.125,
+          "x": 783.5546875,
+          "y": 1074.953125
+        },
+        "text": "kept in our archive; a return to factory settings is possible at any time",
+        "value": {
+          "bottom": 1182.046875,
+          "height": 64.59375,
+          "left": 783.5546875,
+          "right": 947.3984375,
+          "top": 1117.453125,
+          "width": 163.84375,
+          "x": 783.5546875,
+          "y": 1117.453125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1102.453125,
+          "height": 27.5,
+          "left": 1020.6796875,
+          "right": 1197.796875,
+          "top": 1074.953125,
+          "width": 177.1171875,
+          "x": 1020.6796875,
+          "y": 1074.953125
+        },
+        "text": "Cascais, near Lisbon; official DCF-Performance dealer, the only one in Portugal",
+        "value": {
+          "bottom": 1205.84375,
+          "height": 88.390625,
+          "left": 1020.6796875,
+          "right": 1189.625,
+          "top": 1117.453125,
+          "width": 168.9453125,
+          "x": 1020.6796875,
+          "y": 1117.453125
+        }
+      }
+    ],
+    "figureSize": "64px",
+    "heading": "In the software — and on the road",
+    "lang": "en",
+    "overflow": -10,
+    "paragraphGap": 16,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 1280
+  },
+  {
+    "amount": {
+      "bottom": 727.25,
+      "height": 14.5,
+      "left": 20,
+      "right": 54.4140625,
+      "top": 712.75,
+      "width": 34.4140625,
+      "x": 20,
+      "y": 712.75
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1303.640625,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1276.140625,
+          "width": 272,
+          "x": 39,
+          "y": 1276.140625
+        },
+        "text": "800 €, IVA incluído; marcas chinesas 650 €",
+        "value": {
+          "bottom": 1359.4375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 283.703125,
+          "top": 1318.640625,
+          "width": 244.703125,
+          "x": 39,
+          "y": 1318.640625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1446.734375,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1419.234375,
+          "width": 272,
+          "x": 39,
+          "y": 1419.234375
+        },
+        "text": "um ficheiro individual DCF-Performance para a sua mota",
+        "value": {
+          "bottom": 1502.53125,
+          "height": 40.796875,
+          "left": 39,
+          "right": 304.9453125,
+          "top": 1461.734375,
+          "width": 265.9453125,
+          "x": 39,
+          "y": 1461.734375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1589.828125,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1562.328125,
+          "width": 272,
+          "x": 39,
+          "y": 1562.328125
+        },
+        "text": "a partir de dois dias",
+        "value": {
+          "bottom": 1621.828125,
+          "height": 17,
+          "left": 39,
+          "right": 169.609375,
+          "top": 1604.828125,
+          "width": 130.609375,
+          "x": 39,
+          "y": 1604.828125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1709.125,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1681.625,
+          "width": 272,
+          "x": 39,
+          "y": 1681.625
+        },
+        "text": "guardado no nosso arquivo; o regresso às definições de fábrica é possível em qualquer altura",
+        "value": {
+          "bottom": 1788.71875,
+          "height": 64.59375,
+          "left": 39,
+          "right": 298.2734375,
+          "top": 1724.125,
+          "width": 259.2734375,
+          "x": 39,
+          "y": 1724.125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1876.015625,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1848.515625,
+          "width": 272,
+          "x": 39,
+          "y": 1848.515625
+        },
+        "text": "Cascais, junto a Lisboa; revendedor oficial DCF-Performance, o único em Portugal",
+        "value": {
+          "bottom": 1955.609375,
+          "height": 64.59375,
+          "left": 39,
+          "right": 284.3125,
+          "top": 1891.015625,
+          "width": 245.3125,
+          "x": 39,
+          "y": 1891.015625
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "No software — e na estrada",
+    "lang": "pt",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 360
+  },
+  {
+    "amount": {
+      "bottom": 727.25,
+      "height": 14.5,
+      "left": 20,
+      "right": 54.4140625,
+      "top": 712.75,
+      "width": 34.4140625,
+      "x": 20,
+      "y": 712.75
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1303.640625,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1276.140625,
+          "width": 287,
+          "x": 39,
+          "y": 1276.140625
+        },
+        "text": "800 €, IVA incluído; marcas chinesas 650 €",
+        "value": {
+          "bottom": 1359.4375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 313.4609375,
+          "top": 1318.640625,
+          "width": 274.4609375,
+          "x": 39,
+          "y": 1318.640625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1446.734375,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1419.234375,
+          "width": 287,
+          "x": 39,
+          "y": 1419.234375
+        },
+        "text": "um ficheiro individual DCF-Performance para a sua mota",
+        "value": {
+          "bottom": 1502.53125,
+          "height": 40.796875,
+          "left": 39,
+          "right": 304.9453125,
+          "top": 1461.734375,
+          "width": 265.9453125,
+          "x": 39,
+          "y": 1461.734375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1589.828125,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1562.328125,
+          "width": 287,
+          "x": 39,
+          "y": 1562.328125
+        },
+        "text": "a partir de dois dias",
+        "value": {
+          "bottom": 1621.828125,
+          "height": 17,
+          "left": 39,
+          "right": 169.609375,
+          "top": 1604.828125,
+          "width": 130.609375,
+          "x": 39,
+          "y": 1604.828125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1709.125,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1681.625,
+          "width": 287,
+          "x": 39,
+          "y": 1681.625
+        },
+        "text": "guardado no nosso arquivo; o regresso às definições de fábrica é possível em qualquer altura",
+        "value": {
+          "bottom": 1788.71875,
+          "height": 64.59375,
+          "left": 39,
+          "right": 317.4609375,
+          "top": 1724.125,
+          "width": 278.4609375,
+          "x": 39,
+          "y": 1724.125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1876.015625,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1848.515625,
+          "width": 287,
+          "x": 39,
+          "y": 1848.515625
+        },
+        "text": "Cascais, junto a Lisboa; revendedor oficial DCF-Performance, o único em Portugal",
+        "value": {
+          "bottom": 1931.8125,
+          "height": 40.796875,
+          "left": 39,
+          "right": 319.0390625,
+          "top": 1891.015625,
+          "width": 280.0390625,
+          "x": 39,
+          "y": 1891.015625
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "No software — e na estrada",
+    "lang": "pt",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 375
+  },
+  {
+    "amount": {
+      "bottom": 699.953125,
+      "height": 14.5,
+      "left": 20,
+      "right": 54.4140625,
+      "top": 685.453125,
+      "width": 34.4140625,
+      "x": 20,
+      "y": 685.453125
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1276.34375,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1248.84375,
+          "width": 302,
+          "x": 39,
+          "y": 1248.84375
+        },
+        "text": "800 €, IVA incluído; marcas chinesas 650 €",
+        "value": {
+          "bottom": 1308.34375,
+          "height": 17,
+          "left": 39,
+          "right": 326.7265625,
+          "top": 1291.34375,
+          "width": 287.7265625,
+          "x": 39,
+          "y": 1291.34375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1395.640625,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1368.140625,
+          "width": 302,
+          "x": 39,
+          "y": 1368.140625
+        },
+        "text": "um ficheiro individual DCF-Performance para a sua mota",
+        "value": {
+          "bottom": 1451.4375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 338.578125,
+          "top": 1410.640625,
+          "width": 299.578125,
+          "x": 39,
+          "y": 1410.640625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1538.734375,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1511.234375,
+          "width": 302,
+          "x": 39,
+          "y": 1511.234375
+        },
+        "text": "a partir de dois dias",
+        "value": {
+          "bottom": 1570.734375,
+          "height": 17,
+          "left": 39,
+          "right": 169.609375,
+          "top": 1553.734375,
+          "width": 130.609375,
+          "x": 39,
+          "y": 1553.734375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1658.03125,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1630.53125,
+          "width": 302,
+          "x": 39,
+          "y": 1630.53125
+        },
+        "text": "guardado no nosso arquivo; o regresso às definições de fábrica é possível em qualquer altura",
+        "value": {
+          "bottom": 1737.625,
+          "height": 64.59375,
+          "left": 39,
+          "right": 335.7265625,
+          "top": 1673.03125,
+          "width": 296.7265625,
+          "x": 39,
+          "y": 1673.03125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1824.921875,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1797.421875,
+          "width": 302,
+          "x": 39,
+          "y": 1797.421875
+        },
+        "text": "Cascais, junto a Lisboa; revendedor oficial DCF-Performance, o único em Portugal",
+        "value": {
+          "bottom": 1880.71875,
+          "height": 40.796875,
+          "left": 39,
+          "right": 319.0390625,
+          "top": 1839.921875,
+          "width": 280.0390625,
+          "x": 39,
+          "y": 1839.921875
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "No software — e na estrada",
+    "lang": "pt",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 390
+  },
+  {
+    "amount": {
+      "bottom": 623.265625,
+      "height": 14.5,
+      "left": 269.1015625,
+      "right": 303.515625,
+      "top": 608.765625,
+      "width": 34.4140625,
+      "x": 269.1015625,
+      "y": 608.765625
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1199.65625,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1172.15625,
+          "width": 326,
+          "x": 39,
+          "y": 1172.15625
+        },
+        "text": "800 €, IVA incluído; marcas chinesas 650 €",
+        "value": {
+          "bottom": 1231.65625,
+          "height": 17,
+          "left": 39,
+          "right": 326.7265625,
+          "top": 1214.65625,
+          "width": 287.7265625,
+          "x": 39,
+          "y": 1214.65625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1318.953125,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1291.453125,
+          "width": 326,
+          "x": 39,
+          "y": 1291.453125
+        },
+        "text": "um ficheiro individual DCF-Performance para a sua mota",
+        "value": {
+          "bottom": 1374.75,
+          "height": 40.796875,
+          "left": 39,
+          "right": 350.3828125,
+          "top": 1333.953125,
+          "width": 311.3828125,
+          "x": 39,
+          "y": 1333.953125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1462.046875,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1434.546875,
+          "width": 326,
+          "x": 39,
+          "y": 1434.546875
+        },
+        "text": "a partir de dois dias",
+        "value": {
+          "bottom": 1494.046875,
+          "height": 17,
+          "left": 39,
+          "right": 169.609375,
+          "top": 1477.046875,
+          "width": 130.609375,
+          "x": 39,
+          "y": 1477.046875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1581.34375,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1553.84375,
+          "width": 326,
+          "x": 39,
+          "y": 1553.84375
+        },
+        "text": "guardado no nosso arquivo; o regresso às definições de fábrica é possível em qualquer altura",
+        "value": {
+          "bottom": 1660.9375,
+          "height": 64.59375,
+          "left": 39,
+          "right": 335.7265625,
+          "top": 1596.34375,
+          "width": 296.7265625,
+          "x": 39,
+          "y": 1596.34375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1748.234375,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1720.734375,
+          "width": 326,
+          "x": 39,
+          "y": 1720.734375
+        },
+        "text": "Cascais, junto a Lisboa; revendedor oficial DCF-Performance, o único em Portugal",
+        "value": {
+          "bottom": 1804.03125,
+          "height": 40.796875,
+          "left": 39,
+          "right": 358.0078125,
+          "top": 1763.234375,
+          "width": 319.0078125,
+          "x": 39,
+          "y": 1763.234375
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "No software — e na estrada",
+    "lang": "pt",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 414
+  },
+  {
+    "amount": {
+      "bottom": 623.265625,
+      "height": 14.5,
+      "left": 269.1015625,
+      "right": 303.515625,
+      "top": 608.765625,
+      "width": 34.4140625,
+      "x": 269.1015625,
+      "y": 608.765625
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1199.65625,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1172.15625,
+          "width": 342,
+          "x": 39,
+          "y": 1172.15625
+        },
+        "text": "800 €, IVA incluído; marcas chinesas 650 €",
+        "value": {
+          "bottom": 1231.65625,
+          "height": 17,
+          "left": 39,
+          "right": 326.7265625,
+          "top": 1214.65625,
+          "width": 287.7265625,
+          "x": 39,
+          "y": 1214.65625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1318.953125,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1291.453125,
+          "width": 342,
+          "x": 39,
+          "y": 1291.453125
+        },
+        "text": "um ficheiro individual DCF-Performance para a sua mota",
+        "value": {
+          "bottom": 1374.75,
+          "height": 40.796875,
+          "left": 39,
+          "right": 377.84375,
+          "top": 1333.953125,
+          "width": 338.84375,
+          "x": 39,
+          "y": 1333.953125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1462.046875,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1434.546875,
+          "width": 342,
+          "x": 39,
+          "y": 1434.546875
+        },
+        "text": "a partir de dois dias",
+        "value": {
+          "bottom": 1494.046875,
+          "height": 17,
+          "left": 39,
+          "right": 169.609375,
+          "top": 1477.046875,
+          "width": 130.609375,
+          "x": 39,
+          "y": 1477.046875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1581.34375,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1553.84375,
+          "width": 342,
+          "x": 39,
+          "y": 1553.84375
+        },
+        "text": "guardado no nosso arquivo; o regresso às definições de fábrica é possível em qualquer altura",
+        "value": {
+          "bottom": 1637.140625,
+          "height": 40.796875,
+          "left": 39,
+          "right": 377.109375,
+          "top": 1596.34375,
+          "width": 338.109375,
+          "x": 39,
+          "y": 1596.34375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1724.4375,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1696.9375,
+          "width": 342,
+          "x": 39,
+          "y": 1696.9375
+        },
+        "text": "Cascais, junto a Lisboa; revendedor oficial DCF-Performance, o único em Portugal",
+        "value": {
+          "bottom": 1780.234375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 358.0078125,
+          "top": 1739.4375,
+          "width": 319.0078125,
+          "x": 39,
+          "y": 1739.4375
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "No software — e na estrada",
+    "lang": "pt",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 430
+  },
+  {
+    "amount": {
+      "bottom": 633.5390625,
+      "height": 15.5,
+      "left": 668.0234375,
+      "right": 705.3046875,
+      "top": 618.0390625,
+      "width": 37.28125,
+      "x": 668.0234375,
+      "y": 618.0390625
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1122.1328125,
+          "height": 27.5,
+          "left": 51.71875,
+          "right": 349,
+          "top": 1094.6328125,
+          "width": 297.28125,
+          "x": 51.71875,
+          "y": 1094.6328125
+        },
+        "text": "800 €, IVA incluído; marcas chinesas 650 €",
+        "value": {
+          "bottom": 1154.1328125,
+          "height": 17,
+          "left": 51.71875,
+          "right": 339.4453125,
+          "top": 1137.1328125,
+          "width": 287.7265625,
+          "x": 51.71875,
+          "y": 1137.1328125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1122.1328125,
+          "height": 27.5,
+          "left": 409,
+          "right": 706.28125,
+          "top": 1094.6328125,
+          "width": 297.28125,
+          "x": 409,
+          "y": 1094.6328125
+        },
+        "text": "um ficheiro individual DCF-Performance para a sua mota",
+        "value": {
+          "bottom": 1177.9296875,
+          "height": 40.796875,
+          "left": 409,
+          "right": 674.9453125,
+          "top": 1137.1328125,
+          "width": 265.9453125,
+          "x": 409,
+          "y": 1137.1328125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1269.2265625,
+          "height": 27.5,
+          "left": 51.71875,
+          "right": 349,
+          "top": 1241.7265625,
+          "width": 297.28125,
+          "x": 51.71875,
+          "y": 1241.7265625
+        },
+        "text": "a partir de dois dias",
+        "value": {
+          "bottom": 1301.2265625,
+          "height": 17,
+          "left": 51.71875,
+          "right": 182.328125,
+          "top": 1284.2265625,
+          "width": 130.609375,
+          "x": 51.71875,
+          "y": 1284.2265625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1269.2265625,
+          "height": 27.5,
+          "left": 409,
+          "right": 706.28125,
+          "top": 1241.7265625,
+          "width": 297.28125,
+          "x": 409,
+          "y": 1241.7265625
+        },
+        "text": "guardado no nosso arquivo; o regresso às definições de fábrica é possível em qualquer altura",
+        "value": {
+          "bottom": 1348.8203125,
+          "height": 64.59375,
+          "left": 409,
+          "right": 705.7265625,
+          "top": 1284.2265625,
+          "width": 296.7265625,
+          "x": 409,
+          "y": 1284.2265625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1440.1171875,
+          "height": 27.5,
+          "left": 51.71875,
+          "right": 349,
+          "top": 1412.6171875,
+          "width": 297.28125,
+          "x": 51.71875,
+          "y": 1412.6171875
+        },
+        "text": "Cascais, junto a Lisboa; revendedor oficial DCF-Performance, o único em Portugal",
+        "value": {
+          "bottom": 1495.9140625,
+          "height": 40.796875,
+          "left": 51.71875,
+          "right": 331.7578125,
+          "top": 1455.1171875,
+          "width": 280.0390625,
+          "x": 51.71875,
+          "y": 1455.1171875
+        }
+      }
+    ],
+    "figureSize": "38.4px",
+    "heading": "No software — e na estrada",
+    "lang": "pt",
+    "overflow": -10,
+    "paragraphGap": 16,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 768
+  },
+  {
+    "amount": {
+      "bottom": 745.828125,
+      "height": 15.5,
+      "left": 688.5,
+      "right": 725.78125,
+      "top": 730.328125,
+      "width": 37.28125,
+      "x": 688.5,
+      "y": 730.328125
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1143.2734375,
+          "height": 27.5,
+          "left": 72.1953125,
+          "right": 249.3125,
+          "top": 1115.7734375,
+          "width": 177.1171875,
+          "x": 72.1953125,
+          "y": 1115.7734375
+        },
+        "text": "800 €, IVA incluído; marcas chinesas 650 €",
+        "value": {
+          "bottom": 1199.0703125,
+          "height": 40.796875,
+          "left": 72.1953125,
+          "right": 226.453125,
+          "top": 1158.2734375,
+          "width": 154.2578125,
+          "x": 72.1953125,
+          "y": 1158.2734375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1143.2734375,
+          "height": 27.5,
+          "left": 309.3125,
+          "right": 486.4375,
+          "top": 1115.7734375,
+          "width": 177.125,
+          "x": 309.3125,
+          "y": 1115.7734375
+        },
+        "text": "um ficheiro individual DCF-Performance para a sua mota",
+        "value": {
+          "bottom": 1222.8671875,
+          "height": 64.59375,
+          "left": 309.3125,
+          "right": 475.515625,
+          "top": 1158.2734375,
+          "width": 166.203125,
+          "x": 309.3125,
+          "y": 1158.2734375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1143.2734375,
+          "height": 27.5,
+          "left": 546.4375,
+          "right": 723.5546875,
+          "top": 1115.7734375,
+          "width": 177.1171875,
+          "x": 546.4375,
+          "y": 1115.7734375
+        },
+        "text": "a partir de dois dias",
+        "value": {
+          "bottom": 1175.2734375,
+          "height": 17,
+          "left": 546.4375,
+          "right": 677.046875,
+          "top": 1158.2734375,
+          "width": 130.609375,
+          "x": 546.4375,
+          "y": 1158.2734375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1143.2734375,
+          "height": 27.5,
+          "left": 783.5546875,
+          "right": 960.6796875,
+          "top": 1115.7734375,
+          "width": 177.125,
+          "x": 783.5546875,
+          "y": 1115.7734375
+        },
+        "text": "guardado no nosso arquivo; o regresso às definições de fábrica é possível em qualquer altura",
+        "value": {
+          "bottom": 1270.4609375,
+          "height": 112.1875,
+          "left": 783.5546875,
+          "right": 935.3671875,
+          "top": 1158.2734375,
+          "width": 151.8125,
+          "x": 783.5546875,
+          "y": 1158.2734375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1143.2734375,
+          "height": 27.5,
+          "left": 1020.6796875,
+          "right": 1197.796875,
+          "top": 1115.7734375,
+          "width": 177.1171875,
+          "x": 1020.6796875,
+          "y": 1115.7734375
+        },
+        "text": "Cascais, junto a Lisboa; revendedor oficial DCF-Performance, o único em Portugal",
+        "value": {
+          "bottom": 1246.6640625,
+          "height": 88.390625,
+          "left": 1020.6796875,
+          "right": 1187.4140625,
+          "top": 1158.2734375,
+          "width": 166.734375,
+          "x": 1020.6796875,
+          "y": 1158.2734375
+        }
+      }
+    ],
+    "figureSize": "64px",
+    "heading": "No software — e na estrada",
+    "lang": "pt",
+    "overflow": -10,
+    "paragraphGap": 16,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 1280
+  },
+  {
+    "amount": {
+      "bottom": 803.5390625,
+      "height": 14.5,
+      "left": 20,
+      "right": 54.4140625,
+      "top": 789.0390625,
+      "width": 34.4140625,
+      "x": 20,
+      "y": 789.0390625
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1371.4453125,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1343.9453125,
+          "width": 272,
+          "x": 39,
+          "y": 1343.9453125
+        },
+        "text": "800 €, IVA включён; китайские бренды — 650 €",
+        "value": {
+          "bottom": 1427.2421875,
+          "height": 40.796875,
+          "left": 39,
+          "right": 307.15625,
+          "top": 1386.4453125,
+          "width": 268.15625,
+          "x": 39,
+          "y": 1386.4453125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1514.5390625,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1487.0390625,
+          "width": 272,
+          "x": 39,
+          "y": 1487.0390625
+        },
+        "text": "индивидуальный файл DCF-Performance под ваш мотоцикл",
+        "value": {
+          "bottom": 1570.3359375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 255.1796875,
+          "top": 1529.5390625,
+          "width": 216.1796875,
+          "x": 39,
+          "y": 1529.5390625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1657.6328125,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1630.1328125,
+          "width": 272,
+          "x": 39,
+          "y": 1630.1328125
+        },
+        "text": "от двух дней",
+        "value": {
+          "bottom": 1689.6328125,
+          "height": 17,
+          "left": 39,
+          "right": 127.0625,
+          "top": 1672.6328125,
+          "width": 88.0625,
+          "x": 39,
+          "y": 1672.6328125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1776.9296875,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1749.4296875,
+          "width": 272,
+          "x": 39,
+          "y": 1749.4296875
+        },
+        "text": "хранится у нас; возврат к заводским настройкам возможен в любое время",
+        "value": {
+          "bottom": 1832.7265625,
+          "height": 40.796875,
+          "left": 39,
+          "right": 302.3828125,
+          "top": 1791.9296875,
+          "width": 263.3828125,
+          "x": 39,
+          "y": 1791.9296875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1920.0234375,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1892.5234375,
+          "width": 272,
+          "x": 39,
+          "y": 1892.5234375
+        },
+        "text": "Кашкайш, рядом с Лиссабоном; официальный дилер DCF-Performance, единственный в Португалии",
+        "value": {
+          "bottom": 1999.6171875,
+          "height": 64.59375,
+          "left": 39,
+          "right": 306.8125,
+          "top": 1935.0234375,
+          "width": 267.8125,
+          "x": 39,
+          "y": 1935.0234375
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "В прошивке — и на дороге",
+    "lang": "ru",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 360
+  },
+  {
+    "amount": {
+      "bottom": 803.5390625,
+      "height": 14.5,
+      "left": 20,
+      "right": 54.4140625,
+      "top": 789.0390625,
+      "width": 34.4140625,
+      "x": 20,
+      "y": 789.0390625
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1371.4453125,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1343.9453125,
+          "width": 287,
+          "x": 39,
+          "y": 1343.9453125
+        },
+        "text": "800 €, IVA включён; китайские бренды — 650 €",
+        "value": {
+          "bottom": 1427.2421875,
+          "height": 40.796875,
+          "left": 39,
+          "right": 325.09375,
+          "top": 1386.4453125,
+          "width": 286.09375,
+          "x": 39,
+          "y": 1386.4453125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1514.5390625,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1487.0390625,
+          "width": 287,
+          "x": 39,
+          "y": 1487.0390625
+        },
+        "text": "индивидуальный файл DCF-Performance под ваш мотоцикл",
+        "value": {
+          "bottom": 1570.3359375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 317.828125,
+          "top": 1529.5390625,
+          "width": 278.828125,
+          "x": 39,
+          "y": 1529.5390625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1657.6328125,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1630.1328125,
+          "width": 287,
+          "x": 39,
+          "y": 1630.1328125
+        },
+        "text": "от двух дней",
+        "value": {
+          "bottom": 1689.6328125,
+          "height": 17,
+          "left": 39,
+          "right": 127.0625,
+          "top": 1672.6328125,
+          "width": 88.0625,
+          "x": 39,
+          "y": 1672.6328125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1776.9296875,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1749.4296875,
+          "width": 287,
+          "x": 39,
+          "y": 1749.4296875
+        },
+        "text": "хранится у нас; возврат к заводским настройкам возможен в любое время",
+        "value": {
+          "bottom": 1832.7265625,
+          "height": 40.796875,
+          "left": 39,
+          "right": 302.3828125,
+          "top": 1791.9296875,
+          "width": 263.3828125,
+          "x": 39,
+          "y": 1791.9296875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1920.0234375,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1892.5234375,
+          "width": 287,
+          "x": 39,
+          "y": 1892.5234375
+        },
+        "text": "Кашкайш, рядом с Лиссабоном; официальный дилер DCF-Performance, единственный в Португалии",
+        "value": {
+          "bottom": 1999.6171875,
+          "height": 64.59375,
+          "left": 39,
+          "right": 306.8125,
+          "top": 1935.0234375,
+          "width": 267.8125,
+          "x": 39,
+          "y": 1935.0234375
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "В прошивке — и на дороге",
+    "lang": "ru",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 375
+  },
+  {
+    "amount": {
+      "bottom": 754.546875,
+      "height": 14.5,
+      "left": 20,
+      "right": 54.4140625,
+      "top": 740.046875,
+      "width": 34.4140625,
+      "x": 20,
+      "y": 740.046875
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1322.453125,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1294.953125,
+          "width": 302,
+          "x": 39,
+          "y": 1294.953125
+        },
+        "text": "800 €, IVA включён; китайские бренды — 650 €",
+        "value": {
+          "bottom": 1378.25,
+          "height": 40.796875,
+          "left": 39,
+          "right": 325.09375,
+          "top": 1337.453125,
+          "width": 286.09375,
+          "x": 39,
+          "y": 1337.453125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1465.546875,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1438.046875,
+          "width": 302,
+          "x": 39,
+          "y": 1438.046875
+        },
+        "text": "индивидуальный файл DCF-Performance под ваш мотоцикл",
+        "value": {
+          "bottom": 1521.34375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 317.828125,
+          "top": 1480.546875,
+          "width": 278.828125,
+          "x": 39,
+          "y": 1480.546875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1608.640625,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1581.140625,
+          "width": 302,
+          "x": 39,
+          "y": 1581.140625
+        },
+        "text": "от двух дней",
+        "value": {
+          "bottom": 1640.640625,
+          "height": 17,
+          "left": 39,
+          "right": 127.0625,
+          "top": 1623.640625,
+          "width": 88.0625,
+          "x": 39,
+          "y": 1623.640625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1727.9375,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1700.4375,
+          "width": 302,
+          "x": 39,
+          "y": 1700.4375
+        },
+        "text": "хранится у нас; возврат к заводским настройкам возможен в любое время",
+        "value": {
+          "bottom": 1783.734375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 302.3828125,
+          "top": 1742.9375,
+          "width": 263.3828125,
+          "x": 39,
+          "y": 1742.9375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1871.03125,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1843.53125,
+          "width": 302,
+          "x": 39,
+          "y": 1843.53125
+        },
+        "text": "Кашкайш, рядом с Лиссабоном; официальный дилер DCF-Performance, единственный в Португалии",
+        "value": {
+          "bottom": 1950.625,
+          "height": 64.59375,
+          "left": 39,
+          "right": 306.8125,
+          "top": 1886.03125,
+          "width": 267.8125,
+          "x": 39,
+          "y": 1886.03125
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "В прошивке — и на дороге",
+    "lang": "ru",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 390
+  },
+  {
+    "amount": {
+      "bottom": 718.25,
+      "height": 14.5,
+      "left": 273.3984375,
+      "right": 307.8125,
+      "top": 703.75,
+      "width": 34.4140625,
+      "x": 273.3984375,
+      "y": 703.75
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1251.65625,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1224.15625,
+          "width": 326,
+          "x": 39,
+          "y": 1224.15625
+        },
+        "text": "800 €, IVA включён; китайские бренды — 650 €",
+        "value": {
+          "bottom": 1307.453125,
+          "height": 40.796875,
+          "left": 39,
+          "right": 354.8515625,
+          "top": 1266.65625,
+          "width": 315.8515625,
+          "x": 39,
+          "y": 1266.65625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1394.75,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1367.25,
+          "width": 326,
+          "x": 39,
+          "y": 1367.25
+        },
+        "text": "индивидуальный файл DCF-Performance под ваш мотоцикл",
+        "value": {
+          "bottom": 1450.546875,
+          "height": 40.796875,
+          "left": 39,
+          "right": 346.9765625,
+          "top": 1409.75,
+          "width": 307.9765625,
+          "x": 39,
+          "y": 1409.75
+        }
+      },
+      {
+        "label": {
+          "bottom": 1537.84375,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1510.34375,
+          "width": 326,
+          "x": 39,
+          "y": 1510.34375
+        },
+        "text": "от двух дней",
+        "value": {
+          "bottom": 1569.84375,
+          "height": 17,
+          "left": 39,
+          "right": 127.0625,
+          "top": 1552.84375,
+          "width": 88.0625,
+          "x": 39,
+          "y": 1552.84375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1657.140625,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1629.640625,
+          "width": 326,
+          "x": 39,
+          "y": 1629.640625
+        },
+        "text": "хранится у нас; возврат к заводским настройкам возможен в любое время",
+        "value": {
+          "bottom": 1712.9375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 302.3828125,
+          "top": 1672.140625,
+          "width": 263.3828125,
+          "x": 39,
+          "y": 1672.140625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1800.234375,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1772.734375,
+          "width": 326,
+          "x": 39,
+          "y": 1772.734375
+        },
+        "text": "Кашкайш, рядом с Лиссабоном; официальный дилер DCF-Performance, единственный в Португалии",
+        "value": {
+          "bottom": 1879.828125,
+          "height": 64.59375,
+          "left": 39,
+          "right": 359.265625,
+          "top": 1815.234375,
+          "width": 320.265625,
+          "x": 39,
+          "y": 1815.234375
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "В прошивке — и на дороге",
+    "lang": "ru",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 414
+  },
+  {
+    "amount": {
+      "bottom": 718.25,
+      "height": 14.5,
+      "left": 273.3984375,
+      "right": 307.8125,
+      "top": 703.75,
+      "width": 34.4140625,
+      "x": 273.3984375,
+      "y": 703.75
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1251.65625,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1224.15625,
+          "width": 342,
+          "x": 39,
+          "y": 1224.15625
+        },
+        "text": "800 €, IVA включён; китайские бренды — 650 €",
+        "value": {
+          "bottom": 1283.65625,
+          "height": 17,
+          "left": 39,
+          "right": 368.1171875,
+          "top": 1266.65625,
+          "width": 329.1171875,
+          "x": 39,
+          "y": 1266.65625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1370.953125,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1343.453125,
+          "width": 342,
+          "x": 39,
+          "y": 1343.453125
+        },
+        "text": "индивидуальный файл DCF-Performance под ваш мотоцикл",
+        "value": {
+          "bottom": 1426.75,
+          "height": 40.796875,
+          "left": 39,
+          "right": 378.1953125,
+          "top": 1385.953125,
+          "width": 339.1953125,
+          "x": 39,
+          "y": 1385.953125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1514.046875,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1486.546875,
+          "width": 342,
+          "x": 39,
+          "y": 1486.546875
+        },
+        "text": "от двух дней",
+        "value": {
+          "bottom": 1546.046875,
+          "height": 17,
+          "left": 39,
+          "right": 127.0625,
+          "top": 1529.046875,
+          "width": 88.0625,
+          "x": 39,
+          "y": 1529.046875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1633.34375,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1605.84375,
+          "width": 342,
+          "x": 39,
+          "y": 1605.84375
+        },
+        "text": "хранится у нас; возврат к заводским настройкам возможен в любое время",
+        "value": {
+          "bottom": 1689.140625,
+          "height": 40.796875,
+          "left": 39,
+          "right": 379.8203125,
+          "top": 1648.34375,
+          "width": 340.8203125,
+          "x": 39,
+          "y": 1648.34375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1776.4375,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1748.9375,
+          "width": 342,
+          "x": 39,
+          "y": 1748.9375
+        },
+        "text": "Кашкайш, рядом с Лиссабоном; официальный дилер DCF-Performance, единственный в Португалии",
+        "value": {
+          "bottom": 1856.03125,
+          "height": 64.59375,
+          "left": 39,
+          "right": 359.265625,
+          "top": 1791.4375,
+          "width": 320.265625,
+          "x": 39,
+          "y": 1791.4375
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "В прошивке — и на дороге",
+    "lang": "ru",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 430
+  },
+  {
+    "amount": {
+      "bottom": 711.7265625,
+      "height": 15.5,
+      "left": 30.71875,
+      "right": 68,
+      "top": 696.2265625,
+      "width": 37.28125,
+      "x": 30.71875,
+      "y": 696.2265625
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1192.921875,
+          "height": 27.5,
+          "left": 51.71875,
+          "right": 349,
+          "top": 1165.421875,
+          "width": 297.28125,
+          "x": 51.71875,
+          "y": 1165.421875
+        },
+        "text": "800 €, IVA включён; китайские бренды — 650 €",
+        "value": {
+          "bottom": 1248.71875,
+          "height": 40.796875,
+          "left": 51.71875,
+          "right": 337.8125,
+          "top": 1207.921875,
+          "width": 286.09375,
+          "x": 51.71875,
+          "y": 1207.921875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1192.921875,
+          "height": 27.5,
+          "left": 409,
+          "right": 706.28125,
+          "top": 1165.421875,
+          "width": 297.28125,
+          "x": 409,
+          "y": 1165.421875
+        },
+        "text": "индивидуальный файл DCF-Performance под ваш мотоцикл",
+        "value": {
+          "bottom": 1248.71875,
+          "height": 40.796875,
+          "left": 409,
+          "right": 687.828125,
+          "top": 1207.921875,
+          "width": 278.828125,
+          "x": 409,
+          "y": 1207.921875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1340.015625,
+          "height": 27.5,
+          "left": 51.71875,
+          "right": 349,
+          "top": 1312.515625,
+          "width": 297.28125,
+          "x": 51.71875,
+          "y": 1312.515625
+        },
+        "text": "от двух дней",
+        "value": {
+          "bottom": 1372.015625,
+          "height": 17,
+          "left": 51.71875,
+          "right": 139.78125,
+          "top": 1355.015625,
+          "width": 88.0625,
+          "x": 51.71875,
+          "y": 1355.015625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1340.015625,
+          "height": 27.5,
+          "left": 409,
+          "right": 706.28125,
+          "top": 1312.515625,
+          "width": 297.28125,
+          "x": 409,
+          "y": 1312.515625
+        },
+        "text": "хранится у нас; возврат к заводским настройкам возможен в любое время",
+        "value": {
+          "bottom": 1395.8125,
+          "height": 40.796875,
+          "left": 409,
+          "right": 672.3828125,
+          "top": 1355.015625,
+          "width": 263.3828125,
+          "x": 409,
+          "y": 1355.015625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1487.109375,
+          "height": 27.5,
+          "left": 51.71875,
+          "right": 349,
+          "top": 1459.609375,
+          "width": 297.28125,
+          "x": 51.71875,
+          "y": 1459.609375
+        },
+        "text": "Кашкайш, рядом с Лиссабоном; официальный дилер DCF-Performance, единственный в Португалии",
+        "value": {
+          "bottom": 1566.703125,
+          "height": 64.59375,
+          "left": 51.71875,
+          "right": 319.53125,
+          "top": 1502.109375,
+          "width": 267.8125,
+          "x": 51.71875,
+          "y": 1502.109375
+        }
+      }
+    ],
+    "figureSize": "38.4px",
+    "heading": "В прошивке — и на дороге",
+    "lang": "ru",
+    "overflow": -10,
+    "paragraphGap": 16,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 768
+  },
+  {
+    "amount": {
+      "bottom": 819.984375,
+      "height": 15.5,
+      "left": 713.03125,
+      "right": 750.3125,
+      "top": 804.484375,
+      "width": 37.28125,
+      "x": 713.03125,
+      "y": 804.484375
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1203.609375,
+          "height": 27.5,
+          "left": 72.1953125,
+          "right": 249.3125,
+          "top": 1176.109375,
+          "width": 177.1171875,
+          "x": 72.1953125,
+          "y": 1176.109375
+        },
+        "text": "800 €, IVA включён; китайские бренды — 650 €",
+        "value": {
+          "bottom": 1283.203125,
+          "height": 64.59375,
+          "left": 72.1953125,
+          "right": 246.5625,
+          "top": 1218.609375,
+          "width": 174.3671875,
+          "x": 72.1953125,
+          "y": 1218.609375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1203.609375,
+          "height": 27.5,
+          "left": 309.3125,
+          "right": 486.4375,
+          "top": 1176.109375,
+          "width": 177.125,
+          "x": 309.3125,
+          "y": 1176.109375
+        },
+        "text": "индивидуальный файл DCF-Performance под ваш мотоцикл",
+        "value": {
+          "bottom": 1283.203125,
+          "height": 64.59375,
+          "left": 309.3125,
+          "right": 463.4375,
+          "top": 1218.609375,
+          "width": 154.125,
+          "x": 309.3125,
+          "y": 1218.609375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1203.609375,
+          "height": 27.5,
+          "left": 546.4375,
+          "right": 723.5546875,
+          "top": 1176.109375,
+          "width": 177.1171875,
+          "x": 546.4375,
+          "y": 1176.109375
+        },
+        "text": "от двух дней",
+        "value": {
+          "bottom": 1235.609375,
+          "height": 17,
+          "left": 546.4375,
+          "right": 634.5,
+          "top": 1218.609375,
+          "width": 88.0625,
+          "x": 546.4375,
+          "y": 1218.609375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1231.109375,
+          "height": 55,
+          "left": 783.5546875,
+          "right": 960.6796875,
+          "top": 1176.109375,
+          "width": 177.125,
+          "x": 783.5546875,
+          "y": 1176.109375
+        },
+        "text": "хранится у нас; возврат к заводским настройкам возможен в любое время",
+        "value": {
+          "bottom": 1310.703125,
+          "height": 64.59375,
+          "left": 783.5546875,
+          "right": 960.6875,
+          "top": 1246.109375,
+          "width": 177.1328125,
+          "x": 783.5546875,
+          "y": 1246.109375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1203.609375,
+          "height": 27.5,
+          "left": 1020.6796875,
+          "right": 1197.796875,
+          "top": 1176.109375,
+          "width": 177.1171875,
+          "x": 1020.6796875,
+          "y": 1176.109375
+        },
+        "text": "Кашкайш, рядом с Лиссабоном; официальный дилер DCF-Performance, единственный в Португалии",
+        "value": {
+          "bottom": 1354.59375,
+          "height": 135.984375,
+          "left": 1020.6796875,
+          "right": 1159.7578125,
+          "top": 1218.609375,
+          "width": 139.078125,
+          "x": 1020.6796875,
+          "y": 1218.609375
+        }
+      }
+    ],
+    "figureSize": "64px",
+    "heading": "В прошивке — и на дороге",
+    "lang": "ru",
+    "overflow": -10,
+    "paragraphGap": 16,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 1280
+  },
+  {
+    "amount": {
+      "bottom": 754.546875,
+      "height": 14.5,
+      "left": 20,
+      "right": 54.4140625,
+      "top": 740.046875,
+      "width": 34.4140625,
+      "x": 20,
+      "y": 740.046875
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1322.453125,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1294.953125,
+          "width": 272,
+          "x": 39,
+          "y": 1294.953125
+        },
+        "text": "800 €, ПДВ включено; китайські бренди — 650 €",
+        "value": {
+          "bottom": 1378.25,
+          "height": 40.796875,
+          "left": 39,
+          "right": 263.1171875,
+          "top": 1337.453125,
+          "width": 224.1171875,
+          "x": 39,
+          "y": 1337.453125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1465.546875,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1438.046875,
+          "width": 272,
+          "x": 39,
+          "y": 1438.046875
+        },
+        "text": "індивідуальний файл DCF-Performance під ваш мотоцикл",
+        "value": {
+          "bottom": 1521.34375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 306.0234375,
+          "top": 1480.546875,
+          "width": 267.0234375,
+          "x": 39,
+          "y": 1480.546875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1608.640625,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1581.140625,
+          "width": 272,
+          "x": 39,
+          "y": 1581.140625
+        },
+        "text": "від двох днів",
+        "value": {
+          "bottom": 1640.640625,
+          "height": 17,
+          "left": 39,
+          "right": 127.1015625,
+          "top": 1623.640625,
+          "width": 88.1015625,
+          "x": 39,
+          "y": 1623.640625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1727.9375,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1700.4375,
+          "width": 272,
+          "x": 39,
+          "y": 1700.4375
+        },
+        "text": "зберігається в нас; повернутися до заводських налаштувань можна будь-коли",
+        "value": {
+          "bottom": 1807.53125,
+          "height": 64.59375,
+          "left": 39,
+          "right": 304.2578125,
+          "top": 1742.9375,
+          "width": 265.2578125,
+          "x": 39,
+          "y": 1742.9375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1894.828125,
+          "height": 27.5,
+          "left": 39,
+          "right": 311,
+          "top": 1867.328125,
+          "width": 272,
+          "x": 39,
+          "y": 1867.328125
+        },
+        "text": "Кашкайш, поблизу Лісабона; офіційний дилер DCF-Performance, єдиний у Португалії",
+        "value": {
+          "bottom": 1974.421875,
+          "height": 64.59375,
+          "left": 39,
+          "right": 307.8359375,
+          "top": 1909.828125,
+          "width": 268.8359375,
+          "x": 39,
+          "y": 1909.828125
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "У прошивці — і на дорозі",
+    "lang": "uk",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 360
+  },
+  {
+    "amount": {
+      "bottom": 727.25,
+      "height": 14.5,
+      "left": 20,
+      "right": 54.4140625,
+      "top": 712.75,
+      "width": 34.4140625,
+      "x": 20,
+      "y": 712.75
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1295.15625,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1267.65625,
+          "width": 287,
+          "x": 39,
+          "y": 1267.65625
+        },
+        "text": "800 €, ПДВ включено; китайські бренди — 650 €",
+        "value": {
+          "bottom": 1350.953125,
+          "height": 40.796875,
+          "left": 39,
+          "right": 317.203125,
+          "top": 1310.15625,
+          "width": 278.203125,
+          "x": 39,
+          "y": 1310.15625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1438.25,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1410.75,
+          "width": 287,
+          "x": 39,
+          "y": 1410.75
+        },
+        "text": "індивідуальний файл DCF-Performance під ваш мотоцикл",
+        "value": {
+          "bottom": 1494.046875,
+          "height": 40.796875,
+          "left": 39,
+          "right": 306.0234375,
+          "top": 1453.25,
+          "width": 267.0234375,
+          "x": 39,
+          "y": 1453.25
+        }
+      },
+      {
+        "label": {
+          "bottom": 1581.34375,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1553.84375,
+          "width": 287,
+          "x": 39,
+          "y": 1553.84375
+        },
+        "text": "від двох днів",
+        "value": {
+          "bottom": 1613.34375,
+          "height": 17,
+          "left": 39,
+          "right": 127.1015625,
+          "top": 1596.34375,
+          "width": 88.1015625,
+          "x": 39,
+          "y": 1596.34375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1700.640625,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1673.140625,
+          "width": 287,
+          "x": 39,
+          "y": 1673.140625
+        },
+        "text": "зберігається в нас; повернутися до заводських налаштувань можна будь-коли",
+        "value": {
+          "bottom": 1780.234375,
+          "height": 64.59375,
+          "left": 39,
+          "right": 304.2578125,
+          "top": 1715.640625,
+          "width": 265.2578125,
+          "x": 39,
+          "y": 1715.640625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1867.53125,
+          "height": 27.5,
+          "left": 39,
+          "right": 326,
+          "top": 1840.03125,
+          "width": 287,
+          "x": 39,
+          "y": 1840.03125
+        },
+        "text": "Кашкайш, поблизу Лісабона; офіційний дилер DCF-Performance, єдиний у Португалії",
+        "value": {
+          "bottom": 1947.125,
+          "height": 64.59375,
+          "left": 39,
+          "right": 307.8359375,
+          "top": 1882.53125,
+          "width": 268.8359375,
+          "x": 39,
+          "y": 1882.53125
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "У прошивці — і на дорозі",
+    "lang": "uk",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 375
+  },
+  {
+    "amount": {
+      "bottom": 710.453125,
+      "height": 14.5,
+      "left": 252.09375,
+      "right": 286.5078125,
+      "top": 695.953125,
+      "width": 34.4140625,
+      "x": 252.09375,
+      "y": 695.953125
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1278.359375,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1250.859375,
+          "width": 302,
+          "x": 39,
+          "y": 1250.859375
+        },
+        "text": "800 €, ПДВ включено; китайські бренди — 650 €",
+        "value": {
+          "bottom": 1334.15625,
+          "height": 40.796875,
+          "left": 39,
+          "right": 335.140625,
+          "top": 1293.359375,
+          "width": 296.140625,
+          "x": 39,
+          "y": 1293.359375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1421.453125,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1393.953125,
+          "width": 302,
+          "x": 39,
+          "y": 1393.953125
+        },
+        "text": "індивідуальний файл DCF-Performance під ваш мотоцикл",
+        "value": {
+          "bottom": 1477.25,
+          "height": 40.796875,
+          "left": 39,
+          "right": 330.1640625,
+          "top": 1436.453125,
+          "width": 291.1640625,
+          "x": 39,
+          "y": 1436.453125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1564.546875,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1537.046875,
+          "width": 302,
+          "x": 39,
+          "y": 1537.046875
+        },
+        "text": "від двох днів",
+        "value": {
+          "bottom": 1596.546875,
+          "height": 17,
+          "left": 39,
+          "right": 127.1015625,
+          "top": 1579.546875,
+          "width": 88.1015625,
+          "x": 39,
+          "y": 1579.546875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1683.84375,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1656.34375,
+          "width": 302,
+          "x": 39,
+          "y": 1656.34375
+        },
+        "text": "зберігається в нас; повернутися до заводських налаштувань можна будь-коли",
+        "value": {
+          "bottom": 1739.640625,
+          "height": 40.796875,
+          "left": 39,
+          "right": 336.2578125,
+          "top": 1698.84375,
+          "width": 297.2578125,
+          "x": 39,
+          "y": 1698.84375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1826.9375,
+          "height": 27.5,
+          "left": 39,
+          "right": 341,
+          "top": 1799.4375,
+          "width": 302,
+          "x": 39,
+          "y": 1799.4375
+        },
+        "text": "Кашкайш, поблизу Лісабона; офіційний дилер DCF-Performance, єдиний у Португалії",
+        "value": {
+          "bottom": 1906.53125,
+          "height": 64.59375,
+          "left": 39,
+          "right": 307.8359375,
+          "top": 1841.9375,
+          "width": 268.8359375,
+          "x": 39,
+          "y": 1841.9375
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "У прошивці — і на дорозі",
+    "lang": "uk",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 390
+  },
+  {
+    "amount": {
+      "bottom": 650.5625,
+      "height": 14.5,
+      "left": 236.390625,
+      "right": 270.8046875,
+      "top": 636.0625,
+      "width": 34.4140625,
+      "x": 236.390625,
+      "y": 636.0625
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1218.46875,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1190.96875,
+          "width": 326,
+          "x": 39,
+          "y": 1190.96875
+        },
+        "text": "800 €, ПДВ включено; китайські бренди — 650 €",
+        "value": {
+          "bottom": 1274.265625,
+          "height": 40.796875,
+          "left": 39,
+          "right": 364.8984375,
+          "top": 1233.46875,
+          "width": 325.8984375,
+          "x": 39,
+          "y": 1233.46875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1361.5625,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1334.0625,
+          "width": 326,
+          "x": 39,
+          "y": 1334.0625
+        },
+        "text": "індивідуальний файл DCF-Performance під ваш мотоцикл",
+        "value": {
+          "bottom": 1417.359375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 361.3828125,
+          "top": 1376.5625,
+          "width": 322.3828125,
+          "x": 39,
+          "y": 1376.5625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1504.65625,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1477.15625,
+          "width": 326,
+          "x": 39,
+          "y": 1477.15625
+        },
+        "text": "від двох днів",
+        "value": {
+          "bottom": 1536.65625,
+          "height": 17,
+          "left": 39,
+          "right": 127.1015625,
+          "top": 1519.65625,
+          "width": 88.1015625,
+          "x": 39,
+          "y": 1519.65625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1623.953125,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1596.453125,
+          "width": 326,
+          "x": 39,
+          "y": 1596.453125
+        },
+        "text": "зберігається в нас; повернутися до заводських налаштувань можна будь-коли",
+        "value": {
+          "bottom": 1679.75,
+          "height": 40.796875,
+          "left": 39,
+          "right": 336.2578125,
+          "top": 1638.953125,
+          "width": 297.2578125,
+          "x": 39,
+          "y": 1638.953125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1767.046875,
+          "height": 27.5,
+          "left": 39,
+          "right": 365,
+          "top": 1739.546875,
+          "width": 326,
+          "x": 39,
+          "y": 1739.546875
+        },
+        "text": "Кашкайш, поблизу Лісабона; офіційний дилер DCF-Performance, єдиний у Португалії",
+        "value": {
+          "bottom": 1822.84375,
+          "height": 40.796875,
+          "left": 39,
+          "right": 353.421875,
+          "top": 1782.046875,
+          "width": 314.421875,
+          "x": 39,
+          "y": 1782.046875
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "У прошивці — і на дорозі",
+    "lang": "uk",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 414
+  },
+  {
+    "amount": {
+      "bottom": 650.5625,
+      "height": 14.5,
+      "left": 236.390625,
+      "right": 270.8046875,
+      "top": 636.0625,
+      "width": 34.4140625,
+      "x": 236.390625,
+      "y": 636.0625
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1183.96875,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1156.46875,
+          "width": 342,
+          "x": 39,
+          "y": 1156.46875
+        },
+        "text": "800 €, ПДВ включено; китайські бренди — 650 €",
+        "value": {
+          "bottom": 1215.96875,
+          "height": 17,
+          "left": 39,
+          "right": 378.171875,
+          "top": 1198.96875,
+          "width": 339.171875,
+          "x": 39,
+          "y": 1198.96875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1303.265625,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1275.765625,
+          "width": 342,
+          "x": 39,
+          "y": 1275.765625
+        },
+        "text": "індивідуальний файл DCF-Performance під ваш мотоцикл",
+        "value": {
+          "bottom": 1359.0625,
+          "height": 40.796875,
+          "left": 39,
+          "right": 361.3828125,
+          "top": 1318.265625,
+          "width": 322.3828125,
+          "x": 39,
+          "y": 1318.265625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1446.359375,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1418.859375,
+          "width": 342,
+          "x": 39,
+          "y": 1418.859375
+        },
+        "text": "від двох днів",
+        "value": {
+          "bottom": 1478.359375,
+          "height": 17,
+          "left": 39,
+          "right": 127.1015625,
+          "top": 1461.359375,
+          "width": 88.1015625,
+          "x": 39,
+          "y": 1461.359375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1565.65625,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1538.15625,
+          "width": 342,
+          "x": 39,
+          "y": 1538.15625
+        },
+        "text": "зберігається в нас; повернутися до заводських налаштувань можна будь-коли",
+        "value": {
+          "bottom": 1621.453125,
+          "height": 40.796875,
+          "left": 39,
+          "right": 366.2734375,
+          "top": 1580.65625,
+          "width": 327.2734375,
+          "x": 39,
+          "y": 1580.65625
+        }
+      },
+      {
+        "label": {
+          "bottom": 1708.75,
+          "height": 27.5,
+          "left": 39,
+          "right": 381,
+          "top": 1681.25,
+          "width": 342,
+          "x": 39,
+          "y": 1681.25
+        },
+        "text": "Кашкайш, поблизу Лісабона; офіційний дилер DCF-Performance, єдиний у Португалії",
+        "value": {
+          "bottom": 1764.546875,
+          "height": 40.796875,
+          "left": 39,
+          "right": 353.421875,
+          "top": 1723.75,
+          "width": 314.421875,
+          "x": 39,
+          "y": 1723.75
+        }
+      }
+    ],
+    "figureSize": "38px",
+    "heading": "У прошивці — і на дорозі",
+    "lang": "uk",
+    "overflow": -10,
+    "paragraphGap": 15,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 430
+  },
+  {
+    "amount": {
+      "bottom": 669.234375,
+      "height": 15.5,
+      "left": 648.703125,
+      "right": 685.984375,
+      "top": 653.734375,
+      "width": 37.28125,
+      "x": 648.703125,
+      "y": 653.734375
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1150.4296875,
+          "height": 27.5,
+          "left": 51.71875,
+          "right": 349,
+          "top": 1122.9296875,
+          "width": 297.28125,
+          "x": 51.71875,
+          "y": 1122.9296875
+        },
+        "text": "800 €, ПДВ включено; китайські бренди — 650 €",
+        "value": {
+          "bottom": 1206.2265625,
+          "height": 40.796875,
+          "left": 51.71875,
+          "right": 347.859375,
+          "top": 1165.4296875,
+          "width": 296.140625,
+          "x": 51.71875,
+          "y": 1165.4296875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1150.4296875,
+          "height": 27.5,
+          "left": 409,
+          "right": 706.28125,
+          "top": 1122.9296875,
+          "width": 297.28125,
+          "x": 409,
+          "y": 1122.9296875
+        },
+        "text": "індивідуальний файл DCF-Performance під ваш мотоцикл",
+        "value": {
+          "bottom": 1206.2265625,
+          "height": 40.796875,
+          "left": 409,
+          "right": 700.1640625,
+          "top": 1165.4296875,
+          "width": 291.1640625,
+          "x": 409,
+          "y": 1165.4296875
+        }
+      },
+      {
+        "label": {
+          "bottom": 1297.5234375,
+          "height": 27.5,
+          "left": 51.71875,
+          "right": 349,
+          "top": 1270.0234375,
+          "width": 297.28125,
+          "x": 51.71875,
+          "y": 1270.0234375
+        },
+        "text": "від двох днів",
+        "value": {
+          "bottom": 1329.5234375,
+          "height": 17,
+          "left": 51.71875,
+          "right": 139.8203125,
+          "top": 1312.5234375,
+          "width": 88.1015625,
+          "x": 51.71875,
+          "y": 1312.5234375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1297.5234375,
+          "height": 27.5,
+          "left": 409,
+          "right": 706.28125,
+          "top": 1270.0234375,
+          "width": 297.28125,
+          "x": 409,
+          "y": 1270.0234375
+        },
+        "text": "зберігається в нас; повернутися до заводських налаштувань можна будь-коли",
+        "value": {
+          "bottom": 1353.3203125,
+          "height": 40.796875,
+          "left": 409,
+          "right": 706.2578125,
+          "top": 1312.5234375,
+          "width": 297.2578125,
+          "x": 409,
+          "y": 1312.5234375
+        }
+      },
+      {
+        "label": {
+          "bottom": 1444.6171875,
+          "height": 27.5,
+          "left": 51.71875,
+          "right": 349,
+          "top": 1417.1171875,
+          "width": 297.28125,
+          "x": 51.71875,
+          "y": 1417.1171875
+        },
+        "text": "Кашкайш, поблизу Лісабона; офіційний дилер DCF-Performance, єдиний у Португалії",
+        "value": {
+          "bottom": 1524.2109375,
+          "height": 64.59375,
+          "left": 51.71875,
+          "right": 320.5546875,
+          "top": 1459.6171875,
+          "width": 268.8359375,
+          "x": 51.71875,
+          "y": 1459.6171875
+        }
+      }
+    ],
+    "figureSize": "38.4px",
+    "heading": "У прошивці — і на дорозі",
+    "lang": "uk",
+    "overflow": -10,
+    "paragraphGap": 16,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 768
+  },
+  {
+    "amount": {
+      "bottom": 745.828125,
+      "height": 15.5,
+      "left": 669.1796875,
+      "right": 706.4609375,
+      "top": 730.328125,
+      "width": 37.28125,
+      "x": 669.1796875,
+      "y": 730.328125
+    },
+    "amountCovered": false,
+    "amountOnFirstScreen": true,
+    "boxFootnoteSize": "13px",
+    "captionSize": "16px",
+    "facts": [
+      {
+        "label": {
+          "bottom": 1129.453125,
+          "height": 27.5,
+          "left": 72.1953125,
+          "right": 249.3125,
+          "top": 1101.953125,
+          "width": 177.1171875,
+          "x": 72.1953125,
+          "y": 1101.953125
+        },
+        "text": "800 €, ПДВ включено; китайські бренди — 650 €",
+        "value": {
+          "bottom": 1209.046875,
+          "height": 64.59375,
+          "left": 72.1953125,
+          "right": 239.3046875,
+          "top": 1144.453125,
+          "width": 167.109375,
+          "x": 72.1953125,
+          "y": 1144.453125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1129.453125,
+          "height": 27.5,
+          "left": 309.3125,
+          "right": 486.4375,
+          "top": 1101.953125,
+          "width": 177.125,
+          "x": 309.3125,
+          "y": 1101.953125
+        },
+        "text": "індивідуальний файл DCF-Performance під ваш мотоцикл",
+        "value": {
+          "bottom": 1209.046875,
+          "height": 64.59375,
+          "left": 309.3125,
+          "right": 485.4453125,
+          "top": 1144.453125,
+          "width": 176.1328125,
+          "x": 309.3125,
+          "y": 1144.453125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1129.453125,
+          "height": 27.5,
+          "left": 546.4375,
+          "right": 723.5546875,
+          "top": 1101.953125,
+          "width": 177.1171875,
+          "x": 546.4375,
+          "y": 1101.953125
+        },
+        "text": "від двох днів",
+        "value": {
+          "bottom": 1161.453125,
+          "height": 17,
+          "left": 546.4375,
+          "right": 634.5390625,
+          "top": 1144.453125,
+          "width": 88.1015625,
+          "x": 546.4375,
+          "y": 1144.453125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1156.953125,
+          "height": 55,
+          "left": 783.5546875,
+          "right": 960.6796875,
+          "top": 1101.953125,
+          "width": 177.125,
+          "x": 783.5546875,
+          "y": 1101.953125
+        },
+        "text": "зберігається в нас; повернутися до заводських налаштувань можна будь-коли",
+        "value": {
+          "bottom": 1260.34375,
+          "height": 88.390625,
+          "left": 783.5546875,
+          "right": 956.25,
+          "top": 1171.953125,
+          "width": 172.6953125,
+          "x": 783.5546875,
+          "y": 1171.953125
+        }
+      },
+      {
+        "label": {
+          "bottom": 1129.453125,
+          "height": 27.5,
+          "left": 1020.6796875,
+          "right": 1197.796875,
+          "top": 1101.953125,
+          "width": 177.1171875,
+          "x": 1020.6796875,
+          "y": 1101.953125
+        },
+        "text": "Кашкайш, поблизу Лісабона; офіційний дилер DCF-Performance, єдиний у Португалії",
+        "value": {
+          "bottom": 1232.84375,
+          "height": 88.390625,
+          "left": 1020.6796875,
+          "right": 1191.0703125,
+          "top": 1144.453125,
+          "width": 170.390625,
+          "x": 1020.6796875,
+          "y": 1144.453125
+        }
+      }
+    ],
+    "figureSize": "64px",
+    "heading": "У прошивці — і на дорозі",
+    "lang": "uk",
+    "overflow": -10,
+    "paragraphGap": 16,
+    "trustInline": "inline",
+    "trustParent": "icm-trust-rating-text",
+    "trustWhitespace": true,
+    "w": 1280
+  }
+]

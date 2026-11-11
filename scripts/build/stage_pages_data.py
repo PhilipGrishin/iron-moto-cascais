@@ -9,7 +9,7 @@ STAGE_PAGES = {
     'stage-1': {
         'path':'stage-1/', 'name':'Stage 1 ECU remap',
         'source':BUILD_DIR/'content/stage1_copy_4lang.md',
-        'sha256':'07b8736d102143bee2fb19c0b2cb7c808e494e1acc998728bc32ee7f9cb3e900',
+        'sha256':'c24a158577037c7d3604772950aac573d47dff9307f88a256dd47b56a869fda6',
         'price_ids':('stage1','stage1_chinese_brands'),
         'nav_key':'nav.stage1', 'nav_labels':_labels['nav.stage1'],
         'footer_key':'nav.stage1Footer', 'footer_labels':_labels['nav.stage1Footer'],
@@ -17,7 +17,6 @@ STAGE_PAGES = {
                 'source_sha256':'ea8fd9054c624d28627c03993be9d900db1c4d1590d0ca915f1a6ff788d0574f'},
         'logo':'/photos/stage/dcf-performance-logo.svg',
         'brand':{'name':'DCF-Performance','url':'https://dcf-performance.com/'},
-        'service_name':'Stage 1 motorcycle ECU remap',
     },
 }
 for config in STAGE_PAGES.values():

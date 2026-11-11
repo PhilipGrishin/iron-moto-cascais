@@ -399,7 +399,7 @@ new hub-card description keys also survive the hub's generic i18n pass.
 
 | Approved partner source | SHA-256 |
 |---|---|
-| `content/dcf_dealer_copy_4lang.md` | `33ab00ec732367c157faa10000eb91eadf019db190e5d1043fb129b87185d99e` |
+| `content/dcf_dealer_copy_4lang.md` | `4ca8c646e5045bd1a9aee4702c446b693160462762183ed77a55625c6f08082b` |
 
 Import an owner-approved image once; use the supplied source path:
 
@@ -581,13 +581,15 @@ the 40 `visible_text_sha256` pins after an approved registry-copy change.
 `stage_pages_data.py` is the only page registry. Each entry supplies its approved
 source/checksum, price IDs, image widths, navigation/footer labels and machine
 name. `stage_copy.py` checks the complete four-language, thirteen-section contract
-before rendering. `pricing_data.resolve_stage_prices` rejects a currency amount
+before rendering, including the localized `Schema name` field. Catalogue-only
+separators are removed only where their parts become separate visual lines;
+copy parity checks compare those exact parts. `pricing_data.resolve_stage_prices` rejects a currency amount
 that differs from the shared pricing IDs, then emits the registered value.
 Stage pages render directly; do not add them to generic `MAIN_PAGES`.
 
 | Approved input | SHA-256 |
 |---|---|
-| `content/stage1_copy_4lang.md` | `07b8736d102143bee2fb19c0b2cb7c808e494e1acc998728bc32ee7f9cb3e900` |
+| `content/stage1_copy_4lang.md` | `c24a158577037c7d3604772950aac573d47dff9307f88a256dd47b56a869fda6` |
 | `content/stage1_integrations_4lang.md` | `96ca56e284774ac80837f72ab7fb854f951760844351c8e25cf31312df07f5a8` |
 | `content/stage1_news_4lang.md` | `1e1e728c0be79fd34f3513d7561473cea025d28a4d79dee48d7e4bf4006ea9c8` |
 
