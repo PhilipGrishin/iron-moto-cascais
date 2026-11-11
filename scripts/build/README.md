@@ -579,7 +579,7 @@ the 40 `visible_text_sha256` pins after an approved registry-copy change.
 ## Stage Workflow
 
 `stage_pages_data.py` is the only page registry. Each entry supplies its approved
-source/checksum, price IDs, image widths, navigation/footer labels and machine
+source/checksum, price IDs, image widths, navigation/footer labels and a discovery
 name. `stage_copy.py` checks the complete four-language, thirteen-section contract
 before rendering, including the localized `Schema name` field. Catalogue-only
 separators are removed only where their parts become separate visual lines;

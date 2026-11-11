@@ -1,6 +1,6 @@
 # S-STAGE1-FIX delivery record
 
-Date: 2026-11-11. Status: local and clean-clone acceptance passed; not yet deployed.
+Date: 2026-11-11. Status: deployed and production-verified.
 Baseline: `abd63a24ba009929cd838a33dafd382f691626a6`, clean `main`; upstream
 confirmed identical before editing.
 
@@ -43,7 +43,9 @@ confirmed identical before editing.
   first screen in every case (maximum bottom 803.54 px on phones). The figure
   uses 38–64 px with a 16 px caption; opening paragraphs have 15–16 px spacing.
   B5 preserves the note's type size, reduces only its leading/top margin and
-  reserves horizontal space after the nonbreaking currency amount.
+  reserves horizontal space after the nonbreaking currency amount. Final
+  [phone checks](stage1-fix/phone-punctuation-checks.json) repeat all 20 phone
+  cases with `650 €.` kept together, including its final punctuation.
 - [Trust evidence](stage1-fix/trust-checks.json): Stage and BMW in four languages
   show a real normal space of 3.67–5.25 CSS px. All 60 strips share the corrected
   markup. The four home pages retain their existing rating/count and have no
@@ -53,7 +55,38 @@ confirmed identical before editing.
   FAQ, Offers, provider, ImageObject and breadcrumbs are preserved.
 - Implementation `de166847` passed the documented Full Safe Rebuild and
   `verify_site.sh` in a fresh non-shallow clone, leaving empty Git status.
-  Production verification remains pending publication.
+  The same full-history clone was then cleanly checked out at final artifact
+  `12691a8e440968a77f9fa2bdee4a38bda84996bb`; the complete sequence passed again
+  with empty Git status. No cleanup or manual output adjustment was needed.
+- [Live browser checks](stage1-fix/live-browser-checks.json): all four Stage
+  languages at 375 x 812 and 1280 x 900 after the final deployment. No overflow
+  or amount/button overlap; the RU 375 amount ends at 803.54 px. The localized
+  trust strings and the new Stage CSS are live. No browser errors were observed
+  in the final page console.
+- [Production comparison](stage1-fix/production.json): all 268 public pages
+  returned HTTP 200 and matched local main content, schema, title/description,
+  canonical/hreflang and the checked shared chrome/cache references. All 26
+  discovery/runtime/Stage media/PDF files matched byte-for-byte. Cloudflare
+  email obfuscation was decoded before semantic comparison. Fourteen initial
+  transport errors/timeouts passed on individual retries; there were no content
+  mismatches or unresolved request failures.
+
+## Publication and limits
+
+- Main implementation: `de166847`; local acceptance record: `46d5e7ba`.
+- Final punctuation follow-up and published artifact: `12691a8e`.
+  The first release had completed before the final mobile punctuation correction;
+  this follow-up keeps the full `650 €.` together before the reserved button space.
+- [Final Pages run 43070939235](https://github.com/PhilipGrishin/iron-moto-cascais/actions/runs/43070939235)
+  passed validation and deployment, completed 2026-11-11 at 17:45:26 UTC.
+  It supersedes successful first run `43070352562` (artifact `46d5e7ba`).
+- F7 cannot literally inspect a homepage trust strip because none exists.
+  Existing homepage reviews were verified without adding a new component.
+  F1–F6 and F8–F11 passed; F7 passed for its actual 60-page strip inventory,
+  with this homepage applicability correction.
+- Google Rich Results Test was not rerun for this correction; local schema
+  validators and the preserved-graph comparison cover the requested schema
+  change. No external indexing or recrawl timing is claimed.
 
 ## Requested screenshots
 

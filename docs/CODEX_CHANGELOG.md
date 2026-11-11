@@ -24,8 +24,9 @@ Format:
 - Verified: exact allowed scope, unchanged protected assets/PDFs, all release
   validators, 28 responsive cases, trust spacing in four languages, and six
   visual captures. Full Safe Rebuild plus release gate passed in a fresh
-  full-history clone with empty Git status.
-- Notes: production verification pending. See
+  full-history clone and again at the final artifact, both with empty Git status.
+  All 268 public pages and 26 files matched; eight live responsive cases passed.
+- Notes: Pages `43070939235` published final artifact `12691a8e`. See
   `docs/reports/S_STAGE1_FIX_REPORT.md`; F7's homepage strip does not exist,
   so its existing review widget is preserved and verified.
 

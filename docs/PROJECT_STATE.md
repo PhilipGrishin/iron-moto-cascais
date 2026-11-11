@@ -9,13 +9,15 @@ deployed public identifiers and cache-bust values. Operating rules live in
 
 ## Status And Evidence
 
-- S-STAGE1-FIX, **local and clean-clone acceptance passed**, 2026-11-11. Baseline `abd63a24`
-  confirmed. Discovery summary/order, Stage presentation/localized schema,
-  approved link headings, trust spacing and stale brand translations are being
-  corrected. Full rebuild, release validators, 28 browser cases and the exact
-  allowed-scope comparison passed. Implementation `de166847` reproduces with
-  empty Git status after Full Safe Rebuild in a fresh full-history clone.
-  Deployment remains pending.
+- S-STAGE1-FIX, **deployed and production-verified**, 2026-11-11. Baseline
+  `abd63a24` confirmed; implementation `de166847`, final artifact `12691a8e`,
+  Pages run `43070939235`. Discovery summary/order, Stage presentation/localized
+  schema, approved link headings, trust spacing and stale brand translations
+  are corrected. Full rebuild, release validators, 28 responsive cases,
+  20 final phone cases and the exact allowed-scope comparison passed. A clean
+  checkout of the final artifact in the full-history clone reproduces with
+  empty Git status. All 268 public pages and 26 files matched production;
+  eight live responsive cases passed.
   See [delivery record](reports/S_STAGE1_FIX_REPORT.md).
 
 - S-STAGE1 / S-STAGE1-NAV, **deployed and production-verified**, 2026-11-11:
@@ -28,7 +30,7 @@ deployed public identifiers and cache-bust values. Operating rules live in
   live responsive checks passed, and both PT Google Rich Results tests passed.
   See [delivery record](reports/S_STAGE1_REPORT.md).
 - Last verified production `sitemap.xml` SHA-256, confirmed 2026-11-11:
-  `94a811b4d684c2e2f12b359e7091c89266d373182ca343b330d476c8bc9e3898`.
+  `b0fafd3a3150a203b6edf2a62df47eec69a250be1438e1ea75d15b5dd9bf0212`.
 
 - N-DCF, **deployed and production-verified**, 2026-11-01: implementation
   `cadd1a5a`, Pages run `41352957214`. Approved dealership announcement is live

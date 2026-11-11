@@ -71,6 +71,12 @@ Stable rules:
   a subset of the canonical pricing registry.
 - A text or hero refresh changes source data, not just generated HTML.
 
+Correction, 2026-11-11 (S-STAGE1-FIX): retaining unused related translations
+also retained stale DCF claims. Brand renderers now refresh every related
+description from the current registry in every language, including unused keys.
+The broad validator rejects any built related-description value that differs
+from that registry. Visible brand content remains unchanged.
+
 Commands: `scripts/build/README.md`, **Brand page workflow**.
 
 ## General Hubs And Service Pages
@@ -481,12 +487,6 @@ Valve-clearance table cells express starting prices with a trailing `+` on
 each amount; ranges retain their bounds and place `+` after the upper bound.
 Prose uses the localized starting-price wording (`from`, `desde`, `от`, `від`).
 The pricing-table note explains the convention and written-estimate process.
-Correction, 2026-11-11 (S-STAGE1-FIX): retaining unused related translations
-also retained stale DCF claims. Brand renderers now refresh every related
-description from the current registry in every language, including unused keys.
-The broad validator rejects any built related-description value that differs
-from that registry. Visible brand content remains unchanged.
-
 Brand tables inherit the same cells; the approved hub, brand FAQ and metadata
 sources must stay aligned. This convention does not change scheduled-service
 groups or brand-specific full-service cards.
