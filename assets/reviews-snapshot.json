@@ -4,6 +4,17 @@
   "total": 34,
   "reviews": [
     {
+      "author": "Robert Kilpatrick",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocJs3LEZ8XMn3-ELk9g05_NRXF6wgXik76CrdyhwdnUK2AXAOw=s128-c0x00000000-cc-rp-mo",
+      "profileUrl": "https://www.google.com/maps/contrib/115121614841521149287/reviews",
+      "rating": 5,
+      "text": "This bike has done its fair share in the last three years. Lapped the UK, Distinguished Gentleman's ride in the Cotswolds UK and currently about 4000 miles into a lap of Europe. Started limping slightly due to a leaking front fork seal. Contacted the awesome team at Iron Customs out of the blue and they took it all in their stride. Ordered, supplied and fitted parts within 24 hours. Only hitch was entirely my fault as I got my timings wrong but they carried on regardless.\nFull fork rebuild both sides, oil change as requested and air filter cleaned. Oh, and without being asked  they checked the tyre pressure too. Glad they did!\nTo cap it all the bolt securing my seat seems to have disappeared on my travels so they dug out a replacement - just because they could!\nProfessional and courteous. These guys really know their stuff. If you need help in this neck of the woods this is the team to go to!!\nWorth a visit just to see some of the cool bikes they're building...\nThanks guys - top service!",
+      "lang": "en",
+      "when": "2 months ago",
+      "publishedAt": "2026-09-09T19:00:22.038797625Z",
+      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xObE4xWjRlSGQ0Y2w5YU1qUjVhVXhtYjBWVFVtYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
+    },
+    {
       "author": "Anton Rudov",
       "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjXRUm1XrcNg8IvabZDKxV5ILUZlAz-rNDd5ZkDyCZXZK_UKDXg=s128-c0x00000000-cc-rp-mo",
       "profileUrl": "https://www.google.com/maps/contrib/101983877553474730723/reviews",
@@ -24,17 +35,6 @@
       "when": "2 months ago",
       "publishedAt": "2026-08-21T14:37:18.672536827Z",
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25WRGFteGxkSHBqVm0xTGExaG1iV2swWWpaS1RtYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
-    },
-    {
-      "author": "Vladimir Beck",
-      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjUZc6Dq9gVg6fInYNYo1vQHU1B7nJx6dZmqiy1wRmeO9bwGisjx=s128-c0x00000000-cc-rp-mo",
-      "profileUrl": "https://www.google.com/maps/contrib/101217722532291314025/reviews",
-      "rating": 5,
-      "text": "I brought my custom Harley-Davidson XR1200 to the workshop essentially dead, it wouldn’t even start and had electrical issues, on top of needing a serious mechanical service.\n\nThe guys brought the bike back to life and gave it a comprehensive service: diagnosed and fixed the electrical problems, overhauled the clutch, rebuilt the front fork, serviced the brakes, replaced the battery, fluids and filters, and took care of everything else needed to get the bike properly back on the road.\n\nWhat impressed me most was the technical level of the team. They clearly know motorcycles inside out, approach the work systematically, and pay attention to the details that actually matter. Everything was properly diagnosed, explained and done to a very high standard.\n\nThe XR1200 is now running great and feels like a completely different bike. Excellent workshop, highly skilled people, and a place I would confidently trust with any motorcycle.\n\nHighly recommended!",
-      "lang": "en",
-      "when": "3 months ago",
-      "publishedAt": "2026-08-07T16:44:20.515839969Z",
-      "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2pneFgxTmZablZ4UkVsc1pXSm1NWFJ6V0RGaVUzYxAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     },
     {
       "author": "Алексей Бегунов",
@@ -59,5 +59,5 @@
       "url": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2pWdlNqVnhkMUYwWDFkb1FXaHJNM1UyTjA5eE9GRRAB!2m1!1s0xd1ecf662f5095fb:0x198e0e3d74f9e8f8"
     }
   ],
-  "fetchedAt": "2026-11-09T16:29:12.950Z"
+  "fetchedAt": "2026-11-16T15:54:24.309Z"
 }
